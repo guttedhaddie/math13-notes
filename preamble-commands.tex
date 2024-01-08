@@ -1,0 +1,193 @@
+%text
+\renewcommand{\qedsymbol}{\rule[-8pt]{0.5em}{0.5em}}
+\def\ang#1{#1\text{°}}
+\def\st{\textsuperscript{st}}
+\def\nd{\textsuperscript{nd}}
+\def\rd{\textsuperscript{rd}}
+\def\th{\textsuperscript{th}}
+\def\AM{\,{a.m.}}
+\def\PM{\,{p.m.}}
+\def\BC{{\,\textsc{bc}}}
+\def\AD{{\textsc{ad}\,}}
+\let\divsymbol\div
+
+%mathrm
+\def\I{\mathrm{I}}
+\def\rL{\mathrm{L}}
+\def\rU{\mathrm{U}}
+\newcommand{\rO}{\mathrm{O}}
+\newcommand{\rM}{\mathrm{M}}
+\newcommand{\rS}{\mathrm{S}}
+\newcommand{\rT}{\mathrm{T}}
+\newcommand{\rSO}{\mathrm{SO}}
+\newcommand{\rSL}{\mathrm{SL}}
+\newcommand{\rSp}{\mathrm{Sp}}
+\newcommand{\rGL}{\mathrm{GL}}
+\newcommand{\rSU}{\mathrm{SU}}
+
+%bbb
+\def\C{\mathbb{C}}
+\def\E{\mathbb{E}}
+\def\F{\mathbb{F}}
+\def\II{\mathbb{I}}
+\def\K{\mathbb{K}}
+\def\N{\mathbb{N}}
+\def\Q{\mathbb{Q}}
+\def\pr{\mathbb{P}}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+
+%cal
+\def\cL{\mathcal{L}}
+\def\cP{\mathcal{P}}
+\def\cA{\mathcal{A}}
+\def\cU{\mathcal{U}}
+\def\cC{\mathcal{C}}
+\def\cS{\mathcal{S}}
+\def\cN{\mathcal{N}}
+\def\cB{\mathcal{B}}
+\def\cR{\mathcal{R}}
+\def\cE{\mathcal{E}}
+
+%gothic
+\def\fc{\mathfrak{c}}
+\def\fg{\mathfrak{c}}
+\def\fo{\mathfrak{o}}
+\def\fso{\mathfrak{so}}
+\def\fsl{\mathfrak{sl}}
+
+%greek shortcuts
+\def\vphi{\varphi}
+\def\vep{\varepsilon}
+
+%bold
+\def\V#1{\mathbf{#1}}
+\def\va{{\V a}}
+\def\vb{{\V b}}
+\def\vc{{\V c}}
+\def\vd{{\V d}}
+\def\ve{{\V e}}
+\def\vf{{\V f}}
+\def\vi{{\V i}}
+\def\vj{{\V j}}
+\def\vk{{\V k}}
+\def\vn{{\V n}}
+\def\vp{{\V p}}
+\def\vq{{\V q}}
+\def\vr{{\V r}}
+\def\vs{{\V s}}
+\def\vt{{\V t}}
+\def\vu{{\V u}}
+\def\vv{{\V v}}
+\def\vw{{\V w}}
+\def\vx{{\V x}}
+\def\vy{{\V y}}
+\def\vz{{\V z}}
+\def\vB{{\V B}}
+\def\vE{{\V E}}
+\def\vF{{\V F}}
+\def\vG{{\V G}}
+\def\vN{{\V N}}
+\def\vR{{\V R}}
+\def\vT{{\V T}}
+
+%Functions
+\def\image{\operatorname{Im}}
+\def\dom{\operatorname{dom}}
+\def\range{\operatorname{range}}
+\def\id{\operatorname{id}}
+\def\sgn{\mathrm{sgn}}
+
+
+%Algebra
+\def\ip#1{\left\langle #1\right\rangle}
+\def\nm#1{\left| #1\right|}
+\def\Nm#1{\nm{\nm{#1}}}
+\def\lst#1#2{{#1}_1,\ldots,{#1}_{#2}}
+\def\vect#1#2{\lst{\V{#1}}{#2}}
+\def\lincom#1#2#3{{#1}_1\V{#2}_1+\cdots+{#1}_{#3}\V{#2}_{#3}}
+\def\lincomsc#1#2#3{{#1}_1{#2}_1+\cdots+{#1}_{#3}{#2}_{#3}}
+\def\proj{\operatorname{proj}}
+\def\Rank{\operatorname{rank}}
+\def\Null{\operatorname{null}}
+\def\tr{\operatorname{tr}}
+\def\Span{\operatorname{Span}}
+\def\diag{\operatorname{diag}}
+\def\twovec#1#2{\begin{pmatrix}#1\\#2\end{pmatrix}}
+\def\stwovec#1#2{\left(\begin{smallmatrix}#1\\#2\end{smallmatrix}\right)}
+\def\threevec#1#2#3{\begin{pmatrix}#1\\#2\\#3\end{pmatrix}}
+\def\sthreevec#1#2#3{\left(\begin{smallmatrix}#1\\#2\\#3\end{smallmatrix}\right)}
+\def\fourvec#1#2#3#4{\begin{pmatrix}#1\\#2\\#3\\#4\end{pmatrix}}
+\def\sfourvec#1#2#3#4{\left(\begin{smallmatrix}#1\\#2\\#3\\#4\end{smallmatrix}\right)}
+\newenvironment{smatrix}{\left(\begin{smallmatrix}}{\end{smallmatrix}\right)}
+
+\def\ad{\operatorname{ad}}
+\def\Ad{\operatorname{Ad}}
+\def\orb{\mathrm{orb}}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\stab}{Stab}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Inn}{Inn}
+\def\quotient#1#2{{}^{\textstyle {#1}}\!\big/_{\textstyle \!{#2}}}
+
+
+%Geometry
+\def\lin#1{\overleftrightarrow{#1}}
+\def\ray#1{\overrightarrow{#1}}
+\def\rayv#1{\overrightarrow{\underline{#1}}}
+
+
+%calculus
+\def\D{\mathrm{d}}
+\def\dint{\displaystyle\int}
+\def\at#1#2{\left.#1\right|_{#2}}
+\newcommand{\diff}[2][]{\frac{\D #1}{\D #2}}
+\newcommand{\diffat}[3][]{\left.\diff[#1]{#2}\right|_{#3}}
+\newcommand{\partials}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\partialsat}[3][]{\left.\partials[#1]{#2}\right|_{#3}}
+\newcommand{\jacobian}[2]{\frac{\partial(#1)}{\partial(#2)}}
+\newcommand{\jacthree}[6]{\begin{vmatrix}
+				#1_#4&#1_#5&#1_#6\\
+				#2_#4&#2_#5&#2_#6\\
+				#3_#4&#3_#5&#3_#6
+				\end{vmatrix}}
+\def\Div{\operatorname{div}}
+\def\grad{\operatorname{grad}}
+\def\curl{\operatorname{curl}}
+\def\Hess{\operatorname{Hess}}				
+\def\df{{\D f}}
+\def\dg{{\D g}}
+\def\dr{{\D r}}
+\def\ds{{\D s}}
+\def\dt{{\D t}}
+\def\du{{\D u}}
+\def\dv{{\D v}}
+\def\dw{{\D w}}
+\def\dx{{\D x}}
+\def\dy{{\D y}}
+\def\dz{{\D z}}
+\def\dA{{\D A}}
+\def\dS{{\D S}}
+\def\dV{{\D V}}
+\def\dvn{\D{\V n}}
+\def\dvr{\D{\V r}}
+\def\dvx{\D{\V x}}
+\def\dvS{\D{\V S}}
+\def\dth{{\D\theta}}
+
+%Prob
+\def\Var{\operatorname{Var}}
+\def\Cov{\operatorname{Cov}}
+
+%others
+\def\cl#1{\overline{#1}}
+\def\leg#1#2{\left(\frac{#1}{#2}\right)}
+\def\lcm{\operatorname{lcm}}
+\def\spmod{\negthickspace\negthickspace\mod}
+\def\deg{\operatorname{deg}}
+\def\Arg{\operatorname{Arg}}
+\def\laplace#1{\cL\left\{#1\right\}}
+\def\notimplies{\mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+\def\lomega{\scalebox{1.25}{$\omega$}}
