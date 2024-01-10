@@ -1,437 +1,159 @@
 \section{Logic and the Language of Proofs}\label{sec:logic}
 
-In order to read and construct proofs, we need to start with the language in which they are written: \emph{logic.} Logic is to mathematics what grammar is to English. Section \ref{sec:prop} will not look particularly mathematical, but we'll quickly get to work in Section \ref{sec:proof} using logic in a mathematical context.
 
 \subsection{Propositions}\label{sec:prop}
 
-\begin{defn}
-A \emph{proposition} or \emph{statement} is a sentence that is either true or false.
+
+In order to read and construct proofs, we need to start with the language in which they are written: \emph{logic.} This is to mathematics what grammar is to English. %The initial parts of this chapter may not appear particularly mathematical, but this will soon change!
+
+
+\begin{defn}{}{}
+	A \emph{proposition} or \emph{statement} is a sentence that is either true or false.
 \end{defn}
 
-\begin{examples}\itemsep0pt
-	\item $17-24=7$.
-	\item $39^2$ is an odd integer.
-	\item The moon is made of cheese.
-	\item Every cloud has a silver lining.
-	\item God exists.
+\begin{examples}{}{}
+\exstart $17-24=7$. \hfill \makebox[250pt][l]{2. \ $39^2$ is an odd integer.\hfill}\vspace{-3pt}
+	\begin{enumerate}\setcounter{enumi}{2}\itemsep0pt
+		\item The moon is made of cheese. \hfill \makebox[250pt][l]{4. \ Every cloud has a silver lining.\hfill} 
+		\setcounter{enumi}{4} 
+		\item God exists.
+	\end{enumerate}
 \end{examples}
 
-\noindent In order to make sense, these propositions require a clear \emph{definition} of every concept they contain. There are many concepts of God in many cultures, but once it is decided \emph{which} we are talking about, it is clear that They either exist or do not. This example illustrates that a statement need not be indisputably true or false, or even determinable, in order to qualify as a proposition. Mostly when people argue over propositions and statements, what they are really disagreeing about are definitions!\\
-Note that any expression that is neither true nor false is not a proposition. \emph{January 1$^{\text{st}}$} is not a proposition, neither is \emph{Green.}
+For a proposition to make sense, we must agree on the meaning of each concept it contains. When people argue over propositions, in practice they are often disagreeing about \emph{definitions.} There are many concepts of God; we cannot begin to consider whether or not They exist until we agree \emph{which} concept is being discussed! This also illustrates that the truth status of a proposition \emph{need not be known} at the moment you state it; this is particularly common in mathematics.\footnote{More surprisingly, there are even propositions whose truth state is impossible to determine!}
 
-\subsubsection*{Truth Tables}
 
-One often has to deal with abstract propositions; those where you do not know the truth or falsity, or indeed when you don't explicitly know the proposition! In such cases it can be convenient to represent the combinations of propositions in a tabular format. For instance, if we have two propositions ($P$ and $Q$), or even three ($P,Q$ and $R$) then all possible combinations of truth $T$ and falsehood $F$ are represented in the following tables:
-\[\begin{array}{cc}
-P & Q\\\hline
-T & T\\
-T & F\\
-F & T\\
-F & F\\
-&\\&\\&\\&
-\end{array}
-\qquad\qquad\qquad
-\begin{array}{ccc}
-P & Q & R\\\hline
-T & T & T\\
-T & T & F\\
-T & F & T\\
-T & F & F\\
-F & T & T\\
-F & T & F\\
-F & F & T\\
-F & F & F
-\end{array}\]
-The mathematician in you should be looking for patterns and asking: how many rows would a truth table corresponding to $n$ propositions have, and can I \emph{prove} my assertion? Right now it is hard to prove that the answer is $2^n$: induction (Chapter \ref{sec:ind}) makes this very easy.
 
-\subsubsection*{Connecting Propositions: Conjunction, Disjunction and Negation}
+\boldsubsubsection{Truth Tables and Combining Propositions}
 
-We now \emph{define} how to combine propositions in natural ways, modeled on the words \emph{and, or} and \emph{not.}
+To develop basic rules and terminology, it is helpful to consider \emph{abstract} propositions: $P,Q,R,\ldots$. %Each letter represents a proposition similarly to how $x$ often represents an abstract number in elementary mathematics. 
+Given a small number of propositions, all possible combinations of truth states may be easily represented in tabular format: in a \emph{truth table.} These are useful for defining new propositions.
 
-\begin{defn}
-Let $P$ and $Q$ be propositions. The \emph{conjunction} (AND, $\wedge$) of $P$ and $Q$, the \emph{disjunction} (OR, $\vee$) of $P$ and $Q$, and the \emph{negation} or \emph{denial} (NOT, $\neg$, $\sim$, $\cl{\phantom{P}}$) of $P$ are defined by the truth tables,
-\[\begin{array}{cc|c}
-P & Q & P\wedge Q\\\hline
-T & T & T\\
-T & F & F\\
-F & T & F\\
-F & F & F
-\end{array}\qquad\qquad
-\begin{array}{cc|c}
-P & Q & P\vee Q\\\hline
-T & T & T\\
-T & F & T\\
-F & T & T\\
-F & F & F
-\end{array}\qquad\qquad
-\begin{array}[b]{c|c}
-P & \neg P\\\hline
-T & F\\
-F & T
-\end{array}\]
+\begin{defn}{}{}
+	Let $P$ and $Q$ be propositions. The truth tables below define three new propositions modeled on the words \emph{and, or} and \emph{not.}\par
+	\begin{minipage}[t]{0.5\linewidth}\vspace{0pt}
+		\begin{itemize}
+		  \item The \emph{conjunction} $\textcolor{red}{P\wedge Q}$ is read ``$P$ and $Q$.''
+		  \item The \emph{disjunction} $\textcolor{Green}{P\vee Q}$ is read ``$P$ or $Q$.''
+		  \item The \emph{negation} $\textcolor{blue}{\neg P}$ is read ``not $P$.'' %or \emph{denial} (NOT, $\neg$, $\sim$, $\cl{\phantom{P}}$)
+		\end{itemize} 
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.49\linewidth}\vspace{-2pt}
+		$\begin{array}{cc||c|c}
+		P & Q & \textcolor{red}{P\wedge Q} & \textcolor{Green}{P\vee Q}\\\hline
+		T & T & \textcolor{red}{T} & \textcolor{Green}{T}\\
+		T & F & \textcolor{red}{F} & \textcolor{Green}{T}\\
+		F & T & \textcolor{red}{F} & \textcolor{Green}{T}\\
+		F & F & \textcolor{red}{F} & \textcolor{Green}{F}
+		\end{array}\qquad\qquad
+		\begin{array}[b]{c||c}
+		P & \textcolor{blue}{\neg P}\\\hline
+		T & \textcolor{blue}{F}\\
+		F & \textcolor{blue}{T}
+		\end{array}$
+	\end{minipage}
 \end{defn}
 
-\noindent It is usually better to use \emph{and, or} and \emph{not} rather than \emph{conjunction, disjunction} and \emph{negation}: the latter may make you sound educated, but at the risk of being misunderstood!
+The letters T/F stand for \emph{true/false.} E.g., the second line of the first table says that if $P$ is true and $Q$ is false, then the proposition ``$P$ and $Q$" is \textcolor{red}{false}, while ``$P$ or `$Q$'' is \textcolor{Green}{true.} %Hopefully this gels with your intuitive understanding.
 
-\begin{example}
-Let $P,Q$ and $R$ be the following propositions:
-\begin{itemize}
-\item[]\itemstart{$P$.} Irvine is a city in California.
-\item[]\itemstart{$Q$.} Irvine is a town in Ayrshire, Scotland.
-\item[]\itemstart{$R$.} Irvine has seven letters.
-\end{itemize}
-Clearly $P$ is true while $R$ is false. If you happen to know someone from Scotland, you might know that $Q$ is true.\footnote{The second syllable is pronounced like the i in bin or win. Indeed the first Californian antecedent of the Irvine family which gave its name to UCI was an Ulster-Scotsman named James Irvine (1827--1886). Probably the family name was originaly pronounced in the Scottish manner.} We can now compute the following (increasingly grotesque) combinations\ldots
-\[\def\arraystretch{1.3}
-\begin{array}{c|c|c|c|c|c|c}
-P\wedge Q&P\vee Q&P\wedge R&\neg R&(\neg R)\wedge P&\neg(R\vee P)&(\neg P)\vee [((\neg R)\vee P)\wedge Q] \\\hline
-T & T & F & T & T & F & T
-\end{array}\]
+\begin{example}{}{}
+	Suppose $P$ and $Q$ are the following propositions:
+	\begin{quote}
+		$P$: ``I like purple.''\qquad\qquad $Q$: ``I like chartreuse.''
+	\end{quote}
+	We form the new propositions described in the definition:
+	\begin{quote}
+		$P\wedge Q$: ``I like purple and chartreuse.''\qquad \qquad
+		$P\vee Q$: ``I like purple or chartreuse.''\smallbreak
+		$\neg P$: ``I do not like purple.''
+	\end{quote}
+	It is typical to modify phrasing to aid readability: ``Not, I like purple'' just sounds weird! Note also that or is \emph{inclusive} in logic: if ``I like purple or chartreuse'' is true, then you might like \emph{both}! 
 \end{example}
 
-\noindent How did we establish these facts? Some  are quick,  and can be done in your head. Consider, for instance, the statement  $(\neg R)\wedge P$. Because $R$ is false, $\neg R$ is true. Thus $(\neg R)\wedge P$ is the conjunction of two true statements, hence it is true. Similarly, we can argue that $R\vee P$ is true (because $R$ is false and $P$ is true), so the negation $\neg(R\vee P)$ is false.
-
-\noindent  Establishing the truth value of the final proposition $(\neg P)\vee [((\neg R)\vee P) \wedge Q]$ requires more work. You may want to set up a truth table with several auxiliary columns to help you compute: 
-\[\def\arraystretch{1.3}
-\begin{array}{c|c|c|c|c|c|c|c}
-P & Q & R & \neg P & \neg R & (\neg R) \vee P & ((\neg R)\vee P) \wedge Q &  (\neg P) \vee [ ((\neg R)\vee P) \wedge Q] \\\hline
- T & T & F & F            & T         & T                        & T                                               & T
- \end{array}\]
-The importance of parentheses in a logical expressions cannot be stressed enough. For example, try building the truth table for the propositions $P\vee(Q\wedge R)$ and $(P\vee Q)\wedge R$. Are they the same?\pagebreak[4]
+\goodbreak
 
 
-\subsubsection*{Conditional and Biconditional Connectives}
+\boldsubsubsection{Conditional and Biconditional Connectives}
 
-In order to logically set up proofs, we need to see how propositions can lead one to another.
+Of critical importance to mathematics is the ability to have one proposition lead to another.
 
-\begin{defn}\label{defn:implies}
-The \emph{conditional} ($\implies$) and \emph{biconditional} ($\iff$) \emph{connectives} have the truth tables
-\[\begin{array}{cc|c}
-P & Q & P\implies Q\\\hline
-T & T & T\\
-T & F & F\\
-F & T & T\\
-F & F & T
-\end{array}\qquad\qquad\qquad
-\begin{array}{cc|c}
-P & Q & P\iff Q\\\hline
-T & T & T\\
-T & F & F\\
-F & T & F\\
-F & F & T
-\end{array}\]
-For the proposition $\timplies P{Q,}$ we call $P$ the \emph{hypothesis} and $Q$ the \emph{conclusion}.
+\begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.37\linewidth]{}{implies}
+	Given propositions $P,Q$, the \emph{conditional} ($\Longrightarrow$) and \emph{biconditional} ($\Longleftrightarrow$) \emph{connectives} define new propositions as described in the truth table.\smallbreak
+	For the proposition $P\implies Q$, we call $P$ the \emph{hypothesis} and $Q$ the \emph{conclusion.}
+	\tcblower
+	\flushright$\begin{array}{cc||c|c}
+	P & Q & P\implies Q & P\iff Q\\\hline
+	T & T & T & T\\
+	T & F & F & F\\
+	F & T & T & F\\
+	F & F & T & T
+	\end{array}$
 \end{defn}
 
-\noindent Observe that the expressions $\timplies PQ$ and $\ P\iff Q\ $ are themselves \emph{propositions}: they are sentences which are either true or false!
+Remember that the expressions $P\Longrightarrow Q$ and $P\Longleftrightarrow Q$ are themselves \emph{propositions}: sentences which are either true or false. Connective propositions can be read and written in many different ways:
+\begin{quote}
+	\def\arraystretch{1.1}
+	\begin{tabular}{@{}cc|c}
+		\multicolumn{2}{c|}{$P\implies Q$} & $P\iff Q$\\\hline
+		$P$ implies $Q$ & $P$ therefore $Q$ & $P$ if and only if $Q$\\
+		If $P$, then $Q$ & $Q$ follows from $P$ & $P$ iff $Q$\\
+		$P$ only if $Q$ & $Q$ if $P$ & $P$ and $Q$ are (logically) equivalent\\
+		$P$ is sufficient for $Q$ & $Q$ is necessary for $P$ & $P$ is necessary and sufficient for $Q$
+	\end{tabular}
+\end{quote}
 
-\subsubsection*{Synonyms}
-
-$\implies$ and $\iff$ can be read in many different ways:
-\begin{center}
-\begin{tabular}{c|c}
-$P\implies Q$ & $P\iff Q$\\\hline
-$P$ implies $Q$ & $P$ if and only if $Q$\\
-$Q$ if $P$ & $P$ iff $Q$\\
-$P$ only if $Q$ & $P$ and $Q$ are (logically) equivalent\\
-$P$ is sufficient for $Q$ &$P$ is necessary and sufficient for $Q$\\
-$Q$ is necessary for $P$ &
-\end{tabular}
-\end{center}
-
-\begin{example}
-The following propositions all mean exactly the same thing:
-\begin{itemize}
-\item If you are born in Rome, then you are Italian. 
-\item You are Italian if you are born in Rome. 
-\item You are born in Rome only if you are Italian. 
-\item Being born in Rome is sufficient to be Italian. 
-\item Being Italian is necessary for being born in Rome. 
-\end{itemize}
+\begin{example}{}{}
+	The following sentences all mean exactly the same thing: each expresses, in English, the same conditional $P\implies Q$.
+	\begin{itemize}\itemsep1pt
+		\item If you are born in Rome, then you are Italian. 
+		\item You are Italian if you are born in Rome. 
+		\item You are born in Rome only if you are Italian. 
+		\item Being born in Rome is sufficient for being Italian. 
+		\item Being Italian is necessary for being born in Rome. 
+	\end{itemize}
+	Are you comfortable with what the propositions $P$ and $Q$ are here?
 \end{example}
 
+While the biconditional should be easy to remember ($P\Longleftrightarrow Q$ is true precisely when $P$ and $Q$ have identical truth states) it is harder to make sense of and remember the conditional connective. Short of simply memorizing the truth table, here are two examples that might help.
 
-\noindent Are you comfortable with what $P$ and $Q$ are here?\\
+\begin{examples}{}{}
+	\exstart Suppose your professor says, ``If the class earns a B average on the midterm, then I'll bring doughnuts.'' The only situation in which the teacher will have lied is if the class earns a B average but she fails to provide doughnuts.
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item ($F\Longrightarrow T$ really can be true!) Let $P$ be the proposition ``$7=3$'' and $Q$ be ``$0=0$.'' Since multiplication of both sides of an equation by zero is algebraically valid, we see that
+	%   \[7=3\implies 0\cdot 7=0\cdot 3\implies 0=0\]
+	  \begin{align*}
+			7=3\implies\ &0\cdot 7=0\cdot 3\tag*{(If $7=3$, then 0 times 7 equals 0 times 3)}\\
+			\implies\ &0=0\tag*{(then 0 equals 0)}
+		\end{align*}
+	  Logically speaking this argument is perfectly correct: the \emph{implication} $P\Longrightarrow Q$ is \emph{true.} The argument (rightly!) makes us uncomfortable because we started with something \emph{false.}\par
+	  If we instead added 1 to each side of $7=3$, we'd obtain a example where $F\Longrightarrow F$ is true.
+	\end{enumerate}
+\end{examples}
 
-\noindent The biconditional connective should be easy to remember: $\ P\iff Q\ $ is true precisely when $P$ and $Q$ have identical truth states. It is harder to make sense of the conditional connective. One way of thinking about it is to consider what it means for an implication to be \emph{false.} If $P\implies Q$ is false, it is impossible to create a logical argument which assumes $P$ and concludes $Q$. The second row of $\timplies PQ$ encapsulates the fact that it should be impossible for truth ever to logically imply falsehood. 
-
-%\begin{nopgbreak}
-\begin{aside}
-\noindent{\bf Why is $F\implies T$ considered \emph{true?}}
-
-This is the most immediately confusing part of the truth table for the conditional connective. Here is a mathematical example, written with an English translation at the side.
-\begin{align*}
-7=3\implies\ &0\cdot 7=0\cdot 3\tag*{(If $7=3$, then 0 times 7 equals 0 times 3)}\\
-\implies\ &0=0\tag*{(then 0 equals 0)}
-\end{align*}
-Thus $7=3\implies 0=0$. Logically speaking this is a perfectly correct argument, thus the \emph{implication} is true. The argument makes us uncomfortable because $7=3$ is clearly false.
-
-If you want to understand connectives more deeply than this, then take a logic or philosophy course! For example, although neither statement makes the least bit of sense in English;
-\begin{center}
-``17 is odd $\implies$ Mexico is in China'' is \emph{false,}\\ whilst\\
-``17 is even $\implies$ Mexico is in China'' is \emph{true.}
-\end{center}
-Such bizarre constructions are happily beyond the consideration of this course!
-\end{aside}
-%\end{nopgbreak}
+\goodbreak
 
 
-\subsubsection*{Theorems and Direct Proofs}
+\boldsubsubsection{Tautologies and Contradictions}
 
-Truth tables and connectives are very abstract. To apply them to mathematics we need the following basic notions of theorem and proof.
-
-\begin{defn}
-A \emph{theorem} is a justified assertion that some statement of the form $\timplies PQ$ is true.\\
-A \emph{proof} is an argument that justifies the truth of a theorem.
+\begin{defn}{}{}
+	A \emph{tautology} is a logical expression that is always true, regardless of what the component statements might be.\smallbreak
+	A \emph{contradiction} is a logical expression that is always false.
 \end{defn}
 
-\noindent Think back to the truth table for $\timplies PQ$ in Definition \ref{defn:implies}. Suppose that the hypothesis $P$ is true and that $\timplies PQ$ is true: that is, $\timplies PQ$ is a \emph{theorem.} We must be in the \emph{first row} of the truth table, and so the conclusion $Q$ is also true. This is how we think about proving basic theorems. In a \emph{direct proof} we start by assuming the hypothesis ($P$) is true and make a logical argument ($P\implies Q$) which asserts that the conclusion ($Q$) is true. As such, it often convenient to rewrite the statement of a theorem as an implication of the form $\timplies P{Q.}$ Here is a very simple theorem which we prove directly. 
+The easiest way to detect these is to construct a truth table.
 
-\begin{thm}
-The product of two odd integers is odd.
-\end{thm}
-
-\noindent The first thing to do is to write the theorem in terms of propositions and connectives: that is, in the form $P\implies Q$.
-\begin{itemize}
-  \item $P$ is `$x$ and $y$ are odd integers.' This is our assumption, the hypothesis.
-  \item $Q$ is `The product of $x$ and $y$ is odd.' This is what we want to show, the conclusion.
-  \item Showing that $\timplies PQ$ is true, that (the truth of) $P$ implies (the truth of) $Q$ requires an argument. This is the \emph{proof.}
-\end{itemize}
-
-\begin{proof}
-Let $x$ and $y$ be \emph{any} two odd integers. We want to show that product $x\cdot y$ is an odd integer. \\
-By definition, an integer is odd if it can be written in the form $2k+1$ for \emph{some} integer $k$. Thus there must be integers $n$, $m$ such that $x=2n+1$ and $y=2m+1$. We compute:
-\[x\cdot y=(2n+1)(2m+1)=4mn+2n+2m+1=2(2mn+n+m)+1.\]
-Because $2mn+n+m$ is an integer, this shows that $x\cdot y$ is an odd integer.
-\end{proof}
-
-\noindent It is common to place a symbol (in this case \smash{\raisebox{7pt}{$\qedsymbol$}}) at the end of a proof to tell the reader that your argument is complete. Traditionally the letters Q.E.D. (from the Latin \emph{quod erat demonstrandum,} literally `which is what had to be demonstrated') were used, but this has gone out of style.You may also feel that you want to write more, or less than the above. This is a difficult thing to judge. What do you feel is a convincing argument? Test your argument on your classmates. The appropriate level of detail will depend on your readership: a middle school student will need more detail than a graduate student! At the moment, the best guide is to write for someone with the same mathematical sophistication as yourself. If, in three weeks' time, you can return to what you've written and understand it, then it's probably good!
-
-
-\subsubsection*{The Converse and Contrapositive}
-
-The following constructions are used continually in mathematics: it is vitally important to know the difference between them.
-
-\begin{defn}\label{defn:contra}
-The \emph{converse} of an implication $\timplies PQ$ is the reversed implication $\timplies Q{P.}$\\
-The \emph{contrapositive} of $\timplies PQ$ is $\timplies{\neg Q}{\neg P.}$
-\end{defn}
-
-\noindent In general, we cannot say anything about the truth value of the converse of a true statement. The contrapositive of a true statement is, however, \emph{always} true.
-
-\begin{thm}\label{thm:contrapos}
-The contrapositive of an implication is logically equivalent the original implication.
-\end{thm}
-
-\begin{proof}
-Simply use our definitions of negation and implication to compute the truth table:
-\begin{gather*}
-\begin{array}{cc|c||cc|c}
-P & Q & P\implies Q & \neg Q & \neg P & \neg Q\implies\neg P\\\hline
-T & T & T & F & F & T\\
-T & F & F & T & F & F\\
-F & T & T & F & T & T\\
-F & F & T & T & T & T
-\end{array}
-\end{gather*}
-Since the truth states in the third and sixth columns are identical, we see that $\timplies PQ$ and its contrapositive $\timplies{\neg Q}{\neg P}$ are logically equivalent.
-\end{proof}
-
-\begin{example}
-Let $P$ and $Q$ be the following statements:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]\itemstart{$P$.} Claudia is holding a peach.
-  \item[]\itemstart{$Q$.} Claudia is holding a piece of fruit.
-\end{itemize}
-The implication $P\implies Q$ is true, since all peaches are fruit. As a sentence, we have:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]If Claudia is holding a peach, then Claudia is holding a piece of fruit.
-\end{itemize}
-The \emph{converse} of $P\implies Q$ is the sentence:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]If Claudia is holding a piece of fruit, then Claudia is holding a peach.
-\end{itemize}
-This is palpably false: Claudia could be holding an apple!\\\pagebreak[2]
-
-\noindent The \emph{contrapositive} of $P\implies Q$ is the following sentence:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]If Claudia is \emph{not} holding any fruit, then she is \emph{not} holding a peach.
-\end{itemize}
-This is clearly true.
-\end{example}
-
-
-
-\subsubsection*{Proof by Contrapositive}
-
-The fact that $\timplies PQ$ and $\timplies{\neg Q}{\neg P}$ are logically equivalent allows us, when convenient, to prove $\timplies PQ$ by instead proving its contrapositive. As an example, consider another basic theorem.
-
-\begin{thm}
-Let $x$ and $y$ be integers. If $x+y$ is odd, then exactly one of $x$ or $y$ is odd.
-\end{thm}
-
-\noindent The theorem is an implication of the form $\timplies PQ$ where
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]\itemstart{$P$.} The sum $x+y$ of integers $x$ and $y$ is odd.
-  \item[]\itemstart{$Q$.} Exactly one of $x$ or $y$ is odd.
-\end{itemize}
-
-\noindent A direct proof would require that we assume $P$ to be true and logically deduce the truth of $Q$. For instance we might start our argument with:
-\[\text{Suppose that $x+y=2n+1$ for some integer $n$}\]
-The problem is that this doesn't really tell us anything about $x$ and $y$, which we need to think about in order to demonstrate the truth of $Q$. Instead we consider the negations of our propositions:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]\itemstart{$\neg Q$.}\quad $x$ and $y$ are both even or both odd \ (they have the same parity).
-  \item[]\itemstart{$\neg P$.}\quad The sum $x+y$ of integers $x$ and $y$ is even.
-\end{itemize}
-Since $\timplies PQ$ is logically equivalent to the seemingly simpler contrapositive $\timplies{(\neg Q)}{(\neg P),}$ we choose to prove the latter. This is, by Theorem \ref{thm:contrapos}, equivalent to proving the original implication.
-
-\begin{proof}
-Assume that $x$ and $y$ have the same parity. There are two cases: $x$ and $y$ are both even, or both odd.
-\begin{description}\setlength{\itemsep}{0pt}
-  \item[Case 1:] Let $x=2m$ and $y=2n$ be even. Then $x+y=2(m+n)$ is even.
-  \item[Case 2:] Let $x=2m+1$ and $y=2n+1$ be odd. Then $x+y=2(m+n+1)$ is even.
-\end{description}
-In both cases $x+y$ is even, and the result is proved.
-\end{proof}
-
- 
-\subsubsection*{De Morgan's Laws}
-
-In order to perform proofs by contrapositive (and later by contradiction) it is necessary to compute the negations of propositions. The most helpful results in this regard are attributable to Augustus de Morgan, a very famous 19th century logician.
-
-\begin{thm}[de Morgan's laws]\label{thm:demorgan}
-Let $P$ and $Q$ be any propositions. Then:
-\begin{enumerate}\setlength{\itemsep}{0pt}
-  \item $\neg(P\wedge Q)\iff \neg P\vee\neg Q$.
-  \item $\neg(P\vee Q)\iff \neg P\wedge\neg Q$.
-\end{enumerate}
-\end{thm}
-
-\noindent The first law says that the negation of $P\wedge Q$ is logically equivalent to $\neg P\vee\neg Q$: that is, the two expressions have the \emph{same truth table.} Here is a proof of the first law. Try the second on your own.
-
-\begin{proof}
-$\begin{array}[t]{cc|cc|ccc}
-P & Q & P\wedge Q & \neg(P\wedge Q) & \neg P & \neg Q & \neg P\vee\neg Q\\\hline
-T & T & T & F & F & F & F\\
-T & F & F & T & F & T & T\\
-F & T & F & T & T & F & T\\
-F & F & F & T & T & T & T
-\end{array}$
-
-Simply observe that the fourth and seventh columns are identical.
-\end{proof}
-
-\noindent It is worth pausing to observe how similar the two laws are, and how concise. There is some beauty here. With a written example the laws are much easier to comprehend. 
-
-\begin{example}
-(Of the first law) Suppose that of a morning you can choose (or not) to ride the subway to work, and you can choose (or not) to have a cup of coffee. Consider the following sentence:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] I rode the subway \emph{and} I had coffee.
-\end{itemize}
-What would it mean for this sentence to be \emph{false?} Any sentence which asserts the falsehood of the above is a suitable \emph{negation.} For example:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] I \emph{didn't} ride the subway \emph{or} I \emph{didn't} have coffee.
-\end{itemize}
-Note that the mathematical use of \emph{or} includes the possibility that you neither rode the subway nor had coffee.
-\end{example}
-
-\noindent You will see de Morgan's laws again when we encounter sets.\pagebreak
-
-\begin{aside}
-\noindent{\bf Think about the meaning!}
-
-In the previous example we saw how negation switches \emph{and} to \emph{or.} This is true only when \emph{and} denotes a conjunction between two propositions. Before applying De Morgan's laws, think about the \emph{meaning} of the sentence. For example, the negation of
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] Mark and Mary have the same height.
-\end{itemize}
-is the proposition:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] Mark and Mary do not have the same height.
-\end{itemize}
-If you blindly appeal to De Morgan's laws you might end up with the following piece of nonsense:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] Mark \emph{or} Mary do not have the same height.
-\end{itemize}
-Logical rules are wonderfully concise, but very easy to misuse. Always think about the meaning of a sentence and you shouldn't go wrong.
-\end{aside}
- 
-\subsubsection*{Negating Conditionals}
-
-You will often want to understand the negation of a statement. In particular, it is important to understand the negation of a conditional $\timplies P{Q.}$ Is it enough to say `$P$ doesn't imply $Q$'? And what could this mean? To answer the question you can use truth tables, or just think.
-
-\noindent Here is the truth table for $\timplies PQ$ and its negation: recall that negation simply swaps $T$ and $F$.
-\[\begin{array}{cc|c|c}
-P & Q & P\implies Q & \neg(P\implies Q)\\\hline
-T & T & T & F\\
-T & F & F & T\\
-F & T & T & F\\
-F & F & T & F
-\end{array}\]
-The only time there is a $T$ in the final column is when \emph{both} $P$ is true \emph{and} $Q$ is false. We have therefore proved the following:
-
-\begin{thm}\label{thm:negconditional}
-$\neg(P\implies Q)$ is logically equivalent to $P\wedge\neg Q$ \ (read `$P$ and not $Q$').
-\end{thm}
-
-\noindent Now \emph{think} in words rather than calculate. What is the negation of the following implication?
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] It's the morning therefore I'll have coffee.
-\end{itemize}
-Hopefully it is clear that the negation is:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] It's the morning \emph{and} I \emph{won't} have coffee.
-\end{itemize}
-
-\noindent The implication \emph{`therefore'} has disappeared and the expression \emph{`and won't'} is in its place.\\
-
-\noindent{\bf Warning!} The negation of $\timplies PQ$ is \emph{not a conditional.} In particular it is \emph{neither} of the following:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] The converse, $Q\implies P$.
-  \item[] The contrapositive of the converse, $\neg P\implies\neg Q$. 
-\end{itemize}
-If you are unsure about this, write down the truth tables and compare.\goodbreak
-
-\begin{example}
-Let $x$ be an integer. What is the negation of the following sentence?
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] If $x$ is even, then $x^2$ is even.
-\end{itemize}
-Written in terms of propositions, we wish to negate $\timplies PQ$, where $P$ and $Q$ are:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]\itemstart{$P.$} $x$ is even.
-  \item[]\itemstart{$Q.$} $x^2$ is even.
-\end{itemize}
-The negation of $P\implies Q$ is $P\wedge\neg Q$, namely:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] $x$ is even and $x^2$ is odd.
-\end{itemize}
-This is very different to $\timplies{\neg P}{\neg Q}$ (if $x$ is odd then $x^2$ is odd).\\[5pt]
-Keep yourself straight by thinking about the meaning of these sentences. It should be obvious that `$x$ even $\implies x^2$ even' is true. It negation should therefore be \emph{false.} The fact that it is false should make reading the negation feel a little uncomfortable.
-\end{example}
-
-
-
-
-\subsubsection*{Tautologies and Contradictions}
-
-We finish this section with two related concepts that are helpful for understanding proofs.
-
-\begin{defn}
-A \emph{tautology} is a logical expression that is always true, regardless of what the component statements might be.\\
-A \emph{contradiction} is a logical expression that is always false.
-\end{defn}
-
-\noindent The easiest way to detect these is simply to construct a truth table.
-
-\begin{examples}
-	\item $P\wedge(\neg P)$ is a very simple contradiction:
+\begin{examples}{}{}
+\exstart $P\wedge(\neg P)$ is a contradiction:
 	\[\begin{array}{cc|c}
 	P & \neg P & P\wedge(\neg P)\\\hline
 	T & F & F\\
 	F & T & F
 	\end{array}\]
-	Whatever the proposition $P$ is, it cannot be true at the same time as its negation.
-	\item $(P\wedge(P\implies Q))\implies Q$ \ is a tautology. This is essentially how we understand a direct proof: if $P$ is true and we have a correct argument $P\implies Q$, then $Q$ must also be true.
-	\[\begin{array}{cc|cc|c}
+	Regardless of the proposition $P$, it cannot be true at the same time as its negation!
+\begin{enumerate}\setcounter{enumi}{1}
+	\item $(P\wedge(P\Longrightarrow Q))\Longrightarrow Q$ is a tautology.% This is essentially how we understand a direct proof: if $P$ is true and we have a correct argument $P\implies Q$, then $Q$ must also be true.
+	\[\begin{array}{cc||c|c||c}
 	P & Q & P\implies Q & P\wedge(P\implies Q) & (P\wedge(P\implies Q))\implies Q\\\hline
 	T & T & T & T& T\\
 	T & F & F & F& T\\
@@ -439,51 +161,197 @@ A \emph{contradiction} is a logical expression that is always false.
 	F & F & T & F& T
 	\end{array}\]
 	%\item $(P\wedge \neg Q\implies F)\iff (P\implies Q)$ is a tautology. This tautology is the basis for \emph{proof by contradiction,} as we'll see in the next section. The expression $P\wedge \neg Q\implies F$ can be thought of as saying that $P\wedge\neg Q$ implies a contradiction.
-\end{examples}\goodbreak
+	\end{enumerate}
+\end{examples}
 
-\begin{aside}
-\noindent{\bf Algebraic Logic}
 
-One can study logic in a more algebraic manner. De Morgan's Laws are algebraic. Here are a few of the other basic laws of logic:
-\begin{align*}\label{aside:logicalalg}\hypertarget{aside:logicalalglnk}{}
-&P\wedge Q\iff Q\wedge P&&P\vee Q\iff Q\vee P\\
-&(P\wedge Q)\wedge R\iff P\wedge(Q\wedge R)&&(P\vee Q)\vee R\iff P\vee(Q\vee R)\\
-&(P\wedge Q)\vee R\iff (P\vee R)\wedge (Q\vee R)&&(P\vee Q)\wedge R\iff (P\wedge R)\vee (Q\wedge R)
-\end{align*}
-The three pairs are, respectively, the \emph{commutative, associative,} and \emph{distributive} laws of logic, and you can check them all with truth tables. Using these rules, one can answer questions, such as deciding when an expression is a tautology, without laboriously creating truth tables. It is even fun! Such an approach is appropriate when you are  considering abstract propositions, say in a formal logic course. In this text our primary interest with logic lies in using it to prove theorems. When one has an explicit theorem it is important to keep the meanings of all propositions clear. By relying too much on abstract laws like the above, it is easy to lose the meaning and write nonsense! 
+\boldsubsubsection{The Converse and Contrapositive}
+
+The following constructions are used regularly; it is vitally important to understand the distinction.
+
+\begin{defn}{}{contra}
+	The \emph{converse} of $P\Longrightarrow Q$ is the reversed implication $Q\Longrightarrow P$.\smallbreak
+	The \emph{contrapositive} of $P\Longrightarrow Q$ is the implication $\neg Q\Longrightarrow\neg P$.
+\end{defn}
+
+In general, the truth status of the converse bears no relation to that of the original implication. The contrapositive, however, is much better behaved.
+
+\begin{thm}{}{contrapos}
+	The contrapositive of an implication is logically equivalent to the original.
+\end{thm}
+
+\begin{proof}
+	Use the definitions of negation and implication to compute the truth table.
+	\begin{gather*}
+		\begin{array}{cc|c||cc|c}
+			P & Q & P\implies Q & \neg Q & \neg P & \neg Q\implies\neg P\\\hline
+			T & T & T & F & F & T\\
+			T & F & F & T & F & F\\
+			F & T & T & F & T & T\\
+			F & F & T & T & T & T
+		\end{array}
+	\end{gather*}
+	The result follows because the the third and sixth columns are identical.\footnotemark
+\end{proof}
+
+\footnotetext{Otherwise said, $(P\Longrightarrow Q)\Longleftrightarrow (\neg Q\Longrightarrow\neg P)$ is a tautology.}
+
+\goodbreak
+
+
+\begin{example}{}{}
+	Let $P$ and $Q$ be the following statements:
+	\begin{quote}
+	  $P$: ``Claudia is holding a peach.''\par
+	  $Q$: ``Claudia is holding a piece of fruit.''
+	\end{quote}
+	The proposition $P\Longrightarrow Q$, namely
+	\begin{quote}
+		If Claudia is holding a peach, then she is holding a piece of fruit,
+	\end{quote}
+	is \emph{true,} since a peach is indeed a piece of fruit. The \emph{converse} of $P\Longrightarrow Q$ is the sentence:
+	\begin{quote}
+	  If Claudia is holding a piece of fruit, then she is holding a peach.
+	\end{quote}
+	This is palpably false: Claudia could be holding an apple! The \emph{contrapositive} of $P\Longrightarrow Q$ is
+	\begin{quote}
+	  If Claudia is \emph{not} holding any fruit, then she is \emph{not} holding a peach.
+	\end{quote}
+	In accordance with Theorem \ref{thm:contrapos}, this sentence is also true.
+\end{example}
+
+ 
+\boldsubsubsection{Negating Logical Expressions}
+
+Mathematics often requires us to negate propositions. What would you suspect to be the negation of a conditional $P\Longrightarrow Q$? Is it enough to say ``$P$ doesn't imply $Q$"? But what does this mean? We again rely on a truth table: to get the last column, recall that negation simply swaps $T$ and $F$.
+\[
+	\begin{array}{cc|c|c}
+		P & Q & P\Longrightarrow Q & \neg(P\Longrightarrow Q)\\\hline
+		T & T & T & F\\
+		T & F & F & T\\
+		F & T & T & F\\
+		F & F & T & F
+	\end{array}
+\]
+Can we write this last column in another way? Since we only see a $T$ in the final column when both $P$ is true \emph{and} $Q$ is false, we see that we've proved the following.
+
+\begin{thm}{}{negconditional}
+	$\neg(P\implies Q)$ is logically equivalent to $P\wedge\neg Q$ \ (``$P$ and not $Q$").
+\end{thm}
+
+\begin{example}{}{}
+	Consider the implication
+	\begin{quote}
+	  It's the morning therefore I'll have coffee.
+	\end{quote}
+	Hopefully its negation is clear:
+	\begin{quote}
+	  It's the morning \emph{and} I \emph{won't} have coffee.
+	\end{quote}
+	The implication (\emph{therefore I'll}) has been replaced by the expression \emph{and I won't} (i.e.\ \emph{and not}).
+\end{example}
+
+
+
+{\bf \textcolor{red}{Warning!}} The negation of $P\Longrightarrow Q$ is \emph{not a conditional.} In particular it is \emph{neither} of the following:
+\begin{quote}
+  The converse $Q\implies P$.\smallbreak
+  The contrapositive of the converse $\neg P\implies\neg Q$. 
+\end{quote}
+If you are unsure about this, write down the truth tables and compare.
+
+\goodbreak
+
+
+Our final results in basic logic are attributable to Augustus de Morgan, a famous 19\th{} century logician.
+
+\begin{thm}{de Morgan's laws}{demorgan}
+	Let $P$ and $Q$ be propositions.
+	\begin{enumerate}\itemsep0pt
+	  \item $\neg(P\wedge Q)$ is logically equivalent to $\neg P\vee\neg Q$
+	  \item $\neg(P\vee Q)$ is logically equivalent to $\neg P\wedge\neg Q$
+	\end{enumerate}
+\end{thm}
+
+\begin{proof}
+	For the first law, observe that the fourth and seventh columns of the truth table are identical.
+	\[
+		\begin{array}[t]{cc||cc||cc||c}
+			P & Q & P\wedge Q & \neg(P\wedge Q) & \neg P & \neg Q & \neg P\vee\neg Q\\\hline
+			T & T & T & F & F & F & F\\
+			T & F & F & T & F & T & T\\
+			F & T & F & T & T & F & T\\
+			F & F & F & T & T & T & T
+		\end{array}
+	\]
+	The second law is an exercise.
+\end{proof}
+
+\begin{example}{}{}
+	Consider the sentence:\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-1pt}
+	\begin{quote}
+		I rode the subway \emph{and} I had coffee.
+	\end{quote}
+	To negate this using de Morgan's first law, we might write:
+	\begin{quote}
+		I \emph{didn't} ride the subway \emph{or} I \emph{didn't} have coffee.
+	\end{quote}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.39\linewidth}\vspace{-20pt}
+		\flushright	
+		\begin{tabular}{c|c||c}
+			Subway&Coffee&Su and Co\\\hline\hline
+			T & T & T\\
+			\textcolor{blue}{T} & \textcolor{blue}{F} & \textcolor{blue}{F}\\
+			\textcolor{blue}{F} & \textcolor{blue}{T} & \textcolor{blue}{F}\\
+			\textcolor{blue}{F} & \textcolor{blue}{F} &\textcolor{blue}{F}
+		\end{tabular}
+	\end{minipage}\bigbreak
+	
+	This feels awkward in English because the negation encompasses \textcolor{blue}{three distinct possibilities}. Note how the logical (inclusive) use of \emph{or} includes the last row of the truth table: the possibility that you neither rode the subway nor had coffee. This example is indeed an advert for the use of logic: English simply isn't very good for precisely stating complex logical statements. 
+\end{example}
+
+\begin{aside}{}{}
+\boldinline{Aside: Algebraic Logic}
+
+Similarly to de Morgan's laws, we can use truth tables to establish the remaining laws of basic logic.
+\[
+	\def\arraystretch{1.2}
+	\begin{array}{@{}lll@{}}
+	\text{Double negation} & \neg(\neg P)\iff P &\\
+	\text{Commutativity} & P\wedge Q\iff Q\wedge P & P\vee Q\iff Q\vee P\\
+	\text{Associativity} & (P\wedge Q)\wedge R\iff P\wedge(Q\wedge R) & (P\vee Q)\vee R\iff P\vee(Q\vee R)\\
+	\text{Distributivity}&(P\wedge Q)\vee R\iff (P\vee R)\wedge (Q\vee R) & (P\vee Q)\wedge R\iff (P\wedge R)\vee (Q\wedge R)
+	\end{array}
+\]
+To make things more algebraic, we've replaced ``is logically equivalent to" with biconditionals.\footnotemark{}\smallbreak
+
+Armed with these laws, one can often suitably manipulate logical expressions without laboriously creating truth tables. Such activities are not the focus of this course, though you might find them fun!\smallbreak
+
+For the purposes of this course, memorizing these laws is probably more effort than it is worth. You will most likely use them correctly in whatever contexts required just from your intuitive understanding of the words \emph{and, or} and \emph{not.}
 \end{aside}
 
+\footnotetext{Stating the laws in this fashion is to assert that each expression is a tautology. For instance, to claim that ``$\neg(\neg P)$ is logically equivalent to $P$'' is to assert that $\neg(\neg P)\iff P$ is a tautology.}
+
+\goodbreak
+
+\begin{exercises}{}{}
+A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/quizzes/2-1-props.html}{online}.
 
 
-\paragraph{Self-test Questions} (fill in the blanks or select the correct word) 
-
-\begin{itemize}
-  \item A \emph{tautology} is a proposition which \underline{\phantom{is always true}\qquad\qquad}
-  \item A \emph{contradiction} is a proposition which \underline{\phantom{is always false}\qquad\qquad}
-  \item The \emph{contrapositive} of the conditional $P\implies Q$ is the conditional \underline{\phantom{$\not Q\implies\not P$}\qquad\qquad}
-  \item The \emph{converse}/\emph{contrapositive} of $P\implies Q$ is logically equivalent to $P\implies Q$.
-  \item The converse of $P\implies Q$ is always logically equivalent to $P\implies Q$.
-  \item The \emph{negation} of the conditional $P\implies Q$ is the proposition \underline{\phantom{$\not Q\implies\not P$}\qquad\qquad}
-  \item State de Morgan's laws for propositions $P$ and $Q$:
-  \begin{gather*}
-    \neg(P\vee Q)\iff\underline{\phantom{(\neg P)\wedge (\neg Q)}\qquad}\\
-    \neg(P\wedge Q)\iff\underline{\phantom{(\neg P)\vee (\neg Q)\qquad}}
-  \end{gather*}
-\end{itemize}
-
-\subsection*{Exercises}
-
-\begin{enumerate}\renewcommand{\labelenumi}{\thesubsection.\theenumi}  
-  \item Express each of the following statements in the ``If $\dots$, then $\dots$'' form. There are many possible correct answers.\prelistskip
+\begin{enumerate}%\renewcommand{\labelenumi}{\thesubsection.\theenumi}  
+  \item Express each of the following statements in the ``If $\dots$, then $\dots$'' form. There are many possible correct answers.
 		\begin{enumerate}
 	  	\item You must eat your dinner if you want to grow.
 	  	\item Being a multiple of 12 is a sufficient condition for a number to be even.
 	  	\item It is necessary for you to pass your exams in order for you to obtain a degree. 
 	  	\item A triangle is equilateral only if all its sides have the same length.
-		\end{enumerate}\goodbreak
+		\end{enumerate}
 	
   \item Suppose that ``Girls smell of roses'' and ``Boys have dirty hands'' are true statements and that ``The Teacher is always right'' is a false statment. Which of the following are true?\\
-  \emph{Hint: Label each of the given statements, and think about each of the following using connectives.}\prelistskip
+  \emph{Hint: Label each of the given statements, and think about each of the following using connectives.}
 		\begin{enumerate}
 	  	\item If girls smell of roses, then the Teacher is always right.
 	  	\item If the Teacher is always right, then boys have dirty hands.
@@ -491,7 +359,7 @@ The three pairs are, respectively, the \emph{commutative, associative,} and \emp
 	  	\item If boys have dirty hands and girls smell of roses, then the Teacher is always right.
 		\end{enumerate}
 	
-  \item Write the negation (in words) of the following claim:\prelistskip
+  \item Write the negation (in words) of the following claim:
 		\begin{enumerate}\setlength{\itemsep}{0pt}
 		  \item[] If Jack and Jill climb up the hill, then they fall down and like pails of water. 
 		\end{enumerate}
@@ -518,7 +386,7 @@ The three pairs are, respectively, the \emph{commutative, associative,} and \emp
   
   \item Construct the truth tables for the propositions $P\vee(Q\wedge R)$ and $(P\vee Q)\wedge R$. Are they the same?
   
-  \item\label{ex:demorganimplies} Apply de Morgan's laws to the result of Theorem \ref{thm:negconditional}  to prove that $\timplies PQ$ is logically equivalent to $\neg P\vee Q$.
+  \item\label{ex:demorganimplies} Apply de Morgan's laws to the result of Theorem \ref{thm:negconditional}  to prove that $P\implies Q$ is logically equivalent to $\neg P\vee Q$.
 
   \item Prove that the expressions $(P\implies Q)\wedge (Q\implies P)$ and $\ P\iff Q\ $ are logically equivalent (have the same truth table). Why does this make sense?
   
@@ -528,19 +396,9 @@ The three pairs are, respectively, the \emph{commutative, associative,} and \emp
   \end{enumerate}
   
   \item Prove or disprove: $(P\wedge \neg Q\implies F)\iff (P\implies Q)$ is a tautology. Here $F$ represents a \emph{contradiction:} some proposition which is always false.
-		
-  \item Suppose that ``If Colin was early, then no-one was playing pool'' is a true statement.\prelistskip
-		\begin{enumerate}
-	  	\item What is its contrapositive of this statement? Is it true?
-	  	\item What is the converse? Is it true?
-	  	\item What can we conclude (if anything?) if we discover each of the following? \emph{Treat the two scenarios separately.}
-			\begin{enumerate}
-	  	  \item[(i)] Someone was playing pool.
-	      \item[(ii)] Colin was late.
-			\end{enumerate}
-		\end{enumerate}\pagebreak[4]
+	
 
-  \item Suppose that ``Ford is tired and Zaphod has two heads'' is a false statement. What can we conclude if we discover each of the following? \emph{Treat the two scenarios separately.}\prelistskip
+  \item Suppose that ``Ford is tired and Zaphod has two heads'' is a false statement. What can we conclude if we discover each of the following? \emph{Treat the two scenarios separately.}
 		\begin{enumerate}
 	  	\item Ford is tired.
 	  	\item Ford is tired if and only if Zaphod has two heads.
@@ -564,8 +422,8 @@ The three pairs are, respectively, the \emph{commutative, associative,} and \emp
 	\end{enumerate}
 	
   \item\begin{enumerate}
-    	\item Do there exists propositions $P,Q$ such that both $\timplies PQ$ and its converse are true?
-    	\item Do there exist propositions $P,Q$ such that both $\timplies PQ$ and its converse are false?
+    	\item Do there exists propositions $P,Q$ such that both $P\implies Q$ and its converse are true?
+    	\item Do there exist propositions $P,Q$ such that both $P\implies Q$ and its converse are false?
     \end{enumerate}
     Justify your answers by giving an example or a proof that no such examples exist.
     
@@ -587,28 +445,206 @@ The three pairs are, respectively, the \emph{commutative, associative,} and \emp
 	represents an expression ? created using only $P$ and $Q$ and the operations $\wedge,\vee,\neg$. Can you extend your argument to show that any truth table with any number of inputs represents some logical expression?
 \end{enumerate}
 
-\newpage
+\end{exercises}
 
 
+Exercise: De Morgan's laws only switch \emph{and} $\leftrightsquigarrow$ \emph{or} when these denote the conjunction/disjunction of two propositions. The negation of
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[] Mark and Mary have the same height.
+\end{itemize}
+is the proposition:
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[] Mark and Mary do not have the same height.
+\end{itemize}
+If you blindly appeal to De Morgan's laws you might end up with the following piece of nonsense:
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[] Mark \emph{or} Mary do not have the same height.
+\end{itemize}
+Logical rules are wonderfully concise, but very easy to misuse. Always think about the meaning of a sentence and you shouldn't go wrong.
+
+
+\begin{example}{}{}
+Let $x$ be an integer. What is the negation of the following sentence?
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[] If $x$ is even, then $x^2$ is even.
+\end{itemize}
+Written in terms of propositions, we wish to negate $P\implies Q$, where $P$ and $Q$ are:
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[]{$P.$} $x$ is even.
+  \item[]{$Q.$} $x^2$ is even.
+\end{itemize}
+The negation of $P\implies Q$ is $P\wedge\neg Q$, namely:
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[] $x$ is even and $x^2$ is odd.
+\end{itemize}
+This is very different to $\neq Q\implies\neg P$ (if $x$ is odd then $x^2$ is odd).\\[5pt]
+Keep yourself straight by thinking about the meaning of these sentences. It should be obvious that `$x$ even $\implies x^2$ even' is true. It negation should therefore be \emph{false.} The fact that it is false should make reading the negation feel a little uncomfortable.
+\end{example}
+
+
+
+
+\goodbreak
+
+
+
+
+  For instance, if we have two propositions ($P$ and $Q$), or even three ($P,Q$ and $R$) then all possible combinations of truth $T$ and falsehood $F$ are represented in the following tables:
+\[\begin{array}{cc}
+P & Q\\\hline
+T & T\\
+T & F\\
+F & T\\
+F & F\\
+&\\&\\&\\&
+\end{array}
+\qquad\qquad\qquad
+\begin{array}{ccc}
+P & Q & R\\\hline
+T & T & T\\
+T & T & F\\
+T & F & T\\
+T & F & F\\
+F & T & T\\
+F & T & F\\
+F & F & T\\
+F & F & F
+\end{array}\]
+The mathematician in you should be looking for patterns and asking: how many rows would a truth table corresponding to $n$ propositions have, and can I \emph{prove} my assertion? Right now it is hard to prove that the answer is $2^n$: induction (Chapter \ref{sec:ind}) makes this very easy.
+
+
+
+
+
+
+
+\begin{example}{}{}
+Let $P,Q$ and $R$ be the following propositions:
+\begin{itemize}
+\item[]$P$. Irvine is a city in California.
+\item[]$Q$. Irvine is a town in Ayrshire, Scotland.
+\item[]$R$. Irvine has seven letters.
+\end{itemize}
+Clearly $P$ is true while $R$ is false. If you happen to know someone from Scotland, you might know that $Q$ is true.\footnote{The second syllable is pronounced like the i in bin or win. Indeed the first Californian antecedent of the Irvine family which gave its name to UCI was an Ulster-Scotsman named James Irvine (1827--1886). Probably the family name was originally pronounced in the Scottish manner.} We can now compute the following (increasingly grotesque) combinations\ldots
+\[\def\arraystretch{1.3}
+\begin{array}{c|c|c|c|c|c|c}
+P\wedge Q&P\vee Q&P\wedge R&\neg R&(\neg R)\wedge P&\neg(R\vee P)&(\neg P)\vee [((\neg R)\vee P)\wedge Q] \\\hline
+T & T & F & T & T & F & T
+\end{array}\]
+\end{example}
+
+ How did we establish these facts? Some  are quick,  and can be done in your head. Consider, for instance, the statement  $(\neg R)\wedge P$. Because $R$ is false, $\neg R$ is true. Thus $(\neg R)\wedge P$ is the conjunction of two true statements, hence it is true. Similarly, we can argue that $R\vee P$ is true (because $R$ is false and $P$ is true), so the negation $\neg(R\vee P)$ is false.
+
+  Establishing the truth value of the final proposition $(\neg P)\vee [((\neg R)\vee P) \wedge Q]$ requires more work. You may want to set up a truth table with several auxiliary columns to help you compute: 
+\[\def\arraystretch{1.3}
+\begin{array}{c|c|c|c|c|c|c|c}
+P & Q & R & \neg P & \neg R & (\neg R) \vee P & ((\neg R)\vee P) \wedge Q &  (\neg P) \vee [ ((\neg R)\vee P) \wedge Q] \\\hline
+ T & T & F & F            & T         & T                        & T                                               & T
+ \end{array}\]
+The importance of parentheses in a logical expressions cannot be stressed enough. For example, try building the truth table for the propositions $P\vee(Q\wedge R)$ and $(P\vee Q)\wedge R$. Are they the same?\pagebreak[4]
+
+
+
+
+
+
+\subsection{Propositional Functions \& Quantifiers}\label{sec:quant}
 
 
 \subsection{Methods of Proof}\label{sec:proof}
 
-There are four standard methods for proving a theorem $\timplies P{Q.}$ In practice, long proofs will use several such arguments joined together. We have already discussed the first two types of proof in Section \ref{sec:prop}.
+\boldsubsubsection{Theorems and Direct Proofs}
+
+Truth tables and connectives are very abstract. To apply them to mathematics we need the following basic notions of theorem and proof.
+
+\begin{defn}{}{}
+A \emph{theorem} is a justified assertion that some statement of the form $P\implies Q$ is true.\\
+A \emph{proof} is an argument that justifies the truth of a theorem.
+\end{defn}
+
+ Think back to the truth table for $P\implies Q$ in Definition \ref{defn:implies}. Suppose that the hypothesis $P$ is true and that $P\implies Q$ is true: that is, $P\implies Q$ is a \emph{theorem.} We must be in the \emph{first row} of the truth table, and so the conclusion $Q$ is also true. This is how we think about proving basic theorems. In a \emph{direct proof} we start by assuming the hypothesis ($P$) is true and make a logical argument ($P\implies Q$) which asserts that the conclusion ($Q$) is true. As such, it often convenient to rewrite the statement of a theorem as an implication of the form $P\implies Q$. Here is a very simple theorem which we prove directly. 
+
+\begin{thm}{}{}
+The product of two odd integers is odd.
+\end{thm}
+
+ The first thing to do is to write the theorem in terms of propositions and connectives: that is, in the form $P\implies Q$.
+\begin{itemize}
+  \item $P$ is `$x$ and $y$ are odd integers.' This is our assumption, the hypothesis.
+  \item $Q$ is `The product of $x$ and $y$ is odd.' This is what we want to show, the conclusion.
+  \item Showing that $P\implies Q$ is true, that (the truth of) $P$ implies (the truth of) $Q$ requires an argument. This is the \emph{proof.}
+\end{itemize}
+
+\begin{proof}
+Let $x$ and $y$ be \emph{any} two odd integers. We want to show that product $x\cdot y$ is an odd integer. \\
+By definition, an integer is odd if it can be written in the form $2k+1$ for \emph{some} integer $k$. Thus there must be integers $n$, $m$ such that $x=2n+1$ and $y=2m+1$. We compute:
+\[x\cdot y=(2n+1)(2m+1)=4mn+2n+2m+1=2(2mn+n+m)+1.\]
+Because $2mn+n+m$ is an integer, this shows that $x\cdot y$ is an odd integer.
+\end{proof}
+
+ It is common to place a symbol (in this case \smash{\raisebox{7pt}{$\qedsymbol$}}) at the end of a proof to tell the reader that your argument is complete. Traditionally the letters Q.E.D. (from the Latin \emph{quod erat demonstrandum,} literally `which is what had to be demonstrated') were used, but this has gone out of style.You may also feel that you want to write more, or less than the above. This is a difficult thing to judge. What do you feel is a convincing argument? Test your argument on your classmates. The appropriate level of detail will depend on your readership: a middle school student will need more detail than a graduate student! At the moment, the best guide is to write for someone with the same mathematical sophistication as yourself. If, in three weeks' time, you can return to what you've written and understand it, then it's probably good!
+
+
+
+
+
+\boldsubsubsection{Proof by Contrapositive}
+
+The fact that $P\implies Q$ and $\neq Q\implies\neg P$ are logically equivalent allows us, when convenient, to prove $P\implies Q$ by instead proving its contrapositive. As an example, consider another basic theorem.
+
+\begin{thm}{}{}
+Let $x$ and $y$ be integers. If $x+y$ is odd, then exactly one of $x$ or $y$ is odd.
+\end{thm}
+
+ The theorem is an implication of the form $P\implies Q$ where
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[]$P$. The sum $x+y$ of integers $x$ and $y$ is odd.
+  \item[]$Q$. Exactly one of $x$ or $y$ is odd.
+\end{itemize}
+
+ A direct proof would require that we assume $P$ to be true and logically deduce the truth of $Q$. For instance we might start our argument with:
+\[\text{Suppose that $x+y=2n+1$ for some integer $n$}\]
+The problem is that this doesn't really tell us anything about $x$ and $y$, which we need to think about in order to demonstrate the truth of $Q$. Instead we consider the negations of our propositions:
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item[]$\neg Q$.\quad $x$ and $y$ are both even or both odd \ (they have the same parity).
+  \item[]$\neg P$.\quad The sum $x+y$ of integers $x$ and $y$ is even.
+\end{itemize}
+Since $P\implies Q$ is logically equivalent to the seemingly simpler contrapositive $\neg Q\implies\neg P$, we choose to prove the latter. This is, by Theorem \ref{thm:contrapos}, equivalent to proving the original implication.
+
+\begin{proof}
+Assume that $x$ and $y$ have the same parity. There are two cases: $x$ and $y$ are both even, or both odd.
+\begin{description}\setlength{\itemsep}{0pt}
+  \item[Case 1:] Let $x=2m$ and $y=2n$ be even. Then $x+y=2(m+n)$ is even.
+  \item[Case 2:] Let $x=2m+1$ and $y=2n+1$ be odd. Then $x+y=2(m+n+1)$ is even.
+\end{description}
+In both cases $x+y$ is even, and the result is proved.
+\end{proof}
+
+ 
+
+
+\clearpage
+
+
+
+
+%\subsection{Methods of Proof}\label{sec:proof}
+
+There are four standard methods for proving a theorem $P\implies Q$. In practice, long proofs will use several such arguments joined together. We have already discussed the first two types of proof in Section \ref{sec:prop}.
 
 \begin{description}
 	\item[Direct] Assume $P$ is true and deduce that $Q$ is true.
-	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$. This is enough since the contrapositive $\timplies{\neg Q}{\neg P}$ is logically equavalent to $\timplies P{Q.}$
-	\item[Contradiction] Assume that $P$ and $\neg Q$ are true and deduce a \emph{contradiction}. Since $P\wedge\neg Q$ implies a contradiction, it follows that $P\wedge\neg Q$ must be \emph{false.} By Theorem \ref{thm:negconditional}, we see that $\timplies PQ$ is true.
+	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$. This is enough since the contrapositive $\neq Q\implies\neg P$ is logically equivalent to $P\implies Q$
+	\item[Contradiction] Assume that $P$ and $\neg Q$ are true and deduce a \emph{contradiction}. Since $P\wedge\neg Q$ implies a contradiction, it follows that $P\wedge\neg Q$ must be \emph{false.} By Theorem \ref{thm:negconditional}, we see that $P\implies Q$ is true.
 	\item[Induction] This has a completely different flavor: we will consider it in Chapter \ref{sec:ind}.
 \end{description}
 
-\noindent Each of the methods has advantages and disadvantages. For instance, the direct method has the advantage of a straightforward logical flow. The contrapositive method is useful when the \emph{negations} $\neg P$, $\neg Q$ are simpler than $P$, $Q$ themselves. This is often the case when one or both statements involve the \emph{non-existence} of something. Working with their negations might give you the existence of ingredients with which you can calculate. Proof by contradiction has a similar advantage: assuming both $P$ and $\neg Q$ gives you two pieces of information with which you can calculate. Logically speaking there is no difference between the three methods, beyond how you visualize your argument.\\
+ Each of the methods has advantages and disadvantages. For instance, the direct method has the advantage of a straightforward logical flow. The contrapositive method is useful when the \emph{negations} $\neg P$, $\neg Q$ are simpler than $P$, $Q$ themselves. This is often the case when one or both statements involve the \emph{non-existence} of something. Working with their negations might give you the existence of ingredients with which you can calculate. Proof by contradiction has a similar advantage: assuming both $P$ and $\neg Q$ gives you two pieces of information with which you can calculate. Logically speaking there is no difference between the three methods, beyond how you visualize your argument.\\
 
-\noindent To illustrate the difference between direct proof, proof by contrapositive, and proof by contradiction, we prove the same simple theorem in three different ways. 
+ To illustrate the difference between direct proof, proof by contrapositive, and proof by contradiction, we prove the same simple theorem in three different ways. 
 
 
-\begin{thm}\label{thm:3xodd}
+\begin{thm}{}{3xodd}
 Suppose that $x$ is an integer. If $3x+5$ is even, then $3x$ is odd.
 \end{thm}
 
@@ -634,21 +670,21 @@ Since $m-n$ is an integer, this says that 5 is even: a contradiction.
 \end{proof}
 
 
-\subsubsection*{Some simple proofs}
+\boldsubsubsection{Some simple proofs}
 
 We now give several examples of simple proofs. The only notation needed to speed things along is that of some basic sets of numbers: $\N$ for the positive integers, $\Z$ for the integers, $\R$ for the real numbers, and $\in$ for `is a member of the set'. Thus $2\in\Z$ is read as `2 is a member of the set of integers', or more concisely, `2 is an integer'. We will properly cover this notation in Chapter \ref{chap:sets}.
 
-\begin{thm}\label{thm:oddprod}
+\begin{thm}{}{oddprod}
 Let $m,n\in\Z$. Both $m$ and $n$ are odd if and only if the product $mn$ is odd.
 \end{thm}
 
-\noindent There are really two theorems here:
+ There are really two theorems here:
 \begin{itemize}
-\item[]\itemstart{($\Rightarrow$)} If $m$ and $n$ are both odd integers, then the product $mn$ is odd.
-\item[]\itemstart{($\Leftarrow$)} If the product $mn$ of two integers is odd, then both $m$ and $n$ are odd.
+\item[]{($\Rightarrow$)} If $m$ and $n$ are both odd integers, then the product $mn$ is odd.
+\item[]{($\Leftarrow$)} If the product $mn$ of two integers is odd, then both $m$ and $n$ are odd.
  \end{itemize}
  
-\noindent Often when there are two directions you'll have to prove them separately. Here we give a direct proof for ($\Rightarrow$) and a contapositive proof for ($\Leftarrow$).
+ Often when there are two directions you'll have to prove them separately. Here we give a direct proof for ($\Rightarrow$) and a contapositive proof for ($\Leftarrow$).
 
 \begin{proof}
 \begin{enumerate}
@@ -660,11 +696,11 @@ Let $m,n\in\Z$. Both $m$ and $n$ are odd if and only if the product $mn$ is odd.
 \end{enumerate}
 \end{proof}
 
-\noindent In the second part of the proof, we did not need to consider whether $m$ was even or odd: if $n$ is even, the product $mn$ is even regardless. The second part would have been very difficult to prove directly. For instance, you might have tried to start a direct proof with:
+ In the second part of the proof, we did not need to consider whether $m$ was even or odd: if $n$ is even, the product $mn$ is even regardless. The second part would have been very difficult to prove directly. For instance, you might have tried to start a direct proof with:
 \[\text{Assume that $mn$ is odd, then $mn=2k+1$ for some integer $k$. Then\ldots}\]
 We are stuck!
 
-\begin{thm}\label{thm: x odd if 3x+5 is odd}
+\begin{thm}{}{x odd if 3x+5 is odd}
 If $3x+5$ is even, then $x$ is odd.
 \end{thm}
 
@@ -683,7 +719,7 @@ Because $3m+2\in\Z$, we have $3x+5$ odd.
   is even. Contradiction.
 \end{proof}
 
-\noindent Selecting a method of proof is often a matter of taste. You should be able to see the advantages and disadvantages of the various approaches. The direct proof is more logically straightforward, but it depends on two previous results. The contrapositive and the contradiction arguments are quicker and more self-contained, but they require a greater level of comfort with logic. Consider who you are writing for before you decide to present a slick difficult proof over a slow simple one.\footnote{The Hungarian mathematician Paul Erdős used to refer to simple, elegant proofs as being `from the Book,' as if the Almighty had a book of perfect proofs of which mere mortals might occasionally be permitted a glimpse. Of course, as with all matters spiritual, one person's Book may be very different to another's\ldots} For even more variety, here is a direct proof of Theorem \ref{thm: x odd if 3x+5 is odd} that does not use any previous result.
+ Selecting a method of proof is often a matter of taste. You should be able to see the advantages and disadvantages of the various approaches. The direct proof is more logically straightforward, but it depends on two previous results. The contrapositive and the contradiction arguments are quicker and more self-contained, but they require a greater level of comfort with logic. Consider who you are writing for before you decide to present a slick difficult proof over a slow simple one.\footnote{The Hungarian mathematician Paul Erdős used to refer to simple, elegant proofs as being `from the Book,' as if the Almighty had a book of perfect proofs of which mere mortals might occasionally be permitted a glimpse. Of course, as with all matters spiritual, one person's Book may be very different to another's\ldots} For even more variety, here is a direct proof of Theorem \ref{thm: x odd if 3x+5 is odd} that does not use any previous result.
 
 \begin{proof}[Alternative Direct Proof]
 Suppose $3x+5$ is even, so $3x+5=2n$ for some integer $n$. Then
@@ -695,7 +731,7 @@ is odd.
 \end{proof} 
 The fact that such variety is possible just makes proving theorems even more fun!
 
-\subsubsection*{Common Mistake 1.\quad Generality and `Without Loss of Generality'}
+\boldsubsubsection{Common Mistake 1.\quad Generality and `Without Loss of Generality'}
 
 There are many common mistakes in the writing of proofs that you should be careful to avoid. Here are two incorrect `proofs' of the $\implies$ direction of Theorem \ref{thm:oddprod}.
 
@@ -703,7 +739,7 @@ There are many common mistakes in the writing of proofs that you should be caref
 $m=3$ and $n=5$ are both odd, and so $mn=15$ is odd.
 \end{proof}
 
-\noindent This is an \emph{example} of the theorem, not a proof. Examples are critical to helping you understand and believe what a theorem says, but they are no substitute for a proof! Recall the discussion in the Introduction on the usage of the word \emph{proof} in English.
+ This is an \emph{example} of the theorem, not a proof. Examples are critical to helping you understand and believe what a theorem says, but they are no substitute for a proof! Recall the discussion in the Introduction on the usage of the word \emph{proof} in English.
 
 \begin{proof}[Fake Proof 2]
 Let $m=2k+1$ and $n=2k+1$ be odd. Then,
@@ -711,10 +747,10 @@ Let $m=2k+1$ and $n=2k+1$ be odd. Then,
 is odd.
 \end{proof}
 
-\noindent The problem with this second `proof' is that it is insufficiently general. $m$ and $n$ are supposed to be \emph{any} odd integers, but by setting both of them equal to $2k+1$, we've chosen $m$ and $n$ to be the same! Notice how the correct proof uses $m=2k+1$ and $n=2l+1$, where we place no restriction on the integers $k$ and $l$.\\
+ The problem with this second `proof' is that it is insufficiently general. $m$ and $n$ are supposed to be \emph{any} odd integers, but by setting both of them equal to $2k+1$, we've chosen $m$ and $n$ to be the same! Notice how the correct proof uses $m=2k+1$ and $n=2l+1$, where we place no restriction on the integers $k$ and $l$.\\
 
 
-\noindent By \emph{generality} we mean that we must make sure to consider all possibilities encompassed by the hypothesis. The phrase \emph{Without Loss of Generality,} often shorted to WLOG, is used when a choice is made which might at first appear to restrict things but, in fact, does not.
+ By \emph{generality} we mean that we must make sure to consider all possibilities encompassed by the hypothesis. The phrase \emph{Without Loss of Generality,} often shorted to WLOG, is used when a choice is made which might at first appear to restrict things but, in fact, does not.
 
 Think back to how this was used in the the proof of Theorem \ref{thm:oddprod}. Since the integers $m$ and $n$ appear symmetrically in the Theorem, if at least one of them is even, then we lose nothing by assuming that the second integer $n$ is even.\\
 
@@ -734,7 +770,7 @@ This is extremely confusing! If this is part of a longer argument, things will b
 
 Here is a palpably ludicrous `theorem' which illustrates another potential mistake.
 
-\begin{thm*}[Fake Theorem]
+\begin{thm*}{Fake Theorem}{}
 The only number is zero.
 \end{thm*}
 
@@ -749,18 +785,18 @@ x=y\implies &x^2=xy\tag*{(Multiply both sides by $x$)}\\
 \end{align*}
 \end{proof}
 
-\noindent Everything is fine up to the third line, but then we divide by $x-y$, which is zero! Don't let yourself become so enamoured of logical manipulations that you forget to check the basics.
+ Everything is fine up to the third line, but then we divide by $x-y$, which is zero! Don't let yourself become so enamoured of logical manipulations that you forget to check the basics.
 
 
-\subsubsection*{More simple proofs}
+\boldsubsubsection{More simple proofs}
 
 We continue with more straightforward proofs. None of these results are particularly important, they are just exercises in deciding how to present an argument.
 
-\begin{thm}\label{thm:polyroot}
+\begin{thm}{}{polyroot}
 Suppose that $x\in\R$. Then $x^3+2x^2-3x-10=0\implies x=2$.
 \end{thm}
 
-\noindent We can prove this theorem using any of the three methods. All rely on your ability to factorize the polynomial:
+ We can prove this theorem using any of the three methods. All rely on your ability to factorize the polynomial:
 \[x^3+2x^2-3x-10=(x-2)(x^2+4x+5)=(x-2)\Bigl[(x+2)^2+1\Bigr],\]
 and partly on your knowledge that $ab=0\iff a=0$ or $b=0$ (proof in the exercises).
 
@@ -782,28 +818,28 @@ Since $x\neq 2$, we have $x-2\neq 0$.\\
 It follows that $(x+2)^2+1$ must be zero. However, $(x+2)^2+1\ge 1$ for all real numbers $x$, so we have a contradiction.
 \end{proof}
 
-\noindent On balance, the contrapositive proof is probably the most elegant, but you can decide for yourself.
+ On balance, the contrapositive proof is probably the most elegant, but you can decide for yourself.
 
 
 \paragraph{Common Mistake 4.\quad Being excessively logical}
 
-The statement of Theorem \ref{thm:polyroot} is an implication $\timplies PQ$ where $P$ and $Q$ are:
+The statement of Theorem \ref{thm:polyroot} is an implication $P\implies Q$ where $P$ and $Q$ are:
 \[P.\quad x^3+2x^2-3x-10=0, \qquad\qquad Q.\quad x=2.\]
-You can make life very hard for yourself by being overly logical. For instance, you may wish take a third proposition $R$.\quad $x\in\R$, and state the theorem as $\timplies R{(P\implies Q).}$ This is the way of pain! It's easier to assume, as a universal constraint, that you're always dealing with real numbers; you can then ignore said constraint within the argument.
+You can make life very hard for yourself by being overly logical. For instance, you may wish take a third proposition $R$.\quad $x\in\R$, and state the theorem as $R\implies (P\implies Q)$. This is the way of pain! It's easier to assume, as a universal constraint, that you're always dealing with real numbers; you can then ignore said constraint within the argument.
 
-\noindent Indeed, one can always append a third proposition to the front of any theorem, namely, ``all math I already know.'' Try to resist the temptation to be so logical that your arguments become unreadable. The goal is to convince the reader that the theorem is true, not to confuse them!
+ Indeed, one can always append a third proposition to the front of any theorem, namely, ``all math I already know.'' Try to resist the temptation to be so logical that your arguments become unreadable. The goal is to convince the reader that the theorem is true, not to confuse them!
 
-\subsubsection*{Definition-Pushing}
+\boldsubsubsection{Definition-Pushing}
 
 The next example concerns divisibility. Before you can prove a theorem, it is critical that you know the \emph{meaning} of all of the words in its statement. We therefore state the definition of divisibility.
 
-\begin{defn}
+\begin{defn}{}{}
 Let $n$ and $p$ be integers. We say that $n$ is \emph{divisible by} $p$ if $n=pk$ for some integer $k$.
 \end{defn}
 
-\noindent Now we can present a theorem.
+ Now we can present a theorem.
 
-\begin{thm}
+\begin{thm}{}{}
 If $n\in\Z$ is divisible by $p\in\N$, then $n^2$ is divisible by $p^2$.
 \end{thm}
 
@@ -811,19 +847,19 @@ If $n\in\Z$ is divisible by $p\in\N$, then $n^2$ is divisible by $p^2$.
 We prove directly. Let $n$ be divisible by $p$. Then $n=pk$ for some $k\in\Z$. Then $n^2=p^2k^2$, and so $n^2$ is divisible by $p^2$.
 \end{proof}
 
-\noindent This is an example of a \emph{definition-pushing} proof. If you simply state the the definition of everything important in the theorem, the proof will often be staring you in the face.
+ This is an example of a \emph{definition-pushing} proof. If you simply state the the definition of everything important in the theorem, the proof will often be staring you in the face.
 
-\subsubsection*{Proof by Cases}
+\boldsubsubsection{Proof by Cases}
 
 The next proof is also in the definition-pushing vein. However, it requires that we consider several cases. The relevant definition here is that of \emph{remainder.}
 
-\begin{defn}
+\begin{defn}{}{}
 An integer $n$ is said to have remainder $r=0,1,$ or 2 upon division by 3 if we can write $n=3k+r$ for some integer $k$.
 \end{defn}
 
-\noindent With a little thought, it should be clear that every integer is of the form $3k$, $3k+1$ or $3k+2$. This is analogous to how all integers are either even ($2k$) or odd $(2k+1)$. We will consider remainders more carefully in Chapter \ref{sec:gcd}.
+ With a little thought, it should be clear that every integer is of the form $3k$, $3k+1$ or $3k+2$. This is analogous to how all integers are either even ($2k$) or odd $(2k+1)$. We will consider remainders more carefully in Chapter \ref{sec:gcd}.
 
-\begin{thm}\label{thm:sqmod3}
+\begin{thm}{}{sqmod3}
 If $n$ is an integer, then $n^2$ has remainder 0 or 1 upon dividing by 3.
 \end{thm}
 
@@ -839,17 +875,17 @@ We again prove directly. There are three cases: $n$ has remainder 0, 1 or 2 upon
 Thus $n^2$ has remainder 0 or 1.
 \end{proof}
 
-\subsubsection*{Non-existence Proofs}
+\boldsubsubsection{Non-existence Proofs}
 
-When a Theorem claims that something does not exist, it is generally a good idea to try a contrapositive or a contradiction proof. This is since `does not exist' is already a \emph{negative} statement. A contradiction or contrapositive proof of a theorem $\timplies PQ$ already involves the negated statement $\neg Q$. If $Q$ states that something does not exist, then $\neg Q$ states that it does, which often gives you something to play with! To see this in action, consider the following result.
+When a Theorem claims that something does not exist, it is generally a good idea to try a contrapositive or a contradiction proof. This is since `does not exist' is already a \emph{negative} statement. A contradiction or contrapositive proof of a theorem $P\implies Q$ already involves the negated statement $\neg Q$. If $Q$ states that something does not exist, then $\neg Q$ states that it does, which often gives you something to play with! To see this in action, consider the following result.
 
-\begin{thm}
+\begin{thm}{}{}
 The equation $x^{17}+12x^3+13x+3=0$ has no positive (real number) solutions.
 \end{thm}
 
-\noindent First we interpret the theorem as an implication: throughout we assume that $x$ is a real number.
+ First we interpret the theorem as an implication: throughout we assume that $x$ is a real number.
 \[\text{If $x^{17}+12x^3+13x+3=0$, then $x\leq 0$.}\]
-The theorem is now in the form $\timplies P{Q,}$ with:
+The theorem is now in the form $P\implies Q$, with:
 \[P.\quad x^{17}+12x^3+13x+3=0,\qquad\qquad\qquad Q.\quad x\le 0.\]
 The negation of $Q$ is simply `$x>0$.' To prove the theorem by contradiction, we assume $P$ and not $Q$, and deduce a contradiction.
 
@@ -858,27 +894,27 @@ Assume that a real number $x$ satisfies $x^{17}+12x^3+13x+3=0$, and that $x>0$. 
 \end{proof}
 
 
-\noindent Note how quickly the proof is written: it assumes that any reader is familiar with the underlying logic of a contradiction proof without it needing to be spelled out. The discussion we undertook before writing the proof would be considered scratch work: you shouldn't include it a final write-up.\\
+ Note how quickly the proof is written: it assumes that any reader is familiar with the underlying logic of a contradiction proof without it needing to be spelled out. The discussion we undertook before writing the proof would be considered scratch work: you shouldn't include it a final write-up.\\
 
-\noindent If you want to extend the above result, and you can recall the Intermediate and Mean Value Theorems from Calculus, you should be able to prove that there is exactly one (necessarily negative!) solution to the above polynomial equation.
+ If you want to extend the above result, and you can recall the Intermediate and Mean Value Theorems from Calculus, you should be able to prove that there is exactly one (necessarily negative!) solution to the above polynomial equation.
 
-\subsubsection*{The AM-GM inequality}
+\boldsubsubsection{The AM-GM inequality}
 
 Next we give several proofs of a famous inequality relating the arithmetic and geometric means of two or more numbers.
 
-\begin{thm}\label{thm:amgm}
+\begin{thm}{}{amgm}
 If $x,y$ are positive real numbers, then
 \[\frac{x+y}{2}\ge\sqrt{xy}\]
 with equality if and only if $x=y$.
 \end{thm}
 
-\noindent This is a little tricky to read: we really have two separate theorems:
+ This is a little tricky to read: we really have two separate theorems:
 \begin{enumerate}
   \item If $x,y>0$, then $\frac{x+y}{2}\ge\sqrt{xy}$
   \item If $x,y>0$, then $\frac{x+y}{2}=\sqrt{xy}\iff x=y$
 \end{enumerate}
 
-\noindent First we give a direct proof: note how the implication signs are stacked to make the argument clearer.
+ First we give a direct proof: note how the implication signs are stacked to make the argument clearer.
 
 \begin{proof}[Direct Proof]
 Clearly $(x-y)^2\ge 0$ with equality $\iff x=y$. Now multiply out:
@@ -892,11 +928,10 @@ x^2-2xy+y^2\ge 0&\iff (x^2+2xy+y^2)- 4xy  \ge 0 \\
 The square-root in $(\ast)$ is well-defined because $x+y$ is positive.\footnote{Moreover, the inequality is preserved since the function $f(t)=t^2$ is \emph{increasing} when $t$ is positive.} Moreover, it is clear that the final inequality is an equality if and only if all of them are, which is if and only if $x=y$.
 \end{proof}
 
-\noindent Observe how the argument for `with equality if and only if $x=y$' depends on all of the implications in the proof being \emph{biconditionals.}\pagebreak
+ Observe how the argument for `with equality if and only if $x=y$' depends on all of the implications in the proof being \emph{biconditionals.}\pagebreak
 
-\noindent The following contradiction proof incorporates exactly the same calculation, but is laid out in a different order. This is not always possible, and you have to take great care when trying it. You will likely agree that the direct proof is easier to follow.
+ The following contradiction proof incorporates exactly the same calculation, but is laid out in a different order. This is not always possible, and you have to take great care when trying it. You will likely agree that the direct proof is easier to follow.
 
-\begin{nopgbreak}
 \begin{proof}[Contradiction Proof]
 Suppose that $\frac{x+y}{2}<\sqrt{xy}$. Since $x+y\ge 0$, this is if and only if $(x+y)^2<4xy$. Now multiply out and rearrange:
 \begin{align*}
@@ -907,15 +942,14 @@ Suppose that $\frac{x+y}{2}<\sqrt{xy}$. Since $x+y\ge 0$, this is if and only if
 Since squares of real numbers are non-negative, this is a contradiction. Thus $\frac{x+y}{2}\ge \sqrt{xy}$.\\
 Now suppose that $\frac{x+y}{2}=\sqrt{xy}$. Following the biconditionals through the above argument, we see that this is if and only if $(x-y)^2=0$, from which we recover $x=y$. Hence result.
 \end{proof}
-\end{nopgbreak}
 
 
-\subsubsection*{Optional: The general AM-GM inequality}
+\boldsubsubsection{Optional: The general AM-GM inequality}
 
 Both the statement and the proof of the general inequality are significantly more difficult. You might be surprised that an argument involving `raising to the $n$th power' doesn't work. Try it and see why\ldots\ It is often the case that a very simple proof exists for a special case of a result, and that attempting to generalize the proof fails. A completely new approach is then required.\\
 Since the general result is harder, we present it at a higher level, leaving out some of the more obvious details. This helps us view the proof as a whole, and makes the logical flow clearer. The only prerequisite is a little calculus, namely the First Derivative Test at the end of the first paragraph.
 
-\begin{thm}
+\begin{thm}{}{}
 If $x_1,\ldots,x_n>0$ then
 \[\frac{x_1+x_2+\cdots+x_n}n\ge\sqrt[n]{x_1x_2\cdots x_n}\]
 with equality if and only if $x_1=\cdots =x_n$.
@@ -926,7 +960,7 @@ Consider the function $f(x)=e^{x-1}-x$. Its derivative is $f'(x)=e^{x-1}-1$, whi
 \[e^{x-1}\ge x\tag*{($\dag$)}\]
 with equality if and only if $x=1$.
 
-\noindent Now consider the arithmetic mean $\mu=\frac{x_1+x_2+\cdots +x_n}{n}$. Applying ($\dag$) to $x=\frac{x_i}\mu$, we obtain
+ Now consider the arithmetic mean $\mu=\frac{x_1+x_2+\cdots +x_n}{n}$. Applying ($\dag$) to $x=\frac{x_i}\mu$, we obtain
 \[\frac{x_i}\mu\le\exp\left(\frac{x_i}\mu-1\right),\qquad\text{for each $i=1,2,\ldots,n$.}\tag*{($\ast$)}\]
 Since all the $x_i$ are positive, we may multiply the expressions $(\ast)$ while preserving the inequality:
 \[\frac{x_1}\mu\cdots\frac{x_n}\mu\le\exp\left(\frac{x_1}{\mu}-1+\cdots+\frac{x_n}{\mu}-1\right)=\exp(n-n)=1.\]
@@ -934,7 +968,7 @@ It follows that $\mu^n\ge x_1\cdots x_n$, from which the result, $\mu\ge\sqrt[n]
 Equality is if and only if all the inequalities $(\ast)$ are equalities, which is if and only if $x_i=\mu$ for all $i=1,\ldots,n$. That is, all the $x_i$ are equal.
 \end{proof}
 
-\noindent Given that the theorem and proof are both more difficult than the $n=2$ case, there are a few things you should do to help convince yourself of their legitimacy.
+ Given that the theorem and proof are both more difficult than the $n=2$ case, there are a few things you should do to help convince yourself of their legitimacy.
 \begin{enumerate}\setlength{\itemsep}{0pt}
   \item Write down some examples. E.g. if $x_1=20,x_2=27,x_3=50$, the inequality reads
   \[\frac{97}3\ge\sqrt[3]{20\cdot 27\cdot 50}=30.\]
@@ -942,10 +976,10 @@ Equality is if and only if all the inequalities $(\ast)$ are equalities, which i
   \item Work through the proof, inserting comments and extra calculations until you are convinced that the argument is correct. For example, the calculation $\frac{x_1+\cdots+x_n}{\mu}=\frac{\mu n}\mu=n$ was omitted from the final displayed calculation: anyone with the prerequisite knowledge to read the rest of the proof should easily be able to supply this.
 \end{enumerate}
 
-\noindent It is perfectly reasonable to ask how you would know to try such a proof. The answer is that you wouldn't. You should appreciate that a proof like this is a distillation of thousands of attempts and improvements, perhaps over many years. No-one came up with this argument as a first attempt!
+ It is perfectly reasonable to ask how you would know to try such a proof. The answer is that you wouldn't. You should appreciate that a proof like this is a distillation of thousands of attempts and improvements, perhaps over many years. No-one came up with this argument as a first attempt!
 
 
-\subsubsection*{Combining and Subdividing Theorems}
+\boldsubsubsection{Combining and Subdividing Theorems}
 
 Sometimes it is useful to break a proof into pieces, akin to viewing a computer program as a collection of subroutines that you combine for some greater purpose. Usually the intention is to make the proof of a difficult result more readable, but you may also wish to emphasize the importance of certain aspects of your work. Mathematics does this by using \emph{lemmas} and \emph{corollaries.}
 
@@ -954,24 +988,24 @@ Sometimes it is useful to break a proof into pieces, akin to viewing a computer 
   \item[]\emph{Corollary:} a theorem which follows quickly from another result. Corollaries can be used to draw attention to a particular aspect or a special case of a theorem.
 \end{itemize}
 
-\noindent In many mathematical papers the word \emph{theorem} is reserved only for the most important results, everything else being presented as a lemma or corollary. The choice of what to call a result is entirely one of presentation. If you want your paper to be more readable, or to highlight what you think is important, then lemmas and corollaries are your friends!\pagebreak[2]
+ In many mathematical papers the word \emph{theorem} is reserved only for the most important results, everything else being presented as a lemma or corollary. The choice of what to call a result is entirely one of presentation. If you want your paper to be more readable, or to highlight what you think is important, then lemmas and corollaries are your friends!\pagebreak[2]
 
-\noindent Here is a famous example of a lemma at work.
+ Here is a famous example of a lemma at work.
 
-\begin{lemm}\label{lemm:root2prep}
+\begin{lemm}{}{root2prep}
 Suppose that $n\in\Z$. Then $n^2$ is even $\iff n$ is even.
 \end{lemm}
 
-\noindent Prove this yourself: the ($\Rightarrow$) direction is easiest using the contrapositive method, while the ($\Leftarrow$) direction works well directly.
+ Prove this yourself: the ($\Rightarrow$) direction is easiest using the contrapositive method, while the ($\Leftarrow$) direction works well directly.
 
-\begin{thm}
+\begin{thm}{}{}
 $\sqrt 2$ is irrational.
 \end{thm}
 
-\noindent This is tricky for a few reasons. The theorem does not appear to be of the form $\timplies P{Q,}$ but in fact it is. Consider:
+ This is tricky for a few reasons. The theorem does not appear to be of the form $P\implies Q$, but in fact it is. Consider:
 \begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]\itemstart{$Q$.} $\sqrt 2$ is irrational.
-  \item[]\itemstart{$P$.} Everything you already know in mathematics!
+  \item[]{$Q$.} $\sqrt 2$ is irrational.
+  \item[]{$P$.} Everything you already know in mathematics!
 \end{itemize}
 Of course $P$ is entirely unhelpful; how can we start a direct proof when we don't know what to choose from the whole universe of mathematics? A contrapositive proof might also be difficult: $\neg Q$ straightforwardly states that $\sqrt 2$ is rational, but $\neg P$ is the cryptic statement, `something we know to be true is actually false.' But what is the \emph{something}?\\
 Rather than worry about all this, we instead present a proof by contradiction.
@@ -987,7 +1021,7 @@ Rather than worry about all this, we instead present a proof by contradiction.
 \end{itemize}
 \end{proof}
 
-\noindent First observe how Lemma \ref{lemm:root2prep} was used to make the proof easier to read. Without the lemma, the essential shape of the proof would have been less clear.\\
+ First observe how Lemma \ref{lemm:root2prep} was used to make the proof easier to read. Without the lemma, the essential shape of the proof would have been less clear.\\
 Now try to make sense of the proof. In the first line we invoke the definition of \emph{rational,} being the \emph{ratio} of two integers. The main challenge comes immediately afterwards. Once we assume that $\sqrt 2=\frac mn$, we can immediately insist that $m,n$ have no common factors. Indeed this is no significant restriction \emph{once we assume that $m,n$ exist,} that is \emph{once we assume that $\sqrt 2$ is rational.} It is important to realize that the `no common factors' assumption is \emph{not} the assumption being contradicted. Because of this subtlety, we include the phrase `without loss of generality' so that the reader is forced to think carefully, and does not jump to the wrong conclusion.\\
 It might seem difficult to completely understand, but if we hadn't made the observation, our calculation could have continued forever, telling us nothing!
 \[m^2=2n^2\implies n^2=2k^2\implies k^2=2l^2\implies\cdots\]
@@ -997,13 +1031,13 @@ If you find this approach difficult, you may prefer an alternative proof given i
 
 Here is another famous result, dating back at least to the Ancient Greeks (Euclid's \emph{Elements}, Proposition IX.20). As ever, we need a solid definition before we try to prove anything.
 
-\begin{defn}\label{defn:irreducible}
+\begin{defn}{}{irreducible}
 An integer $\ge 2$ is \emph{prime} if the only positive integers it is divisible by are itself and 1.
 \end{defn}
 
-\noindent The first few primes are $2,3,5,7,11,13,17,19,\ldots$ It follows\footnote{This is not completely obvious: we will prove it much later in Theorem \ref{thm:fundarith}.} from the definition that all positive integers $\ge 2$ are either primes or \emph{composites} (products of primes). In particular, every integer $\ge 2$ is divisible by at least one prime. We may now state Euclid's result.
+ The first few primes are $2,3,5,7,11,13,17,19,\ldots$ It follows\footnote{This is not completely obvious: we will prove it much later in Theorem \ref{thm:fundarith}.} from the definition that all positive integers $\ge 2$ are either primes or \emph{composites} (products of primes). In particular, every integer $\ge 2$ is divisible by at least one prime. We may now state Euclid's result.
 
-\begin{thm}
+\begin{thm}{}{}
 There are infinitely many prime numbers.
 \end{thm}
 
@@ -1025,12 +1059,12 @@ We conclude that 1 is divisible by the prime $p_i$, contradicting\footnote{Eucli
   \item Explain in a sentence or two what is meant by \emph{without loss of generality,} and how the phrase is used.
 \end{enumerate}
 
-\subsection*{Exercises}
+\begin{exercises}{}{}
 
 \begin{enumerate}\renewcommand{\labelenumi}{\thesubsection.\theenumi}
 	\item Show that for any given integers $a,b,c$, if $a$ is even and $b$ is odd, then $7a-ab+12c+b^2+4$ is odd.\goodbreak
 
-  \item Prove or disprove the following conjectures.\prelistskip
+  \item Prove or disprove the following conjectures.
 	\begin{enumerate}
 	  \item There is an even integer which can be expressed as the sum of three even integers.
 	  \item Every even integer can be expressed as the sum of three even integers. 
@@ -1039,16 +1073,16 @@ We conclude that 1 is divisible by the prime $p_i$, contradicting\footnote{Eucli
 		\item[]\emph{To get a feel about whether a claim is true or false, try out some examples. If you believe a claim is false, provide a specific counterexample. If you believe a claim is true, give a formal proof.}
 \end{enumerate}
 
-  \item Prove or disprove the following conjectures:\prelistskip
+  \item Prove or disprove the following conjectures:
 	\begin{enumerate}
 	  \item The sum of any 3 consecutive integers is divisible by 3.
 	  \item The sum of any 4 consecutive integers is divisible by 4.
 	  \item The product of any 3 consecutive integers is divisible by 6.
 	\end{enumerate}
 
-  \item Augustus de Morgan satisfied his own problem:\prelistskip
+  \item Augustus de Morgan satisfied his own problem:
 	\begin{center}
-	I turn(ed) $x$ years of age in the year $x^2$.\prelistskip
+	I turn(ed) $x$ years of age in the year $x^2$.
 	\end{center}
 	\begin{enumerate}
 	  \item Given that de Morgan died in 1871, and that he wasn't the beneficiary of some miraculous anti-aging treatment, find the year in which he was born.
@@ -1073,8 +1107,6 @@ We conclude that 1 is divisible by the prime $p_i$, contradicting\footnote{Eucli
 	  \item Can you conclude anything about $7x-2$ if $5x+3$ is odd?
 	  \end{enumerate}
 	  
-	\pagebreak[4]
-	  
 	  
 	\item Below is the proof of a result. What result is being proved?
   \begin{proof}
@@ -1092,17 +1124,17 @@ We conclude that 1 is divisible by the prime $p_i$, contradicting\footnote{Eucli
   \end{proof}
 	  
 	\item In this question, you should use the following definition of the rational numbers.
-		\begin{defn*}
+		\begin{defn*}{}{}
   	A real number $x$ is \emph{rational} if it may be written in the form $x=\frac pq$ where $p$ is an integer and $q$ is a positive integer. $x$ is \emph{irrational} if it is not rational.
   	\end{defn*}
   	Prove or disprove the following conjectures.
-  	\begin{conj*}[1]
+  	\begin{conj*}{1}{}
 			If $x$ and $y$ are real numbers such that $3x+5y$ is irrational, then at least one of $x$ and $y$ is irrational.
 		\end{conj*}
-  	\begin{conj*}[2]
+  	\begin{conj*}{2}{}
 			If $x$ and $y$ are rational numbers, then $3x+4xy+2y$ is rational.
 		\end{conj*}
-  	\begin{conj*}[3]
+  	\begin{conj*}{3}{}
 			If $x$ and $y$ are irrational numbers, then $3x+4xy+2y$ is irrational.
 		\end{conj*}
 	
@@ -1126,7 +1158,6 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 	  \item Show that the statements, `$n$ is Snake-like,' and, `$n$ is a multiple of nine,' are not equivalent.
 	\end{enumerate}
 	
-	\pagebreak[1]
 	
 	\item Assume that Ben's father lives in Peru. Consider the following implication $\beta$:
 	\begin{center}
@@ -1157,10 +1188,12 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 	Use these facts to give a formal proof that $x^{17}+12x^3+13x+3=0$ has \emph{exactly one solution} $x$, and that $x$ lies in the interval $(-1,0)$.
 \end{enumerate}
 
+\end{exercises}
+
 
 \newpage
 
-\subsection{Quantifiers}\label{sec:quant}
+%\subsection{Quantifiers}\label{sec:quant}
 
 The proofs we've dealt with thusfar have been fairly straightforward. In higher mathematics, however, there are often definitions and theorems that involve many pieces, and it becomes unwieldy to write everything out in full sentences. Two space-saving devices called \emph{quantifiers} are often used to contract sentences and make the larger structure of a statement clearer.\footnote{At least that's the idea: very often they are \emph{over-used} and achieve the opposite effect!} Their use in formal logic is more complex, but for most of mathematics (and certainly this text) all you need is to be able to recognize, understand, and negate them. This last is most important when attempting contrapositive or contradiction proofs.
 
@@ -1168,37 +1201,39 @@ The proofs we've dealt with thusfar have been fairly straightforward. In higher 
 The \emph{universal quantifier} $\forall$ is read `for all'. The \emph{existential quantifier} $\exists$ is read `there exists.'
 \end{defn}
 
-\noindent Many sentences in English can be restated in terms of quantifiers.
+ Many sentences in English can be restated in terms of quantifiers.
 
-\begin{examples}
+\begin{examples}{}{}
+\begin{enumerate}
 \item Every cloud has a silver lining: $\forall$ clouds, $\exists$ a silver lining.
 \item All humans have a brain: $\forall$ humans, $\exists$ a brain.
 \item There is an integer smaller than $\pi$: $\exists n\in\Z$ such that $n<\pi$.
 \item $\pi$ cannot be written as a ratio of integers: $\forall$ integers $m,n$, we have $\frac{m}{n}\neq\pi$.\\
 Think carefully about this last example: if $\pi$ cannot be written as a ratio of integers, then no ratio of integers equals $\pi$.
+\end{enumerate}
 \end{examples}
 
-\subsubsection*{Propositional Functions and Quantified Propositions}
+\boldsubsubsection{Propositional Functions and Quantified Propositions}
 
 Quantifiers appear most often around propositions containing \emph{variables.}
 
-\begin{defn}
+\begin{defn}{}{}
 A \emph{propositional function} is a family of propositions which depend on one or more variables. The collection of allowed variables is the \emph{domain.}
 \end{defn}
 
-\noindent For instance if $P$ is a propositional function depending on a single variable $x$, then each $P(x)$ is a proposition in the usual sense of the word (a sentence which is either true or false).
+ For instance if $P$ is a propositional function depending on a single variable $x$, then each $P(x)$ is a proposition in the usual sense of the word (a sentence which is either true or false).
 
-\begin{example}
+\begin{example}{}{}
 Suppose that $x$ is allowed to be any real number. We could define the propositional function $P(x)$ by
 \[P(x).\quad x^2>4.\]
 In this example $P(5)$ is true, whilst $P(-1)$ is false. More generally, $P(x)$ is true for some values of $x$ (namely $x>2$ or $x<-2$) and false for others ($-2\le x\le 2$).
 \end{example}
 
-\begin{defn}
+\begin{defn}{}{}
 The \emph{quantified proposition} $\forall x,\ P(x)$ is an assertion that $P(x)$ is true \emph{for all} values of $x$. Similarly $\exists x,\ P(x)$ asserts that $P(x)$ is true for \emph{at least one} value of $x$.
 \end{defn}
 
-\begin{example}
+\begin{example}{}{}
 Recall the above example where, for each real number $x$, $P(x)$ is the proposition $x^2>4$. Consider the quantified propositions:
 \begin{itemize}
   \item $\forall x\in\R,\, P(x)$ is \emph{false,} since $P(x)$ is not true for all $x\in\R$. In particular $P(-1)$ is false.
@@ -1206,15 +1241,15 @@ Recall the above example where, for each real number $x$, $P(x)$ is the proposit
 \end{itemize}
 \end{example}
 
-\begin{defn}
+\begin{defn}{}{}
 A \emph{counterexample} to $\forall x,\, P(x)$ is a single element $t$ in the domain of $P$ such that $P(t)$ is false.\\
 An \emph{example} of $\exists x\in\R,\, P(x)$ is a single element $t$ in the domain of $P$ such that $P(t)$ is true.
 \end{defn}
 
-\noindent Clearly $x=-1$ is a counterexample to $\forall x\in\R,\,x^2>4$, while $x=5$ is an example of $\exists x,\,x^2>4$.
+ Clearly $x=-1$ is a counterexample to $\forall x\in\R,\,x^2>4$, while $x=5$ is an example of $\exists x,\,x^2>4$.
 
-\begin{aside}
-\noindent{\bf Clarity versus Concision}
+\begin{aside}{}{}
+{\bf Clarity versus Concision}
 
 As with all forms of art, different practitioners of mathematics have different tastes. Some write very concisely, keeping words to a minimum. Some write almost entirely in English. Most use a hybrid of quantifiers and English, aiming for a balance between brevity and clarity. For example, consider the famous \emph{sum of four squares} theorem:
 \begin{center}
@@ -1229,17 +1264,17 @@ Hybrid & $\forall n\in\N,\, \exists a,b,c,d\in\Z$ such that $n=a^2+b^2+c^2+d^2$
 \end{center}
 You will probably agree that the English version is easiest to follow, but suffers from the lack of an eye-catching equation. The Extreme  version is the most abstract and difficult to read. The Hybrid expression aims for a balance between these extremes. The insertion of a single comma and the phrase `such that' increases readablity, while retaining the benefit of precision.\\
 
-\noindent The purpose of writing mathematics is to help the reader understand what you've written \emph{without} you being there to explain it. Your presentation style has an enormous effect on whether you are successful! A good rule is to write in sentences, replacing words with symbols only when it makes things more readable while simultaneously preserving the flow of the sentence. In these notes we will usually follow a hybrid approach. Thus, in our previous example we would typically write
+ The purpose of writing mathematics is to help the reader understand what you've written \emph{without} you being there to explain it. Your presentation style has an enormous effect on whether you are successful! A good rule is to write in sentences, replacing words with symbols only when it makes things more readable while simultaneously preserving the flow of the sentence. In these notes we will usually follow a hybrid approach. Thus, in our previous example we would typically write
 \[\exists x\in\R\text{ such that } x^2>4\]
 rather than the original formulation $\exists x\in\R,\ x^2>4$.
 \end{aside}\goodbreak
 
 
-\subsubsection*{Negating Quantified Propositions}
+\boldsubsubsection{Negating Quantified Propositions}
 
 Besides the concision afforded by quantifiers, one of the benefits of their use is a simple rule that allows for easy negation.
 
-\begin{thm}\label{thm:negquant}
+\begin{thm}{}{negquant}
 For any propositional function $P(x)$, we have:
 \begin{enumerate}
   \item $\neg(\forall x,\, P(x))$ is equivalent to $\exists x,\, \neg P(x)$.
@@ -1253,7 +1288,7 @@ In essence, negation swaps the quantifiers $\forall\leftrightarrow\exists$. Like
 \end{enumerate}
 
 
-\begin{exs}
+\begin{examples}
 Here are two examples, numbered corresponding to the parts of Theorem \ref{thm:negquant}.
 \begin{enumerate}
 	\item The negation of the statement, `Everyone owns a bicycle' is:
@@ -1268,9 +1303,9 @@ Here are two examples, numbered corresponding to the parts of Theorem \ref{thm:n
 	\[\forall x\in\R\text{ we have }\sin x\neq 4.\]
 	Note how we introduced the words \emph{we have} to make the sentence read more clearly.
 \end{enumerate}
-\end{exs}
+\end{examples}
 
-\subsubsection*{Advice when Negating: Hidden and Excess Quantifiers}
+\boldsubsubsection{Advice when Negating: Hidden and Excess Quantifiers}
 
 Theorem \ref{thm:negquant} seems very simple, but it is easy to misuse. Here are some points to consider when negating quantifiers.
 
@@ -1302,9 +1337,9 @@ Theorem \ref{thm:negquant} seems very simple, but it is easy to misuse. Here are
   Given that ($\ast$) is a theorem, its negation is, of course, false!
 \end{enumerate}
 
-\noindent Here is a harder example of a hidden quantifier, this time from Linear Algebra. You do not have to know what a vector is to work with this definition. We are purely concerned with how to negate an abstract statement.
+ Here is a harder example of a hidden quantifier, this time from Linear Algebra. You do not have to know what a vector is to work with this definition. We are purely concerned with how to negate an abstract statement.
 
-\begin{defn}
+\begin{defn}{}{}
 Vectors $\vx,\vy,\vz$ are \emph{linearly independent} if
 \[a\vx+b\vy+c\vz=\V 0\implies a=b=c=0\]
 \end{defn}
@@ -1316,11 +1351,11 @@ The implication is a statement about \emph{all} real numbers $a,b,c$. We could i
     \[\exists a,b,c\text{ not all zero such that }a\vx+b\vy+c\vz=\V 0\]
 The final challenge here is recalling how to negate an implication: recall Theorem \ref{thm:negconditional}, and note that the negation of $a=b=c=0$ is that \emph{at least one} of $a,b,c$ is non-zero.
 
-\subsubsection*{Multiple quantifiers}
+\boldsubsubsection{Multiple quantifiers}
 
 Once you're comfortable negating simple propositions and quantifiers, negating multiple quantifiers is easy. Just follow the rules, think, and take your time.
 
-\begin{example}
+\begin{example}{}{}
 Show that the following statement is false.
 \[\forall x\in\R,\ \exists y\in\R\text{ such that }xy=3.\]
 The negation of this expression follows the rules for switching quantifiers and negating the final statement:
@@ -1330,27 +1365,27 @@ It is easy to see that the negated statement is true:
 Let $x=0$, then, regardless of $y$, we have $xy=0\neq 3$.
 \end{proof}
 
-\noindent Because the negation is true, the original statement is false.
+ Because the negation is true, the original statement is false.
 \end{example}
 
 
-\subsubsection*{Putting it all together: the definition of continuity}
+\boldsubsubsection{Putting it all together: the definition of continuity}
 
 You might have seen the strict definition of continuity in a calculus class.\footnote{If not, you will have plenty time to get used to it in an upper-division Analysis course\ldots} It combines multiple quantifiers, a hidden quantifier and an implication. The purpose of this example isn't to teach you the subtleties of continuity. Just as with the linear independence example, we simply want to be able to read and negate such expressions.
 
-\begin{defn}\label{defn:cont}
+\begin{defn}{}{cont}
 Suppose that $f$ is a function whose domain and codomain are sets of real numbers. We say that $f$ is \emph{continuous} at $x=a$ if,
 \[\forall\ve >0,\ \exists\delta>0\text{ such that }|x-a|<\delta\implies |f(x)-f(a)|<\ve.\tag*{($\ast$)}\]
 \end{defn}
 
-\noindent The implication is a statement about \emph{all} real numbers $x$ which satisfy some property, so we once again have a hidden quantifier:
+ The implication is a statement about \emph{all} real numbers $x$ which satisfy some property, so we once again have a hidden quantifier:
 \[\forall\ve>0,\ \exists\delta>0\text{ such that }\underline{\forall x\in\R},\ |x-a|<\delta\implies |f(x)-f(a)|<\ve.\]
 We can now use our rules to state what it means for $f$ to be \emph{discontinuous} at $x=a$:
 \[\exists\ve>0\text{ such that }\forall\delta>0,\ \exists x\in\R\text{ such that }|x-a|<\delta\text{ and }|f(x)-f(a)|\ge\ve.\]
 {\bf Warning!} The negation of $\forall\ve>0$ is \emph{not} $\exists\ve\le 0$. Only the ultimate proposition\footnote{In this case the ultimate proposition is $|x-a|<\delta\implies |f(x)-f(a)|<\ve$.} is negated!\\
 For an example of this definition in use, see the exercises.
 
-\subsubsection*{The Order of Quantifiers Matters!}
+\boldsubsubsection{The Order of Quantifiers Matters!}
 
 We conclude this section with an important observation: the order of quantifiers matters critically! Consider, for example, the following propositions: 
 \begin{enumerate}
@@ -1364,14 +1399,14 @@ Assuming that $x$ and $y$ always represent people, we can rewrite the sentences 
 \end{enumerate}
 
 
-\noindent All we've done is to switch the order of the two quantifiers! How does this affect the meaning? Written entirely in English, the statements become:
+ All we've done is to switch the order of the two quantifiers! How does this affect the meaning? Written entirely in English, the statements become:
 \begin{enumerate}
 \item Everyone has at least one friend.
 \item There is someone who is friends with everybody.
 \end{enumerate}
 Quite different! The critical observation is that if $\exists y$ comes after $x$, then $y$ is \emph{allowed to depend on $x$.} Each person might have a friend, but that friend is likely to be different depending on the person. If $\forall x$ comes after $y$, then $x$ cannot depend on $y$.\\
 
-\noindent Play around with the pairs of examples below. What are the meanings? Which ones are true? 
+ Play around with the pairs of examples below. What are the meanings? Which ones are true? 
 \begin{itemize}\setlength{\itemsep}{0cm}
 \item $\forall\,\text{days}\,x,\,\exists\text{ a person }y$ such that $y$ was born on day $x$.
 \item $\exists\text{ a person }y$ such that, $\forall\text{ days }x$, $y$ was born on day $x$.\\
@@ -1397,17 +1432,17 @@ What happens in the last two examples if we replace the integers $\Z$ with the n
   \item Explain what is meant by a \emph{hidden quantifier.}
 \end{enumerate}
 
-\subsection*{Exercises}
+\begin{exercises}{}{}
 
 \begin{enumerate}\renewcommand{\labelenumi}{\thesubsection.\theenumi}
-	\item For each of the following sentences, rewrite the sentence using quantifiers. Then write the negation (using both words and quantifiers)\prelistskip
+	\item For each of the following sentences, rewrite the sentence using quantifiers. Then write the negation (using both words and quantifiers)
 		\begin{enumerate}
 		  \item All mathematics exams are hard.
 	  	\item No football players are from San Diego.
 	  	\item There is a odd number that is a perfect square.
 		\end{enumerate}
 		
-	\item Let $P$ be the proposition: `Every positive integer is divisible by thirteen.'\prelistskip
+	\item Let $P$ be the proposition: `Every positive integer is divisible by thirteen.'
     \begin{enumerate}
       \item Write $P$ using quantifiers.
       \item What is the negation of $P$?
@@ -1440,7 +1475,7 @@ What happens in the last two examples if we replace the integers $\Z$ with the n
   
 	\item Consider the propositional function
   \[P(x,y,z):\quad (x-3)^2+(y-2)^2+(z-7)^2>0\]
-  where the domain of each of the variables $x,y$ and $z$ is $\R$.\prelistskip
+  where the domain of each of the variables $x,y$ and $z$ is $\R$.
   \begin{enumerate}
     \item Express the quantified statement $\forall x\in\R,\forall y\in\R,\forall z\in\R, P(x,y,z)$ in words.
     \item Is the quantified statement in (a) true or false? Explain.
@@ -1449,19 +1484,19 @@ What happens in the last two examples if we replace the integers $\Z$ with the n
     \item Is the negation of the quantified statement in (a) true or false? Explain.
   \end{enumerate}
   
-	\item The following statements are about positive real numbers. Which one is true? Explain your answer.\prelistskip
+	\item The following statements are about positive real numbers. Which one is true? Explain your answer.
 	\begin{enumerate}
 	  \item $\forall x$, $\exists y$ such that $xy<y^2$.
 	  \item $\exists x$ such that $\forall y$, $xy<y^2$.
 	\end{enumerate}
 
-	\item Which of the following statements are true? Explain.\prelistskip
+	\item Which of the following statements are true? Explain.
 	\begin{enumerate}
 	  \item $\exists$ a married person $x$ such that $\forall$ married people $y$, $x$ is married to $y$.
 	  \item $\forall$ married people $x$, $\exists$ a married person $y$ such that $x$ is married to $y$.
 	\end{enumerate}
 	
-	\item Here are four propositions. Which are true and which false? Justify your answers.\prelistskip
+	\item Here are four propositions. Which are true and which false? Justify your answers.
 	\begin{enumerate}
 	  \item $\forall x\in\R,\ \exists y\in\R$ such that $y^4=4x$.
 	  \item $\exists y\in\R$ such that $\forall x\in\R$ we have $y^4=4x$.
@@ -1478,7 +1513,7 @@ What happens in the last two examples if we replace the integers $\Z$ with the n
 	  \item Give an example to demonstrate the fact that \emph{not decreasing} and \emph{increasing} do not mean the same thing!
 	\end{enumerate}
 	
-	\item Prove or disprove each of the following statements.\prelistskip
+	\item Prove or disprove each of the following statements.
 	\begin{enumerate}
 	  \item For every two points $A$ and $B$ in the plane, there exists a circle on which both $A$ and $B$ lie.
 	  \item There exists a circle in the plane on which lie any two points $A$ and $B$.
@@ -1565,3 +1600,4 @@ What happens in the last two examples if we replace the integers $\Z$ with the n
       \item Conclude that $L^+=L^-=0$. Why have we completed the proof?
     \end{enumerate}
 \end{enumerate}
+\end{exercises}

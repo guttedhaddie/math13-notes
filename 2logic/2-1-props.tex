@@ -1,0 +1,93 @@
+\pagestyle{empty}
+
+\boldsubsection{Reading Quiz Section \ref*{sec:prop}}
+
+\begin{enumerate}
+  \item A \emph{tautology} is a proposition which \underline{\phantom{is always true}\qquad\qquad}
+  \begin{enumerate}
+      \item is false no matter what the truth value of its component propositions.
+      \item is only true when all of its component propositions are true.
+      \item is never false, no matter what the truth value of its component propositions.
+      \item is built only using the connectives $\land, \lor$.
+  \end{enumerate}
+  
+  \item A \emph{contradiction} is a proposition which \underline{\phantom{is always false}\qquad\qquad}
+  \begin{enumerate}
+      \item is false no matter what the truth value of its component propositions.
+      \item is only true when all of its component propositions are false.
+      \item is never false, no matter what the truth value of its component propositions.
+      \item is built only using the connective $\neg$.
+  \end{enumerate}
+  
+  \item The \emph{contrapositive} of the conditional $P\implies Q$ is the conditional \underline{\phantom{$\not Q\implies\not P$}\qquad\qquad}
+  \begin{enumerate}
+      \item $\neg P \implies Q$
+      \item $\neg Q \implies \neg P$
+      \item $Q \implies P$
+      \item $P \implies \neg Q$
+  \end{enumerate}
+
+  \item True or False: The \emph{converse} of $P\implies Q$ is logically equivalent to $P\implies Q$.
+  
+  \item The \emph{negation} of the conditional ``if I study at least 25 hours per week, then I will be successful'' is the proposition \underline{\phantom{$\not Q\implies\not P$}\qquad\qquad}
+  \begin{enumerate}
+      \item ``I study at least 25 hours per week, but I am not successful.''
+      \item ``Either I study less than 25 hours per week, or I am successful.''
+      \item ``Either I study at least 25 hours per week, or I am not successful.''
+      \item `If I am successful, then I will study at least 25 hours per week.''
+  \end{enumerate}
+  
+  \item De Morgan's laws state that:
+  \begin{gather*}
+    \neg(P\vee Q) \text{ is logically equivalent to } (1) \underline{\phantom{(\neg P)\wedge (\neg Q)}\qquad}\\
+    \neg(P\wedge Q) \text{ is logically equivalent to } (2) \underline{\phantom{(\neg P)\vee (\neg Q)\qquad}}
+  \end{gather*}
+  \begin{enumerate}
+      \item (1) $\neg (P \implies Q)$, \quad (2) $(\neg P \lor \neg Q)$
+      \item (1) $(\neg P \land \neg Q)$, \quad (2) $(P \lor Q)$
+      \item (1) $(\neg P \land Q)$, \quad (2) $(P \lor \neg Q)$
+      \item (1) $(\neg P \land \neg Q)$, \quad (2) $(\neg P \lor \neg Q)$
+  \end{enumerate}
+\end{enumerate}
+
+
+\boldsubsection{Practice Problems Section \ref*{sec:prop}}
+
+\begin{enumerate}
+  \item Suppose that ``If Colin was early, then no-one was playing pool'' is a true statement.
+		\begin{enumerate}
+	  	\item What is its contrapositive of this statement? Is it true?
+	  	\item What is the converse? Is it true?
+	  	\item What can we conclude (if anything?) if we discover each of the following? \emph{Treat the two scenarios separately.}
+			\begin{enumerate}
+	  	  \item[(i)] Someone was playing pool.
+	      \item[(ii)] Colin was late.
+			\end{enumerate}
+		\end{enumerate}
+		% (From previous exercises)
+		
+		\href{https://youtu.be/BI_M1-OoMac}{Video Solution}
+  
+  \item Prove that $P \lor \neg Q$ is logically equivalent to $\neg P \implies (\neg P \land \neg Q)$.
+  
+  \href{https://youtu.be/NrbdGXAP6Ug}{Video Solution}
+  
+  \item Define the connective $\uparrow$ (called the \emph{Sheffer stroke}, or \emph{NAND}) by the following truth table:
+  \[
+  \begin{array}{cc|c}
+P & Q & P \uparrow Q\\\hline
+T & T & F\\
+T & F & T\\
+F & T & T\\
+F & F & T
+\end{array}
+  \]
+  \begin{enumerate}
+      \item Prove $P \uparrow Q$ is logically equivalent to $\neg (P \land Q)$. 
+      \item Find an expression built using only $P$ and the connective $\uparrow$ which is logically equivalent to $\neg P$.
+      \item Find an expression built using only $P$, $Q$, and the connective $\uparrow$ which is logically equivalent to $P \land Q$.
+  \end{enumerate}
+  
+  \href{https://youtu.be/bxYgvuXtcTM}{Video Solution}
+  
+\end{enumerate}
