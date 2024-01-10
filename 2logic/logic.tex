@@ -41,23 +41,24 @@ Given a small number of propositions, all possible combinations of truth states 
 	\hfill
 	\begin{minipage}[t]{0.49\linewidth}\vspace{-2pt}
 		$\begin{array}{cc||c|c}
-		P & Q & \textcolor{red}{P\wedge Q} & \textcolor{Green}{P\vee Q}\\\hline
-		T & T & \textcolor{red}{T} & \textcolor{Green}{T}\\
-		T & F & \textcolor{red}{F} & \textcolor{Green}{T}\\
-		F & T & \textcolor{red}{F} & \textcolor{Green}{T}\\
-		F & F & \textcolor{red}{F} & \textcolor{Green}{F}
-		\end{array}\qquad\qquad
+			P & Q & \textcolor{red}{P\wedge Q} & \textcolor{Green}{P\vee Q}\\\hline
+			T & T & \textcolor{red}{T} & \textcolor{Green}{T}\\
+			T & F & \textcolor{red}{F} & \textcolor{Green}{T}\\
+			F & T & \textcolor{red}{F} & \textcolor{Green}{T}\\
+			F & F & \textcolor{red}{F} & \textcolor{Green}{F}
+		\end{array}
+		\qquad\qquad
 		\begin{array}[b]{c||c}
-		P & \textcolor{blue}{\neg P}\\\hline
-		T & \textcolor{blue}{F}\\
-		F & \textcolor{blue}{T}
+			P & \textcolor{blue}{\neg P}\\\hline
+			T & \textcolor{blue}{F}\\
+			F & \textcolor{blue}{T}
 		\end{array}$
 	\end{minipage}
 \end{defn}
 
 The letters T/F stand for \emph{true/false.} E.g., the second line of the first table says that if $P$ is true and $Q$ is false, then the proposition ``$P$ and $Q$" is \textcolor{red}{false}, while ``$P$ or `$Q$'' is \textcolor{Green}{true.} %Hopefully this gels with your intuitive understanding.
 
-\begin{example}{}{}
+\begin{example}{}{logiccolor}
 	Suppose $P$ and $Q$ are the following propositions:
 	\begin{quote}
 		$P$: ``I like purple.''\qquad\qquad $Q$: ``I like chartreuse.''
@@ -68,10 +69,31 @@ The letters T/F stand for \emph{true/false.} E.g., the second line of the first 
 		$P\vee Q$: ``I like purple or chartreuse.''\smallbreak
 		$\neg P$: ``I do not like purple.''
 	\end{quote}
-	It is typical to modify phrasing to aid readability: ``Not, I like purple'' just sounds weird! Note also that or is \emph{inclusive} in logic: if ``I like purple or chartreuse'' is true, then you might like \emph{both}! 
+	It is typical to modify phrasing to aid readability: ``Not, I like purple'' just sounds weird! Note also that or is \emph{inclusive} in logic: if ``I like purple or chartreuse'' is true, then you might like \emph{both}!\medbreak
+	
+	Let's continue by adding a third proposition:
+	\begin{quote}
+		$R$: ``It's 9am.''
+	\end{quote}
+	What proposition is represented by the following English sentence?
+	\begin{quote}
+		``I like purple and I like chartreuse or it's 9am.''
+	\end{quote}
+	Is it $P\wedge(Q\vee R)$ or is it $(P\wedge Q)\vee R$? Without brackets or a lot more words, the sentence is unclear; the moral is that English is terrible at logic! Indeed, as the truth table shows, the two logical expressions \textcolor{red}{really do mean different things!}\vspace{-1pt}
+	 \[
+	 \begin{array}{ccc||cc||cc}
+			P & Q & R & Q\vee R & P\wedge (Q\vee R) & P\wedge Q & (P \wedge Q)\vee R\\\hline
+			T & T & T & T & T & T & T\\
+			T & T & F & T & T & T & T\\
+			T & F & T & T & T & F & T\\
+			T & F & F & F & F & F & F\\
+			F & T & T & T & \textcolor{red}{F} & F & \textcolor{red}{T}\\
+			F & T & F & T & F & F & F\\
+			F & F & T & T & \textcolor{red}{F} & F & \textcolor{red}{T}\\
+			F & F & F & F & F & F & F
+		\end{array}
+	 \]
 \end{example}
-
-\goodbreak
 
 
 \boldsubsubsection{Conditional and Biconditional Connectives}
@@ -91,9 +113,10 @@ Of critical importance to mathematics is the ability to have one proposition lea
 	\end{array}$
 \end{defn}
 
-Remember that the expressions $P\Longrightarrow Q$ and $P\Longleftrightarrow Q$ are themselves \emph{propositions}: sentences which are either true or false. Connective propositions can be read and written in many different ways:
+%Remember that the expressions $P\Longrightarrow Q$ and $P\Longleftrightarrow Q$ are themselves \emph{propositions}: sentences which are either true or false. 
+Connective propositions can be read and written in many different ways:
 \begin{quote}
-	\def\arraystretch{1.1}
+	\def\arraystretch{1.05}
 	\begin{tabular}{@{}cc|c}
 		\multicolumn{2}{c|}{$P\implies Q$} & $P\iff Q$\\\hline
 		$P$ implies $Q$ & $P$ therefore $Q$ & $P$ if and only if $Q$\\
@@ -104,16 +127,18 @@ Remember that the expressions $P\Longrightarrow Q$ and $P\Longleftrightarrow Q$ 
 \end{quote}
 
 \begin{example}{}{}
-	The following sentences all mean exactly the same thing: each expresses, in English, the same conditional $P\implies Q$.
+	The following sentences express, in English, the same conditional $P\implies Q$.\vspace{-1pt}
 	\begin{itemize}\itemsep1pt
 		\item If you are born in Rome, then you are Italian. 
 		\item You are Italian if you are born in Rome. 
 		\item You are born in Rome only if you are Italian. 
 		\item Being born in Rome is sufficient for being Italian. 
-		\item Being Italian is necessary for being born in Rome. 
+		\item Being Italian is necessary for being born in Rome.\vspace{-1pt} 
 	\end{itemize}
 	Are you comfortable with what the propositions $P$ and $Q$ are here?
 \end{example}
+
+%\goodbreak
 
 While the biconditional should be easy to remember ($P\Longleftrightarrow Q$ is true precisely when $P$ and $Q$ have identical truth states) it is harder to make sense of and remember the conditional connective. Short of simply memorizing the truth table, here are two examples that might help.
 
@@ -131,12 +156,12 @@ While the biconditional should be easy to remember ($P\Longleftrightarrow Q$ is 
 	\end{enumerate}
 \end{examples}
 
-\goodbreak
+
 
 
 \boldsubsubsection{Tautologies and Contradictions}
 
-\begin{defn}{}{}
+\begin{defn}{}{tautology}
 	A \emph{tautology} is a logical expression that is always true, regardless of what the component statements might be.\smallbreak
 	A \emph{contradiction} is a logical expression that is always false.
 \end{defn}
@@ -144,14 +169,21 @@ While the biconditional should be easy to remember ($P\Longleftrightarrow Q$ is 
 The easiest way to detect these is to construct a truth table.
 
 \begin{examples}{}{}
-\exstart $P\wedge(\neg P)$ is a contradiction:
-	\[\begin{array}{cc|c}
+\exstart $P\wedge(\neg P)$ is a contradiction.
+	
+\begin{enumerate}\setcounter{enumi}{1}
+  \begin{minipage}[t]{0.65\linewidth}\vspace{-8pt}
+  	\item[] Regardless of the proposition $P$, it cannot be true at the same time as its negation!
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.29\linewidth}\vspace{-27pt}
+	$\begin{array}{cc|c}
 	P & \neg P & P\wedge(\neg P)\\\hline
 	T & F & F\\
 	F & T & F
-	\end{array}\]
-	Regardless of the proposition $P$, it cannot be true at the same time as its negation!
-\begin{enumerate}\setcounter{enumi}{1}
+	\end{array}$
+  \end{minipage}\par
+  
 	\item $(P\wedge(P\Longrightarrow Q))\Longrightarrow Q$ is a tautology.% This is essentially how we understand a direct proof: if $P$ is true and we have a correct argument $P\implies Q$, then $Q$ must also be true.
 	\[\begin{array}{cc||c|c||c}
 	P & Q & P\implies Q & P\wedge(P\implies Q) & (P\wedge(P\implies Q))\implies Q\\\hline
@@ -196,26 +228,26 @@ In general, the truth status of the converse bears no relation to that of the or
 
 \footnotetext{Otherwise said, $(P\Longrightarrow Q)\Longleftrightarrow (\neg Q\Longrightarrow\neg P)$ is a tautology.}
 
-\goodbreak
+
 
 
 \begin{example}{}{}
 	Let $P$ and $Q$ be the following statements:
 	\begin{quote}
-	  $P$: ``Claudia is holding a peach.''\par
-	  $Q$: ``Claudia is holding a piece of fruit.''
+	  $P$: \ ``Claudia is holding a peach.''\qquad\qquad
+	  $Q$: \ ``Claudia is holding a piece of fruit.''
 	\end{quote}
-	The proposition $P\Longrightarrow Q$, namely
+	Since a peach is indeed a piece of fruit, the proposition $P\Longrightarrow Q$ is \emph{true}:
 	\begin{quote}
-		If Claudia is holding a peach, then she is holding a piece of fruit,
+		$P\implies Q$: \ ``If Claudia is holding a peach, then she is holding a piece of fruit.''
 	\end{quote}
-	is \emph{true,} since a peach is indeed a piece of fruit. The \emph{converse} of $P\Longrightarrow Q$ is the sentence:
+	The \emph{converse} of $P\Longrightarrow Q$ is the sentence
 	\begin{quote}
-	  If Claudia is holding a piece of fruit, then she is holding a peach.
+	  $Q\implies P$: \ ``If Claudia is holding a piece of fruit, then she is holding a peach.''
 	\end{quote}
-	This is palpably false: Claudia could be holding an apple! The \emph{contrapositive} of $P\Longrightarrow Q$ is
+	This is palpably false: Claudia could be holding an apple! The \emph{contrapositive} is
 	\begin{quote}
-	  If Claudia is \emph{not} holding any fruit, then she is \emph{not} holding a peach.
+	  $\neg Q\implies \neg P$: ``If Claudia is \emph{not} holding any fruit, then she is \emph{not} holding a peach.''
 	\end{quote}
 	In accordance with Theorem \ref{thm:contrapos}, this sentence is also true.
 \end{example}
@@ -239,6 +271,8 @@ Can we write this last column in another way? Since we only see a $T$ in the fin
 	$\neg(P\implies Q)$ is logically equivalent to $P\wedge\neg Q$ \ (``$P$ and not $Q$").
 \end{thm}
 
+%\goodbreak
+
 \begin{example}{}{}
 	Consider the implication
 	\begin{quote}
@@ -260,10 +294,10 @@ Can we write this last column in another way? Since we only see a $T$ in the fin
 \end{quote}
 If you are unsure about this, write down the truth tables and compare.
 
-\goodbreak
+\bigbreak
 
 
-Our final results in basic logic are attributable to Augustus de Morgan, a famous 19\th{} century logician.
+Our final results in basic logic also involve negations; they are named for Augustus de Morgan, a famous 19\th{} century logician.
 
 \begin{thm}{de Morgan's laws}{demorgan}
 	Let $P$ and $Q$ be propositions.
@@ -310,8 +344,11 @@ Our final results in basic logic are attributable to Augustus de Morgan, a famou
 		\end{tabular}
 	\end{minipage}\bigbreak
 	
-	This feels awkward in English because the negation encompasses \textcolor{blue}{three distinct possibilities}. Note how the logical (inclusive) use of \emph{or} includes the last row of the truth table: the possibility that you neither rode the subway nor had coffee. This example is indeed an advert for the use of logic: English simply isn't very good for precisely stating complex logical statements. 
+	This feels awkward in English because the negation encompasses \textcolor{blue}{three distinct possibilities}. Note how the logical (inclusive) use of \emph{or} includes the last row of the truth table: the possibility that you neither rode the subway nor had coffee.
 \end{example}
+
+This example, as with Example \ref{ex:logiccolor}, is another advert for the use of logic: English simply isn't very helpful for precisely stating complex logical statements.
+
 
 \begin{aside}{}{}
 \boldinline{Aside: Algebraic Logic}
@@ -326,20 +363,21 @@ Similarly to de Morgan's laws, we can use truth tables to establish the remainin
 	\text{Distributivity}&(P\wedge Q)\vee R\iff (P\vee R)\wedge (Q\vee R) & (P\vee Q)\wedge R\iff (P\wedge R)\vee (Q\wedge R)
 	\end{array}
 \]
-To make things more algebraic, we've replaced ``is logically equivalent to" with biconditionals.\footnotemark{}\smallbreak
+To make things more algebraic, we've replaced ``is logically equivalent to" with a biconditional.\footnotemark{}\smallbreak
 
 Armed with these laws, one can often suitably manipulate logical expressions without laboriously creating truth tables. Such activities are not the focus of this course, though you might find them fun!\smallbreak
 
 For the purposes of this course, memorizing these laws is probably more effort than it is worth. You will most likely use them correctly in whatever contexts required just from your intuitive understanding of the words \emph{and, or} and \emph{not.}
 \end{aside}
 
-\footnotetext{Stating the laws in this fashion is to assert that each expression is a tautology. For instance, to claim that ``$\neg(\neg P)$ is logically equivalent to $P$'' is to assert that $\neg(\neg P)\iff P$ is a tautology.}
+\footnotetext{Stating the laws in this fashion is to assert that each expression is a tautology (Definition \ref{defn:tautology}). For instance, to claim that ``$\neg(\neg P)$ is logically equivalent to $P$'' is to assert that $\neg(\neg P)\iff P$ is a tautology.}
 
 \goodbreak
 
 \begin{exercises}{}{}
 A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/quizzes/2-1-props.html}{online}.
 
+\bigskip
 
 \begin{enumerate}%\renewcommand{\labelenumi}{\thesubsection.\theenumi}  
   \item Express each of the following statements in the ``If $\dots$, then $\dots$'' form. There are many possible correct answers.
