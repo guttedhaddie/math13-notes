@@ -4,7 +4,7 @@
 \subsection{Propositions}\label{sec:prop}
 
 
-In order to read and construct proofs, we need to start with the language in which they are written: \emph{logic.} This is to mathematics what grammar is to English. %The initial parts of this chapter may not appear particularly mathematical, but this will soon change!
+In order to read and construct proofs, we need to start with the language in which they are written: \emph{logic.} This is to mathematics what grammar is to English.
 
 
 \begin{defn}{}{}
@@ -268,10 +268,9 @@ Mathematics often requires us to negate propositions. What would you suspect to 
 Can we write this last column in another way? Since we only see a $T$ in the final column when both $P$ is true \emph{and} $Q$ is false, we see that we've proved the following.
 
 \begin{thm}{}{negconditional}
-	$\neg(P\implies Q)$ is logically equivalent to $P\wedge\neg Q$ \ (``$P$ and not $Q$").
+	$\neg(P\Longrightarrow Q)$ is logically equivalent to $P\wedge\neg Q$ \ (``$P$ and not $Q$").
 \end{thm}
 
-%\goodbreak
 
 \begin{example}{}{}
 	Consider the implication
@@ -285,14 +284,14 @@ Can we write this last column in another way? Since we only see a $T$ in the fin
 	The implication (\emph{therefore I'll}) has been replaced by the expression \emph{and I won't} (i.e.\ \emph{and not}).
 \end{example}
 
-
-
+\begin{tcolorbox}
 {\bf \textcolor{red}{Warning!}} The negation of $P\Longrightarrow Q$ is \emph{not a conditional.} In particular it is \emph{neither} of the following:
 \begin{quote}
-  The converse $Q\implies P$.\smallbreak
-  The contrapositive of the converse $\neg P\implies\neg Q$. 
+  The converse $Q\Longrightarrow P$.\smallbreak
+  The contrapositive of the converse $\neg P\Longrightarrow\neg Q$. 
 \end{quote}
 If you are unsure about this, write down the truth tables and compare.
+\end{tcolorbox}
 
 \bigbreak
 
@@ -351,9 +350,10 @@ This example, as with Example \ref{ex:logiccolor}, is another advert for the use
 
 
 \begin{aside}{}{}
-\boldinline{Aside: Algebraic Logic}
+\boldinline{Aside: Algebraic Logic}\phantomsection\label{pg:asidelogicalgebra}
 
-Similarly to de Morgan's laws, we can use truth tables to establish the remaining laws of basic logic.
+%Similarly to de Morgan's laws, 
+We can use truth tables to establish other laws of basic logic, for instance:
 \[
 	\def\arraystretch{1.2}
 	\begin{array}{@{}lll@{}}
@@ -365,9 +365,9 @@ Similarly to de Morgan's laws, we can use truth tables to establish the remainin
 \]
 To make things more algebraic, we've replaced ``is logically equivalent to" with a biconditional.\footnotemark{}\smallbreak
 
-Armed with these laws, one can often suitably manipulate logical expressions without laboriously creating truth tables. Such activities are not the focus of this course, though you might find them fun!\smallbreak
+Armed with such laws, one can often suitably manipulate logical expressions without laboriously creating truth tables. This is not the focus of this course, though you might find it fun!\smallbreak
 
-For the purposes of this course, memorizing these laws is probably more effort than it is worth. You will most likely use them correctly in whatever contexts required just from your intuitive understanding of the words \emph{and, or} and \emph{not.}
+For this course, it is probably not worth memorizing these laws. Your intuitive understanding of \emph{and, or} and \emph{not} mean you'll likely apply the laws correctly whenever necessary.
 \end{aside}
 
 \footnotetext{Stating the laws in this fashion is to assert that each expression is a tautology (Definition \ref{defn:tautology}). For instance, to claim that ``$\neg(\neg P)$ is logically equivalent to $P$'' is to assert that $\neg(\neg P)\iff P$ is a tautology.}
@@ -375,130 +375,125 @@ For the purposes of this course, memorizing these laws is probably more effort t
 \goodbreak
 
 \begin{exercises}{}{}
-A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/quizzes/2-1-props.html}{online}.
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/2-1-props.html}{online}.
 
-\bigskip
 
-\begin{enumerate}%\renewcommand{\labelenumi}{\thesubsection.\theenumi}  
-  \item Express each of the following statements in the ``If $\dots$, then $\dots$'' form. There are many possible correct answers.
-		\begin{enumerate}
-	  	\item You must eat your dinner if you want to grow.
-	  	\item Being a multiple of 12 is a sufficient condition for a number to be even.
-	  	\item It is necessary for you to pass your exams in order for you to obtain a degree. 
-	  	\item A triangle is equilateral only if all its sides have the same length.
-		\end{enumerate}
-	
-  \item Suppose that ``Girls smell of roses'' and ``Boys have dirty hands'' are true statements and that ``The Teacher is always right'' is a false statment. Which of the following are true?\\
-  \emph{Hint: Label each of the given statements, and think about each of the following using connectives.}
-		\begin{enumerate}
-	  	\item If girls smell of roses, then the Teacher is always right.
-	  	\item If the Teacher is always right, then boys have dirty hands.
-	  	\item If the Teacher is always right or girls smell of roses, then boys have dirty hands.
-	  	\item If boys have dirty hands and girls smell of roses, then the Teacher is always right.
-		\end{enumerate}
-	
-  \item Write the negation (in words) of the following claim:
-		\begin{enumerate}\setlength{\itemsep}{0pt}
-		  \item[] If Jack and Jill climb up the hill, then they fall down and like pails of water. 
-		\end{enumerate}
-
-  \item Orange County has two competing transport plans under consideration: widening the 405 freeway and constructing light rail down its median. A local politician is asked, ``Would you like to see the 405 widened or would you like to see light rail constructed?'' The politician wants to sound positive, but to avoid being tied to one project. What is their response?\\
-  (\emph{Hint: Think about how the word `OR' is used in logic\ldots})
-  
-  \item\begin{enumerate}
-    \item Rewrite the following sentence using the word `necessary.'
-  	\begin{center}
-  		If I am to get a new bicycle, I must do my homework.
-  	\end{center}
-  
-  	\item Rewrite the following sentence using the word `sufficient.'
-  	\begin{center}
-  		The United States must play more soccer if it is to win the World Cup.
-  	\end{center}
-  \end{enumerate}
-  
-  \item\begin{enumerate}
-    \item What are the converse and the contrapositive of the statements in the previous question? Write your answers in sentences, like the originals.
-  	\item What are the negations of the statements in the previous question?
-  \end{enumerate} 
-  
-  \item Construct the truth tables for the propositions $P\vee(Q\wedge R)$ and $(P\vee Q)\wedge R$. Are they the same?
-  
-  \item\label{ex:demorganimplies} Apply de Morgan's laws to the result of Theorem \ref{thm:negconditional}  to prove that $P\implies Q$ is logically equivalent to $\neg P\vee Q$.
-
-  \item Prove that the expressions $(P\implies Q)\wedge (Q\implies P)$ and $\ P\iff Q\ $ are logically equivalent (have the same truth table). Why does this make sense?
-  
-  \item\begin{enumerate}
-    \item Prove that $((P\vee Q)\wedge \neg P)\wedge\neg Q$ is a contradiction.
-  	\item Prove that $(\neg P\wedge Q)\vee(P\wedge\neg Q)\iff\neg(P\iff Q)$ is a tautology.
-  \end{enumerate}
-  
-  \item Prove or disprove: $(P\wedge \neg Q\implies F)\iff (P\implies Q)$ is a tautology. Here $F$ represents a \emph{contradiction:} some proposition which is always false.
-	
-
-  \item Suppose that ``Ford is tired and Zaphod has two heads'' is a false statement. What can we conclude if we discover each of the following? \emph{Treat the two scenarios separately.}
-		\begin{enumerate}
-	  	\item Ford is tired.
-	  	\item Ford is tired if and only if Zaphod has two heads.
-		\end{enumerate}
+	\begin{enumerate}
+	  \item Express each statement in the form, ``If $\dots$, then $\dots$'' There are many possible correct answers.
+			\begin{enumerate}
+		  	\item You must eat your dinner if you want to grow.
+		  	\item Being a multiple of 12 is a sufficient condition for a number to be even.
+		  	\item It is necessary for you to pass your exams in order for you to obtain a degree. 
+		  	\item A triangle is equilateral only if all its sides have the same length.
+			\end{enumerate}
 		
-	\item Suppose that the following statements are true:
-  \begin{itemize}
-    \item Every Pig likes mud.
-    \item If a creature cannot fly then it is not an astronaut.
-    \item A creature is an astronaut if it likes mud.
-  \end{itemize}
-  Is it true that `Pigs can fly'? Explain your answer.\\
-  (\emph{Hint: try rewriting each of the statements in the form `$x$ is/likes $\underline{\text{\phantom{bobobob}}}$ $\implies$ $x$ is/likes $\underline{\text{\phantom{bobobob}}}$.'})
-  
-	\item\begin{enumerate}
-	  \item Use a truth table to prove the distributive law
-		\[(P\wedge Q)\vee R\iff (P\vee R)\wedge(Q\vee R)\]
-		\item Use logical algebra (see the aside on page \hyperlink{aside:logicalalglnk}{\pageref*{aside:logicalalg}}) to prove that
-		\[\left((P\implies R)\wedge(Q\implies R)\right)\iff \left((P\vee Q)\implies R\right)\]
-		(\emph{Hint: start by using the result of question \ref{ex:demorganimplies}})
-	\end{enumerate}
 	
+	  \item Suppose ``$x$ is an even integer'' and ``$y$ is an irrational number'' are true statements, and that ``$z\geq 3$'' is a false statement. Which of the following are true?\par
+	  (\emph{Hint: Label each statement and think about each using connectives})
+			\begin{enumerate}
+		  	\item If $x$ is an even integer, then $z\geq 3$.
+		  	\item If $z\geq 3$, then $y$ is an irrational number.
+		  	\item If $z\geq 3$ or $x$ is an even integer, then $y$ is an irrational number.
+		  	\item If $y$ is an irrational number and $x$ is an even integer, then $z\geq 3$.
+			\end{enumerate}
+
+
+	  \item Orange County is considering two competing transport plans: widening the 405 freeway and constructing light rail down its median. A local politician is asked, ``Would you like to see the 405 widened or would you like to see light rail?'' The politician wants to sound positive, but to avoid being tied to one project. What is their response?\par
+	  (\emph{Hint: Think about how the word `OR' is used in logic})
+  
+  
+	  \item Consider the proposition: ``If the integer $m$ is greater than 3, then $2m$ is not prime.''
+	  \begin{enumerate}
+	    \item Rewrite the proposition using the word `necessary.'
+	 		\item Rewrite the proposition using the word  `sufficient.'
+	 		\item Write the negation, converse and contrapositive of the proposition. 
+	  \end{enumerate}
+	  
+
+  \item Suppose the following sentence is true: ``If Amy likes art, then no-one likes history." What, if anything, can we conclude if we discover that someone likes history.
+  
+  
+  \goodbreak
+	  
+	  
+	  \item Construct the truth tables for the propositions $P\vee(Q\wedge R)$ and $(P\vee Q)\wedge R$. Are they the same?
+   
+   
+  \goodbreak
+  
+	\item Use truth tables to establish the following laws of logic:
+	\begin{enumerate}
+	  \item Double negation: \lstsp $\neg(\neg P)\iff P$.
+	  \item Idempotent law: \lstsp $P\wedge P\iff P$.
+	  \item Absorption law: \lstsp $P\wedge(P\vee Q)\iff P$.
+	  \item Distributive law: \lstsp $(P\wedge Q)\vee R\iff (P\vee R)\wedge(Q\vee R)$.
+	\end{enumerate}
+  
+  
   \item\begin{enumerate}
-    	\item Do there exists propositions $P,Q$ such that both $P\implies Q$ and its converse are true?
-    	\item Do there exist propositions $P,Q$ such that both $P\implies Q$ and its converse are false?
-    \end{enumerate}
-    Justify your answers by giving an example or a proof that no such examples exist.
+    \item Decide whether $(P\wedge \neg P) \Longrightarrow Q$ is a tautology, a contradiction, or neither.
+    \item Explain why $\neg P \vee \neg Q$ is logically equivalent to $P \Longrightarrow (P \wedge\neg Q)$.
+    \item Prove: $\bigl((P\wedge \neg Q)\Longrightarrow F\bigr)\Longleftrightarrow  (P\Longrightarrow Q)$ is a tautology. Here $F$ represents a \emph{contradiction.}
+  \end{enumerate}
+  
+  
+  \item\begin{enumerate}
+    \item Prove that the expressions $(P\Longrightarrow Q)\wedge (Q\Longrightarrow P)$ and $P\Longleftrightarrow Q$ are logically equivalent.
+    \item Prove that $\bigl((P\Longrightarrow Q)\wedge (Q\Longrightarrow R)\bigr)\Longrightarrow \bigl(P\Longrightarrow R\bigr)$ is a tautology.
+  \end{enumerate}
+  Why do these make intuitive sense?
+
+  
+  \item Use logical algebra (e.g., page \pageref{pg:asidelogicalgebra}) to show that $\bigl((P\vee Q)\wedge \neg P\bigr)\wedge\neg Q$ is a contradiction.
+
+	
+  \item Do there exist propositions $P,Q$ for which both $P\Longrightarrow Q$ and its converse are \emph{false}? Explain.
+  
     
-  \item Let $R$ be the proposition ``The summit of Mount Everest is underwater''. Suppose that $S$ is a proposition such that $(R\vee S)\iff (R\wedge S)$ is false.
-    \begin{enumerate}
-      \item What can you say about $S$?
-      \item What if, instead, $(R\vee S)\iff (R\wedge S)$ is true?
-    \end{enumerate}
-    \emph{Hopefully it is obvious to you that $R$ is false\ldots}
-    
-	\item (Hard) Suppose that $P,Q$ are propositions. Argue that \emph{any} of the 16 possible truth tables
-	\[\begin{array}{cc|c}
-	P&Q&?\\\hline
-	T&T & T/F\\
-	T&F & T/F\\
-	F&T & T/F\\
-	F&F & T/F
-	\end{array}\]
-	represents an expression ? created using only $P$ and $Q$ and the operations $\wedge,\vee,\neg$. Can you extend your argument to show that any truth table with any number of inputs represents some logical expression?
+	\item Your friend insists that the negation of the sentence ``Mark and Mary have the same height'' is ``Mark or Mary do not have the same height.'' What is the correct negation? Where did your friend go wrong?
+
+		
+	\item Suppose that the following statements are \emph{true}:
+  \begin{enumerate}
+    \item Every octagon is magical. 
+    \item If a polygon is not a rectangle, then is it not a square. 
+    \item A polygon is a square, if it is magical.
+  \end{enumerate}
+  Is it true that ``Octagons are rectangles"? Explain your answer.\par
+  (\emph{Hint: try rewriting each of the statements as an implication})
+  
+
+	\item The connective $\downarrow$ (the \emph{Quine dagger}, \emph{NOR}) is defined by the truth table:\par
+	\begin{enumerate}
+	\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
+      \item Prove that $P\downarrow Q$ is logically equivalent to $\neg (P\vee Q)$. 
+      \item Find a logical expression built using only $P$ and the connective $\downarrow$ which is logically equivalent to $\neg P$.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.24\linewidth}\vspace{-25pt}
+	\flushright$  \begin{array}{cc|c}
+		P & Q & P \downarrow Q\\\hline
+		T & T & F\\
+		T & F & F\\
+		F & T & F\\
+		F & F & T
+	\end{array}$
+	\end{minipage}
+	
+		\item Find an expression built using only $P$, $Q$ and $\downarrow$ which is logically equivalent to $P\wedge Q$.
+  \end{enumerate}
+  
 \end{enumerate}
 
 \end{exercises}
 
+\clearpage
 
-Exercise: De Morgan's laws only switch \emph{and} $\leftrightsquigarrow$ \emph{or} when these denote the conjunction/disjunction of two propositions. The negation of
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] Mark and Mary have the same height.
-\end{itemize}
-is the proposition:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] Mark and Mary do not have the same height.
-\end{itemize}
-If you blindly appeal to De Morgan's laws you might end up with the following piece of nonsense:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] Mark \emph{or} Mary do not have the same height.
-\end{itemize}
-Logical rules are wonderfully concise, but very easy to misuse. Always think about the meaning of a sentence and you shouldn't go wrong.
+
+
+\subsection{Propositional Functions \& Quantifiers}\label{sec:quant}
+
+
 
 
 \begin{example}{}{}
@@ -584,9 +579,6 @@ The importance of parentheses in a logical expressions cannot be stressed enough
 
 
 
-
-
-\subsection{Propositional Functions \& Quantifiers}\label{sec:quant}
 
 
 \subsection{Methods of Proof}\label{sec:proof}
