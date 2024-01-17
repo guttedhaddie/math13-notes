@@ -765,7 +765,7 @@ A propositional function can have several variables, each of which may be quanti
 	\end{enumerate}
 \end{examples}
 
-\footnotetext{Here is an abstract justification for this heuristic. Consider a propositional function $P(x)$: ``$\forall y,Q(x,y)$,'' then
+\footnotetext{Here is an abstract justification for this heuristic. Consider a propositional function $P(x)$: ``$\exists y,Q(x,y)$,'' then
 \begin{align*}
 	\neg\bigl(\forall x, \exists y,Q(x,y)\bigr) &\iff  \neg\bigl(\forall x,P(x)\bigr) \iff \exists x,\neg P(x)  \iff \exists x,\neg\bigl(\exists y,Q(x,y)\bigr)\\
 	&\iff \exists x, \forall y,\neg Q(x,y)
@@ -1183,7 +1183,11 @@ Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
   (\emph{$n!=n(n-1)(n-2)\cdots 1$ is the \emph{factorial} of the integer $n$})
   
   
-		\item\label{exs:zerofactor} Prove that $ab=0\iff a=0$ or $b=0$.
+		\item\begin{enumerate}
+		  \item Let $x\in\Z$. Prove that $5x+3$ is even if and only if $7x-2$ is odd.
+		  \item Can you conclude anything about $7x-2$ if $5x+3$ is odd?
+		\end{enumerate}
+		
   
   	\item Consider the following proposition, where $x$ is assumed to be a real number.
 		\[
@@ -1191,19 +1195,10 @@ Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
 		\]
 		\begin{enumerate}
 	  	\item Is the proposition true or false? Justify your answer. Is its converse true?
-	  	\item Repeat part (a) for the proposition
-			\[
-				x^3-3x^2-2x+6=0\implies x\neq 3
-			\]
+	  	\item Repeat part (a) for the proposition $x^3-3x^2-2x+6=0\implies x\neq 3$.
 	%   	\item Does anything change about the truth status of ($\ast$) if we assume that it is a statement about \emph{rational numbers $x$}? Explain.
 		\end{enumerate}
 		
-  
-		\item\begin{enumerate}
-		  \item Let $x\in\Z$. Prove that $5x+3$ is even if and only if $7x-2$ is odd.
-		  
-		  \item Can you conclude anything about $7x-2$ if $5x+3$ is odd?
-		\end{enumerate}
 	  
 	  
 		\item Below is the proof of a result. What result is being proved?
@@ -1225,39 +1220,50 @@ Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
 	  	Since $2ab+az+bz$ is an integer, $xy+xz+yz$ is even.
 	  \end{proof}
 	
- 
-		\item Prove or disprove: An integer $n$ is even if and only if $n^3$ is even. 
-
-   
-		\item Let $n$ and $m$ be positive integers. Prove $n^2 m$ is even if and only if $n$ and $m$ are not both odd.
-    
-    \item Let $x$ and $y$ be integers. Prove $x^2+y^2$ is even  \textbf{if and only if} $x$ and $y$ have the same parity.
-    
-    \item Let $n$ be an integer. Prove $n^2 + n + 58$ is even. 
-
-  
+	
     \item Consider the following proof of the fact that (for $m$ an integer) if $m^2$ is even, then $m$ is even. Can you re-write the proof so that it doesn't use contradiction?
-    
     \begin{proof}
     	Suppose that $m^2$ is even and $m$ is odd. Write $m=2k+1$ for some integer $k$. Then
 			\[
 				m^2=(2k+1)^2 =4k^2+4k+1 =2(2k^2+2k) + 1
 			\]
-      is odd: contradiction.
-    \end{proof}	
+      is odd. Contradiction.
+    \end{proof}	 
     
+    
+    \item Here is a `proof' that every real number $x$ equals zero. Find the mistake.
+		\begin{align*}
+			x=y\implies &x^2=xy \implies x^2-y^2=xy-y^2\\
+			\implies &(x-y)(x+y)=(x-y)y\\
+			\implies &x+y=y\\
+			\implies &x=0
+		\end{align*}
+		
+		
+		\item Prove or disprove: An integer $n$ is even if and only if $n^3$ is even. 
+    
+   
+		\item Let $n$ and $m$ be positive integers. Prove $n^2m$ is even if and only if $n$ and $m$ are not both odd.
+		
+		
+    \item Let $x$ and $y$ be integers. Prove $x^2+y^2$ is even  \textbf{if and only if} $x$ and $y$ have the same parity.
+    
+    
+    \item Let $n$ be an integer. Prove $n^2+n+58$ is even. 
+
+  
+		\item\label{exs:zerofactor} Suppose $a,b\in\R$. Prove that $ab=0\iff a=0$ or $b=0$.
+  
     
     \item Numbers of the form $\frac{k(k + 1)}{2}$, where $k$ is a positive integer, are called \emph{triangular numbers}. Prove that $n$ is the square of an odd number if and only if $\frac{n-1}{8}$ is triangular.
-    
-    \item Fake proof on divide by zero???
-     
+         
 	\end{enumerate}
 
 \end{exercises}
 
 \clearpage
 
-
+\iffalse
 
 \subsection{More Simple Proofs}\label{sec:proof2}
 
@@ -1719,3 +1725,4 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 
 
 
+\fi
