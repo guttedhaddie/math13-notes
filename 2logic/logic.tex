@@ -181,7 +181,7 @@ it is harder to make sense of the conditional connective. Short of simply memori
 
 %The easiest way to detect these is to construct a truth table.
 
-\begin{examples}{}{}
+\begin{examples}{}{taut}
 \exstart $P\wedge(\neg P)$ is a contradiction.
 	
 \begin{enumerate}\setcounter{enumi}{1}
@@ -197,7 +197,7 @@ it is harder to make sense of the conditional connective. Short of simply memori
 	\end{array}$
   \end{minipage}\par
   
-	\item $\bigl(P\wedge(P\implies Q)\bigr)\Longrightarrow Q$ is a tautology.% This is essentially how we understand a direct proof: if $P$ is true and we have a correct argument $P\implies Q$, then $Q$ must also be true.
+	\item\label{ex:taut2} $\bigl(P\wedge(P\implies Q)\bigr)\Longrightarrow Q$ is a tautology.% This is essentially how we understand a direct proof: if $P$ is true and we have a correct argument $P\implies Q$, then $Q$ must also be true.
 	\[\begin{array}{cc||c|c||c}
 	P & Q & P\implies Q & P\wedge(P\implies Q) & \bigl(P\wedge(P\implies Q)\bigr)\implies Q\\\hline
 	T & T & T & T& T\\
@@ -434,80 +434,92 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
 	  \end{enumerate}
 	  
 
-  \item Suppose the following sentence is true: ``If Amy likes art, then no-one likes history." What, if anything, can we conclude if we discover that someone likes history.
+  	\item Suppose the following sentence is true: ``If Amy likes art, then no-one likes history." What, if anything, can we conclude if we discover that someone likes history.
   
   
-  \goodbreak
+  	\goodbreak
 	  
 	  
 	  \item Construct the truth tables for the propositions $P\vee(Q\wedge R)$ and $(P\vee Q)\wedge R$. Are they the same?
    
    
-  \goodbreak
-  
-	\item Use truth tables to establish the following laws of logic:
-	\begin{enumerate}
-	  \item Double negation: \lstsp $\neg(\neg P)\iff P$.
-	  \item Idempotent law: \lstsp $P\wedge P\iff P$.
-	  \item Absorption law: \lstsp $P\wedge(P\vee Q)\iff P$.
-	  \item Distributive law: \lstsp $(P\wedge Q)\vee R\iff (P\vee R)\wedge(Q\vee R)$.
-	\end{enumerate}
+  	\goodbreak
   
   
-  \item\begin{enumerate}
-    \item Decide whether $(P\wedge \neg P) \Longrightarrow Q$ is a tautology, a contradiction, or neither.
-    \item Explain why $\neg P \vee \neg Q$ is logically equivalent to $P \Longrightarrow (P \wedge\neg Q)$.
-    \item Prove: $\bigl((P\wedge \neg Q)\Longrightarrow F\bigr)\Longleftrightarrow  (P\Longrightarrow Q)$ is a tautology. Here $F$ represents a \emph{contradiction.}
-  \end{enumerate}
+		\item Use truth tables to establish the following laws of logic:
+		\begin{enumerate}
+		  \item Double negation: \lstsp $\neg(\neg P)\iff P$.
+		  \item Idempotent law: \lstsp $P\wedge P\iff P$.
+		  \item Absorption law: \lstsp $P\wedge(P\vee Q)\iff P$.
+		  \item Distributive law: \lstsp $(P\wedge Q)\vee R\iff (P\vee R)\wedge(Q\vee R)$.
+		\end{enumerate}
   
   
-  \item\begin{enumerate}
-    \item Prove that the expressions $(P\Longrightarrow Q)\wedge (Q\Longrightarrow P)$ and $P\Longleftrightarrow Q$ are logically equivalent.
-    \item Prove that $\bigl((P\Longrightarrow Q)\wedge (Q\Longrightarrow R)\bigr)\Longrightarrow \bigl(P\Longrightarrow R\bigr)$ is a tautology.
-  \end{enumerate}
-  Why do these make intuitive sense?
+	  \item\begin{enumerate}
+	    \item Decide whether $(P\wedge \neg P) \Longrightarrow Q$ is a tautology, a contradiction, or neither.
+	    \item Explain why $\neg P \vee \neg Q$ is logically equivalent to $P \Longrightarrow (P \wedge\neg Q)$.
+	    \item\label{exs:contradictproof} Prove: $\bigl((P\wedge \neg Q)\Longrightarrow F\bigr)\Longleftrightarrow  (P\Longrightarrow Q)$ is a tautology. Here $F$ represents a \emph{contradiction.}
+	  \end{enumerate}
+	  
+	  
+	  \item\begin{enumerate}
+	    \item\label{exs:iff} Prove that the expressions $(P\Longrightarrow Q)\wedge (Q\Longrightarrow P)$ and $P\Longleftrightarrow Q$ are logically equivalent.
+	    \item Prove that $\bigl((P\Longrightarrow Q)\wedge (Q\Longrightarrow R)\bigr)\Longrightarrow \bigl(P\Longrightarrow R\bigr)$ is a tautology.
+	  \end{enumerate}
+	  Why do these make intuitive sense?
 
   
-  \item Use logical algebra (e.g., page \pageref{pg:asidelogicalgebra}) to show that $\bigl((P\vee Q)\wedge \neg P\bigr)\wedge\neg Q$ is a contradiction.
+  	\item Use logical algebra (e.g., page \pageref{pg:asidelogicalgebra}) to show that $\bigl((P\vee Q)\wedge \neg P\bigr)\wedge\neg Q$ is a contradiction.
 
 	
-  \item Do there exist propositions $P,Q$ for which both $P\Longrightarrow Q$ and its converse are \emph{false}? Explain.
+  	\item Do there exist propositions $P,Q$ for which both $P\Longrightarrow Q$ and its converse are \emph{false}? Explain.
   
     
-	\item Your friend insists that the negation of the sentence ``Mark and Mary have the same height'' is ``Mark or Mary do not have the same height.'' What is the correct negation? Where did your friend go wrong?
+		\item Your friend insists that the negation of the sentence ``Mark and Mary have the same height'' is ``Mark or Mary do not have the same height.'' What is the correct negation? Where did your friend go wrong?
 
 		
-	\item Suppose that the following statements are \emph{true}:
-  \begin{enumerate}
-    \item Every octagon is magical. 
-    \item If a polygon is not a rectangle, then is it not a square. 
-    \item A polygon is a square, if it is magical.
-  \end{enumerate}
-  Is it true that ``Octagons are rectangles"? Explain your answer.\par
-  (\emph{Hint: try rewriting each of the statements as an implication})
+		\item Suppose that the following statements are \emph{true}:
+	  \begin{enumerate}
+	    \item Every octagon is magical. 
+	    \item If a polygon is not a rectangle, then is it not a square. 
+	    \item A polygon is a square, if it is magical.
+	  \end{enumerate}
+	  Is it true that ``Octagons are rectangles"? Explain your answer.\par
+	  (\emph{Hint: try rewriting each of the statements as an implication})
   
 
-	\item The connective $\downarrow$ (the \emph{Quine dagger}, \emph{NOR}) is defined by the truth table:\par
-	\begin{enumerate}
-	\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
-      \item Prove that $P\downarrow Q$ is logically equivalent to $\neg (P\vee Q)$. 
-      \item Find a logical expression built using only $P$ and the connective $\downarrow$ which is logically equivalent to $\neg P$.
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.24\linewidth}\vspace{-25pt}
-	\flushright$  \begin{array}{cc|c}
-		P & Q & P \downarrow Q\\\hline
-		T & T & F\\
-		T & F & F\\
-		F & T & F\\
-		F & F & T
-	\end{array}$
-	\end{minipage}
-	
-		\item Find an expression built using only $P$, $Q$ and $\downarrow$ which is logically equivalent to $P\wedge Q$.
-  \end{enumerate}
+		\item The connective $\downarrow$ (the \emph{Quine dagger}, \emph{NOR}) is defined by the truth table:\par
+		\begin{enumerate}
+		\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
+	      \item Prove that $P\downarrow Q$ is logically equivalent to $\neg (P\vee Q)$. 
+	      \item Find a logical expression built using only $P$ and the connective $\downarrow$ which is logically equivalent to $\neg P$.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.24\linewidth}\vspace{-25pt}
+		\flushright$  \begin{array}{cc|c}
+			P & Q & P \downarrow Q\\\hline
+			T & T & F\\
+			T & F & F\\
+			F & T & F\\
+			F & F & T
+		\end{array}$
+		\end{minipage}
+		
+			\item Find an expression built using only $P$, $Q$ and $\downarrow$ which is logically equivalent to $P\wedge Q$.
+	  \end{enumerate}
   
-\end{enumerate}
+  
+	  \item (Just for fun)\lstsp Augustus de Morgan satisfied his own problem:
+		\begin{quote}
+			I turn(ed) $x$ years of age in the year $x^2$.
+		\end{quote}
+		\begin{enumerate}
+		  \item Given that de Morgan died in 1871, and that he wasn't the beneficiary of some miraculous anti-aging treatment, find the year in which he was born.
+		  \item Suppose you have an acquaintance who satisfies the same problem. When were they born and how old will they turn this year?
+		\end{enumerate}
+		Do your best to give a formal proof of your correctness.
+  
+	\end{enumerate}
 
 \end{exercises}
 
@@ -916,319 +928,343 @@ We finish with two examples you might have seen elsewhere. For this course, \emp
 
 \subsection{Methods of Proof}\label{sec:proof}
 
-\iffalse
+Everything thus far has been in service to what follows: to provide the language and logical fluency necessary to understand mathematical arguments and to begin to create your own. One can study foundational logic much more deeply, but that is not our purpose. The real work begins now.\medbreak
 
-EXTRAS!!!
+In mathematics, a Theorem is\footnote{It is sometimes awkward to fit a theorem into this format but it can always be done. Often all that is stated is the conclusion $Q$, in which case $P$ would be the assertion ``All mathematics we already know/assume to be true.''} a justified assertion of the truth of an implication $P\Longrightarrow Q$. A \emph{proof,} for there can be many different approaches, is any logical argument which justifies the theorem. The first step in analyzing or strategizing a proof is to identify the hypothesis $P$ and conclusion $Q$.\medbreak 
 
-\boldsubsubsection{The Order of Quantifiers Matters!}
+There are four standard methods of proof, though a longer argument might use several.
+\begin{description}
+	\item[Direct] Assume the hypothesis $P$ and deduce the conclusion $Q$.\footnote{From now on, to \emph{assume} a proposition is to suppose its \emph{truth.} To suppose $P$ is false, we ``assume/suppose $\neg P$.''} This structure should be intuitive, though it may help to revisit the truth table in Definition \ref{defn:implies} and the tautology of Example \ref*{ex:taut}.\ref{ex:taut2}.
+	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$: a direct proof of the contrapositive $\neg Q\Longrightarrow\neg P$. This approach works because the contrapositive is logically equivalent to $P\Longrightarrow Q$ (Theorem \ref{thm:contrapos}).
+	\item[Contradiction] Assume $P$ and $\neg Q$, and deduce a \emph{contradiction}. By Theorem \ref{thm:negconditional} and Exercise \ref*{sec:prop}.\ref{exs:contradictproof}, we see that $P\Longrightarrow Q$ is true.
+	\item[Induction] This has a completely different flavor: we will consider it in Chapter 5.
+\end{description}
 
-We conclude this section with an important observation: the order of quantifiers matters critically! Consider, for example, the following propositions: 
-\begin{enumerate}
-\item For every person $x$, there exists a person $y$ such that $y$ is a friend of $x$. 
-\item There exists a person $y$ such that, for every person $x$, $y$ is a friend of $x$. 
-\end{enumerate}
-Assuming that $x$ and $y$ always represent people, we can rewrite the sentences as follows:
-\begin{enumerate}
-\item $\forall x,\,\exists y$ such that $y$ is a friend of $x$.
-\item $\exists y$ such that, $\forall x$, we have that $y$ is a friend of $x$.
-\end{enumerate}
+Each method has its advantages and disadvantages: the direct method typically has a simpler logical flow whereas the contrapositive/contradiction approaches are useful when the negations $\neg P$, $\neg Q$ are easier to work with than $P$, $Q$ themselves. All methods are equally valid, and, as we'll see shortly, one can often prove a simple theorem using all three approaches!\smallbreak
 
+As you work through this section, pay special attention to the logical structure---to encourage this, the mathematical level of this section is very low---and refer to the previous sections if the logical terminology feels unfamiliar. In particular, re-read \emph{Planning and Writing Proofs} (page \pageref{sec:proofplan}).
 
- All we've done is to switch the order of the two quantifiers! How does this affect the meaning? Written entirely in English, the statements become:
-\begin{enumerate}
-\item Everyone has at least one friend.
-\item There is someone who is friends with everybody.
-\end{enumerate}
-Quite different! The critical observation is that if $\exists y$ comes after $x$, then $y$ is \emph{allowed to depend on $x$.} Each person might have a friend, but that friend is likely to be different depending on the person. If $\forall x$ comes after $y$, then $x$ cannot depend on $y$.\\
+\boldsubsubsection{Direct Proofs}
 
- Play around with the pairs of examples below. What are the meanings? Which ones are true? 
-\begin{itemize}\setlength{\itemsep}{0cm}
-\item $\forall\,\text{days}\,x,\,\exists\text{ a person }y$ such that $y$ was born on day $x$.
-\item $\exists\text{ a person }y$ such that, $\forall\text{ days }x$, $y$ was born on day $x$.\\
-\item $\forall\,\text{ circles }x,\,\exists\text{ a point }y$ such that $y$ is the center of $x$.
-\item $\exists\text{ a point }y$ such that, $\forall\text{ circles }x$, $y$ is the center of $x$.\\
-\item $\forall\,x\in\Z,\,\exists y\in\Z$ such that $y\le x$.
-\item $\exists y\in\Z$ such that, $\forall x\in\Z$, $y\le x$.
-\end{itemize}
-What happens in the last two examples if we replace the integers $\Z$ with the natural numbers $\N$?
+We begin by generalizing Example \ref*{ex:oddsquared}.\ref{ex:oddsquared2}.
 
-
-
-% 
-% The famous \emph{sum of four squares} theorem can be stated in several ways:\footnote{$\N$ represents the natural numbers (positive integers), and $\Z$ the integers.}
-% \begin{quote}\def\arraystretch{1.2}
-% 	\begin{tabular}{l|l}
-% 		English & Every positive integer may be written as the sum of four squared integers\\\hline
-% 		Pure Logic & $\forall n\in\N,\ \exists a,b,c,d\in\Z:n=a^2+b^2+c^2+d^2$\\\hline
-% 		Hybrid & $\forall n\in\N,\, \exists a,b,c,d\in\Z$ such that $n=a^2+b^2+c^2+d^2$
-% 	\end{tabular}
-% \end{quote}
-
-
-\begin{example}{}{}
-Let $x$ be an integer. What is the negation of the following sentence?
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] If $x$ is even, then $x^2$ is even.
-\end{itemize}
-Written in terms of propositions, we wish to negate $P\implies Q$, where $P$ and $Q$ are:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]{$P.$} $x$ is even.
-  \item[]{$Q.$} $x^2$ is even.
-\end{itemize}
-The negation of $P\implies Q$ is $P\wedge\neg Q$, namely:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] $x$ is even and $x^2$ is odd.
-\end{itemize}
-This is very different to $\neq Q\implies\neg P$ (if $x$ is odd then $x^2$ is odd).\\[5pt]
-Keep yourself straight by thinking about the meaning of these sentences. It should be obvious that `$x$ even $\implies x^2$ even' is true. It negation should therefore be \emph{false.} The fact that it is false should make reading the negation feel a little uncomfortable.
-\end{example}
-
-
-
-
-\begin{example}{}{}
-Let $P,Q$ and $R$ be the following propositions:
-\begin{itemize}
-\item[]$P$. Irvine is a city in California.
-\item[]$Q$. Irvine is a town in Ayrshire, Scotland.
-\item[]$R$. Irvine has seven letters.
-\end{itemize}
-Clearly $P$ is true while $R$ is false. If you happen to know someone from Scotland, you might know that $Q$ is true.\footnote{The second syllable is pronounced like the i in bin or win. Indeed the first Californian antecedent of the Irvine family which gave its name to UCI was an Ulster-Scotsman named James Irvine (1827--1886). Probably the family name was originally pronounced in the Scottish manner.} We can now compute the following (increasingly grotesque) combinations\ldots
-\[\def\arraystretch{1.3}
-\begin{array}{c|c|c|c|c|c|c}
-P\wedge Q&P\vee Q&P\wedge R&\neg R&(\neg R)\wedge P&\neg(R\vee P)&(\neg P)\vee [((\neg R)\vee P)\wedge Q] \\\hline
-T & T & F & T & T & F & T
-\end{array}\]
-\end{example}
-
- How did we establish these facts? Some  are quick,  and can be done in your head. Consider, for instance, the statement  $(\neg R)\wedge P$. Because $R$ is false, $\neg R$ is true. Thus $(\neg R)\wedge P$ is the conjunction of two true statements, hence it is true. Similarly, we can argue that $R\vee P$ is true (because $R$ is false and $P$ is true), so the negation $\neg(R\vee P)$ is false.
-
-  Establishing the truth value of the final proposition $(\neg P)\vee [((\neg R)\vee P) \wedge Q]$ requires more work. You may want to set up a truth table with several auxiliary columns to help you compute: 
-\[\def\arraystretch{1.3}
-\begin{array}{c|c|c|c|c|c|c|c}
-P & Q & R & \neg P & \neg R & (\neg R) \vee P & ((\neg R)\vee P) \wedge Q &  (\neg P) \vee [ ((\neg R)\vee P) \wedge Q] \\\hline
- T & T & F & F            & T         & T                        & T                                               & T
- \end{array}\]
-The importance of parentheses in a logical expressions cannot be stressed enough. For example, try building the truth table for the propositions $P\vee(Q\wedge R)$ and $(P\vee Q)\wedge R$. Are they the same?\pagebreak[4]
-
-
-
-
-
-
-
-\boldsubsubsection{Theorems and Direct Proofs}
-
-Truth tables and connectives are very abstract. To apply them to mathematics we need the following basic notions of theorem and proof.
-
-\begin{defn}{}{}
-A \emph{theorem} is a justified assertion that some statement of the form $P\implies Q$ is true.\\
-A \emph{proof} is an argument that justifies the truth of a theorem.
-\end{defn}
-
- Think back to the truth table for $P\implies Q$ in Definition \ref{defn:implies}. Suppose that the hypothesis $P$ is true and that $P\implies Q$ is true: that is, $P\implies Q$ is a \emph{theorem.} We must be in the \emph{first row} of the truth table, and so the conclusion $Q$ is also true. This is how we think about proving basic theorems. In a \emph{direct proof} we start by assuming the hypothesis ($P$) is true and make a logical argument ($P\implies Q$) which asserts that the conclusion ($Q$) is true. As such, it often convenient to rewrite the statement of a theorem as an implication of the form $P\implies Q$. Here is a very simple theorem which we prove directly. 
-
-\begin{thm}{}{}
-The product of two odd integers is odd.
+\begin{thm}{}{oddodd}
+	The product of any pair of odd integers is odd.
 \end{thm}
 
- The first thing to do is to write the theorem in terms of propositions and connectives: that is, in the form $P\implies Q$.
+To make sense of this, we first need to identify the logical structure by writing the theorem in terms of propositions and connectives. One way is to view the Theorem in the form $P(x,y)\Longrightarrow Q(x,y)$:
 \begin{itemize}
-  \item $P$ is `$x$ and $y$ are odd integers.' This is our assumption, the hypothesis.
-  \item $Q$ is `The product of $x$ and $y$ is odd.' This is what we want to show, the conclusion.
-  \item Showing that $P\implies Q$ is true, that (the truth of) $P$ implies (the truth of) $Q$ requires an argument. This is the \emph{proof.}
+  \item $P(x,y)$ is ``$x$ and $y$ are both odd.'' This is our assumption, the hypothesis.
+  \item $Q(x,y)$ is ``The product of $x$ and $y$ is odd.'' This is what we wish to demonstrate, the conclusion.
+  \item Both propositional functions are statements about \emph{integers.} The Theorem is \emph{universal} (``any pair"), and so contains a (hidden) quantifier $\forall x,y\in\Z$.
 \end{itemize}
+To perform a proof, we also need a clear understanding of the meaning of all necessary terms. To keep things simple, we'll take \emph{integer} and \emph{product} as understood and be explicit as to the meaning of \emph{oddness.}\goodbreak
+
+
+A direct proof can be viewed as a \textcolor{blue}{proof sandwich,} whose bread slices are the \textcolor{blue}{hypothesis and conclusion} ($P$ and $Q$): write these down as a first step. Next \textcolor{Green}{define} any useful terms in the hypothesis. All that remains is to perform a simple calculation!
+
 
 \begin{proof}
-Let $x$ and $y$ be \emph{any} two odd integers. We want to show that product $x\cdot y$ is an odd integer. \\
-By definition, an integer is odd if it can be written in the form $2k+1$ for \emph{some} integer $k$. Thus there must be integers $n$, $m$ such that $x=2n+1$ and $y=2m+1$. We compute:
-\[x\cdot y=(2n+1)(2m+1)=4mn+2n+2m+1=2(2mn+n+m)+1.\]
-Because $2mn+n+m$ is an integer, this shows that $x\cdot y$ is an odd integer.
+	\newlength\pflen\settowidth\pflen{(computation/algebra)}
+	\def\cmt#1{\hfill\makebox[\pflen][l]{#1}}
+	\textcolor{blue}{Let $x$ and $y$ be odd integers.} \cmt{(state \textcolor{blue}{hypothesis} $P$)}\par
+	There are integers $k$, $l$ for which $x=2k+1$ and $y=2l+1$. Then, \cmt{(\textcolor{Green}{definition} of \emph{odd})}
+	\begin{align*}
+		xy&=(2k+1)(2l+1) =4kl+2k+2l+1 \tag*{\cmt{(computation/algebra)}}\\
+		&=2(2kl+k+l)+1
+	\end{align*}
+	Since $2kl+k+l$ is an integer, we conclude that \textcolor{blue}{$xy$ is odd.} \qedhere \cmt{(state \textcolor{blue}{conclusion} $Q$)}
 \end{proof}
 
- It is common to place a symbol (in this case \smash{\raisebox{7pt}{$\qedsymbol$}}) at the end of a proof to tell the reader that your argument is complete. Traditionally the letters Q.E.D. (from the Latin \emph{quod erat demonstrandum,} literally `which is what had to be demonstrated') were used, but this has gone out of style.You may also feel that you want to write more, or less than the above. This is a difficult thing to judge. What do you feel is a convincing argument? Test your argument on your classmates. The appropriate level of detail will depend on your readership: a middle school student will need more detail than a graduate student! At the moment, the best guide is to write for someone with the same mathematical sophistication as yourself. If, in three weeks' time, you can return to what you've written and understand it, then it's probably good!
+To make the conclusion absolutely clear, we explicitly wrote $xy$ in the form 2(integer)$+1$.
+
+
+\boldinline{Insufficient Generality}
+
+Before leaving this example, it is worth quickly highlighting the most common mistakes seen in such arguments.
+
+\begin{proof}[Fake Proof 1]
+	$x=3$ and $y=5$ are both odd, hence $xy=15$ is odd.\phantom{\qedhere}
+\end{proof}
+
+This is an \emph{example} of the theorem. Since the theorem is \emph{universal,} a single example is not a proof.
+
+\begin{proof}[Fake Proof 2]
+	Let $x=2k+1$ and $y=2k+1$ be odd. Then
+	\[xy=(2k+1)(2k+1)=2(2k^2+2k)+1\quad \text{is odd.}\tag*{\phantom\qedhere}\]
+\end{proof}
+
+This is still insufficiently general in that it only verifies a special case ($x$ odd $\Longrightarrow x^2$ odd). There is nothing wrong with trying out examples or sketching incomplete thoughts---indeed both are encouraged!---but you need to be aware of when your argument isn't sufficiently general.\bigbreak
+
+For another simple direct proof, consider the sum of two consecutive integers.
+
+\begin{thm}{}{}
+	The sum of any pair consecutive integers is odd.
+\end{thm}
+
+	The theorem is again a universal claim of the form $P(x,y)\Longrightarrow Q(x,y)$ about two integers:
+	\begin{itemize}
+		\item $P(x,y)$ is ``$x,y$ are consecutive integers.''
+		\item $Q(x,y)$ is ``$x+y$ is odd.''
+	\end{itemize}
+
+	The trick is to observe that, being consecutive, we may write $y$ in terms of $x$. The \textcolor{blue}{proof sandwich} is still visible, though it would be hard to write down the last sentence without already having settled on the trick, which is essentially the \textcolor{Green}{definition} of ``consecutive integers.''
+	
+\begin{proof}
+	\textcolor{blue}{Suppose we are given two consecutive integers.} Label the smaller of these $\textcolor{Green}{x}$, then the other $\textcolor{Green}{x+1}$. But then their sum
+	\[x+(x+1)=2x+1\]
+	\textcolor{blue}{is odd.}
+\end{proof}
 
 
 
+\goodbreak
 
 
 \boldsubsubsection{Proof by Contrapositive}
 
-The fact that $P\implies Q$ and $\neq Q\implies\neg P$ are logically equivalent allows us, when convenient, to prove $P\implies Q$ by instead proving its contrapositive. As an example, consider another basic theorem.
+Here is another simple result about odd and even integers.
 
-\begin{thm}{}{}
-Let $x$ and $y$ be integers. If $x+y$ is odd, then exactly one of $x$ or $y$ is odd.
+\begin{thm}{}{oddsum}
+	If the sum of two integers is odd, then they have opposite parity.
 \end{thm}
 
- The theorem is an implication of the form $P\implies Q$ where
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]$P$. The sum $x+y$ of integers $x$ and $y$ is odd.
-  \item[]$Q$. Exactly one of $x$ or $y$ is odd.
-\end{itemize}
+The theorem is yet another universal statement ($\forall x,y\in\Z$) of the form $P(x,y)\Longrightarrow Q(x,y)$:
+\begin{quote}
+	\makebox[220pt][l]{$P(x,y)$: ``$x+y$ is odd.''\hfill }$Q(x,y)$: ``$x,y$ have opposite parity.''
+\end{quote}
+\emph{Parity} means \emph{evenness or oddness}: the conclusion is that one of $x,y$ is even and the other odd.\smallbreak
 
- A direct proof would require that we assume $P$ to be true and logically deduce the truth of $Q$. For instance we might start our argument with:
-\[\text{Suppose that $x+y=2n+1$ for some integer $n$}\]
-The problem is that this doesn't really tell us anything about $x$ and $y$, which we need to think about in order to demonstrate the truth of $Q$. Instead we consider the negations of our propositions:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]$\neg Q$.\quad $x$ and $y$ are both even or both odd \ (they have the same parity).
-  \item[]$\neg P$.\quad The sum $x+y$ of integers $x$ and $y$ is even.
-\end{itemize}
-Since $P\implies Q$ is logically equivalent to the seemingly simpler contrapositive $\neg Q\implies\neg P$, we choose to prove the latter. This is, by Theorem \ref{thm:contrapos}, equivalent to proving the original implication.
+Attempting a direct proof results in an immediate difficulty:
 
-\begin{proof}
-Assume that $x$ and $y$ have the same parity. There are two cases: $x$ and $y$ are both even, or both odd.
-\begin{description}\setlength{\itemsep}{0pt}
-  \item[Case 1:] Let $x=2m$ and $y=2n$ be even. Then $x+y=2(m+n)$ is even.
-  \item[Case 2:] Let $x=2m+1$ and $y=2n+1$ be odd. Then $x+y=2(m+n+1)$ is even.
-\end{description}
-In both cases $x+y$ is even, and the result is proved.
+\begin{proof}[Direct Proof?]
+	Suppose $x+y$ is odd. Then $x+y=2k+1$ for some integer $k$\ldots\phantom{\qedhere}
 \end{proof}
 
- 
+We want to conclude something about $x$ and $y$ \emph{individually,} but the direct approach lumps them together in the same algebraic expression.\smallbreak
 
+A contrapositive argument suggests itself because the new hypothesis $\neg Q$, in treating $x$ and $y$ separately, gives us twice as much to start with.\footnote{\textcolor{red}{Warning!} The contrapositive is still a \emph{universal} statement:  $\forall x,y\in\Z, \neg Q(x,y)\Longrightarrow \neg P(x,y)$. We are not negating the whole theorem so \textcolor{red}{do not convert $\forall$ to $\exists$!}}
+\begin{quote}
+	\makebox[220pt][l]{$\neg Q(x,y)$: ``$x,y$ have the same parity.''\hfill }$\neg P(x,y)$: ``$x+y$ is even.''
+\end{quote}
+
+The minor remaining difficulty is that ``same parity'' encompasses \emph{two} possibilities: $x,y$ are either both even, or both odd. The proof therefore contains two cases.
+
+\begin{proof}
+	\settowidth\pflen{(state hypothesis $\neg Q$)}
+	\def\cmt#1{\hfill\makebox[\pflen][l]{#1}}
+	\textcolor{blue}{Suppose $x$ and $y$ have the same parity.} There are two cases.\cmt{(state \textcolor{blue}{hypothesis} $\neg Q$)}
+	\begin{description}\setlength{\itemsep}{0pt}
+	  \item[\normalfont Case 1:] Assume $x$ and $y$ are both even.\newline
+	  Write $x=2k$ and $y=2l$, for some integers $k,l$. \cmt{(\textcolor{Green}{definition} of \emph{even})}\newline
+	  Then $x+y=2(k+l)$ is even. \cmt{(computation)}
+	  \item[\normalfont Case 2:] Assume $x$ and $y$ are both odd.\newline
+	  Write $x=2k+1$ and $y=2l+1$ for some integers $k,l$. \cmt{(\textcolor{Green}{definition} of \emph{odd})}\newline
+	  Then $x+y=2(k+l+1)$ is even. \cmt{(computation)}
+	\end{description}
+	In both cases \textcolor{blue}{$x+y$ is even.} \hspace*{150pt}\qedhere \cmt{(state \textcolor{blue}{conclusion} $\neg P$)}
+\end{proof}
+
+Again observe the \textcolor{blue}{proof sandwich} and how the proof depending on little more than the \textcolor{Green}{definitions} of even and odd.\smallbreak
+
+When presenting a lengthier argument, consider orienting the reader by starting with the phrase, ``We prove the contrapositive." In simple cases like the above this is unnecessary, since the logical structure should be completely clear without such assistance. It is also unnecessary to define and spell out the propositions $P$ and $Q$ or include any of the bracketed commentary. However, you should feel free to continue this practice if you think it would aid your explanation, of if you are nervous about your proof skills.\footnote{\ldots and want to guarantee some partial credit!}
+
+\goodbreak
+
+
+For another example of a contrapositive argument, we extend the first result of this section.
+
+\begin{thm}{}{oddodd2}
+	The product of two integers is odd \emph{if and only if} both integers are odd.
+\end{thm}
+
+This has the form $P\Longleftrightarrow Q$, which comprises \emph{two theorems in one}: $P\Longrightarrow Q$ and $Q\Longrightarrow P$ (see Exercise \ref*{sec:prop}.\ref{exs:iff}). A contrapositive argument for the ($\Rightarrow$) direction is again suggested because the right hand side treats the two integers separately.
+
+\begin{proof}
+\begin{description}
+	\item[\normalfont ($\Rightarrow$)] We prove the contrapositive. Let $x,y$ be integers, at least one of which is even. Suppose, \emph{without loss of generality,} that $x=2k$ is even. Then $xy=2ky$ is also even.
+	\item[\normalfont ($\Leftarrow$)] This is precisely Theorem \ref{thm:oddodd}, which we've already proved.\qedhere
+\end{description}
+\end{proof}
+
+\boldinline{Without loss of generality} Often abbreviated to WLOG, this phrase is common in mathematics. Here it saves us from performing the almost identical argument assuming  $y=2l$ is even. WLOG is stated when a mathematician makes a choice which does not materially affect the argument.
+
+
+\boldsubsubsection{Proof by Contradiction}
+
+To introduce contradiction proofs consider another simple result.
+
+
+\begin{thm}{}{x odd if 3x+5 is odd}
+	Let $x$ be an integer. If $3x+5$ is even, then $5x+2$ is odd.
+\end{thm}
+
+We could proceed directly according to the following sketch:
+\[3x+5\text{ even }\operatorname{\textcolor{blue}{\implies}} 3x\text{ odd }\operatorname{\textcolor{blue}{\implies}} x\text{ odd }\operatorname{\textcolor{blue}{\implies}} 5x\text{ odd }\implies 5x+2\text{ odd}\]
+You should certainly believe each implication, indeed we've already proved \textcolor{blue}{most of them}. However it would be nice to have an argument with fewer steps and that didn't rely on so many other results. The obvious contrapositive approach (reverse all arrows and negate all propositions in the sketch) would suffer from the same weaknesses.\smallbreak
+
+The advantage of a contradiction approach is that we have twice as much to work with: the hypothesis ($3x+5$ even) \emph{and} the negation of the conclusion ($5x+2$ even).
+
+\begin{proof}
+	Suppose both $3x+5$ and $5x+2$ are even. Then their sum is also even. However,
+  \[
+  	(3x+5)+(5x+2)=8x+7=2(4x+3)+1
+  \]
+  is odd (since $4x+3$ is an integer). Contradiction (an integer cannot be both even and odd!).
+\end{proof}
+
+Remember to mention the word \emph{contradiction} at the end, so the reader knows what you've done.\smallbreak
+
+A nice side-effect of this approach is that it suggests an alternative \emph{direct proof.} Instead of thinking about the sum of the two numbers, consider their \emph{difference}:
+
+\begin{proof}[Direct Proof]
+	Suppose $3x+5$ is even. Then
+	\[
+		5x+2= \textcolor{blue}{(3x+5)}+\textcolor{Green}{2(x-2)+1}
+	\]
+	being the sum of \textcolor{blue}{even} and \textcolor{Green}{odd} numbers, is necessarily odd.
+\end{proof}
+
+\goodbreak
+
+Such variety is one of the things that makes proving theorems fun! While your choice of proof is largely a matter of personal taste, remember your audience. The final argument is very slick but might risk confusing some readers rather than empowering them.\footnote{The Hungarian mathematician Paul Erdős referred to simple, elegant proofs as `from the Book,' as if the  Almighty kept a tome of perfect proofs. As with all matters spiritual, one person's Book might be very different to another's\ldots} 
+
+
+\boldinline{Three Proofs of the Same Result}
+
+We finish this section with three proofs of the same result. All are based on the same factorization of a polynomial
+\[
+	x^3+2x^2-3x-10=(x-2)(x^2+4x+5)=(x-2)\Bigl[(x+2)^2+1\Bigr]
+\]
+and the well-known fact that $ab=0\iff a=0$ or $b=0$ (see Exercise \ref{exs:zerofactor}). Since the mathematics is so simple, pay attention to and compare \emph{logical structures.}
+
+\begin{thm}{}{polyroot}
+	Let $x$ be a real number. Then $x^3+2x^2-3x-10=0\implies x=2$.
+\end{thm}
+
+\begin{proof}[Direct Proof]
+	Suppose that $x^3+2x^2-3x-10=0$. By factorization, $(x-2)[(x+2)^2+1]=0$, so at least one of the factors must be zero. The second factor is positive, since $(x+2)^2+1\ge 1>0$. We conclude that $x-2=0$, from which $x=2$.
+\end{proof}
+
+\begin{proof}[Contrapositive Proof]
+Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
+	\[
+		x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]\neq 0 \tag*{\qedhere}
+	\]
+\end{proof}
+
+\begin{proof}[Contradiction Proof]
+	Suppose that $x^3+2x^2-3x-10=0$ and $x\neq 2$. Then
+	\[
+		0=x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]
+	\]
+	Since $x\neq 2$, we have $x-2\neq 0$. It follows that $(x+2)^2+1=0$. However, $(x+2)^2+1\ge 1$ for all real numbers $x$, so we have a contradiction.
+\end{proof}
+
+
+\begin{exercises}{}{}
+	A self-test quiz and several worked questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/2-3-proofs.html}{online}.
+
+	\begin{enumerate}
+  	\item Prove or disprove the following conjectures.
+		\begin{enumerate}
+	  	\item There is an even integer which can be expressed as the sum of three even integers.
+	  	\item Every even integer can be expressed as the sum of three even integers. 
+	  	\item There is an odd integer which can be expressed as the sum of two odd integers.
+	  	\item Every odd integer can be expressed as the sum of three odd integers.
+		\end{enumerate}
+		%\emph{To get a feel about whether a claim is true or false, try out some examples. If you believe a claim is false, provide a specific counterexample. If you believe a claim is true, give a formal proof.}
+
+	
+		\item For any given integers $a,b,c$, if $a$ is even and $b$ is odd, prove that $7a-ab+12c+b^2+4$ is odd.
+	
+
+		\item Prove that if $n$ is an integer greater than 1, then $n!+2$ is even.\par
+  (\emph{$n!=n(n-1)(n-2)\cdots 1$ is the \emph{factorial} of the integer $n$})
+  
+  
+		\item\label{exs:zerofactor} Prove that $ab=0\iff a=0$ or $b=0$.
+  
+  	\item Consider the following proposition, where $x$ is assumed to be a real number.
+		\[
+			x^3-3x^2-2x+6=0\implies x=3
+		\]
+		\begin{enumerate}
+	  	\item Is the proposition true or false? Justify your answer. Is its converse true?
+	  	\item Repeat part (a) for the proposition
+			\[
+				x^3-3x^2-2x+6=0\implies x\neq 3
+			\]
+	%   	\item Does anything change about the truth status of ($\ast$) if we assume that it is a statement about \emph{rational numbers $x$}? Explain.
+		\end{enumerate}
+		
+  
+		\item\begin{enumerate}
+		  \item Let $x\in\Z$. Prove that $5x+3$ is even if and only if $7x-2$ is odd.
+		  
+		  \item Can you conclude anything about $7x-2$ if $5x+3$ is odd?
+		\end{enumerate}
+	  
+	  
+		\item Below is the proof of a result. What result is being proved?
+	  \begin{proof}
+	  	Assume that $x$ is odd. Then $x=2k+1$ for some integer $k$. Then
+	  	\[
+	  		2x^2-3x-4=2(2k+1)^2-3(2k+1)-4=8k^2+2k-5=2(4k^2+k-3)+1
+	  	\]
+	  	Since $4k^2+k-3$ is an integer, $2x^2-3x-4$ is odd.
+	  \end{proof}
+ 
+	
+		\item Here is another proof. What is the result this time?
+	  \begin{proof}
+	  	Assume, without loss of generality, that $x$ and $y$ are even. Then $x=2a$ and $y=2b$ for some integers $a,b$. Therefore,
+	  	\[
+	  		xy+xz+yz=(2a)(2b)+(2a)z+(2b)z=2(2ab+az+bz)
+	  	\]
+	  	Since $2ab+az+bz$ is an integer, $xy+xz+yz$ is even.
+	  \end{proof}
+	
+ 
+		\item Prove or disprove: An integer $n$ is even if and only if $n^3$ is even. 
+
+   
+		\item Let $n$ and $m$ be positive integers. Prove $n^2 m$ is even if and only if $n$ and $m$ are not both odd.
+    
+    \item Let $x$ and $y$ be integers. Prove $x^2+y^2$ is even  \textbf{if and only if} $x$ and $y$ have the same parity.
+    
+    \item Let $n$ be an integer. Prove $n^2 + n + 58$ is even. 
+
+  
+    \item Consider the following proof of the fact that (for $m$ an integer) if $m^2$ is even, then $m$ is even. Can you re-write the proof so that it doesn't use contradiction?
+    
+    \begin{proof}
+    	Suppose that $m^2$ is even and $m$ is odd. Write $m=2k+1$ for some integer $k$. Then
+			\[
+				m^2=(2k+1)^2 =4k^2+4k+1 =2(2k^2+2k) + 1
+			\]
+      is odd: contradiction.
+    \end{proof}	
+    
+    
+    \item Numbers of the form $\frac{k(k + 1)}{2}$, where $k$ is a positive integer, are called \emph{triangular numbers}. Prove that $n$ is the square of an odd number if and only if $\frac{n-1}{8}$ is triangular.
+    
+    \item Fake proof on divide by zero???
+     
+	\end{enumerate}
+
+\end{exercises}
 
 \clearpage
 
 
 
+\subsection{More Simple Proofs}\label{sec:proof2}
 
-%\subsection{Methods of Proof}\label{sec:proof}
+Existence/non-existence (contradiction)
 
-There are four standard methods for proving a theorem $P\implies Q$. In practice, long proofs will use several such arguments joined together. We have already discussed the first two types of proof in Section \ref{sec:prop}.
+AM-GM, Lemmas/Cors, sqrt 2 and irrational numbers examples, Primes
 
-\begin{description}
-	\item[Direct] Assume $P$ is true and deduce that $Q$ is true.
-	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$. This is enough since the contrapositive $\neq Q\implies\neg P$ is logically equivalent to $P\implies Q$
-	\item[Contradiction] Assume that $P$ and $\neg Q$ are true and deduce a \emph{contradiction}. Since $P\wedge\neg Q$ implies a contradiction, it follows that $P\wedge\neg Q$ must be \emph{false.} By Theorem \ref{thm:negconditional}, we see that $P\implies Q$ is true.
-	\item[Induction] This has a completely different flavor: we will consider it in Chapter \ref{sec:ind}.
-\end{description}
-
- Each of the methods has advantages and disadvantages. For instance, the direct method has the advantage of a straightforward logical flow. The contrapositive method is useful when the \emph{negations} $\neg P$, $\neg Q$ are simpler than $P$, $Q$ themselves. This is often the case when one or both statements involve the \emph{non-existence} of something. Working with their negations might give you the existence of ingredients with which you can calculate. Proof by contradiction has a similar advantage: assuming both $P$ and $\neg Q$ gives you two pieces of information with which you can calculate. Logically speaking there is no difference between the three methods, beyond how you visualize your argument.\\
-
- To illustrate the difference between direct proof, proof by contrapositive, and proof by contradiction, we prove the same simple theorem in three different ways. 
-
-
-\begin{thm}{}{3xodd}
-Suppose that $x$ is an integer. If $3x+5$ is even, then $3x$ is odd.
-\end{thm}
-
-\begin{proof}[Direct Proof]
-We show that if $3x+5$ is even then $3x$ is odd.\\[5pt]
-Assume that $3x+5$ is even, then $3x+5=2n$ for some integer $n$. Hence
-\[3x=2n-5=2(n-3)+1.\]
-This is clearly odd, because it is of the form `an even integer plus one.'
-\end{proof}
-
-\begin{proof}[Contrapositive Proof]
-We show that if $3x$ is even then $3x+5$ is odd.\\[5pt]
-Assume that $3x$ is even, and write $3x=2n$ for some integer $n$. Then
-\[3x+5=2n+5=2(n+2)+1.\]
-This is odd, because $n+2$ is an integer.
-\end{proof}
-
-\begin{proof}[Contradiction Proof]
-We assume that $3x+5$ and $3x$ are both even, and we deduce a falsehood.\\[5pt]
-Write $3x+5=2m$ and $3x=2n$ for some integers $m$ and $n$. Then
-\[5=(3x+5)-3x=2m-2n=2(m-n).\]
-Since $m-n$ is an integer, this says that 5 is even: a contradiction.
-\end{proof}
-
-
-\boldsubsubsection{Some simple proofs}
-
-We now give several examples of simple proofs. The only notation needed to speed things along is that of some basic sets of numbers: $\N$ for the positive integers, $\Z$ for the integers, $\R$ for the real numbers, and $\in$ for `is a member of the set'. Thus $2\in\Z$ is read as `2 is a member of the set of integers', or more concisely, `2 is an integer'. We will properly cover this notation in Chapter \ref{chap:sets}.
-
-\begin{thm}{}{oddprod}
-Let $m,n\in\Z$. Both $m$ and $n$ are odd if and only if the product $mn$ is odd.
-\end{thm}
-
- There are really two theorems here:
-\begin{itemize}
-\item[]{($\Rightarrow$)} If $m$ and $n$ are both odd integers, then the product $mn$ is odd.
-\item[]{($\Leftarrow$)} If the product $mn$ of two integers is odd, then both $m$ and $n$ are odd.
- \end{itemize}
- 
- Often when there are two directions you'll have to prove them separately. Here we give a direct proof for ($\Rightarrow$) and a contapositive proof for ($\Leftarrow$).
-
-\begin{proof}
-\begin{enumerate}
-  \item[($\Rightarrow$)] Let $m$ and $n$ be odd. Then $m=2k+1$ and $n=2l+1$ for some $k,l\in\Z$. Then
-  \[mn=(2k+1)(2l+1)=4kl+2k+2l+1=2(2kl+k+l)+1.\]
-  This is odd, because $2kl+k+l\in\Z$.
-  \item[($\Leftarrow$)] Suppose that the integers $m$ and $n$ are \emph{not} both odd. That is, assume that \emph{at least one} of $m$ and $n$ is even. We show that the product $mn$ is even. Without loss of generality,\footnote{See `Potential Mistakes' below for what this means.} we may assume that $n$ is even, from which $n=2k$ for some integer $k$. Then,
-  \[mn=m(2k)=2(mk)\quad\text{is even}.\tag*{\qedhere}\]
-\end{enumerate}
-\end{proof}
-
- In the second part of the proof, we did not need to consider whether $m$ was even or odd: if $n$ is even, the product $mn$ is even regardless. The second part would have been very difficult to prove directly. For instance, you might have tried to start a direct proof with:
-\[\text{Assume that $mn$ is odd, then $mn=2k+1$ for some integer $k$. Then\ldots}\]
-We are stuck!
-
-\begin{thm}{}{x odd if 3x+5 is odd}
-If $3x+5$ is even, then $x$ is odd.
-\end{thm}
-
-We can prove this directly, by the contrapositive method, or by contradiction. We'll do all of them, so you can appreciate the difference. 
-
-\begin{proof}[Direct Proof] Simply quote the two previous theorems. Because $3x+5$ is even, $3x$ must be odd by Theorem \ref{thm:3xodd}. Now, since   $3x$ is odd,  both $3$ and $x$ are odd by Theorem \ref{thm:oddprod}.
-\end{proof}
- 
-\begin{proof}[Contrapositive Proof] Suppose that $x$ is even. Then $x=2m$ for some integer $m$ and we get
-  \[3x+5=6m+5=2(3m+2)+1.\]
-Because $3m+2\in\Z$, we have $3x+5$ odd. 
-\end{proof}
-
-\begin{proof}[Contradiction Proof] Suppose that both $3x+5$ and $x$ are even. We can write $3x+5=2m$  and $x=2k$ for some integers $m$ and $k$. Then
-  \[5= (3x+5)-3x = 2m - 6k=2(m-3k)\]
-  is even. Contradiction.
-\end{proof}
-
- Selecting a method of proof is often a matter of taste. You should be able to see the advantages and disadvantages of the various approaches. The direct proof is more logically straightforward, but it depends on two previous results. The contrapositive and the contradiction arguments are quicker and more self-contained, but they require a greater level of comfort with logic. Consider who you are writing for before you decide to present a slick difficult proof over a slow simple one.\footnote{The Hungarian mathematician Paul Erdős used to refer to simple, elegant proofs as being `from the Book,' as if the Almighty had a book of perfect proofs of which mere mortals might occasionally be permitted a glimpse. Of course, as with all matters spiritual, one person's Book may be very different to another's\ldots} For even more variety, here is a direct proof of Theorem \ref{thm: x odd if 3x+5 is odd} that does not use any previous result.
-
-\begin{proof}[Alternative Direct Proof]
-Suppose $3x+5$ is even, so $3x+5=2n$ for some integer $n$. Then
-\begin{align*}
-x&= (3x+5)-2x-5=2n-2x-5\\
-&=2(x-n-3)+1
-\end{align*}
-is odd.
-\end{proof} 
-The fact that such variety is possible just makes proving theorems even more fun!
-
-\boldsubsubsection{Common Mistake 1.\quad Generality and `Without Loss of Generality'}
-
-There are many common mistakes in the writing of proofs that you should be careful to avoid. Here are two incorrect `proofs' of the $\implies$ direction of Theorem \ref{thm:oddprod}.
-
-\begin{proof}[Fake Proof 1]
-$m=3$ and $n=5$ are both odd, and so $mn=15$ is odd.
-\end{proof}
-
- This is an \emph{example} of the theorem, not a proof. Examples are critical to helping you understand and believe what a theorem says, but they are no substitute for a proof! Recall the discussion in the Introduction on the usage of the word \emph{proof} in English.
-
-\begin{proof}[Fake Proof 2]
-Let $m=2k+1$ and $n=2k+1$ be odd. Then,
-\[mn=(2k+1)(2k+1)=2(2k^2+2k)+1\]
-is odd.
-\end{proof}
-
- The problem with this second `proof' is that it is insufficiently general. $m$ and $n$ are supposed to be \emph{any} odd integers, but by setting both of them equal to $2k+1$, we've chosen $m$ and $n$ to be the same! Notice how the correct proof uses $m=2k+1$ and $n=2l+1$, where we place no restriction on the integers $k$ and $l$.\\
-
-
- By \emph{generality} we mean that we must make sure to consider all possibilities encompassed by the hypothesis. The phrase \emph{Without Loss of Generality,} often shorted to WLOG, is used when a choice is made which might at first appear to restrict things but, in fact, does not.
-
-Think back to how this was used in the the proof of Theorem \ref{thm:oddprod}. Since the integers $m$ and $n$ appear symmetrically in the Theorem, if at least one of them is even, then we lose nothing by assuming that the second integer $n$ is even.\\
-
-The phrase WLOG is used to pre-empt a challenge to a proof in the sense of \emph{Fake Proof 2,} as if to say to the reader:
-\begin{center}
-`You might be tempted to object that my argument is not general enough. However, I've thought about it, and there is no problem.'\\
-\end{center}
-
-\paragraph{Common Mistake 2.\quad Incorrect use of equals}
-
-Remember that propositions should be joined by connectives: i.e., by $\implies$ or $\iff$. It is very common to see students write something like
-\[\text{$m$ is odd $=m=2k+1$ for some integer $k$}\]
-This is extremely confusing! If this is part of a longer argument, things will become very difficult to follow. Since `$m$ is odd' and `$m=2k+1$ for some integer $k$' are both \emph{propositions,} they should be linked by a \emph{connective.} We should instead write
-\[\text{$m$ is odd $\iff m=2k+1$ for some integer $k$}\]
 
 \paragraph{Common Mistake 3.\quad Becoming distracted by algebra}
 
@@ -1252,48 +1288,9 @@ x=y\implies &x^2=xy\tag*{(Multiply both sides by $x$)}\\
  Everything is fine up to the third line, but then we divide by $x-y$, which is zero! Don't let yourself become so enamoured of logical manipulations that you forget to check the basics.
 
 
-\boldsubsubsection{More simple proofs}
-
-We continue with more straightforward proofs. None of these results are particularly important, they are just exercises in deciding how to present an argument.
-
-\begin{thm}{}{polyroot}
-Suppose that $x\in\R$. Then $x^3+2x^2-3x-10=0\implies x=2$.
-\end{thm}
-
- We can prove this theorem using any of the three methods. All rely on your ability to factorize the polynomial:
-\[x^3+2x^2-3x-10=(x-2)(x^2+4x+5)=(x-2)\Bigl[(x+2)^2+1\Bigr],\]
-and partly on your knowledge that $ab=0\iff a=0$ or $b=0$ (proof in the exercises).
-
-\begin{proof}[Direct Proof]
-If $x^3+2x^2-3x-10=0$, then $(x-2)[(x+2)^2+1]=0$. Hence at least one of the factors $x-2$ or $(x+2)^2+1$ is zero.\\
-In the first case we conclude that $x=2$.\\
-The second case is impossible, since $(x+2)^2\ge 0\implies (x+2)^2+1>0$.\\
-Therefore $x=2$ is the only solution.
-\end{proof}
-
-\begin{proof}[Contrapositive Proof]
-Suppose that $x\neq 2$. Then $x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]\neq 0$ since neither of the factors is zero.
-\end{proof}
-
-\begin{proof}[Contradiction Proof]
-Suppose that $x^3+2x^2-3x-10=0$ and $x\neq 2$. Then
-\[0=x^3+2x^2-3x-10=(x-2)[(x+2)^2+1].\]
-Since $x\neq 2$, we have $x-2\neq 0$.\\
-It follows that $(x+2)^2+1$ must be zero. However, $(x+2)^2+1\ge 1$ for all real numbers $x$, so we have a contradiction.
-\end{proof}
-
- On balance, the contrapositive proof is probably the most elegant, but you can decide for yourself.
 
 
-\paragraph{Common Mistake 4.\quad Being excessively logical}
-
-The statement of Theorem \ref{thm:polyroot} is an implication $P\implies Q$ where $P$ and $Q$ are:
-\[P.\quad x^3+2x^2-3x-10=0, \qquad\qquad Q.\quad x=2.\]
-You can make life very hard for yourself by being overly logical. For instance, you may wish take a third proposition $R$.\quad $x\in\R$, and state the theorem as $R\implies (P\implies Q)$. This is the way of pain! It's easier to assume, as a universal constraint, that you're always dealing with real numbers; you can then ignore said constraint within the argument.
-
- Indeed, one can always append a third proposition to the front of any theorem, namely, ``all math I already know.'' Try to resist the temptation to be so logical that your arguments become unreadable. The goal is to convince the reader that the theorem is true, not to confuse them!
-
-\boldsubsubsection{Definition-Pushing}
+\boldsubsubsection{Definition-Pushing} Leave to gcd section or exercises?
 
 The next example concerns divisibility. Before you can prove a theorem, it is critical that you know the \emph{meaning} of all of the words in its statement. We therefore state the definition of divisibility.
 
@@ -1513,80 +1510,11 @@ Certainly $\Pi$ is divisible by some prime: since we are assuming that the list 
 We conclude that 1 is divisible by the prime $p_i$, contradicting\footnote{Euclid's original argument was not strictly by contradiction. Instead he asserted that, given any list of primes $p_1,\ldots,p_n$, the number $\Pi$ must be divisible by a new prime not in his list.} the fact that $p_i\ge 2$.
 \end{proof}
 
-\paragraph{Self-test Questions}
-
-\begin{enumerate}
-  \item Consider a theorem $P\implies Q$. We call $P$ the \underline{\phantom{hypothesis}\qquad\qquad} and $Q$ the \underline{\phantom{conclusion}\qquad\qquad}
-  \item In a \emph{proof by contrapositive,} we assume that \underline{\phantom{$Q$ is false}\qquad\qquad} and deduce that \underline{\phantom{$P$ is false}\qquad\qquad}
-  \item A \emph{proof by contradiction} begins by assuming that \underline{\phantom{$P$ is true and $Q$ is false}\qquad\qquad}
-  %\item Propositions are joined by \underline{\phantom{connectives}\qquad\qquad}
-  \item Explain in a sentence or two what is meant by \emph{without loss of generality,} and how the phrase is used.
-\end{enumerate}
 
 \begin{exercises}{}{}
+	A self-test quiz and worked questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/2-4-proofs2.html}{online}.
 
-\begin{enumerate}\renewcommand{\labelenumi}{\thesubsection.\theenumi}
-	\item Show that for any given integers $a,b,c$, if $a$ is even and $b$ is odd, then $7a-ab+12c+b^2+4$ is odd.\goodbreak
-
-  \item Prove or disprove the following conjectures.
-	\begin{enumerate}
-	  \item There is an even integer which can be expressed as the sum of three even integers.
-	  \item Every even integer can be expressed as the sum of three even integers. 
-	  \item There is an odd integer which can be expressed as the sum of two odd integers.
-	  \item Every odd integer can be expressed as the sum of three odd integers.
-		\item[]\emph{To get a feel about whether a claim is true or false, try out some examples. If you believe a claim is false, provide a specific counterexample. If you believe a claim is true, give a formal proof.}
-\end{enumerate}
-
-  \item Prove or disprove the following conjectures:
-	\begin{enumerate}
-	  \item The sum of any 3 consecutive integers is divisible by 3.
-	  \item The sum of any 4 consecutive integers is divisible by 4.
-	  \item The product of any 3 consecutive integers is divisible by 6.
-	\end{enumerate}
-
-  \item Augustus de Morgan satisfied his own problem:
-	\begin{center}
-	I turn(ed) $x$ years of age in the year $x^2$.
-	\end{center}
-	\begin{enumerate}
-	  \item Given that de Morgan died in 1871, and that he wasn't the beneficiary of some miraculous anti-aging treatment, find the year in which he was born.
-	  \item Suppose you have an acquaintance who satisfies the same problem. How old will they turn this year?
-	\end{enumerate}%\vspace{-9pt}
-	Give a formal argument which justifies that you are correct.
-	
-	\item Prove that if $n$ is a natural number greater than 1, then $n!+2$ is even.\\[5pt]
-  \emph{Here $n!$ denotes the \emph{factorial} of the integer $n$. Look up the definition if you forgot about it.}
-  
-  \item Consider the following proposition, where $x$ is assumed to be a real number.
-	\[x^3-3x^2-2x+6=0\implies x=3\tag*{($\ast$)}\]
-	\begin{enumerate}
-  	\item Is the proposition ($\ast$) true or false? Justify your answer. Is its converse true?
-  	\item Repeat part (a) for the proposition
-		\[x^3-3x^2-2x+6=0\implies x\neq 3\]
-  	\item Does anything change about the truth status of ($\ast$) if we assume that it is a statement about \emph{rational numbers $x$}? Explain.
-	\end{enumerate}
-  
-	\item\begin{enumerate}
-	  \item Let $x\in\Z$. Prove that $5x+3$ is even if and only if $7x-2$ is odd.
-	  \item Can you conclude anything about $7x-2$ if $5x+3$ is odd?
-	  \end{enumerate}
-	  
-	  
-	\item Below is the proof of a result. What result is being proved?
-  \begin{proof}
-  Assume that $x$ is odd. Then $x=2k+1$ for some integer $k$. Then
-  \[2x^2-3x-4=2(2k+1)^2-3(2k+1)-4=8k^2+2k-5=2(4k^2+k-3)+1.\]
-  Since $4k^2+k-3$ is an integer, $2x^2-3x-4$ is odd.
-  \end{proof}
- 
-	
-	\item Here is another proof. What is the result this time?
-  \begin{proof}
-  Assume, without loss of generality, that $x$ and $y$ are even. Then $x=2a$ and $y=2b$ for some integers $a,b$. Therefore,
-  \[xy+xz+yz=(2a)(2b)+(2a)z+(2b)z=2(2ab+az+bz).\]
-  Since $2ab+az+bz$ is an integer, $xy+xz+yz$ is even.
-  \end{proof}
-	  
+\begin{enumerate}
 	\item In this question, you should use the following definition of the rational numbers.
 		\begin{defn*}{}{}
   	A real number $x$ is \emph{rational} if it may be written in the form $x=\frac pq$ where $p$ is an integer and $q$ is a positive integer. $x$ is \emph{irrational} if it is not rational.
@@ -1601,12 +1529,30 @@ We conclude that 1 is divisible by the prime $p_i$, contradicting\footnote{Eucli
   	\begin{conj*}{3}{}
 			If $x$ and $y$ are irrational numbers, then $3x+4xy+2y$ is irrational.
 		\end{conj*}
-	
-	\item Let $x$ and $y$ be integers. Prove: For $x^2+y^2$ to be even, it is necessary that $x$ and $y$ have the same parity (i.e. both even or both odd).
- 
+  
 	\item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contradiction.}
 	
-	\item Prove that $ab=0\iff a=0$ or $b=0$.
+	    	\item \begin{enumerate} \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contradiction.}
+     \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contrapositive.}
+\end{enumerate}
+
+
+  \item You meet three men, Corey, Jansen, and Vogel, each of whom is a either Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Corey whether he is a Truthteller or a Liar. Corey answers with his back turned, so you cannot hear what he says.\\[5pt]
+``What did he say?'' you ask Jansen.\\[5pt]
+Jansen replies: ``Corey says he is a Truthteller.''\\[5pt]
+Vogel says: ``Jansen is lying.''\\[5pt]
+Is Vogel a Truthteller or a Liar? Explain your answer.
+
+	\item Assume that Mary's father lives in California. Consider the following implication $P$:
+	\begin{center}
+	If Mary's father is an oilman and does not have any friends in Wisconsin, then Mary plays tennis or basketball, or she appeared in at least one article of a December 1997 New York Times newspaper edition.
+	\end{center}
+	\begin{enumerate}
+	  \item Find the contrapositive of $P$.
+	  \item Find the converse of $P$.
+	  \item Find the negation of $P$.
+	  \item Imagine you are a detective and want to find the truth value of $P$. Describe your action-strategy in full detail.
+	\end{enumerate}
 
   \item You meet three old men, Alain, Boris, and César, each of whom is a Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Alain whether he is a Truthteller or a Liar. Alain answers with his back turned, so you cannot hear what he says.\\[5pt]
 ``What did he say?'' you ask Boris.\\[5pt]
@@ -1650,14 +1596,126 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
     \item If $f'(x)>0$ on an interval, then $f$ is an increasing function.
 	\end{enumerate}
 	Use these facts to give a formal proof that $x^{17}+12x^3+13x+3=0$ has \emph{exactly one solution} $x$, and that $x$ lies in the interval $(-1,0)$.
+	
+	
+	
+  \item Prove or disprove the following conjectures.
+	\begin{enumerate}
+	  \item There is an even integer which can be expressed as the sum of three even integers.
+	  \item Every even integer can be expressed as the sum of three even integers. 
+	  \item There is an odd integer which can be expressed as the sum of two odd integers.
+	  \item Every odd integer can be expressed as the sum of three odd integers.
+		\item[]\emph{To get a feel about whether a claim is true or false, try out some examples. If you believe a claim is false, provide a specific counterexample. If you believe a claim is true, give a formal proof.}
+\end{enumerate}
+
+	\item Let $P$ be the proposition: `Every positive integer is divisible by thirteen.'    \begin{enumerate}
+      \item Write $P$ using quantifiers.
+      \item What is the negation of $P$?
+      \item Is $P$ true or false? Prove your assertion.
+    \end{enumerate}
+
+	\item \begin{enumerate} \item Prove or disprove: There exist integers $m$ and $n$ such that $2m-3n=15$. 
+	\item Prove or disprove: There exist integers $m$ and $n$ such that $6m-3n=11$. 
+  \end{enumerate}
+
+  \item Prove or disprove: There exist a line $L$ in $\R^2$ such that, for all points $A, B \in \R^2$, we have $A, B$ lie on $L$. 
+
+  
+	\item Prove that between any two distinct rational numbers there exists another rational number.\label{ex:rationalsdenseinthemselves}
+	
+	  \item Consider the statement:
+  \begin{center}
+      For any non-zero rational number $r$ and any irrational number $t$, $rt$ is irrational.
+  \end{center}
+  \begin{enumerate}
+      \item Translate this statement into logic using quantifiers and propositional functions.
+      \item Prove the statement.
+  \end{enumerate}
+
+	\item Let $p$ be an odd integer. Prove that $x^2-x-p=0$ has no \emph{integer} solutions.
+   
+	\item Prove: For every positive integer $n$, $n^2+n+3$ is an odd integer greater than or equal to 5.\\
+	\emph{There are two claims here: $n^2+n+3$ is odd, and $n^2+n+3\ge 5$.}
+	  
+
+    \item Prove that it is never the case that $x^2 = 2y^2$ for integers $x$ and $y$.
+  
+
+	
+		\item The real numbers have the \emph{Archimedean property}, that is, for any positive real numbers $x$ and $y$, there exists a positive integer $n$ such that $nx > y$. Use this fact to show that there do not exist any positive real numbers which are less than $1/n$ for all positive integers $n$. 
+  
+    \item Consider the following proof of the fact that every real number is less than some positive integer:
+  \begin{proof}
+      Consider a real number $x$. For example, $x = 19.7$. Then $x < 20$ and $20$ is a positive integer. 
+  \end{proof}
+  What is wrong with this proof? Give a correct proof. [Hint: use the previous exercise.]
+	
+	\item Here is an extension of question \ref{ex:rationalsdenseinthemselves}. Let $\lceil x\rceil$, the \emph{ceiling} of $x$, denote the smallest integer greater than or equal to $x$. E.g.\ $\lceil 3.2\rceil=4$, $\lceil 7\rceil=7$ and $\lceil -8.4\rceil=-8$.
+	\begin{enumerate}
+  	\item Suppose that $x$ and $y$ are real numbers with $x<y$. Use the ceiling function to show that there exists a positive integer $n$ for which $n(y-x)>1$.
+  	\item Prove or disprove: $\forall x,y\in\R$ with $x<y$, $\exists m,n\in\Z$ for which $nx<m<ny$.
+  	\item Use parts (a) and (b) to prove that between any two real numbers there exists a rational number.
+  	\item (Hard) Is it true that between any two real numbers there exists an \emph{irrational} number? If so, prove it.
+	\end{enumerate}
+	
+	\item Suppose that $x,y,z$ are real numbers such that $x + y + z = 1$. Prove
+    \[  
+        (1 - x)(1 - y)(1 - z) \geq 8 xyz.
+    \]
+    [Hint: find a way to apply the AM-GM inequality.]
+    
+    % \item Use the general AM-GM inequality to establish
+    % \[
+    %     n! \leq \left(\frac{n + 1}{2}\right)^n.
+    % \]
+	
+  \item You are given the following facts.
+  \begin{enumerate}
+    \item All polynomials are continuous.
+    \item (Intermediate Value Theorem) If $f$ is continuous on $[a,b]$ and $L$ lies between $f(a)$ and $f(b)$, then $f(x)=L$ for some $x\in(a,b)$.
+    \item If $f'(x)>0$ on an interval, then $f$ is an increasing function.
+	\end{enumerate}
+	Use these facts to give a formal proof that $x^{17}+12x^3+13x+3=0$ has \emph{exactly one solution} $x$, and that $x$ lies in the interval $(-1,0)$.
+	
+		\item (Hard) This question uses Definition \ref{defn:cont}.
+		\begin{enumerate}
+	  \item Prove, directly from the definition, that $f(x)=x^2$ is continuous at $x=0$. \emph{If you are given $\epsilon>0$, what should $\delta$ be?}
+	  \item Prove that $g(x)=\begin{cases}
+	  1+x&\text{if }x\ge 0,\\
+	  x&\text{if }x<0,
+	  \end{cases}$\quad 
+	  is discontinuous at $x=0$.
+	  \item (Very hard) Let $h(x)=\begin{cases}
+	  x&\text{if $x$ is rational,}\\
+	  0&\text{if $x$ is irrational.}
+	  \end{cases}$\quad Prove that $f$ is continuous \emph{only} at $x=0$.
+	  \end{enumerate}\goodbreak
+	
+	\item (Hard) In this question we prove Rolle's Theorem from calculus:
+	\begin{quote}
+	Suppose $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f(a)=f(b)=0$, then $\exists c\in(a,b)$ such that $f'(c)=0$.
+	\end{quote}
+	 As you work through the question, think about where the hypotheses are used and why we need them.
+    \begin{enumerate}
+      \item Recall the Extreme Value Theorem. The function $f$ is continuous on $[a,b]$, so $f$ is bounded and attains its bounds. Otherwise said,
+      \[\exists m,M\in[a,b]\text{ such that } \forall x\in[a,b]\text{ we have }f(m)\le f(x)\le f(M).\]
+      Suppose that $f(m)=f(M)$. Why is the conclusion of Rolle's Theorem obvious in this case?
+      \item Now suppose that $f(m)\neq f(M)$. Argue that \emph{at least one} of the following cases holds:
+      \[f(M)>0\quad\text{or}\quad f(m)<0.\]
+      \item Without loss of generality, we may assume that $f(M)>0$. By considering the function $-f$, explain why.
+      \item Assume $f(M)>0$. Then $M\neq a$ and $M\neq b$. Consider the difference quotient,
+      \[\frac{f(M+h)-f(M)}h.\]
+      Show that if $0<\nm h<\min\{M-a,b-M\}$ then the difference quotient is well-defined (exists and makes sense).
+      \item Suppose that $0<h<b-M$. Show that
+      \[\frac{f(M+h)-f(M)}h\le 0.\]
+      How do we know that $L^+:={\displaystyle\lim_{h\to 0^+}}\frac{f(M+h)-f(M)}h$ exists? What can you conclude about $L^+$?
+      \item Repeat part (d) for $L^-:={\displaystyle\lim_{h\to 0^-}}\frac{f(M+h)-f(M)}h$.
+      \item Conclude that $L^+=L^-=0$. Why have we completed the proof?
+    \end{enumerate}
+	
 \end{enumerate}
 
 \end{exercises}
 
 
-\newpage
 
-%\subsection{Quantifiers}\label{sec:quant}
-
-
-\fi

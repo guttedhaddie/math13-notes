@@ -4,11 +4,18 @@
 \input{preamble-commands}
 
 \includeonly{
-1intro/intro,
+%1intro/intro,
 2logic/logic,
+%3gcd/gcd,
+%4sets/sets,
+%5induction/induction,
+%6setsii/setsii,
+%7relations/relations,
+%8cardinality/cardinality,
 %selftest/2-1-props,
 %selftest/2-2-quants,
 %selftest/2-3-proofs,
+%selftest/2-4-proofs2,
 }
 
 \begin{document}
@@ -16,9 +23,17 @@
 \pagenumbering{arabic}
 \include{1intro/intro}
 \include{2logic/logic}
+%\include{3gcd/gcd}
+%\include{4sets/sets}
+%\include{5induction/induction}
+%\include{6setsii/setsii}
+%\include{7relations/relations}
+%\include{8cardinality/cardinality}
 
 \pagenumbering{Roman}
 \include{selftest/2-1-props}
 \include{selftest/2-2-quants}
+\include{selftest/2-3-proofs}
+\include{selftest/2-4-proofs2}
 
 \end{document}

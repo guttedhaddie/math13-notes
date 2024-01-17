@@ -110,15 +110,18 @@ Hopefully you believe this statement. But how do we \emph{prove} it? We can \emp
 	is even.
 \end{proof}
 
+The box \smash{\raisebox{8pt}{$\qedsymbol$}} indicates that we've finished our argument. Traditionally the letters Q.E.D.{} were used, an acronym for the Latin \emph{quod erat demonstrandum} (\emph{which is what was to be demonstrated}).\smallbreak
+
 Consider how the proof depends crucially on the definition.
 
-\begin{itemize}%\itemsep0pt
+\begin{itemize}\itemsep0pt
 	\item The theorem did not mention any \emph{variables,} though these were essential to the proof. The variables $k$ and $l$ come for free \emph{once you write the definition of evenness!} This is very common; a proof is often little more than rearranged definitions.
 	\item According to the definition, $2k$ and $2l$ together represent \emph{all possible pairs} of even integers. It is essential that $k$ and $l$ be \emph{different symbols,} otherwise all you would be proving is that twice an even number is even!
 	\item The calculation ($\ast$) is the easy bit; without the surrounding sentences and the direct reference to the definition of evenness, the calculation means nothing.
 \end{itemize}
 
 There is some sleight of hand here; a mathematical proof establishes truth only by reference to one or more definitions. In this case, the definition and theorem also depend on the meanings of \emph{integer} and \emph{sum,} but we haven't rigorously defined either since to do so would take us too far afield. In any context, some concepts will be considered too basic to merit definition.
+
 
 \goodbreak
 
@@ -209,12 +212,13 @@ We call $n=41$ a \emph{counterexample}; it shows that there is at least one inte
 
 
 \boldsubsubsection{Planning and Writing Proofs}
+\phantomsection\label{sec:proofplan}
 
 Your main responsibility in this course is the construction of proofs. Their sheer variety means that, unlike in elementary calculus, you cannot simply practice computing tens of similar problems until the process becomes automatic. So how do you learn to write proofs?\smallbreak
 
 The first step is to \emph{read} other arguments. Don't just accept them, make sure you \emph{believe} them: check the calculations, verify claims, rewrite the argument in your own words adding any clarification you think necessary.\smallbreak
 
-As you read others' arguments, the question will often arise: \emph{how did they ever come up with this?} As our work on Theorem \ref{thm:n^2-1} shows, the source of a proof is often less magical than it appears; usually the author experimented until they found something that worked. Most of that experimentation gets hidden in the final proof which should be as clean and easy to read as possible. Imagine it as a concert performance after lots of private practice; no-one wants to hear off notes at the Carnegie Hall!\smallbreak
+As you read others' arguments, the question will often arise: \emph{how did they ever come up with this?} As our work on Theorem \ref{thm:n^2-1} shows, the source of a proof is often less magical than it appears; usually the author experimented until they found something that worked. Most of that experimentation gets hidden in the final proof which should be as clean and easy to read as possible. Imagine it as a concert performance after lots of private practice; no-one wants to hear wrong notes at the Carnegie Hall!\smallbreak
 
 In order to bridge the gap, we recommend splitting the proof-writing process into several steps.
 
@@ -259,6 +263,5 @@ With this in mind, do your best to prove or disprove the following conjectures. 
 	\item The sets $A=\{n\in\N:n^2<25\}$ and $B=\{n^2:n\in\N\text{ and }n<5\}$ are equal. Here $\N$ denotes the set of natural numbers.
 \end{enumerate}
 
-%Now we know a little of what mathematics is about, it is time to practice some of it!
 
 
