@@ -34,7 +34,7 @@ To develop basic rules and terminology, it is helpful to consider \emph{abstract
 		\begin{itemize}
 		  \item The \emph{conjunction} $\textcolor{red}{P\wedge Q}$ is read ``$P$ and $Q$.''
 		  \item The \emph{disjunction} $\textcolor{Green}{P\vee Q}$ is read ``$P$ or $Q$.''
-		  \item The \emph{negation} $\textcolor{blue}{\neg P}$ is read ``not $P$.'' %or \emph{denial} (NOT, $\neg$, $\sim$, $\cl{\phantom{P}}$)
+		  \item The \emph{negation} $\textcolor{blue}{\neg P}$ is read ``not $P$.''
 		\end{itemize} 
 	\end{minipage}
 	\hfill
@@ -1258,91 +1258,80 @@ Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
     \item Numbers of the form $\frac{k(k + 1)}{2}$, where $k$ is a positive integer, are called \emph{triangular numbers}. Prove that $n$ is the square of an odd number if and only if $\frac{n-1}{8}$ is triangular.
          
 	\end{enumerate}
-
 \end{exercises}
 
 \clearpage
 
-\iffalse
-
-\subsection{More Simple Proofs}\label{sec:proof2}
-
-Existence/non-existence (contradiction)
-
-AM-GM, Lemmas/Cors, sqrt 2 and irrational numbers examples, Primes
 
 
-\paragraph{Common Mistake 3.\quad Becoming distracted by algebra}
+\subsection{Further Simple Proofs}\label{sec:proof2}
 
-Here is a palpably ludicrous `theorem' which illustrates another potential mistake.
+%Existence/non-existence (contradiction)
 
-\begin{thm*}{Fake Theorem}{}
-The only number is zero.
-\end{thm*}
+%AM-GM, Lemmas/Cors, sqrt 2 and irrational numbers examples, Primes
 
-\begin{proof}[Fake Proof]
-Let $x$ be any number and let $y=x$, then
-\begin{align*}
-x=y\implies &x^2=xy\tag*{(Multiply both sides by $x$)}\\
-\implies &x^2-y^2=xy-y^2\tag*{(Subtract $y^2$ from both sides)}\\
-\implies &(x-y)(x+y)=(x-y)y\tag*{(Factorize)}\\
-\implies &x+y=y\tag*{(Divide both sides by $x-y$)}\\
-\implies &x=0 \tag*{\qedhere}
-\end{align*}
-\end{proof}
-
- Everything is fine up to the third line, but then we divide by $x-y$, which is zero! Don't let yourself become so enamoured of logical manipulations that you forget to check the basics.
+In this section we present several theorems whose proofs are slightly trickier than those encountered thus far. Some of these results are famous and worth knowing in their own right.
 
 
+\boldsubsubsection{The AM--GM Inequality%Proving Universal Statements
+}
 
+Most of the results we've seen thus far have been universal statements: any theorem of the form $P(x)\Longrightarrow Q(x)$ is implicitly so, albeit with the quantifier $\forall x$ typically hidden. Here is another universal result, a famous inequality relating the \textcolor{blue}{arithmetic} and \textcolor{Magenta}{geometric} means of two numbers.
 
-\boldsubsubsection{Definition-Pushing} Leave to gcd section or exercises?
-
-The next example concerns divisibility. Before you can prove a theorem, it is critical that you know the \emph{meaning} of all of the words in its statement. We therefore state the definition of divisibility.
-
-\begin{defn}{}{}
-Let $n$ and $p$ be integers. We say that $n$ is \emph{divisible by} $p$ if $n=pk$ for some integer $k$.
-\end{defn}
-
- Now we can present a theorem.
-
-\begin{thm}{}{}
-If $n\in\Z$ is divisible by $p\in\N$, then $n^2$ is divisible by $p^2$.
+\begin{thm}{AM--GM inequality}{amgm}
+	If $x,y$ are positive real numbers, then
+	\[
+		\textcolor{blue}{\frac{x+y}{2}}\ge\textcolor{Magenta}{\sqrt{xy}}
+	\]
+	with equality if and only if $x=y$.
 \end{thm}
 
-\begin{proof}
-We prove directly. Let $n$ be divisible by $p$. Then $n=pk$ for some $k\in\Z$. Then $n^2=p^2k^2$, and so $n^2$ is divisible by $p^2$.
-\end{proof}
-
- This is an example of a \emph{definition-pushing} proof. If you simply state the the definition of everything important in the theorem, the proof will often be staring you in the face.
-
-\boldsubsubsection{Proof by Cases}
-
-The next proof is also in the definition-pushing vein. However, it requires that we consider several cases. The relevant definition here is that of \emph{remainder.}
-
-\begin{defn}{}{}
-An integer $n$ is said to have remainder $r=0,1,$ or 2 upon division by 3 if we can write $n=3k+r$ for some integer $k$.
-\end{defn}
-
- With a little thought, it should be clear that every integer is of the form $3k$, $3k+1$ or $3k+2$. This is analogous to how all integers are either even ($2k$) or odd $(2k+1)$. We will consider remainders more carefully in Chapter \ref{sec:gcd}.
-
-\begin{thm}{}{sqmod3}
-If $n$ is an integer, then $n^2$ has remainder 0 or 1 upon dividing by 3.
-\end{thm}
-
-\begin{proof}
-We again prove directly. There are three cases: $n$ has remainder 0, 1 or 2 upon dividing by 3.
+If you're struggling to believe the result, first try an example: e.g., $\frac{3+5}2=4\ge \sqrt{15}$. You might also consider setting $y=x$ and observing that both sides of the inequality are indeed equal. Now consider the logical structure $\forall x,y>0, Q(x,y)$. It is helpful to view this as an implication $P(x,y)\Longrightarrow Q(x,y)$, where $P(x,y)$ is ``$x,y>0$.'' The real challenge is making sense of $Q(x,y)$. There are really two separate results here:
 \begin{enumerate}
-  \item[(a)] If $n$ has remainder 0, then $n=3m$ for some $m\in\Z$ and so $n^2=9m^2=3(3m^2)$ has remainder 0.
-  \item[(b)] If $n$ has remainder 1, then $n=3m+1$ for some $m\in\Z$ and so
-  \[n^2=9m^2+6m+1=3(3m^2+2m)+1\quad\text{has remainder 1.}\]
-  \item[(c)] If $n$ has remainder 2, then $n=3m+2$ for some $m\in\Z$ and so
-  \[n^2=9m^2+12m+4=3(3m^2+4m+1)+1\quad\text{has remainder 1.}\]
+  \item If $x,y> 0$, then $\frac{x+y}{2}\ge\sqrt{xy}$
+  \item If $x,y> 0$, then $\frac{x+y}{2}=\sqrt{xy}\iff x=y$
 \end{enumerate}
-Thus $n^2$ has remainder 0 or 1.
+
+Concentrate on the first since it is simpler. The hypothesis ($x,y>0$) doesn't give us much to work with, so it seems sensible to play with the desired inequality and try to get rid of the ugly square-root:
+\[
+	\frac{x+y}2\ge \sqrt{xy} \implies (x+y)^2\ge 4xy \implies x^2-2xy+y^2\ge 0\implies (x-y)^2\ge 0
+\]
+Now we have something we believe! The question is whether we can reverse the arrows. Only the first should give you any pause: it is here that we need the positivity of $x,y$.
+
+\begin{proof}
+	Suppose $x,y\ge 0$. Multiply out a trivial inequality:
+	\begin{align*}
+		(x-y)^2\ge 0&\iff x^2-2xy+y^2\ge 0 \iff x^2+2xy+y^2\ge 4xy\\
+		&\iff (x+y)^2\ge 4xy\\
+		&\iff \frac{x+y}{2}\ge \sqrt{xy}
+	\end{align*}
+	The square-root is well-defined because $x+y$ is positive, and the inequality is preserved since the square-root function is \emph{increasing.} For the second result, observe that the final inequality is an \emph{equality} precisely when all the inequalities are equalities; this is if and only if $x=y$.
 \end{proof}
 
-\boldsubsubsection{Non-existence Proofs}
+We really needed our scratch work since we wouldn't have known otherwise how and where to apply the hypothesis. Notice also how the second result came almost for free! Result 1 only needed the ($\Rightarrow$) arrows, but the second required them all to be biconditional.
+
+\goodbreak 
+
+For variety, here is a contradiction proof incorporating the same calculations though in a different order. You will likely agree that the direct proof is easier to follow.
+
+\begin{proof}[Contradiction Proof]
+	Let $x,y>0$ and suppose that $\frac{x+y}{2}<\sqrt{xy}$. Since $x+y\ge 0$, this is if and only if $(x+y)^2<4xy$. Now multiply out and rearrange:
+	\begin{align*}
+		(x+y)^2<4xy&\iff x^2+2xy+y^2<4xy\\
+		&\iff x^2-2xy+y^2<0\\
+		&\iff (x-y)^2<0
+	\end{align*}
+	Contradiction (squares of real numbers are non-negative). We conclude that $\frac{x+y}{2}\ge \sqrt{xy}$.\par
+	Now suppose that $\frac{x+y}{2}=\sqrt{xy}$. Following the biconditionals through the above argument, we see that this is if and only if $(x-y)^2=0$, from which we recover $x=y$.
+\end{proof}
+
+The AM--GM inequality in fact holds for any finite collection:
+\[\forall \lst xn>0,\ \ \frac{x_1+x_2+\cdots+x_n}n\ge\sqrt[n]{x_1x_2\cdots x_n}\]
+with equality if and only if all the $x_i$ are equal. For a proof, see Exercise \ref{exs:amgm-full}.
+
+
+
+\boldinline{Disproving Existential Statements: Non-existence Proofs}
 
 When a Theorem claims that something does not exist, it is generally a good idea to try a contrapositive or a contradiction proof. This is since `does not exist' is already a \emph{negative} statement. A contradiction or contrapositive proof of a theorem $P\implies Q$ already involves the negated statement $\neg Q$. If $Q$ states that something does not exist, then $\neg Q$ states that it does, which often gives you something to play with! To see this in action, consider the following result.
 
@@ -1365,86 +1354,6 @@ Assume that a real number $x$ satisfies $x^{17}+12x^3+13x+3=0$, and that $x>0$. 
 
  If you want to extend the above result, and you can recall the Intermediate and Mean Value Theorems from Calculus, you should be able to prove that there is exactly one (necessarily negative!) solution to the above polynomial equation.
 
-\boldsubsubsection{The AM-GM inequality}
-
-Next we give several proofs of a famous inequality relating the arithmetic and geometric means of two or more numbers.
-
-\begin{thm}{}{amgm}
-If $x,y$ are positive real numbers, then
-\[\frac{x+y}{2}\ge\sqrt{xy}\]
-with equality if and only if $x=y$.
-\end{thm}
-
- This is a little tricky to read: we really have two separate theorems:
-\begin{enumerate}
-  \item If $x,y>0$, then $\frac{x+y}{2}\ge\sqrt{xy}$
-  \item If $x,y>0$, then $\frac{x+y}{2}=\sqrt{xy}\iff x=y$
-\end{enumerate}
-
- First we give a direct proof: note how the implication signs are stacked to make the argument clearer.
-
-\begin{proof}[Direct Proof]
-Clearly $(x-y)^2\ge 0$ with equality $\iff x=y$. Now multiply out:
-\begin{align*}
-x^2-2xy+y^2\ge 0&\iff (x^2+2xy+y^2)- 4xy  \ge 0 \\
-&\iff x^2+2xy+y^2\ge 4xy\\
-&\iff (x+y)^2\ge 4xy\\
-&\iff x+y\ge 2\sqrt{xy}\tag*{($\ast$)}\\
-&\iff \frac{x+y}{2}\ge \sqrt{xy}.
-\end{align*}
-The square-root in $(\ast)$ is well-defined because $x+y$ is positive.\footnote{Moreover, the inequality is preserved since the function $f(t)=t^2$ is \emph{increasing} when $t$ is positive.} Moreover, it is clear that the final inequality is an equality if and only if all of them are, which is if and only if $x=y$.
-\end{proof}
-
- Observe how the argument for `with equality if and only if $x=y$' depends on all of the implications in the proof being \emph{biconditionals.}\pagebreak
-
- The following contradiction proof incorporates exactly the same calculation, but is laid out in a different order. This is not always possible, and you have to take great care when trying it. You will likely agree that the direct proof is easier to follow.
-
-\begin{proof}[Contradiction Proof]
-Suppose that $\frac{x+y}{2}<\sqrt{xy}$. Since $x+y\ge 0$, this is if and only if $(x+y)^2<4xy$. Now multiply out and rearrange:
-\begin{align*}
-(x+y)^2<4xy&\iff x^2+2xy+y^2<4xy\\
-&\iff x^2-2xy+y^2<0\\
-&\iff (x-y)^2<0.
-\end{align*}
-Since squares of real numbers are non-negative, this is a contradiction. Thus $\frac{x+y}{2}\ge \sqrt{xy}$.\\
-Now suppose that $\frac{x+y}{2}=\sqrt{xy}$. Following the biconditionals through the above argument, we see that this is if and only if $(x-y)^2=0$, from which we recover $x=y$. Hence result.
-\end{proof}
-
-
-\boldsubsubsection{Optional: The general AM-GM inequality}
-
-Both the statement and the proof of the general inequality are significantly more difficult. You might be surprised that an argument involving `raising to the $n$th power' doesn't work. Try it and see why\ldots\ It is often the case that a very simple proof exists for a special case of a result, and that attempting to generalize the proof fails. A completely new approach is then required.\\
-Since the general result is harder, we present it at a higher level, leaving out some of the more obvious details. This helps us view the proof as a whole, and makes the logical flow clearer. The only prerequisite is a little calculus, namely the First Derivative Test at the end of the first paragraph.
-
-\begin{thm}{}{}
-If $x_1,\ldots,x_n>0$ then
-\[\frac{x_1+x_2+\cdots+x_n}n\ge\sqrt[n]{x_1x_2\cdots x_n}\]
-with equality if and only if $x_1=\cdots =x_n$.
-\end{thm}
-
-\begin{proof}
-Consider the function $f(x)=e^{x-1}-x$. Its derivative is $f'(x)=e^{x-1}-1$, which is zero if and only if $x=1$. The sign of the derivative changes from negative to positive at $x=1$, whence this is a local minimum. $f$ has no other critical points and its domain is the whole real line, whence $x=1$ is the location of the \emph{global} minimum of $f$. Since $f(1)=0$, we obtain the inequality
-\[e^{x-1}\ge x\tag*{($\dag$)}\]
-with equality if and only if $x=1$.
-
- Now consider the arithmetic mean $\mu=\frac{x_1+x_2+\cdots +x_n}{n}$. Applying ($\dag$) to $x=\frac{x_i}\mu$, we obtain
-\[\frac{x_i}\mu\le\exp\left(\frac{x_i}\mu-1\right),\qquad\text{for each $i=1,2,\ldots,n$.}\tag*{($\ast$)}\]
-Since all the $x_i$ are positive, we may multiply the expressions $(\ast)$ while preserving the inequality:
-\[\frac{x_1}\mu\cdots\frac{x_n}\mu\le\exp\left(\frac{x_1}{\mu}-1+\cdots+\frac{x_n}{\mu}-1\right)=\exp(n-n)=1.\]
-It follows that $\mu^n\ge x_1\cdots x_n$, from which the result, $\mu\ge\sqrt[n]{x_1\cdots x_n}$, is clear.\\
-Equality is if and only if all the inequalities $(\ast)$ are equalities, which is if and only if $x_i=\mu$ for all $i=1,\ldots,n$. That is, all the $x_i$ are equal.
-\end{proof}
-
- Given that the theorem and proof are both more difficult than the $n=2$ case, there are a few things you should do to help convince yourself of their legitimacy.
-\begin{enumerate}\setlength{\itemsep}{0pt}
-  \item Write down some examples. E.g. if $x_1=20,x_2=27,x_3=50$, the inequality reads
-  \[\frac{97}3\ge\sqrt[3]{20\cdot 27\cdot 50}=30.\]
-  \item Observe that Theorem \ref{thm:amgm} is a special case.
-  \item Work through the proof, inserting comments and extra calculations until you are convinced that the argument is correct. For example, the calculation $\frac{x_1+\cdots+x_n}{\mu}=\frac{\mu n}\mu=n$ was omitted from the final displayed calculation: anyone with the prerequisite knowledge to read the rest of the proof should easily be able to supply this.
-\end{enumerate}
-
- It is perfectly reasonable to ask how you would know to try such a proof. The answer is that you wouldn't. You should appreciate that a proof like this is a distillation of thousands of attempts and improvements, perhaps over many years. No-one came up with this argument as a first attempt!
-
 
 \boldsubsubsection{Combining and Subdividing Theorems}
 
@@ -1455,9 +1364,11 @@ Sometimes it is useful to break a proof into pieces, akin to viewing a computer 
   \item[]\emph{Corollary:} a theorem which follows quickly from another result. Corollaries can be used to draw attention to a particular aspect or a special case of a theorem.
 \end{itemize}
 
- In many mathematical papers the word \emph{theorem} is reserved only for the most important results, everything else being presented as a lemma or corollary. The choice of what to call a result is entirely one of presentation. If you want your paper to be more readable, or to highlight what you think is important, then lemmas and corollaries are your friends!\pagebreak[2]
+ In many mathematical papers the word \emph{theorem} is reserved only for the most important results, everything else being presented as a lemma or corollary. The choice of what to call a result is entirely one of presentation. If you want your paper to be more readable, or to highlight what you think is important, then lemmas and corollaries are your friends!
+ 
+\boldinline{The Irrationality of $\sqrt 2$}
 
- Here is a famous example of a lemma at work.
+Here is a famous example of a lemma at work.
 
 \begin{lemm}{}{root2prep}
 Suppose that $n\in\Z$. Then $n^2$ is even $\iff n$ is even.
@@ -1494,9 +1405,22 @@ It might seem difficult to completely understand, but if we hadn't made the obse
 \[m^2=2n^2\implies n^2=2k^2\implies k^2=2l^2\implies\cdots\]
 If you find this approach difficult, you may prefer an alternative proof given in the exercises.
 
-\paragraph{Prime Numbers}
 
-Here is another famous result, dating back at least to the Ancient Greeks (Euclid's \emph{Elements}, Proposition IX.20). As ever, we need a solid definition before we try to prove anything.
+Example: $\sqrt 2-5\sqrt 3$ is irrational
+
+\boldsubsubsection{Non-constructive Existence Proofs}
+
+Often\ldots
+
+\begin{thm}{}{}
+	There are irrational numbers $a,b$ for which $a^b$ is rational.
+\end{thm}
+
+\begin{proof}
+	Consider $(\sqrt 2)^{\sqrt 2}$
+\end{proof}
+
+We finish with a particularly famous example of a non-constructive existence proof, dating back at least 2300 years. As ever, we need a solid definition before we try to prove anything.
 
 \begin{defn}{}{irreducible}
 An integer $\ge 2$ is \emph{prime} if the only positive integers it is divisible by are itself and 1.
@@ -1504,8 +1428,8 @@ An integer $\ge 2$ is \emph{prime} if the only positive integers it is divisible
 
  The first few primes are $2,3,5,7,11,13,17,19,\ldots$ It follows\footnote{This is not completely obvious: we will prove it much later in Theorem \ref{thm:fundarith}.} from the definition that all positive integers $\ge 2$ are either primes or \emph{composites} (products of primes). In particular, every integer $\ge 2$ is divisible by at least one prime. We may now state Euclid's result.
 
-\begin{thm}{}{}
-There are infinitely many prime numbers.
+\begin{thm}{Euclid's \emph{Elements}, Prop.\,IX.20}{}
+	There are infinitely many prime numbers.
 \end{thm}
 
 \begin{proof}
@@ -1674,6 +1598,16 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
     % \[
     %     n! \leq \left(\frac{n + 1}{2}\right)^n.
     % \]
+    
+    
+
+	\item\label{exs:amgm-full} We prove the full AM--GM inequality
+\begin{itemize}
+  \item When $n=3$, try mimicking our earlier approach by cubing the desired inequality. Why does this seem unwise?
+	\item (Hard) Prove that $x\le e^{x-1}$ for all real numbers $x$, with equality if and only if $x=1$.\par
+	(\emph{Hint: Use calculus! Consider $f(x)=e^{x-1}-x$ and apply a derivative test or Maclaurin series})
+	\item Let $\mu=\frac{x_1+x_2+\cdots +x_n}{n}$ be the arithmetic mean. Apply part (b) to each expression $x=\frac{x_i}\mu$ to conclude that $x_1\cdots x_n\le \mu^n$ and hence complete the proof.
+\end{itemize}
 	
   \item You are given the following facts.
   \begin{enumerate}
@@ -1725,4 +1659,61 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 
 
 
-\fi
+% Consider the function $f(x)=e^{x-1}-x$. Its derivative is $f'(x)=e^{x-1}-1$, which is zero if and only if $x=1$. The sign of the derivative changes from negative to positive at $x=1$, whence this is a local minimum. $f$ has no other critical points and its domain is the whole real line, whence $x=1$ is the location of the \emph{global} minimum of $f$. Since $f(1)=0$, we obtain the inequality
+% \[e^{x-1}\ge x\tag*{($\dag$)}\]
+% with equality if and only if $x=1$.
+% 
+%  Now consider the arithmetic mean $\mu=\frac{x_1+x_2+\cdots +x_n}{n}$. Applying ($\dag$) to $x=\frac{x_i}\mu$, we obtain
+% \[\frac{x_i}\mu\le\exp\left(\frac{x_i}\mu-1\right),\qquad\text{for each $i=1,2,\ldots,n$.}\tag*{($\ast$)}\]
+% Since all the $x_i$ are positive, we may multiply the expressions $(\ast)$ while preserving the inequality:
+% \[\frac{x_1}\mu\cdots\frac{x_n}\mu\le\exp\left(\frac{x_1}{\mu}-1+\cdots+\frac{x_n}{\mu}-1\right)=\exp(n-n)=1.\]
+% It follows that $\mu^n\ge x_1\cdots x_n$, from which the result, $\mu\ge\sqrt[n]{x_1\cdots x_n}$, is clear.\\
+% Equality is if and only if all the inequalities $(\ast)$ are equalities, which is if and only if $x_i=\mu$ for all $i=1,\ldots,n$. That is, all the $x_i$ are equal.
+
+
+
+\boldsubsubsection{Definition-Pushing} Leave to gcd section or exercises?
+
+The next example concerns divisibility. Before you can prove a theorem, it is critical that you know the \emph{meaning} of all of the words in its statement. We therefore state the definition of divisibility.
+
+\begin{defn}{}{}
+Let $n$ and $p$ be integers. We say that $n$ is \emph{divisible by} $p$ if $n=pk$ for some integer $k$.
+\end{defn}
+
+ Now we can present a theorem.
+
+\begin{thm}{}{}
+If $n\in\Z$ is divisible by $p\in\N$, then $n^2$ is divisible by $p^2$.
+\end{thm}
+
+\begin{proof}
+We prove directly. Let $n$ be divisible by $p$. Then $n=pk$ for some $k\in\Z$. Then $n^2=p^2k^2$, and so $n^2$ is divisible by $p^2$.
+\end{proof}
+
+ This is an example of a \emph{definition-pushing} proof. If you simply state the the definition of everything important in the theorem, the proof will often be staring you in the face.
+
+\boldsubsubsection{Proof by Cases}
+
+The next proof is also in the definition-pushing vein. However, it requires that we consider several cases. The relevant definition here is that of \emph{remainder.}
+
+\begin{defn}{}{}
+An integer $n$ is said to have remainder $r=0,1,$ or 2 upon division by 3 if we can write $n=3k+r$ for some integer $k$.
+\end{defn}
+
+ With a little thought, it should be clear that every integer is of the form $3k$, $3k+1$ or $3k+2$. This is analogous to how all integers are either even ($2k$) or odd $(2k+1)$. We will consider remainders more carefully in Chapter \ref{sec:gcd}.
+
+\begin{thm}{}{sqmod3}
+If $n$ is an integer, then $n^2$ has remainder 0 or 1 upon dividing by 3.
+\end{thm}
+
+\begin{proof}
+We again prove directly. There are three cases: $n$ has remainder 0, 1 or 2 upon dividing by 3.
+\begin{enumerate}
+  \item[(a)] If $n$ has remainder 0, then $n=3m$ for some $m\in\Z$ and so $n^2=9m^2=3(3m^2)$ has remainder 0.
+  \item[(b)] If $n$ has remainder 1, then $n=3m+1$ for some $m\in\Z$ and so
+  \[n^2=9m^2+6m+1=3(3m^2+2m)+1\quad\text{has remainder 1.}\]
+  \item[(c)] If $n$ has remainder 2, then $n=3m+2$ for some $m\in\Z$ and so
+  \[n^2=9m^2+12m+4=3(3m^2+4m+1)+1\quad\text{has remainder 1.}\]
+\end{enumerate}
+Thus $n^2$ has remainder 0 or 1.
+\end{proof}
