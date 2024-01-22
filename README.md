@@ -1,5 +1,9 @@
 Notes for Math 13: Intro to Abstract Math at UC Irvine (https://www.math.uci.edu/~ndonalds/math13/math13.html)
 
-Compilation: PDFLaTeX via TeXlipse Package for Eclipse (http://projects.eclipse.org/projects/science.texlipse)
+Run PDFLaTeX on the master file math13-notes.tex. Select chapters you want via \includeonly
 
-Graphics: Asymptote (http://asymptote.sourceforge.io/)
+Graphics editing requires Asymptote (http://asymptote.sourceforge.io/)
+
+The .project & .texlipse files relate only to Eclipse/TeXlipse (http://projects.eclipse.org/projects/science.texlipse), used as a front-end.
+
+Permissions: do what you want with it!

@@ -599,7 +599,7 @@ Due to their importance, it is worth defining these last concepts formally.
 
 
 
-\boldinline{Universal Quantifiers and Connectives: Hidden Quantifiers}
+\boldinline{Universal Quantifiers and Connectives: Hidden Quantifiers}\phantomsection\label{pg:univproof}
 
 Universally quantified statements are interchangeable with implications. Given a propositional function $Q(x)$, let $P(x)$ be the proposition ``$x$ lies in the domain of $Q$." Then
 \[
@@ -711,7 +711,7 @@ Repeating this with $\neg P(x)$ results in a related observation:
 \goodbreak
 
 
-\boldsubsubsection{Multiple Quantifiers}
+\boldsubsubsection{Multiple Quantifiers}\phantomsection\label{pg:multquant}
 
 A propositional function can have several variables, each of which may be quantified.
 
@@ -1092,42 +1092,46 @@ This has the form $P\Longleftrightarrow Q$, which comprises \emph{two theorems i
 
 \boldsubsubsection{Proof by Contradiction}
 
-To introduce contradiction proofs consider another simple result.
+To introduce contradiction proofs consider another simple result.\footnote{While what follows is a theorem, we'll typically reserve the word for results that are worth remembering in their own right. Examples like this are good for practice (change the numbers!), but are not individually very interesting.}
 
 
-\begin{thm}{}{x odd if 3x+5 is odd}
-	Let $x$ be an integer. If $3x+5$ is even, then $5x+2$ is odd.
-\end{thm}
+\begin{example}{}{x odd if 3x+5 is odd}
+	Let $x$ be an integer. If $3x+5$ is even, then $5x+2$ is odd.\medbreak
 
-We could proceed directly according to the following sketch:
-\[3x+5\text{ even }\operatorname{\textcolor{blue}{\implies}} 3x\text{ odd }\operatorname{\textcolor{blue}{\implies}} x\text{ odd }\operatorname{\textcolor{blue}{\implies}} 5x\text{ odd }\implies 5x+2\text{ odd}\]
-You should certainly believe each implication, indeed we've already proved \textcolor{blue}{most of them}. However it would be nice to have an argument with fewer steps and that didn't rely on so many other results. The obvious contrapositive approach (reverse all arrows and negate all propositions in the sketch) would suffer from the same weaknesses.\smallbreak
-
-The advantage of a contradiction approach is that we have twice as much to work with: the hypothesis ($3x+5$ even) \emph{and} the negation of the conclusion ($5x+2$ even).
-
-\begin{proof}
-	Suppose both $3x+5$ and $5x+2$ are even. Then their sum is also even. However,
-  \[
-  	(3x+5)+(5x+2)=8x+7=2(4x+3)+1
-  \]
-  is odd (since $4x+3$ is an integer). Contradiction (an integer cannot be both even and odd!).
-\end{proof}
-
-Remember to mention the word \emph{contradiction} at the end, so the reader knows what you've done.\smallbreak
-
-A nice side-effect of this approach is that it suggests an alternative \emph{direct proof.} Instead of thinking about the sum of the two numbers, consider their \emph{difference}:
-
-\begin{proof}[Direct Proof]
-	Suppose $3x+5$ is even. Then
+	We could proceed directly according to the following sketch:
 	\[
-		5x+2= \textcolor{blue}{(3x+5)}+\textcolor{Green}{2(x-2)+1}
+		3x+5\text{ even }\operatorname{\textcolor{blue}{\implies}} 3x\text{ odd }\operatorname{\textcolor{blue}{\implies}} x\text{ odd }\operatorname{\textcolor{blue}{\implies}} 5x\text{ odd }\implies 5x+2\text{ odd} \tag{$\ast$}
 	\]
-	being the sum of \textcolor{blue}{even} and \textcolor{Green}{odd} numbers, is necessarily odd.
-\end{proof}
+	This isn't wrong! You should believe each implication; indeed we've proved \textcolor{blue}{most of them}. However it would be nice not to rely on so many other results. A similar contrapositive approach (reverse arrows and negate propositions in $(\ast)$) would have the same weakness.\medbreak
+	
+	The advantage of a contradiction approach is that we have twice as much to work with: the hypothesis ($3x+5$ even) \emph{and} the negation of the conclusion ($5x+2$ even).
+	
+	\begin{quote}
+		\begin{proof}
+			Suppose both $3x+5$ and $5x+2$ are even. Then their sum is also even. However,
+		  \[
+		  	(3x+5)+(5x+2)=8x+7=2(4x+3)+1 \tag{$\dag$}
+		  \]
+		  is odd. Contradiction (an integer cannot be both even and odd!).
+		\end{proof}
+	\end{quote}
+	
+	Remember to mention the word \emph{contradiction} at the end, so the reader knows what you've done.\smallbreak
+	
+	A nice side-effect of this approach is that it suggests an alternative \emph{direct proof.}
+	
+	\begin{quote}
+		\begin{proof}[Direct Proof]
+			For any integer $x$, ($\dag$) says that $3x+5$ and $5x+2$, in summing to an odd number, have \emph{opposite parity.}
+		\end{proof}
+	\end{quote}
+	
+	The last argument in fact proves that $3x+5$ is even \emph{if and only if} $5x+2$ is odd: the converse of our claim comes for free! Look back at $(\ast)$: you should believe that all the arrows are reversible.
+\end{example}
 
 \goodbreak
 
-Such variety is one of the things that makes proving theorems fun! While your choice of proof is largely a matter of personal taste, remember your audience. The final argument is very slick but might risk confusing some readers rather than empowering them.\footnote{The Hungarian mathematician Paul Erdős referred to simple, elegant proofs as `from the Book,' as if the  Almighty kept a tome of perfect proofs. As with all matters spiritual, one person's Book might be very different to another's\ldots} 
+Such variety is one of the things that makes proving theorems fun! While your choice of proof is largely a matter of personal taste, remember your audience. The final argument is very slick but might risk confusing a  reader rather than empowering them.\footnote{The Hungarian mathematician Paul Erdős referred to simple, elegant proofs as `from the Book,' as if the  Almighty kept a tome of perfect proofs. As with all matters spiritual, one person's Book might be very different to another's\ldots} 
 
 
 \boldinline{Three Proofs of the Same Result}
@@ -1136,30 +1140,31 @@ We finish this section with three proofs of the same result. All are based on th
 \[
 	x^3+2x^2-3x-10=(x-2)(x^2+4x+5)=(x-2)\Bigl[(x+2)^2+1\Bigr]
 \]
-and the well-known fact that $ab=0\iff a=0$ or $b=0$ (see Exercise \ref{exs:zerofactor}). Since the mathematics is so simple, pay attention to and compare \emph{logical structures.}
+and the well-known fact that $ab=0\iff a=0$ or $b=0$ (see Exercise \ref{exs:zerofactor}). Since the mathematics is so simple, pay attention to and compare the \emph{logical structures.}
 
-\begin{thm}{}{polyroot}
+\begin{example}{}{polyroot}
 	Let $x$ be a real number. Then $x^3+2x^2-3x-10=0\implies x=2$.
-\end{thm}
-
-\begin{proof}[Direct Proof]
-	Suppose that $x^3+2x^2-3x-10=0$. By factorization, $(x-2)[(x+2)^2+1]=0$, so at least one of the factors must be zero. The second factor is positive, since $(x+2)^2+1\ge 1>0$. We conclude that $x-2=0$, from which $x=2$.
-\end{proof}
-
-\begin{proof}[Contrapositive Proof]
-Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
-	\[
-		x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]\neq 0 \tag*{\qedhere}
-	\]
-\end{proof}
-
-\begin{proof}[Contradiction Proof]
-	Suppose that $x^3+2x^2-3x-10=0$ and $x\neq 2$. Then
-	\[
-		0=x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]
-	\]
-	Since $x\neq 2$, we have $x-2\neq 0$. It follows that $(x+2)^2+1=0$. However, $(x+2)^2+1\ge 1$ for all real numbers $x$, so we have a contradiction.
-\end{proof}
+	\begin{quote}
+		\begin{proof}[Direct Proof]
+			Suppose $x^3+2x^2-3x-10=0$. By factorization, $(x-2)[(x+2)^2+1]=0$, so at least one of the factors must be zero. Since $(x+2)^2+1\ge 1>0$, we conclude that $x-2=0$, from which $x=2$.
+		\end{proof}
+	
+		\begin{proof}[Contrapositive Proof]
+		Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
+			\[
+				x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]\neq 0 \tag*{\qedhere}
+			\]
+		\end{proof}
+	
+		\begin{proof}[Contradiction Proof]
+			Suppose $x^3+2x^2-3x-10=0$ and $x\neq 2$. Then
+			\[
+				0=x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]
+			\]
+			Since $x\neq 2$, we have $x-2\neq 0$. It follows that $(x+2)^2+1=0$. However, $(x+2)^2+1\ge 1$ for all real numbers $x$, so we have a contradiction.
+		\end{proof}
+	\end{quote}
+\end{example}
 
 
 \begin{exercises}{}{}
@@ -1213,7 +1218,7 @@ Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
 	
 		\item Here is another proof. What is the result this time?
 	  \begin{proof}
-	  	Assume, without loss of generality, that $x$ and $y$ are even. Then $x=2a$ and $y=2b$ for some integers $a,b$. Therefore,
+	  	Assume, without loss of generality, that $x=2a$ and $y=2b$ are both even. Then
 	  	\[
 	  		xy+xz+yz=(2a)(2b)+(2a)z+(2b)z=2(2ab+az+bz)
 	  	\]
@@ -1240,7 +1245,7 @@ Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
 		\end{align*}
 		
 		
-		\item Prove or disprove: An integer $n$ is even if and only if $n^3$ is even. 
+		\item\label{exs:cuberoot2} Prove or disprove: An integer $n$ is even if and only if $n^3$ is even. 
     
    
 		\item Let $n$ and $m$ be positive integers. Prove $n^2m$ is even if and only if $n$ and $m$ are not both odd.
@@ -1264,39 +1269,51 @@ Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
 
 
 
-\subsection{Further Simple Proofs}\label{sec:proof2}
-
-%Existence/non-existence (contradiction)
-
-%AM-GM, Lemmas/Cors, sqrt 2 and irrational numbers examples, Primes
-
-In this section we present several theorems whose proofs are slightly trickier than those encountered thus far. Some of these results are famous and worth knowing in their own right.
+\subsection{Further Proofs \& Strategies}\label{sec:proof2}
 
 
-\boldsubsubsection{The AM--GM Inequality%Proving Universal Statements
-}
+The arguments in this section are slightly trickier and more representative of typical mathematical proofs. Some of these results are famous and worth knowing in their own right. We will also introduce \emph{lemmas} and \emph{corollaries,} which are used to break up the presentation of complex results.
 
-Most of the results we've seen thus far have been universal statements: any theorem of the form $P(x)\Longrightarrow Q(x)$ is implicitly so, albeit with the quantifier $\forall x$ typically hidden. Here is another universal result, a famous inequality relating the \textcolor{blue}{arithmetic} and \textcolor{Magenta}{geometric} means of two numbers.
+
+\boldsubsubsection{Proving Universal Statements}
+
+Most of the results we've seen thus far have been universal statements. As discussed on page \pageref{pg:univproof}, any theorem $P(x)\Longrightarrow Q(x)$ is implicitly universal, albeit with the quantifier $\forall x$ being typically hidden. Revisit Examples \ref{ex:multiplequant} on multiple quantifiers so see how these fit into our proof framework; here is another example.
+
+\begin{example}{}{}
+	$\forall x\ge 0$, $\exists y<0$ such that $x^3<y^2$\medbreak
+	View the claim as an implication ``$x\ge 0\implies (\exists y<0$ such that $x^3<y^2)$'' and prove directly.
+	\begin{quote}
+		\begin{proof}
+			Suppose $x\ge 0$ is given. \emph{Define} $y=-\sqrt{x^3}-1$, then $y\le -1<0$ and 
+			\[
+				y^2=x^3+1+2\sqrt{x^3}\ge x^3+1>x^3 \tag*{\qedhere}
+			\]
+		\end{proof}
+	\end{quote}
+	Notice how $y$, in being existentially quantified \emph{after} $x$, is allowed to depend on $x$. We'll revisit this shortly to see what happens when we reverse the quantifiers. Remember that you might need some scratch work to find a suitable $y$: you shouldn't (yet!) expect to create such an argument in one shot.
+\end{example}
+
+For a more involved example of a universal result, here is a famous inequality relating the \textcolor{blue}{arithmetic} and \textcolor{Magenta}{geometric} means of two numbers.
 
 \begin{thm}{AM--GM inequality}{amgm}
-	If $x,y$ are positive real numbers, then
+	If $x,y$ are non-negative real numbers, then
 	\[
 		\textcolor{blue}{\frac{x+y}{2}}\ge\textcolor{Magenta}{\sqrt{xy}}
 	\]
 	with equality if and only if $x=y$.
 \end{thm}
 
-If you're struggling to believe the result, first try an example: e.g., $\frac{3+5}2=4\ge \sqrt{15}$. You might also consider setting $y=x$ and observing that both sides of the inequality are indeed equal. Now consider the logical structure $\forall x,y>0, Q(x,y)$. It is helpful to view this as an implication $P(x,y)\Longrightarrow Q(x,y)$, where $P(x,y)$ is ``$x,y>0$.'' The real challenge is making sense of $Q(x,y)$. There are really two separate results here:
+If your faith is wavering, first try an example: e.g., $\frac{3+5}2=4\ge \sqrt{15}$. It should also be clear that both sides are equal whenever $y=x$. The logical structure $\forall x,y\ge 0, Q(x,y)$ can be viewed as an implication $P(x,y)\Longrightarrow Q(x,y)$, where $P(x,y)$ is ``$x,y\ge 0$.'' The real challenge is making sense of $Q(x,y)$. There are really two separate results here:
 \begin{enumerate}
-  \item If $x,y> 0$, then $\frac{x+y}{2}\ge\sqrt{xy}$
-  \item If $x,y> 0$, then $\frac{x+y}{2}=\sqrt{xy}\iff x=y$
+  \item If $x,y\ge 0$, then $\frac{x+y}{2}\ge\sqrt{xy}$
+  \item If $x,y\ge 0$, then $\frac{x+y}{2}=\sqrt{xy}\iff x=y$
 \end{enumerate}
 
-Concentrate on the first since it is simpler. The hypothesis ($x,y>0$) doesn't give us much to work with, so it seems sensible to play with the desired inequality and try to get rid of the ugly square-root:
+Concentrate on the first since it is simpler. The hypothesis ($x,y\ge 0$) doesn't give us much to work with, so it seems sensible to play with the inequality and try to get rid of the ugly square-root:
 \[
 	\frac{x+y}2\ge \sqrt{xy} \implies (x+y)^2\ge 4xy \implies x^2-2xy+y^2\ge 0\implies (x-y)^2\ge 0
 \]
-Now we have something we believe! The question is whether we can reverse the arrows. Only the first should give you any pause: it is here that we need the positivity of $x,y$.
+Now we have something we believe! The question is whether we can reverse the arrows. Only the first should give you any pause: it is here that we use the non-negativity of $x,y$.
 
 \begin{proof}
 	Suppose $x,y\ge 0$. Multiply out a trivial inequality:
@@ -1305,190 +1322,252 @@ Now we have something we believe! The question is whether we can reverse the arr
 		&\iff (x+y)^2\ge 4xy\\
 		&\iff \frac{x+y}{2}\ge \sqrt{xy}
 	\end{align*}
-	The square-root is well-defined because $x+y$ is positive, and the inequality is preserved since the square-root function is \emph{increasing.} For the second result, observe that the final inequality is an \emph{equality} precisely when all the inequalities are equalities; this is if and only if $x=y$.
+	The square-root is well-defined because $x,y\ge 0$, and the inequality is preserved since the square-root function is \emph{increasing.} For the second result, observe that the final inequality is an \emph{equality} precisely when \emph{all} the inequalities are equalities; this is if and only if $x=y$.
 \end{proof}
 
-We really needed our scratch work since we wouldn't have known otherwise how and where to apply the hypothesis. Notice also how the second result came almost for free! Result 1 only needed the ($\Rightarrow$) arrows, but the second required them all to be biconditional.
+The scratch work really helped us figure out how and where to apply the hypothesis. Notice also how the second result came almost for free! Result 1 only need the ($\Rightarrow$)  in the proof, but the second result needs them all to be biconditional.
+\medbreak
 
-\goodbreak 
-
-For variety, here is a contradiction proof incorporating the same calculations though in a different order. You will likely agree that the direct proof is easier to follow.
+For variety, here is a contradiction proof incorporating the same calculations in a different order.
 
 \begin{proof}[Contradiction Proof]
-	Let $x,y>0$ and suppose that $\frac{x+y}{2}<\sqrt{xy}$. Since $x+y\ge 0$, this is if and only if $(x+y)^2<4xy$. Now multiply out and rearrange:
+	Let $x,y\ge 0$ and suppose that $\frac{x+y}{2}<\sqrt{xy}$. Since $x+y\ge 0$, the second inequality holds if and only if $(x+y)^2<4xy$. Now multiply out and rearrange:
 	\begin{align*}
 		(x+y)^2<4xy&\iff x^2+2xy+y^2<4xy\\
 		&\iff x^2-2xy+y^2<0\\
 		&\iff (x-y)^2<0
 	\end{align*}
 	Contradiction (squares of real numbers are non-negative). We conclude that $\frac{x+y}{2}\ge \sqrt{xy}$.\par
-	Now suppose that $\frac{x+y}{2}=\sqrt{xy}$. Following the biconditionals through the above argument, we see that this is if and only if $(x-y)^2=0$, from which we recover $x=y$.
+	Now suppose that $\frac{x+y}{2}=\sqrt{xy}$. Following the biconditionals in the above argument, we see that equality holds if and only if $(x-y)^2=0$, from which we recover $x=y$.
 \end{proof}
 
-The AM--GM inequality in fact holds for any finite collection:
-\[\forall \lst xn>0,\ \ \frac{x_1+x_2+\cdots+x_n}n\ge\sqrt[n]{x_1x_2\cdots x_n}\]
-with equality if and only if all the $x_i$ are equal. For a proof, see Exercise \ref{exs:amgm-full}.
+The AM--GM inequality in fact holds for any finite collection of non-negative numbers $x_1,\ldots, x_n$:
+\[
+	\frac{x_1+x_2+\cdots+x_n}n\ge\sqrt[n]{x_1x_2\cdots x_n}
+\]
+with equality if and only if all the $x_i$ are equal. Proving this is a lot harder (see Exercise \ref{exs:amgm-full}).
 
 
 
-\boldinline{Disproving Existential Statements: Non-existence Proofs}
+\boldsubsubsection{Disproving Existential Statements: Non-existence Proofs}
 
-When a Theorem claims that something does not exist, it is generally a good idea to try a contrapositive or a contradiction proof. This is since `does not exist' is already a \emph{negative} statement. A contradiction or contrapositive proof of a theorem $P\implies Q$ already involves the negated statement $\neg Q$. If $Q$ states that something does not exist, then $\neg Q$ states that it does, which often gives you something to play with! To see this in action, consider the following result.
-
-\begin{thm}{}{}
-The equation $x^{17}+12x^3+13x+3=0$ has no positive (real number) solutions.
-\end{thm}
-
- First we interpret the theorem as an implication: throughout we assume that $x$ is a real number.
-\[\text{If $x^{17}+12x^3+13x+3=0$, then $x\leq 0$.}\]
-The theorem is now in the form $P\implies Q$, with:
-\[P.\quad x^{17}+12x^3+13x+3=0,\qquad\qquad\qquad Q.\quad x\le 0.\]
-The negation of $Q$ is simply `$x>0$.' To prove the theorem by contradiction, we assume $P$ and not $Q$, and deduce a contradiction.
-
-\begin{proof}
-Assume that a real number $x$ satisfies $x^{17}+12x^3+13x+3=0$, and that $x>0$. Because all terms on the left hand side are positive, we have $x^{17}+12x^3+13x+3>0$. A contradiction.
-\end{proof}
+Of the four possible combinations ``prove/disprove a universal/existential statement,'' we've now tackled three; what remains is to consider how to prove that something does not, or cannot, exist. Recall our basic rule of negation:
+\[
+	\neg\bigl(\exists x,Q(x)\bigr)\iff \forall x,\neg Q(x)
+\]
+To show that $\exists x,Q(x)$ is \emph{false} is therefore to prove a \emph{universal} statement.\footnote{The notation $\nexists x,Q(x)$ is discouraged because it obscures this essential fact.} As before (page \pageref{pg:univproof}), let $P(x)$ be the proposition ``$x$ lies in the domain of $Q$.'' We conclude that
+\[
+	\tcbhighmath{\text{$\textcolor{blue}{\neg\bigl(\exists x,Q(x)\bigr)}$ is logically equivalent to $\textcolor{Magenta}{P(x)\Longrightarrow \neg Q(x)}$}}
+\]
+Once viewed as an implication, any of our proof strategies might be applicable. Contradiction and contrapositive arguments are particularly common however, since the right hand side is already a \emph{negative} statement.
 
 
- Note how quickly the proof is written: it assumes that any reader is familiar with the underlying logic of a contradiction proof without it needing to be spelled out. The discussion we undertook before writing the proof would be considered scratch work: you shouldn't include it a final write-up.\\
+\begin{example}{}{easypolynosolns}
+	The equation $x^{17}+12x^3+13x+3=0$ has no positive (real number) solutions.\medbreak
 
- If you want to extend the above result, and you can recall the Intermediate and Mean Value Theorems from Calculus, you should be able to prove that there is exactly one (necessarily negative!) solution to the above polynomial equation.
+	Before seeing a proof, consider several ways in which this claim could be presented.
+	\begin{quote}
+		\def\arraystretch{1.1}
+		\begin{tabular}{@{}ll}
+			Non-existence ($\neg(\exists x, Q(x))$)& There are no $x>0$ for which $x^{17}+12x^3+13x+3=0$.\\
+			Universal ($\forall x,\neg Q(x)$)&For all $x>0$, we have $x^{17}+12x^3+13x+3\neq 0$.\\
+			Direct ($P\Rightarrow \neg Q$)&If $x>0$, then $x^{17}+12x^3+13x+3\neq 0$.\\
+			Contrapositive ($Q\Rightarrow\neg P$)&If $x^{17}+12x^3+13x+3=0$, then $x\le 0$.\\
+			Contradiction ($P\wedge Q$)&$x>0$ and $x^{17}+12x^3+13x+3=0$ is \emph{impossible.}
+		\end{tabular}
+	\end{quote}
+	
+	We present two very similar arguments based on the direct and contradiction structures.  
+	
+	\begin{quote}
+		\begin{proof}[Direct proof]
+		Suppose that $x>0$. But then $x^{17}+12x^3+13x+3>0$ since all terms are positive. We conclude that $x^{17}+12x^3+13x+3\neq 0$.
+		\end{proof}
+		\begin{proof}[Contradiction proof]
+		Assume that $x>0$ satisfies $x^{17}+12x^3+13x+3=0$. Since all terms on the left hand side are positive, we have a contradiction.
+		\end{proof}
+	\end{quote}
+	
+	In practice, some version of one of these arguments would likely be given without any additional commentary. The reader is assumed to be familiar with the underlying logic without it being spelled out. Our discussion could be considered scratch work.
+\end{example}
 
+\boldsubsubsection{Subdividing Theorems: Lemmas \& Corollaries}
 
-\boldsubsubsection{Combining and Subdividing Theorems}
+Sometimes it is useful to break a proof into pieces, akin to viewing a computer program as a collection of subroutines that you combine for some greater purpose. Often the intention is to improve the readability of a difficult/complex argument, but you may also wish to (de-)emphasize the relative importance of certain results. Mathematics does this by using \emph{lemmas} and \emph{corollaries.}
 
-Sometimes it is useful to break a proof into pieces, akin to viewing a computer program as a collection of subroutines that you combine for some greater purpose. Usually the intention is to make the proof of a difficult result more readable, but you may also wish to emphasize the importance of certain aspects of your work. Mathematics does this by using \emph{lemmas} and \emph{corollaries.}
+\begin{quote}
+	\begin{description}
+	  \item[\normalfont\emph{Lemma:}] A theorem whose importance you want to downplay or which will be used when proving a more significant result. 
+	  \item[\normalfont\emph{Corollary:}] A theorem which follows quickly once you understand another result, perhaps as a special case or by modifying the proof in some small way.
+	\end{description}
+\end{quote}
 
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]\emph{Lemma:} a theorem whose importance you want to downplay. Often the result is individually unimportant, but becomes more useful when referenced in the proof of a larger theorem.
-  \item[]\emph{Corollary:} a theorem which follows quickly from another result. Corollaries can be used to draw attention to a particular aspect or a special case of a theorem.
-\end{itemize}
-
- In many mathematical papers the word \emph{theorem} is reserved only for the most important results, everything else being presented as a lemma or corollary. The choice of what to call a result is entirely one of presentation. If you want your paper to be more readable, or to highlight what you think is important, then lemmas and corollaries are your friends!
+Presentation style varies hugely between authors and journals: some reserve \emph{theorem} only for the most important results, with everything else presented as a lemma or corollary, while others never use these terms (or just call everything a \emph{proposition}!). Regardless, lemmas and corollaries are useful to have in your toolkit if readability is your goal.\medbreak
  
-\boldinline{The Irrationality of $\sqrt 2$}
-
-Here is a famous example of a lemma at work.
+ 
+In preparation for our next, much more important, result, here is a simple lemma.
 
 \begin{lemm}{}{root2prep}
-Suppose that $n\in\Z$. Then $n^2$ is even $\iff n$ is even.
+	Suppose $n$ is an integer. Then $n^2$ is even $\iff n$ is even.
 \end{lemm}
 
- Prove this yourself: the ($\Rightarrow$) direction is easiest using the contrapositive method, while the ($\Leftarrow$) direction works well directly.
+At this stage, you should be able to prove this yourself. This is really just a special case of Theorem \ref{thm:oddodd2}: if you're completely unsure how to start, revisit that result, and the rest of Section \ref{sec:proof}.
+ 
+
+
+\boldsubsubsection{Irrational Numbers}
+
+Since their definition is inherently negative, irrational numbers provide good examples of non-existence/contradiction arguments. They are also interesting in their own right!
+
+\begin{defn}{}{}
+	A real number $x$ is \emph{rational} if it may be written in the form $x=\frac mn$ for some integers $m,n$. A real number is \emph{irrational} if no such integers exist.
+\end{defn}
+ 
+You likely know of a few irrational numbers ($\sqrt 2,\pi,e$), but how do we \emph{prove} that a given number is irrational? Our next result is very famous, with versions dating back at least to Aristotle (c.\,340\BCE). 
 
 \begin{thm}{}{}
-$\sqrt 2$ is irrational.
+	$\sqrt 2$ is irrational.
 \end{thm}
 
- This is tricky for a few reasons. The theorem does not appear to be of the form $P\implies Q$, but in fact it is. Consider:
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]{$Q$.} $\sqrt 2$ is irrational.
-  \item[]{$P$.} Everything you already know in mathematics!
-\end{itemize}
-Of course $P$ is entirely unhelpful; how can we start a direct proof when we don't know what to choose from the whole universe of mathematics? A contrapositive proof might also be difficult: $\neg Q$ straightforwardly states that $\sqrt 2$ is rational, but $\neg P$ is the cryptic statement, `something we know to be true is actually false.' But what is the \emph{something}?\\
-Rather than worry about all this, we instead present a proof by contradiction.
+We must \emph{disprove} the existence claim $\exists m,n\in\Z, \sqrt 2=\frac mn$.
+As before, consider several restatements:\vspace{-5pt}
+\begin{quote}
+	\begin{tabular}{@{}ll}
+		Non-existence& There are no integers $m,n$ for which $\sqrt 2=\frac mn$.\\
+		Universal&For all integers $m,n$, we have $\sqrt 2\neq \frac mn$.\\
+		Direct&If $m,n\in\Z$, then $\sqrt 2\neq\frac mn$.\\
+		Contrapositive&If $\sqrt 2=\frac mn$, then $m,n$ are not both integers.\\
+		Contradiction&$m,n\in\Z$ and $\sqrt 2=\frac mn$ is \emph{impossible.}
+	\end{tabular}
+\end{quote}
 
-\begin{proof}[Proof.\hspace{-27pt}]
-\begin{itemize}\setlength{\itemsep}{-2pt}
-  \item[] Suppose that $\sqrt 2=\frac mn$ for some $m,n\in\N$. Without loss of generality, we may assume that $m,n$ have no common factors.
-  \item[] Then $m^2=2n^2$ which says that $m^2$ is even.
-  \item[] By Lemma \ref{lemm:root2prep} we have that $m$ is even.
-  \item[] Thus $m=2k$ for some $k\in\Z$.
-	\item[] But now, $n^2=2k^2$, from which (Lemma \ref{lemm:root2prep} again) we see that $n$ is even.
-	\item[] Now $m$ and $n$ have a common factor of 2. This is a contradiction.\qedhere
-\end{itemize}
+Can you see the obvious drawbacks of the direct and contrapositive versions?
+We instead present a proof by contradiction. We outsource a repeated argument to Lemma \ref{lemm:root2prep} to improve readability.
+
+\begin{proof}
+	Suppose that $m,n\in\Z$ and that $\sqrt 2=\frac mn$. \emph{Without loss of generality}, assume that $m,n$ have \textcolor{blue}{no common factors}. Cross-multiply and square:
+	\[
+		m^2=2n^2\text{ is even }\implies m\text{ is \textcolor{blue}{even}} \tag{Lemma \ref{lemm:root2prep}}
+	\]
+	whence $m=2k$ for some integer $k$. But then
+	\[
+		2n^2=m^2=4k^2\implies n^2=2k^2\text{ is even }\implies n\text{ is \textcolor{blue}{even}} \tag{Lemma \ref{lemm:root2prep}}
+	\]
+	We see that $m$ and $n$ have a \textcolor{blue}{common factor of 2}. Contradiction.
 \end{proof}
 
- First observe how Lemma \ref{lemm:root2prep} was used to make the proof easier to read. Without the lemma, the essential shape of the proof would have been less clear.\\
-Now try to make sense of the proof. In the first line we invoke the definition of \emph{rational,} being the \emph{ratio} of two integers. The main challenge comes immediately afterwards. Once we assume that $\sqrt 2=\frac mn$, we can immediately insist that $m,n$ have no common factors. Indeed this is no significant restriction \emph{once we assume that $m,n$ exist,} that is \emph{once we assume that $\sqrt 2$ is rational.} It is important to realize that the `no common factors' assumption is \emph{not} the assumption being contradicted. Because of this subtlety, we include the phrase `without loss of generality' so that the reader is forced to think carefully, and does not jump to the wrong conclusion.\\
-It might seem difficult to completely understand, but if we hadn't made the observation, our calculation could have continued forever, telling us nothing!
-\[m^2=2n^2\implies n^2=2k^2\implies k^2=2l^2\implies\cdots\]
-If you find this approach difficult, you may prefer an alternative proof given in the exercises.
+
+The major difficulty lies in the assumption that $m,n$ have no common factors. In the same way that we can simplify $\frac 46=\frac 23$, our assumption is \emph{without loss of generality} because it costs us nothing \emph{once we assume $\sqrt 2=\frac mn$ is rational.} It is crucial to appreciate that we aren't contradicting the assumption that $m,n$ have no common factors, lest our calculation continue forever without resolution!
+\[
+	m^2=2n^2\implies n^2=2k^2\implies k^2=2l^2\implies\cdots
+\]
+
+The irrationality of $\sqrt 3,\sqrt[3]{2}$, etc., can be proved similarly ($\pi$ and $e$ are \emph{much} harder!). Now we have the theorem, it is easily applied to demonstrate the irrationality of many other numbers.
 
 
-Example: $\sqrt 2-5\sqrt 3$ is irrational
+
+\begin{example}{}{}
+	Suppose that $\sqrt 2-5\sqrt 3=x$ were rational: $\exists m,n\in\Z$ such that $x=\smash{\frac mn}$. Then
+	\[
+		75=(5\sqrt 3)^2=(\sqrt 2-x)^2=2+x^2-2\sqrt 2x \implies \sqrt 2=\frac{x^2-73}{2x} =\frac{m^2-73n^2}{2mn}
+	\]
+	Otherwise said, $\sqrt 2$ is \emph{rational}: contradiction.
+\end{example}
+
+\goodbreak
+
 
 \boldsubsubsection{Non-constructive Existence Proofs}
 
-Often\ldots
+Every existence proof we've seen so far has been \emph{constructive}: we exhibit/construct an \emph{explicit example} $x$ for which $Q(x)$ is true. Sometimes, however, this is expecting a bit too much. It is often far easier to show the existence of something \emph{without} explicitly stating what it is. We present two famous examples of this situation.
 
 \begin{thm}{}{}
 	There are irrational numbers $a,b$ for which $a^b$ is rational.
 \end{thm}
 
 \begin{proof}
-	Consider $(\sqrt 2)^{\sqrt 2}$
+	Consider the number $x=(\sqrt 2)^{\sqrt 2}$. There are two possibilities:
+	\begin{enumerate}
+	  \item $x$ is rational. Let $a=b=\sqrt 2$.
+	  \item $x$ is irrational. Let $a=x$ and $b=\sqrt 2$ and apply the usual exponential laws to see that
+	  \[
+	  	a^b=\bigl((\sqrt 2)^{\sqrt 2}\bigr)^{\sqrt 2}=(\sqrt 2)^{\sqrt 2\cdot\sqrt 2}= (\sqrt 2)^2=2
+	  \]
+	\end{enumerate}\vspace{-5pt}
+	In either case, $a,b$ are irrational and $a^b$ rational.
 \end{proof}
 
-We finish with a particularly famous example of a non-constructive existence proof, dating back at least 2300 years. As ever, we need a solid definition before we try to prove anything.
+The proof is very sneaky: it does not provide an explicit example and does not tell us whether $(\sqrt 2)^{\sqrt 2}$ is rational. In fact this number isn't rational, though demonstrating it is massively harder.\footnote{If you're interested, look up the Gelfond--Schneider Theorem (1934), Hilbert's Seventh Problem, and what they say about \emph{algebraic} and \emph{transcendental numbers.} Such ideas are far beyond the level of this text!}
+\bigbreak
+
+We finish with a particularly famous example of a non-constructive existence proof found in Euclid's \emph{Elements} (300\BCE), the most influential textbook of mathematical history. As ever, we need a solid definition before we try to prove anything.
 
 \begin{defn}{}{irreducible}
-An integer $\ge 2$ is \emph{prime} if the only positive integers it is divisible by are itself and 1.
+	An integer $\ge 2$ is \emph{prime} if the only positive integers it is divisible by are itself and 1.
 \end{defn}
 
- The first few primes are $2,3,5,7,11,13,17,19,\ldots$ It follows\footnote{This is not completely obvious: we will prove it much later in Theorem \ref{thm:fundarith}.} from the definition that all positive integers $\ge 2$ are either primes or \emph{composites} (products of primes). In particular, every integer $\ge 2$ is divisible by at least one prime. We may now state Euclid's result.
+ The first few primes are $2,3,5,7,11,13,17,19,\ldots$ It follows, though it is not completely obvious, that every integer $\ge 2$ is either prime or a product of primes (\emph{composite}). In particular, every integer $\ge 2$ is divisible by at least one prime. We now state Euclid's result, and prove it by contradiction.
 
-\begin{thm}{Euclid's \emph{Elements}, Prop.\,IX.20}{}
+\begin{thm}{\emph{Elements}, Book IX, Prop.\,20}{}
 	There are infinitely many prime numbers.
 \end{thm}
 
 \begin{proof}
-We prove by contradiction. Assume there are exactly $n$ prime numbers $\lst p n$ and consider the integer
-\[\Pi:=p_1\cdots p_n+1.\]
-Certainly $\Pi$ is divisible by some prime: since we are assuming that the list $\lst pn$ contains \emph{all} the primes, $\Pi$ must be divisible by some prime $p_i$ in the list. However, the product $p_1\cdots p_n$ is clearly divisible by $p_i$, whence so is the difference\footnote{Is this obvious? Can you prove it?!}
-\[\Pi-p_1\cdots p_n=1.\]
-We conclude that 1 is divisible by the prime $p_i$, contradicting\footnote{Euclid's original argument was not strictly by contradiction. Instead he asserted that, given any list of primes $p_1,\ldots,p_n$, the number $\Pi$ must be divisible by a new prime not in his list.} the fact that $p_i\ge 2$.
+Assume there are exactly $n$ primes $\lst p n$ and consider the integer $\Pi:=p_1\cdots p_n+1$.
+Certainly $\Pi$ is divisible by some prime $p_i$ (in our list by assumption!), as is the product $p_1\cdots p_n$. But then the difference
+\[
+	1=\Pi-p_1\cdots p_n
+\]
+is divisible by $p_i$, contradicting the fact that $p_i\ge 2$.
 \end{proof}
+
+Euclid does things slightly differently. Instead of a contradiction argument, he asserts that, given a finite list of primes, the number $\Pi$ is divisible by a \emph{new prime} not in his list.
+
+
+\goodbreak
 
 
 \begin{exercises}{}{}
 	A self-test quiz and worked questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/2-4-proofs2.html}{online}.
 
 \begin{enumerate}
-	\item In this question, you should use the following definition of the rational numbers.
-		\begin{defn*}{}{}
-  	A real number $x$ is \emph{rational} if it may be written in the form $x=\frac pq$ where $p$ is an integer and $q$ is a positive integer. $x$ is \emph{irrational} if it is not rational.
-  	\end{defn*}
-  	Prove or disprove the following conjectures.
-  	\begin{conj*}{1}{}
-			If $x$ and $y$ are real numbers such that $3x+5y$ is irrational, then at least one of $x$ and $y$ is irrational.
-		\end{conj*}
-  	\begin{conj*}{2}{}
-			If $x$ and $y$ are rational numbers, then $3x+4xy+2y$ is rational.
-		\end{conj*}
-  	\begin{conj*}{3}{}
-			If $x$ and $y$ are irrational numbers, then $3x+4xy+2y$ is irrational.
-		\end{conj*}
-  
-	\item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contradiction.}
-	
-	    	\item \begin{enumerate} \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contradiction.}
-     \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contrapositive.}
-\end{enumerate}
-
-
-  \item You meet three men, Corey, Jansen, and Vogel, each of whom is a either Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Corey whether he is a Truthteller or a Liar. Corey answers with his back turned, so you cannot hear what he says.\\[5pt]
-``What did he say?'' you ask Jansen.\\[5pt]
-Jansen replies: ``Corey says he is a Truthteller.''\\[5pt]
-Vogel says: ``Jansen is lying.''\\[5pt]
-Is Vogel a Truthteller or a Liar? Explain your answer.
-
-	\item Assume that Mary's father lives in California. Consider the following implication $P$:
-	\begin{center}
-	If Mary's father is an oilman and does not have any friends in Wisconsin, then Mary plays tennis or basketball, or she appeared in at least one article of a December 1997 New York Times newspaper edition.
-	\end{center}
+	\item Prove or disprove the following conjectures about real numbers $x,y$.
 	\begin{enumerate}
-	  \item Find the contrapositive of $P$.
-	  \item Find the converse of $P$.
-	  \item Find the negation of $P$.
-	  \item Imagine you are a detective and want to find the truth value of $P$. Describe your action-strategy in full detail.
+	  \item If $3x+5y$ is irrational, then at least one of $x$ and $y$ is irrational.
+	  \item If $x$ and $y$ are rational, then $3x+4xy+2y$ is rational.
+	  \item If $x$ and $y$ are irrational, then $3x+4xy+2y$ is irrational.
 	\end{enumerate}
+  
+	\item Prove by contradiction: if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$.
+	
+% 	    	\item \begin{enumerate} \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contradiction.}
+%      \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contrapositive.}
+% \end{enumerate}
 
-  \item You meet three old men, Alain, Boris, and César, each of whom is a Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Alain whether he is a Truthteller or a Liar. Alain answers with his back turned, so you cannot hear what he says.\\[5pt]
-``What did he say?'' you ask Boris.\\[5pt]
-Boris replies: ``Alain says he is a Truthteller.''\\[5pt]
-César says: ``Boris is lying.''\\[5pt]
-Is César a Truthteller or a Liar? Explain your answer.\goodbreak
+
+%   \item You meet three men, Corey, Jansen, and Vogel, each of whom is a either Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Corey whether he is a Truthteller or a Liar. Corey answers with his back turned, so you cannot hear what he says.\\[5pt]
+% ``What did he say?'' you ask Jansen.\\[5pt]
+% Jansen replies: ``Corey says he is a Truthteller.''\\[5pt]
+% Vogel says: ``Jansen is lying.''\\[5pt]
+% Is Vogel a Truthteller or a Liar? Explain your answer.
+% 
+% 	\item Assume that Mary's father lives in California. Consider the following implication $P$:
+% 	\begin{center}
+% 	If Mary's father is an oilman and does not have any friends in Wisconsin, then Mary plays tennis or basketball, or she appeared in at least one article of a December 1997 New York Times newspaper edition.
+% 	\end{center}
+% 	\begin{enumerate}
+% 	  \item Find the contrapositive of $P$.
+% 	  \item Find the converse of $P$.
+% 	  \item Find the negation of $P$.
+% 	  \item Imagine you are a detective and want to find the truth value of $P$. Describe your action-strategy in full detail.
+% 	\end{enumerate}
+% 
+%   \item You meet three old men, Alain, Boris, and César, each of whom is a Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Alain whether he is a Truthteller or a Liar. Alain answers with his back turned, so you cannot hear what he says.\\[5pt]
+% ``What did he say?'' you ask Boris.\\[5pt]
+% Boris replies: ``Alain says he is a Truthteller.''\\[5pt]
+% César says: ``Boris is lying.''\\[5pt]
+% Is César a Truthteller or a Liar? Explain your answer.\goodbreak
+
 	
   \item \emph{(Snake-like integers)} Let's say that an integer $y$ is \textit{Snake-like} if and only if there is some integer $k$ such that $y=(6k)^2+9$.
 	\begin{enumerate}
@@ -1498,16 +1577,22 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 	  \item Show that the statements, `$n$ is Snake-like,' and, `$n$ is a multiple of nine,' are not equivalent.
 	\end{enumerate}
 	
+% 	
+% 	\item Assume that Ben's father lives in Peru. Consider the following implication $\beta$:
+% 	\begin{center}
+% 	If Ben's father is an artist and does not have any friends in Asia, then Ben plays tennis or ping-pong, or he appeared in at least one picture of the May 1992 Time magazine.
+% 	\end{center}
+% 	\begin{enumerate}
+% 	  \item Find the contrapositive of $\beta$.
+% 	  \item Find the converse of $\beta$.
+% 	  \item Find the negation of $\beta$.
+% 	  \item Imagine you are a detective and want to find the truth value of $\beta$. Describe your action-strategy in full detail.
+% 	\end{enumerate}
 	
-	\item Assume that Ben's father lives in Peru. Consider the following implication $\beta$:
-	\begin{center}
-	If Ben's father is an artist and does not have any friends in Asia, then Ben plays tennis or ping-pong, or he appeared in at least one picture of the May 1992 Time magazine.
-	\end{center}
-	\begin{enumerate}
-	  \item Find the contrapositive of $\beta$.
-	  \item Find the converse of $\beta$.
-	  \item Find the negation of $\beta$.
-	  \item Imagine you are a detective and want to find the truth value of $\beta$. Describe your action-strategy in full detail.
+	
+	\item\begin{enumerate}
+	  \item Prove that an integer $n^2$ is divisible by 3 if and only if $n$ is divisible by 3. Hence prove that $\sqrt 3$ is irrational.
+	  \item Prove that $\sqrt[3]{2}$ is irrational. (\emph{Hint: revisit Exercise \ref*{sec:proof}.\ref{exs:cuberoot2}}) 
 	\end{enumerate}
   
   \item Here is an alternative argument that $\sqrt 2$ is irrational. Suppose that $\sqrt 2=\frac mn$ where $m,n\in\N$. This time we don't assume that $m,n$ have no common factors.
@@ -1528,15 +1613,6 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 	Use these facts to give a formal proof that $x^{17}+12x^3+13x+3=0$ has \emph{exactly one solution} $x$, and that $x$ lies in the interval $(-1,0)$.
 	
 	
-	
-  \item Prove or disprove the following conjectures.
-	\begin{enumerate}
-	  \item There is an even integer which can be expressed as the sum of three even integers.
-	  \item Every even integer can be expressed as the sum of three even integers. 
-	  \item There is an odd integer which can be expressed as the sum of two odd integers.
-	  \item Every odd integer can be expressed as the sum of three odd integers.
-		\item[]\emph{To get a feel about whether a claim is true or false, try out some examples. If you believe a claim is false, provide a specific counterexample. If you believe a claim is true, give a formal proof.}
-\end{enumerate}
 
 	\item Let $P$ be the proposition: `Every positive integer is divisible by thirteen.'    \begin{enumerate}
       \item Write $P$ using quantifiers.
@@ -1567,10 +1643,6 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 	\item Prove: For every positive integer $n$, $n^2+n+3$ is an odd integer greater than or equal to 5.\\
 	\emph{There are two claims here: $n^2+n+3$ is odd, and $n^2+n+3\ge 5$.}
 	  
-
-    \item Prove that it is never the case that $x^2 = 2y^2$ for integers $x$ and $y$.
-  
-
 	
 		\item The real numbers have the \emph{Archimedean property}, that is, for any positive real numbers $x$ and $y$, there exists a positive integer $n$ such that $nx > y$. Use this fact to show that there do not exist any positive real numbers which are less than $1/n$ for all positive integers $n$. 
   
@@ -1601,58 +1673,15 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
     
     
 
-	\item\label{exs:amgm-full} We prove the full AM--GM inequality
-\begin{itemize}
-  \item When $n=3$, try mimicking our earlier approach by cubing the desired inequality. Why does this seem unwise?
-	\item (Hard) Prove that $x\le e^{x-1}$ for all real numbers $x$, with equality if and only if $x=1$.\par
-	(\emph{Hint: Use calculus! Consider $f(x)=e^{x-1}-x$ and apply a derivative test or Maclaurin series})
-	\item Let $\mu=\frac{x_1+x_2+\cdots +x_n}{n}$ be the arithmetic mean. Apply part (b) to each expression $x=\frac{x_i}\mu$ to conclude that $x_1\cdots x_n\le \mu^n$ and hence complete the proof.
-\end{itemize}
-	
-  \item You are given the following facts.
-  \begin{enumerate}
-    \item All polynomials are continuous.
-    \item (Intermediate Value Theorem) If $f$ is continuous on $[a,b]$ and $L$ lies between $f(a)$ and $f(b)$, then $f(x)=L$ for some $x\in(a,b)$.
-    \item If $f'(x)>0$ on an interval, then $f$ is an increasing function.
+	\item\label{exs:amgm-full} We prove the full AM--GM inequality.
+	\begin{enumerate}
+	  \item When $n=3$, try mimicking our earlier approach by cubing the desired inequality. Why does this seem unwise?
+	  \item (Hard) Prove that $x\le e^{x-1}$ for all real numbers $x$, with equality if and only if $x=1$.\par
+	  (\emph{Hint: Use calculus! Consider $f(x)=e^{x-1}-x$ and apply a derivative test or Maclaurin series})
+	  \item Let $\mu=\frac{x_1+x_2+\cdots +x_n}{n}$ be the arithmetic mean. Apply part (b) to each expression $x=\frac{x_i}\mu$ to conclude that $x_1\cdots x_n\le \mu^n$ and hence complete the proof.
 	\end{enumerate}
-	Use these facts to give a formal proof that $x^{17}+12x^3+13x+3=0$ has \emph{exactly one solution} $x$, and that $x$ lies in the interval $(-1,0)$.
-	
-		\item (Hard) This question uses Definition \ref{defn:cont}.
-		\begin{enumerate}
-	  \item Prove, directly from the definition, that $f(x)=x^2$ is continuous at $x=0$. \emph{If you are given $\epsilon>0$, what should $\delta$ be?}
-	  \item Prove that $g(x)=\begin{cases}
-	  1+x&\text{if }x\ge 0,\\
-	  x&\text{if }x<0,
-	  \end{cases}$\quad 
-	  is discontinuous at $x=0$.
-	  \item (Very hard) Let $h(x)=\begin{cases}
-	  x&\text{if $x$ is rational,}\\
-	  0&\text{if $x$ is irrational.}
-	  \end{cases}$\quad Prove that $f$ is continuous \emph{only} at $x=0$.
-	  \end{enumerate}\goodbreak
-	
-	\item (Hard) In this question we prove Rolle's Theorem from calculus:
-	\begin{quote}
-	Suppose $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f(a)=f(b)=0$, then $\exists c\in(a,b)$ such that $f'(c)=0$.
-	\end{quote}
-	 As you work through the question, think about where the hypotheses are used and why we need them.
-    \begin{enumerate}
-      \item Recall the Extreme Value Theorem. The function $f$ is continuous on $[a,b]$, so $f$ is bounded and attains its bounds. Otherwise said,
-      \[\exists m,M\in[a,b]\text{ such that } \forall x\in[a,b]\text{ we have }f(m)\le f(x)\le f(M).\]
-      Suppose that $f(m)=f(M)$. Why is the conclusion of Rolle's Theorem obvious in this case?
-      \item Now suppose that $f(m)\neq f(M)$. Argue that \emph{at least one} of the following cases holds:
-      \[f(M)>0\quad\text{or}\quad f(m)<0.\]
-      \item Without loss of generality, we may assume that $f(M)>0$. By considering the function $-f$, explain why.
-      \item Assume $f(M)>0$. Then $M\neq a$ and $M\neq b$. Consider the difference quotient,
-      \[\frac{f(M+h)-f(M)}h.\]
-      Show that if $0<\nm h<\min\{M-a,b-M\}$ then the difference quotient is well-defined (exists and makes sense).
-      \item Suppose that $0<h<b-M$. Show that
-      \[\frac{f(M+h)-f(M)}h\le 0.\]
-      How do we know that $L^+:={\displaystyle\lim_{h\to 0^+}}\frac{f(M+h)-f(M)}h$ exists? What can you conclude about $L^+$?
-      \item Repeat part (d) for $L^-:={\displaystyle\lim_{h\to 0^-}}\frac{f(M+h)-f(M)}h$.
-      \item Conclude that $L^+=L^-=0$. Why have we completed the proof?
-    \end{enumerate}
-	
+
+
 \end{enumerate}
 
 \end{exercises}
@@ -1672,48 +1701,3 @@ Is César a Truthteller or a Liar? Explain your answer.\goodbreak
 
 
 
-\boldsubsubsection{Definition-Pushing} Leave to gcd section or exercises?
-
-The next example concerns divisibility. Before you can prove a theorem, it is critical that you know the \emph{meaning} of all of the words in its statement. We therefore state the definition of divisibility.
-
-\begin{defn}{}{}
-Let $n$ and $p$ be integers. We say that $n$ is \emph{divisible by} $p$ if $n=pk$ for some integer $k$.
-\end{defn}
-
- Now we can present a theorem.
-
-\begin{thm}{}{}
-If $n\in\Z$ is divisible by $p\in\N$, then $n^2$ is divisible by $p^2$.
-\end{thm}
-
-\begin{proof}
-We prove directly. Let $n$ be divisible by $p$. Then $n=pk$ for some $k\in\Z$. Then $n^2=p^2k^2$, and so $n^2$ is divisible by $p^2$.
-\end{proof}
-
- This is an example of a \emph{definition-pushing} proof. If you simply state the the definition of everything important in the theorem, the proof will often be staring you in the face.
-
-\boldsubsubsection{Proof by Cases}
-
-The next proof is also in the definition-pushing vein. However, it requires that we consider several cases. The relevant definition here is that of \emph{remainder.}
-
-\begin{defn}{}{}
-An integer $n$ is said to have remainder $r=0,1,$ or 2 upon division by 3 if we can write $n=3k+r$ for some integer $k$.
-\end{defn}
-
- With a little thought, it should be clear that every integer is of the form $3k$, $3k+1$ or $3k+2$. This is analogous to how all integers are either even ($2k$) or odd $(2k+1)$. We will consider remainders more carefully in Chapter \ref{sec:gcd}.
-
-\begin{thm}{}{sqmod3}
-If $n$ is an integer, then $n^2$ has remainder 0 or 1 upon dividing by 3.
-\end{thm}
-
-\begin{proof}
-We again prove directly. There are three cases: $n$ has remainder 0, 1 or 2 upon dividing by 3.
-\begin{enumerate}
-  \item[(a)] If $n$ has remainder 0, then $n=3m$ for some $m\in\Z$ and so $n^2=9m^2=3(3m^2)$ has remainder 0.
-  \item[(b)] If $n$ has remainder 1, then $n=3m+1$ for some $m\in\Z$ and so
-  \[n^2=9m^2+6m+1=3(3m^2+2m)+1\quad\text{has remainder 1.}\]
-  \item[(c)] If $n$ has remainder 2, then $n=3m+2$ for some $m\in\Z$ and so
-  \[n^2=9m^2+12m+4=3(3m^2+4m+1)+1\quad\text{has remainder 1.}\]
-\end{enumerate}
-Thus $n^2$ has remainder 0 or 1.
-\end{proof}
