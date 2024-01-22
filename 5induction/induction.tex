@@ -2,6 +2,27 @@
 \section{Mathematical Induction and Well-ordering}\label{sec:ind}
 
 \iffalse
+    \item Prove: $n! \le \left(\frac{n + 1}{2}\right)^n$.\par
+     (\emph{Hint: find a formula for the sum of the first $n$ positive integers})
+  
+  \item We prove that $\sqrt 2$ is irrational using the \emph{method of infinite descent,} which is very important in number theory.\par
+  Suppose $\sqrt 2=\frac pq$ where $p,q$ are positive integers (we assume nothing else about $p,q$).
+  \begin{enumerate}
+    \item Prove that there exist sequences of positive integers $(p_n)$, $(q_n)$ which satisfy three conditions:
+    \[
+    	p_n^2=2q_n^2,\qquad p_{n+1}=\tfrac 12p_n,\qquad q_{n+1}=\tfrac 12q_n
+    \] 
+    Hence argue that there exist two sequences of decreasing positive integers $m>m_1>m_2>\cdots$ and $n>n_1>n_2>\cdots$ which satisfy $m_i^2=2n_i^2$ for each $i$.
+    
+    \item Is it possible to have an infinite sequence of decreasing \emph{positive} integers? Why not? Hence complete the argument that $\sqrt 2$ is irrational.
+	\end{enumerate}
+  
+%   \item\begin{enumerate}
+%     \item We are given positive integers $m$ and $n$ which satisfy $m^2=2n^2$. The right hand side is even, whence $m^2$ is even and so $m$ is even. Thus $m=2m_1$. Clearly $m_1<m$. Repeat the argument to find $n_1<n$.\par
+%     Since $m_1^2=2n_1^2$ for positive integers $m_1,n_1$, we can repeat this argument as many times as desired, thus generating the required sequences.
+%     
+%     \item No! If $m>m_1>m_2>m_3>\cdots$ is a sequence of decreasing positive integers, then in at most $m$ steps we must reach zero! In this case, since we divide by 2 each time, it will take only approximately $\log_2m$ steps to pass 1. We will therefore eventually run out of positive integers and so the sequence cannot continue indefinitely. This contradicts the appearance that we generated two such sequences in part (b). But this followed immediately from the assuption that $\sqrt 2$ was rational. Thus $\sqrt 2\not\in\Q$.
+%   \end{enumerate}
 
 In Section \ref{sec:proof} we discussed three methods of proof: direct, contrapositive, and contradiction. The fourth standard method of proof, \emph{induction,} has a very different flavor. In practice it formalizes the idea of spotting a pattern. Before we give the formal definition of induction, we consider where induction fits into the investigative process.
 
