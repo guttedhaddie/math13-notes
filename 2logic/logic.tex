@@ -113,7 +113,6 @@ Of critical importance is the ability to have one proposition lead to another.
 \end{defn}
 
 
-%Remember that the expressions $P\Longrightarrow Q$ and $P\Longleftrightarrow Q$ are themselves \emph{propositions}: sentences which are either true or false. 
 Connective propositions can be read and written in many different ways:
 \begin{quote}
 	\def\arraystretch{1.05}
@@ -139,7 +138,7 @@ Connective propositions can be read and written in many different ways:
 	Are you comfortable with what the propositions $P$ and $Q$ are here?
 \end{example}
 
-%\goodbreak
+
 
 Connectives are central to mathematics for many reasons. In particular:
 \begin{enumerate}
@@ -154,8 +153,7 @@ Connectives are central to mathematics for many reasons. In particular:
 We'll revisit these ideas in Section \ref{sec:proof}, and repeatedly throughout the course.\bigbreak
 
 
-While the biconditional should be easy to remember, %($P\Longleftrightarrow Q$ is true precisely when $P$ and $Q$ have identical truth states)
-it is harder to make sense of the conditional connective. Short of simply memorizing the truth table, here are two examples that might help.
+While the biconditional should be easy to remember, it is harder to make sense of the conditional connective. Short of simply memorizing the truth table, here are two examples that might help.
 
 \begin{examples}{}{condmeaning}
 	\exstart Suppose your professor says, ``If the class earns a B average on the midterm, then I'll bring doughnuts.'' The only situation in which the teacher will have lied is if the class earns a B average but she fails to provide doughnuts.
@@ -179,7 +177,6 @@ it is harder to make sense of the conditional connective. Short of simply memori
 	A \emph{contradiction} is a logical expression that is always false.
 \end{defn}
 
-%The easiest way to detect these is to construct a truth table.
 
 \begin{examples}{}{taut}
 \exstart $P\wedge(\neg P)$ is a contradiction.
@@ -197,7 +194,7 @@ it is harder to make sense of the conditional connective. Short of simply memori
 	\end{array}$
   \end{minipage}\par
   
-	\item\label{ex:taut2} $\bigl(P\wedge(P\implies Q)\bigr)\Longrightarrow Q$ is a tautology.% This is essentially how we understand a direct proof: if $P$ is true and we have a correct argument $P\implies Q$, then $Q$ must also be true.
+	\item\label{ex:taut2} $\bigl(P\wedge(P\implies Q)\bigr)\Longrightarrow Q$ is a tautology.
 	\[\begin{array}{cc||c|c||c}
 	P & Q & P\implies Q & P\wedge(P\implies Q) & \bigl(P\wedge(P\implies Q)\bigr)\implies Q\\\hline
 	T & T & T & T& T\\
@@ -213,8 +210,6 @@ it is harder to make sense of the conditional connective. Short of simply memori
 
 
 \boldsubsubsection{The Converse and Contrapositive}
-
-%The following constructions are used regularly; it is vitally important to understand the distinction.
 
 \begin{defn}{}{contra}
 	The \emph{converse} of $P\Longrightarrow Q$ is the reversed implication $Q\Longrightarrow P$.\smallbreak
@@ -542,13 +537,8 @@ If $P$ is a propositional function depending on a single variable $x$, then for 
 
 \begin{example}{}{easyquantprop}
 	Consider the propositional function $P(x)$: ``$x^2>4$" with domain the real numbers. Plainly $P(1)$ is false (``$1^2>4$'') and $P(6)$ is true (''$6^2>4$'').
-% 	\begin{itemize}
-% 	  \item $P(-1)$ is false: it is the sentence ``$(-1)^2>4$.''
-% 	  \item $P(6)$ is true: it is the sentence ``$6^2>4$.''
-% 	\end{itemize}
 \end{example}
 
-%\boldsubsubsection{Quantified Propositions}
 
 In mathematics, propositional functions are often \emph{quantified.} English contains various quantifiers (\emph{all, some, many, few, several,} etc.), but in mathematics we are primarily concerned with just two.
 
@@ -1508,20 +1498,19 @@ We finish with a particularly famous example of a non-constructive existence pro
 
  The first few primes are $2,3,5,7,11,13,17,19,\ldots$ It follows, though it is not completely obvious, that every integer $\ge 2$ is either prime or a product of primes (\emph{composite}). In particular, every integer $\ge 2$ is divisible by at least one prime. We now state Euclid's result, and prove it by contradiction.
 
-\begin{thm}{\emph{Elements}, Book IX, Prop.\,20}{}
+\begin{thm}{\emph{Elements}, Book IX, Prop.\,20}{euclidprime}
 	There are infinitely many prime numbers.
 \end{thm}
 
 \begin{proof}
-Assume there are exactly $n$ primes $\lst p n$ and consider the integer $\Pi:=p_1\cdots p_n+1$.
-Certainly $\Pi$ is divisible by some prime $p_i$ (in our list by assumption!), as is the product $p_1\cdots p_n$. But then the difference
-\[
-	1=\Pi-p_1\cdots p_n
-\]
-is divisible by $p_i$, contradicting the fact that $p_i\ge 2$.
+	Assume there are exactly $n$ primes $\lst p n$ and define the integer
+	\[\Pi:=p_1\cdots p_n+1\]
+	Certainly $\Pi$ is divisible by some prime $p_i$ (in our list by assumption!), as is the product $p_1\cdots p_n$. But then the difference
+	\[
+		1=\Pi-p_1\cdots p_n
+	\]
+	is divisible by $p_i$, contradicting the fact that $p_i\ge 2$.
 \end{proof}
-
-Euclid does things slightly differently. Instead of a contradiction argument, he asserts that, given a finite list of primes, the number $\Pi$ is divisible by a \emph{new prime} not in his list.
 
 
 \goodbreak
@@ -1531,63 +1520,48 @@ Euclid does things slightly differently. Instead of a contradiction argument, he
 	A self-test quiz and worked questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/2-4-proofs2.html}{online}.
 
 \begin{enumerate}
+  \item Prove or disprove: There exists a line $L$ in the plane such that, for all points $A,B$ in the plane, we have that $A,B$ lie on $L$. 
+  
+
+	\item Prove or disprove:
+	\begin{enumerate}
+	  \item There exist integers $m$ and $n$ such that $2m-3n=15$. 
+	  
+		\item There exist integers $m$ and $n$ such that $6m-3n=11$. 
+  \end{enumerate}
+   
+   
+	\item Prove: For every positive integer $n$, the integer $n^2+n+3$ is odd and greater than or equal to 5.
+	
+
+	\item Let $p$ be an odd integer. Prove that the equation $x^2-x-p=0$ has no \emph{integer} solutions.
+   
+   
 	\item Prove or disprove the following conjectures about real numbers $x,y$.
 	\begin{enumerate}
 	  \item If $3x+5y$ is irrational, then at least one of $x$ and $y$ is irrational.
+	  
 	  \item If $x$ and $y$ are rational, then $3x+4xy+2y$ is rational.
+	  
 	  \item If $x$ and $y$ are irrational, then $3x+4xy+2y$ is irrational.
 	\end{enumerate}
   
+  
 	\item Prove by contradiction: if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$.
-	
-% 	    	\item \begin{enumerate} \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contradiction.}
 %      \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contrapositive.}
-% \end{enumerate}
-
-
-%   \item You meet three men, Corey, Jansen, and Vogel, each of whom is a either Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Corey whether he is a Truthteller or a Liar. Corey answers with his back turned, so you cannot hear what he says.\\[5pt]
-% ``What did he say?'' you ask Jansen.\\[5pt]
-% Jansen replies: ``Corey says he is a Truthteller.''\\[5pt]
-% Vogel says: ``Jansen is lying.''\\[5pt]
-% Is Vogel a Truthteller or a Liar? Explain your answer.
-% 
-% 	\item Assume that Mary's father lives in California. Consider the following implication $P$:
-% 	\begin{center}
-% 	If Mary's father is an oilman and does not have any friends in Wisconsin, then Mary plays tennis or basketball, or she appeared in at least one article of a December 1997 New York Times newspaper edition.
-% 	\end{center}
-% 	\begin{enumerate}
-% 	  \item Find the contrapositive of $P$.
-% 	  \item Find the converse of $P$.
-% 	  \item Find the negation of $P$.
-% 	  \item Imagine you are a detective and want to find the truth value of $P$. Describe your action-strategy in full detail.
-% 	\end{enumerate}
-% 
-%   \item You meet three old men, Alain, Boris, and César, each of whom is a Truthteller or a Liar. Truthtellers speak only the truth; Liars speak only lies. You ask Alain whether he is a Truthteller or a Liar. Alain answers with his back turned, so you cannot hear what he says.\\[5pt]
-% ``What did he say?'' you ask Boris.\\[5pt]
-% Boris replies: ``Alain says he is a Truthteller.''\\[5pt]
-% César says: ``Boris is lying.''\\[5pt]
-% Is César a Truthteller or a Liar? Explain your answer.\goodbreak
-
+  
+  
+	\item Prove that between any two distinct rational numbers there exists another rational number.\label{ex:rationalsdenseinthemselves}
 	
-  \item \emph{(Snake-like integers)} Let's say that an integer $y$ is \textit{Snake-like} if and only if there is some integer $k$ such that $y=(6k)^2+9$.
-	\begin{enumerate}
-	  \item Give three examples and three non-examples of Snake-like integers. 
-	  \item Given $y\in\Z$, compute the negation of the statement, `$y$ is Snake-like.'
-	  \item Show that every Snake-like integer is a multiple of $9$.
-	  \item Show that the statements, `$n$ is Snake-like,' and, `$n$ is a multiple of nine,' are not equivalent.
-	\end{enumerate}
-	
-% 	
-% 	\item Assume that Ben's father lives in Peru. Consider the following implication $\beta$:
-% 	\begin{center}
-% 	If Ben's father is an artist and does not have any friends in Asia, then Ben plays tennis or ping-pong, or he appeared in at least one picture of the May 1992 Time magazine.
-% 	\end{center}
-% 	\begin{enumerate}
-% 	  \item Find the contrapositive of $\beta$.
-% 	  \item Find the converse of $\beta$.
-% 	  \item Find the negation of $\beta$.
-% 	  \item Imagine you are a detective and want to find the truth value of $\beta$. Describe your action-strategy in full detail.
-% 	\end{enumerate}
+
+	\item Consider the proposition:
+  \begin{quote}
+      For any non-zero rational number $r$ and any irrational number $t$, the number $rt$ is irrational.
+  \end{quote}
+  \begin{enumerate}
+      \item Translate this statement into logic using quantifiers and propositional functions.
+      \item Prove the statement.
+  \end{enumerate}
 	
 	
 	\item\begin{enumerate}
@@ -1595,78 +1569,66 @@ Euclid does things slightly differently. Instead of a contradiction argument, he
 	  \item Prove that $\sqrt[3]{2}$ is irrational. (\emph{Hint: revisit Exercise \ref*{sec:proof}.\ref{exs:cuberoot2}}) 
 	\end{enumerate}
   
-  \item Here is an alternative argument that $\sqrt 2$ is irrational. Suppose that $\sqrt 2=\frac mn$ where $m,n\in\N$. This time we don't assume that $m,n$ have no common factors.
+  
+  \item Here is an alternative argument that $\sqrt 2$ is irrational using the \emph{method of infinite descent,} which is very important in number theory.\par
+  Suppose that $\sqrt 2=\frac mn$ where $m,n$ are positive integers; this time we don't assume that $m,n$ have no common factors.
   \begin{enumerate}
-    \item $m,n$ satisfy the equation $m^2=2n^2$. Prove that there exist positive integers $m_1,n_1$ which satisfy the following three conditions:
-    \[m_1^2=2n_1^2,\qquad\qquad m_1<m,\qquad\qquad n_1<n.\] 
-    \item Show that there exist two sequences of decreasing positive integers $m>m_1>m_2>\cdots$ and $n>n_1>n_2>\cdots$ which satisfy $m_i^2=2n_i^2$ for all $i\in\N$.
-    \item Is it possible to have an infinite sequence of decreasing \emph{positive} integers? Why not? Show that we obtain a contradiction and thus conclude that $\sqrt 2\not\in\Q$.
+    \item Prove that there exist positive integers $m_1,n_1$ which satisfy three conditions:
+    \[
+    	m_1^2=2n_1^2,\qquad m_1<m,\qquad n_1<n
+    \] 
+    
+    \item Argue that there exist two sequences of decreasing positive integers $m>m_1>m_2>\cdots$ and $n>n_1>n_2>\cdots$ which satisfy $m_i^2=2n_i^2$ for each $i$.
+    
+    \item Is it possible to have an infinite sequence of decreasing \emph{positive} integers? Why not? Hence complete the argument that $\sqrt 2$ is irrational.
 	\end{enumerate}
-	This is an example of the \emph{method of infinite descent,} which is very important in number theory. 
 	
-  \item You are given the following facts.
-  \begin{enumerate}
+
+  \item We extend Example \ref{ex:easypolynosolns} as you might have seen it in calculus. Use the following facts to give a formal proof that $x^{17}+12x^3+13x+3=0$ has \emph{exactly one solution} $x$, and that $x$ lies in the interval $(-1,0)$.
+  \begin{itemize}
     \item All polynomials are continuous.
-    \item (Intermediate Value Theorem) If $f$ is continuous on $[a,b]$ and $L$ lies between $f(a)$ and $f(b)$, then $f(x)=L$ for some $x\in(a,b)$.
+    \item (Intermediate Value Theorem) If $f$ is continuous on the interval $[a,b]$ and $L$ lies between $f(a)$ and $f(b)$, then $f(x)=L$ for some $x\in(a,b)$.
     \item If $f'(x)>0$ on an interval, then $f$ is an increasing function.
-	\end{enumerate}
-	Use these facts to give a formal proof that $x^{17}+12x^3+13x+3=0$ has \emph{exactly one solution} $x$, and that $x$ lies in the interval $(-1,0)$.
+	\end{itemize}
 	
-
-	\item\begin{enumerate}
-	  \item Prove or disprove: There exist integers $m$ and $n$ such that $2m-3n=15$. 
-		\item Prove or disprove: There exist integers $m$ and $n$ such that $6m-3n=11$. 
-  \end{enumerate}
-
-  %\item Prove or disprove: There exist a line $L$ in $\R^2$ such that, for all points $A, B \in \R^2$, we have $A, B$ lie on $L$. 
-
-  
-	\item Prove that between any two distinct rational numbers there exists another rational number.\label{ex:rationalsdenseinthemselves}
 	
-	\item Consider the statement:
-  \begin{center}
-      For any non-zero rational number $r$ and any irrational number $t$, $rt$ is irrational.
-  \end{center}
-  \begin{enumerate}
-      \item Translate this statement into logic using quantifiers and propositional functions.
-      \item Prove the statement.
-  \end{enumerate}
-
-	\item Let $p$ be an odd integer. Prove that $x^2-x-p=0$ has no \emph{integer} solutions.
-   
-	\item Prove: For every positive integer $n$, $n^2+n+3$ is an odd integer greater than or equal to 5.\par
-	\emph{There are two claims here: $n^2+n+3$ is odd, and $n^2+n+3\ge 5$.}
-	  
+	\item Euclid's original argument for Theorem \ref{thm:euclidprime} is slightly different. He asserts the following:
+	\begin{quote}
+		Given a list of primes $p_1,\ldots,p_n$, the number $\Pi:=p_1\cdots p_n+1$ is divisible by a \emph{new prime} not in the list.
+	\end{quote}
+	Rewrite the proof following Euclid's approach.
 	
-		\item The real numbers have the \emph{Archimedean property}, that is, for any positive real numbers $x$ and $y$, there exists a positive integer $n$ such that $nx > y$. Use this fact to show that there do not exist any positive real numbers which are less than $1/n$ for all positive integers $n$. 
-  
-    \item Consider the following proof of the fact that every real number is less than some positive integer:
-  \begin{proof}
-      Consider a real number $x$. For example, $x = 19.7$. Then $x < 20$ and $20$ is a positive integer. 
-  \end{proof}
-  What is wrong with this proof? Give a correct proof. [Hint: use the previous exercise.]
 	
-	\item Here is an extension of question \ref{ex:rationalsdenseinthemselves}. Let $\lceil x\rceil$, the \emph{ceiling} of $x$, denote the smallest integer greater than or equal to $x$. E.g.\ $\lceil 3.2\rceil=4$, $\lceil 7\rceil=7$ and $\lceil -8.4\rceil=-8$.
+	\item The real numbers satisfy the \emph{Archimedean property}:
+	\begin{quote}
+		For any $x,y>0$, there exists a positive integer $n$ such that $nx>y$.
+	\end{quote}
 	\begin{enumerate}
-  	\item Suppose that $x$ and $y$ are real numbers with $x<y$. Use the ceiling function to show that there exists a positive integer $n$ for which $n(y-x)>1$.
-  	\item Prove or disprove: $\forall x,y\in\R$ with $x<y$, $\exists m,n\in\Z$ for which $nx<m<ny$.
-  	\item Use parts (a) and (b) to prove that between any two real numbers there exists a rational number.
-  	\item (Hard) Is it true that between any two real numbers there exists an \emph{irrational} number? If so, prove it.
+	  \item Use the Archimedean property to show that there are no positive real numbers which are less than $\frac 1n$ for all positive integers $n$. 
+  
+  	\item Consider the following `proof' of the fact that every real number is less than some positive integer:
+  	\begin{proof}
+    	Consider a real number $x$. For example, $x = 19.7$. Then $x<20$ and 20 is a positive integer. 
+ 		\end{proof}
+  	What is wrong with this argument? Give a correct proof.
+	
+		\item Prove: $\forall x,y\in\R$ with $x<y$, $\exists m,n\in\Z$ for which $nx<m<ny$. Hence conclude an extension of Exercise \ref{ex:rationalsdenseinthemselves}: between any two \emph{real} numbers there exists a rational number.
+		
+  	\item (Hard)\lstsp Is it true that between any two real numbers there exists an \emph{irrational} number? If so, prove it.
 	\end{enumerate}
 	
-	\item ?????? Suppose that $x,y,z$ are real numbers such that $x + y + z = 1$. Prove
-    \[  
-        (1 - x)(1 - y)(1 - z) \geq 8 xyz.
-    \]
-    [Hint: find a way to apply the AM-GM inequality.]
+	
+	\item Use the AM--GM inequality (two-variable or full version) to answer the following.
+	\begin{enumerate}
+	  \item Suppose $x,y,z\ge 0$ satisfy $x+y+z=1$.
+		\begin{enumerate}
+		  \item What is the largest possible value of $xyz$?
+	  	\item (Hard)\lstsp Prove that $(1-x)(1-y)(1-z)\ge 8xyz$.
+	  \end{enumerate}
+    \item Prove: $n! \le \left(\frac{n + 1}{2}\right)^n$. (\emph{Hint: find a formula for the sum of the first $n$ positive integers})
+	\end{enumerate}
     
-    % \item Use the general AM-GM inequality to establish
-    % \[
-    %     n! \leq \left(\frac{n + 1}{2}\right)^n.
-    % \]
     
-    
-
 	\item\label{exs:amgm-full} We prove the full AM--GM inequality.
 	\begin{enumerate}
 	  \item When $n=3$, try mimicking our earlier approach by cubing the desired inequality. Why does this seem unwise?
@@ -1680,6 +1642,7 @@ Euclid does things slightly differently. Instead of a contradiction argument, he
 
 \end{exercises}
 
+\clearpage
 
 
 % Consider the function $f(x)=e^{x-1}-x$. Its derivative is $f'(x)=e^{x-1}-1$, which is zero if and only if $x=1$. The sign of the derivative changes from negative to positive at $x=1$, whence this is a local minimum. $f$ has no other critical points and its domain is the whole real line, whence $x=1$ is the location of the \emph{global} minimum of $f$. Since $f(1)=0$, we obtain the inequality
@@ -1695,3 +1658,32 @@ Euclid does things slightly differently. Instead of a contradiction argument, he
 
 
 
+	
+% 	    	\item \begin{enumerate} \item Prove that if $x$ and $y$ are positive real numbers, then $\sqrt{x+y}\neq\sqrt{x}+\sqrt{y}$. \emph{Argue by contradiction.}
+% \end{enumerate}
+
+ 
+% 	\item Assume that Mary's father lives in California. Consider the following implication $P$:
+% 	\begin{center}
+% 	If Mary's father is an oilman and does not have any friends in Wisconsin, then Mary plays tennis or basketball, or she appeared in at least one article of a December 1997 New York Times newspaper edition.
+% 	\end{center}
+% 	\begin{enumerate}
+% 	  \item Find the contrapositive of $P$.
+% 	  \item Find the converse of $P$.
+% 	  \item Find the negation of $P$.
+% 	  \item Imagine you are a detective and want to find the truth value of $P$. Describe your action-strategy in full detail.
+% 	\end{enumerate}
+% 
+
+	
+% 	
+% 	\item Assume that Ben's father lives in Peru. Consider the following implication $\beta$:
+% 	\begin{center}
+% 	If Ben's father is an artist and does not have any friends in Asia, then Ben plays tennis or ping-pong, or he appeared in at least one picture of the May 1992 Time magazine.
+% 	\end{center}
+% 	\begin{enumerate}
+% 	  \item Find the contrapositive of $\beta$.
+% 	  \item Find the converse of $\beta$.
+% 	  \item Find the negation of $\beta$.
+% 	  \item Imagine you are a detective and want to find the truth value of $\beta$. Describe your action-strategy in full detail.
+% 	\end{enumerate}
