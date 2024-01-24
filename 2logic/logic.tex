@@ -1,4 +1,4 @@
-\section{Logic and the Language of Proofs}\label{sec:logic}
+\section{Logic and the Language of Proofs}\label{chap:logic}
 
 
 \subsection{Propositions}\label{sec:prop}
@@ -927,7 +927,7 @@ There are four standard methods of proof, though a longer argument might use sev
 	\item[Direct] Assume the hypothesis $P$ and deduce the conclusion $Q$.\footnote{From now on, to \emph{assume} a proposition is to suppose its \emph{truth.} To suppose $P$ is false, we ``assume/suppose $\neg P$.''} This structure should be intuitive, though it may help to revisit the truth table in Definition \ref{defn:implies} and the tautology of Example \ref*{ex:taut}.\ref{ex:taut2}.
 	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$: a direct proof of the contrapositive $\neg Q\Longrightarrow\neg P$. This approach works because the contrapositive is logically equivalent to $P\Longrightarrow Q$ (Theorem \ref{thm:contrapos}).
 	\item[Contradiction] Assume $P$ and $\neg Q$, and deduce a \emph{contradiction}. By Theorem \ref{thm:negconditional} and Exercise \ref*{sec:prop}.\ref{exs:contradictproof}, we see that $P\Longrightarrow Q$ is true.
-	\item[Induction] This has a completely different flavor: we will consider it in Chapter 5.
+	\item[Induction] This has a completely different flavor: we will consider it in Chapter \ref{chap:induction}.
 \end{description}
 
 Each method has its advantages and disadvantages: the direct method typically has a simpler logical flow whereas the contrapositive/contradiction approaches are useful when the negations $\neg P$, $\neg Q$ are easier to work with than $P$, $Q$ themselves. All methods are equally valid, and, as we'll see shortly, one can often prove a simple theorem using all three approaches!\smallbreak
