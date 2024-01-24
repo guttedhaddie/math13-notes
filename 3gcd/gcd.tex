@@ -268,7 +268,7 @@ Can you figure the weekday today's date in your year of birth? Thinking about th
 
 \boldsubsubsection{Division and Congruence Equations}
 
-Division in modular arithmetic behaves in unexpected ways. We'll consider it further in the exercises and the next section, but for the present just be careful. Converting congruences to statements about integers is the safest approach.
+Division in modular arithmetic behaves in unexpected ways. We'll consider this further in the next section, but for the present it is safest to convert congruences to statements about integers.
 
 \begin{examples}{}{}
 	\exstart Even when there is a common factor, dividing both sides is perilous. For instance
@@ -338,22 +338,27 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider it fur
 \begin{enumerate}
   \item Check explicitly that $3^{23}\not\equiv 3^2\pmod 7$.
   
-  \item Find the remainder when $12^9+19^{24}$ is divided by $10$.
+  \item Compute the following remainders:
+  \begin{enumerate}
+  	\item $12^9+19^{24}$ on division by 10.
+  	\item $30^{10}$ on division by 13.
+  	\item $17^{251}\cdot 23^{12}-19^{41}$ on division by 5.%\emph{Hint: $17\equiv 2$ and $2^2\equiv -1\pmod 5$.}
+  	\item $12^{10}+2^{36}\cdot 18^{12}$ on division by 141.%\emph{Hint: what nice number is close to 141? Use a calculator to help with some of the sums.}
+  \end{enumerate}
   
-  \item Compute the remainder when $30^{10}$ is divided by 13.
+    \item Prove the first part of Theorem \ref{thm:congbasic}: that if $a\equiv c$ and $b\equiv d$, then $a+b\equiv c+d\pmod n$.
   
-  \item Find all integers $x$ which satisfy the congruence equation $3x\equiv 2\mod 8$.
-  
-  \item Find the remainder when $17^{251}\cdot 23^{12}-19^{41}$ is divided by 5. \emph{Hint: $17\equiv 2$ and $2^2\equiv -1\pmod 5$.}
-  
-  \item Find the remainder when $12^{10}+2^{36}\cdot 18^{12}$ is divided by 141. \emph{Hint: what nice number is close to 141? Use a calculator to help with some of the sums.}
-  
-  \item Is the following statement identical to Example \ref{ex:congex}? Why/why not?
-  \[n^2\equiv n\pmod 3\iff n\equiv 0\pmod 3\text{ or }n\equiv 1\pmod 3,\]
-  
-  \item Prove that if $a\equiv b\pmod n$ and $c\equiv d\pmod n$ then $3a-c^2\equiv 3b-d^2\pmod n$.
-
+ 
+ 
   \item Find a natural number $n$ and integers $a,b$ such that $a^2\equiv b^2\pmod n$ but $a\not\equiv b\pmod n$.
+  
+  
+  
+    
+%   \item Is the following statement identical to Example \ref{ex:congex}? Why/why not?
+%   \[
+%   	n^2\equiv n\pmod 3\iff n\equiv 0\pmod 3\text{ or }n\equiv 1\pmod 3
+%   \]
   
   \item\begin{enumerate}
     \item Let $n$ be a positive integer. Prove that $n$ is congruent to the sum of its digits modulo 9.\\
@@ -363,25 +368,22 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider it fur
   
   \item Let $p$ be a prime number greater than or equal to 3. Show that if $p\equiv 1\pmod 3$, then $p\equiv 1\pmod 6$. \emph{Hint: $p$ is odd.} 
   
-  \item\label{exs:congdivide} Suppose that $7x\equiv 28\pmod{42}$. By Theorem \ref{thm:congdivide}, it follows that $x\equiv 4\pmod{6}$.
+    
+  \item Describe all integers $x$ which satisfy the congruence equations:
   \begin{enumerate}
-    \item Check this explicitly using Theorem \ref{thm:congdiv}.
-    \item If $7x\equiv 28\pmod{42}$, is it possible that $x\equiv 4\pmod{42}$?
-    \item Is it always the case that $7x\equiv 28\pmod{42}\implies x\equiv 4\pmod{42}$? Why/why not?
-    \item Prove Theorem \ref{thm:congdivide}.
+    \item $3x\equiv 2\mod 8$\qquad\qquad (b) \ $7x\equiv 28\pmod{42}$.
+  \end{enumerate}
+	
+	\item Let $a,b,c$ be integers. Prove or disprove each of the following claims:
+	\begin{enumerate}
+	  \item $a\mid b$ and $b\mid c\implies a\mid c$
+	  \item $a=b\iff a\mid b$ and $b\mid a$
+	  \item $a\mid b$ and $a\mid c\implies a\mid bc$.
+    \item $a\mid c$ and $b\mid c\implies ab\mid c$.
   \end{enumerate}
   
-  \item If $a\divides b$ and $b\divides c$, prove that $a\divides c$.
-  
-  \item\label{ex:adivb} Let $a,b$ be positive integers. Prove that $a=b\iff a\divides b$ and $b\divides a$.
-  
-  \item Decide whether each conjecture is true or false and prove/disprove your assertions.
-  \begin{description}
-    \item[Conjecture 1:] $a\divides b$ and $a\divides c\implies a\divides bc$.
-    \item[Conjecture 2:] $a\divides c$ and $b\divides c\implies ab\divides c$.
-  \end{description}
-
-	\item Fermat's Little Theorem (to distinguish it from his `Last') states that if $p$ is prime and $a\not\equiv 0\mod p$, then $a^{p-1}\equiv 1\pmod p$.
+    
+  \item Fermat's Little Theorem (to distinguish it from his `Last') states that if $p$ is prime and $a\not\equiv 0\mod p$, then $a^{p-1}\equiv 1\pmod p$.
 	\begin{enumerate}
 	  \item Use Fermat's Little Theorem to prove that $b^p\equiv b\pmod p$ for \emph{any} integer $b$.
 	  \item Prove that if $p$ is prime then $p\divides (2^p-2)$.
@@ -391,8 +393,35 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider it fur
 	\item Abraham Lincoln was born February 12\th, 1809. On what day of the week was this?
 	
 	\item Prove that $p\mid n\implies p^2\mid n^2$
-	
-	\item Prove that $\forall n\in\Z, n^2\equiv 0$ or $1\pmod 3$
+		
+		
+	\item Let $n$ be an integer. Prove the following:
+	\begin{enumerate}
+    \item Exactly one of $n$, $n+2$ and $n+4$ is divisible by 3.
+    \item $n^2\equiv 0$ or $n^2\equiv 1\pmod 3$
+	  \item $\frac 16n(n+1)(2n+1)$ is an integer.
+  \end{enumerate}
+    
+    \item Let $n$ be an integer $\ge 2$ and consider numbers of the form
+    \[
+    	\underbrace{11\cdots 11}_{n \text{ times}}
+    \]
+    \begin{enumerate}
+      \item Prove every such number can be written as $4k+3$ for some $k\in\Z$.
+      \item Use part (a) to show that no such number is a perfect square.
+    \end{enumerate}
+    
+    \item Prove that $3 \mid (4^n - 1)$ for all $n \geq 1$.
+    
+    
+    \item Let $n \in \Z$.
+    \begin{enumerate}
+        \item Find all possible remainders of $n^2$ upon division by $7$.
+        \item Find all possible remainders of $n^3$ upon division by $7$.
+        \item Use parts (a) and (b) to show that any number which is simultaneously a square and a cube must be of the form $7k$ or $7k + 1$ for some integer $k$.
+    \end{enumerate}
+    
+\item Let $n \in \N$.  Prove that $\sqrt{4n+6}$ is not an integer.  Hint.  You may use the following lemma without proof: $\forall k \in \Z,\; k^2 \equiv 0 \text{ or } 1 \pmod 4$.
 \end{enumerate}
 
 \end{exercises}
