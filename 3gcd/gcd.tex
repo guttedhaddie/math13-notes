@@ -464,13 +464,13 @@ To apply the Euclidean algorithm to our motivational problem of integer points o
 This process of reversing the algorithm works in general.
 
 \begin{cor}{Bézout's Identity}{euclid}
-	Given integers $a,b$, not both zero, $\exists a,b\in\Z$ such that
+	Given integers $a,b$, not both zero, $\exists x,y\in\Z$ such that
 	\[
 		\gcd(a,b)=ax+by
 	\]
 \end{cor}
 
-If either of $a,b$ are negative, make everything positive, apply the Euclidean algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards. Before returning to our example, we need a useful corollary. %The identity is trivial if, say, $n=0$ (see Exercise \ref{exs:gcd0})
+If either of $a,b$ are negative, make everything positive, apply the Euclidean algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards. Before returning to our example, we need a useful corollary.
 
 \begin{cor}{}{moddivision}
 	Suppose $a,b,c$ are integers for which $\gcd(a,b)=1$ and $a\mid bc$. Then $a\mid c$.
