@@ -1,7 +1,5 @@
 \section{Divisibility and the Euclidean Algorithm}\label{chap:gcd}
 
-\def\divides{\mid}
-\def\ndivides{\nmid}
 
 In this section we introduce \emph{congruence,} which generalizes the notion of an integer's parity (evenness/oddness). The study of congruence is of fundamental importance to the sub-discipline of number theory, and provides some of the most straightforward examples of groups and rings. We will cover the basics in this section, returning in Chapter \ref{chap:relations} for more formal observations.
 
@@ -17,24 +15,24 @@ In this section we introduce \emph{congruence,} which generalizes the notion of 
 	We could also say that ``$n$ is a \emph{divisor} of $m$,'' that ``$m$ is \emph{divisible} by $n$,'' or that ``$m$ is a \emph{multiple} of $n$.''
 \end{defn}
 
-The negated symbol $\ndivides$ is read \emph{does not divide.}
+The negated symbol $\nmid$ is read \emph{does not divide.}
 
 \begin{examples}{}{}
-	\exstart We write $4\divides 20$ since $20=4\times 5$. The same equation also says that $5\mid 20$.
+	\exstart We write $4\mid 20$ since $20=4\times 5$. The same equation also says that $5\mid 20$.
 	\begin{enumerate}\setcounter{enumi}{1}
-		\item The proposition $9\ndivides 7$ is read ``\emph{9 does not divide 7.}'' It is shorthand for $\neg(9\mid 7)$.
+		\item The proposition $9\nmid 7$ is read ``\emph{9 does not divide 7.}'' It is shorthand for $\neg(9\mid 7)$.
 	\end{enumerate}
 \end{examples}
 
-When integers do not divide, there is a \emph{remainder} left over. Your study of remainders likely goes back to elementary school when you first learned division and wrote division in the form 
+When integers do not divide, there is a \emph{remainder} left over. Your study of remainders likely goes back to elementary school when you first learned division: for instance,\footnote{The common meaning of \emph{divide} is to apportion a quantity equally. Thus to divide 33 apples between 5 people, each person gets 6 apples and 3 are left over. In grade school mathematics, fractions come much later.}
 \[
-	33\div 5=6\mathbin{\mathsf r}3 \tag{read ``6 remainder 3''}
+	33\div 5=6\mathbin{\mathsf r}3 \tag{``6 remainder 3''}
 \]
 
 An important foundational result says that unique remainders always exist.
 
 
-\begin{thm}{Division Algorithm\footnotemark}{div}
+\begin{thm}{Division Algorithm}{div}
 	Suppose $m,n\in\Z$ with $n$ positive. Then there exist \emph{unique} integers $q,r$ (the \emph{quotient} and \emph{remainder}) for which
 	\[
 		m=qn+r\quad\text{and}\quad 0\le r<n
@@ -42,17 +40,17 @@ An important foundational result says that unique remainders always exist.
 \end{thm}
 
 
-In elementary school language: $m\div n=q\mathbin{\mathsf r}r$.%might be read ``$n$ goes $q$ times into $m$ with $r$ left over.''
+In elementary school language, $m\div n=q\mathbin{\mathsf r}r$.
 
 \begin{examples}{}{}
 	\exstart Given $m=23$ and $n=7$, we have $23=3\cdot 7+2$; that is $q=3$ and $r=2$.
 	\begin{enumerate}\setcounter{enumi}{1}
 		\item If $m=-11$ and $n=3$, then $-11=(-4)\cdot 3+1$; that is $q=-4$ and $r=1$.
-		\item The formula $m=6q+4$, where $q\in\Z$, describes all the integers that have remainder 4 after division by 6.
+		\item The formula $m=6q+4$, where $q\in\Z$, describes all integers with remainder 4 on division by 6.
 	\end{enumerate}
 \end{examples}
 
-An \emph{algorithm} is typically a computational process: if $m>0$ one could view this as the repeated subtraction of $n$ from $m$ until the result $r=m-qn$ satisfies $0\le r<n$. To prove this more rigorously requires foundational ideas related to induction to which we will return in Chapter \ref{chap:induction}. For our current purposes, it is enough for the division algorithm to guarantee that every integer has a nicely-defined remainder when divided by some positive integer $n$. We use this to construct an alternative form of arithmetic.
+An \emph{algorithm} is typically a computational process: if $m>0$ one could view this as the repeated subtraction of $n$ from $m$ until the result $r=m-qn$ satisfies $0\le r<n$. A rigorous proof requires foundational ideas related to induction to which we will return in Chapter \ref{chap:induction}. For our current purposes, we just need to know that remainders exist. Indeed our next step is to find a way to compare remainders \emph{without} explicitly invoking the division algorithm.
 
 
 \begin{defn}{}{}
@@ -72,7 +70,7 @@ An \emph{algorithm} is typically a computational process: if $m>0$ one could vie
 Calculating using the division algorithm is tedious. Our next result is crucial in that it permits the direct comparison of remainders. This can be treated as an equivalent definition of congruence. 
 
 \begin{thm}{}{congdiv}
-	$a\equiv b\pmod n\mathrel{\textcolor{red}{\iff}} n\divides (b-a) \mathrel{\textcolor{blue}{\iff}} b=a+kn\text{ for some integer }k$
+	$a\equiv b\pmod n\mathrel{\textcolor{red}{\iff}} n\mid (b-a) \mathrel{\textcolor{blue}{\iff}} b=a+kn\text{ for some integer }k$
 \end{thm}
 
 \begin{proof}
@@ -88,7 +86,7 @@ Calculating using the division algorithm is tedious. Our next result is crucial 
 		\implies &b-a=(q_2-q_1)n+(r_2-r_1) \tag{$\ast$}
 	\end{align*}
 	
-	($\textcolor{red}{\Rightarrow}$)\lstsp If $a\equiv b\pmod n$, then $a,b$ have the same remainder $r_1=r_2$. But then ($\ast$) says that $n\divides(b-a)$.
+	($\textcolor{red}{\Rightarrow}$)\lstsp If $a\equiv b\pmod n$, then $a,b$ have the same remainder $r_1=r_2$. But then ($\ast$) says that $n\mid(b-a)$.
 	\smallbreak
 	
 	($\textcolor{red}{\Leftarrow}$)\lstsp Assume that $n\mid(b-a)$ so that $b-a=kn$ for some integer $k$. By $(\ast)$, we see that
@@ -272,24 +270,18 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 
 \begin{examples}{}{}
 	\exstart Even when there is a common factor, dividing both sides is perilous. For instance
-% 	\[
-% 		42\equiv 12\spmod{10} \quad\text{but}\quad 21\not\equiv 6\spmod{10}
-% 	\]
-% 	However $21\equiv 6\pmod 5$. What went wrong? Think about the meaning of the left hand side:
 	\begin{align*}
 		42\equiv 12\spmod{\textcolor{red}{10}}&\implies \exists k\in\Z,\ \ 42-12=10k \implies \exists k\in\Z,\ \ 21-6=5k\\
 		&\implies 21\equiv 6\spmod{\textcolor{red}{5}}
 	\end{align*}
 	Division by 2 also divided the \textcolor{red}{modulus}! If we hadn't divided the modulus, the result would be \emph{false}: $21\not\equiv 6\pmod{10}$.
-	
-% 	 However, both sides are still divisible by 3; dividing out we obtain the true statement $7\equiv 2\pmod 5$, \emph{without} dividing the modulus. What is going on?
-		
-		\begin{enumerate}\setcounter{enumi}{1}
-		  \item Congruence equations are much harder to solve than standard equations. For instance, we cannot solve $2x\equiv 7\pmod 9$ by division: $x\equiv \frac 72$ is meaningless since $\frac 72$ is not an integer!\par 			It won't always work, but in this case sneakily \emph{multiplying} by 5 solves the problem:
-			\[
-				2x\equiv 7\implies 10x\equiv 35\implies x\equiv 8\spmod 9
-			\]
-\end{enumerate}
+			
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item Congruence equations are much harder to solve than standard equations. For instance, we cannot solve $2x\equiv 7\pmod 9$ by division: $x\equiv \frac 72$ is meaningless since $\frac 72$ is not an integer!\par 		It won't always work, but in this case sneakily \emph{multiplying} by 5 solves the problem:
+		\[
+			2x\equiv 7\implies 10x\equiv 35\implies x\equiv 8\spmod 9
+		\]
+	\end{enumerate}
 \end{examples}
 
  %We'll think about these issues more in the next section.% and Exercise 
@@ -327,7 +319,7 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 %   \item True or false: $a\equiv b\pmod n\implies a=b$.
 %   \item True of false: $a=b\implies a\equiv b\pmod n$.
 %   \item An integer $m$ is \emph{divisible by} $n$ if \underline{\phantom{$\exists k\in\Z:m=kn$}\qquad\qquad}
-%   \item A \emph{divisor} $b$ of an integer $a$ is \underline{\phantom{an integer $b$ such that $b\divides a$}\qquad\qquad}
+%   \item A \emph{divisor} $b$ of an integer $a$ is \underline{\phantom{an integer $b$ such that $b\mid a$}\qquad\qquad}
 %   \item True or false: if $m$ is divisible by $n$ then $n\equiv 0\pmod m$.
 % \end{enumerate}
 
@@ -335,94 +327,98 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-1-cong.html}{online}.
 
 
-\begin{enumerate}
-  \item Check explicitly that $3^{23}\not\equiv 3^2\pmod 7$.
-  
-  \item Compute the following remainders:
-  \begin{enumerate}
-  	\item $12^9+19^{24}$ on division by 10.
-  	\item $30^{10}$ on division by 13.
-  	\item $17^{251}\cdot 23^{12}-19^{41}$ on division by 5.%\emph{Hint: $17\equiv 2$ and $2^2\equiv -1\pmod 5$.}
-  	\item $12^{10}+2^{36}\cdot 18^{12}$ on division by 141.%\emph{Hint: what nice number is close to 141? Use a calculator to help with some of the sums.}
-  \end{enumerate}
-  
-    \item Prove the first part of Theorem \ref{thm:congbasic}: that if $a\equiv c$ and $b\equiv d$, then $a+b\equiv c+d\pmod n$.
-  
- 
- 
-  \item Find a natural number $n$ and integers $a,b$ such that $a^2\equiv b^2\pmod n$ but $a\not\equiv b\pmod n$.
-  
-  
-  
-    
-%   \item Is the following statement identical to Example \ref{ex:congex}? Why/why not?
-%   \[
-%   	n^2\equiv n\pmod 3\iff n\equiv 0\pmod 3\text{ or }n\equiv 1\pmod 3
-%   \]
-  
-  \item\begin{enumerate}
-    \item Let $n$ be a positive integer. Prove that $n$ is congruent to the sum of its digits modulo 9.\\
-    \emph{Hint: first consider an example such as $345=3\cdot 10^2+4\cdot 10+5\ldots$}
-    \item Is the integer 123456789 divisible by 9?
-  \end{enumerate}
-  
-  \item Let $p$ be a prime number greater than or equal to 3. Show that if $p\equiv 1\pmod 3$, then $p\equiv 1\pmod 6$. \emph{Hint: $p$ is odd.} 
-  
-    
-  \item Describe all integers $x$ which satisfy the congruence equations:
-  \begin{enumerate}
-    \item $3x\equiv 2\mod 8$\qquad\qquad (b) \ $7x\equiv 28\pmod{42}$.
-  \end{enumerate}
-	
-	\item Let $a,b,c$ be integers. Prove or disprove each of the following claims:
-	\begin{enumerate}
-	  \item $a\mid b$ and $b\mid c\implies a\mid c$
-	  \item $a=b\iff a\mid b$ and $b\mid a$
-	  \item $a\mid b$ and $a\mid c\implies a\mid bc$.
-    \item $a\mid c$ and $b\mid c\implies ab\mid c$.
-  \end{enumerate}
-  
-    
-  \item Fermat's Little Theorem (to distinguish it from his `Last') states that if $p$ is prime and $a\not\equiv 0\mod p$, then $a^{p-1}\equiv 1\pmod p$.
-	\begin{enumerate}
-	  \item Use Fermat's Little Theorem to prove that $b^p\equiv b\pmod p$ for \emph{any} integer $b$.
-	  \item Prove that if $p$ is prime then $p\divides (2^p-2)$.
-	  \item Find a counterexample to the converse: some non-prime $n$ such that $n\divides 2^n-2$.
+	\begin{enumerate}  
+		\item Prove, using the definition of ``divides,'' that $n\mid a$ and $n\mid b\implies n\mid(a+b)$.
+		
+		
+		\item Let $a,b,c$ be integers. Prove or disprove each of the following claims:
+		\begin{enumerate}
+		  \item\makebox[180pt][l]{$a\mid b$ and $b\mid c\implies a\mid c$ \hfill (b)} \ $a=b\iff a\mid b$ and $b\mid a$
+		  \setcounter{enumi}{2}
+		  \item\makebox[180pt][l]{$a\mid b$ and $a\mid c\implies a\mid bc$ \hfill (d)} \ $a\mid c$ and $b\mid c\implies ab\mid c$
+	  \end{enumerate}
+	  
+	  
+	  \item List all integers $x$ for which $x\equiv 3\pmod 5$ and $-10\le x\le 20$.
+	  
+	  
+	  \item Use the division algorithm to prove that if $p$ is an odd prime, then $p\equiv 1$ or $p\equiv 3\spmod 4$.
+	  
+	  
+	  \item Prove the first part of Theorem \ref{thm:congbasic}: if $a\equiv c$ and $b\equiv d$, then $a+b\equiv c+d\pmod n$.
+	 
+	 
+	  \item Find a positive integer $n$ and integers $a,b$ such that $a^2\equiv b^2\spmod n$ but $a\not\equiv b\spmod n$.
+	  
+	  
+	  \item Check explicitly that $3^{23}\not\equiv 3^2\pmod 7$.\quad (\emph{Hint: $3^3=27\ldots$})
+	  
+	  
+	  \item Compute the following remainders---use a calculator to help!
+	  \begin{enumerate}
+	  	\item $12^9+19^{24}$ on division by 10.
+	  	\item $30^{10}$ on division by 13.
+	  	\item $17^{251}\cdot 23^{12}-19^{41}$ on division by 5.\qquad (\emph{Hint: $17\equiv 2$ and $2^2\equiv -1\spmod 5$})
+	  	\item (Hard)\lstsp $12^{10}+2^{36}\cdot 18^{12}$ on division by 141.\qquad	(\emph{Hint: what nice number is close to 141?})
+	  \end{enumerate}
+	  
+	  
+	  \item Prove that $3\mid(4^n-1)$ for all positive integers $n$.
+	  
+		
+		\item Let $n$ be an integer. Prove that exactly one of $n$, $n+2$ and $n+4$ is divisible by 3.
+	  
+	  
+	  \item\begin{enumerate}
+	    \item Let $n$ be a positive integer. Prove that $n$ is congruent to the sum of its digits modulo 9.\par
+	    (\emph{Hint: e.g.{} $345=3\cdot 10^2+\cdots$})
+	    \item Is the integer 123456789 divisible by 9?
+	  \end{enumerate}
+	  
+	    
+	  \item Describe all integers $x$ which satisfy the congruence equations:
+	  \begin{enumerate}
+	    \item $3x\equiv 2\pmod 8$\qquad\qquad (b) \ $7x\equiv 28\pmod{42}$.
+	  \end{enumerate}
+		
+		
+		\item Abraham Lincoln was born February 12\th, 1809. On what day of the week was this?\par
+		(\emph{Start by looking up the day for February 12\th{} \emph{this year}})
+		
+		
+		\item\label{exs:nsquaredrem} Let $n$ be an integer.
+		\begin{enumerate}
+	    \item Prove: $n^2\equiv 0$ or $1\pmod 3$.\quad (\emph{Hint: prove by cases})
+	    \item Prove: $n^2\equiv 0$ or $1\pmod 4$.
+	    \item Find all possible remainders of $n^2$ on division by $7$.
+	    \item Find all possible remainders of $n^3$ on division by $7$.
+	  \end{enumerate}
+	    
+	    
+		\item Use some part(s) of Exercise \ref{exs:nsquaredrem} to prove the following.
+		\begin{enumerate}
+			\item $\sqrt{4m+6}$ is not an integer, for any integer $m\ge -1$.
+	    \item Any number which is simultaneously a square and a cube must be of the form $7k$ or $7k+1$ for some integer $k$.
+	  \end{enumerate}
+	    
+	    
+	  \item Let $n$ be an integer $\ge 2$ and consider numbers of the form $\underbrace{11\cdots 11}_{n \text{ times}}$
+	  \begin{enumerate}
+	    \item Prove every such number can be written as $4k+3$ for some $k\in\Z$.
+	    \item Prove that no such number is a perfect square.
+	  \end{enumerate}
+		
+	    
+	  \item Fermat's Little Theorem states that if $p$ is prime and $a\not\equiv 0\spmod p$, then $a^{p-1}\equiv 1\spmod p$.
+		\begin{enumerate}
+		  \item Use Fermat's Little Theorem to prove that $b^p\equiv b\pmod p$ for \emph{any} integer $b$.
+		  \item Prove that if $p$ is prime then $p\mid(2^p-2)$.
+		  \item Verify that $341\mid (2^{341}-2)$. What does this say about the \emph{converse} to part (b)?
+		\end{enumerate}
+	  
+	  
+	  %\item Prove that $p\mid n\implies p^2\mid n^2$
 	\end{enumerate}
-	
-	\item Abraham Lincoln was born February 12\th, 1809. On what day of the week was this?
-	
-	\item Prove that $p\mid n\implies p^2\mid n^2$
-		
-		
-	\item Let $n$ be an integer. Prove the following:
-	\begin{enumerate}
-    \item Exactly one of $n$, $n+2$ and $n+4$ is divisible by 3.
-    \item $n^2\equiv 0$ or $n^2\equiv 1\pmod 3$
-	  \item $\frac 16n(n+1)(2n+1)$ is an integer.
-  \end{enumerate}
-    
-    \item Let $n$ be an integer $\ge 2$ and consider numbers of the form
-    \[
-    	\underbrace{11\cdots 11}_{n \text{ times}}
-    \]
-    \begin{enumerate}
-      \item Prove every such number can be written as $4k+3$ for some $k\in\Z$.
-      \item Use part (a) to show that no such number is a perfect square.
-    \end{enumerate}
-    
-    \item Prove that $3 \mid (4^n - 1)$ for all $n \geq 1$.
-    
-    
-    \item Let $n \in \Z$.
-    \begin{enumerate}
-        \item Find all possible remainders of $n^2$ upon division by $7$.
-        \item Find all possible remainders of $n^3$ upon division by $7$.
-        \item Use parts (a) and (b) to show that any number which is simultaneously a square and a cube must be of the form $7k$ or $7k + 1$ for some integer $k$.
-    \end{enumerate}
-    
-\item Let $n \in \N$.  Prove that $\sqrt{4n+6}$ is not an integer.  Hint.  You may use the following lemma without proof: $\forall k \in \Z,\; k^2 \equiv 0 \text{ or } 1 \pmod 4$.
-\end{enumerate}
 
 \end{exercises}
 
@@ -431,149 +427,205 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 
 \subsection{Greatest Common Divisors and the Euclidean Algorithm}\label{sec:gcd}
 
-At its most basic, Number Theory involves finding \emph{integer} solutions to equations. Here are two simple-sounding questions:
-\begin{enumerate}
-  \item The equation $9x-21y=6$ represents a straight line in the plane. Are there any \emph{integer points} on this line? That is, can you find integers $x,y$ satisfying $9x-21y=6$?
-  \item What about on the line $4x+6y=1$?
-\end{enumerate}
-Before you do anything else, try sketching both lines (lined graph paper will help) and try to decide if there are any integer points. If there are integer points, how many are there? Can you find them all?\\
+A basic goal for number theorists is to find \emph{integer} solutions to equations. For instance:
+\begin{quote}
+	Are there any \emph{integer points} on the line with equation $9x-21y=6$? That is, does the equation $9x-21y=6$ have any solutions, where both $x,y$ are \emph{integers}?
+\end{quote}
 
-In this section we will see how to answer these questions in general: for which lines $ax+by=c$ with $a,b,c\in\Z$, are there integer solutions, and how can we find them all? The method introduces the appropriately named \emph{Euclidean algorithm,} a famous procedure dating at least as far back as Euclid's \emph{Elements} (c. 300 BCE.).
+  %\item What about for the line $4x+6y=1$?
+
+
+You might start by sketching both lines (lined graph paper will help). What do you observe? If there are integer points, do they seem to follow any pattern?\smallbreak
+
+In this section we will see how to solve all such \emph{linear Diophantine equations.}\footnote{Equations with integer coefficients and solutions honor the number theorist Diophantus of Alexandria (3\rd{}C.\,\CE).}
+%for which lines $ax+by=c$ with $a,b,c\in\Z$, are there integer solutions, and how can we find them all? 
+The method introduces a famous procedure dating at least to Euclid's \emph{Elements} (c.\,300\BCE).
 
 \begin{defn}{}{}
-Let $m$ and $n$ be integers, not both zero. Their \emph{greatest common divisor} $\gcd(m,n)$ is the largest (positive) divisor of both $m$ and $n$. We say that $m$ and $n$ are \emph{relatively prime} if $\gcd(m,n)=1$.
+	Let $a$ and $b$ be integers, not both zero. Their \emph{greatest common divisor} $\gcd(a,b)$ is the largest (positive) divisor of both $a$ and $b$. We say that $a$ and $b$ are \emph{relatively prime} if $\gcd(a,b)=1$.
 \end{defn}
 
 \begin{example}{}{}
-Let $m=60$ and $n=90$. The positive divisors of the two integers are listed in the table:
-\[\begin{array}{c|cccccccccccc}
-m&1&2&3&4&5&6&10&12&15&20&\underline{30}&60\\\hline
-n&1&2&3&5&6&9&10&15&18&\underline{30}&45&90
-\end{array}\]
-The greatest common divisor is the largest number common to both rows: clearly $\gcd(60,90)=30$.
+	The positive divisors of $a=60$ and $b=90$ are listed in the table. The greatest common divisor $\gcd(60,90)=\textcolor{blue}{30}$ is plainly the largest number common to both rows.
+	\[
+		\begin{array}{c|cccccccccccc}
+			a&1&2&3&4&5&6&10&12&15&20&\textcolor{blue}{30}&60\\\hline
+			b&1&2&3&5&6&9&10&15&18&\textcolor{blue}{30}&45&90
+		\end{array}
+	\]
 \end{example}
 
-Finding the greatest common divisor of two integers by listing all the positive divisors of both numbers is extremely inefficient, especially when the integers are large. This is where Euclid rides to the rescue.\\
+Listing positive divisors in the above manner is very inefficient, especially when the given integers are large. This is where Euclid rides to the rescue.
 
-{\bf Euclidean Algorithm.} To find $\gcd(m,n)$ for two positive integers $m>n$:
-
-\begin{itemize}
-\item[(i)] Use the Division Algorithm (Theorem \ref{thm:div}) to write $m=q_1n+r_1$ with $0\le r_1<n$.
-\item[(ii)] If $r_1=0$, then $n$ divides $m$ and so $\gcd(m,n)=n$. Otherwise, repeat:\\
-	If $r_1>0$, divide $n$ by $r_1$ to obtain $n=q_2r_1+r_2$ with $0\le r_2<r_1$.
-\item[(iii)] If $r_2=0$, then $\gcd(m,n)=r_1$. Otherwise, repeat:\\
-	If $r_2>0$, divide $r_1$ by $r_2$ to obtain $r_1=q_3r_2+r_3$ with $0\le r_3<r_2$.
-\item[(iv)] Repeat the process, obtaining a decreasing sequence of positive integers
-\[r_1>r_2>r_3>\ldots>0\]
-\end{itemize}
-
-
-\begin{thm}{}{euclidalg}
-The Algorithm eventually produces a remainder of zero: $\exists p$ such that $r_{p+1}=0$. The greatest common divisor of $m$ and $n$ is then the last non-zero remainder: $\gcd(m,n)=r_p$.
+\begin{thm}{Euclidean Algorithm}{euclidalg}
+	Let $a>b$ be positive integers. We construct a decreasing sequence of integers
+	%\[
+		$b=r_0>r_1>r_2>\cdots$
+%\]
+	\begin{enumerate}\itemsep2pt
+		\item \makebox[300pt][l]{Apply the division algorithm (Theorem \ref{thm:div}):}$a=q_1b+r_1$ with $0\le r_1<b$
+		\item \makebox[300pt][l]{If $r_1>0$, apply the division algorithm again:}$b=q_2r_1+r_2$ with $0\le r_2<r_1$
+		\item \makebox[300pt][l]{If $r_2>0$, apply again:}$r_1=q_3r_2+r_3$ with $0\le r_3<r_2$
+		\item While $r_i>0$, keep repeating the division algorithm, dividing each $r_{i+1}$ by $r_i$.
+	\end{enumerate}
+	The algorithm eventually terminates with a remainder of zero: some $r_{t+1}=0$. The greatest common divisor is the last non-zero remainder: $\gcd(a,b)=r_t$.
 \end{thm}
 
- The proof is in the exercises. If $m$ and $n$ are not both positive, take absolute values first and apply the algorithm. For instance $\gcd(-6,45)=3$.
+%Exercise \ref{exs:euclidalgproof} provides a proof. %If $m$ and $n$ are not both positive, simply apply the algorithm to the absolute values: for instance $\gcd(-6,45)=\gcd(6,45)=3$.
 
-\begin{example}{}{}
-We compute $\gcd(1260,750)$ using the Euclidean Algorithm. Since each line of the algorithm is a single case of the Division Algorithm $m=qn+r$, you might find it easier to create a table and observe each remainder moving diagonally left and down at each successive step.
-
-\begin{minipage}{0.5\textwidth}
-\vspace*{10pt}
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[]$\textcolor{orange}{1260}=1\times \textcolor{blue}{750}+\textcolor{brown}{510}$
-  \item[]$\textcolor{blue}{750}=1\times \textcolor{brown}{510}+\textcolor{red}{240}$
-  \item[]$\textcolor{brown}{510}=2\times \textcolor{red}{240}+\textcolor{Green}{30}$
-  \item[]$\textcolor{red}{240}=8\times \textcolor{Green}{30}+0$
-\end{itemize}
-\end{minipage}
-\begin{minipage}{0.5\textwidth}
-\renewcommand{\arraystretch}{1.35}
-$\begin{array}{c|c|c|c}
-m&q&n&r\\\hline
-\textcolor{orange}{1260}&1&\textcolor{blue}{750}&\textcolor{brown}{510}\\
-\textcolor{blue}{750}&1&\textcolor{brown}{510}&\textcolor{red}{240}\\
-\textcolor{brown}{510}&2&\textcolor{red}{240}&\textcolor{Green}{30}\\
-\textcolor{red}{240}&8&\textcolor{Green}{30}&0
-\end{array}$
-\end{minipage}
-Theorem \ref{thm:euclidalg} says that $\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})=\textcolor{Green}{30}$, the last non-zero remainder.
+\begin{example}{}{euclidalg}
+	We compute $\gcd(1260,750)$ using the Euclidean algorithm. Note how each line is a single instance of the division algorithm $a=qb+r$, and how the remainders move diagonally $\swarrow$ at each step. For this first example, we also summarize the data in a table.
+	\[
+		\renewcommand{\arraystretch}{1.1}
+		\begin{array}{r@{\,\,}l@{\hspace{150pt}}c|c|c|c}
+			& & a & q & b & r \\\cline{3-6}
+			\textcolor{orange}{1260} & =1\times\textcolor{blue}{750}+\textcolor{brown}{510} & \textcolor{orange}{1260}& 1 & \textcolor{blue}{750} & \textcolor{brown}{510}\\
+			\textcolor{blue}{750} & =1\times\textcolor{brown}{510}+\textcolor{red}{240} & \textcolor{blue}{750}& 1 & \textcolor{brown}{510} & \textcolor{red}{240}\\
+			\textcolor{brown}{510} & =2\times\textcolor{red}{240}+\textcolor{Green}{30} & \textcolor{brown}{510} & 2 & \textcolor{red}{240} & \textcolor{Green}{30}\\
+			\textcolor{red}{240} & =8\times\textcolor{Green}{30}+0 & \textcolor{red}{240} & 8 & \textcolor{Green}{30} & 0
+		\end{array}
+	\]
+	Theorem \ref{thm:euclidalg} says that $\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})=\textcolor{Green}{30}$, the last non-zero remainder.
 \end{example}
 
- As you can see, the Euclidean Algorithm is very efficient.
+\goodbreak
 
-\subsubsection*{Reversing the Algorithm: Integer Points on Lines}
 
-To apply the Euclidean Algorithm to the problem of finding integer points on lines, we must reverse it. We start with the penultimate line of the algorithm and substitute the remainders from the previous lines one at a time: the result is an expression of the form $\gcd(m,n)=mx+ny$ for some integers $x,y$. This is easiest to demonstrate by continuing our example.
+\boldsubsubsection{Reversing the Algorithm}
 
-\begin{example}{continued}{}
-We find integers $x,y$ such that $1260x+750y=30$.\\[5pt]
-Solve for \textcolor{Green}{30} (the gcd of $1260$ and $750$) using the third step of the algorithm:
-\[\textcolor{Green}{30}=\textcolor{brown}{510}-2\times\textcolor{red}{240}.\]
-Now use the second line of the algorithm to solve for \textcolor{red}{240} and substitute:
-\[\textcolor{Green}{30}=\textcolor{brown}{510}-2\times (\textcolor{blue}{750}-\textcolor{brown}{510})=3\times \textcolor{brown}{510}-2\times \textcolor{blue}{750}.\]
-Finally, substitute for \textcolor{brown}{510} using the first line:
-\[\textcolor{Green}{30}=3\times (\textcolor{orange}{1260}-\textcolor{blue}{750})-2\times \textcolor{blue}{750}=3\times \textcolor{orange}{1260}-5\times \textcolor{blue}{750}.\]
-Rearranging this, we see that the integers $x=3$ and $y=-5$ satisfy the equation $1260x+750y=30$. Otherwise said, the integer point $(3,-5)$ lies on the line with equation $1260x+750y=30$.
-\end{example}
+To apply the Euclidean algorithm to our motivational problem of integer points on lines, we reverse it. Start with the penultimate line of the algorithm and, moving upwards, substitute remainders one at a time. The result is an expression of the form $\gcd(a,b)=ax+by$ for some integers $x,y$. This is easiest to demonstrate by continuing our example.
 
- Note how the process for finding an integer point $(x,y)$ is twofold: first we compute $\gcd(m,n)$ using the Euclidean Algorithm, then we perform a series of back-substitutions to recover $x$ and $y$.\\
+\begin{example*}{\ref{ex:euclidalg}, cont}{}
+	We find integers $x,y$ such that $\textcolor{orange}{1260}x+\textcolor{blue}{750}y=\textcolor{Green}{30} \bigm(=\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})\bigr)$.\smallbreak
+	Start by expressing $\textcolor{Green}{30}$ using the third step of the algorithm and work upwards:
+	\begin{align*}
+		\textcolor{Green}{30} &=\textcolor{brown}{510}-2\times\textcolor{red}{240} & &\text{(3\rd/penultimate line)}\\
+		&=\textcolor{brown}{510}-2\times (\textcolor{blue}{750}-\textcolor{brown}{510}) &&\text{(2\nd{} line)}\\
+		&=3\times \textcolor{brown}{510}-2\times \textcolor{blue}{750} \\
+		&=3\times (\textcolor{orange}{1260}-\textcolor{blue}{750})-2\times \textcolor{blue}{750} &&\text{(1\st{} line)}\\
+		&=3\times \textcolor{orange}{1260}-5\times \textcolor{blue}{750}
+	\end{align*}
+	Rearranging this, we see that $x=3$ and $y=-5$ satisfy the equation $1260x+750y=30$. To simply, we can divide everything through by \textcolor{Green}{30} to see that $(3,-5)$ is an integer point on the line $42x+25y=1$.
+\end{example*}
 
- This process of reversing the algorithm works in general, and we have the following corollary of Theorem \ref{thm:euclidalg}.
+
+This process of reversing the algorithm works in general.
 
 \begin{cor}{Bézout's Identity}{euclid}
-Given integers $m,n$, not both zero, there exist integers $x,y$ such that
-\[\gcd(m,n)=mx+ny.\]
+	Given integers $a,b$, not both zero, $\exists a,b\in\Z$ such that
+	\[
+		\gcd(a,b)=ax+by
+	\]
 \end{cor}
 
-We are now in a position to solve our motivating problem: finding all integer points on the line $ax+by=c$ where $a,b,c$ are integers. Again we appeal first to our example.
+If either of $a,b$ are negative, make everything positive, apply the Euclidean algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards. Before returning to our example, we need a useful corollary. %The identity is trivial if, say, $n=0$ (see Exercise \ref{exs:gcd0})
 
-\begin{example}{take III}{}
-We have already found a single integer solution $(x,y)=(3,-5)$ to the equation $1260x+750y=30$. Notice that the equation is equivalent to dividing through by the greatest common divisor $30=\gcd(1260,750)$:
-\[42x+25y=1\]
-Since 42 and 25 have no common factors, it seems that the only way to alter $x$ and $y$ while keeping the equation in balance is to increase $x$ by a multiple of 25 and decrease $y$ by the same multiple of 42. For example $(x,y)=(3+25,-5-42)=(28,-47)$ is another solution. Indeed, all integer solutions are given by
-\[(x,y)=(3,-5)+(25,-42)t,\quad\text{where $t$ is any integer.}\]
-\end{example}
+\begin{cor}{}{moddivision}
+	Suppose $a,b,c$ are integers for which $\gcd(a,b)=1$ and $a\mid bc$. Then $a\mid c$.
+\end{cor}
 
-In general, we have the following result.
+\begin{proof}
+	By Bézout's identity, $\exists x,y\in\Z$ for which $ax+by=1$, whence $acx+bcy=c$. The left hand side is now a multiple of $a$.
+\end{proof}
 
-\begin{thm}{}{diophanine}
-Let $a,b,c$ be integers where $a,b$ are non-zero, and let $d=\gcd(a,b)$. Then the equation $ax+by=c$ has an integer solution $(x,y)$ if and only if $\,d\divides c$.\\
-In such a case, suppose that $(x_0,y_0)$ is some fixed solution. Then all integer solutions are given by
-\[x=x_0+\frac bdt,\qquad y=y_0-\frac adt,\tag*{($\ast$)}\]
-where $t$ is any integer.
+Note that the proposition ``$a\mid bc\implies a\mid b$ or $a\mid c$'' is, in general, \emph{false} (e.g., $6\mid(2\cdot 3)$, but\ldots).
+
+
+\begin{example*}{\ref{ex:euclidalg}, mk.\,III}{}
+	By reversing the Euclidean algorithm, we found an integer solution $(x_0,y_0)=(3,-5)$ to the equation $1260x+750y=30$ (equivalently $45x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
+	\[
+		42(x-x_0)+25(y-y_0)=1-1=0 \implies 42(x-x_0)=-25(y-y_0)
+	\]
+	Since $\gcd(42,25)=1$, the corollary says that $42\mid(y-y_0)$. Write $y-y_0=42t$ for some integer $t$, then
+	\[
+		42(x-x_0)=-25\cdot 42t\implies x-x_0=-25t
+	\]
+	We've therefore found \emph{all} integer solutions to the original equation:
+	\[
+		x=3-25t,\ y=-5+42t\ \text{ where }t\in\Z
+	\]
+\end{example*}
+
+\goodbreak
+
+The method in the example works for all solvable linear Diophantine equations.
+
+\begin{thm}{}{diophantine}
+	Let $a,b,c$ be integers where $a,b$ are not both zero, and let $d=\gcd(a,b)$.
+	\begin{enumerate}\itemsep0pt
+	  \item The equation $ax+by=c$ has an integer solution $(x,y)$ if and only if $\,d\mid c$.
+	  \item If a solution exists, then there are infinitely many of them:%\footnotemark
+		\[
+			x=x_0-\frac bd t,\qquad y=y_0+\frac ad t\tag{$\ast$}
+		\]
+		where $t\in\Z$ and $(x_0,y_0)$ is some fixed solution (say as supplied by the Euclidean algorithm).
+	\end{enumerate} 
 \end{thm}
 
- The general approach is to use the Euclidean Algorithm to find the initial solution $(x_0,y_0)$, then to apply ($\ast$) to obtain all solutions.\footnote{The astute observer should recognize the similarity between this and the complementary function/particular integral method for linear differential equations: $(x_0,y_0)$ is a `particular solution' to the full equation $ax+by=c$, while $(\frac bdt,-\frac adt)$ comprises all solutions to the `homogeneous equation' $ax+by=0$.} The proof is again in the exercises.\\
+%\footnotetext{The astute observer should recognize the similarity between this and the complementary function/particular integral method for linear differential equations: $(x_0,y_0)$ is a `particular solution' to the full equation $ax+by=c$, while $(\frac bdt,-\frac adt)$ comprises all solutions to the `homogeneous equation' $ax+by=0$.}
 
- Warning! If $c\neq\gcd(a,b)$, you will need to modify the integers obtained in Bézout's Identity in order to find the initial solution $(x_0,y_0)$. For example, since $1260\times 3+750\times(-5)=30$ we multiply by 3 to see that $(x_0,y_0)=(9,-15)$ is an initial solution to $1260x+750y=90$. All integer points on this line therefore have the form
-\[(x,y)=(9+25t,-15-42t), \text{ where }t\in\Z\]
+
+
+\textcolor{red}{Warning!}\lstsp If $c\neq d=\gcd(a,b)$, you will need to scale the integers obtained in Bézout's identity to find an initial solution $(x_0,y_0)$: see below.
+
+\begin{example}{}{}
+	We compute $\gcd(123,78) =\textcolor{blue}{3}$: remainders are underlined for clarity.
+  \[\def\arraystretch{1.1}
+  \def\ul#1{\underline{#1}}
+  \left.\begin{array}{l}
+	%570=4\times 123+78\\
+	\ul{123}=1\times \ul{78}+\ul{45}\\
+	\ul{78}=1\times \ul{45}+\ul{33}\\
+	\ul{45}=1\times \ul{33}+\ul{12}\\
+	\ul{33}=2\times \ul{12}+\ul 9\\
+	\ul{12}=1\times \ul 9+\ul{\textcolor{blue}{3}}\\
+	\ul 9=3\times \ul{\textcolor{blue}{3}}+\ul 0
+  \end{array}\right\}
+  \implies
+  \left\{\begin{array}{r@{\,\,}l}
+	\ul{\textcolor{blue}{3}}&=\ul{12}-\ul 9\\
+	&=\ul{12}-(\ul{33}-2\times \ul{12}) =3\times \ul{12}-\ul{33}\\
+	&=3(\ul{45}-\ul{33})-\ul{33} =3\times \ul{45}-4\times \ul{33}\\
+	&=3\times \ul{45}-4(\ul{78}-\ul{45}) =7\times \ul{45}-4\times \ul{78}\\
+	&=7(\ul{123}-\ul{78})-4\times \ul{78}\\
+  &=\textcolor{red}{7}\times \ul{123}-\textcolor{red}{11}\times \ul{78}
+  \end{array}\right.
+  \]
+  \begin{enumeratea}
+  	\item Since $\textcolor{blue}{3}\nmid 8$, the equation $78x+123y=8$ has no integer solutions.
+  	\item By Bézout's identity, the equation $123x-78y=-6$ has a particular solution
+  	\[
+  		(x_0,y_0)=(-14,22) \tag{\textcolor{red}{Warning}: Multiply $(\textcolor{red}{7},\textcolor{red}{-11})$ by $-2$}
+  	\]
+  	All integer solutions to the equation are then given by
+  	\[
+  		(x,y)=(-14,22)+\left(\tfrac{78}3,\tfrac{123}3\right)t=\bigl(-14+26t,22+41t\bigr),\quad\text{where }t\in\Z
+  	\]
+	\end{enumeratea}
+\end{example}
+
+
+\footnotetext{In future studies, you'll refer to 10 as the \emph{multiplicative inverse of 7 in the ring $\Z_{23}$,} and write $7^{-1}=10$. %This notation isn't advised at the moment, lest you confuse it with $\frac 17$.
+}
+
+Congruence equations may also be solved using these approaches.
 
 \begin{examples}{}{}
-\begin{enumerate}
-  \item Consider the line $570x-123y=7$. We calculate the greatest common divisor using the Euclidean algorithm: note that the negative sign is irrelevant.
-  \[\renewcommand{\arraystretch}{1.1}\left.\begin{array}{l}
-	570=4\times 123+78\\
-	123=1\times 78+45\\
-	78=1\times 45+33\\
-	45=1\times 33+12\\
-	33=2\times 12+9\\
-	12=1\times 9+3\\
-	9=3\times 3+0
-  \end{array}\right\}\implies\gcd(570,123)=3.\]
-  Since $\,3\nmid 7$, we conclude that the line $570 x-123 y=7$ contains no integer points.
-  \item Applied to the line with equation $570x-123y=-6$, we reverse the algorithm to obtain
-  \begin{align*}
-  3&=12-9=12-(33-2\times 12)\\
-  &=3\times 12-33=3(45-33)-33\\
-  &=3\times 45-4\times 33=3\times 45-4(78-45)\\
-  &=7\times 45-4\times 78=7(123-78)-4\times 78\\
-  &=7\times 123-11\times 78=7\times 123-11(570-4\times 123)\\
-  &=570\times (-11)-123\times (-51)
-  \end{align*}
-  Multiplying by $-2$ so that our solution conforms to the desired equation, it follows that $(x_0,y_0)=(22,102)$ is an initial solution. The general solution is then
-  \[(x,y)=(22,102)+\left(-\frac{123}3,-\frac{570}3\right)t=(22-41t,102-190t)\]
-\end{enumerate}
+	\exstart To solve $123x\equiv -6\pmod{78}$ is to find a solution to the equation $123x=78y-6$. By the above, all solutions have the form $x=-14+26t$. Otherwise said
+	\[123x\equiv -6\pmod{78} \implies x\equiv -14\equiv 12\pmod{26}\]
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Here is a slightly different approach for $7x\equiv 11\pmod{23}$. By applying the algorithm,
+		\[
+			\gcd(23,7)=1=7\cdot 10-23\cdot 3 \implies 7\cdot 10\equiv 1\pmod{23}
+		\]
+		The original equation may now be solved via \emph{multiplication}:
+		\[
+			7x\equiv 11 \implies x\equiv 10\cdot 7x\equiv 110\equiv 18\pmod{23}
+		\]
+		In this context, \emph{division by 7} really means \emph{multiplication\footnotemark{} by 10}.
+	\end{enumerate}
 \end{examples}
+
 
 % \paragraph{Self-test Questions}
 % 
@@ -589,65 +641,87 @@ where $t$ is any integer.
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-2-euclidalg.html}{online}.
 
 \begin{enumerate}
-  \item\label{qn:gcdea} Use the Euclidean Algorithm to compute the greatest common divisors indicated.
+  \item\label{qn:gcdea} Use the Euclidean algorithm to compute the greatest common divisors.
   \begin{enumerate}
     \item $\gcd(20,12)$\qquad (b)\ \ $\gcd(100,36)$\qquad (c)\ \ $\gcd(207,496)$
   \end{enumerate} 
   
-  \item For each part of Question \hyperref[qn:gcdea]{\thesubsection.\ref*{qn:gcdea}}, find integers $x,y$ which satisfy Bézout's Identity $\gcd(m,n)=mx+ny$.
+  \item For each part of Exercise \ref*{qn:gcdea}, find integers $x,y$ which satisfy Bézout's identity $\gcd(a,b)=ax+by$.
+  
+  \item Describe all the integer points on the line $9x-21y=6$ using Theorem \ref{thm:diophantine}.
   
   
   \item\begin{enumerate}
-    \item Answer our motivating problems from the beginning of the section using the above process.
-  		\begin{enumerate}
-    		\item[(i)] Find all integer points on the line $9x-21y=6$.
-    		\item[(ii)] Show that there are no integer points on the line $4x+6y=1$.
-  		\end{enumerate}
-  	\item Can you give an elementary proof as to why there are no integer points on the line $4x+6y=1$?
+    \item Use Theorem \ref{thm:diophantine} to show that there are no integer points on the line $4x+6y=1$.
+  	\item Give an elementary proof (without using the Theorem) of part (a)?
   \end{enumerate} 
   
-	\item Find all the integer points on the following lines, or show that none exist.
+	\item Find all integer points $(x,y)$ on the following lines, or show that none exist.
     \begin{enumerate}
-      \item $16x-33y=2$.
-      \item $122x+36y=3$.
-      \item $303x+204y=6$.
-      \item $324x-204y=-12$.
+      \item \makebox[180pt][l]{$16x-33y=2$\hfill (b)} \ $122x+36y=3$
+      \setcounter{enumii}{2}
+      \item \makebox[180pt][l]{$303x+204y=6$\hfill (d)} \ $324x-204y=-12$
     \end{enumerate}
   
-  \item Show that there exists no integer $x$ such that $3x\equiv 5\pmod 6$.
-  
-  \item Find all solutions $x$ to the congruence equation $12x\equiv 1\pmod{17}$
+  \item\begin{enumerate}
+    \item Show that there exists no integer $x$ such that $3x\equiv 5\pmod 6$.
+    \item Find all solutions $x$ to the congruence equation $12x\equiv 1\pmod{17}$.
+  \end{enumerate} 
     
-  \item Five people each take the same number of candies from a jar. Then a group of seven people does the same: in so doing they empty the jar. If the jar originally contained 239 candies. Can you be sure how much candies each person took?
+  \item Five people each take the same number of candies from a jar. Then a group of seven people does the same: in so doing they empty the jar. If the jar originally contained 93 candies, can you be sure how much candy each person took?
 
-  \item Here we sketch a proof that the Euclidean Algorithm (Theorem \ref{thm:euclidalg}) terminates with $r_p=\gcd(m,n)$. Note that you \emph{cannot} use Bézout's Identity in to prove any of what follows, since it is a corollary of the algorithm.
+
+  \item\label{exs:euclidalgproof} We complete the proof of the Euclidean algorithm (Theorem \ref{thm:euclidalg}).
   \begin{enumerate}
-    \item Suppose you have a decreasing sequence
-    \[m>n>r_1>r_2>\cdots>0\tag*{($\ast$)}\]
-    of positive integers. Explain why the sequence can only have \emph{finitely many} terms. This shows that the Euclidean Algorithm eventually terminates with some $r_{p+1}=0$.
-  	\item Suppose that $m=qn+r$ for some integers $m,n,q,r$. Prove that $\gcd(m,n)\divides r$.
-  	\item Explain why $\gcd(m,n)\divides r_p$.
-  	\item Explain why $r_p$ divides all of the integers in the sequence ($\ast$), in particular that $r_p\divides m$ and $r_p\divides n$.
-  	\item Explain why $r_p\le\gcd(m,n)$. Why does this force us to conclude that $r_p=\gcd(m,n)$?
+    \item Suppose $a>b>r_1>r_2\cdots$ is a sequence of non-negative integers. Why must there be only \emph{finitely many} terms? This shows that the algorithm terminates with some $r_{t+1}=0$.
+    \item Suppose that $a,b,q,r$ are integers satisfying $a=qb+r$. Prove that $\gcd(a,b)=\gcd(b,r)$.\par
+    (\emph{You cannot use Bézout's identity to do this, since Bézout is a corollary of the algorithm!})
+    \item Argue that $\gcd(a,b)=r_t$.
   \end{enumerate}
   
-  \item Suppose that $d\divides m$ and $d\divides n$. Prove that $d\divides\gcd(m,n)$.
+  
+  \item Use Bézout's identity to prove that if $k\mid a$ and $k\mid b$, then $k\mid\gcd(a,b)$.
+  
 
-  \item\label{ex:gcd1} Prove the following:
-  \[\gcd(m,n)=1\iff\exists x,y\in\Z\text{ such that }mx+ny=1.\]
-  \emph{One direction can be done by applying Bézout's Identity, but the other direction requires an argument.}
+  \item\label{ex:gcd1} Prove: $\gcd(m,n)=1\iff\exists x,y\in\Z$ such that $mx+ny=1$.\par
+  (\emph{Hint: One direction follows from Bézout's identity, but the other\ldots})
+    
+    
+	\item\begin{enumerate}
+	  \item Let $c\in\Z$. Prove: $2\mid c$ and $3\mid c\implies 6\mid c$.\par
+	  (\emph{Hint: write $c=2k=\cdots$ and apply Corollary \ref{cor:moddivision}})
+	  \item Let $n\ge 3$ be an odd number. Show that $n\equiv 1\spmod 3\implies  n\equiv 1\spmod 6$.
+	 	\item $\frac 16n(n+1)(2n+1)$ is an integer.
+	\end{enumerate}
   
   
-  \item In this question we prove the Theorem \ref{thm:diophanine} on integer solutions to linear equations. Let $a,b,c\in\Z$. Suppose that $(x_0,y_0)$ and $(x_1,y_1)$ are two integer solutions to the linear Diophantine equation $ax+by=c$.
+	\item Let $a,b,p\in\Z$. Recall Definition \ref{defn:irreducible}: the only positive divisors of a prime are itself and 1.
   \begin{enumerate}
-    \item Show that $(x_0-x_1,y_0-y_1)$ satisfies the equation $ax+by=0$.
-    \item Suppose that $\gcd(a,b)=d$. Prove that $\gcd(\frac ad,\frac bd)=1$. (\emph{Use Question \hyperref[ex:gcd1]{\thesubsection.\ref*{ex:gcd1}})}
-    \item Find all integer solutions $(x,y)$ to $ax+by=0$ (\emph{Don't use the Theorem, it's what you're trying to prove! Think about part (b) and divide through by $d$ first.}).
-    \item Use (a) and (b) to conclude that $(x,y)$ is an integer solution to $ax+by=c$ if and only if
-    \[x=x_0+\frac bdt\qquad y=y_0-\frac adt,\qquad \text{where }t\in\Z.\]
+    \item Suppose $p$ is prime and that $p\mid ab$. Prove that $p\mid a$ or $p\mid b$.\par
+    (\emph{Hint: if $p\nmid a$, use Corollary \ref{cor:moddivision}})
+    \item Suppose $p\ge 2$ is an integer with the property that $\forall a,b\in\Z$, $p\mid ab$ implies $p\mid a$ or $p\mid b$. Prove that $p$ is prime.\par
+    (\emph{Hint: prove the contrapositive})
   \end{enumerate}
+    
+    
+    \item (Hard)\lstsp Show that if $a$ is relatively prime to both $b$ and $c$ then it is relatively prime to $bc$.\par
+    (\emph{Hint: suppose $d\mid a$ and $d\mid bc$ and try to prove that $d=\pm 1$})
+%   
+
+%   \item In this question we prove the Theorem \ref{thm:diophanine} on integer solutions to linear equations. Let $a,b,c\in\Z$. Suppose that $(x_0,y_0)$ and $(x_1,y_1)$ are two integer solutions to the linear Diophantine equation $ax+by=c$.
+%   \begin{enumerate}
+%     \item Show that $(x_0-x_1,y_0-y_1)$ satisfies the equation $ax+by=0$.
+%     \item Suppose that $\gcd(a,b)=d$. Prove that $\gcd(\frac ad,\frac bd)=1$. (\emph{Use Question \hyperref[ex:gcd1]{\thesubsection.\ref*{ex:gcd1}})}
+%     \item Find all integer solutions $(x,y)$ to $ax+by=0$ (\emph{Don't use the Theorem, it's what you're trying to prove! Think about part (b) and divide through by $d$ first.}).
+%     \item Use (a) and (b) to conclude that $(x,y)$ is an integer solution to $ax+by=c$ if and only if
+%     \[x=x_0+\frac bdt\qquad y=y_0-\frac adt,\qquad \text{where }t\in\Z.\]
+%   \end{enumerate}
   
   \item Show that $\gcd(5n+2,12n+5)=1$ for every integer $n$. \emph{There are two ways to approach this: you can try to use the Euclidean algorithm abstractly, or you can use the result of Exercise \hyperref[ex:gcd1]{\thesubsection.\ref*{ex:gcd1}}.}
+  
+  
+  \item Use the Euclidean Algorithm to show that for any $k \in \N$, we have $\gcd(ka,kb) = k \gcd(a,b)$.
+  
   
   \item Let $n$ be a positive integer. Complete the table
   \[\begin{array}{|l||c|c|c|c|c|c|}
@@ -656,6 +730,14 @@ where $t$ is any integer.
   \gcd(2n,n+1)&&&&&&\\\hline
   \end{array}\]
   Now make a conjecture for the value of $\gcd(2n,n+1)$ and prove it.
+  
+  
+    
+    \item For nonzero integers $a$ and $b$, the \textbf{least common multiple} $\lcm(a,b)$ is defined to be the least positive integer $m$ which is a multiple of both $a$ and $b$.
+    \begin{enumerate}
+        \item If $m = \lcm(a,b)$, $a \mid c$, and $b \mid c$, show $m \mid c$.
+        \item If $a$ and  $b$ are both positive, show $\gcd(a,b) \lcm(a,b) = ab$.
+    \end{enumerate}
   
   \item The set of remainders $\Z_n=\{0,1,2,\ldots,n-1\}$ is called a \emph{ring} when equipped with addition and multiplication modulo $n$. For example $5+6\equiv 3\pmod{8}$. We say that $b\in\Z_n$ is an \emph{inverse} of $a\in\Z_n$ if
 	\[ab\equiv 1\pmod n.\]
@@ -667,7 +749,36 @@ where $t$ is any integer.
 	  
 	  \item Let $\gcd(c,n)=d$. Prove that $ca\equiv cb\mod n\implies a\equiv b\pmod{\frac nd}$.
 	\end{enumerate}
+	
+	
+	  
+		  
+		
+		\item\label{exs:gcd0} Suppose $m\neq 0$. What is $\gcd(m,0)$? Why? Why is Bézout's identity trivial in this situation?
+		%All integers are divisors of zero, so $\gcd(m,0)=\nm m$. Bézout reads $\gcd(m,0)=m\cdot(\pm 1)+0\cdot y$ for any $y\in\Z$.
+		
+		
+		
+		\item\label{exs:congdivision} The general rule for congruence division is as follows:
+		\[
+			ac\equiv bc\spmod n \implies a\equiv b\spmod{\tfrac n{\gcd(c,n)}}
+		\]
+		\begin{enumerate}
+		  \item Use the rule to find all solutions to the congruence equation $22x\equiv 66\pmod{77}$.
+		  \item We prove the rule. Let $d=\gcd(c,n)$.
+		  \begin{enumerate}
+		    \item Explain why $\gcd(\frac cd,\frac nd)=1$
+		  	\item If $ac\equiv bc\spmod n$, prove that $\frac nd\mid(a-b)$.
+			\end{enumerate}
+		\end{enumerate}
+% 	  
+% 	  \begin{enumerate}
+% 	    \item $\frac cd,\frac nd$ have no common factors $>1$ since we have divided out by all of them.
+% 	    \item $ac\equiv bc\spmod n\implies (a-b)\frac cd=k\frac nd$ for some $k$. By part (a), $k$ is divisible by $\frac cd$, whence $a-b$ is an integer multiple of $\frac nd$.
+% 	  \end{enumerate}
 \end{enumerate}
 
 
+
 \end{exercises}
+
