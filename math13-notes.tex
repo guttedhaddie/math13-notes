@@ -3,11 +3,13 @@
 \input{preamble-packages}
 \input{preamble-commands}
 
+\def\circint#1{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
+
 \includeonly{
-1intro/intro,
-2logic/logic,
-3gcd/gcd,
-%4sets/sets,
+%1intro/intro,
+%2logic/logic,
+%3gcd/gcd,
+4sets/sets,
 %5induction/induction,
 %6setsii/setsii,
 %7relations/relations,
@@ -19,7 +21,7 @@
 %selftest/3-1-cong,
 %selftest/3-2-euclidalg,
 }
-\newlabel{chap:sets}{{4}{44}{Sets and Functions}{section.4}{}}
+%\newlabel{chap:sets}{{4}{44}{Sets and Functions}{section.4}{}}
 \newlabel{chap:induction}{{5}{45}{Mathematical Induction and Well-ordering}{section.5}{}}
 \newlabel{chap:sets2}{{6}{46}{Set Theory, Part II}{section.6}{}}
 \newlabel{chap:relations}{{7}{47}{Relations and Partitions}{section.7}{}}
@@ -31,7 +33,7 @@
 \include{1intro/intro}
 \include{2logic/logic}
 \include{3gcd/gcd}
-%\include{4sets/sets}
+\include{4sets/sets}
 %\include{5induction/induction}
 %\include{6setsii/setsii}
 %\include{7relations/relations}
