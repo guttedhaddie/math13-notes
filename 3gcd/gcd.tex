@@ -268,7 +268,7 @@ Can you figure the weekday today's date in your year of birth? Thinking about th
 
 Division in modular arithmetic behaves in unexpected ways. We'll consider this further in the next section, but for the present it is safest to convert congruences to statements about integers.
 
-\begin{examples}{}{}
+\begin{examples}{}{congeqn1}
 	\exstart Even when there is a common factor, dividing both sides is perilous. For instance
 	\begin{align*}
 		42\equiv 12\spmod{\textcolor{red}{10}}&\implies \exists k\in\Z,\ \ 42-12=10k \implies \exists k\in\Z,\ \ 21-6=5k\\
@@ -284,44 +284,6 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 	\end{enumerate}
 \end{examples}
 
- %We'll think about these issues more in the next section.% and Exercise 
-
-% \begin{thm}{}{congdivide}
-% 	If $ka\equiv kb\pmod{kn}$ then $a\equiv b\pmod n$.
-% 	If $ka\equiv kb\pmod n$, then $a\equiv b\pmod{\frac n{\gcd(k,n)}}$
-% \end{thm}
-
-
-
-		
-% 		\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-% 			\item\label{ex:congex2} Suppose $n$ is an integer. Then
-% 			\[
-% 				n^2\not\equiv n\spmod 3\iff n\equiv 2\spmod 3
-% 			\]
-% 			To demonstrate this simply complete the table (proof by cases): there are only three possible remainders modulo 3!
-% 		\end{minipage}
-% 		\hfill
-% 		\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
-% 			\flushright $
-% 			\begin{array}{c|c|c}
-% 				n&n^2&n^2\equiv n\pmod 3\text{?}\\\hline\hline
-% 				0&0&\text{Yes}\\\hline
-% 				1&&\\\hline
-% 				2&&
-% 			\end{array}
-% 			$
-% 		\end{minipage}
-
-% \paragraph{Self-test Questions}
-
-% \begin{enumerate}
-%   \item True or false: $a\equiv b\pmod n\implies a=b$.
-%   \item True of false: $a=b\implies a\equiv b\pmod n$.
-%   \item An integer $m$ is \emph{divisible by} $n$ if \underline{\phantom{$\exists k\in\Z:m=kn$}\qquad\qquad}
-%   \item A \emph{divisor} $b$ of an integer $a$ is \underline{\phantom{an integer $b$ such that $b\mid a$}\qquad\qquad}
-%   \item True or false: if $m$ is divisible by $n$ then $n\equiv 0\pmod m$.
-% \end{enumerate}
 
 \begin{exercises}{}{}
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-1-cong.html}{online}.
@@ -416,8 +378,6 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 		  \item Verify that $341\mid (2^{341}-2)$. What does this say about the \emph{converse} to part (b)?
 		\end{enumerate}
 	  
-	  
-	  %\item Prove that $p\mid n\implies p^2\mid n^2$
 	\end{enumerate}
 
 \end{exercises}
@@ -432,14 +392,9 @@ A basic goal for number theorists is to find \emph{integer} solutions to equatio
 	Are there any \emph{integer points} on the line with equation $9x-21y=6$? That is, does the equation $9x-21y=6$ have any solutions, where both $x,y$ are \emph{integers}?
 \end{quote}
 
-  %\item What about for the line $4x+6y=1$?
-
-
 You might start by sketching both lines (lined graph paper will help). What do you observe? If there are integer points, do they seem to follow any pattern?\smallbreak
 
-In this section we will see how to solve all such \emph{linear Diophantine equations.}\footnote{Equations with integer coefficients and solutions honor the number theorist Diophantus of Alexandria (3\rd{}C.\,\CE).}
-%for which lines $ax+by=c$ with $a,b,c\in\Z$, are there integer solutions, and how can we find them all? 
-The method introduces a famous procedure dating at least to Euclid's \emph{Elements} (c.\,300\BCE).
+In this section we will see how to solve all such \emph{linear Diophantine equations.}\footnote{Equations with integer coefficients and solutions honor the number theorist Diophantus of Alexandria (3\rd{}C.\,\CE).} The method introduces a famous procedure dating at least to Euclid's \emph{Elements} (c.\,300\BCE).
 
 \begin{defn}{}{}
 	Let $a$ and $b$ be integers, not both zero. Their \emph{greatest common divisor} $\gcd(a,b)$ is the largest (positive) divisor of both $a$ and $b$. We say that $a$ and $b$ are \emph{relatively prime} if $\gcd(a,b)=1$.
@@ -458,10 +413,7 @@ The method introduces a famous procedure dating at least to Euclid's \emph{Eleme
 Listing positive divisors in the above manner is very inefficient, especially when the given integers are large. This is where Euclid rides to the rescue.
 
 \begin{thm}{Euclidean Algorithm}{euclidalg}
-	Let $a>b$ be positive integers. We construct a decreasing sequence of integers
-	%\[
-		$b=r_0>r_1>r_2>\cdots$
-%\]
+	Let $a>b$ be positive integers. We construct a decreasing sequence of integers $b=r_0>r_1>r_2>\cdots$
 	\begin{enumerate}\itemsep2pt
 		\item \makebox[300pt][l]{Apply the division algorithm (Theorem \ref{thm:div}):}$a=q_1b+r_1$ with $0\le r_1<b$
 		\item \makebox[300pt][l]{If $r_1>0$, apply the division algorithm again:}$b=q_2r_1+r_2$ with $0\le r_2<r_1$
@@ -562,9 +514,6 @@ The method in the example works for all solvable linear Diophantine equations.
 	\end{enumerate} 
 \end{thm}
 
-%\footnotetext{The astute observer should recognize the similarity between this and the complementary function/particular integral method for linear differential equations: $(x_0,y_0)$ is a `particular solution' to the full equation $ax+by=c$, while $(\frac bdt,-\frac adt)$ comprises all solutions to the `homogeneous equation' $ax+by=0$.}
-
-
 
 \textcolor{red}{Warning!}\lstsp If $c\neq d=\gcd(a,b)$, you will need to scale the integers obtained in Bézout's identity to find an initial solution $(x_0,y_0)$: see below.
 
@@ -605,15 +554,22 @@ The method in the example works for all solvable linear Diophantine equations.
 \end{example}
 
 
-\footnotetext{In future studies, you'll refer to 10 as the \emph{multiplicative inverse of 7 in the ring $\Z_{23}$,} and write $7^{-1}=10$. %This notation isn't advised at the moment, lest you confuse it with $\frac 17$.
-}
 
-Congruence equations may also be solved using these approaches.
+\boldsubsubsection{Linear Congruence Equations}
+
+We began to consider linear congruence equations in Example \ref{ex:congeqn1}. The ``points on lines" method also applies in this context. To see why, observe that
+\[
+	ax\equiv c\pmod n\iff \exists y\in\Z\text{ such that }ax=ny+c
+\]
+The Theorem tells us when we can solve the right hand side, and how. To solve the congruence equation, we just need to extract the $x$-part.
 
 \begin{examples}{}{}
 	\exstart To solve $123x\equiv -6\pmod{78}$ is to find a solution to the equation $123x=78y-6$. By the above, all solutions have the form $x=-14+26t$. Otherwise said
 	\[123x\equiv -6\pmod{78} \implies x\equiv -14\equiv 12\pmod{26}\]
+	
 	\begin{enumerate}\setcounter{enumi}{1}
+	  \item The congruence equation $4x\equiv 6\pmod{20}$ has no solutions. If it did, then the linear equation $4x=20y+6$ would have integer solutions, but it doesn't: $\gcd(4,20)=4$ does not divide 6. 
+	  
 	  \item Here is a slightly different approach for $7x\equiv 11\pmod{23}$. By applying the algorithm,
 		\[
 			\gcd(23,7)=1=7\cdot 10-23\cdot 3 \implies 7\cdot 10\equiv 1\pmod{23}
@@ -627,158 +583,144 @@ Congruence equations may also be solved using these approaches.
 \end{examples}
 
 
-% \paragraph{Self-test Questions}
-% 
-% \begin{enumerate}
-%   \item True or false: $\gcd(21,-12)=-3$. What about $\gcd(-21,-12)=-3$?
-%   \item Suppose that $a$ is a non-zero integer: which of the numbers $0,\ a$ or $\nm a$ is equal to $\gcd(a,0)$?
-%   \item True or false: $1700x-340y=170$ has an integer solution $(x,y)$.
-%   \item True or false. If $a$ and $b$ are relatively prime then the equation $ax+by=1$ has an integer solution $(x,y)$.
-%   \item True or false: it is possible for a linear equation $ax+by=c$ where $a,b,c$ are integers to have \emph{exactly one} integer solution $(x,y)$.
-% \end{enumerate}
+\footnotetext{In future studies, you'll refer to 10 as the \emph{multiplicative inverse of 7 in the ring $\Z_{23}$,} and write $7^{-1}=10$ (see Exercise \ref{exs:ringintro}).}
+
 
 \begin{exercises}{}{}
-	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-2-euclidalg.html}{online}.
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-2-euclidalg.html}{online}. Some of these questions are tricky, particularly the last few, and are included to give you a taste of upper-division number theory and abstract algebra.
 
-\begin{enumerate}
-  \item\label{qn:gcdea} Use the Euclidean algorithm to compute the greatest common divisors.
-  \begin{enumerate}
-    \item $\gcd(20,12)$\qquad (b)\ \ $\gcd(100,36)$\qquad (c)\ \ $\gcd(207,496)$
-  \end{enumerate} 
-  
-  \item For each part of Exercise \ref*{qn:gcdea}, find integers $x,y$ which satisfy Bézout's identity $\gcd(a,b)=ax+by$.
-  
-  \item Describe all the integer points on the line $9x-21y=6$ using Theorem \ref{thm:diophantine}.
-  
-  
-  \item\begin{enumerate}
-    \item Use Theorem \ref{thm:diophantine} to show that there are no integer points on the line $4x+6y=1$.
-  	\item Give an elementary proof (without using the Theorem) of part (a)?
-  \end{enumerate} 
-  
-	\item Find all integer points $(x,y)$ on the following lines, or show that none exist.
-    \begin{enumerate}
-      \item \makebox[180pt][l]{$16x-33y=2$\hfill (b)} \ $122x+36y=3$
-      \setcounter{enumii}{2}
-      \item \makebox[180pt][l]{$303x+204y=6$\hfill (d)} \ $324x-204y=-12$
-    \end{enumerate}
-  
-  \item\begin{enumerate}
-    \item Show that there exists no integer $x$ such that $3x\equiv 5\pmod 6$.
-    \item Find all solutions $x$ to the congruence equation $12x\equiv 1\pmod{17}$.
-  \end{enumerate} 
-    
-  \item Five people each take the same number of candies from a jar. Then a group of seven people does the same: in so doing they empty the jar. If the jar originally contained 93 candies, can you be sure how much candy each person took?
-
-
-  \item\label{exs:euclidalgproof} We complete the proof of the Euclidean algorithm (Theorem \ref{thm:euclidalg}).
-  \begin{enumerate}
-    \item Suppose $a>b>r_1>r_2\cdots$ is a sequence of non-negative integers. Why must there be only \emph{finitely many} terms? This shows that the algorithm terminates with some $r_{t+1}=0$.
-    \item Suppose that $a,b,q,r$ are integers satisfying $a=qb+r$. Prove that $\gcd(a,b)=\gcd(b,r)$.\par
-    (\emph{You cannot use Bézout's identity to do this, since Bézout is a corollary of the algorithm!})
-    \item Argue that $\gcd(a,b)=r_t$.
-  \end{enumerate}
-  
-  
-  \item Use Bézout's identity to prove that if $k\mid a$ and $k\mid b$, then $k\mid\gcd(a,b)$.
-  
-
-  \item\label{ex:gcd1} Prove: $\gcd(m,n)=1\iff\exists x,y\in\Z$ such that $mx+ny=1$.\par
-  (\emph{Hint: One direction follows from Bézout's identity, but the other\ldots})
-    
-    
-	\item\begin{enumerate}
-	  \item Let $c\in\Z$. Prove: $2\mid c$ and $3\mid c\implies 6\mid c$.\par
-	  (\emph{Hint: write $c=2k=\cdots$ and apply Corollary \ref{cor:moddivision}})
-	  \item Let $n\ge 3$ be an odd number. Show that $n\equiv 1\spmod 3\implies  n\equiv 1\spmod 6$.
-	 	\item $\frac 16n(n+1)(2n+1)$ is an integer.
-	\end{enumerate}
-  
-  
-	\item Let $a,b,p\in\Z$. Recall Definition \ref{defn:irreducible}: the only positive divisors of a prime are itself and 1.
-  \begin{enumerate}
-    \item Suppose $p$ is prime and that $p\mid ab$. Prove that $p\mid a$ or $p\mid b$.\par
-    (\emph{Hint: if $p\nmid a$, use Corollary \ref{cor:moddivision}})
-    \item Suppose $p\ge 2$ is an integer with the property that $\forall a,b\in\Z$, $p\mid ab$ implies $p\mid a$ or $p\mid b$. Prove that $p$ is prime.\par
-    (\emph{Hint: prove the contrapositive})
-  \end{enumerate}
-    
-    
-    \item (Hard)\lstsp Show that if $a$ is relatively prime to both $b$ and $c$ then it is relatively prime to $bc$.\par
-    (\emph{Hint: suppose $d\mid a$ and $d\mid bc$ and try to prove that $d=\pm 1$})
-%   
-
-%   \item In this question we prove the Theorem \ref{thm:diophanine} on integer solutions to linear equations. Let $a,b,c\in\Z$. Suppose that $(x_0,y_0)$ and $(x_1,y_1)$ are two integer solutions to the linear Diophantine equation $ax+by=c$.
-%   \begin{enumerate}
-%     \item Show that $(x_0-x_1,y_0-y_1)$ satisfies the equation $ax+by=0$.
-%     \item Suppose that $\gcd(a,b)=d$. Prove that $\gcd(\frac ad,\frac bd)=1$. (\emph{Use Question \hyperref[ex:gcd1]{\thesubsection.\ref*{ex:gcd1}})}
-%     \item Find all integer solutions $(x,y)$ to $ax+by=0$ (\emph{Don't use the Theorem, it's what you're trying to prove! Think about part (b) and divide through by $d$ first.}).
-%     \item Use (a) and (b) to conclude that $(x,y)$ is an integer solution to $ax+by=c$ if and only if
-%     \[x=x_0+\frac bdt\qquad y=y_0-\frac adt,\qquad \text{where }t\in\Z.\]
-%   \end{enumerate}
-  
-  \item Show that $\gcd(5n+2,12n+5)=1$ for every integer $n$. \emph{There are two ways to approach this: you can try to use the Euclidean algorithm abstractly, or you can use the result of Exercise \hyperref[ex:gcd1]{\thesubsection.\ref*{ex:gcd1}}.}
-  
-  
-  \item Use the Euclidean Algorithm to show that for any $k \in \N$, we have $\gcd(ka,kb) = k \gcd(a,b)$.
-  
-  
-  \item Let $n$ be a positive integer. Complete the table
-  \[\begin{array}{|l||c|c|c|c|c|c|}
-  \hline
-  n&1&2&3&4&5&6\\\hline
-  \gcd(2n,n+1)&&&&&&\\\hline
-  \end{array}\]
-  Now make a conjecture for the value of $\gcd(2n,n+1)$ and prove it.
-  
-  
-    
-    \item For nonzero integers $a$ and $b$, the \textbf{least common multiple} $\lcm(a,b)$ is defined to be the least positive integer $m$ which is a multiple of both $a$ and $b$.
-    \begin{enumerate}
-        \item If $m = \lcm(a,b)$, $a \mid c$, and $b \mid c$, show $m \mid c$.
-        \item If $a$ and  $b$ are both positive, show $\gcd(a,b) \lcm(a,b) = ab$.
-    \end{enumerate}
-  
-  \item The set of remainders $\Z_n=\{0,1,2,\ldots,n-1\}$ is called a \emph{ring} when equipped with addition and multiplication modulo $n$. For example $5+6\equiv 3\pmod{8}$. We say that $b\in\Z_n$ is an \emph{inverse} of $a\in\Z_n$ if
-	\[ab\equiv 1\pmod n.\]
 	\begin{enumerate}
-	  \item Show that 2 has no inverse modulo 6.
-	  \item Show that if $n=n_1n_2$ is composite ($\exists$ integers $n_1,n_2\ge 2$) then there exist elements of the ring $\Z_n$ which have no inverses.
-	  \item Prove that $a$ has an inverse modulo $n$ if and only if $\gcd(a,n)=1$. Conclude that the only sets $\Z_n$ for which all non-zero elements have inverses are those for which $n$ is prime.\\
-	  \emph{You will find Exercise \hyperref[ex:gcd1]{\thesubsection.\ref*{ex:gcd1}} helpful.}
+	  \item\label{qn:gcdea} Use the Euclidean algorithm to compute the greatest common divisors.
+	  \begin{enumerate}
+	    \item $\gcd(20,12)$\qquad (b)\ \ $\gcd(100,36)$\qquad (c)\ \ $\gcd(207,496)$
+	  \end{enumerate} 
 	  
-	  \item Let $\gcd(c,n)=d$. Prove that $ca\equiv cb\mod n\implies a\equiv b\pmod{\frac nd}$.
-	\end{enumerate}
+	  \item For each part of Exercise \ref*{qn:gcdea}, find integers $x,y$ which satisfy Bézout's identity $\gcd(a,b)=ax+by$.
+	  
+	  \item Describe all the integer points on the line $9x-21y=6$ using Theorem \ref{thm:diophantine}.
+	  
+	  
+	  \item\begin{enumerate}
+	    \item Use Theorem \ref{thm:diophantine} to show that there are no integer points on the line $4x+6y=1$.
+	  	\item Give an elementary proof (without using the Theorem) of part (a)?
+	  \end{enumerate} 
+	  
+		\item Find all integer points $(x,y)$ on the following lines, or show that none exist.
+	    \begin{enumerate}
+	      \item \makebox[180pt][l]{$16x-33y=2$\hfill (b)} \ $122x+36y=3$
+	      \setcounter{enumii}{2}
+	      \item \makebox[180pt][l]{$303x+204y=6$\hfill (d)} \ $324x-204y=-12$
+	    \end{enumerate}
+	  
+	  \item\begin{enumerate}
+	    \item Show that there exists no integer $x$ such that $3x\equiv 5\pmod 6$.
+	    \item Find all solutions $x$ to the congruence equation $12x\equiv 1\pmod{17}$.
+	  \end{enumerate} 
+	    
+	  \item Five people each take the same number of candies from a jar. Then a group of seven people does the same: in so doing they empty the jar. If the jar originally contained 93 candies, can you be sure how much candy each person took?
 	
 	
+	  \item\label{exs:euclidalgproof} We complete the proof of the Euclidean algorithm (Theorem \ref{thm:euclidalg}).
+	  \begin{enumerate}
+	    \item Suppose $a>b>r_1>r_2\cdots$ is a sequence of non-negative integers. Why must there be only \emph{finitely many} terms? This shows that the algorithm terminates with some $r_{t+1}=0$.
+	    \item Suppose that $a,b,q,r$ are integers satisfying $a=qb+r$. Prove that $\gcd(a,b)=\gcd(b,r)$.\par
+	    (\emph{You cannot use Bézout's identity to do this, since Bézout is a corollary of the algorithm!})
+	    \item Argue that $\gcd(a,b)=r_t$.
+	  \end{enumerate}
 	  
-		  
-		
+	
 		\item\label{exs:gcd0} Suppose $m\neq 0$. What is $\gcd(m,0)$? Why? Why is Bézout's identity trivial in this situation?
-		%All integers are divisors of zero, so $\gcd(m,0)=\nm m$. Bézout reads $\gcd(m,0)=m\cdot(\pm 1)+0\cdot y$ for any $y\in\Z$.
-		
-		
-		
-		\item\label{exs:congdivision} The general rule for congruence division is as follows:
+			
+	  
+	  \item Use Bézout's identity to prove that if $k\mid a$ and $k\mid b$, then $k\mid\gcd(a,b)$.
+	  
+	
+	  \item\label{ex:gcd1} Prove: $\gcd(m,n)=1\iff\exists x,y\in\Z$ such that $mx+ny=1$.\par
+	  (\emph{Hint: One direction follows from Bézout's identity, but the other\ldots})
+	    
+	    
+		\item\begin{enumerate}
+		  \item Let $c\in\Z$. Prove: $2\mid c$ and $3\mid c\implies 6\mid c$.\par
+		  (\emph{Hint: write $c=2k=\cdots$ and apply Corollary \ref{cor:moddivision}})
+		  \item Let $n\ge 3$ be an odd number. Show that $n\equiv 1\spmod 3\implies  n\equiv 1\spmod 6$.
+		 	\item $\frac 16n(n+1)(2n+1)$ is an integer.
+		\end{enumerate}
+	  
+	  
+		\item Let $a,b,p\in\Z$. Recall Definition \ref{defn:irreducible}: the only positive divisors of a prime are itself and 1.
+	  \begin{enumerate}
+	    \item Suppose $p$ is prime and that $p\mid ab$. Prove that $p\mid a$ or $p\mid b$.\par
+	    (\emph{Hint: if $p\nmid a$, use Corollary \ref{cor:moddivision}})
+	    \item Suppose $p\ge 2$ is an integer with the property that $\forall a,b\in\Z$, $p\mid ab$ implies $p\mid a$ or $p\mid b$. Prove that $p$ is prime.\par
+	    (\emph{Hint: prove the contrapositive})
+	  \end{enumerate}
+	    
+	    
+	    \item (Hard)\lstsp Show that if $a$ is relatively prime to both $b$ and $c$ then it is relatively prime to $bc$.\par
+	    (\emph{Hint: suppose $d\mid a$ and $d\mid bc$ and try to prove that $d=\pm 1$})
+	    
+	    
+			\item\label{exs:congdivision} The general rule for congruence division is as follows:
+			\[
+				ac\equiv bc\spmod n \implies a\equiv b\spmod{\tfrac n{\gcd(c,n)}}
+			\]
+			\begin{enumerate}
+			  \item Use the rule to find all solutions to the congruence equation $22x\equiv 66\pmod{77}$.
+			  \item We prove the rule. Let $d=\gcd(c,n)$.
+			  \begin{enumerate}
+			    \item Explain why $\gcd(\frac cd,\frac nd)=1$
+			  	\item If $ac\equiv bc\spmod n$, prove that $\frac nd\mid(a-b)$.
+				\end{enumerate}
+			\end{enumerate}
+			
+	    
+	  \item\begin{enumerate}
+	    \item Prove part 1 of Theorem \ref{thm:diophantine} using Bézout's identity.
+	    \item Prove part 2 by mimicking the method in Example \ref{ex:euclidalg}, (mk.\,III).
+	  \end{enumerate} 
+	    
+	    
+	  \item (Hard)\lstsp Apply the discussion of the Euclidean algorithm and linear equations to the following.
+	  
+	  \begin{enumerate}
+	    \item Complete the table.\par
+	    \begin{minipage}[t]{0.55\linewidth}\vspace{-8pt}
+	  	If $n$ is a positive integer, make a conjecture for the value of $\gcd(2n,n+1)$ and prove it.
+	    \end{minipage}
+	    \hfill
+	    \begin{minipage}[t]{0.43\linewidth}\vspace{-20pt}
+	    \flushright
+	    $\begin{array}{|l||c|c|c|c|c|c|}
+	  			\hline
+	  			n&1&2&3&4&5&6\\\hline
+	  			\gcd(2n,n+1)&&&&&&\\\hline
+	  		\end{array}$
+	    \end{minipage}
+	
+	  	\item Show that $\gcd(5n+2,12n+5)=1$ for every integer $n$.
+	  \end{enumerate}
+	
+	
+	  \item\label{exs:ringintro} The set of remainders $\Z_n=\{0,1,2,\ldots,n-1\}$ is called a \emph{ring} when equipped with addition and multiplication modulo $n$. We say that $b\in\Z_n$ is an \emph{inverse} of $a\in\Z_n$ if
 		\[
-			ac\equiv bc\spmod n \implies a\equiv b\spmod{\tfrac n{\gcd(c,n)}}
+			ab\equiv 1\pmod n
 		\]
 		\begin{enumerate}
-		  \item Use the rule to find all solutions to the congruence equation $22x\equiv 66\pmod{77}$.
-		  \item We prove the rule. Let $d=\gcd(c,n)$.
-		  \begin{enumerate}
-		    \item Explain why $\gcd(\frac cd,\frac nd)=1$
-		  	\item If $ac\equiv bc\spmod n$, prove that $\frac nd\mid(a-b)$.
-			\end{enumerate}
+		  \item Show that 2 has no inverse modulo 6.
+		  \item Prove that $a$ has an inverse modulo $n$ if and only if $\gcd(a,n)=1$. Conclude that the only sets $\Z_n$ for which all non-zero elements have inverses are those for which $n$ is prime.	  
 		\end{enumerate}
-% 	  
-% 	  \begin{enumerate}
-% 	    \item $\frac cd,\frac nd$ have no common factors $>1$ since we have divided out by all of them.
-% 	    \item $ac\equiv bc\spmod n\implies (a-b)\frac cd=k\frac nd$ for some $k$. By part (a), $k$ is divisible by $\frac cd$, whence $a-b$ is an integer multiple of $\frac nd$.
-% 	  \end{enumerate}
-\end{enumerate}
-
-
+		
+		
+	  %\item Use the Euclidean algorithm to show that for any $k\in\N$, we have $\gcd(ka,kb) = k\gcd(a,b)$.
+	  
+	
+	%     \item For nonzero integers $a$ and $b$, the \textbf{least common multiple} $\lcm(a,b)$ is defined to be the least positive integer $m$ which is a multiple of both $a$ and $b$.
+	%     \begin{enumerate}
+	%         \item If $m = \lcm(a,b)$, $a \mid c$, and $b \mid c$, show $m \mid c$.
+	%         \item If $a$ and  $b$ are both positive, show $\gcd(a,b) \lcm(a,b) = ab$.
+	%     \end{enumerate}
+	  
+	\end{enumerate}
 
 \end{exercises}
 
