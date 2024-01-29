@@ -459,7 +459,7 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
 	  
 	  \item\begin{enumerate}
 	    \item\label{exs:iff} Prove that the expressions $(P\Longrightarrow Q)\wedge (Q\Longrightarrow P)$ and $P\Longleftrightarrow Q$ are logically equivalent.
-	    \item Prove that $\bigl((P\Longrightarrow Q)\wedge (Q\Longrightarrow R)\bigr)\Longrightarrow \bigl(P\Longrightarrow R\bigr)$ is a tautology.
+	    \item\label{exs:iftransitive} Prove that $\bigl((P\Longrightarrow Q)\wedge (Q\Longrightarrow R)\bigr)\Longrightarrow \bigl(P\Longrightarrow R\bigr)$ is a tautology.
 	  \end{enumerate}
 	  Why do these make intuitive sense?
 
@@ -1044,7 +1044,7 @@ The minor remaining difficulty is that ``same parity'' encompasses \emph{two} po
 	\settowidth\pflen{(state hypothesis $\neg Q$)}
 	\def\cmt#1{\hfill\makebox[\pflen][l]{#1}}
 	\textcolor{blue}{Suppose $x$ and $y$ have the same parity.} There are two cases.\cmt{(state \textcolor{blue}{hypothesis} $\neg Q$)}
-	\begin{description}\setlength{\itemsep}{0pt}
+	\begin{description}\itemsep0pt
 	  \item[\normalfont Case 1:] Assume $x$ and $y$ are both even.\newline
 	  Write $x=2k$ and $y=2l$, for some integers $k,l$. \cmt{(\textcolor{Green}{definition} of \emph{even})}\newline
 	  Then $x+y=2(k+l)$ is even. \cmt{(computation)}

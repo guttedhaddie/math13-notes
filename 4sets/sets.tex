@@ -2,200 +2,282 @@
 \section{Sets and Functions}\label{chap:sets}
 
 
-Sets are the fundamental building blocks of mathematics. In the sub-discipline of Set Theory, mathematicians define all basic notions, including number, addition, function, etc., purely in terms of sets. In such a system it can take over 100 pages of discussion to \emph{prove} that $1+1=2$! We will not be anything like so rigorous. Indeed, before one can accept that such formality has its place in mathematics, a level of familiarity with sets and their basic operations is necessary.
+Sets are the fundamental building blocks of mathematics, providing the language necessary for describing mathematical objects and for grouping objects together according to shared characteristics. Understanding how to read and effectively employ set notation is our primary focus. The mathematical discipline of \emph{set theory} is, however, far more ambitious than this. Set theorists define all basic mathematical objects---\emph{numbers, addition, functions,} etc.---purely in terms of sets, an impractical approach for most working mathematicians, most of the time.\footnote{Within \emph{axiomatic set theory} it can take over 100 pages to justify writing $1+1=2$. The difficulty is that rigorous definitions---using sets---are first required of the notions \emph{one, two, equals} and \emph{add}\ldots} We will only scratch the surface of this. Indeed long before one can accept that such an approach has its place in mathematics, a significant level of familiarity with sets and their basic operations is necessary.
 
 
-\subsection{Set Notation and Describing a Set}
+\subsection{Set Notation and Subsets}\label{sec:subset}
 
-We start with a naïve notion: a set is a collection of objects.\footnote{For this course, our notion is enough. It eventually became clear that some collections of objects cannot be considered sets, and the search for a completely rigorous definition began; thus was Axiomatic Set Theory born.}
+Without any attempt to define the meaning of \emph{object,} we start with a naïve definition.
 
-\begin{defn}{}{}
-	If $x$ is an object in a set $A$, we write $x\in A$ and say that $x$ is an \emph{element} or \emph{member} of $A$.\\
-	On the other hand, if $x$ is a member of some other set $B$, but not of $A$, we write $x\notin A$.\\
-	Sets $C$ and $D$ are described as \emph{equal,} written $C=D$, if they have exactly the same elements.
+\begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{}{}
+	A \emph{set} is a collection of objects, its \emph{elements} or \emph{members.}\smallbreak
+	The notation $x\in A$ is read ``$x$ is an \emph{element}/\emph{member} of the set $A$,'' or more often simply ``$x$ is in $A$.'' Otherwise said, $x$ is an object in the collection labelled $A$.\smallbreak
+	If $y$ is a member of some other set, but not of $A$, we write $y\notin A$ (``$y$ is not in $A$'').\smallbreak
+	\tcblower
+	\flushright\includegraphics{sets-01-venn}
 \end{defn}
 
-\begin{minipage}[t]{0.73\linewidth}\vspace{0pt}
-	When thinking abstractly about sets, you may find \emph{Venn diagrams} useful. A set is visualized as a region in the plane and, if necessary, members of the set can be thought of as dots in this region. This is most useful when one has to think about multiple, possibly over-lapping, sets. The graphic represents a set $A$ with at least three elements $a_1,a_2,a_3$. The element $x$ does not lie in $A$. 
-	\vspace{5pt}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.25\linewidth}\vspace{0pt}
-	\flushright\includegraphics[scale=1]{sets-01-venn}
-\end{minipage}
+As in the definition, it is typical to use upper-case letters ($A,B,C,\ldots$) for abstract sets and lower-case letters for their elements.\smallbreak
 
-
-\boldsubsubsection{Notation and Conventions}
-
-We use capital letters for sets, e.g. $A,B,C,S$, and lower-case letters for elements. It is conventional, though not required, to denote an abstract element of a set by the corresponding lower-case letter: thus $a\in A$, $b\in B$, etc.\\
-Curly brackets $\{\,,\,\}$ are used to bookend the elements of a set: for instance, if we wrote
-\[
-	S=\{3,5,f,\alpha,\beta\}
-\]
-then we'd say, `$S$ is the set whose elements are 3, 5, $f$, $\alpha$ and $\beta$.'\par
-The order in which we list the elements of a set is irrelevant, thus
-\[
-	S=\{\beta,f,5,\alpha,3\}=\{f,\alpha,3,\beta,5\}
-\]
-Listing all the elements in such a fashion is known as \emph{roster notation.}
-
-By contrast, \emph{set-builder notation} describes the elements of a set by starting with a larger set and restricting to those elements which satisfy some property. The symbols $\mid$ or $:$ are used as a short-hand for `such that.' Which symbol you use depends partly on taste, although the context may make one clearer to read.\footnote{See Choice of Notation, below.} For example, if $S=\{3,5,f,\alpha,\beta\}$ is the set defined above, we could write,
-\[
-	\{s\in S\mid s\text{ is a Greek letter}\}=\{s\in S:s\text{ is a Greek letter}\}=\{\alpha,\beta\}
-\]
-We would read: `The set of elements $s$ in $S$ such that $s$ is a Greek letter is the set $\{\alpha,\beta\}$.'
-
-More generally, if $S$ is a set and $P$ is a propositional function whose domain is $S$, then we can define a new set
-\[
-	A:=\{s\in S:P(s)\text{ is true}\}
-\]
+\emph{Venn diagrams} are useful for visualizing abstract sets. A set is represented by a region in the plane, with elements depicted by dots. The diagram in the definition represents a set $A$ comprising at least four elements $a_1,a_2,a_3$ and $x$. The element $y$ does not lie in $A$. 
 
 \begin{example}{}{}
-	Let $A=\{2,4,6\}$ and $B=\{1,2,5,6\}$. There are many options for how to write $A$ and $B$ in set-builder notation. For example, we could write
+	Let $A$ be the set of (names of) US states. Then Michigan $\in A$ and Saskatchewan $\notin A$.
+\end{example}
+
+\begin{defn}{}{subset}
+	Let $A$ and $B$ be sets.
+	\begin{enumerate}
+	  \item Sets are \emph{equal,} written $A=B$, if they have precisely the same elements.\par
+	  \begin{minipage}[t]{0.74\linewidth}\vspace{-4pt}
+	  	\item $A$ is a \emph{subset} of $B$, written $A\subseteq B$, if every element of $A$ is also an element of $B$.
+	  	\item $A$ is a \emph{proper subset} of $B$ if $A\subseteq B$ and $A\neq B$. To stress this, we'd write $A\subsetneq B$. The Venn diagram on the right represents a proper subset. 
+	  \end{minipage}
+	  \hfill
+	  \begin{minipage}[t]{0.25\linewidth}\vspace{-15pt}
+			\flushright\includegraphics{sets-02-vennsubset}
+	  \end{minipage}
+	\end{enumerate}
+\end{defn}
+
+The following observations are simply translations of the definition:
+\begin{enumerate}
+  \item Equality: $A=B \iff A\subseteq B$ and $B\subseteq A$.
+  \item Subset: $A\subseteq B \iff \bigl(x\in A\Longrightarrow x\in B\bigr) \iff \bigl(\forall x\in A, x\in B\bigr)$
+  \item Not a subset: $A\nsubseteq B \iff \exists x\in A$ for which $x\notin B$.
+\end{enumerate}
+
+
+\boldsubsubsection{Roster \& Set-Builder Notation}
+
+\emph{Roster notation} is the most basic way to describe the elements of a set: simply \emph{list} the elements in any order between curly brackets $\{\,,\,\}$.
+
+\begin{example}{}{easysetnotation}
+	Let $A$ be the set of (real number) solutions to the equation $2x^2-7x+3=0$ and let $B$ be the set of \emph{integer} solutions to the same equation. Since the polynomial factorizes as $(2x-1)(x-3)$, we see that $A=\{3,\frac 12\}$ and $B=\{3\}$. We could also write $A=\{\frac 12,3\}$ since \emph{order doesn't matter in roster notation.}	Moreover:
+	\begin{itemize}
+	  \item $A\nsubseteq B$ since $\frac 12\in A$ and $\frac 12\notin B$.
+	  \item $B\subseteq A$ since 3 (the only element of $B$) lies in $A$. Indeed $B\subsetneq A$ is a  proper subset since $A\neq B$.
+	\end{itemize}
+\end{example}
+
+Roster notation is ideal for small sets, but is of limited utility when trying to describe large sets. This is where our second notation rides to the rescue.\bigbreak
+
+\emph{Set-builder notation} describes the elements of a set using some common property. Suppose $\cU$ is some (already understood) set and $P(x)$ is a propositional function with domain $\cU$, then
+\[
+	A:=\bigl\{x\in\cU:P(x)\bigr\} \tag{``$A$ is the set of $x$ in $\cU$ such that $P(x)$''}
+\]
+defines a set $A$ as \emph{the subset} of $\cU$ all of whose elements $x$ satisfy the property $P(x)$. A vertical separator $\mid$ is often used instead of a colon: we'll use both, though it might be essential in a given context to use one rather than the other for clarity.
+
+\begin{examples}{}{}
+\exstart Continuing Example \ref{ex:easysetnotation}, recall that $\R$ represents the set of real numbers and $\Z$ the set of integers. In set-builder notation, our solution sets may be written
+	\[A=\bigl\{x\in\R:2x^2-7x+3=0\bigr\},\qquad B=\bigl\{x\in\Z:2x^2-7x+3=0\bigr\}\]
+	In this case the qualifying proposition $P(x)$ is ``$2x^2-7x+3=0$.''
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item[]We can also express the fact that $B$ is a subset of $A$ in this notation (this time with a vertical separator),
+	\[B=\bigl\{x\in A\bigm| x\in\Z\} \tag{``the set of elements $x$ in $A$ such that $x$ is an integer"}\]
+	
+	\item Let $X=\{2,4,6\}$ and $Y=\{1,2,5,6\}$. There are many options for how to write these in set-builder notation. For instance:
 	\[
-		A=\{2n\in\Z:n=1,\,2\text{ or }3\}\quad\text{ and }\quad B=\{n\in\Z\mid 1\le n\le 6\text{ and }n\neq 3,4\}
+		X=\bigl\{n\in\Z:\tfrac 12n\in\{1,2,3\}\bigr\},\qquad Y=\bigl\{n\in\Z\bigm|1\le n\le 6\text{ and }n\neq 3,4\bigr\}
 	\]
 	We now practice the opposite skill by converting five sets from set-builder to roster notation.
-	\begin{enumerate}
-	  \item[] $S_1=\{a\in A:a\text{ is divisible by 4}\}=\{4\}$
-	  \item[] $S_2=\{b\in B:b\text{ is odd}\}=\{1,5\}$
-	  \item[] $S_3=\{a\in A\mid a\in B\}=\{2,6\}$
-	  \item[] $S_4=\{a\in A:a\not\in B\}=\{4\}$
-	  \item[] $S_5=\{b\in B\mid b\text{ is odd and $b-1\in A$}\}=\{5\}$
+	\begin{align*}
+		&S_1=\bigl\{x\in X:x\text{ is divisible by 4}\bigr\}=\{4\}
+		&&
+		S_2=\bigl\{y\in Y:y\text{ is odd}\bigr\}=\{1,5\}
+		\\
+		&S_3=\bigl\{x\in X\bigm| x\in Y\bigr\}=\{2,6\}
+		&&
+		S_4=\bigl\{x\in X:x\notin Y\bigr\}=\{4\}
+		\\
+		&S_5=\bigl\{y\in Y\bigm| y\text{ is odd and $y-1\in X$}\}=\{5\}
+	\end{align*}
+	Can you find alternative descriptions in set-builder notation for the sets $S_1,\ldots,S_5$ above? Take your time getting used to this notation: the ability to translate between various descriptions of a set is \emph{crucial} to reading mathematics!
+	
+	\item Use the set $C=\{0,1,2,3,\ldots,24\}$ to describe $D=\{n\in\Z:n^2-3\in C\}$ in roster notation.\par
+  Expand the criterion for membership in $D$:
+  \[
+  	n^2-3\in C\iff n^2\in\bigl\{3,4,5,\ldots,25,26,27\bigr\}
+  \]
+  Since $n$ must be an integer, it follows that $D=\{\pm 2,\pm 3,\pm 4,\pm 5\}$.
+  
+  \item To express $E=\{0,2,6,12,\ldots\}$ in set-builder notation we might spot a pattern and decide that
+  \[
+  	E=\bigl\{n\in\Z: n=m(m+1) \text{ for some integer }m\ge 0\bigr\}
+  \]
+  The problem is that we cannot guarantee our correctness! Perhaps the correct formula is
+  \[
+  	n=m(m+1)+m(m-2)(m-6)(m-12)
+  \]
+	In the first case the next term in the sequence is $4\cdot 5=20$, whereas in the second case it is $20+128=148$. For larger sets, the clarity afforded by set-builder notation is essential!
+
 	\end{enumerate}
-\end{example}
-
-Take your time getting used to this notation. Can you find an alternative description in set-builder notation for the sets $S_1,\ldots,S_5$ above? It is \emph{crucial} that you can translate between various descriptions of a set or you won't be able to read much mathematics!
-
-
-\boldsubsubsection{Sets of Numbers}
-
-Common sets of numbers are written in the $\mathbb{B}${\scriptsize $\mathbb{LACKBOARD}$} $\mathbb{B}${\scriptsize $\mathbb{OLD}$} typeface.
-\begin{itemize}\setlength{\itemsep}{0pt}
-  \item[] $\N=\Z^+=\text{natural numbers}=\{1,2,3,4,\ldots\}$
-	\item[] $\N_0=\mathbb{W}=\Z_0^+=\text{whole numbers}=\{0,1,2,3,4,\ldots\}$
-	\item[] $\Z=\text{integers}=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}$
-	\item[] $\Q=\text{rational numbers}=\{\frac mn\colon m\in\Z\text{ and }n\in\N\} =\{\frac ab\colon a,b\in\Z\text{ and }b\neq 0\}$
-	\item[] $\R=\text{real numbers}$
-	\item[] $\R\setminus\Q=\text{irrational numbers}$\qquad (read `$\R$ minus $\Q$')
-	\item[] $\C=\text{complex numbers}=\{x+iy:x,y\in\R,\text{ where }i=\sqrt{-1}\}$
-	\item[] $\Z_{\ge n}=\text{integers $\ge n$}=\{n,n+1,n+2,n+3,\ldots\}$
-	\item[] $n\Z=\text{multiples of $n$}=\{\ldots,-3n,-2n,-n,0,n,2n,3n,\ldots\}$
-\end{itemize}
-
- Where there are multiple choices of notation, we will tend to use the first in the list: for example $\N_0$ is preferred to $\Z_{\ge 0}$. The use of a subscript $0$ to include zero and a superscript $\pm$ to restrict to positive or negative numbers is standard.
-
-\begin{examples}{}{}
-$7\in\Z,\qquad \pi\in\R,\qquad \pi\not\in\Q,\qquad \sqrt{-5}\in\C,\qquad -e^2\in\R^-$.\par
-
-There are often many different ways to represent the same set in set-builder notation. For example, the set of even numbers may be written in multiple ways: think about the English translations.
-\begin{align*}
-2\Z&=\{2n\in\Z:n\in\Z\}\tag{The set of integers of the form $2n$ such that $n$ is an integer}\\
-&=\{n\in\Z:\exists k\in\Z,\ n=2k\} \tag{The set of integers which are a multiple of 2}\\
-&=\{n\in\Z:n\equiv 0\spmod 2\}\tag{The set of integers congruent to 0 modulo 2}\\
-&=\{n\in\Z:\ 2\mid n\}\tag{The set of integers which are divisible by 2}
-\end{align*}
-Here we use both congruence and divisor notation to obtain suitable descriptions. Can you find any other ways to describe the even numbers using basic set notation?
 \end{examples}
 
-The notation $n\Z$ is most commonly used when $n$ is a natural number, but it can also be used for other $n$. For example
-\[\tfrac 12\Z=\left\{\tfrac 12x:x\in\Z\right\}=\left\{m,m+\tfrac 12:m\in\Z\right\}\]
-is the set of multiples of $\frac 12$ (comprising the integers and half-integers). The notation can also be extended: for example $2\Z+1$ would denote the odd integers.
 
-\begin{aside}{}{}
-{\bf Choice of Notation}
 
-The notations $\,\mid$ and $:$ for `such that' give you leeway in case one these symbols is being used to mean something else. For example, the final expression (above) for the even numbers is much cleaner than the alternative
-\[2\Z=\{n\in\Z\mid 2\mid n\}.\]
-In other situations the opposite is true. In Section \ref{sec:func1} we shall consider functions. If you recall the concept of an even function from calculus, we could denote the set of such as
-\[\{f:\R\to\R:\forall x,\,f(x)=f(-x)\}\qquad\text{or}\qquad\{f:\R\to\R\mid \forall x,\,f(x)=f(-x)\}.\]
-In this case the latter notation is clearly superior.
-\end{aside}
+\boldsubsubsection{Common Sets of Numbers}
+
+We've used some of this notation already, and much of the rest should be familiar.% with much of it from your previous studies. Common sets of numbers are often written using the $\mathbb{B}${\scriptsize $\mathbb{LACKBOARD}$} $\mathbb{B}${\scriptsize $\mathbb{OLD}$} typeface.
+\vspace{-2pt}
+
+\begin{quote}\def\arraystretch{1.15}
+\begin{tabular}{@{}ll}
+	\emph{Natural numbers}&$\N=\bigl\{1,2,3,4,\ldots\bigr\}$ is the set of \emph{positive} integers.\\
+	\emph{Integers}&$\Z=\bigl\{\ldots,-3,-2,-1,0,1,2,3,\ldots\bigr\}$.\\
+	\emph{Rational numbers}&$\Q=\bigl\{\frac mn:m\in\Z\text{ and }n\in\N\bigr\} =\bigl\{\frac ab\bigm| a,b\in\Z\text{ and }b\neq 0\bigr\}$.\\
+	\emph{Real numbers}&$\R$. Even a rudimentary definition is too involved for this text.\footnote{We simply assume the reader is comfortable with the idea of the real line where number corresponds to \emph{length.} A rigorous development of $\R$ is a matter for an upper-division \emph{analysis} course.}\\
+	\emph{Complex numbers}&$\C=\bigl\{x+iy:x,y\in\R\bigr\}$ where $i^2=-1$. We won't use these.
+\end{tabular}
+\end{quote}
 
 \begin{examples}{}{}
-\exstart Write the set $A=\{x\in\R:x^2+3x+2=0\}$ in roster notation.\\[5pt]
-	We are looking for the set of all real number solutions to the quadratic equation $x^2+3x+2=0$. A simple factorization tells us that $x^2+3x+2=(x+1)(x+2)$, whence $A=\{-1,-2\}$.
+	\exstart For instance: \ $7\in\N$, \ $\pi\in\R$, \ $-\frac 79\notin\Z$, \ $\sqrt 2\notin\Q$ \ and \ $3+\sqrt 5i\in\C$.
 	\begin{enumerate}\setcounter{enumi}{1}
-  \item Use the set $B=\{0,1,2,3,\ldots,24\}$ to describe $C=\{n\in\Z:n^2-3\in B\}$ in roster notation.\\[5pt]
-  We see that
-  \[n^2-3\in B\iff n^2\in\{3,4,5,\ldots,25,26,27\}\]
-  Since $n$ must be an integer in order to be an element of $C$, it follows that
-  \[C=\{\pm 2,\pm 3,\pm 4,\pm 5\}.\]
-  \item It is often harder to convert from roster to set-builder notation, as you might be required to spot a pattern, and many choices could be available. For example, if
-  \[D=\left\{\frac 16,\frac 1{20},\frac 1{42},\frac 1{72},\frac 1{110},\frac 1{156},\ldots\right\},\]
-  you might consider it reasonable to write
-  \[D=\left\{\frac 1{2n(2n+1)}:n\in\N\right\}.\]
-  Of course the ellipses (\ldots) might not indicate that the elements of the set continue in the way you expect. For larger sets, the concision and clarity of set-builder notation makes it much preferred!
-  \item Are the following sets equal?
-  \[E=\{n^2+2\in\Z:\text{$n$ is an odd integer}\},\qquad F=\{n\in\Z:n^2+2\text{ is an odd integer}\}.\]
-  It may help to first construct a table listing some of the values of $n^2+2$:
-  \[\begin{array}{c|c|c}
-  n&n^2&n^2+2\\\hline
-  \pm 1&1&3\\
-  \pm 3&9&11\\
-  \pm 5&25&27\\
-  \pm 7&49&51\\
-  \pm 9&81&83\\[-5pt]
-  \vdots&\vdots&\vdots
-  \end{array}\]
-  The set $E$ consists of those integers of the form $n^2+2$ where $n$ is an odd integer. By the table,
-  \[E=\{3,11,27,51,83,\ldots\}.\]
-  On the other hand, $F$ includes all those integers $n$ such that $n^2+2$ is odd. It is easy to see that
-  \[n^2+2\text{ is odd}\iff n^2\text{ is odd}\iff n\text{ is odd.}\]
-  Thus $F$ is simply the set of all odd integers:
-  \[F=\{\pm 1,\pm 3,\pm 5,\pm 7,\ldots\}=2\Z+1.\]
-  Plainly the two sets are not equal.
+	  \item The basic symbols can be decorated to make natural modifications. For example:
+\vspace{-3pt}
+		\begin{itemize}
+		  \item $\N_0=\bigl\{0,1,2,3,4,\ldots\bigr\}=\Z^+_0=\bigl\{x\in\Z:x\ge 0\bigr\}$. Also called the \emph{whole numbers} ($\mathbb W$).
+			\item $\Z_{\ge 5}=\bigl\{5,6,7,8,\ldots\bigr\} =\bigl\{x\in\Z:x\ge 5\bigr\}$ denotes the integers greater than or equal to 5.
+		  \item $\R^+=\bigl\{x\in\R:x>0\bigr\}$ is the set of positive real numbers.
+			\item $4\Z=\bigl\{\ldots,-8,-4,0,4,8,12,\ldots\bigr\} =\bigl\{x\in\Z: 4\mid x\bigr\}$ is the set\footnotemark{} of integer multiples of 4.\par
+			This notation can be used for non-integer multiples, e.g. $\pi\Z=\bigl\{\ldots,-\pi,0,\pi,2\pi,\ldots\bigr\}$. 
+			\item $2\Z+1=\bigl\{x\in\Z:x\equiv 1\pmod 2\bigr\}$ is the set of odd integers.
+		\end{itemize}
+		
+		\item \emph{Intervals} are the most commonly encountered subsets of the real numbers. For instance:
+\vspace{-3pt}
+		\begin{itemize}
+		  \item $[1,\pi]=\bigl\{x\in\R\bigm|1\le x\le \pi\bigr\}$ is a \emph{closed} interval 
+		  \item $[-4,7.21)=\{x\in\R\bigm|-4\le x<7.21\}$ is a \emph{half-open} interval.
+		  \item $(-\infty, \sqrt 2) =\{x\in\R\bigm|x<\sqrt 2\}$ is an \emph{infinite (open)} interval.
+		\end{itemize}
 	\end{enumerate}
 \end{examples}
 
+\footnotetext{Be careful here!---the colon is the ``such that" separator while $\mid$ denotes the property ``4 divides $x$.'' The unreadability of $\bigl\{x\in\Z\bigm| 4\mid x\bigr\}$ illustrates the benefit of having two separator symbols to choose from.}
 
-\boldsubsubsection{Intervals}
+\goodbreak
 
-\emph{Interval notation} is useful when discussing collections of \emph{real numbers.} You should be familiar from calculus with the words \emph{open} and \emph{closed} with regard to intervals. For example,
-\begin{align*}
-(0,1)&=\{x\in\R:0<x<1\},\tag*{(Open interval)}\\
-[0,1]&=\{x\in\R:0\le x\le 1\},\tag*{(Closed interval)}\\
-(0,1]&=\{x\in\R:0<x\le 1\}.\tag*{(Half-open interval)}
-\end{align*}
-When writing intervals with $\pm\infty$ use an open bracket at the infinite end(s): $[1,\infty)=\{x\in\R:x\ge 1\}$. This is since the symbols $\pm\infty$ do not represent real numbers and so are not members of any interval.
+In view of the natural subset relationships $\N\subsetneq\Z\subsetneq\Q\subsetneq\R\subsetneq\C$, we consider a simple result.
 
-\begin{example}{}{}
-Recall some basic trigonometry. Consider the set of solutions to the equation $\cos x=-\frac 12$ where $x$ lies in the interval $[0,4\pi]$. This set can be written in set-builder and roster notation as
-\[\left\{x\in[0,4\pi]:\cos x=-\frac 12\right\}=\left\{\frac{2\pi}3,\frac{4\pi}3,\frac{8\pi}3,\frac{10\pi}3\right\}\]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{sets-03-cos}
-\end{center}
-\end{example}
+\begin{lemm}{Transitivity of Subset}{subsettrans}
+	Suppose $A\subseteq B$ and $B\subseteq C$. Then $A\subseteq C$.
+\end{lemm}
+
+\begin{proof}
+	Think back to the criteria following Definition \ref{defn:subset}. Suppose $A\subseteq B$ and $B\subseteq C$. Then
+	\[
+		x\in A \overset{(A\subseteq B)}{\implies} x\in B\overset{(B\subseteq C)}{\implies} x\in C
+	\]
+	We conclude that $A\subseteq C$.
+\end{proof}
+
+Compare this to Exercise \ref*{sec:prop}.\ref{exs:iftransitive}: if we translate each subset relation into an implication, the proof structure is $(x\in A\Rightarrow x\in B)\wedge (x\in B\Rightarrow x\in C)\Longrightarrow (x\in A\Rightarrow x\in C)$. This is typical of basic results about sets: after translation, the theorem reduces to one of the standard rules of logic.
+
+
 
 \boldsubsubsection{Cardinality and the Empty Set}
 
+It is helpful to introduce some terminology to describe the \emph{size} of a set.
+
 \begin{defn}{}{}
-A set $A$ is \emph{finite} if it contains a finite number of elements: this number is the set's \emph{cardinality,} written $\nm A$. If $A$ contains infinitely many elements, it said to be an \emph{infinite set.}
+	A \emph{finite set} contains only a finite number of elements: this number is its \emph{cardinality,} written $\nm A$. A set with infinitely many elements is said to be an \emph{infinite set.}\par
+	The symbol $\emptyset$ denotes the \emph{empty set}: a set containing no elements (cardinality zero: $\nm\emptyset=0$).
 \end{defn}
 
+
+
 \begin{examples}{}{}
-\begin{enumerate}
-\item Let $A=\{a,b,\alpha,\gamma,\sqrt 2\}$, then $\nm A=5$.
-\item Let $B=\Big\{4,\{1,2\},\{3\}\Big\}$. It is important to note that the \emph{elements/members} of $B$ are $4$, $\{1,2\}$ and $\{3\}$, two of which are themselves sets. Therefore $\nm B=3$. The set $\{1,2\}$ is an object in its own right, and can therefore be placed in a set along with other objects.\footnote{The fact that a set (containing objects) is also an object might seem confusing, but you should be familiar with the same problem in English. Consider the following sentences: `UCI \emph{are} constructing a laboratory' and `UCI \emph{is} constructing a laboratory.' In the first case we are thinking of UCI as a collection of individuals, in the latter case UCI is a single object. Opinions differ in various modes of English as to which is grammatically correct.}
-\end{enumerate}
+	\exstart Let $A=\bigl\{1,3,\pi,\sqrt 2,103\bigr\}$, then $\nm A=5$.
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item Let $B=\bigl\{4,\{1,2\},\{3\}\bigr\}$. The elements of $B$ are $4$, $\{1,2\}$ and $\{3\}$, therefore $\nm B=3$. It doesn't matter that the \emph{element} $\{1,2\}\in B$ is also a set!\par
+		\begin{minipage}[t]{0.59\linewidth}\vspace{-5pt}
+			\item Recall some basic trigonometry:
+			\[
+				\left\{x\in[0,4\pi]:\cos x=\frac 12\right\}=\left\{\frac{\pi}3,\frac{5\pi}3,\frac{7\pi}3,\frac{11\pi}3\right\}
+			\]
+			has cardinality 4.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.4\linewidth}\vspace{-10pt}
+			\flushright\includegraphics{sets-03-cos}
+		\end{minipage}
+		
+		\item There are many representations of the empty set: for example
+		\[
+			\emptyset =\bigl\{x\in\R:x^2=-1\bigr\} = \bigl\{x\in\N:x^2+3x+2=0\bigr\}=\bigl\{n\in\N:n<0\bigr\}
+		\]
+		In general, if $X$ is any set and $P(x)$ is false for all $x\in X$, then\footnotemark{} $\emptyset=\bigl\{x\in X:P(x)\bigr\}$.
+	\end{enumerate}
 \end{examples}
 
-Cardinality is a very simple concept for finite sets. For infinite sets, such as the natural numbers $\N$, the concept of cardinality far much more subtle. We cannot honestly speak of $\N$ having an `infinite number' of elements, since infinity is not a number! In Chapter \ref{chap:cantor} we will consider what cardinality means for infinite sets and meet several bizarre and fun consequences. For the present, cardinality only has meaning for finite sets.\par
+\footnotetext{In some formalizations of set theory, the existence of the empty set is an axiom: an assumption made without proof. Provided one accepts that set-builder notation always defines a set---this is itself an axiom!---and that at least one set $X$ exists, the empty set may be \emph{defined} as in the example: a suitable property $P(x)$ might be something like ``$x\notin\{x\}$.''}
 
-To round things off we need a symbol to denote a set that contains nothing at all!
 
-\begin{axiom}{}{}
-There exists a set $\emptyset$ with no elements (cardinality zero: $\nm\emptyset=0$). We call $\emptyset$ the \emph{empty set.}
-\end{axiom}
+Cardinality is a very simple concept for finite sets; if $B$ is finite, so is any subset, and we have
+\[
+	A\subseteq B\implies \nm A\le \nm B
+\]
+For infinite sets, cardinality is more subtle. We'll return to this issue and uncover some of the bizarre and fun consequences of infinite cardinalities in Chapter \ref{chap:cantor}.
+\bigbreak
 
-There are many \emph{representations} of the empty set. For example $\{x\in\N:x^2+3x+2=0\}$ and $\{n\in\N:n<0\}$ are both empty. Despite this, we will see in Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}} that there is only one set with no elements, so that all representations actually denote the \emph{same set} $\emptyset$. 
-Note also that $\nm A\in\N$ for any \emph{finite non-empty} set $A$. 
+We finish with a couple of simple results regarding the empty set.
 
-\begin{aside}{}{}
-{\bf Axioms}
+\begin{lemm}{}{}
+Let $A$ be a set.
+\begin{enumerate}
+  \item If $\nm A=0$, then $A=\emptyset$. The empty set is \emph{the unique set} with zero cardinality.
+  \item $\emptyset\subseteq A$ and $A\subseteq A$
+\end{enumerate}
+\end{lemm}
 
-An axiom is a basic assumption; something that we need in order to do mathematics, but cannot prove. This is the cheat by which mathematicians can be 100\% sure that something is true: a result is proved based on the assumption of several axioms. With regard to the empty set axiom, it probably seems bizarre that we can assume the existence of some set that has nothing in it. Regardless, mathematicians have universally agreed that we need the empty set in order to do the rest of mathematics. The assumption that set-builder notation always defines a new set is another axiom.
-\end{aside}
+\begin{proof}
+	Think about the claim $\emptyset\subseteq A$: by the observations following Definition \ref{defn:subset}, this means
+	\[
+		x\in\emptyset\implies x\in A
+	\]
+	This is true (for any set $A$!) since there are no elements $x$ satisfying the hypothesis.\footnotemark{}
+	\begin{enumerate}
+ 	 \item Suppose $A$ has cardinality zero. Repeating and combining with the above observation, we see that $\emptyset\subseteq A$ and $A\subseteq\emptyset$. We conclude that $A=\emptyset$.
+ 	 \item We already know that $\emptyset\subseteq A$. For the second part, simply observe that
+ 	 $x\in A\implies x\in A$.\qedhere
+\end{enumerate}
+\end{proof}
+
+\footnotetext{If $P(x)$ is always false, then $(\forall x)\ P(x)\Longrightarrow Q(x)$ is true. This is called a \emph{vacuous} (empty) theorem.}
+
+% 
+% 
+% \begin{examples}{}{}
+% 	\begin{enumerate}\setcounter{enumi}{1}
+%   \item Are the following sets equal?
+%   \[E=\{n^2+2\in\Z:\text{$n$ is an odd integer}\},\qquad F=\{n\in\Z:n^2+2\text{ is an odd integer}\}.\]
+%   It may help to first construct a table listing some of the values of $n^2+2$:
+%   \[\begin{array}{c|c|c}
+%   n&n^2&n^2+2\\\hline
+%   \pm 1&1&3\\
+%   \pm 3&9&11\\
+%   \pm 5&25&27\\
+%   \pm 7&49&51\\
+%   \pm 9&81&83\\[-5pt]
+%   \vdots&\vdots&\vdots
+%   \end{array}\]
+%   The set $E$ consists of those integers of the form $n^2+2$ where $n$ is an odd integer. By the table,
+%   \[E=\{3,11,27,51,83,\ldots\}.\]
+%   On the other hand, $F$ includes all those integers $n$ such that $n^2+2$ is odd. It is easy to see that
+%   \[n^2+2\text{ is odd}\iff n^2\text{ is odd}\iff n\text{ is odd.}\]
+%   Thus $F$ is simply the set of all odd integers:
+%   \[F=\{\pm 1,\pm 3,\pm 5,\pm 7,\ldots\}=2\Z+1.\]
+%   Plainly the two sets are not equal.
+% 
+%   \item $\{x\in\R:x^2-1=0\}\subseteq \{y\in\R:y^2\in\N\}$.\\
+%   To make sense of this relationship, convert to roster notation: we obtain
+%   \[\{-1,1\}\subseteq\{\pm\sqrt 1,\pm\sqrt 2,\pm\sqrt 3,\pm\sqrt 4,\ldots\}.\]
+%   \item If $m$ and $n$ are positive integers, then $m\Z\subseteq n\Z\iff n\mid m$. Make sure you're comfortable with this! For example, $4\Z\subseteq 2\Z$ since every multiple of 4 is also a multiple of 2.
+% \end{enumerate}
+% \end{examples}
+
 
 % \paragraph{Self-test Questions}
 % 
@@ -207,218 +289,180 @@ An axiom is a basic assumption; something that we need in order to do mathematic
 
 
 \begin{exercises}{}{}
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/4-1-subset.html}{online}.
 
-\begin{enumerate}
-  \item Describe the following sets in roster notation: that is, list their elements.
+
+% Write the set $A=\{x\in\R:x^2+3x+2=0\}$ in roster notation.\\[5pt]
+% 	We are looking for the set of all real number solutions to the quadratic equation $x^2+3x+2=0$. A simple factorization tells us that $x^2+3x+2=(x+1)(x+2)$, whence $A=\{-1,-2\}$.
+
+	\begin{enumerate}
+	  \item Describe the following sets in roster notation: that is, list their elements.
 		\begin{enumerate}
-	  	\item $\{x\in\N:x^2\le 3x\}$.
-	  	\item $\{x^2\in\R:x^2-3x+2=0\}$.
-	  	\item $\bigl\{n+2\in\{0,1,2,3,\ldots,19\}:n+3\equiv 5\spmod 4\bigr\}$
-	  	\item $\bigl\{n\in\{-2,-1,0,1,\ldots,23\}:4\mid n^2\bigr\}$\hfill (\emph{does $:$ or  $|$ denote the condition?})
-	  	\item $\{x\in \frac 12\Z: 0\le x\le 4\text{ and }4x^2\in 2\Z+1\}$
+		  \item \makebox[215pt][l]{$\bigl\{x\in\N:x^2\le 3x\bigr\}$\hfill (b)} \ $\bigl\{n\in\{0,1,2,3,\ldots,19\}:n+3\equiv 5\spmod 4\bigr\}$
+		  \setcounter{enumii}{2}
+		  \item \makebox[215pt][l]{$\bigl\{n\in\{-2,-1,0,1,\ldots,23\}:4\mid n^2\bigr\}$\hfill (d)} \ $\bigl\{x\in \frac 12\Z: 0\le x\le 4\text{ and }4x^2\in 2\Z+1\bigr\}$
+		  \setcounter{enumii}{4}
+		  \item $\bigl\{y\in\R:y=x^2\text{ for some $x\in\R$ with } x^2-3x+2=0\bigr\}$
 		\end{enumerate}
-		
-	\item Describe the following sets in set-builder notation (\emph{look for a pattern}).
+			
+			
+		\item Describe the following sets in set-builder notation (\emph{look for a pattern}).
 		\begin{enumerate}
-	  	\item $\{\ldots,-3,0,3,6,9,\ldots\}$
-	  	\item $\{-3,1,5,9,13,\ldots\}$
-	  	\item $\{1,\frac 13,\frac 17,\frac 1{15},\frac 1{31},\ldots\}$
+		  \item \makebox[180pt][l]{$\bigl\{\ldots,-3,0,3,6,9,\ldots\bigr\}$\hfill (b)} \ $\bigl\{-3,1,5,9,13,\ldots\bigr\}$
+		  \setcounter{enumii}{2}
+		  \item $\bigl\{1,\frac 13,\frac 17,\frac 1{15},\frac 1{31},\ldots\bigr\}$
+		\end{enumerate}
+		  
+	
+	  \item Each of the following sets of real numbers is a single interval. Determine the interval.
+		\begin{enumerate}
+		  \item \makebox[180pt][l]{$\bigl\{x\in\R:x>3\text{ and }x\le 17\bigr\}$\hfill (b)} \ $\bigl\{x\in\R:x\nleq 3\text{ or }x\le 17\bigr\}$
+		  \setcounter{enumii}{2}
+		  \item \makebox[180pt][l]{$\bigl\{x^2\in\R:x\neq 0\bigr\}$ \hfill (d)} \ $\bigl\{x\in\R^-:x^2\ge 16\text{ and }x^3\le 27\bigr\}$
+		\end{enumerate}
+			
+			
+		\item Is the set $\{x\in\Z:-1\le x<43\}$ finite or infinite? If finite, what is its cardinality?
+				
+		
+		%\item Compare the sets $A=\{3x\in\Z:x\in 2\Z\}$ and $B=\{x\in\Z:x\equiv 12\pmod 6\}$. Are they equal?
+			
+			
+		\item What is the cardinality of the set $\Bigl\{\emptyset,\bigl\{\emptyset\bigr\},\bigl\{\emptyset,\{\emptyset\}\bigr\}\Bigr\}$? \ What are its elements?
+		
+		\item Let $A=\emptyset$, \ $B=\{A\}$, \ $C=\bigl\{\{A\}\bigr\}$ \ and \ $D=\bigl\{A,\{0\},\{0,1\}\bigr\}$.\par
+	  Answer the following true or false:
+	  \begin{enumerate}
+	    \item \makebox[80pt][l]{$0\in A$\hfill (b)} \ \makebox[80pt][l]{$A\in B$\hfill (c)} \ \makebox[80pt][l]{$A\in C$\hfill (d)} \ \makebox[80pt][l]{$B\in C$ \hfill (e)} \ $A\in D$
+	    \setcounter{enumii}{5}
+	    \item \makebox[80pt][l]{$B\in D$\hfill (g)} \ \makebox[80pt][l]{$0\in D$\hfill (h)} \ \makebox[80pt][l]{$\{0\}\in D$\hfill (i)} \ $\{1\}\in D$
+	  \end{enumerate}
+	  
+	  
+	  \item List all the \emph{proper} subsets of $\{1,2,3\}$.
+	  
+	    
+		\goodbreak
+	   
+		   
+		\item Let $A,B,C,D$ be the following sets:
+	  \begin{align*}
+	  	&A=\{-4,1,2,4,10\}
+	  	&&B=\bigl\{m\in\Z:\nm m\le 12\bigr\}\quad \text{(\emph{absolute value of $m$})}\\
+	  	&C=\bigl\{n\in\Z:n^2\equiv 1\spmod 3\bigr\}
+	  	&&D=\bigl\{t\in\Z:t^2+3\in [4,20)\bigr\}  
+	  \end{align*}
+	  Of the 12 subset relations $A\subseteq B$,\ $A\subseteq C,\ldots, D\subseteq C$, which are true and which false?
+	  
+	  \item Let $A=\bigl\{1,2,\{1,2\},\{3\}\bigr\}$ and $B=\{1,2\}$. Answer the following true or false:
+	  \begin{enumerate}
+	    \item \makebox[100pt][l]{$B\in A$\hfill (b)} \ \makebox[100pt][l]{$B\subseteq A$\hfill (c)} \ \makebox[100pt][l]{$3\in A$\hfill (d)} \ $\{3\}\subseteq A$
+	    \setcounter{enumii}{4}
+	    \item \makebox[100pt][l]{$\{3\}\in A$\hfill (f)} \ \makebox[100pt][l]{$\emptyset\subseteq A$\hfill (g)} \ $\emptyset\in A$
+	  \end{enumerate}
+	  
+	  \item Let $A=\{0,2,4,6,8,10\}$. Write the set $B=\{X\subseteq A:|X|=2\}$ in roster notation.
+	  
+	    
+	  \item\begin{enumerate}
+	    \item Suppose $A\subseteq B\subseteq C\subseteq A$. Show that $A=B=C$.
+	    \item Is it possible for sets $A,B,C$ to satisfy $A\subsetneq B\subseteq C\subseteq A$? Why/why not?
 	  \end{enumerate}
 
-  \item Each of the following sets of real numbers is a single interval. Determine the interval.
+	
+		\item Let $A=\{\text{1,2,3,4}\}$, and let $B =\bigl\{\{x,y\}:x,y\in A\bigr\}$.
 		\begin{enumerate}
-	  	\item $\{x\in\R:x>3\text{ and }x\le 17\}$
-	  	\item $\{x\in\R:x\nleq 3\text{ or }x\le 17\}$
-	  	\item $\{x^2\in\R:x\neq 0\}$
-	  	\item $\{x\in\R^-:x^2\ge 16\text{ and }x^3\le 27\}$
+	  	\item Describe $B$ in roster notation (\emph{what happens when $x=y$?}).
+			\item Find the cardinalities of the following sets:
+			\[
+				C=\Bigl\{\bigl\{x,\{y\}\bigr\}:x,y\in A\Bigr\}
+				\quad\text{and}\quad
+				D=\biggl\{\Bigl\{\bigl\{x,\{y\}\bigr\}:x,y\in A\Bigr\}\biggr\}
+			\]
 		\end{enumerate}
-		
-	\item Can you describe the set $\{x\in\Z:-1\le x<43\}$ in interval notation? Why/why not?
-	
-	\item Compare the sets $A=\{3x\in\Z:x\in 2\Z\}$ and $B=\{x\in\Z:x\equiv 12\pmod 6\}$. Are they equal?
-		
-	\item What is the cardinality of the following set? What are the elements?
-	\[\Bigl\{\emptyset,\bigl\{\emptyset\bigr\},\bigl\{\emptyset,\{\emptyset\}\bigr\}\Bigr\}.\]
-	
-	\item Let $A=\{\text{1,2,3,4}\}$, and let $B$ be the set
-	\[B=\Bigl\{\{x,y\}:x,y\in A\Bigr\}.\]
-	\begin{enumerate}
-	  \item Describe $B$ in roster notation.
-		\item Now compute the cardinality of the sets
-		\[C=\Bigl\{\bigl\{x,\{y\}\bigr\}:x,y\in A\Bigr\}\]
-		and
-		\[D=\biggl\{\Bigl\{\bigl\{x,\{y\}\bigr\}:x,y\in A\Bigr\}\biggr\}.\]
-		Compare them to $\nm B$.
-	\end{enumerate}
-		
-  \item Prove or disprove the following conjectures.
-  \begin{enumerate}
-    \item $\exists x\in\R\setminus\Q$ such that $x^2\in\Q$.
-    \item $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$.
-	\end{enumerate}
-\end{enumerate}
-
-\end{exercises}
-
-\clearpage
-
-
-
-\subsection{Subsets}
-
-In this section we consider the most basic manner in which two sets can be related.
-
-\begin{defn}{}{subset}
-If $A$ and $B$ are sets such that every element of $A$ is also an element of $B$, then we say that $A$ is a \emph{subset} of $B$ and write $A\subseteq B$.\\
-$A$ is a \emph{proper subset} of $B$ if it is a subset which is not equal. This can be written $A\subsetneq B$.\footnote{We will religiously stick to this notation. When reading other texts, note that some authors prefer $A\subset B$ for proper subset. Others use $\subset$ for any subset, whether proper or not.}
-\end{defn}
-
- The concept of subset provides us with an extremely important characterization of equality.
-
-\begin{thm}{}{setequal}
-Two sets are equal if and only if they are each a subset of the other. Equivalently
-\[A=B\iff A\subseteq B\text{ and }B\subseteq A.\]
-\end{thm}
-
-\begin{proof}
-Recall that two sets $A$ and $B$ are equal if and only if they have the same elements. But this is if and only if every element of $A$ is also an element of $B$ and vice versa.
-\end{proof}
-
- You will often need to \emph{prove} that two sets are equal: showing that each is a subset of the other is a very common way to accomplish this.
-
-\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
-Venn diagrams are particularly useful for visualizing subset relations. The graphic on the right depicts three sets $A,B,C$: it should be clear that the only valid subset relation between the three is $A\subseteq B$.
-\end{minipage}\qquad
-\begin{minipage}[t]{0.26\linewidth}\vspace{0pt}
-\includegraphics[scale=1]{sets-02-vennsubset}
-\end{minipage}\par
-
-Set-builder notation implicitly uses the concept of subset: the notation $X=\{y\in Y:P(y)\}$ describes a set $X$ as the subset of some other set $Y$, all of whose elements satisfy the property $P(y)$. The previous section contained many examples that were subsets of the set of real numbers $\R$. Here are some other examples of subsets.
-
-\begin{examples}{}{}
-\begin{enumerate}
-  \item $\N=\{n\in\Z:n>0\}$. This is clearly a subset of $\Z$.
-  \item $\{x\in\R:x^2-1=0\}\subseteq \{y\in\R:y^2\in\N\}$.\\
-  To make sense of this relationship, convert to roster notation: we obtain
-  \[\{-1,1\}\subseteq\{\pm\sqrt 1,\pm\sqrt 2,\pm\sqrt 3,\pm\sqrt 4,\ldots\}.\]
-  \item If $m$ and $n$ are positive integers, then $m\Z\subseteq n\Z\iff n\mid m$. Make sure you're comfortable with this! For example, $4\Z\subseteq 2\Z$ since every multiple of 4 is also a multiple of 2.
-\end{enumerate}
-\end{examples}
-
-Here we collect several results relating to subsets.
-
-\begin{thm}{}{subsettrans}\hypertarget{thm:subsettranslnk}{}
-\begin{enumerate}
-  \item If $\nm A=0$, then $A=\emptyset$ \hfill (Uniqueness of the empty set)
-  \item For any set $A$, we have $\emptyset\subseteq A$ and $A\subseteq A$ \hfill (Trivial and non-proper subsets)
-  \item If $A\subseteq B$ and $B\subseteq C$, then $A\subseteq C$\hfill(Transititvity of subsets)
-\end{enumerate}
-\end{thm}
-
-\begin{proof}
-\begin{enumerate}
-  \item Let $A$ be a set with cardinality zero, i.e., with no elements. $\emptyset$ has no members, therefore $\emptyset\subseteq A$ is trivial: there is nothing to check to see that all elements of $\emptyset$ are also elements of $A$! The argument for $A\subseteq\emptyset$ is identical. By Theorem \ref{thm:setequal} we see that $A=\emptyset$.
-  \item Let $A$ be any set. $\emptyset\subseteq A$ follows by the argument in 1. To prove that $A\subseteq A$ we must show that all elements of $A$ are also elements of $A$. But this is completely obvious!
-  \item Assume that $A$ is a subset of $B$ and that $B$ is a subset of $C$. We must show that all elements of $A$ are also elements of $C$. Let $a\in A$. Since $A\subseteq B$ we know that $a\in B$. Since $B\subseteq C$ and $a\in B$, we conclude that $a\in C$. This shows that every element of $A$ belongs to $C$. Hence $A\subseteq C$.\qedhere
-\end{enumerate}
-\end{proof}
-
-As a final observation, to which we will return in Theorem \ref{thm:finitecard} and in Chapter \ref{chap:cantor}, your intuition should tell you that, for finite sets, subsets have smaller cardinality:
-\[A\subseteq B\implies\nm A\le\nm B.\]
-More generally, consider replacing the terms in Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}} according to the following table:
-\[\begin{array}{|l|l|}\hline
-\subseteq&\le\\\hline
-\emptyset&0\\\hline
-\text{sets }A,B,C&\text{non-negative integers}\\\hline
-\text{cardinality}&\text{absolute value}\\\hline
-\end{array}\]
-The results should seem completely natural! Recognizing the similarities between a new concept and a familiar one, essentially spotting patterns, is perhaps the most necessary skill in mathematics.
-
-% \paragraph{Self-test Questions}
-% 
-% \begin{enumerate}
-%   \item True or false: Every set has a proper subset.
-%   \item Suppose that $A$ is a proper subset of $B$. What else do we need to assume about the sets $A$ and $B$ before we can say that $\nm A<\nm B$?
-%   \item Order the following sets of numbers according to which are subsets of which:
-%   \[\R,\quad \Z,\quad \N_0,\quad \N,\quad \Q,\quad \C\]
-% \end{enumerate}
-
-\begin{exercises}{}{}
-
-\begin{enumerate}
-  \item Let $A,B,C,D$ be the following sets.
-  \begin{gather*}
-  A=\{-4,1,2,4,10\}\\
-  B=\{m\in\Z:\nm{m}\le 12\}\\
-  C=\{n\in\Z:n^2\equiv 1\negthickspace\negthickspace\pmod 3\}\\
-  D=\{t\in\Z:t^2+3\in [4,20)\}  
-  \end{gather*}
-  Of the 12 possible subset relations $A\subseteq B,\ A\subseteq C,\ldots D\subseteq C$, which are true and which false?
   
-  \item Let $A=\{x\in\R:x^3+x^2-x-1=0\}$ and $B=\{x\in\R:x^4-5x^2+4=0\}$. Are either of the relations $A\subseteq B$ or $B\subseteq A$ true? Explain.
   
-  \item For which values of $x>0$ is the following claim true?
-  \[[0,x]\subseteq[0,x^2]\]
-  Prove your assertion.
+  	\item Let $A=\{x\in\R:x^3+x^2-x-1=0\}$ and $B=\{x\in\R:x^4-5x^2+4=0\}$. Are either of the relations $A\subseteq B$ or $B\subseteq A$ true? Explain.
   
-  \item\label{ex:mirrored} Given $A\subseteq\Z$ and $x\in\Z$, we say that $x$ is $A$-mirrored if and only if $-x\in A$. We also define:
-  \[M_A:=\{x\in\Z\colon x\text{ is $A$-mirrored}\}.\]
+  
+  	\item For which real numbers $x>0$ do we have $[0,x]\subsetneq[0,x^2]$? Prove your assertion.
+  
+  
+  	\item Let $m,n\in\N$. Prove: $m\Z\subseteq n\Z\iff n\mid n$.
+
+  
+  	\item\label{ex:mirrored} Given $A\subseteq\Z$ and $x\in\Z$, we say that $x$ is $A$-mirrored if and only if $-x\in A$. Also define
+  	\[
+			M_A:=\bigl\{x\in\Z: x\text{ is $A$-mirrored}\bigr\}
+		\]
 		\begin{enumerate}
-	  	\item What is the negation of `$x$ is $A$-mirrored.'
-	  	\item Find $M_B$ for $B=\{0,1,-6,-7,7,100\}$.
-	  	\item Assume that $A \subseteq\Z$ is closed under addition (i.e., for all $x,y\in A$, we have $x+y\in A$). Show that $M_A$ is closed under addition.
+	  	\item What does it mean for $x$ \emph{not} to be $A$-mirrored?
+	  	\item Find $M_B$ given $B=\{0,1,-6,-7,7,100\}$.
+	  	\item Assume that $A \subseteq\Z$ is closed under addition: for all $x,y\in A$, we have $x+y\in A$. Show that $M_A$ is closed under addition.
 	  	\item In your own words, under which conditions is $A=M_A$?
 		\end{enumerate}
 
-  \item Define the set $ [1] $ by:
-	\[[1]=\{x\in\Z\colon x\equiv 1\spmod 5\}\]
+  \item Define the set $[1]=\bigl\{x\in\Z: x\equiv 1\spmod 5\bigr\}$.
 		\begin{enumerate}
 		  \item Describe the set $[1]$ in roster notation.
-		  \item Compute the set $M_{[1]}$, as defined in Exercise \ref{ex:mirrored}
-			\item Are the sets $[1]$ and $M_{[1]}$ equal? Prove/Disprove.
-			\item Now consider the set $[10]=\{x\in\Z\colon x\equiv 10 \pmod 5\}$. Are the sets $[10]$ and $M_{[10]}$ equal? Prove/Disprove.
+		  \item Compute the set $M_{[1]}$, as defined in Exercise \ref{ex:mirrored}. Is $M_{[1]}$ equal to $[1]$?
+			\item Now consider the set $[10]=\{x\in\Z:x\equiv 10\spmod 5\}$. Are the sets $[10]$ and $M_{[10]}$ equal? Prove or disprove.
   	\end{enumerate}
-  	
-	\item\begin{enumerate}
-	  \item Give a formal proof of the fact that $A\subseteq B\implies \nm A\le\nm B$ for finite sets. \emph{Resist the temptation to look at Theorem \ref{thm:finitecard}: it is far more technical than you need for this!}
-	  \item Explain why $\nm A\le \nm B\notimplies A\subseteq B$.
-  	\end{enumerate}
-\end{enumerate}
 
+
+     % \item (Hammack's \href{http://www.people.vcu.edu/~rhammack/BookOfProof/}{\emph{Book of Proof}}, Section 1.3, Exercise 6)
+%List all subsets of $\{\R,\Q,\N\}$.
+    
+
+		\item Consider the set $A=\{a,b,c,d\}$. 
+    \begin{enumerate}
+      \item Of each cardinality 0, 1, 2, 3 and 4, how many subsets has $A$? Is there a pattern?
+        
+      \item Completely expand the polynomial $(1 + x)^4$. What do you notice about the coefficients? 
+    \end{enumerate}
+
+	\end{enumerate}
 \end{exercises}
+
 \clearpage
 
 
-\subsection{Unions, Intersections, and Complements}
 
-In the last section we compared nested sets, where one set fitted entirely inside another. In this section we construct new sets from old, modeled precisely on the logical concepts of \emph{and, or,} and \emph{not.}
-For the duration of this section, suppose that $\cU$ is some \emph{universal set,} of which every set mentioned subsequently is a subset.\footnote{This is necessary so that the definitions to come made using set-builder notation really define sets.}\par
+\subsection{Unions, Intersections, and Complements}\label{sec:union}
+
+In this section we construct new sets from old, modeled precisely on the logical concepts of \emph{and, or,} and \emph{not.} For the duration of this section, suppose that $\cU$ is some \emph{universal set,} of which every set mentioned subsequently is a subset.\footnote{This is necessary so that the definitions to come made using set-builder notation really define sets.}\par
 
 
-\begin{minipage}{0.67\textwidth}
-First we consider the set construction modeled on \emph{not.}
-
-\begin{defn}{}{}
-Let $A\subseteq\cU$ be a set. The \emph{complement} of $A$ is the set
-\[\comp A=\{x\in\cU:x\notin A\}\]
-This can also be written $\cU\setminus A,\ \cU-A,\ A'$, or $\cl A$.\par
-
-The Venn diagram is drawn on the right: $A$ is represented by a circular region, while the rectangle represents the universal set $\cU$. The complement $\comp A$ is the blue shaded region.\par
-
-If $B\subseteq\cU$ is some other set, then the \emph{complement of $A$ relative $B$} is
-\[B\setminus A=\{x\in B:x\notin A\}.\]
-The set $B\setminus A$ is also called \emph{$B$ minus $A$.} For its Venn diagram, we represent $A$ and $B$ as overlapping circular regions. The complement $B\setminus A$ is the green shaded region.\par
-
-Note that $\comp A=\cU\setminus A$, so that the two definitions correspond. 
+\begin{defn}{Complements}{}
+	Let $A\subseteq\cU$ be a set. The \emph{complement} of $A$ is the set
+	\[
+		\comp A=\{x\in\cU:x\notin A\}
+	\]
+	%This can also be written $\cU\setminus A,\ \cU-A,\ A'$, or $\cl A$.\par
+	
+	The Venn diagram is drawn on the right: $A$ is represented by a circular region, while the rectangle represents the universal set $\cU$. The complement $\comp A$ is the blue shaded region.\par
+	
+	If $B\subseteq\cU$ is some other set, then the \emph{complement of $A$ relative $B$} is
+	\[
+		B\setminus A=\{x\in B:x\notin A\}
+	\]
+	The set $B\setminus A$ is also called \emph{$B$ minus $A$.} For its Venn diagram, we represent $A$ and $B$ as overlapping circular regions. The complement $B\setminus A$ is the green shaded region.\par
+	
+	Note that $\comp A=\cU\setminus A$, so that the two definitions correspond. 
+	
+	\begin{center}
+		\begin{tabular}{c}
+			\includegraphics[scale=1]{sets-05-venncomp}\\
+			$\comp A$: everything not in $A$
+		\end{tabular}
+		\qquad\qquad
+		\begin{tabular}{c}
+			\includegraphics[scale=1]{sets-06-vennrelcomp}\\
+			$B\setminus A$: everything in $B$ but not in $A$
+		\end{tabular}
+	\end{center}
 \end{defn}
-\end{minipage}\qquad
-\begin{minipage}{0.28\textwidth}\centering
-\includegraphics[width=\textwidth]{sets-05-venncomp}\\
-$\comp A$: everything not in $A$\\[20pt]
-\includegraphics[width=\textwidth]{sets-06-vennrelcomp}\\
-$B\setminus A$: everything in $B$ but not in $A$
-\end{minipage}
-\vspace{5pt}
+
 
 \begin{example}{}{}
 Let $\cU=\{1,2,3,4,5\}$, $A=\{1,2,3\}$, and $B=\{2,3,4\}$. Then
@@ -643,15 +687,27 @@ We prove only the second result. The method is the standard approach: show that 
 	\item Write out a formal proof of the set identity
 	\[A=(A\setminus B)\cup (A\cap B)\]
 	by showing that each side is a subset of the other. Now repeat your argument using only results from set algebra (Theorems \ref{thm:setcomp} and \ref{thm:setdist}).
+	
+	
+	
+
+
+		
+  \item Prove or disprove the following conjectures.
+  \begin{enumerate}
+    \item $\exists x\in\R\setminus\Q$ such that $x^2\in\Q$.
+    \item $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$.
+	\end{enumerate}
 \end{enumerate}
 
 \end{exercises}
 \clearpage
 
+\iffalse
 
 \subsection{Introduction to Functions}\label{sec:func1}
 
-You have been using functions for a long time. A formal definition in terms of relations will be given in Section \ref{sec:func2}. For the present, we will just use the following.
+You have been using functions for a long time. A formal definition in terms of relations will be given in Chapter \ref{chap:relations}. For the present, we will just use the following.
 
 \begin{defn}{}{}
 Let $A$ and $B$ be sets. A \emph{function from $A$ to $B$} is a rule $f$ that assigns one (and only one) element of $B$ to each element of $A$.\\
@@ -661,7 +717,7 @@ The \emph{range} or \emph{image} of $f$, written $\range(f)$ or $\operatorname{I
 
  You can think of the domain of $f$ as the set of all inputs for the function, and the range of $f$ as the set of all outputs. The codomain is the set of all potential values the function may take (of course, only the values in the range are actually achieved).
 
-\boldsubsubsection{Notation}
+\boldsubsubsection{Notation} ALE INSERTS LITTLE ON PREIMAGES HERE - AND IN EXERCISES
 
 If $f$ is a function from $A$ to $B$ we write $f:A\to B$.\\
 If $a\in A$, we write $b=f(a)$ for the the element of $B$ assigned to $a$ by the function $f$.\\
@@ -1021,7 +1077,7 @@ g\circ f:[0,2]\to[0,16]:x\mapsto x^4\tag*{(bijective!)}
   \frac{x}{1-x}&x<1,\\
   1-x&x\ge 1.
   \end{cases}\]
-  Does $g\circ f$ map $(-\infty,0]$ onto $\R$? Justify your answer.\pagebreak
+  Does $g\circ f$ map $(-\infty,0]$ onto $\R$? Justify your answer.
   
   \item Express, using quantifiers, what it means for a function to be
   \begin{enumerate}
@@ -1040,7 +1096,83 @@ g\circ f:[0,2]\to[0,16]:x\mapsto x^4\tag*{(bijective!)}
     \item Consider the nine functions $f_k:A\to A:x\mapsto kx\pmod{10}$, where $k=1,2,\ldots,9$. Find the range of $f_k$ for each $k$. Can you find a relationship between the cardinality of $\range(f_k)$ and $k$?
 		\item More generally, let $A=\{0,1,2\ldots,n-1\}$ be the set of remainders modulo $n$. If $f_k:A\to A:x\mapsto kx\pmod n$, conjecture a relationship between $\nm{\range(f_k)}$, $k$ and $n$. You don't need to prove your assertions.
   \end{enumerate}
+  
+  
+  ALE
+  
+    \item Let $f : \R \to \R^+$ be the function defined by $f(x) = e^x$. Explain why the following ``proof'' that $f$ is surjective is incorrect. Then, give a correct proof.  
+\begin{proof}
+Let $e^x \in \R^+$ be arbitrary. Then $f(x) = e^x$. So $f$ is surjective.
+\end{proof}
+	
+  \item Prove that the composition of two surjective functions is surjective.
+  
+  \item Suppose that $g\circ f$ is injective. Prove that $f$ is injective.
+  
+  \item In the proof of Theorem \ref{thm:finitecard} we twice invoked \emph{without loss of generality.} In both cases explain why the phrase applies.
+  
+%  \item\label{ex:kfunc} Recall Examples \ref{ex:functmod1} and \ref{ex:functmod2} on page \pageref{ex:functmod1}.
+%   \begin{enumerate}
+%     \item Consider the nine functions $f_k:A\to A:x\mapsto kx\pmod{10}$, where $k=1,2,\ldots,9$. Find the range of $f_k$ for each $k$. Can you find a relationship between the cardinality of $\range(f_k)$ and $k$?
+% 		\item More generally, let $A=\{0,1,2\ldots,n-1\}$ be the set of remainders modulo $n$. If $f_k:A\to A:x\mapsto kx\pmod n$, conjecture a relationship between $\nm{\range(f_k)}$, $k$ and $n$. You don't need to prove your assertions.
+%   \end{enumerate}
+
+\item Let $f : A \to B$ be a function. Let $X_1,X_2 \subseteq A$. Prove or disprove the following:
+\begin{enumerate}
+    \item $X_1 \subseteq X_2$ implies $f(X_1) \subseteq f(X_2)$.
+    \item $f(X_1 \cup X_2) = f(X_1) \cup f(X_2)$.
+    \item $f(X_1 \cap X_2) \subseteq f(X_1) \cap f(X_2)$. 
+    \item $f(X_1) \cap f(X_2) \subseteq f(X_1 \cap X_2)$.
+    %\item If $f$ is injective, then $f(X_1 \cap X_2) = f(X_1) \cap f(X_2)$.
+    %\item $f(X_1) \setminus f(X_2) \subseteq f(X_1 \setminus X_2)$.
+\end{enumerate}
+
+\item Let $f : A \to B$ be a function. Suppose that $f(X_1 \cap X_2) = f(X_1) \cap f(X_2)$ for \textbf{all} $X_1,X_2 \subseteq A$. Show $f$ is injective.
+
+\item \begin{enumerate}
+    \item Let $A = \{a,b,c\}$ and $B = \{1,2,3,4\}$ and $f : A \to B$ be the function given by $f(a) = f(c) = 1$ and $f(b) = 3$. Compute $f^{-1}(\{1\})$, $f^{-1}(\{3\})$, $f^{-1}(\{1,3\})$, and $f^{-1}(\{2,4\})$. 
+    \item Let $g : [-1,\infty) \to \R$ be $g(x) = x^2 + 2x + 1$. Compute $g^{-1}((0,2))$. 
+    \item Let $h : \R \to \R$ be $h(x) = \sin x$. Find $h^{-1}(\{-1,1\})$. 
+\end{enumerate}
+
+\item Let $f : A \to B$ be a function and $Y_1,Y_2 \subseteq B$.
+\begin{enumerate}
+\item Prove $f^{-1}(Y_1 \cup Y_2) = f^{-1}(Y_1) \cup f^{-1}(Y_2)$.
+\item Prove $f^{-1}(Y_1 \cap Y_2) = f^{-1}(Y_1) \cap f^{-1}(Y_2)$.
+\end{enumerate}
+
+\item Let $f : A \to B$ be a function and let $X \subseteq A$. Fill in the details in the following to give a proof of the following two facts:
+\begin{enumerate}
+    \item $X \subseteq f^{-1}(f(X))$.
+    \item If $f$ is injective, $X = f^{-1}(f(X))$.
+\end{enumerate}
+
+\item Let $f : A \to B$ be a function and let $Y \subseteq B$. Prove the following two facts:
+\begin{enumerate}
+    \item $f(f^{-1}(Y)) \subseteq Y$.
+    \item If $f$ is surjective, $f(f^{-1}(Y)) = Y$.
+\end{enumerate}
+
+\item Let $A,B,C$, and $D$ be sets and $f : A \to B$, $g : B \to C$, and $h : C \to D$ be functions. Show that for all $a \in A$, we have
+\[
+(f \circ (g \circ h))(a) = ((f \circ g) \circ h)(a).
+\]
+
+\item (Uses calculus) This exercise will give an example of how to use calculus to prove some properties of (certain) functions. Let $f : (-\pi/2,\pi/2) \to \R$ be defined by $f(x) = \tan x$. Recall that $f$ is differentiable, and hence continuous, on its domain.
+\begin{enumerate}
+    \item Compute $\lim_{x \to \frac{\pi}{2}^-} f(x)$ and $\lim_{x \to \frac{-\pi}{2}^+} f(x)$.
+    \item Recall the Intermediate Value Theorem: if $g : [a,b] \to \R$ is a continuous function, then for any $y$ between $g(a)$ and $g(b)$, there is $x \in [a,b]$ such that $g(x) = y$. Use the Intermediate Value Theorem and the results of part 1 to prove $f$ is surjective.
+    \item Why is a strictly increasing function (see Exercise 4.4.4) injective? 
+    \item Compute $\frac{d}{dx}f(x)$ and use this to show $f$ is strictly increasing, and therefore injective by part 3.
+\end{enumerate}
+
+\item Show there is a bijection between $\Z$ and $2\Z$.
+
+\item Let $S$ be the set of all circles in the plane which are centered at the origin. Find a bijection between $S$ and $\R^+$.
+
+\item Let $A$ and $B$ be \textbf{finite} sets. If $A \subsetneq B$, is it possible for there to be a bijection between $A$ and $B$?
 \end{enumerate}
 
 \end{exercises}
 
+\fi

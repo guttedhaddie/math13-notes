@@ -4,16 +4,13 @@ texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
-size(130,130);
+size(100);
 
-draw(circle((0,0),1));
-draw(yscale(0.7)*circle((0.4,0),1.8));
-draw(yscale(0.7)*circle((-1.5,0),1));
+draw(scale(0.9)*unitcircle);
+draw(shift((0.25,0))*xscale(1.6)*yscale(1.1)*unitcircle);
 
-label("$A$",(0,-0.0));
-label("$B$",(1.6,0.0));
-label("$C$",(-2,0.0));
+label("$A$",(0,0));
+label("$B$",(1.4,0.0));
