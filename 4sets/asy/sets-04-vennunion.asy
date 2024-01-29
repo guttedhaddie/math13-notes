@@ -7,7 +7,7 @@ texpreamble("\usepackage{amsmath}
 ");
 import graph;
 
-size(0,160);
+size(0,110);
 
 pen colour1=red;
 pen colour2=green;
@@ -33,22 +33,17 @@ draw(c2);
 
 label("\smash[b]{$A\setminus B$}",1.9*z1+(0,0.011r));
 label("\smash[b]{$B\setminus A$}",1.9*z2+(0,0.011r));
-label("$A$",z1+(0,1.15r));
-label("$B$",z2+(0,1.15r));
+label("$A$",z1+(0,1.2r));
+label("$B$",z2+(0,1.2r));
 
-
-//label("$\overbrace{\phantom{bobandjimandb}}^{\displaystyle A}$",z1+(0,1.1r));
-//label("$\overbrace{\phantom{bobandjimandb}}^{\displaystyle B}$",z2+(0,1.1r));
-
-pair z=(0,-2);
-real m=3;
-margin BigMargin=Margin(0,m*dot(unit(z1-z),unit(z0-z)));
+draw("$A\cup B$",brace((-2.4,-1.5),(2.4,-1.5),-0.35),S);
 
 label("\smash[b]{$A\cap B$}",(0,0));
-label("$\underbrace{\phantom{bobandjimandbobandjimandbo}}_{\displaystyle A\cup B}$",(0,-1.8));
 
-label("$\mathcal{U}$",2.9z1+(0,1.25r));
-label("\phantom{$\mathcal{U}$}",2.9z2+(0,1.25r));
+dot((3,0),white);
+dot((-3,0),white);
+//label("$\mathcal{U}$",2.9z1+(0,1.25r));
+//label("\phantom{$\mathcal{U}$}",2.9z2+(0,1.25r));
 
-shipout(bbox(0.25cm));
+shipout(bbox(0.1cm));
 currentpicture.uptodate=true;

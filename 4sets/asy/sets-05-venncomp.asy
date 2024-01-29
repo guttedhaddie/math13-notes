@@ -4,13 +4,12 @@ texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
-size(0,120);
+size(0,110);
 
-pen colour1=blue+opacity(0.7);
+pen colour1=lightblue+white;
 
 pair z0=(0,0);
 path c1=circle(z0,1);

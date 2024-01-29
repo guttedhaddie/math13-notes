@@ -430,73 +430,60 @@ Let $A$ be a set.
 
 \subsection{Unions, Intersections, and Complements}\label{sec:union}
 
-In this section we construct new sets from old, modeled precisely on the logical concepts of \emph{and, or,} and \emph{not.} For the duration of this section, suppose that $\cU$ is some \emph{universal set,} of which every set mentioned subsequently is a subset.\footnote{This is necessary so that the definitions to come made using set-builder notation really define sets.}\par
+In this section we construct new sets from old, modeled precisely on the logical concepts of \emph{and, or,} and \emph{not} (compare with Definition \ref{defn:andornot}). 
 
 
-\begin{defn}{Complements}{}
-	Let $A\subseteq\cU$ be a set. The \emph{complement} of $A$ is the set
-	\[
-		\comp A=\{x\in\cU:x\notin A\}
-	\]
-	%This can also be written $\cU\setminus A,\ \cU-A,\ A'$, or $\cl A$.\par
-	
-	The Venn diagram is drawn on the right: $A$ is represented by a circular region, while the rectangle represents the universal set $\cU$. The complement $\comp A$ is the blue shaded region.\par
-	
-	If $B\subseteq\cU$ is some other set, then the \emph{complement of $A$ relative $B$} is
-	\[
-		B\setminus A=\{x\in B:x\notin A\}
-	\]
-	The set $B\setminus A$ is also called \emph{$B$ minus $A$.} For its Venn diagram, we represent $A$ and $B$ as overlapping circular regions. The complement $B\setminus A$ is the green shaded region.\par
-	
-	Note that $\comp A=\cU\setminus A$, so that the two definitions correspond. 
+\begin{defn}{}{unionint}
+	Let $\cU$ be a (universal) set,\footnotemark{} and suppose $A,B$ are subsets of $\cU$.
+	\begin{enumerate}
+	  \item The \emph{complement} of $A$ is the set of all elements not in $A$:
+		\[
+			\comp A:=\bigl\{x\in\cU:x\notin A\bigr\}
+		\]
+		\item The \emph{complement of $A$ relative $B$} is the set of elements in $B$ which are not in $A$:
+		\[
+			B\setminus A:=\bigl\{x\in B:x\notin A\bigr\}
+		\]
+		This can be read ``$B$ minus $A$'', indeed some authors write $B-A$. Similarly $\comp A=\cU\setminus A$, etc.
+		\item The \emph{union} of $A$ and $B$ is the set of elements in $A$ or $B$:
+		\[
+			A\cup B:=\bigl\{x\in\cU:x\in A\text{ or }x\in B\bigr\}
+		\]
+		\item The \emph{intersection} of $A$ and $B$ is the set of elements in both $A$ and $B$:
+		\[
+			A\cap B:=\bigl\{x\in\cU:x\in A\text{ and }x\in B\bigr\}
+		\]
+		We say that $A$ and $B$ are \emph{disjoint} if $A\cap B=\emptyset$.
+	\end{enumerate}
 	
 	\begin{center}
-		\begin{tabular}{c}
-			\includegraphics[scale=1]{sets-05-venncomp}\\
-			$\comp A$: everything not in $A$
-		\end{tabular}
+			\includegraphics{sets-05-venncomp}
 		\qquad\qquad
-		\begin{tabular}{c}
-			\includegraphics[scale=1]{sets-06-vennrelcomp}\\
-			$B\setminus A$: everything in $B$ but not in $A$
-		\end{tabular}
+			\includegraphics{sets-04-vennunion}
 	\end{center}
 \end{defn}
 
+\footnotetext{Of which everything else will be a subset. This is necessary so that we may use set-builder notation. In certain contexts, the universal set is assumed: for instance if you are working within the real numbers, then it makes sense to have $\cU=\R$.}
 
-\begin{example}{}{}
-Let $\cU=\{1,2,3,4,5\}$, $A=\{1,2,3\}$, and $B=\{2,3,4\}$. Then
-\[\comp A=\{4,5\},\qquad \comp B=\{1,5\},\qquad B\setminus A=\{4\},\qquad A\setminus B=\{1\}.\]
-\end{example}
-\vspace{3pt}
+In the Venn diagrams, the outer box depicts the universal set $\cU$. Although it doesn't constitute a proof, the diagram makes it clear that
+\[
+	A=(A\setminus B)\cup (A\cap B)\quad\text{and}\quad B=(B\setminus A)\cup(A\cap B)
+\]
+Observe the notational pattern: $\cup$ looks a bit like $\vee$ (OR) from logic; similarly with $\cap$ and $\wedge$.
 
 
-\begin{minipage}[t]{0.62\linewidth}\vspace{0pt}
-Now we construct sets based on \emph{or} and \emph{and.}
-
-\begin{defn}{}{unionint}
-The \emph{union} of $A$ and $B$ is the set
-\[A\cup B=\{x\in\cU:x\in A\text{ or }x\in B\}.\]
-The \emph{intersection} of $A$ and $B$ is the set
-\[A\cap B=\{x\in\cU:x\in A\text{ and }x\in B\}.\]
-We say that $A$ and $B$ are \emph{disjoint} if $A\cap B=\emptyset$.
-\end{defn}
-\end{minipage}\qquad
-\begin{minipage}[t]{0.33\linewidth}\vspace{0pt}
-\includegraphics[width=\textwidth]{sets-04-vennunion}
-\end{minipage}\par
-
- In the Venn diagram, the sets $A$ and $B$ are again depicted as overlapping circles. Although it doesn't constitute a proof, the diagram makes it clear that
-\[A=(A\setminus B)\cup (A\cap B)\quad\text{and}\quad B=(B\setminus A)\cup(A\cap B).\]
-
-`Or' is used in the logical sense: $A\cup B$ is the collection of all elements that lie in $A$, in $B$, or in both.
-Now observe the notational pattern: $\cup$ looks very similar to the logic symbol $\vee$ from Chapter \ref{chap:logic}. The symbols $\cap$ and $\wedge$ are also similar. This should help you remember which symbol to use when!
 
 \begin{examples}{}{}
-\begin{enumerate}
-\item Let $\cU=\{$fish, dog, cat, hamster$\}$, $A=\{$fish, cat$\}$, and $B=\{$dog, cat$\}$. Then,
-\[A\cup B=\{\text{fish, dog, cat}\},\qquad A\cap B=\{\text{cat}\}.\]
-\item Using interval notation, let $\cU=[-4,5]$, $A=[-3,2]$, and $B=[-4,1)$. Then
+	\exstart Let $\cU=\{1,2,3,4,5\}$, $A=\{1,2,3\}$, and $B=\{2,3,4\}$. Then
+	\begin{align*}
+		&\comp A=\{4,5\} &&\comp B=\{1,5\} &&B\setminus A=\{4\} &&A\setminus B=\{1\}\\
+		&A\cup B=\{1,2,3,4\} &&A\cap B=\{2,3\} &&A\cap\comp B=\{1\} &&\comp A\cup\comp B=\{1,4,5\}
+	\end{align*}
+	
+	\goodbreak
+		
+\begin{enumerate}\setcounter{enumi}{1}
+\item Using interval notation, let $\cU=[-4,5]$, $A=[-3,2]$, and $B=[-4,1)$. Then MORE UNIONS INT ETC
 \[\comp A=[-4,-3)\cup (2,5],\qquad \comp B=[1,5],\qquad B\setminus A=[-4,-3),\qquad A\setminus B=[1,2].\]
 \vspace{-24pt}
 \begin{center}
