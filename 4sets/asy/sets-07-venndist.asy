@@ -4,11 +4,10 @@ texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
-size(0,120);
+size(0,110);
 
 pen colour0=red;
 pen colour1=green;
@@ -55,6 +54,3 @@ draw(c2);
 label("$A$",1.1*z0);
 label("$B$",1.1*z1);
 label("$C$",1.1*z2);
-
-shipout(bbox(0.25cm));
-currentpicture.uptodate=true;

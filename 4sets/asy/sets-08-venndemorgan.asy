@@ -4,11 +4,10 @@ texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
-size(0,120);
+size(0,110);
 
 pen colour0=cyan;
 pen colour1=magenta;

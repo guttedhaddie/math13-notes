@@ -266,7 +266,7 @@ Can you figure the weekday today's date in your year of birth? Thinking about th
 
 \boldsubsubsection{Division and Congruence Equations}
 
-Division in modular arithmetic behaves in unexpected ways. We'll consider this further in the next section, but for the present it is safest to convert congruences to statements about integers.
+Division in modular arithmetic behaves in unexpected ways. We'll consider this further in Exercise \ref*{sec:gcd}.\ref{exs:congdivision}, but for the present it is safest to convert congruences to statements about integers.
 
 \begin{examples}{}{congeqn1}
 	\exstart Even when there is a common factor, dividing both sides is perilous. For instance
@@ -410,11 +410,11 @@ In this section we will see how to solve all such \emph{linear Diophantine equat
 	\]
 \end{example}
 
-Listing positive divisors in the above manner is very inefficient, especially when the given integers are large. This is where Euclid rides to the rescue.
+Listing divisors is very inefficient given large integers. This is where Euclid rides to the rescue.
 
 \begin{thm}{Euclidean Algorithm}{euclidalg}
 	Let $a>b$ be positive integers. We construct a decreasing sequence of integers $b=r_0>r_1>r_2>\cdots$
-	\begin{enumerate}\itemsep2pt
+	\begin{enumerate}\itemsep1pt
 		\item \makebox[300pt][l]{Apply the division algorithm (Theorem \ref{thm:div}):}$a=q_1b+r_1$ with $0\le r_1<b$
 		\item \makebox[300pt][l]{If $r_1>0$, apply the division algorithm again:}$b=q_2r_1+r_2$ with $0\le r_2<r_1$
 		\item \makebox[300pt][l]{If $r_2>0$, apply again:}$r_1=q_3r_2+r_3$ with $0\le r_3<r_2$
@@ -423,10 +423,11 @@ Listing positive divisors in the above manner is very inefficient, especially wh
 	The algorithm eventually terminates with a remainder of zero: some $r_{t+1}=0$. The greatest common divisor is the last non-zero remainder: $\gcd(a,b)=r_t$.
 \end{thm}
 
-%Exercise \ref{exs:euclidalgproof} provides a proof. %If $m$ and $n$ are not both positive, simply apply the algorithm to the absolute values: for instance $\gcd(-6,45)=\gcd(6,45)=3$.
+Exercise \ref{exs:euclidalgproof} provides a proof. 
+If either of $a,b$ are negative just ignore the signs: for instance $\gcd(-4,34)=\gcd(34,4)=2$.
 
 \begin{example}{}{euclidalg}
-	We compute $\gcd(1260,750)$ using the Euclidean algorithm. Note how each line is a single instance of the division algorithm $a=qb+r$, and how the remainders move diagonally $\swarrow$ at each step. For this first example, we also summarize the data in a table.
+	We compute $\gcd(1260,750)$ using the Euclidean algorithm. Note how each line is a single instance of the division algorithm $a=qb+r$ and how the remainders move diagonally $\swarrow$ at each step. For this first example, we also summarize the data in a table.\vspace{-10pt}
 	\[
 		\renewcommand{\arraystretch}{1.1}
 		\begin{array}{r@{\,\,}l@{\hspace{150pt}}c|c|c|c}
@@ -445,7 +446,7 @@ Listing positive divisors in the above manner is very inefficient, especially wh
 
 \boldsubsubsection{Reversing the Algorithm}
 
-To apply the Euclidean algorithm to our motivational problem of integer points on lines, we reverse it. Start with the penultimate line of the algorithm and, moving upwards, substitute remainders one at a time. The result is an expression of the form $\gcd(a,b)=ax+by$ for some integers $x,y$. This is easiest to demonstrate by continuing our example.
+To apply the Euclidean algorithm to our motivational problem of integer points on lines, we run it backwards. Start with the penultimate line of the algorithm and, moving upwards, substitute remainders one at a time. The result is an expression $\gcd(a,b)=ax+by$ for some integers $x,y$. %This is easiest to demonstrate by continuing our example.
 
 \begin{example*}{\ref{ex:euclidalg}, cont}{}
 	We find integers $x,y$ such that $\textcolor{orange}{1260}x+\textcolor{blue}{750}y=\textcolor{Green}{30} \bigm(=\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})\bigr)$.\smallbreak
@@ -457,11 +458,11 @@ To apply the Euclidean algorithm to our motivational problem of integer points o
 		&=3\times (\textcolor{orange}{1260}-\textcolor{blue}{750})-2\times \textcolor{blue}{750} &&\text{(1\st{} line)}\\
 		&=3\times \textcolor{orange}{1260}-5\times \textcolor{blue}{750}
 	\end{align*}
-	Rearranging this, we see that $x=3$ and $y=-5$ satisfy the equation $1260x+750y=30$. To simply, we can divide everything through by \textcolor{Green}{30} to see that $(3,-5)$ is an integer point on the line $42x+25y=1$.
+	Rearranging, we see that $x=3$ and $y=-5$ satisfy the equation $1260x+750y=30$. To simplify, divide everything by \textcolor{Green}{30} to see that $(3,-5)$ is an integer point on the line $42x+25y=1$.
 \end{example*}
 
 
-This process of reversing the algorithm works in general.
+This process of reversing the algorithm works in general, yielding a very powerful result.
 
 \begin{cor}{Bézout's Identity}{euclid}
 	Given integers $a,b$, not both zero, $\exists x,y\in\Z$ such that
@@ -470,7 +471,7 @@ This process of reversing the algorithm works in general.
 	\]
 \end{cor}
 
-If either of $a,b$ are negative, make everything positive, apply the Euclidean algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards. Before returning to our example, we need a useful corollary.
+If either $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards. %Everything else in this chapter is a consequence of Bézout's identity.
 
 \begin{cor}{}{moddivision}
 	Suppose $a,b,c$ are integers for which $\gcd(a,b)=1$ and $a\mid bc$. Then $a\mid c$.
@@ -480,15 +481,19 @@ If either of $a,b$ are negative, make everything positive, apply the Euclidean a
 	By Bézout's identity, $\exists x,y\in\Z$ for which $ax+by=1$, whence $acx+bcy=c$. The left hand side is now a multiple of $a$.
 \end{proof}
 
-Note that the proposition ``$a\mid bc\implies a\mid b$ or $a\mid c$'' is, in general, \emph{false} (e.g., $6\mid(2\cdot 3)$, but\ldots).
-
-
-\begin{example*}{\ref{ex:euclidalg}, mk.\,III}{}
-	By reversing the Euclidean algorithm, we found an integer solution $(x_0,y_0)=(3,-5)$ to the equation $1260x+750y=30$ (equivalently $45x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
+\begin{examples}{}{2-3div6}
+	\exstart The claim ``$a\mid c$ and $b\mid c\Longrightarrow ab\mid c$'' is, in general, \emph{false} (e.g.{} $a=b=c=2$). However: Suppose $c=2m=3n$ for some integers $m,n$. Since $\gcd(2,3)=1$ and $2\mid(3n)$, we see that $2\mid n$, whence $n=2k$ for some $k\in\Z$ and $c=6k$. We conclude:
+	\[
+		2\mid c\ \text{ and }\ 3\mid c\implies 6\mid c
+	\]
+	The surprising thing is that such an ``obvious'' fact really needs Bézout's identity!
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item (Example \ref{ex:euclidalg}, mk.\,III)
+	We know that $(x_0,y_0)=(3,-5)$ solves the equation $1260x+750y=30$ (equivalently $45x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
 	\[
 		42(x-x_0)+25(y-y_0)=1-1=0 \implies 42(x-x_0)=-25(y-y_0)
 	\]
-	Since $\gcd(42,25)=1$, the corollary says that $42\mid(y-y_0)$. Write $y-y_0=42t$ for some integer $t$, then
+	Since $\gcd(42,25)=1$, the corollary says $42\mid(y-y_0)$. Write $y-y_0=42t$ for some $t\in\Z$, then
 	\[
 		42(x-x_0)=-25\cdot 42t\implies x-x_0=-25t
 	\]
@@ -496,7 +501,8 @@ Note that the proposition ``$a\mid bc\implies a\mid b$ or $a\mid c$'' is, in gen
 	\[
 		x=3-25t,\ y=-5+42t\ \text{ where }t\in\Z
 	\]
-\end{example*}
+	\end{enumerate} 
+\end{examples}
 
 \goodbreak
 
@@ -639,9 +645,10 @@ The Theorem tells us when we can solve the right hand side, and how. To solve th
 	  (\emph{Hint: One direction follows from Bézout's identity, but the other\ldots})
 	    
 	    
-		\item\begin{enumerate}
-		  \item Let $c\in\Z$. Prove: $2\mid c$ and $3\mid c\implies 6\mid c$.\par
-		  (\emph{Hint: write $c=2k=\cdots$ and apply Corollary \ref{cor:moddivision}})
+		\item Use Example \ref{ex:2-3div6}.1 to prove the following.
+		\begin{enumerate}
+% 		  \item Let $c\in\Z$. Prove: $2\mid c$ and $3\mid c\implies 6\mid c$.\par
+% 		  (\emph{Hint: write $c=2k=\cdots$ and apply Corollary \ref{cor:moddivision}})
 		  \item Let $n\ge 3$ be an odd number. Show that $n\equiv 1\spmod 3\implies  n\equiv 1\spmod 6$.
 		 	\item $\frac 16n(n+1)(2n+1)$ is an integer.
 		\end{enumerate}

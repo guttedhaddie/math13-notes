@@ -428,14 +428,14 @@ Let $A$ be a set.
 
 
 
-\subsection{Unions, Intersections, and Complements}\label{sec:union}
+\subsection{Unions, Intersections and Complements}\label{sec:union}
 
-In this section we construct new sets from old, modeled precisely on the logical concepts of \emph{and, or,} and \emph{not} (compare with Definition \ref{defn:andornot}). 
+In this section we construct new sets from old, modeled precisely on the logical concepts of \emph{and, or,} and \emph{not} (compare Definition \ref{defn:andornot}). 
 
 
 \begin{defn}{}{unionint}
 	Let $\cU$ be a (universal) set,\footnotemark{} and suppose $A,B$ are subsets of $\cU$.
-	\begin{enumerate}
+	\begin{enumerate}\itemsep0pt
 	  \item The \emph{complement} of $A$ is the set of all elements not in $A$:
 		\[
 			\comp A:=\bigl\{x\in\cU:x\notin A\bigr\}
@@ -457,21 +457,19 @@ In this section we construct new sets from old, modeled precisely on the logical
 	\end{enumerate}
 	
 	\begin{center}
-			\includegraphics{sets-05-venncomp}
+		\includegraphics{sets-05-venncomp}
 		\qquad\qquad
-			\includegraphics{sets-04-vennunion}
+		\includegraphics{sets-04-vennunion}
 	\end{center}
 \end{defn}
 
-\footnotetext{Of which everything else will be a subset. This is necessary so that we may use set-builder notation. In certain contexts, the universal set is assumed: for instance if you are working within the real numbers, then it makes sense to have $\cU=\R$.}
+\footnotetext{Of which everything else will be a subset. This is needed particularly for complements, but more generally is required to invoke set-builder notation. In certain contexts, the universal set is naturally assumed: $\cU=\R$ makes sense if you are working within the real numbers, $\cU=\Z$ if doing modular arithmetic.}
 
-In the Venn diagrams, the outer box depicts the universal set $\cU$. Although it doesn't constitute a proof, the diagram makes it clear that
+In the Venn diagrams, the outer box depicts the universal set $\cU$. Though it doesn't constitute a proof, the diagram makes certainly suggests that
 \[
-	A=(A\setminus B)\cup (A\cap B)\quad\text{and}\quad B=(B\setminus A)\cup(A\cap B)
+	A=(A\setminus B)\cup (A\cap B) \quad\text{and}\quad B=(B\setminus A)\cup(A\cap B)
 \]
-Observe the notational pattern: $\cup$ looks a bit like $\vee$ (OR) from logic; similarly with $\cap$ and $\wedge$.
-
-
+Observe the notational similarity with logic: $\cup$ looks a bit like $\vee$ (OR); $\cap$ like $\wedge$ (AND).
 
 \begin{examples}{}{}
 	\exstart Let $\cU=\{1,2,3,4,5\}$, $A=\{1,2,3\}$, and $B=\{2,3,4\}$. Then
@@ -482,132 +480,174 @@ Observe the notational pattern: $\cup$ looks a bit like $\vee$ (OR) from logic; 
 	
 	\goodbreak
 		
-\begin{enumerate}\setcounter{enumi}{1}
-\item Using interval notation, let $\cU=[-4,5]$, $A=[-3,2]$, and $B=[-4,1)$. Then MORE UNIONS INT ETC
-\[\comp A=[-4,-3)\cup (2,5],\qquad \comp B=[1,5],\qquad B\setminus A=[-4,-3),\qquad A\setminus B=[1,2].\]
-\vspace{-24pt}
-\begin{center}
-\includegraphics[width=0.7\textwidth]{sets-13-intervalex}
-\end{center}\vspace{-13pt}
-\item Let $A=(-\infty,3)$ and $B=[-2,\infty)$ in interval notation. Then $A\cup B=\R$ and $A\cap B=[-2,3)$.
-\end{enumerate}
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item Using interval notation, let $\cU=[-4,5]$, \ $A=[-3,2]$, \ and \ $B=[-4,1)$. Then\par
+% 		\begin{align*}
+% 			&\comp A=[-4,-3)\cup (2,5] &&\comp B=[1,5] &&A\cup B=[-4,2] \\
+% 			&A\setminus B=[1,2] &&B\setminus A=[-4,-3) &&A\cap B=[-3,1) 
+% 		\end{align*}
+% 		\vspace{-24pt}
+% 		\begin{center}
+% 		\includegraphics[width=0.7\textwidth]{sets-13-intervalex}
+% 		\end{center}
+% 		\vspace{-13pt}
+		\begin{minipage}[t]{0.3\linewidth}\vspace{-13pt}
+			\begin{gather*}
+			\comp A=[-4,-3)\cup (2,5]\\
+			\comp B=[1,5]\\
+			A\setminus B=[1,2]\\
+			B\setminus A=[-4,-3)\\
+			A\cup B=[-4,2]\\
+			A\cap B=[-3,1) 
+			\end{gather*}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.69\linewidth}\vspace{0pt}
+			\flushright\includegraphics[scale=0.8]{sets-13-intervalex}
+		\end{minipage}
+		\smallbreak
+		While you should be comfortable with these just from the picture, for practice it is worth trying algebraic arguments. In particular, note how $\comp A$ relies on de Morgan's law (Theorem \ref{thm:demorgan}):
+		\begin{align*}
+			x\in \comp A&\iff x\notin A\iff \neg\bigl(x\in A\bigr) \iff\neg\bigl(-3\le x \text{ and }x\le 2\bigr)\\
+			&\iff x<-3\text{ or }x>2 \tag{de Morgan}\\
+			&\iff x\in[-4,-3)\cup (2,5] \tag{remember that $x\in\cU$ always!}
+		\end{align*}
+		
+		\item Let $A=(-\infty,3)$ and $B=[-2,\infty)$ in interval notation. Then $A\cup B=\R$ and $A\cap B=[-2,3)$.
+	\end{enumerate}
 \end{examples}
 
-We didn't mention the universal set in the final example, though it seems reasonable to assume that $\cU=\R$. In practice $\mathcal U$ is rarely made explicit, and is often assumed to be the smallest suitable uncomplicated set. When dealing with sets of real numbers this typically means $\cU=\R$. In other situations $\cU=\Z$ or $\cU=\{0,1,2,3,\ldots,n-1\}$ might be more appropriate.\par
 
-The next theorem comprises the basic rules of set algebra.
+For the remainder of this section, we summarize the basic rules of set algebra.
 
-\begin{thm}{}{setbasic}
-Let $A,B,C$ be sets. Then:
-\begin{enumerate}\setlength{\itemsep}{0pt}
-\item $\emptyset\cup A=A$ \ and \ $\emptyset\cap A=\emptyset$.
-\item $A\cap B\subseteq A\subseteq A\cup B$.
-\item $A\cup B=B\cup A$ \ and \ $A\cap B=B\cap A$.
-\item $A\cup (B\cup C)=(A\cup B)\cup C$ \ and \ $A\cap (B\cap C)=(A\cap B)\cap C$.
-\item $A\cup A=A\cap A=A$.
-\item $A\subseteq B\implies A\cup C\subseteq B\cup C$ \ and \ $A\cap C\subseteq B\cap C$.
-\end{enumerate}
+\begin{thm}{Union/intersection rules}{setbasic}
+	Let $A,B,C$ be sets. Then:
+	\begin{enumerate}\itemsep2pt
+		\item $\emptyset\cup A=A$ \ and \ $\emptyset\cap A=\emptyset$
+		\item $A\cap B\subseteq A\subseteq A\cup B$
+		\item $A\cup B=B\cup A$ \ and \ $A\cap B=B\cap A$
+		\item $A\cup (B\cup C)=(A\cup B)\cup C$ \ and \ $A\cap (B\cap C)=(A\cap B)\cap C$
+		\item $A\cup A=A\cap A=A$
+		\item $A\subseteq B\Longrightarrow A\cup C\subseteq B\cup C$ \ and \ $A\cap C\subseteq B\cap C$
+	\end{enumerate}
 \end{thm}
 
- You should be able to prove each of these properties directly from Definitions \ref{defn:subset} and \ref{defn:unionint}. Don't memorize the proofs: with a little practice working with sets, each of these results should feel completely obvious. It is more important that you are able to \emph{vizualize} the laws using Venn diagrams. A Venn diagram does not constitute a formal proof, though it is extremely helpful for clarification. Here we prove only second result: think about how the Venn diagram in Definition \ref{defn:unionint} illustrates the result. Some of the other proofs are in the Exercises.
+Each property can be proved directly from Definition \ref{defn:unionint}. If you don't believe a result, try \emph{visualizing} it using a Venn diagram. The basic proof strategy is the same for all parts: convert each statement into propositions and use what you know from basic logic (e.g., Theorem \ref{thm:demorgan} and page \pageref{pg:asidelogicalgebra}). We prove part 2 and half of part 6, leaving some of the rest to the Exercises.
 
-\begin{proof}[Proof of 2.]
-There are two results here: $A\cap B\subseteq A$ and $A\subseteq A\cup B$. We show each separately, along with some of our reasoning.
-\begin{itemize}\setlength{\itemsep}{-2pt}
-  \item[]Suppose that $x\in A\cap B$.\hfill(Must show $x\in A\cap B\Rightarrow x\in A$)
-  \item[]Then $x\in A$ and $x\in B$.\hfill(Definition of intersection)
-  \item[]But then $x\in A$, whence $A\cap B\subseteq A$\hfill(Definition of subset)
-  \item[]Now let $y\in A$.\hfill(Must show $y\in A\Rightarrow y\in A\cup B$)
-  \item[]Then `$y\in A$ or $y\in B$' is true, from which we conclude that $y\in A\cup B$.
-  \item[]Thus $A\subseteq A\cup B$.\qedhere
-\end{itemize}
-\end{proof}
-
-The following theorem describes how complements interact with other set operations.\par
-
-
-\begin{minipage}[t]{0.62\linewidth}\vspace{0pt}
-\begin{thm}{}{setcomp}
-Let $A,B$ be sets. Then:
-\begin{enumerate}\setlength{\itemsep}{0pt}
-\item $\comp{(A\cap B)}=\comp A\cup \comp B$.
-\item $\comp{(A\cup B)}=\comp A\cap \comp B$.
-\item $\comp{(\comp A)}=A$.
-\item $A\setminus B=A\cap\comp B$.
-\item $A\subseteq B\iff \comp B\subseteq \comp A$.
+\begin{proof}
+\begin{enumerate}
+  \item[2.] There are two results here: $A\cap B\subseteq A$ and $A\subseteq A\cup B$. We prove separately, with some commentary on the side.
+	\begin{enumeratea}
+		\item Suppose $x\in A\cap B$.\hfill(Goal: want to prove $x\in A\cap B\Rightarrow x\in A$)\par
+		Then $x\in A$ and $x\in B$.\hfill(Definition of intersection)\par
+		Plainly $x\in A$. We conclude that $A\cap B\subseteq A$\hfill(Definition of subset)
+		\item Suppose $y\in A$.\hfill(Goal: prove $y\in A\Rightarrow y\in A\cup B$)\par
+		Then ``$y\in A$ or $y\in B$'' is true, whence $y\in A\cup B$.\hfill(Definition of union/or)\par
+	  We conclude that $A\subseteq A\cup B$.
+	\end{enumeratea}
+	
+	\goodbreak
+	
+	\item[6.] (first half)\lstsp Suppose $A\subseteq B$. We wish to prove that $x\in A\cup B\Longrightarrow x\in A\cup C$. However,
+	\begin{align*}
+		x\in A\cup C&\implies x\in A\text{ or }x\in C\tag{definition of union}\\
+		&\implies x\in B\text{ or }x\in C\tag{since $A\subseteq B$}\\
+		&\implies x\in B\cup C \tag*{\qedhere}
+	\end{align*}
 \end{enumerate}
-\end{thm}
-\end{minipage}\qquad
-\begin{minipage}{0.33\linewidth}\vspace{0pt}
-\centering
-\includegraphics[scale=1]{sets-08-venndemorgan}\\
-$\comp{(A\cap B)}=\comp A\cup \comp B$
-\end{minipage}\medbreak
-
-Again: don't memorize these laws! Draw Venn diagrams to help with visualization. 
-
-\begin{proof}[Proof of 1.]
-We start by trying to show that the left hand side is a subset of the right hand side.
-\begin{align*}
-x\in\comp{(A\cap B)}&\implies x\notin A\cap B\\
-&\implies x\text{ is not a member of \emph{both} $A$ and $B$}\\
-&\implies x\text{ is not in \emph{at least one} of $A$ and $B$}\\
-&\implies x\notin A\text{ or }x\notin B\\
-&\implies x\in\comp A\text{ or }x\in\comp B\\
-&\implies x\in\comp A\cup\comp B
-\end{align*}
-With a little thinking, we realize that all of the $\Longrightarrow$ arrows may be replaced with if and only if arrows $\Longleftrightarrow$ without compromising the argument. We've therefore shown that the sets $\comp{(A\cap B)}$ and $\comp A\cup \comp B$ have the same elements, and are thus equal.
 \end{proof}
 
-We were lucky with our proof. Showing that both sides are subsets of each other would have been tedious, but we found a quicker proof by carefully laying out one direction. This happens more often than you might expect. Just be careful: you can't always make conditional connectives biconditional.\par
 
- Parts 1.\ and 2. of the theorem are known as \emph{De Morgan's laws}, just as the equivalent statements in logic: Theorem \ref{thm:demorgan}. Indeed, we could rephrase our proof in that language.
 
-\begin{proof}[Alternative Proof of 1.]
-\begin{align*}
-x\in\comp{(A\cap B)}&\iff \neg[x\in A\cap B]\\
-&\iff \neg[x\in A\ \text{ and }\  x\in B]\\
-&\iff \neg[x\in A]\ \text{ or }\ \neg[x\in B]\tag*{(De Morgan's first law)}\\
-&\iff x\in\comp A\ \text{ or }\ x\in\comp B\\
-&\iff x\in\comp A\cup\comp B\tag*{\qedhere}
-\end{align*}
-\end{proof}
+The next batch of rules describe how complements interact with other set operations: parts 1 and 2 are \emph{de Morgan's laws for sets}; unsurprisingly, their proofs depend on the corresponding laws of logic.
 
-Finally, we have two results which describe the interaction of unions and intersections.\par
 
-\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-\begin{thm}{Distributive laws}{setdist}
-For any sets $A,B,C$:
-\begin{enumerate}\setlength{\itemsep}{2pt}
-\item $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$
-\item $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$
-\end{enumerate}
+\begin{thm}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{Complement rules}{setcomp}
+	Let $A,B$ be sets. Then:
+	\begin{enumerate}\itemsep0pt
+		\item $\comp{(A\cap B)}=\comp A\cup \comp B$
+		\item $\comp{(A\cup B)}=\comp A\cap \comp B$
+		\item $\smash[t]{\comp{(\comp A)}}=A$
+		\item $A\setminus B=A\cap\comp B$
+		\item $A\subseteq B\iff \comp B\subseteq \comp A$
+	\end{enumerate}
+	\tcblower
+	\flushright
+	\begin{tabular}{c@{}}
+		\includegraphics[scale=0.9]{sets-08-venndemorgan2}\\
+		$\comp{(A\cap B)}=\textcolor{blue}{\comp A}\cup \textcolor{red}{\comp B}$
+	\end{tabular}
 \end{thm}
 
-We prove only the second result. The method is the standard approach: show that each side is a subset of the other. We do both directions this time, though with a little work and the cost of some clarity, you might be able to slim down the proof. The Venn diagram on the right illustrates the second result: simply add the colored regions.
-\end{minipage}\qquad
-\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
-\centering
-\includegraphics[width=\textwidth]{sets-07-venndist}
-\end{minipage}\par
+% \begin{proof}[Proof of 1.]
+% We start by trying to show that the left hand side is a subset of the right hand side.
+% \begin{align*}
+% x\in\comp{(A\cap B)}&\implies x\notin A\cap B\\
+% &\implies x\text{ is not a member of \emph{both} $A$ and $B$}\\
+% &\implies x\text{ is not in \emph{at least one} of $A$ and $B$}\\
+% &\implies x\notin A\text{ or }x\notin B\\
+% &\implies x\in\comp A\text{ or }x\in\comp B\\
+% &\implies x\in\comp A\cup\comp B
+% \end{align*}
+% With a little thinking, we realize that all of the $\Longrightarrow$ arrows may be replaced with if and only if arrows $\Longleftrightarrow$ without compromising the argument. We've therefore shown that the sets $\comp{(A\cap B)}$ and $\comp A\cup \comp B$ have the same elements, and are thus equal.
+% \end{proof}
 
 
 \begin{proof}
-\begin{itemize}
-  \item[($\subseteq$)] Let $x\in A\cup (B\cap C)$. Then $x\in A$ or $x\in B\cap C$. There are two cases:
-  \begin{itemize}
-    \item[(a)] If $x\in A$, then $x\in A\cup B$ and $x\in A\cup C$ by Theorem \ref{thm:setbasic}, part 2.
-    \item[(b)] If $x\in B\cap C$, then $x\in B$ and $x\in C$. It follows that $x\in A\cup B$ and $x\in A\cup C$, again by Theorem \ref{thm:setbasic}.
-  \end{itemize}
-  In both cases $x\in (A\cup B)\cap(A\cup C)$.
-  \item[($\supseteq$)] Let $y\in (A\cup B)\cap(A\cup C)$. Then $y\in A\cup B$ and $y\in A\cup C$. There are again two cases:
-  \begin{itemize}
-    \item[(a)] If $y\in A$, then we are done, for then $y\in A\cup (B\cap C)$.
-    \item[(b)] If $y\notin A$, then $y\in B$ and $y\in C$. Hence $y\in B\cap C$. In particular $y\in A\cup (B\cap C)$.
-  \end{itemize}
-  In both cases $y\in A\cup (B\cap C)$.\qedhere
-\end{itemize}
+	We prove only part 1. As before, the natural approach is to restate the result using propositions.
+	\begin{align*}
+		x\in\comp{(A\cap B)}&\iff \neg\bigl(x\in A\cap B\bigr) \iff \neg\bigl(x\in A\ \text{ and }\  x\in B\bigr)\\
+		&\iff \neg\bigl(x\in A\bigr)\ \text{ or }\ \neg\bigl(x\in B\bigr) \tag*{(de Morgan's first law of logic)}\\
+		&\iff x\in\comp A\ \text{ or }\ x\in\comp B\\
+		&\iff x\in\comp A\cup\comp B\tag*{\qedhere}
+	\end{align*}
 \end{proof}
+
+Our final pair of results describe the interaction of unions and intersections.\par
+
+\begin{thm}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{Distributive laws}{setdist}
+	For any sets $A,B,C$:
+	\begin{enumerate}\setlength{\itemsep}{2pt}
+		\item $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$
+		\item $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$
+	\end{enumerate}
+	The Venn diagram illustrates the second result: think about adding the colored regions.
+	\tcblower
+	\flushright\includegraphics{sets-07-venndist}
+\end{thm}
+
+
+% 
+% \begin{proof}
+% \begin{itemize}
+%   \item[($\subseteq$)] Let $x\in A\cup (B\cap C)$. Then $x\in A$ or $x\in B\cap C$. There are two cases:
+%   \begin{itemize}
+%     \item[(a)] If $x\in A$, then $x\in A\cup B$ and $x\in A\cup C$ by Theorem \ref{thm:setbasic}, part 2.
+%     \item[(b)] If $x\in B\cap C$, then $x\in B$ and $x\in C$. It follows that $x\in A\cup B$ and $x\in A\cup C$, again by Theorem \ref{thm:setbasic}.
+%   \end{itemize}
+%   In both cases $x\in (A\cup B)\cap(A\cup C)$.
+%   \item[($\supseteq$)] Let $y\in (A\cup B)\cap(A\cup C)$. Then $y\in A\cup B$ and $y\in A\cup C$. There are again two cases:
+%   \begin{itemize}
+%     \item[(a)] If $y\in A$, then we are done, for then $y\in A\cup (B\cap C)$.
+%     \item[(b)] If $y\notin A$, then $y\in B$ and $y\in C$. Hence $y\in B\cap C$. In particular $y\in A\cup (B\cap C)$.
+%   \end{itemize}
+%   In both cases $y\in A\cup (B\cap C)$.\qedhere
+% \end{itemize}
+% \end{proof}
+
+
+\begin{proof}
+	We prove only the first result.
+	\begin{align*}
+		x\in A\cap(B\cup C) &\iff x\in A\text{ and }x\in B\cup C\\
+		&\iff x\in A \text{ and }\bigl(x\in B\text{ or }x\in C\bigr)\\
+		&\iff \bigl(x\in A \text{ and }x\in B\bigr)\text{ or }\bigl(x\in A\text{ and }x\in C\bigr) \tag{distributive law, page \pageref{pg:asidelogicalgebra}}\\
+		&\iff x\in A\cap B\text{ or }x\in A\cap C\\
+		&\iff x\in (A\cap B)\cup(A\cap C)\tag*{\qedhere}
+	\end{align*}
+\end{proof}
+
+\goodbreak
 
 % \paragraph{Self-test Questions}
 % 
@@ -620,75 +660,93 @@ We prove only the second result. The method is the standard approach: show that 
 % \end{enumerate}
 
 \begin{exercises}{}{}
-
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/4-2-union.html}{online}.
+	
 \begin{enumerate}
-  \item Describe each of the following sets in as simple a manner as you can: e.g.,
-  \[\{x\in\R:(x^2>4\text{ and } x^3<27)\text{ or } x^2=15\}=(-\infty,-2)\cup (2,3)\cup\{\sqrt{15}\}.\]
-	\begin{enumerate}
-	  	\item $\{x\in\R:x^2\neq x\}$
-	  	\item $\{x\in\R:x^3-2x^2-3x\le 0\text{ or }x^2=4\}$
-	  	\item $\{x^2\in\R:x \neq 1\}$
-	  	\item $\{z\in\Z:z^2\text{ is even and $z^3$ is odd}\}$
-		  \item $\{y\in 3\Z+2:y^2\equiv 1\pmod 3\}$
-		\end{enumerate}
+  \item Describe each set in as simple a manner as you can: e.g.,
+	\[
+		\bigl\{x\in\R:(x^2>4\text{ and } x^3<27)\text{ or } x^2=15\bigr\}=(-\infty,-2)\cup (2,3)\cup\{\sqrt{15}\}
+	\]
+  \begin{enumerate}
+	 	\item $\bigl\{x\in\R:x^2\neq x\bigr\}$
+		\item $\bigl\{x\in\R:x^3-2x^2-3x\le 0\text{ or }x^2=4\bigl\}$
+		\item $\bigl\{y\in\R:\exists x\in\R \text{ with }y=x^2 \text{ and }x\neq 1\bigl\}$
+		\item $\bigl\{z\in\Z:z^2\text{ is even and $z^3$ is odd}\bigl\}$
+		\item $\bigl\{y\in 3\Z+2:y^2\equiv 1\spmod 3\bigl\}$
+	\end{enumerate}
   
-  \item Let $A=\{1,3,5,7,9,11\}$ and $B=\{1,4,7,10,13\}$. What are the following sets?
+  \item Let $A=\{1,3,5,7,9\}$, $B=\{1,4,7,10\}$ and $\cU=\{1,2,\ldots,10\}$. What are the following sets?
     \begin{enumerate}
-	  	\item $A\cap B$
-	  	\item $A\cup B$
-	  	\item $A\setminus B$
-	  	\item $(A\cup B)\setminus (A\cap B)$
+	  	\item \makebox[100pt][l]{$A\cap B$\hfill (b)} \ \makebox[100pt][l]{$A\cup B$\hfill (c)} \ \makebox[100pt][l]{$B\setminus A$\hfill (d)} \ $\comp A$ 
+	  	\setcounter{enumii}{4}
+	  	\item \makebox[100pt][l]{$\comp{(A\setminus B)}$ \hfill (f)} \ \makebox[100pt][l]{$\comp A\cap \comp B$\hfill (g)} \ $(A\cup B)\setminus (A\cap B)$
 		\end{enumerate}
 	
   	
-  \item Let $A\subseteq\R$, and let $x\in\R$. We say that the point $x$ is \emph{far away} from the set $A$ if and only if:
-  \[\exists d>0\colon\text{ No element of $A$ belongs to the set $[x-d,x]$}.\]
-	Equivalently, $A\cap[x-d,x]=\emptyset$. 
-	If this does not happen, we say that $x$ is \emph{close to} $A$.
+% 	\item Consider Theorems \ref{thm:setbasic} and \ref{thm:setdist}. In all seven results, replace the symbols in the first row of the following table with those in the second. Which of the results seem familar? Which are false?
+% \[\begin{array}{c|c|c|c|c}
+% \emptyset&A,B,C\text{ sets}&\cup&\cap&\subseteq\\\hline
+% 0&A,B,C\in\N_0&+&\cdot&\le
+% \end{array}\]
+
+	%\item Prove that $B\setminus A=B\iff A\cap B=\emptyset$.
+	
+	\item Give formal proofs of the following parts of Theorems \ref{thm:setbasic}, \ref{thm:setcomp} and \ref{thm:setdist}. %With practice you should be able to prove \emph{all} of parts of these theorems \emph{without} looking at the arguments in the notes!
+	\begin{enumerate}
+	  \item \makebox[180pt][l]{$\emptyset\cap A=\emptyset$\hfill (b)} \ $A\cap (B\cap C)=(A\cap B)\cap C$
+	  \setcounter{enumii}{2}
+		\item \makebox[180pt][l]{$\comp{(\comp A)}=A$\hfill (d)} \ $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$
+		\setcounter{enumii}{4}
+		\item $A\subseteq B\iff \comp B\subseteq \comp A$
+	\end{enumerate}
+
+
+	\item By showing that each side is a subset of the other, give a formal proof of the set identity
+	\[
+		A=(A\setminus B)\cup (A\cap B)
+	\]
+	Now repeat your argument using only results from set algebra (Theorems \ref{thm:setcomp} and \ref{thm:setdist}).
+	
+	
+	\item Prove that $A\cup B=A\iff B\subseteq A$.
+	
+	
+	\item Prove that $\comp{(A\cap B\cap C)}=\comp A\cup\comp B\cup\comp C$
+	
+		
+	  \item Prove or disprove the following conjectures (\emph{Hint: revisit Section \ref{sec:proof2}}).
+	  \begin{enumerate}
+	    \item $\exists x\in\R\setminus\Q$ such that $x^2\in\Q$.
+	    \item $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$.
+		\end{enumerate}
+	
+	
+	  \item Let $A\subseteq\R$, and let $x\in\R$. We say that $x$ is \emph{far away} from the set $A$ if and only if:
+	  \[
+	  	\exists d>0 \ \text{ such that } A\cap[x-d,x]=\emptyset
+	  \] 
+		If this does not happen, we say that $x$ is \emph{close to} $A$.
   	\begin{enumerate}
-			\item Draw a picture of a set $A$ and an element $x$ such that is  \emph{far away} from $A$. 
-			\item Draw a picture of a set $A$ and an element  $x$  such that $x$ is \emph{close} to $A$.
-			\item Compute the definition of ``$x$ is close to $A$''. [So negate ``$x$ is far away from $A$''.]
-			\item Let $A=\{1,2,3\}$. Show that $x=4$ is \emph{far away} from $A$, by using definitions.
-			\item Let $A=\{1,2,3\}$. Show that $x=1$ is \emph{close} to  $A$, by using definitions.
-			\item Show that if $x\in A$, then $x$ is \emph{close} to $A$.
-			\item Let $A$ be the open interval $(a,b)$. Is the end-point $a$ \emph{far away} from $A$?  What about the end-point $b$?
+			\item Draw a picture of a set $A$ and elements $x,y$ such that $x$ is \emph{far away} from and $y$ is \emph{close to} $A$. 
+			\item State the meaning of ``$x$ is close to $A$'' \ (negate ``$x$ is far away from $A$'').
+			%\item Let $A=\{1,2,3\}$. Show that $x=4$ is \emph{far away} from $A$ using the definition.
+			%\item Let $A=\{1,2,3\}$. Show that $x=1$ is \emph{close} to $A$.
+			\item Let $A=\{1,2,3\}$.
+			\begin{enumerate}
+			  \item Show that $x=4$ is \emph{far away} from $A$ using the definition.
+				\item Let $A=\{1,2,3\}$. Show that $x=1$ is \emph{close} to $A$.
+			\end{enumerate}
+			\item For general $A\subseteq\R$, show that if $x\in A$, then $x$ is \emph{close} to $A$.
+			\item Let $A=(a,b)$ be a bounded interval. Is the end-point $a$ \emph{far away} from $A$?  What about $b$?
   	\end{enumerate}
   	
-	\item Consider Theorems \ref{thm:setbasic} and \ref{thm:setdist}. In all seven results, replace the symbols in the first row of the following table with those in the second. Which of the results seem familar? Which are false?
-\[\begin{array}{c|c|c|c|c}
-\emptyset&A,B,C\text{ sets}&\cup&\cap&\subseteq\\\hline
-0&A,B,C\in\N_0&+&\cdot&\le
-\end{array}\]
-
-	\item Prove that $B\setminus A=B\iff A\cap B=\emptyset$.
-	
-	\item Practice your proof skills by giving formal proofs of the following results from Theorems \ref{thm:setbasic} and \ref{thm:setcomp}. With practice you should be able to prove \emph{all} of parts of these theorems (and of Theorem \ref{thm:setdist}) these \emph{without} looking at the arguments in the notes!
-	\begin{enumerate}
-	  \item $\emptyset\cap A=\emptyset$.
-		\item $A\cap (B\cap C)=(A\cap B)\cap C$.
-		\item $\comp{(\comp A)}=A$.
-		\item $A\subseteq B\iff \comp B\subseteq \comp A$.
 	\end{enumerate}
-
-	\item Write out a formal proof of the set identity
-	\[A=(A\setminus B)\cup (A\cap B)\]
-	by showing that each side is a subset of the other. Now repeat your argument using only results from set algebra (Theorems \ref{thm:setcomp} and \ref{thm:setdist}).
-	
-	
-	
-
-
-		
-  \item Prove or disprove the following conjectures.
-  \begin{enumerate}
-    \item $\exists x\in\R\setminus\Q$ such that $x^2\in\Q$.
-    \item $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$.
-	\end{enumerate}
-\end{enumerate}
 
 \end{exercises}
+
 \clearpage
+
+
 
 \iffalse
 
