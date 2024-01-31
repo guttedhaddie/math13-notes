@@ -147,7 +147,7 @@ Since the result is abstract, it is good to recap the relationship between congr
 
 \boldsubsubsection{Modular Arithmetic}
 
-Remainders have a natural arithmetic that is very similar to that of the real numbers. We the same symbols; even the congruence symbol $\equiv$ looks a bit like an equals sign!\footnote{This is no accident. In Chapter \ref{chap:relations} we'll see that congruence is an important example of an \emph{equivalence relation:} a generalized notion of equality. Indeed, two integers are congruent if and only if something about them is equal: their \emph{remainders}!} Apart from being fun, \emph{modular arithmetic} has many applications, including cryptography and data security: cell-phones and computers perform millions of these calculations every day! Here are the basic rules.
+Remainders have a natural arithmetic that is very similar to that of the real numbers. We the same symbols; even the congruence symbol $\equiv$ looks a bit like an equals sign!\footnote{This is no accident. In Chapter \ref{chap:relations} we'll see that congruence is an important example of an \emph{equivalence relation:} a generalized notion of equality. Indeed, two integers are congruent if and only if something about them is equal: their \emph{remainders}!} Apart from being fun, \emph{modular arithmetic} has many applications, including cryptography and data security: cell-phones and computers perform millions of these calculations every day! Here are the basic rules, which generalize of most of the results we proved in Section \ref{sec:proof}.
 
 \begin{thm}{}{congbasic}
 	Suppose $a,b,c,d$ are integers and that $n$ is some modulus. Then,
@@ -179,6 +179,7 @@ The theorem says that the operations `take the remainder' and `add/subtract/mult
 		\]
 	\end{enumeratea}
 \end{example}
+
 
 \begin{proof}
 	\begin{enumerate}
@@ -446,16 +447,15 @@ If either of $a,b$ are negative just ignore the signs: for instance $\gcd(-4,34)
 
 \boldsubsubsection{Reversing the Algorithm}
 
-To apply the Euclidean algorithm to our motivational problem of integer points on lines, we run it backwards. Start with the penultimate line of the algorithm and, moving upwards, substitute remainders one at a time. The result is an expression $\gcd(a,b)=ax+by$ for some integers $x,y$. %This is easiest to demonstrate by continuing our example.
+To apply the Euclidean algorithm to our motivational problem of integer points on lines, we run it backwards. Start with the penultimate line of the algorithm and move upwards, substituting remainders one at a time. The result is an expression $\gcd(a,b)=ax+by$ for some integers $x,y$.
 
 \begin{example*}{\ref{ex:euclidalg}, cont}{}
 	We find integers $x,y$ such that $\textcolor{orange}{1260}x+\textcolor{blue}{750}y=\textcolor{Green}{30} \bigm(=\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})\bigr)$.\smallbreak
 	Start by expressing $\textcolor{Green}{30}$ using the third step of the algorithm and work upwards:
 	\begin{align*}
 		\textcolor{Green}{30} &=\textcolor{brown}{510}-2\times\textcolor{red}{240} & &\text{(3\rd/penultimate line)}\\
-		&=\textcolor{brown}{510}-2\times (\textcolor{blue}{750}-\textcolor{brown}{510}) &&\text{(2\nd{} line)}\\
-		&=3\times \textcolor{brown}{510}-2\times \textcolor{blue}{750} \\
-		&=3\times (\textcolor{orange}{1260}-\textcolor{blue}{750})-2\times \textcolor{blue}{750} &&\text{(1\st{} line)}\\
+		&=\textcolor{brown}{510}-2(\textcolor{blue}{750}-\textcolor{brown}{510}) =3\times \textcolor{brown}{510}-2\times \textcolor{blue}{750} &&\text{(2\nd{} line)}\\
+		&=3(\textcolor{orange}{1260}-\textcolor{blue}{750})-2\times \textcolor{blue}{750} &&\text{(1\st{} line)}\\
 		&=3\times \textcolor{orange}{1260}-5\times \textcolor{blue}{750}
 	\end{align*}
 	Rearranging, we see that $x=3$ and $y=-5$ satisfy the equation $1260x+750y=30$. To simplify, divide everything by \textcolor{Green}{30} to see that $(3,-5)$ is an integer point on the line $42x+25y=1$.
@@ -465,13 +465,13 @@ To apply the Euclidean algorithm to our motivational problem of integer points o
 This process of reversing the algorithm works in general, yielding a very powerful result.
 
 \begin{cor}{Bézout's Identity}{euclid}
-	Given integers $a,b$, not both zero, $\exists x,y\in\Z$ such that
+	Given integers $a,b$, not both zero, $\exists x,y\in\Z$ such that\vspace{-8pt}
 	\[
 		\gcd(a,b)=ax+by
 	\]
 \end{cor}
 
-If either $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards. %Everything else in this chapter is a consequence of Bézout's identity.
+If either $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards.
 
 \begin{cor}{}{moddivision}
 	Suppose $a,b,c$ are integers for which $\gcd(a,b)=1$ and $a\mid bc$. Then $a\mid c$.
@@ -482,11 +482,12 @@ If either $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct
 \end{proof}
 
 \begin{examples}{}{2-3div6}
-	\exstart The claim ``$a\mid c$ and $b\mid c\Longrightarrow ab\mid c$'' is, in general, \emph{false} (e.g.{} $a=b=c=2$). However: Suppose $c=2m=3n$ for some integers $m,n$. Since $\gcd(2,3)=1$ and $2\mid(3n)$, we see that $2\mid n$, whence $n=2k$ for some $k\in\Z$ and $c=6k$. We conclude:
+	\exstart The claim ``\textcolor{blue}{$a\mid c$ and $b\mid c\Longrightarrow ab\mid c$}'' is, in general, \emph{false} (e.g.{} $a=b=c=2$). However: Suppose $c=2m=3n$ for some integers $m,n$. Since $\gcd(2,3)=1$ and $2\mid(3n)$, we see that $2\mid n$. Thus $n=2k$ for some $k\in\Z$ and $c=6k$. We conclude:
 	\[
 		2\mid c\ \text{ and }\ 3\mid c\implies 6\mid c
 	\]
-	The surprising thing is that such an ``obvious'' fact really needs Bézout's identity!
+	Though we could have done this example without heavy machinery (use Theorem \ref{thm:oddodd2}), Bézout  proves that the \textcolor{blue}{general claim} holds whenever $a,b$ are coprime.
+% 	 
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item (Example \ref{ex:euclidalg}, mk.\,III)
 	We know that $(x_0,y_0)=(3,-5)$ solves the equation $1260x+750y=30$ (equivalently $45x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
@@ -503,6 +504,7 @@ If either $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct
 	\]
 	\end{enumerate} 
 \end{examples}
+
 
 \goodbreak
 
@@ -658,7 +660,7 @@ The Theorem tells us when we can solve the right hand side, and how. To solve th
 	  \begin{enumerate}
 	    \item Suppose $p$ is prime and that $p\mid ab$. Prove that $p\mid a$ or $p\mid b$.\par
 	    (\emph{Hint: if $p\nmid a$, use Corollary \ref{cor:moddivision}})
-	    \item Suppose $p\ge 2$ is an integer with the property that $\forall a,b\in\Z$, $p\mid ab$ implies $p\mid a$ or $p\mid b$. Prove that $p$ is prime.\par
+	    \item Suppose $p\ge 2$ is an integer with the property that $\forall a,b\in\Z$, $p\mid ab\Longrightarrow p\mid a$ or $p\mid b$. Prove that $p$ is prime.\par
 	    (\emph{Hint: prove the contrapositive})
 	  \end{enumerate}
 	    

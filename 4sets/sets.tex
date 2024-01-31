@@ -748,29 +748,33 @@ Our final pair of results describe the interaction of unions and intersections.\
 
 
 
-\iffalse
-
 \subsection{Introduction to Functions}\label{sec:func1}
 
-You have been using functions for a long time. A formal definition in terms of relations will be given in Chapter \ref{chap:relations}. For the present, we will just use the following.
+Sets become a lot more useful and interesting once you start transforming their elements! This is accomplished using \emph{functions.} In this section we introduce some basic concepts and notation, at least some of which should already be familiar. A formal definition will be given in Chapter \ref{chap:relations}, but for the present the following will suffice.
 
 \begin{defn}{}{}
-Let $A$ and $B$ be sets. A \emph{function from $A$ to $B$} is a rule $f$ that assigns one (and only one) element of $B$ to each element of $A$.\\
-The \emph{domain} of $f$, written $\dom(f)$, is the set $A$. The \emph{codomain} of $f$ is the set $B$.\\
-The \emph{range} or \emph{image} of $f$, written $\range(f)$ or $\operatorname{Im}(f)$, is the subset of $B$ consisting of all the elements assigned by the rule $f$.
+	Let $A$ and $B$ be sets. A \emph{function} $f$ with \emph{domain} $A$ and \emph{codomain} $B$ is a rule that assigns to each input $a\in A$ a single output $b\in B$ which we typically denote $f(a)$. This may be written
+	\[
+		f:A\to B\quad\text{and}\quad f:a\mapsto b \tag{different arrows for sets vs. elements!}
+	\]
+	The \emph{image} of a subset $U\subseteq A$ is the set of outputs given inputs in $U$:
+	\[
+		f(U):=\bigl\{f(u)\in B:u\in U\bigr\}
+	\]
+	The \emph{range}, $\range(f)=f(A)$, is the set of realized outputs of the function.\par
+	The \emph{inverse image} of a subset $V\subseteq B$ is the set of inputs which are mapped to something in $V$:
+	\[
+		f^{-1}(V):=\bigl\{a\in A:f(a)\in V\bigr\}
+	\] 
 \end{defn}
+
+\begin{example}{}{}
+	If $f(x)$
+\end{example}
 
  You can think of the domain of $f$ as the set of all inputs for the function, and the range of $f$ as the set of all outputs. The codomain is the set of all potential values the function may take (of course, only the values in the range are actually achieved).
 
-\boldsubsubsection{Notation} ALE INSERTS LITTLE ON PREIMAGES HERE - AND IN EXERCISES
-
-If $f$ is a function from $A$ to $B$ we write $f:A\to B$.\\
-If $a\in A$, we write $b=f(a)$ for the the element of $B$ assigned to $a$ by the function $f$.\\
-We can also write $f:a\mapsto b$, which is read `$f$ maps $a$ to $b$.'\\
-If $U$ is a subset of $A$ then the \emph{image} of $U$ is the following subset of $B$,\vspace{-4pt}
-\[f(U)=\{f(u)\in B:u\in U\}.\vspace{-5pt}\]
-The image of $A$ is precisely the range of $f$, hence the notation $\operatorname{Im}(f)$,\vspace{-4pt}
-\[f(A)=\range(f)=\operatorname{Im}(f)=\{f(a)\in B:a\in A\}.\vspace{-2pt}\]
+ALE INSERTS LITTLE ON PREIMAGES HERE - AND IN EXERCISES
 
 
 \begin{center}
@@ -1220,4 +1224,3 @@ Let $e^x \in \R^+$ be arbitrary. Then $f(x) = e^x$. So $f$ is surjective.
 
 \end{exercises}
 
-\fi
