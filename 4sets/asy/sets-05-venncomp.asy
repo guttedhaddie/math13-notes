@@ -14,7 +14,7 @@ pen colour1=lightblue+white;
 pair z0=(0,0);
 path c1=circle(z0,1);
 
-path p=box((-1.5,-1.2),(1.5,1.2));
+path p=box((-1.6,-1.2),(1.6,1.2));
 
 fill(p,colour1);
 fill(c1,white);

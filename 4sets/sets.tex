@@ -436,24 +436,24 @@ In this section we construct new sets from old, modeled precisely on the logical
 \begin{defn}{}{unionint}
 	Let $\cU$ be a (universal) set,\footnotemark{} and suppose $A,B$ are subsets of $\cU$.
 	\begin{enumerate}\itemsep0pt
-	  \item The \emph{complement} of $A$ is the set of all elements not in $A$:
-		\[
-			\comp A:=\bigl\{x\in\cU:x\notin A\bigr\}
-		\]
-		\item The \emph{complement of $A$ relative $B$} is the set of elements in $B$ which are not in $A$:
-		\[
-			B\setminus A:=\bigl\{x\in B:x\notin A\bigr\}
-		\]
-		This can be read ``$B$ minus $A$'', indeed some authors write $B-A$. Similarly $\comp A=\cU\setminus A$, etc.
 		\item The \emph{union} of $A$ and $B$ is the set of elements in $A$ or $B$:
 		\[
-			A\cup B:=\bigl\{x\in\cU:x\in A\text{ or }x\in B\bigr\}
+			\makebox[210pt][l]{$A\cup B:=\bigl\{x\in\cU:x\in A\text{ or }x\in B\bigr\}$\hfill} (x\in A\cup B\iff x\in A\text{ or }x\in B)
 		\]
 		\item The \emph{intersection} of $A$ and $B$ is the set of elements in both $A$ and $B$:
 		\[
-			A\cap B:=\bigl\{x\in\cU:x\in A\text{ and }x\in B\bigr\}
+			\makebox[210pt][l]{$A\cap B:=\bigl\{x\in\cU:x\in A\text{ and }x\in B\bigr\}$\hfill} (x\in A\cap B\iff x\in A\text{ and }x\in B)
 		\]
 		We say that $A$ and $B$ are \emph{disjoint} if $A\cap B=\emptyset$.
+	  \item The \emph{complement} of $A$ is the set of all elements not in $A$:
+		\[
+			\makebox[210pt][l]{$\comp A:=\bigl\{x\in\cU:x\notin A\bigr\}$ \hfill} (x\in\comp A\iff x\notin A \ (\text{and }x\in\cU))
+		\]
+		This can be read ``$B$ minus $A$'', indeed some authors write $B-A$. Similarly $\comp A=\cU\setminus A$, etc.
+		\item The \emph{complement of $A$ relative $B$} is the set of elements in $B$ which are not in $A$:
+		\[
+			\makebox[210pt][l]{$B\setminus A:=B\cap \comp A=\bigl\{x\in B:x\notin A\bigr\}$\hfill} (x\in B\setminus A\iff x\in B\text{ and } x\notin A)
+		\]
 	\end{enumerate}
 	
 	\begin{center}
@@ -532,7 +532,7 @@ For the remainder of this section, we summarize the basic rules of set algebra.
 	\end{enumerate}
 \end{thm}
 
-Each property can be proved directly from Definition \ref{defn:unionint}. If you don't believe a result, try \emph{visualizing} it using a Venn diagram. The basic proof strategy is the same for all parts: convert each statement into propositions and use what you know from basic logic (e.g., Theorem \ref{thm:demorgan} and page \pageref{pg:asidelogicalgebra}). We prove part 2 and half of part 6, leaving some of the rest to the Exercises.
+If you don't believe a result, try \emph{visualizing} it using a Venn diagram. The basic proof strategy is the same for all parts: convert each statement into propositions (Definition \ref{defn:unionint} parentheses) and use what you know from basic logic (e.g., Theorem \ref{thm:demorgan} and page \pageref{pg:asidelogicalgebra}). We prove part 2 and half of part 6, leaving some of the rest to the Exercises.
 
 \begin{proof}
 \begin{enumerate}
@@ -564,19 +564,16 @@ The next batch of rules describe how complements interact with other set operati
 
 \begin{thm}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{Complement rules}{setcomp}
 	Let $A,B$ be sets. Then:
-	\begin{enumerate}\itemsep0pt
-		\item $\comp{(A\cap B)}=\comp A\cup \comp B$
+	\begin{enumerate}\itemsep2pt
+		\item $\comp{(A\cap B)}=\textcolor{blue}{\comp A}\cup \textcolor{red}{\comp B}$ (see picture)
 		\item $\comp{(A\cup B)}=\comp A\cap \comp B$
 		\item $\smash[t]{\comp{(\comp A)}}=A$
-		\item $A\setminus B=A\cap\comp B$
+		%\item $A\setminus B=A\cap\comp B$
 		\item $A\subseteq B\iff \comp B\subseteq \comp A$
 	\end{enumerate}
 	\tcblower
 	\flushright
-	\begin{tabular}{c@{}}
-		\includegraphics[scale=0.9]{sets-08-venndemorgan2}\\
-		$\comp{(A\cap B)}=\textcolor{blue}{\comp A}\cup \textcolor{red}{\comp B}$
-	\end{tabular}
+	\includegraphics[scale=1]{sets-08-venndemorgan2}
 \end{thm}
 
 % \begin{proof}[Proof of 1.]
@@ -746,7 +743,7 @@ Our final pair of results describe the interaction of unions and intersections.\
 
 \clearpage
 
-
+\iffalse
 
 \subsection{Introduction to Functions}\label{sec:func1}
 
@@ -1224,3 +1221,4 @@ Let $e^x \in \R^+$ be arbitrary. Then $f(x) = e^x$. So $f$ is surjective.
 
 \end{exercises}
 
+\fi

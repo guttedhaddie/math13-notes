@@ -40,10 +40,6 @@ draw("$A\cup B$",brace((-2.4,-1.5),(2.4,-1.5),-0.35),S);
 
 label("\smash[b]{$A\cap B$}",(0,0));
 
-dot((3,0),white);
-dot((-3,0),white);
-//label("$\mathcal{U}$",2.9z1+(0,1.25r));
-//label("\phantom{$\mathcal{U}$}",2.9z2+(0,1.25r));
 
-shipout(bbox(0.1cm));
-currentpicture.uptodate=true;
+path p=box((-3.2,-2.5),(3.2,2.3));
+draw(p);
