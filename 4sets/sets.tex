@@ -663,25 +663,25 @@ Our final pair of results describe the interaction of unions and intersections.\
 \begin{exercises}{}{}
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/4-2-union.html}{online}.
 	
-\begin{enumerate}
-  \item Describe each set in as simple a manner as you can: e.g.,
-	\[
-		\bigl\{x\in\R:(x^2>4\text{ and } x^3<27)\text{ or } x^2=15\bigr\}=(-\infty,-2)\cup (2,3)\cup\{\sqrt{15}\}
-	\]
-  \begin{enumerate}
-	 	\item $\bigl\{x\in\R:x^2\neq x\bigr\}$
-		\item $\bigl\{x\in\R:x^3-2x^2-3x\le 0\text{ or }x^2=4\bigl\}$
-		\item $\bigl\{y\in\R:\exists x\in\R \text{ with }y=x^2 \text{ and }x\neq 1\bigl\}$
-		\item $\bigl\{z\in\Z:z^2\text{ is even and $z^3$ is odd}\bigl\}$
-		\item $\bigl\{y\in 3\Z+2:y^2\equiv 1\spmod 3\bigl\}$
-	\end{enumerate}
-  
-  \item Let $A=\{1,3,5,7,9\}$, $B=\{1,4,7,10\}$ and $\cU=\{1,2,\ldots,10\}$. What are the following sets?
-    \begin{enumerate}
-	  	\item \makebox[100pt][l]{$A\cap B$\hfill (b)} \ \makebox[100pt][l]{$A\cup B$\hfill (c)} \ \makebox[100pt][l]{$B\setminus A$\hfill (d)} \ $\comp A$ 
-	  	\setcounter{enumii}{4}
-	  	\item \makebox[100pt][l]{$\comp{(A\setminus B)}$ \hfill (f)} \ \makebox[100pt][l]{$\comp A\cap \comp B$\hfill (g)} \ $(A\cup B)\setminus (A\cap B)$
+	\begin{enumerate}
+	  \item Describe each set simply as you can: e.g., 
+	  \[
+	  	\bigl\{x\in\R:x^2<9\text{ and } x^3<8\bigr\}= (-3,3)\cap(-\infty,2) =(-3,2)
+	  \]
+	  \begin{enumerate}
+		 	\item $\bigl\{x\in\R:x^2\neq x\bigr\}$
+			\item $\bigl\{x\in\R:x^3-2x^2-3x\le 0\text{ or }x^2=4\bigl\}$
+			\item $\bigl\{y\in\R:\exists x\in\R \text{ with }y=x^2 \text{ and }x\neq 1\bigl\}$
+			\item $\bigl\{z\in\Z:z^2\text{ is even and $z^3$ is odd}\bigl\}$
+			\item $\bigl\{y\in 3\Z+2:y^2\equiv 1\spmod 3\bigl\}$
 		\end{enumerate}
+	  
+	  \item Let $A=\{1,3,5,7,9\}$, $B=\{1,4,7,10\}$ and $\cU=\{1,2,\ldots,10\}$. What are the following sets?
+	    \begin{enumerate}
+		  	\item \makebox[100pt][l]{$A\cap B$\hfill (b)} \ \makebox[100pt][l]{$A\cup B$\hfill (c)} \ \makebox[100pt][l]{$B\setminus A$\hfill (d)} \ $\comp A$ 
+		  	\setcounter{enumii}{4}
+		  	\item \makebox[100pt][l]{$\comp{(A\setminus B)}$ \hfill (f)} \ \makebox[100pt][l]{$\comp A\cap \comp B$\hfill (g)} \ $(A\cup B)\setminus (A\cap B)$
+			\end{enumerate}
 	
   	
 % 	\item Consider Theorems \ref{thm:setbasic} and \ref{thm:setdist}. In all seven results, replace the symbols in the first row of the following table with those in the second. Which of the results seem familar? Which are false?
@@ -692,33 +692,36 @@ Our final pair of results describe the interaction of unions and intersections.\
 
 	%\item Prove that $B\setminus A=B\iff A\cap B=\emptyset$.
 	
-	\item Give formal proofs of the following parts of Theorems \ref{thm:setbasic}, \ref{thm:setcomp} and \ref{thm:setdist}. %With practice you should be able to prove \emph{all} of parts of these theorems \emph{without} looking at the arguments in the notes!
+		\item Give formal proofs of the following parts of Theorems \ref{thm:setbasic}, \ref{thm:setcomp} and \ref{thm:setdist}. %With practice you should be able to prove \emph{all} of parts of these theorems \emph{without} looking at the arguments in the notes!
+		\begin{enumerate}
+		  \item \makebox[180pt][l]{$\emptyset\cap A=\emptyset$\hfill (b)} \ $A\cap (B\cap C)=(A\cap B)\cap C$
+		  \setcounter{enumii}{2}
+			\item \makebox[180pt][l]{$\comp{(\comp A)}=A$\hfill (d)} \ $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$
+			\setcounter{enumii}{4}
+			\item $A\subseteq B\iff \comp B\subseteq \comp A$
+		\end{enumerate}
+	
+	
+		\item By showing that each side is a subset of the other, give a formal proof of the set identity
+		\[
+			A=(A\setminus B)\cup (A\cap B)
+		\]
+		Now repeat your argument using only results from set algebra (Theorems \ref{thm:setcomp} and \ref{thm:setdist}).
+	
+	
+	\item Prove the identity $A\cup B=A\iff B\subseteq A$ for any sets $A,B$.
+	
+	
+	\item Prove the identities for any sets $A,B,C$:
 	\begin{enumerate}
-	  \item \makebox[180pt][l]{$\emptyset\cap A=\emptyset$\hfill (b)} \ $A\cap (B\cap C)=(A\cap B)\cap C$
-	  \setcounter{enumii}{2}
-		\item \makebox[180pt][l]{$\comp{(\comp A)}=A$\hfill (d)} \ $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$
-		\setcounter{enumii}{4}
-		\item $A\subseteq B\iff \comp B\subseteq \comp A$
+	  \item $\comp{(A\cap B\cap C)}=\comp A\cup\comp B\cup\comp C$
+	  \item $(A\cup B)\setminus (A\cap B)=(A\setminus B)\cup (B\setminus A)$
 	\end{enumerate}
-
-
-	\item By showing that each side is a subset of the other, give a formal proof of the set identity
-	\[
-		A=(A\setminus B)\cup (A\cap B)
-	\]
-	Now repeat your argument using only results from set algebra (Theorems \ref{thm:setcomp} and \ref{thm:setdist}).
-	
-	
-	\item Prove that $A\cup B=A\iff B\subseteq A$.
-	
-	
-	\item Prove that $\comp{(A\cap B\cap C)}=\comp A\cup\comp B\cup\comp C$
 	
 		
-	  \item Prove or disprove the following conjectures (\emph{Hint: revisit Section \ref{sec:proof2}}).
-	  \begin{enumerate}
-	    \item $\exists x\in\R\setminus\Q$ such that $x^2\in\Q$.
-	    \item $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$.
+	\item Prove or disprove the following conjectures (\emph{Hint: revisit Section \ref{sec:proof2}}).
+	 \begin{enumerate}
+	    \item $\exists x\in\R\setminus\Q$ such that $x^2\in\Q$. \qquad\qquad (b) \ $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$.
 		\end{enumerate}
 	
 	
