@@ -1,8 +1,8 @@
-\graphicspath{{notes/6setsii/}}
+\graphicspath{{6setsii/asy/}}
 
 \section{Set Theory, Part II}\label{chap:sets2}
 
-\iffalse
+
 
 In this chapter we return to set theory and consider several more-advanced constructions.
 
@@ -10,45 +10,59 @@ In this chapter we return to set theory and consider several more-advanced const
 
 You have been working with Cartesian products for years, referring to a point in the plane $\R^2$ by its \emph{Cartesian co-ordinates} $(x,y)$. The basic idea is that each of the co-ordinates $x$ and $y$ is a member of the set $\R$. The same approach can be used for any two sets.
 
-\begin{defn}
-Let $A$ and $B$ be sets. The \emph{Cartesian product} of $A$ and $B$ is the set
-\[A\times B=\{(a,b):a\in A\text{ and }b\in B\}.\]
+\begin{defn}{}{}
+	Let $A$ and $B$ be sets. The \emph{Cartesian product} of $A$ and $B$ is the set
+	\[
+		A\times B=\{(a,b):a\in A\text{ and }b\in B\}
+	\]
 \end{defn}
 
-\noindent $A\times B$ is simply the set of \emph{ordered pairs} $(a,b)$ where $a\in A$ and $b\in B$.
+ $A\times B$ is simply the set of \emph{ordered pairs} $(a,b)$ where $a\in A$ and $b\in B$.
 
-\begin{examples}
-	\item The Cartesian product of the real line $\R$ with itself is the $xy$-plane: rather than writing $\R\times\R$ which is unwieldy, we write $\R^2$.
-	\[\R^2=\R\times\R=\{(x,y):x,y\in\R\}.\]
+\begin{examples}{}{}
+	\exstart The Cartesian product of the real line $\R$ with itself is the $xy$-plane: rather than writing $\R\times\R$ which is unwieldy, we write $\R^2$.
+	\[
+		\R^2=\R\times\R=\{(x,y):x,y\in\R\}
+	\]
 	More generally, $\R^n=\underbrace{\R\times\R\times\cdots\R}_{\text{$n$ times}}$ is the set of $n$-tuples of real numbers:
-	\[\R^n=\{(x_1,x_2,\ldots,x_n):x_1,x_2,\ldots,x_n\in\R\}.\]
-	\item If $A=\{1,2,3\}$ and $B=\{\alpha,\beta\}$, then the Cartesian product of $A$ and $B$ is
-	\[A\times B=\{(1,\alpha),\ (1,\beta),\ (2,\alpha),\ (2,\beta),\ (3,\alpha),\ (3,\beta)\}\]
-	Notice that this is a \emph{different set} to the Cartesian product of $B$ and $A$:
-	\[B\times A=\{(\alpha,1),\ (\beta,1),\ (\alpha,2),\ (\beta,2),\ (\alpha,3),\ (\beta,3)\}\]
-	\item Suppose you go to a restaurant where you have a choice of one main course and one side. The menu might be summarized set-theoretically: consider the sets
-	\begin{gather*}
-	\text{Mains}=\{\text{fish, steak, eggplant, pasta}\}\\
-	\text{Sides}=\{\text{asparagus, salad, potatoes}\}
-	\end{gather*}
-	The Cartesian product Mains\,$\times$\,Sides is the set of all possible meals made up of one main and one side. It should be obvious that there are $4\times 3=12$ possible meal choices.
+	\[
+		\R^n=\{(x_1,x_2,\ldots,x_n):x_1,x_2,\ldots,x_n\in\R\}
+	\]
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item If $A=\{1,2,3\}$ and $B=\{\alpha,\beta\}$, then the Cartesian product of $A$ and $B$ is
+		\[
+			A\times B=\{(1,\alpha),\ (1,\beta),\ (2,\alpha),\ (2,\beta),\ (3,\alpha),\ (3,\beta)\}
+		\]
+		Notice that this is a \emph{different set} to the Cartesian product of $B$ and $A$:
+		\[
+			B\times A=\{(\alpha,1),\ (\beta,1),\ (\alpha,2),\ (\beta,2),\ (\alpha,3),\ (\beta,3)\}
+		\]
+		\item Suppose you go to a restaurant where you have a choice of one main course and one side. The menu might be summarized set-theoretically: consider the sets
+		\begin{gather*}
+			\text{Mains}=\{\text{fish, steak, eggplant, pasta}\}\\
+			\text{Sides}=\{\text{asparagus, salad, potatoes}\}
+		\end{gather*}
+		The Cartesian product Mains\,$\times$\,Sides is the set of all possible meals made up of one main and one side. It should be obvious that there are $4\times 3=12$ possible meal choices.
+	\end{enumerate}
 \end{examples}
 
-\noindent These last two examples illustrates the next theorem, which explains the use of the word \emph{product.}
+These last two examples illustrates the next theorem, which explains the use of the word \emph{product.}
 
-\begin{thm}
-If $A$ and $B$ are finite sets, then $\nm{A\times B}=\nm A\cdot\nm B$.
+\begin{thm}{}{}
+	If $A$ and $B$ are finite sets, then $\nm{A\times B}=\nm A\cdot\nm B$.
 \end{thm}
 
 \begin{proof}
-Label the elements of each set and list the elements of $A\times B$ lexicographically. If $\nm A=m$ and $\nm B=n$, then we have:
-\[\begin{array}{rccccccl}
-A\times B=\big\{&(a_1,b_1),&(a_1,b_2),&(a_1,b_3),&\cdots&(a_1,b_n),&\\
-&(a_2,b_1),&(a_2,b_2),&(a_2,b_3),&\cdots&(a_2,b_n),&\\
-&\vdots&\vdots&\vdots&&\vdots&\\
-&(a_m,b_1),&(a_m,b_2),&(a_m,b_3),&\cdots&(a_m,b_n)&\big\}
-\end{array}\]
-It should be clear that every element of $A\times B$ is listed exactly once. There are $m$ rows and $n$ columns, thus $\nm{A\times B}=mn$.
+	Label the elements of each set and list the elements of $A\times B$ lexicographically. If $\nm A=m$ and $\nm B=n$, then we have:
+	\[
+		\begin{array}{rccccccl}
+			A\times B=\big\{&(a_1,b_1),&(a_1,b_2),&(a_1,b_3),&\cdots&(a_1,b_n),&\\
+			&(a_2,b_1),&(a_2,b_2),&(a_2,b_3),&\cdots&(a_2,b_n),&\\
+			&\vdots&\vdots&\vdots&&\vdots&\\
+			&(a_m,b_1),&(a_m,b_2),&(a_m,b_3),&\cdots&(a_m,b_n)&\big\}
+		\end{array}
+	\]
+	It should be clear that every element of $A\times B$ is listed exactly once. There are $m$ rows and $n$ columns, thus $\nm{A\times B}=mn$.
 \end{proof}
 
 Before we go any further, consider the complement of a Cartesian product $A\times B$. If you had to guess an expression for $\comp{(A\times B)}$, you might well try $\comp A\times\comp B$. Let us think more carefully.
@@ -59,54 +73,54 @@ Before we go any further, consider the complement of a Cartesian product $A\time
 % &\iff x\not\in A\text{ or }y\not\in B&&
 % \end{align*}
 \begin{gather*}
-\begin{aligned}
-(x,y)\in\comp{(A\times B)}&\iff (x,y)\not\in A\times B\\
-&\iff \neg((x,y)\in A\times B)\\
-&\iff \neg(x\in A\text{ and }y\in B)\\
-&\iff x\not\in A\text{ or }y\not\in B
-\end{aligned}
+	\begin{aligned}
+		(x,y)\in\comp{(A\times B)}&\iff (x,y)\not\in A\times B\\
+		&\iff \neg((x,y)\in A\times B)\\
+		&\iff \neg(x\in A\text{ and }y\in B)\\
+		&\iff x\not\in A\text{ or }y\not\in B
+	\end{aligned}
 \end{gather*}
-However $(x,y)\in\comp A\times\comp B\iff x\not\in A\text{ and }x\not\in B$. Since the definition of Cartesian product involves \emph{and,} its negation, by De Morgan's laws, involves \emph{or.} It follows that the complement of a Cartesian product is \emph{not a Cartesian product!} For more on this, see Exercise \hyperref[ex:cartneg]{\thesubsection.\ref*{ex:cartneg}}.\\
+However $(x,y)\in\comp A\times\comp B\iff x\not\in A\text{ and }x\not\in B$. Since the definition of Cartesian product involves \emph{and,} its negation, by De Morgan's laws, involves \emph{or.} It follows that the complement of a Cartesian product is \emph{not a Cartesian product!} For more on this, see Exercise \ref{ex:cartneg}.\par
 
 
 As an example of a basic set relationship involving Cartesian products, we prove a theorem.
 
-\begin{thm}\label{thm:cartex}
-Let $A,B,C,D$ be any sets. Then $(A\times B)\cup(C\times D)\subseteq(A\cup C)\times(B\cup D)$.
+\begin{thm}{}{cartex}
+	Let $A,B,C,D$ be any sets. Then $(A\times B)\cup(C\times D)\subseteq(A\cup C)\times(B\cup D)$.
 \end{thm}
 
 \begin{proof}
-Since we are dealing with Cartesian products, the general element has the form $(x,y)$.\\
-\noindent\begin{minipage}{0.65\textwidth}
-Let $(x,y)\in(A\times B)\cup(C\times D)$. Then 
-\[(x,y)\in A\times B\qquad \text{or}\qquad (x,y)\in C\times D.\]
-But then
-\[(x\in A\text{ and }y\in B)\qquad\text{or}\qquad(x\in C\text{ and }y\in D).\]
-Clearly $x\in A$ or $x\in C$, so $x\in A\cup C$.\\
-Similarly $y\in B$ or $y\in D$, so $y\in B\cup D$.\\
-Therefore $(x,y)\in (A\cup C)\times(B\cup D)$, as required.
-\end{minipage}
-\qquad
-\begin{minipage}{0.28\textwidth}
-\centering
-\includegraphics[width=\textwidth]{setsii-04-cartesian}
-\end{minipage}
+	Since we are dealing with Cartesian products, the general element has the form $(x,y)$.\par
+	\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
+		Let $(x,y)\in(A\times B)\cup(C\times D)$. Then 
+		\[(x,y)\in A\times B\qquad \text{or}\qquad (x,y)\in C\times D.\]
+		But then
+		\[(x\in A\text{ and }y\in B)\qquad\text{or}\qquad(x\in C\text{ and }y\in D).\]
+		Clearly $x\in A$ or $x\in C$, so $x\in A\cup C$.\\
+		Similarly $y\in B$ or $y\in D$, so $y\in B\cup D$.\\
+		Therefore $(x,y)\in (A\cup C)\times(B\cup D)$, as required.
+	\end{minipage}
+	\qquad
+	\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
+		\centering
+		\includegraphics[width=\textwidth]{setsii-04-cartesian}
+	\end{minipage}
 \end{proof}
 
-\noindent The picture is an visualization of the theorem, where we assume that the sets $A,B,C$ and $D$ are all intervals of real numbers. $(A\times B)\cup(C\times D)$ is the yellow shaded region, while $(A\cup C)\times(B\cup D)$ is the larger dashed square. While helpful, the picture is not a proof! The theorem is a statement about \emph{any} sets, whereas the picture implicitly assumes that these sets are intervals.\\
+The picture is an visualization of the theorem, where we assume that the sets $A,B,C$ and $D$ are all intervals of real numbers. $(A\times B)\cup(C\times D)$ is the yellow shaded region, while $(A\cup C)\times(B\cup D)$ is the larger dashed square. While helpful, the picture is not a proof! The theorem is a statement about \emph{any} sets, whereas the picture implicitly assumes that these sets are intervals.\\
 For an application of the picture, it should be clear that if $x\in C\setminus A$ and $y\in B\setminus D$, then $(x,y)\in (A\cup C)\times (B\cup D)$ but $(x,y)\not\in (A\times B)\cup(C\times D)$. We do not therefore expect these sets to be equal.
 
-\paragraph{Self-test Questions}
+% \paragraph{Self-test Questions}
+% 
+% 	\begin{enumerate}
+%     \item The Cartesian product of sets $A$ and $B$ is \underline{\phantom{the set of ordered pairs $\{(a,b):a\in A,\ b\in B\}$,\qquad}}
+%     \item True or false: $A\times B=\emptyset\iff A=B=\emptyset$.
+%     \item True or false: The cardinality of $A\times B$ is at least as large as $\max(\nm A,\nm B)$.
+%   \end{enumerate}
 
-	\begin{enumerate}
-    \item The Cartesian product of sets $A$ and $B$ is \underline{\phantom{the set of ordered pairs $\{(a,b):a\in A,\ b\in B\}$,\qquad}}
-    \item True or false: $A\times B=\emptyset\iff A=B=\emptyset$.
-    \item True or false: The cardinality of $A\times B$ is at least as large as $\max(\nm A,\nm B)$.
-  \end{enumerate}
+\begin{exercises}{}{}
 
-\subsection*{Exercises}
-
-\begin{enumerate}\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\begin{enumerate}
   \item\begin{enumerate}
     \item Suppose that $A=\{1,2\}$ and $B=\{3,4,5\}$. State the set $A\times B$ in roster notation.
     \item Sketch both $A\times B$ and $B\times A$ using dots on the plane. What do you observe about your pictures?
@@ -177,158 +191,199 @@ For an application of the picture, it should be clear that if $x\in C\setminus A
 	  \item In the second case, prove that there exists a set $S$ such that $a\in S\in a$. The axiom of regularity also says that this is illegal. Conclude that $(a,b)=(c,d)\iff a=c$ and $b=d$.
 	\end{enumerate}
 \end{enumerate}
-\newpage
+
+\end{exercises}
+
+
+\clearpage
+
 
 \subsection{Power Sets}
 
-Thusfar we have seen how to build new sets from old using the operations of subset, complement, union, intersection and Cartesian product. There is essentially only one further method whereby we can produce new sets; given a set $A$, we consider the collection of all of the subsets of $A$ and we insist that this collection is a set.
+Thus far we have seen how to build new sets from old using the operations of subset, complement, union, intersection and Cartesian product. There is essentially only one further method whereby we can produce new sets; given a set $A$, we consider the collection of all of the subsets of $A$ and we insist that this collection is a set.
 
-\begin{defn}
-The \emph{power set} of $A$ is the set $\cP(A)$ of all subsets of $A$. That is,
-\[\cP(A)=\{B:B\subseteq A\}.\]
-Otherwise said: $B\in\cP(A)\iff B\subseteq A$.
+\begin{defn}{}{}
+	The \emph{power set} of $A$ is the set $\cP(A)$ of all subsets of $A$. That is,
+	\[
+		\cP(A)=\{B:B\subseteq A\}
+	\]
+	Otherwise said: $B\in\cP(A)\iff B\subseteq A$.
 \end{defn}
 
-\begin{examples}
-	\item Let $A=\{1,3,7\}$. Then $A$ has the following subsets, listed by how many elements are in each subset.
-\[\begin{array}{ll}
-\text{0-elements:}&\emptyset\\
-\text{1-element:}&\{1\},\ \{3\},\ \{7\}\\
-\text{2-elements:}&\{1,3\},\ \{1,7\},\ \{3,7\}\\
-\text{3-elements:}&\{1,3,7\}
-\end{array}\]
-Gathering these together, we have the power set:
-\[\cP(A)=\Bigl\{\emptyset,\{1\},\{3\},\{7\},\{1,3\},\{1,7\},\{3,7\},\{1,3,7\}\Bigr\}.\]
-\item Consider $B=\Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}$. It is essential that you use different size set brackets to prevent confusion. $B$ has only \emph{two} elements, namely $1$ and $\bigl\{\{2\},3\bigr\}$. We can gather the subsets of $B$ in a table.
-\[\begin{array}{ll}
-\text{0-elements:}&\emptyset\\
-\text{1-element:}&\{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\\
-\text{2-elements:}&\Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}
-\end{array}\]
-In the second line, remember that to make a subset out of a single element you must surround the element with set brackets. Thus $1\in B\implies \{1\}\subseteq B$ and
-\[\bigl\{\{2\},3\bigr\}\in B\implies \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\subseteq B.\]
-The power set of $B$ is therefore
-\[\cP(B)=\biggl\{\emptyset,\ \{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\},\ \Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}\biggr\}.\]
-\end{examples}\pagebreak[2]
+\begin{examples}{}{}
+	\exstart Let $A=\{1,3,7\}$. Then $A$ has the following subsets, listed by how many elements are in each subset.
+	\[
+		\begin{array}{ll}
+			\text{0-elements:}&\emptyset\\
+			\text{1-element:}&\{1\},\ \{3\},\ \{7\}\\
+			\text{2-elements:}&\{1,3\},\ \{1,7\},\ \{3,7\}\\
+			\text{3-elements:}&\{1,3,7\}
+		\end{array}
+	\]
+	Gathering these together, we have the power set:
+	\[
+		\cP(A)=\Bigl\{\emptyset,\{1\},\{3\},\{7\},\{1,3\},\{1,7\},\{3,7\},\{1,3,7\}\Bigr\}
+	\]
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Consider $B=\Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}$. It is essential that you use different size set brackets to prevent confusion. $B$ has only \emph{two} elements, namely $1$ and $\bigl\{\{2\},3\bigr\}$. We can gather the subsets of $B$ in a table.
+		\[
+			\begin{array}{ll}
+				\text{0-elements:}&\emptyset\\
+				\text{1-element:}&\{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\\
+				\text{2-elements:}&\Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}
+			\end{array}
+		\]
+		In the second line, remember that to make a subset out of a single element you must surround the element with set brackets. Thus $1\in B\implies \{1\}\subseteq B$ and
+		\[
+			\bigl\{\{2\},3\bigr\}\in B\implies \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\subseteq B
+		\]
+		The power set of $B$ is therefore
+		\[
+			\cP(B)=\biggl\{\emptyset,\ \{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\},\ \Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}\biggr\}
+		\]
+	\end{enumerate}
+\end{examples}
 
 
-\paragraph{Notation}
+\boldinline{Notation}
 
 Be absolutely certain that you understand the difference between $\in$ and $\subseteq$. It is easy to become confused when considering power sets. In the context of the previous examples, here are eight propositions. Which are true and which are false?\footnote{Only (a), (d), and (g) are true. Make sure you understand why!}
-\[\begin{array}{r@{\quad}l@{\qquad\qquad}r@{\quad}l@{\qquad\qquad}r@{\quad}l@{\qquad\qquad}r@{\quad}l}
-\text{(a)}&1\in A
-		&\text{(b)}&1\in\cP(A)
-		&\text{(c)}&\{1\}\in A
-		&\text{(d)}&\{1\}\in\cP(A)\\
-\text{(e)}&1\subseteq A
-		&\text{(f)}&1\subseteq\cP(A)
-		&\text{(g)}&\{1\}\subseteq A
-		&\text{(h)}&\{1\}\subseteq\cP(A)
-\end{array}\]
+\[
+	\begin{array}{r@{\quad}l@{\qquad\qquad}r@{\quad}l@{\qquad\qquad}r@{\quad}l@{\qquad\qquad}r@{\quad}l}
+		\text{(a)}&1\in A
+				&\text{(b)}&1\in\cP(A)
+				&\text{(c)}&\{1\}\in A
+				&\text{(d)}&\{1\}\in\cP(A)\\
+		\text{(e)}&1\subseteq A
+				&\text{(f)}&1\subseteq\cP(A)
+				&\text{(g)}&\{1\}\subseteq A
+				&\text{(h)}&\{1\}\subseteq\cP(A)
+	\end{array}
+\]
 
-\noindent As a further exercise in being careful with notation, consider the following theorem.
+As a further exercise in being careful with notation, consider the following theorem.
 
-\begin{thm}\label{thm:powersub}
-If $A\subseteq B$, then $\cP(A)\subseteq\cP(B)$.
+\begin{thm}{}{powersub}
+	If $A\subseteq B$, then $\cP(A)\subseteq\cP(B)$.
 \end{thm}
 
 \begin{proof}
-Suppose that $A\subseteq B$ and let $C\in\cP(A)$. We must show that $C\in\cP(B)$.\\
-By definition, $C\in\cP(A)\implies C\subseteq A$. Since subset inclusion is transitive (Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}}), we have
-\[C\subseteq A\subseteq B\implies C\subseteq B.\]
-This says that $C\in\cP(B)$. Therefore $\cP(A)\subseteq\cP(B)$.
+	Suppose that $A\subseteq B$ and let $C\in\cP(A)$. We must show that $C\in\cP(B)$.\\
+	By definition, $C\in\cP(A)\implies C\subseteq A$. Since subset inclusion is transitive (Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}}), we have
+	\[
+		C\subseteq A\subseteq B\implies C\subseteq B
+	\]
+	This says that $C\in\cP(B)$. Therefore $\cP(A)\subseteq\cP(B)$.
 \end{proof}
 
-\noindent It is very easy to get confused by the proof of this theorem. Exercises \hyperref[ex:powersub1]{\thesubsection.\ref*{ex:powersub1}} and \hyperref[ex:powersub2]{\thesubsection.\ref*{ex:powersub2}} discuss things further.
+It is very easy to get confused by the proof of this theorem. Exercises \ref{ex:powersub1} and \ref{ex:powersub2} discuss things further.
 
 
-\subsubsection*{Cardinality and Power Sets}
+\boldsubsubsection{Cardinality and Power Sets}
 
 Let's investigate how the cardinality of a set and its power set are related. Consider a few basic examples where we list all of the subsets, grouped by cardinality.
-\[\begin{array}{|c||c|c|c|c||c|}
-\hline
-\text{Set }A&\text{0-elements}&\text{1-element}&\text{2-elements}&\text{3-elements}&\nm{\cP(A)}\\\hline
-\emptyset&\emptyset&&&&1\\\hline
-\{a\}&\emptyset&\{a\}&&&1+1=2\\\hline
-\{a,b\}&\emptyset&\{a\},\{b\}&\{a,b\}&&1+2+1=4\\\hline
-\{a,b,c\}&\emptyset&\{a\},\{b\},\{c\}&\{a,b\},\{a,c\},\{b,c\}&\{a,b,c\}&1+3+3+1=8\\\hline
-\end{array}\]
+\[
+	\begin{array}{|c||c|c|c|c||c|}
+		\hline
+		\text{Set }A&\text{0-elements}&\text{1-element}&\text{2-elements}&\text{3-elements}&\nm{\cP(A)}\\\hline
+		\emptyset&\emptyset&&&&1\\\hline
+		\{a\}&\emptyset&\{a\}&&&1+1=2\\\hline
+		\{a,b\}&\emptyset&\{a\},\{b\}&\{a,b\}&&1+2+1=4\\\hline
+		\{a,b,c\}&\emptyset&\{a\},\{b\},\{c\}&\{a,b\},\{a,c\},\{b,c\}&\{a,b,c\}&1+3+3+1=8\\\hline
+	\end{array}
+\]
 You should have seen this pattern before: we are looking at the first few lines of Pascal's Triangle.\footnote{If you know a little about combinations from probability, it should be clear that a set $A$ with $n$ elements has precisely ${}^nC_r=\binom nr=\frac{n!}{r!(n-r)!}$ distinct $r$-element subsets.} It should be no surprise that if $\nm A=4$, then $\nm{\cP(A)}=1+4+6+4+1=16$. The progression $1,2,4,8,16,\ldots$ in the final column immediately suggests the following theorem.
 
-\begin{thm}\label{thm:powercard}
-Suppose that $A$ is a finite set. Then $\nm{\cP(A)}=2^{\nm A}$.
+\begin{thm}{}{powercard}
+	Suppose that $A$ is a finite set. Then $\nm{\cP(A)}=2^{\nm A}$.
 \end{thm}
 
-\noindent Conjuring up a proof may seem daunting given how little we know about $A$! In fact we have only one thing to work with: the \emph{cardinality} of $A$. Indeed you might find it helpful to rephrase the theorem as follows:
-\[\forall n\in\N_0,\ \ \nm A=n\implies \nm{\cP(A)}=2^{n}\]
+Conjuring up a proof may seem daunting given how little we know about $A$! In fact we have only one thing to work with: the \emph{cardinality} of $A$. Indeed you might find it helpful to rephrase the theorem as follows:
+\[
+	\forall n\in\N_0,\ \ \nm A=n\implies \nm{\cP(A)}=2^{n}
+\]
 Viewed this way, we see that we want to prove an infinite collection of propositions, indexed by the set $\N_0$:  induction seems like the way forward. What might the induction step look like? The basic idea is that every set with $n+1$ elements is the disjoint union of a set with $n$ elements and a single-element set. The induction step is essentially the observation that any $n+1$-element set $B$ has \emph{twice} the number of subsets of some $n$-element set $A$. It is instructive to see an example of this before writing the proof. 
 
-\begin{example}
-Let $B=\{1,2,3\}$. Now choose the element $3\in B$ and delete it to create the smaller set
-\[A=\{1,2\}=B\setminus\{3\}.\]
-We can split the subsets of $B$ into two groups: those which contain 3 and those which do not. In the following table we list all of the subsets of $B$. In the first column are those subsets $X$ which do not contain 3. These are exactly the subsets of $A$. In the second column are the subsets $Y=X\cup\{3\}$ of $B$ which do contain 3.
-\[\begin{array}{c|c}
-X&X\cup\{3\}\\\hline
-\emptyset&\{3\}\\
-\{1\}&\{1,3\}\\
-\{2\}&\{2,3\}\\
-\{1,2\}&\{1,2,3\}
-\end{array}\]
-It is clear that $B$ has twice the number of subsets of $A$.
+\begin{example}{}{}
+	Let $B=\{1,2,3\}$. Now choose the element $3\in B$ and delete it to create the smaller set
+	\[
+		A=\{1,2\}=B\setminus\{3\}
+	\]
+	We can split the subsets of $B$ into two groups: those which contain 3 and those which do not. In the following table we list all of the subsets of $B$. In the first column are those subsets $X$ which do not contain 3. These are exactly the subsets of $A$. In the second column are the subsets $Y=X\cup\{3\}$ of $B$ which do contain 3.
+	\[
+		\begin{array}{c|c}
+			X&X\cup\{3\}\\\hline
+			\emptyset&\{3\}\\
+			\{1\}&\{1,3\}\\
+			\{2\}&\{2,3\}\\
+			\{1,2\}&\{1,2,3\}
+		\end{array}
+	\]
+	It is clear that $B$ has twice the number of subsets of $A$.
 \end{example}
 
-\noindent This method of pairing is exactly mirrored in the proof.
+This method of pairing is exactly mirrored in the proof.
 
 \begin{proof}
-We prove by induction on the cardinality of $A$. For each $n\in\N_0$, we consider the proposition
-\[\nm A=n\implies\nm{\cP(A)}=2^n.\tag*{($\ast$)}\]
-(\emph{Base Case})\quad If $n=0$, then $A=\emptyset$ (Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}}). But then $\cP(A)=\{\emptyset\}$, whence $\nm{\cP(A)}=1=2^0$.\\
-(\emph{Induction Step})\quad Fix $n\in\N_0$ and assume that ($\ast$) is true for this $n$. That is, we assume that any set with $n$ elements has $2^n$ subsets. Now let $B$ be \emph{any} set with $n+1$ elements. Choose one of the elements $b\in B$ and define $A=B\setminus\{b\}$. The subsets of $B$ can then be separated into the following two types:
-\begin{enumerate}\itemsep0pt
-  \item Subsets $X\subseteq B$ which do not contain $b$.
-  \item Subsets $Y\subseteq B$ which contain $b$.
-\end{enumerate}
-In the first case, $X$ is really a subset of $A$.\\
-In the second case we can write $Y=X\cup\{b\}$, where $X$ is again a subset of $A$.\\
-Each subset $X\subseteq A$ therefore corresponds to precisely two subsets $X$ and $X\cup\{b\}$ of $B$. Since $\nm{A}=n$, the induction hypothesis tells us that there are $2^n$ subsets $X\subseteq A$, whence
-\[\nm{\cP(B)}=2\nm{\cP(A)}=2^{n+1}.\]
-By induction, $(\ast)$ is true for all $n\in\N_0$.
+	We prove by induction on the cardinality of $A$. For each $n\in\N_0$, we consider the proposition
+	\[
+		\nm A=n\implies\nm{\cP(A)}=2^n.\tag{$\ast$}
+	\]
+	(\emph{Base Case})\quad If $n=0$, then $A=\emptyset$ (Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}}). But then $\cP(A)=\{\emptyset\}$, whence $\nm{\cP(A)}=1=2^0$.\par
+	(\emph{Induction Step})\quad Fix $n\in\N_0$ and assume that ($\ast$) is true for this $n$. That is, we assume that any set with $n$ elements has $2^n$ subsets. Now let $B$ be \emph{any} set with $n+1$ elements. Choose one of the elements $b\in B$ and define $A=B\setminus\{b\}$. The subsets of $B$ can then be separated into the following two types:
+	\begin{enumerate}\itemsep0pt
+	  \item Subsets $X\subseteq B$ which do not contain $b$.
+	  \item Subsets $Y\subseteq B$ which contain $b$.
+	\end{enumerate}
+	In the first case, $X$ is really a subset of $A$.\par
+	In the second case we can write $Y=X\cup\{b\}$, where $X$ is again a subset of $A$.\par
+	Each subset $X\subseteq A$ therefore corresponds to precisely two subsets $X$ and $X\cup\{b\}$ of $B$. Since $\nm{A}=n$, the induction hypothesis tells us that there are $2^n$ subsets $X\subseteq A$, whence
+	\[
+		\nm{\cP(B)}=2\nm{\cP(A)}=2^{n+1}
+	\]
+	By induction, $(\ast)$ is true for all $n\in\N_0$.
 \end{proof}
 
-\noindent Once you understand the proof, you should compare it to the proof of Theorem \ref{thm:polygon} on the interior angles of a polygon: the idea is very similar. Exercise \hyperref[ex:binom]{\thesubsection.\ref*{ex:binom}} gives an alternative proof of this result.\\
+Once you understand the proof, you should compare it to the proof of Theorem \ref{thm:polygon} on the interior angles of a polygon: the idea is very similar. Exercise \ref{ex:binom} gives an alternative proof of this result.\par
 
-\noindent As a final example, we consider the interaction of power sets and Cartesian products.
+As a final example, we consider the interaction of power sets and Cartesian products.
 
-\begin{example}
-Suppose that $A=\{a\}$ and $B=\{b,c\}$. Then
-\[A\times B=\{(a,b),(a,c)\}.\]
-The power set $\cP(A\times B)$ therefore contains $2^2=4$ elements: indeed
-\[\cP(A\times B)=\Big\{\emptyset,\ \{(a,b)\},\ \{(a,c)\},\ \{(a,b),(a,c)\}\Big\}.\]
-The power sets of $A$ and $B$ have 2 and 4 elements respectively:
-\[\cP(A)=\big\{\emptyset,\{a\}\big\},\qquad\cP(B)=\big\{\emptyset,\{b\},\{c\},\{b,c\}\big\}.\]
-The Cartesian product of the power sets therefore has $2\times 4=8$ elements:
-\begin{multline*}
-\cP(A)\times\cP(B)
-=\Big\{\big(\emptyset,\emptyset\big),\  \big(\emptyset,\{b\}\big),\  \big(\emptyset,\{c\}\big),\  \big(\emptyset,\{b,c\}\big),\\*
-\big(\{a\},\emptyset\big),\  \big(\{a\},\{b\}\big),\  \big(\{a\},\{c\}\big),\  \big(\{a\},\{b,c\}\big)\Big\}.
-\end{multline*}
-It should be clear from this example not only that $\cP(A\times B)\neq\cP(A)\times\cP(B)$, but that the elements of the two sets are completely different. The elements of $\cP(A\times B)$ are \emph{sets of ordered pairs,} while the elements of $\cP(A)\times\cP(B)$ are \emph{ordered pairs of sets.}
+\begin{example}{}{}
+	Suppose that $A=\{a\}$ and $B=\{b,c\}$. Then
+	\[
+		A\times B=\{(a,b),(a,c)\}
+	\]
+	The power set $\cP(A\times B)$ therefore contains $2^2=4$ elements: indeed
+	\[
+		\cP(A\times B)=\Big\{\emptyset,\ \{(a,b)\},\ \{(a,c)\},\ \{(a,b),(a,c)\}\Big\}
+	\]
+	The power sets of $A$ and $B$ have 2 and 4 elements respectively:
+	\[
+		\cP(A)=\big\{\emptyset,\{a\}\big\},\qquad\cP(B)=\big\{\emptyset,\{b\},\{c\},\{b,c\}\big\}
+	\]
+	The Cartesian product of the power sets therefore has $2\times 4=8$ elements:
+	\begin{multline*}
+		\cP(A)\times\cP(B)
+		=\Big\{\big(\emptyset,\emptyset\big),\  \big(\emptyset,\{b\}\big),\  \big(\emptyset,\{c\}\big),\  \big(\emptyset,\{b,c\}\big)\\*
+		\big(\{a\},\emptyset\big),\  \big(\{a\},\{b\}\big),\  \big(\{a\},\{c\}\big),\  \big(\{a\},\{b,c\}\big)\Big\}
+	\end{multline*}
+	It should be clear from this example not only that $\cP(A\times B)\neq\cP(A)\times\cP(B)$, but that the elements of the two sets are completely different. The elements of $\cP(A\times B)$ are \emph{sets of ordered pairs,} while the elements of $\cP(A)\times\cP(B)$ are \emph{ordered pairs of sets.}
 \end{example}
 
 
 
-\paragraph{Self-test Questions}
+% \paragraph{Self-test Questions}
+% 
+% 	\begin{enumerate}
+%     \item The power set of a set $A$ is \underline{\phantom{the set of all subsets of $A$\qquad\qquad\qquad}}
+%     \item Which of the following are correct statements?
+%     \[[0,1)\in\cP(\R),\qquad 7\in\cP(\N),\qquad \{(3,5),(2,9)\}\subseteq\cP(\N\times\N),\qquad \{4,\pi\}\in\cP(\R)\]
+%   \end{enumerate}
 
-	\begin{enumerate}
-    \item The power set of a set $A$ is \underline{\phantom{the set of all subsets of $A$\qquad\qquad\qquad}}
-    \item Which of the following are correct statements?
-    \[[0,1)\in\cP(\R),\qquad 7\in\cP(\N),\qquad \{(3,5),(2,9)\}\subseteq\cP(\N\times\N),\qquad \{4,\pi\}\in\cP(\R)\]
-  \end{enumerate}
 
+\begin{exercises}{}{}
 
-\subsection*{Exercises}
-
-\begin{enumerate}\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\begin{enumerate}
   \item Find $\cP(A)$ and $\nm{\cP(A)}$ for the following:\\[5pt]
 	\begin{tabular}{r@{\ \ }l@{\qquad\qquad\qquad\qquad}r@{\ \ }l}
 	(a)&$A=\{1,2\}$.&(d)&$A=\{\emptyset,1,\{a\}\}$.\\[2pt]
@@ -380,7 +435,13 @@ It should be clear from this example not only that $\cP(A\times B)\neq\cP(A)\tim
 	\end{enumerate}
 	\emph{If you found this easy, try proving the binomial theorem: $\forall n\in\N,\,(x+y)^n=\sum\limits_{r=0}^n\binom nrx^ry^{n-r}$.}
 \end{enumerate}
-\newpage
+
+\end{exercises}
+
+
+\clearpage
+
+
 
 \subsection{Indexed Collections of Sets}
 
@@ -394,36 +455,44 @@ In this section we consider collections of sets $A_n$, where each $n$ lies in so
 % 	\item Let $A_n=\{x\in\R:\nm{x^2-1}<\frac 1n\}$, for each $n\in\N$. Here $A_3=\Big(-\sqrt{\frac 43},-\sqrt{\frac 23}\Big)\cup \Big(\sqrt{\frac 23},\sqrt{\frac 43}\Big)$.
 % \end{examples}
 
-\begin{defn}\label{defn:indexed}
-Given a family of indexed sets $\{A_n:n\in I\}$, we may form the \emph{union} and \emph{intersection} of the collection:
-\begin{gather*}
-\bigcup_{n\in I}A_n=\{x:x\in A_n\text{\emph{ for some} }n\in I\},\\
-\bigcap_{n\in I}A_n=\{x:x\in A_n\text{\emph{ for all} }n\in I\}.
-\end{gather*}
-Otherwise said,
-\begin{gather*}
-x\in\bigcup_{n\in I}A_n\iff \exists n\in I\text{ such that }x\in A_n\\
-x\in\bigcap_{n\in I}A_n\iff \forall n\in I\text{ we have }x\in A_n
-\end{gather*}
-A indexed collection $\{A_n:n\in I\}$ is \emph{pairwise disjoint} if $A_m\cap A_n=\emptyset$ whenever $m\neq n$.
+\begin{defn}{}{indexed}
+	Given a family of indexed sets $\{A_n:n\in I\}$, we may form the \emph{union} and \emph{intersection} of the collection:
+	\begin{gather*}
+		\bigcup_{n\in I}A_n=\{x:x\in A_n\text{\emph{ for some} }n\in I\},\\
+		\bigcap_{n\in I}A_n=\{x:x\in A_n\text{\emph{ for all} }n\in I\}.
+	\end{gather*}
+	Otherwise said,
+	\begin{gather*}
+		x\in\bigcup_{n\in I}A_n\iff \exists n\in I\text{ such that }x\in A_n\\
+		x\in\bigcap_{n\in I}A_n\iff \forall n\in I\text{ we have }x\in A_n
+	\end{gather*}
+	A indexed collection $\{A_n:n\in I\}$ is \emph{pairwise disjoint} if $A_m\cap A_n=\emptyset$ whenever $m\neq n$.
 \end{defn}
 
-\noindent When the indexing set is $\N$, it is common to use the notations $\bigcup\limits_{n=1}^\infty A_n$ and $\bigcap\limits_{n=1}^\infty A_n$.
+When the indexing set is $\N$, it is common to use the notations $\bigcup\limits_{n=1}^\infty A_n$ and $\bigcap\limits_{n=1}^\infty A_n$.
 
-\begin{example}
-Let the indexing set be $I=\{\alpha,\beta,\gamma\}$, and let
-\[A_\alpha=\{1,3,5\},\qquad A_\beta=\{2,3,4,6\},\qquad A_\gamma=\{1,2,3,6\}.\]
-It should be clear that
-\[\bigcup_{i\in I}A_i=A_\alpha\cup A_\beta\cup A_\gamma=\{1,2,3,4,5,6\}\]
-and
-\[\bigcap_{i\in I}A_i=A_\alpha\cap A_\beta\cap A_\gamma=\{3\}\]
+\begin{example}{}{}
+	Let the indexing set be $I=\{\alpha,\beta,\gamma\}$, and let
+	\[
+		A_\alpha=\{1,3,5\},\qquad A_\beta=\{2,3,4,6\},\qquad A_\gamma=\{1,2,3,6\}
+	\]
+	It should be clear that
+	\[
+		\bigcup_{i\in I}A_i=A_\alpha\cup A_\beta\cup A_\gamma=\{1,2,3,4,5,6\}
+	\]
+	and
+	\[
+		\bigcap_{i\in I}A_i=A_\alpha\cap A_\beta\cap A_\gamma=\{3\}
+	\]
 \end{example}
 
-\noindent The following Theorem is almost immediate given the definitions of union and intersection: can you supply a formal proof?
+The following Theorem is almost immediate given the definitions of union and intersection: can you supply a formal proof?
 
-\begin{thm}
-Let $\{A_n:n\in I\}$ be an indexed collection of sets, and let $m\in I$. Then
-\[A_m\subseteq\bigcup_{n\in I}A_n\quad\text{and}\quad \bigcap_{n\in I}A_n\subseteq A_m.\]
+\begin{thm}{}{}
+	Let $\{A_n:n\in I\}$ be an indexed collection of sets, and let $m\in I$. Then
+	\[
+		A_m\subseteq\bigcup_{n\in I}A_n\quad\text{and}\quad \bigcap_{n\in I}A_n\subseteq A_m
+	\]
 \end{thm}
 
 
@@ -436,125 +505,166 @@ Let $\{A_n:n\in I\}$ be an indexed collection of sets, and let $m\in I$. Then
 % \end{proof}
 
 
-\subsubsection*{Infinite Unions and Intersections: don't take limits!}
+\boldsubsubsection{Infinite Unions and Intersections: don't take limits!}
 
-The challenge with indexed sets often involves computing unions and intersections of \emph{infinitely many} sets. Be very careful with this: it is very tempting to `take limits' when this doesn't make sense. With this in mind, we dissect an important example.\\
+The challenge with indexed sets often involves computing unions and intersections of \emph{infinitely many} sets. Be very careful with this: it is very tempting to `take limits' when this doesn't make sense. With this in mind, we dissect an important example.\par
 
-\noindent For each $n\in\N$, consider the interval $A_n=\Bigl[0\,,\,\frac 1n\Bigr)$. We analyze the collection $\{A_n:n\in\N\}$. First observe that $m\le n\implies \frac 1n\le \frac 1m\implies A_n\subseteq A_m$; the sets are therefore nested:
-\[A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots\tag*{($\ast$)}\]
+For each $n\in\N$, consider the interval $A_n=\Bigl[0\,,\,\frac 1n\Bigr)$. We analyze the collection $\{A_n:n\in\N\}$. First observe that $m\le n\implies \frac 1n\le \frac 1m\implies A_n\subseteq A_m$; the sets are therefore nested:
+\[
+	A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots\tag{$\ast$}
+\]
 Since every set in the collection is a subset of $A_1$, it follows that this is the union,
-\[\bigcup_{n=1}^\infty A_n=A_1=[0,1).\]
+\[
+	\bigcup_{n=1}^\infty A_n=A_1=[0,1)
+\]
 Before considering the full intersection, we first compute all finite intersections. Since the sets $A_n$ are nested in the form ($\ast$), it follows that any \emph{finite} intersection is simply the smallest of the listed sets: i.e., for any constant $m\in\N$ we have
-\[\bigcap_{n=1}^mA_n=A_m=\Bigl[0\,,\,\frac 1m\Bigr).\]
+\[
+	\bigcap_{n=1}^mA_n=A_m=\Bigl[0\,,\,\frac 1m\Bigr)
+\]
 Observe that this is non-empty \emph{for every $m$}. Now what about the infinite intersection? You might be tempted to take a limit and make an argument such as
-\[\bigcap\limits_{n=1}^\infty A_n\overset{?}{=}\lim_{m\to\infty}\bigcap_{n=1}^mA_n\overset{?}{=}\lim_{m\to\infty}\Bigl[0\,,\,\frac 1m\Bigr)\overset{?}{=}\Bigl[0\,,\lim_{m\to\infty}\frac 1m\Bigr)=[0,0).\]
+\[
+	\bigcap\limits_{n=1}^\infty A_n\overset{?}{=}\lim_{m\to\infty}\bigcap_{n=1}^mA_n\overset{?}{=}\lim_{m\to\infty}\Bigl[0\,,\,\frac 1m\Bigr)\overset{?}{=}\Bigl[0\,,\lim_{m\to\infty}\frac 1m\Bigr)=[0,0)
+\]
 Quite apart from the issue that $[0,0)$ is ugly and could only mean the empty set, we should worry about whether this is a legitimate use of limits. It isn't! We are only allows to take limits of sequences of numbers, not of \emph{sets.} Perhaps you could forgive the abuse of limits if the approach yielded the correct conclusion. Unfortunately it doesn't: the infinite intersection is in fact non-empty, and we claim the following.
 
-\begin{thm}
-$\bigcap\limits_{n=1}^\infty A_n=\{0\}$.
+\begin{thm}{}{}
+	$\bigcap\limits_{n=1}^\infty A_n=\{0\}$.
 \end{thm}
 
-\noindent Before we give a formal proof, it is instructive to see a calculation. Let us show, for example, that $\frac 29\not\in\bigcap\limits_{n=1}^\infty A_n$. To prove that $\frac 29$ is not in the intersection of \emph{all} the $A_n$, it is enough to exhibit a single integer $m$ such that $\frac 29\not\in A_m$. The picture shows that we can choose $m=10$: since $\frac 1{10}<\frac 29$, we have $\frac 29\not\in [0,\frac 1{10}]=A_{10}$. Since $\frac 29\not\in A_{10}$, we conclude that $\frac 29\not\in\bigcap\limits_{n=1}^\infty A_n$.
+Before we give a formal proof, it is instructive to see a calculation. Let us show, for example, that $\frac 29\not\in\bigcap\limits_{n=1}^\infty A_n$. To prove that $\frac 29$ is not in the intersection of \emph{all} the $A_n$, it is enough to exhibit a single integer $m$ such that $\frac 29\not\in A_m$. The picture shows that we can choose $m=10$: since $\frac 1{10}<\frac 29$, we have $\frac 29\not\in [0,\frac 1{10}]=A_{10}$. Since $\frac 29\not\in A_{10}$, we conclude that $\frac 29\not\in\bigcap\limits_{n=1}^\infty A_n$.
 \begin{center}
-\includegraphics[width=0.5\textwidth]{setsii-06-intervalex}
+	\includegraphics[width=0.5\textwidth]{setsii-06-intervalex}
 \end{center}
 
 \begin{proof}
-We prove that $x\in\bigcap\limits_{n=1}^\infty A_n\iff x=0$.\\
-Suppose that $x\in\bigcap\limits_{n=1}^\infty A_n$. Then $x\in\bigl[0\,,\,\frac 1n\bigr)$ for all $n$. Otherwise said,
-\[\forall n\in\N,\text{ we have }0\le x<\frac 1n.\tag*{($\dag$)}\]
-Certainly $x=0$ satisfies these inequalities.\\
-Now suppose, for a contradiction, that $x>0$. Since $\lim\limits_{n\to\infty}\frac 1n=0$, we can certainly choose\footnote{Explicitly, you may choose choose $N=\lceil\frac 1x\rceil$, or anything larger. Here $\lceil x\rceil$ is the \emph{ceiling function:} the smallest integer greater than or equal to $x$.} $N$ large enough so that $\frac 1N\le x$. But this says that $x\not\in A_N$, which contradicts ($\dag$).\\
-The intersection contains no positive elements, and we conclude that
-\[\bigcap\limits_{n=1}^\infty A_n=\{0\}.\tag*{\qedhere}\]
+	We prove that $x\in\bigcap\limits_{n=1}^\infty A_n\iff x=0$.\par
+	Suppose that $x\in\bigcap\limits_{n=1}^\infty A_n$. Then $x\in\bigl[0\,,\,\frac 1n\bigr)$ for all $n$. Otherwise said,
+	\[
+		\forall n\in\N,\text{ we have }0\le x<\frac 1n.\tag{$\dag$}
+	\]
+	Certainly $x=0$ satisfies these inequalities.\par
+	Now suppose, for a contradiction, that $x>0$. Since $\lim\limits_{n\to\infty}\frac 1n=0$, we can certainly choose\footnote{Explicitly, you may choose choose $N=\lceil\frac 1x\rceil$, or anything larger. Here $\lceil x\rceil$ is the \emph{ceiling function:} the smallest integer greater than or equal to $x$.} $N$ large enough so that $\frac 1N\le x$. But this says that $x\not\in A_N$, which contradicts ($\dag$).\par
+	The intersection contains no positive elements, and we conclude that
+	\[
+		\bigcap\limits_{n=1}^\infty A_n=\{0\}\tag*{\qedhere}
+	\]
 \end{proof}
 
-\noindent By modifying the sets $A_n$ to either include or exclude endpoints, we can obtain slightly different results. Consider each of the following in turn. How would the argument for computing each intersection differ from what we did above?
+By modifying the sets $A_n$ to either include or exclude endpoints, we can obtain slightly different results. Consider each of the following in turn. How would the argument for computing each intersection differ from what we did above?
 \begin{itemize}
   \item If $B_n=\Bigl(0\,,\,\frac 1n\Bigr)$, then $\bigcap\limits_{n=1}^\infty B_n=\emptyset$.
   \item If $C_n=\Bigl(0\,,\,\frac 1n\Bigr]$, then $\bigcap\limits_{n=1}^\infty C_n=\emptyset$.
   \item If $D_n=\Bigl[0\,,\,\frac 1n\Bigr]$, then $\bigcap\limits_{n=1}^\infty D_n=\{0\}$.
 \end{itemize}
-The moral of these examples is that you cannot naïvely apply limits to sequences of sets. Your intuition is often a good guide, but that doesn't mean you should trust it blindly!\\
+The moral of these examples is that you cannot naïvely apply limits to sequences of sets. Your intuition is often a good guide, but that doesn't mean you should trust it blindly!\par
 
 Here are a few more examples.
 
  
-\begin{examples}
+\begin{examples}{}{}
+	\begin{enumerate}
 	\item\label{ex:index2} Let $A_n=[n,n+1)\subseteq\R$, for each $n\in\Z$. For example,
-\[A_3=[3,4),\quad\text{and}\quad A_{-17}=[-17,-16).\]
+	\[
+		A_3=[3,4),\quad\text{and}\quad A_{-17}=[-17,-16)
+	\]
 In this case the sets $A_n$ are pairwise disjoint, and we have
-\[\bigcup\limits_{n\in\Z}A_n=\R,\quad\text{and}\quad\bigcap\limits_{n\in\Z}A_n=\emptyset.\]
+	\[
+		\bigcup\limits_{n\in\Z}A_n=\R,\quad\text{and}\quad\bigcap\limits_{n\in\Z}A_n=\emptyset
+	\]
 To prove the former, note that $\forall x\in\R$ we have $x\in[n,n+1)$ where $n=\lfloor x\rfloor$ is the greatest integer which is less than or equal to $x$: i.e. $x\in A_{\lfloor x\rfloor}$.
 
 
 	\item\vspace*{5pt} For each $n\in\N$, let $A_n=[-n,n]$. Each of the sets $A_n$ is a closed interval. E.g.,
-	\[A_1=[-1,1],\qquad A_2=[-2,2],\qquad A_3=[-3,3].\]
+	\[
+		A_1=[-1,1],\qquad A_2=[-2,2],\qquad A_3=[-3,3]
+	\]
 	It should be clear that $n\le m\implies A_n\subseteq A_m$ so that we have a \emph{nested} sequence of sets:
-	\[A_1\subseteq A_2\subseteq A_3\subseteq\cdots\]
-	It follows immediately that the intersection is $\bigcap\limits_{n\in\N}A_n=A_1=[-1,1]$.\\
+	\[
+		A_1\subseteq A_2\subseteq A_3\subseteq\cdots
+	\]
+	It follows immediately that the intersection is $\bigcap\limits_{n\in\N}A_n=A_1=[-1,1]$.\par
 	With a little thinking you might hypothesize that the union is $\bigcup\limits_{n\in\N}A_n=\R$. To prove this, assume that $x\in\R$ is non-zero, and observe that
-	\[-\lceil\nm x\rceil\le x\le\lceil\nm x\rceil\implies x\in A_{\lceil\nm x\rceil}\]
+	\[
+		-\lceil\nm x\rceil\le x\le\lceil\nm x\rceil\implies x\in A_{\lceil\nm x\rceil}
+	\]
 	Since $0\in A_1$, it follows that $\R\subseteq\bigcup\limits_{n\in\N}A_n$, whence these sets are equal.\\
 	If the notation is causing difficulty, consider for example,
-	\[-3.124\in A_{\lceil 3.124\rceil}=A_4.\]
+	\[
+		-3.124\in A_{\lceil 3.124\rceil}=A_4
+	\]
 	
 	\item For each $n\in\N$, let $A_n=\{x\in\R:\nm{x^2-1}<\frac 1n\}$. Before computing the union and intersection of these sets, it is helpful to write each set as a pair of intervals. Note that
-	\[\nm{x^2-1}<\frac 1n\iff -\frac 1n< x^2-1<\frac 1n\iff \sqrt{1-\frac 1n}< \nm x< \sqrt{1+\frac 1n}.\]
+	\[
+		\nm{x^2-1}<\frac 1n\iff -\frac 1n< x^2-1<\frac 1n\iff \sqrt{1-\frac 1n}< \nm x< \sqrt{1+\frac 1n}
+	\]
 	Therefore
-	\[A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right).\]
-	As the picture suggests, the sets $A_n$ are nested: $A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots$.\\[5pt]
-	\noindent\begin{minipage}{0.5\textwidth}
-	Since $A_1$ is the largest of the nested sets, we see that
-	\[\bigcup\limits_{n\in\N}A_n=A_1=(-\sqrt{2},0)\cup(0,\sqrt{2}).\]
-	For the intersection, note that
-	\begin{align*}
-	\forall n\in\N,\ x\in A_n&\iff \forall n\in\N,\ \nm{x^2-1}<\frac 1n\\
-	&\iff x^2-1=0.
-	\end{align*}
-	It follows that $\bigcap\limits_{n\in\N}A_n=\{1,-1\}$.
-	\end{minipage}\hfill\begin{minipage}{0.38\textwidth}
-	\includegraphics[width=\textwidth]{setsii-05-intervalex}
+	\[
+		A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right)
+	\]
+	As the picture suggests, the sets $A_n$ are nested: $A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots$.\par
+	\begin{minipage}[t]{0.55\linewidth}\vspace{0pt}
+		Since $A_1$ is the largest of the nested sets, we see that
+		\[
+			\bigcup\limits_{n\in\N}A_n=A_1=(-\sqrt{2},0)\cup(0,\sqrt{2})
+		\]
+		For the intersection, note that
+		\begin{align*}
+			\forall n\in\N,\ x\in A_n&\iff \forall n\in\N,\ \nm{x^2-1}<\frac 1n\\
+			&\iff x^2-1=0
+		\end{align*}
+		It follows that $\bigcap\limits_{n\in\N}A_n=\{1,-1\}$.
 	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
+		\includegraphics[scale=0.5]{setsii-05-intervalex}
+	\end{minipage}
+	\end{enumerate}
 \end{examples}
 
 
-\subsubsection*{Indexed Unions: Don't Confuse Sets and Elements}
+\boldsubsubsection{Indexed Unions: Don't Confuse Sets and Elements}
 
 It is easy to confuse and important to distinguish between the sets
-\[\{A_n:n\in I\}\qquad\text{and}\qquad\bigcup_{n\in I}A_n.\]
+\[
+	\{A_n:n\in I\}\qquad\text{and}\qquad\bigcup_{n\in I}A_n
+\]
 The first is a set whose \emph{elements} are themselves sets. The second is the collection of all elements in \emph{any} set $A_n$. Consider the following examples.
 
 
-\begin{examples}
-	\item For each $n\in\{1,2,3\}$, let $A_n$ be the plane $\{(x,y,z):x+ny+n^2z=1\}\subseteq\R^3$.\\[2pt]
-	The indexed collection $\{A_1,A_2,A_3\}$ has \emph{three} elements: each of the planes $A_1,A_2,A_3$ is an element in its own right.\\
-  The union $A_1\cup A_2\cup A_3$ is an \emph{infinite} set consisting of all the \emph{points} lying on any of the three planes.\\
-  For the intersection, a little work with simultaneous equations should convince you that
-  \[(x,y,z)\in\negthickspace\negthickspace\bigcap_{n\in\{1,2,3\}}\negthickspace\negthickspace A_n\iff
-  \begin{cases}
-  x+y+z=1\\
-  x+2y+4z=1\\
-  x+3y+9z=1
-  \end{cases}\iff (x,y,z)=(1,0,0).\]
-  Thus $\bigcap A_n=\{(1,0,0)\}$. The planes are drawn below.
+\begin{examples}{}{}
+	\begin{enumerate}
+		\item For each $n\in\{1,2,3\}$, let $A_n$ be the plane $\{(x,y,z):x+ny+n^2z=1\}\subseteq\R^3$.\\[2pt]
+		The indexed collection $\{A_1,A_2,A_3\}$ has \emph{three} elements: each of the planes $A_1,A_2,A_3$ is an element in its own right.\par
+	  The union $A_1\cup A_2\cup A_3$ is an \emph{infinite} set consisting of all the \emph{points} lying on any of the three planes.\par
+	  For the intersection, a little work with simultaneous equations should convince you that
+	  \[
+	  	(x,y,z)\in\negthickspace\negthickspace\bigcap_{n\in\{1,2,3\}}\negthickspace\negthickspace A_n\iff
+	  	\begin{cases}
+	  		x+y+z=1\\
+	  		x+2y+4z=1\\
+	  		x+3y+9z=1
+	  	\end{cases}
+	  	\iff (x,y,z)=(1,0,0)
+	  \]
+	  Thus $\bigcap A_n=\{(1,0,0)\}$. The planes are drawn below.
   
-  \item\label{ex:projline} Let $I=\R\cup\{\infty\}$. For each $m\in I$, let $A_m$ be the line\footnote{We include the vertical line $A_\infty$.} through the origin in $\R^2$ with gradient $m$.\\[2pt]
-  Each element of $\{A_m:m\in I\}$ is a \emph{line}: there is one for each direction through the origin.\\
-  The union $\bigcup A_m$ consists of all of the \emph{points} that lie on \emph{any} line through the origin. Since any point in the plane lies on some line through the origin, we see that $\bigcup A_m=\R^2$.\\
-  It should be clear that all the lines intersect at the origin, and so $\bigcap A_m=\{(0,0)\}$.\\
-  The collection of lines $\{A_m:m\in I\}$ is the famous \emph{projective space} $\mathbb P(\R^2)$; this is a very different set from $\R^2$!\\
-  This example also shows that indexing sets don't have to be simple sets of integers. It is also possible to index the same set using $I=[0,\pi)$. If we define $B_\theta$ to be the line through the origin making an angle $\theta$ with the positive $x$-axis, we would then have $B_\theta=A_{\tan\theta}$.
+  	\item\label{ex:projline} Let $I=\R\cup\{\infty\}$. For each $m\in I$, let $A_m$ be the line\footnote{We include the vertical line $A_\infty$.} through the origin in $\R^2$ with gradient $m$.\par
+  	Each element of $\{A_m:m\in I\}$ is a \emph{line}: there is one for each direction through the origin.\par
+  	The union $\bigcup A_m$ consists of all of the \emph{points} that lie on \emph{any} line through the origin. Since any point in the plane lies on some line through the origin, we see that $\bigcup A_m=\R^2$.\par
+  	It should be clear that all the lines intersect at the origin, and so $\bigcap A_m=\{(0,0)\}$.\par
+  	The collection of lines $\{A_m:m\in I\}$ is the famous \emph{projective space} $\mathbb P(\R^2)$; this is a very different set from $\R^2$!\par
+  	This example also shows that indexing sets don't have to be simple sets of integers. It is also possible to index the same set using $I=[0,\pi)$. If we define $B_\theta$ to be the line through the origin making an angle $\theta$ with the positive $x$-axis, we would then have $B_\theta=A_{\tan\theta}$.
+	\end{enumerate}
 \end{examples}
 
 \begin{center}
 \begin{minipage}[b]{0.45\textwidth}
 \centering
-\includemedia[width=0.8\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, add3Djscript=3Dspintool.js, 3Dmenu,
-3Dcoo=-0.2646917402744293 -9.039887428283691 17.85630226135254,
-3Dc2c=0.781423807144165 -0.5375411510467529 0.31690123677253723,
-3Droo=261.5486749519297,
-3Dlights=Headlamp]{\includegraphics{setsii-01-planes+0_0}}{setsii-01-planes+0.prc}\\[15pt]
+% \includemedia[width=0.8\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, add3Djscript=3Dspintool.js, 3Dmenu,
+% 3Dcoo=-0.2646917402744293 -9.039887428283691 17.85630226135254,
+% 3Dc2c=0.781423807144165 -0.5375411510467529 0.31690123677253723,
+% 3Droo=261.5486749519297,
+% 3Dlights=Headlamp]{\includegraphics{setsii-01-planes+0_0}}{setsii-01-planes+0.prc}\\[15pt]
 Example 1: Three elements, or an infinite number?
 \end{minipage}\qquad\qquad
 \begin{minipage}[b]{0.35\textwidth}
@@ -565,133 +675,152 @@ Example 2: Elements in $\mathbb P(\R^2)$
 \end{center}
 
 
-\subsubsection*{Finite Decimals}\label{ex:finitedec}
+\boldsubsubsection{Finite Decimals}%\label{ex:finitedec}
 
-Here is another example where our intuition of `taking the limit' leads us astray. This time it is the union that behaves surprisingly.\\
+Here is another example where our intuition of `taking the limit' leads us astray. This time it is the union that behaves surprisingly.\par
 
-\noindent For each $n\in\N$, let $A_n$ be the set of decimals of length $n$. That is
-\[A_n=\bigl\{0.a_1a_2\ldots a_n:\text{where each $a_i\in\{0,1,\ldots,9\}$}\bigr\}.\]
+For each $n\in\N$, let $A_n$ be the set of decimals of length $n$. That is
+\[
+	A_n=\bigl\{0.a_1a_2\ldots a_n:\text{where each $a_i\in\{0,1,\ldots,9\}$}\bigr\}
+\]
 For example $0.134\in A_3$. Since $0.134=0.1340$, we also have $0.134\in A_4$. Once again we have a nested sequence of sets
-\[A_1\subseteq A_2\subseteq A_3\subseteq A_4\subseteq\cdots\]
+\[
+	A_1\subseteq A_2\subseteq A_3\subseteq A_4\subseteq\cdots
+\]
 The infinite intersection is therefore simply
-\[\bigcap_{n\in\N}A_n=A_1=\{0,0.1,\ldots,0.9\}.\]
+\[
+	\bigcap_{n\in\N}A_n=A_1=\{0,0.1,\ldots,0.9\}
+\]
 Now consider a finite union: if $m\in\N$, then
-\[\bigcup_{n=1}^mA_n=A_m=\bigl\{x\in [0,1):x\text{ has a decimal representation of length $\le m$}\bigr\}.\]
-At this point, we might be inclined to take the limit as $m\to\infty$ of the \emph{property} `length $m$ decimal.' If so, then it would seem that the infinite union should be the entire\footnote{We would include $1=0.9999\cdots$} interval $[0,1]$.\\
+\[
+	\bigcup_{n=1}^mA_n=A_m=\bigl\{x\in [0,1):x\text{ has a decimal representation of length $\le m$}\bigr\}
+\]
+At this point, we might be inclined to take the limit as $m\to\infty$ of the \emph{property} `length $m$ decimal.' If so, then it would seem that the infinite union should be the entire\footnote{We would include $1=0.9999\cdots$} interval $[0,1]$.\par
 What is wrong with our reasoning? We have again abused the idea of limits: one cannot take the limit of a property! Instead we use the definition:
 \begin{align*}
-x\in\bigcup_{n\in\N}A_n&\iff\exists n\in\N\text{ such that }x\in A_n\\
-&\iff\exists n\in\N \text{ such that $x$ is a decimal of length $n$.}
+	x\in\bigcup_{n\in\N}A_n&\iff\exists n\in\N\text{ such that }x\in A_n\\
+	&\iff\exists n\in\N \text{ such that $x$ is a decimal of length $n$.}
 \end{align*}
 It follows that
-\[\bigcup_{n\in\N}A_n=\big\{x\in[0,1):x\text{ has a \emph{finite} decimal representation}\big\}\]
+\[
+	\bigcup_{n\in\N}A_n=\big\{x\in[0,1):x\text{ has a \emph{finite} decimal representation}\big\}
+\]
 In particular, there are no irrational numbers in $\bigcup\limits_{n\in\N}A_n$:
-\[\text{If $x\in A_n$, then $y=10^nx$ is an integer, whence $x=\frac y{10^n}\in\Q$.}\]
+\[
+	\text{If $x\in A_n$, then $y=10^nx$ is an integer, whence $x=\frac y{10^n}\in\Q$.}
+\]
 Many rational numbers are also excluded. For example $\frac 13=0.3333\cdots$ is not in any set $A_n$ and is therefore not in the union.
 
 
-\subsubsection*{The Cantor Set}\label{ex:cantor}
+\boldsubsubsection{The Cantor Set}%\label{ex:cantor}
 
-We finish this section with a bit of fun. We can use infinite intersections to create self-similar sets, otherwise known as \emph{fractals.} The \emph{Cantor middle-third set} is a famous example.\\
+We finish this section with a bit of fun. We can use infinite intersections to create self-similar sets, otherwise known as \emph{fractals.} The \emph{Cantor middle-third set} is a famous example.\par
 
-\noindent Staring with the interval $C_0=[0,1]$, we construct a sequence of sets $C_n$ for each $n\in\N_0$ by repeatedly removing the middle third of each of the intervals contained in $C_n$.
+Staring with the interval $C_0=[0,1]$, we construct a sequence of sets $C_n$ for each $n\in\N_0$ by repeatedly removing the middle third of each of the intervals contained in $C_n$.
 
-\begin{minipage}{0.40\textwidth}
-$C_0=[0,1]$,\\[4pt]
-$C_1=[0,\frac 13]\cup [\frac 23,1]$,\\[4pt]
-$C_2=[0,\frac 19]\cup [\frac 29,\frac 13]\cup [\frac 23,\frac 79]\cup [\frac 89,1]$, etc.
+\begin{minipage}[t]{0.40\linewidth}\vspace{0pt}
+	$C_0=[0,1]$,\\[4pt]
+	$C_1=[0,\frac 13]\cup [\frac 23,1]$,\\[4pt]
+	$C_2=[0,\frac 19]\cup [\frac 29,\frac 13]\cup [\frac 23,\frac 79]\cup [\frac 89,1]$, etc.
 \end{minipage}
-\begin{minipage}{0.55\textwidth}
-\includegraphics[width=\textwidth]{setsii-02-cantor}
-\end{minipage}\\
+\hfill
+\begin{minipage}[t]{0.40\linewidth}\vspace{0pt}
+	\includegraphics[width=\textwidth]{setsii-02-cantor}
+\end{minipage}\par
 
-\noindent The sequence is drawn up to $C_{9}$, with an animation below. To see the detail for the last few sets, try zooming in as far as you can.\vspace{-5pt}
+The sequence is drawn up to $C_{9}$, with an animation below. To see the detail for the last few sets, try zooming in as far as you can.
 \begin{center}
-\animategraphics[width=\textwidth]{1}{setsii-07-cantor}{0}{9}
+	%\animategraphics[width=\textwidth]{1}{setsii-07-cantor}{0}{9}
 \end{center}\vspace{-8pt}
 
-\begin{defn}
-The \emph{Cantor set} $\mathcal C$ is the infinite intersection $\mathcal C=\negthickspace\bigcap\limits_{n=0}^\infty\negthickspace C_n$.
+\begin{defn}{}{}
+	The \emph{Cantor set} $\mathcal C$ is the infinite intersection $\mathcal C=\negthickspace\bigcap\limits_{n=0}^\infty\negthickspace C_n$.
 \end{defn}
 
-\noindent This set has several interesting properties.\\
+This set has several interesting properties.\par
 
-\noindent{\bf Zero Measure} (length)\quad Intuitively, the \emph{length} of a set of real numbers is the sum of the lengths of all the intervals contained in the set. Since we start with the interval $[0,1]$ and remove a third of the set each time, it should be clear that
-\[\operatorname{length}(C_0)=1,\qquad \operatorname{length}(C_1)=\frac 23,\qquad\operatorname{length}(C_2)=\left(\frac 23\right)^2,\quad\text{etc.}\]
+{\bf Zero Measure} (length)\quad Intuitively, the \emph{length} of a set of real numbers is the sum of the lengths of all the intervals contained in the set. Since we start with the interval $[0,1]$ and remove a third of the set each time, it should be clear that
+\[
+	\operatorname{length}(C_0)=1,\qquad \operatorname{length}(C_1)=\frac 23,\qquad\operatorname{length}(C_2)=\left(\frac 23\right)^2,\quad\text{etc.}
+\]
 Induction then gives us
-\[\operatorname{length}(C_n)=\left(\frac 23\right)^n.\]
-As $n\to\infty$ this goes to zero, so the Cantor set contains no intervals. This at least seems reasonable from the picture.\\
+\[
+	\operatorname{length}(C_n)=\left(\frac 23\right)^n
+\]
+As $n\to\infty$ this goes to zero, so the Cantor set contains no intervals. This at least seems reasonable from the picture.\par
 
-\noindent{\bf Infinite Cardinality}\quad The Cantor set $\mathcal{C}$ contains the endpoints of every interval removed at any stage of its construction. In particular, $\frac 1{3^n}\in\mathcal C$ for all $n\in\N_0$, and so $\mathcal C$ is an \emph{infinite} set. Indeed it is more than merely infinite, it is \emph{uncountably} so, as we shall see in Chapter \ref{sec:card}.\\
+{\bf Infinite Cardinality}\quad The Cantor set $\mathcal{C}$ contains the endpoints of every interval removed at any stage of its construction. In particular, $\frac 1{3^n}\in\mathcal C$ for all $n\in\N_0$, and so $\mathcal C$ is an \emph{infinite} set. Indeed it is more than merely infinite, it is \emph{uncountably} so, as we shall see in Chapter \ref{chap:cantor}.\par
 
-\noindent{\bf Self-similarity}\quad If $\frac 13\mathcal C$ means `take all the elements of $\mathcal C$ and divide them by three,' and $\frac 13\mathcal C+\frac 23$ means `take all the elements of $\frac 13\mathcal C$ and add $\frac 23$,' then
-\[\mathcal C=\frac{\mathcal C}{3}\cup\left(\frac{\mathcal C}{3}+\frac 23\right).\tag*{($\ast$)}\]
+{\bf Self-similarity}\quad If $\frac 13\mathcal C$ means `take all the elements of $\mathcal C$ and divide them by three,' and $\frac 13\mathcal C+\frac 23$ means `take all the elements of $\frac 13\mathcal C$ and add $\frac 23$,' then
+\[
+	\mathcal C=\frac{\mathcal C}{3}\cup\left(\frac{\mathcal C}{3}+\frac 23\right) \tag{$\ast$}
+\]
 Otherwise said, $\mathcal C$ is made up of two shrunken copies of itself, a classic property of fractals. If you were to zoom into the Cantor set far enough that you couldn't see the whole set, you would not know what the scale was. In the following animation we are repeatedly zooming in on the second (of four) groups of points.
 \begin{center} 
-\animategraphics[width=0.6\textwidth,loop]{6}{setsii-08-cantor}{0}{22}
+%\animategraphics[width=0.6\textwidth,loop]{6}{setsii-08-cantor}{0}{22}
 \end{center}
 
-\subsubsection*{Optional: Analyzing the Cantor Set}
+
+\boldsubsubsection{Optional: Analyzing the Cantor Set}
 
 To get further with the Cantor set, it is necessary to explicitly describe the elements of the set. This can be accomplished using the \emph{ternary representation.}\label{page:cantor} It can be shown that every number $x\in[0,1]$ may be written in the form\footnote{Analogous to a decimal representation $x=\sum\limits_{n=1}^\infty 10^{-n}a_n=\frac{a_1}{10}+\frac{a_2}{10^2}+\frac{a_3}{10^3}+\cdots$ where $a_n\in\{0,1,2,\ldots,9\}$.}
-  \[x=\sum\limits_{n=1}^\infty 3^{-n}a_n=\frac{a_1}{3}+\frac{a_2}{3^2}+\frac{a_3}{3^3}+\cdots\]
-  where each $a_n\in\{0,1,2\}$. We write $x=[0.a_1a_2a_3\cdots]_3$. For example:
-\[[0.12]_3=\frac 13+\frac 2{3^2}=\frac 59,\qquad \frac{64}{243}=\frac 2{3^2}+\frac 1{3^3}+\frac 1{3^5}=[0.02101]_3,\qquad 1=[0.22222\cdots]_3.\]
-For this last, use the formula for the sum of a geometric series to calculate $\sum\limits_{n=1}^\infty 2\left(\frac 13\right)^n=2\cdot\frac{1/3}{1-1/3}=1$.\\
+\[
+	x=\sum\limits_{n=1}^\infty 3^{-n}a_n=\frac{a_1}{3}+\frac{a_2}{3^2}+\frac{a_3}{3^3}+\cdots
+\]
+ where each $a_n\in\{0,1,2\}$. We write $x=[0.a_1a_2a_3\cdots]_3$. For example:
+\[
+	[0.12]_3=\frac 13+\frac 2{3^2}=\frac 59,\qquad \frac{64}{243}=\frac 2{3^2}+\frac 1{3^3}+\frac 1{3^5}=[0.02101]_3,\qquad 1=[0.22222\cdots]_3
+\]
+For this last, use the formula for the sum of a geometric series to calculate $\sum\limits_{n=1}^\infty 2\left(\frac 13\right)^n=2\cdot\frac{1/3}{1-1/3}=1$.\par
 To convince yourself of the existence of a ternary representation, note that if $0\le x<1$ it follows that $x<3$ and so, we can take
-\[a_1=\lfloor 3x\rfloor\in\{0,1,2\}\]
-Now repeat, with $a_2=\lfloor x-\frac{a_1}3\rfloor$, etc.
-  It can also be shown that the only possibility whereby $x$ can have two ternary expansions is if one of them terminates. The other will eventually become a sequence of repeating 2's. For example:\footnote{This is ticklish to prove, as is the corresponding result for decimals: compare with $1=0.99999999\cdots$}
-  \[[0.0222222\cdots]_3=[0.1]_3=\frac 13\quad \text{and}\quad [0.10122222\cdots]_3=[0.102]_3=\frac 13+\frac 2{27}=\frac{11}{27}.\]
-  We can now describe precisely the elements of each of the sets $C_n$ and consequently the Cantor set.
+\[
+	a_1=\lfloor 3x\rfloor\in\{0,1,2\}
+\]
+Now repeat, with $a_2=\lfloor x-\frac{a_1}3\rfloor$, etc. It can also be shown that the only possibility whereby $x$ can have two ternary expansions is if one of them terminates. The other will eventually become a sequence of repeating 2's. For example:\footnote{This is ticklish to prove, as is the corresponding result for decimals: compare with $1=0.99999999\cdots$}
+\[
+	[0.0222222\cdots]_3=[0.1]_3=\frac 13\quad \text{and}\quad [0.10122222\cdots]_3=[0.102]_3=\frac 13+\frac 2{27}=\frac{11}{27}
+\]
+We can now describe precisely the elements of each of the sets $C_n$ and consequently the Cantor set.
 
-\begin{thm}
-$C_n$ is the set of all numbers $x\in[0,1]$ with a ternary expansion whose first $n$ digits are only 0 or 2. It follows that $\mathcal C$ is the set of $x\in[0,1]$ with a ternary expansion containing only 0 and 2.
+\begin{thm}{}{}
+	$C_n$ is the set of all numbers $x\in[0,1]$ with a ternary expansion whose first $n$ digits are only 0 or 2. It follows that $\mathcal C$ is the set of $x\in[0,1]$ with a ternary expansion containing only 0 and 2.
 \end{thm}
 
-\noindent The Theorem tells us that the Cantor set contains \emph{a lot} of elements. For example:
-\[[0.020202020\cdots]_3=2\sum_{n=1}^\infty 3^{-2n}=\frac{2/9}{1-1/9}=\frac 14\]
+The Theorem tells us that the Cantor set contains \emph{a lot} of elements. For example:
+\[
+	[0.020202020\cdots]_3=2\sum_{n=1}^\infty 3^{-2n}=\frac{2/9}{1-1/9}=\frac 14
+\]
 is an element of the Cantor set! What is strange is that $\frac 14$ is not the endpoint of any of the open intervals deleted during the construction of $\mathcal C$, and yet we've already established that $\mathcal C$ contains no intervals! Cantor introduced his set precisely because it was so challenging to the traditional concept of size: $\mathcal C$ seems to simultaneously have very few elements and enormously many.
 
 \begin{proof}
-We prove by induction.\\[2pt]
-(\emph{Base Case})\quad The proposition is clearly true for $C_0=[0,1]$, as there is nothing to check.\\[2pt]
-(\emph{Induction Step})\quad Assume that the proposition is true for some fixed $n\in\N_0$. Analogously to ($\ast$) above, observe that $C_{n+1}$ is built from two shrunken copies of $C_n$:
-\[C_{n+1}=\frac 13C_n\cup\left(\frac 13C_n+\frac 23\right).\]
-Now consider what division by 3 and addition of $\frac 23$ does to a ternary representation.
-\begin{itemize}
-  \item Since $\frac 13\sum_{n=1}^\infty 3^{-n}a_n=\sum_{n=1}^\infty 3^{-n-1}a_1$, we see that multiplication by $\frac 13$ shifts a ternary representation one position to the right.\footnote{Compare to multiplication of a decimal by $\frac 1{10}$.}
-	\[\frac 13[0.a_1a_2a_3\ldots]_3=[0.0a_1a_2a_3\ldots]_3\]
-	\item Since $\frac 23=[0.2]_3$ we see that
-	\[\frac 23+\frac 13[0.a_1a_2a_3\ldots]_3=[0.2a_1a_2a_3\ldots]_3\]
-\end{itemize}
-By the induction hypothesis, $C_n$ contains only 0's and 2's in its first $n$ entries. By moving ternary representations one step to the right and inserting 0 or 2 in the first position, we conclude that $C_{n+1}$ contains only 0's and 2's in its first $n+1$ entries.\\[2pt]
-By induction the proposition is true for all $n\in\N_0$.
+	We prove by induction.\par
+	(\emph{Base Case})\quad The proposition is clearly true for $C_0=[0,1]$, as there is nothing to check.\par
+	(\emph{Induction Step})\quad Assume that the proposition is true for some fixed $n\in\N_0$. Analogously to ($\ast$) above, observe that $C_{n+1}$ is built from two shrunken copies of $C_n$:
+	\[
+		C_{n+1}=\frac 13C_n\cup\left(\frac 13C_n+\frac 23\right)
+	\]
+	Now consider what division by 3 and addition of $\frac 23$ does to a ternary representation.
+	\begin{itemize}
+	  \item Since $\frac 13\sum_{n=1}^\infty 3^{-n}a_n=\sum_{n=1}^\infty 3^{-n-1}a_1$, we see that multiplication by $\frac 13$ shifts a ternary representation one position to the right.\footnote{Compare to multiplication of a decimal by $\frac 1{10}$.}
+		\[
+			\frac 13[0.a_1a_2a_3\ldots]_3=[0.0a_1a_2a_3\ldots]_3
+		\]
+		\item Since $\frac 23=[0.2]_3$ we see that
+		\[
+			\frac 23+\frac 13[0.a_1a_2a_3\ldots]_3=[0.2a_1a_2a_3\ldots]_3
+			\]
+	\end{itemize}
+	By the induction hypothesis, $C_n$ contains only 0's and 2's in its first $n$ entries. By moving ternary representations one step to the right and inserting 0 or 2 in the first position, we conclude that $C_{n+1}$ contains only 0's and 2's in its first $n+1$ entries.\par
+	By induction the proposition is true for all $n\in\N_0$.
 \end{proof}
 
-\noindent Other fractal sets based on $\mathcal C$ include the Cantor dust $\mathcal C\times\mathcal C$, the \href{http://en.wikipedia.org/wiki/Sierpinski_carpet}{Sierpi\'nski carpet} and \href{http://en.wikipedia.org/wiki/Sierpinski_triangle}{gasket}, and the \href{http://en.wikipedia.org/wiki/Koch_snowflake}{von Koch snowflake.}
+Other fractal sets based on $\mathcal C$ include the Cantor dust $\mathcal C\times\mathcal C$, the \href{http://en.wikipedia.org/wiki/Sierpinski_carpet}{Sierpi\'nski carpet} and \href{http://en.wikipedia.org/wiki/Sierpinski_triangle}{gasket}, and the \href{http://en.wikipedia.org/wiki/Koch_snowflake}{von Koch snowflake.}
 
 
 
-\paragraph{Self-test Questions}
 
-	\begin{enumerate}
-    \item If $\{A_n:n\in I\}$ is a collection of sets then
-    \begin{enumerate}
-      \item $x\in \bigcap_{n\in I}A_n\iff$ \underline{\phantom{$\exists n\in I:x\in A_n$,\qquad}}
-      \item $x\in \bigcup_{n\in I}A_n\iff$ \underline{\phantom{$\forall n\in I:x\in A_n$,\qquad}}
-  \end{enumerate}
-    \item For any real number $x$, the \emph{ceiling} function applied to $x$ is the value $\lceil x\rceil$, which is defined to be \underline{\phantom{the least integer greater than or equal to $x$\qquad}}
-    \item What does it mean for a collection of sets $\{A_n:n\in\N\}$ to be \emph{nested?}
-    \item True or false:
-    \begin{gather*}
-    B\subseteq \bigcup_{n\in I}A_n\iff \forall n\in I,\ B\subseteq A_n
-    \end{gather*}
-  \end{enumerate}
-
-\subsection*{Exercises}
-
-\begin{enumerate}\renewcommand{\labelenumi}{\thesubsection.\theenumi}
+\begin{exercises}{}{}
+\begin{enumerate}
   	\item For each integer $n$, consider the set $B_n=\{n\}\times\R$.
 	\begin{enumerate}
 		\item Draw a picture of $\bigcup\limits_{n=2}^4B_n$ (in the Cartesian plane).\\
@@ -800,4 +929,5 @@ By induction the proposition is true for all $n\in\N_0$.
 	\end{enumerate}
 \end{enumerate}
 
-\fi
+\end{exercises}
+
