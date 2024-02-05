@@ -1,0 +1,41 @@
+\pagestyle{empty}
+
+\boldsubsection{Reading Quiz Section \ref*{sec:induction}}
+
+\begin{enumerate}
+  \item In an induction proof of the fact that $P(n)$ is true for all $n \in \N$, the base case consists of proving that
+	\begin{enumerate}
+		\item $P(1)$ is false.
+		\item $P(1)$ is true.
+		\item for all $n$, $P(n) \implies P(n+1)$.
+		\item $P(1) \implies P(2)$.
+	\end{enumerate}
+    
+	\item In an induction proof of the fact that $P(n)$ is true for all $n \in \N$, the induction hypothesis is the assumption that
+	\begin{enumerate}
+		\item $P(1)$ is true.
+		\item for all $n$, $P(n) \implies P(n+1)$.
+		\item $P(n)$ is true for some fixed $n \in \N$.
+		\item $P(n)$ is true for all $n \in \N$.
+	\end{enumerate}
+    
+	\item True or False: in formal proofs, it is acceptable to write
+  \[
+		P(n)=\sum_{i=1}^n k=\frac{1}{2}n(n+1)
+  \]
+  as shorthand for ``$P(n)$ is the proposition $\sum_{i=1}^nk=\frac 12n(n+1)$.''
+\end{enumerate}
+
+
+\boldsubsection{Practice Problems Section \ref*{sec:induction}}
+
+\begin{enumerate}
+	\item\begin{enumerate}
+    \item Prove by induction that $\forall n\in\N$ we have $3\mid(2^n+2^{n+1})$.
+    \item Give a direct proof that $3\mid(2^n+2^{n+1})$ for all integers $n\ge 1$ \emph{and} for $n=0$.
+    \item Look carefully at your proof for part (a). If you had started with the base case $n=0$ instead of $n=1$, would your proof still be valid?
+    
+    \href{https://youtu.be/Z4qxw2YTLzI}{Video Solution}
+  \end{enumerate}
+\end{enumerate}
+

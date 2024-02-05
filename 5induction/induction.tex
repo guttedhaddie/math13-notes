@@ -1,7 +1,529 @@
 \graphicspath{{5induction/asy/}}
 \section{Mathematical Induction and Well-ordering}\label{chap:induction}
 
+In Section \ref{sec:proof} we discussed three methods of proof: direct, contrapositive, and contradiction. The fourth standard method, \emph{induction,} has a very different flavor. Before giving a formal definition, we consider how the need for induction arguments often arises.
 
+\subsection{Iterative Processes \& Proof by Induction}\label{sec:induction}
+
+Recursive processes are very common in mathematics and its applications: an unknown $x_n$ satisfies a simple recurrence relation $x_{n+1}=f(x_n)$ where an initial value $x_1$ is given. The typical approach to such problems is to \emph{hypothesise} a general formula $x_n=g(n)$ (spot a pattern!), and then \emph{prove} the validity of the formula. Induction is the proof method often employed in such situations. To get us started, we investigate a famous game.
+
+
+\boldsubsubsection{The Tower of Hanoi}
+
+Circular disks of decreasing radius are stacked on three pegs. Disks are moved one at a time from the top of a stack onto an empty peg or on top of a larger disk. If we start with 10 disks on the first peg, how many moves are required to transfer all disks to another peg?\smallbreak
+
+To get a feel for the problem, try playing the game with smaller numbers of disks. Suppose $n$ disks require $r_n$ moves. Then:
+\begin{itemize}\itemsep0pt
+  \item $r_1=1$ since there is only one disk to move!
+  \item $r_2=3$ as shown in the picture.
+\end{itemize} 
+
+\begin{center}
+	\includegraphics[width=0.9\textwidth]{induction-03-hanoi2}
+\end{center}
+
+More experimentation will hopefully convince you that $r_3=7$, at which point you might be ready to hypothesize a general formula---if not, experiment more!
+
+\begin{conj}{}{hanoi}
+	The Tower of Hanoi with $n$ disks requires $r_n=2^n-1$ moves.
+\end{conj}
+
+To make progress, consider a stack of $n+1$ disks. To move the largest disk, \emph{all other disks must be stacked on a single peg.} Moving $n+1$ disks is therefore a three-step process:
+\begin{enumerate}\itemsep0pt
+  \item Move the smallest $n$ disks to another peg.
+  \item Move the largest disk.
+  \item Move the remaining disks on top of the largest.
+\end{enumerate}
+\begin{center}
+\href{http://www.math.uci.edu/~ndonalds/math13/hanoi.html}{
+	\includegraphics{induction-04-hanoirn3}\quad
+	\includegraphics{induction-04-hanoirn4}\quad
+	\includegraphics{induction-04-hanoirn5}
+}
+\end{center}
+
+
+The upshot is that $r_n$ satisfies a \emph{recurrence relation}: $r_{n+1}=r_n+1+r_n=2r_n+1$.
+
+\goodbreak
+
+We are now in a position to prove our conjecture.
+
+\begin{proof}
+	Certainly the formula $r_n=2^n-1$ holds when $n=1$ disk (1 disk requires $r_1=1$ move).\smallbreak
+	Now suppose that $n$ disks require $r_n=2^n-1$ moves, where $n\in\N$ is some fixed number. Then $n+1$ disks require
+	\begin{align*}
+		r_{n+1}=2r_n+1=2(2^n-1)+1 =2^{n+1}-1 %\\
+		%&=2^{n+1}-2+1=2^{n+1}-1
+	\end{align*}
+	moves ($\ast$). Since $n$ was arbitrary, we have in fact proved an \emph{infinite collection of implications}: 
+	\[
+		r_1=2^1-1\implies r_2=2^2-1\implies r_3=2^3-1 \implies \cdots \implies r_n=2^n-1\implies \cdots
+	\]
+	Since the first of these propositions ($r_1=2^1-1$) is true, we conclude that $r_n=2^n-1$ for all $n\in\N$.
+\end{proof}
+
+To answer the original question, 10 disk require $r_{10}=2^{10}-1=1023$ moves; at one move per second this would take 17 minutes, 3 seconds.
+
+
+
+% As an illustration of how ridiculously time-consuming the Tower becomes, the following table gives the time taken to complete the Tower if you were able to move one disk per second.
+% 
+% \begin{center}
+% 	\begin{minipage}{0.4\textwidth}
+% 		\begin{tabular}{ll}
+% 			Disks&Time\\
+% 			5&31sec\\
+% 			10&17min 3sec\\
+% 			15&9hr 6min 7sec\\
+% 			20&12days 3hrs 16min 15sec\\
+% 			25&$\sim$ 1yr 23days\\
+% 			30&$\sim$ 34yrs 9days
+% 		\end{tabular}
+% 	\end{minipage}
+% 	\begin{minipage}{0.55\textwidth}
+% 	\centering
+	%\animategraphics[width=\textwidth]{2}{induction-01-hanoi}{0}{31}
+
+% Animation of five disks (click)MISSING!!!
+% 	\end{minipage}
+% \end{center}
+
+% 
+% \boldsubsubsection{Stacking Paper}
+% 
+% Consider the operation whereby you take a stack of paper, cut all sheets in half, then stack both halves together.
+% \begin{center}
+% 	\includegraphics[width=0.7\textwidth]{induction-02-paper}
+% \end{center}
+% If a single sheet of paper has thickness $0.1$\,mm, how many times would you have to repeat the process until the stack of paper reached to the sun? ($\approx 150$ million kilometers).\smallbreak
+% 
+% The example is describing a recurrence relation. If $h_n$ is the height of the stack after $n$ operations, then we have a sequence $(h_n)_{n=0}^\infty$ satisfying
+% \[
+% 	\begin{cases}
+% 		h_{n+1}=2h_n\\
+% 		h_0=0.1\,\text{mm}
+% 	\end{cases}
+% \]
+% It is easy to compute the first few terms of the sequence:
+% \[
+% 	\begin{array}{c|cccccccccc}
+% 		n&0&1&2&3&4&5&6&7&8&\cdots\\\hline
+% 		h_n\text{ (mm)}&0.1&0.2&0.4&0.8&1.6&3.2&6.4&12.8&25.6&\cdots
+% 	\end{array}
+% \]
+% It is not hard to hypothesize that, after $n$ such operations, the stack of paper will have height
+% \[
+% 	=2^n\times 0.1\text{\,mm}
+% \]
+% All we have done is to spot a pattern. We can reassure ourselves by checking that the first few terms of the sequence satisfy the formula: certainly $h_0=2^0\times 0.1$\,mm and $h_1=2^1\times 0.1$\,mm, etc. Unfortunately the sequence has \emph{infinitely many} terms, so we need a trick which confirms \emph{all of them at once.} Unless we can \emph{prove} that our formula is correct \emph{for all} $n\in\N_0$ it will remain just a guess. This is where induction steps in.\par
+% 
+% The trick is called the \emph{induction step}. We \emph{assume} that we have already confirmed the formula for some fixed, but unspecified, value of $n$ and then use what we know (the recurrence relation $h_{n+1}=2h_n$) to confirm the formula for the \emph{next value $n+1$.} Here it goes:\par
+% 
+% 
+% \emph{Induction Step}\quad Suppose that $h_n=2^n\times 0.1$ mm, for some fixed $n\in\N_0$. Then
+% \[
+% 	h_{n+1}=2h_n=2(2^n\times 0.1)=2^{n+1}\times 0.1\ \text{mm}
+% \]
+% This is exactly the expression we hoped to find for the ($n+1$)th term of the sequence. Think about what the induction step is doing. By leaving $n$ unspecified, we have proved an \emph{infinite collection of implications at once!} Each implication has the form
+% \[
+% 	h_n=2^n\times 0.1\implies h_{n+1}=2^{n+1}\times 0.1
+% \]
+% Since the implications have been proved for all $n\in\N_0$, we can string them together:
+% \[
+% 	h_0=2^0\times 0.1\implies h_{1}=2^{1}\times 0.1\implies h_{2}=2^{2}\times 0.1\implies h_{3}=2^{3}\times 0.1\implies \cdots
+% \]
+% We have already checked that the first formula $h_0=2^0\times 0.1$ in the implication chain is true. By the induction step, the \emph{entire infinite collection of formulæ must be true.} We have therefore \emph{proved} that
+% \[
+% 	h_n=2^n\times 0.1\text{\,mm\,$=2^n\times 10^{-4}$\,m,}\quad \forall n\ge 0
+% \]
+% Now that we've proved the formula for every $h_n$, finishing the original problem is easy: we need to find $n\in\N_0$ such that
+% \[
+% 	h_n=2^n\times 10^{-4}\ge 150\times 10^9\,\mathrm{m}\iff 2^n\ge 15\times 10^{14}
+% \]
+% Since logarithms are increasing functions, they preserve inequalities and we may easily solve to see that
+% \[
+% 	n\ge\log_2(15\times 10^{14})=\log_215+14\log_210\approx 50.4
+% \]
+% Thus 51 iterations of the cut-and-stack process are sufficient for the pile of paper to reach the sun!\par
+
+
+
+\boldsubsubsection{Proof by Induction}
+
+The Tower of Hanoi argument is an example of \emph{proof by induction.} This method is invoked when we want to prove a sequence of propositions $P(1)$, $P(2)$, $P(3)$, \ldots, one for each natural number. The abstract structure of an induction proof consists of two separate arguments:
+\begin{description}%\itemsep0pt
+  \item[\normalfont(\emph{Base case})] Prove that $P(1)$ is true.
+  \item[\normalfont(\emph{Induction step})] Prove, for each $n\in\N$, that $P(n)\Longrightarrow P(n+1)$. During this phase, $P(n)$ is termed the \emph{induction hypothesis.}
+\end{description}
+The result is an infinite chain of implications:
+\[
+	P(1)\implies P(2)\implies P(3)\implies P(4)\implies P(5)\implies \cdots
+\]
+Since $P(1)$ is true (base case), \emph{all} the remaining propositions $P(2)$, $P(3)$, $P(4)$, \ldots{} are also true.\smallbreak
+
+Re-read the Tower of Hanoi proof; can you separate the base case and induction step? Our presentation was informal since we were only introducing the concept. For a formal argument, a few modifications should be made.
+
+\begin{itemize}
+  \item \emph{Set-up} the proof: orient the reader by stating, ``We prove by induction.'' It might also be helpful to spell out the propositions $P(n)$ and to tell the reader what variable ($n$) controls the induction.
+  \item Label the \emph{base case} and \emph{induction step} so the reader knows what you are doing!
+  \item After the induction step is complete, state your \emph{conclusion.} In the above we would replace everything after ($\ast$) with, ``By mathematical induction, $r^n=2^n-1$ for all $n\in\N$.''
+\end{itemize}
+
+
+Here is a straightforward and famous result, where we write the proof in our new language.
+
+\begin{thm}{}{ind1}
+	The sum of the first $n$ positive integers is $\sum\limits_{k=1}^nk=\frac 12n(n+1)$
+\end{thm}
+
+You should be familiar with summation notation $\sum\limits_{k=1}^nk=1+2+3+\cdots+n$: if not \emph{ask}!
+
+\goodbreak
+
+
+
+\begin{proof}
+	We prove by induction. For each $n\in\N$, let $P(n)$ be the proposition $\smash{\sum\limits_{k=1}^nk=\frac 12n(n+1)}$.
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=1$):] \smash{$\sum\limits_{k=1}^1k=1=\frac 121(1+1)$,} says that $P(1)$ is true.
+		\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$, and assume that $P(n)$ is true \emph{for this $n$.} We compute the sum of the first $n+1$ positive integers and use our induction hypothesis $P(n)$ to simplify:
+	  \begin{align*}
+			\sum_{k=1}^{n+1}k&=\textcolor{blue}{\sum_{k=1}^nk}+(n+1)=\textcolor{blue}{\frac 12n(n+1)}+(n+1) \tag{\textcolor{blue}{induction hypothesis}}\\
+			&=\left(1+\frac 12n\right)(n+1)=\frac 12(n+2)(n+1)\\
+			&=\frac 12(n+1)\bigl[(n+1)+1\bigr]
+	  \end{align*}
+	Therefore $P(n+1)$ is true.
+	\end{description}
+	By mathematical induction, we conclude that $P(n)$ is true for all $n\in\N$. That is
+	\[
+		\forall n\in\N,\quad \sum\limits_{k=1}^nk=\frac 12n(n+1)\tag*{\qedhere}
+	\]
+\end{proof}
+
+Note how we grouped $\frac 12(n+1)\bigl[(n+1)+1\bigr]$ so that it is obviously the right hand side of $P(n+1)$.\smallbreak
+
+We present several more examples in a similar vein, but done a little faster. As is typical, we don't explicitly introduce the symbol $P(n)$, though you should feel free to continue doing this if you find it helpful. Aim for a layout like these in your formal writing. 
+
+% \begin{thm}{}{ind2}
+% 	Prove that $n(n+1)(2n+1)$ is divisible by 6 for all natural numbers $n$.
+% \end{thm}% 
+% 
+% \begin{thm}{}{ind3}
+% 	For all $n\in\N$, \ $2+5+8+\cdots+(3n-1)=\frac 12n(3n+1)$.
+% \end{thm}
+
+\begin{example}{}{ind3}
+	We prove by induction that, for all $n\in\N$,
+	\[
+		2+5+8+\cdots+(3n-1)=\frac 12n(3n+1) \tag{$\ast$}
+	\]
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=1$):] The proposition ($\ast$) is trivially true: $2=\frac 12\cdot 1\cdot(3\cdot 1+1)$.
+		\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume ($\ast$) holds for this value of $n$. Then
+		\begin{align*}
+			\textcolor{blue}{2+5+\cdots+(3n-1)}+[3(n+1)-1]&=\textcolor{blue}{\frac 12n(3n+1)}+3n+2\\
+			&=\frac 12(3n^2+7n+4) =\frac 12(n+1)(3n+4)\\
+			&=\frac 12(n+1)\bigl[3(n+1)+1\bigr]
+		\end{align*}
+		which is the required proposition for $n+1$.
+	\end{description}
+	By mathematical induction ($\ast$) holds for all $n\in\N$.
+\end{example}
+
+To speed things up we labelled the desired proposition (what we'd have called $P(n)$ previously) by $(\ast)$ so it could be repeatedly referenced. The structure of the induction step in this first example was similar to Theorem \ref{thm:ind1}. Since the goal is to evaluate a sum, the induction step is little more than adding the same thing ($3n+2$) to both sides of the \textcolor{blue}{induction hypothesis}.\medbreak\goodbreak
+
+Our next two examples are a little harder, requiring more creativity to invoke the induction hypothesis. Both could alternatively be proved directly using modular arithmetic (Chapter \ref{chap:gcd}).
+
+\begin{examples}{}{ind2}
+	\exstart We prove by induction that $\forall n\in\N$, the integer $17^n-4^n$ is divisible by 13.
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item[]\begin{description}
+			\item[\normalfont\emph{Base case} ($n=1$):] Plainly $17^1-4^1$ is divisible by 13.
+			\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume that $17^n-4^n=13k$ for some $k\in\Z$. Then
+			\begin{align*}
+				17^{n+1}-4^{n+1}&=17\bigl(\textcolor{blue}{17^n}\bigr)-4^{n+1}=17\bigl(\textcolor{blue}{13k+4^n}\bigr)-4^{n+1} \tag{\textcolor{blue}{induction hypothesis}}\\
+				&=17\cdot 13k+(17-4)4^n =13\bigl(17k+4^n\bigr)
+			\end{align*}
+			is divisible by 13.
+		\end{description}
+		By mathematical induction, $17^n-4^n$ is divisible by 13 for all $n\in\N$.		
+		
+		\item\label{ex:ind22} We prove by induction: if $n\in\N$, then $n(n+1)(2n+1)$ is divisible by 6.
+		\begin{description}
+			\item[\normalfont\emph{Base case} ($n=1$):] The proposition reads $1\cdot (1+1)\cdot (2\cdot 1+1)=6$, which is divisible by 6.
+			\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume that $\textcolor{blue}{n(n+1)(2n+1)=6k}$ for some $k\in\Z$. Then
+			\begin{align*}
+					(n+1)(n+2)\bigl[2(n+1)+1\bigr]-\textcolor{blue}{6k}&=\textcolor{blue}{(n+1)}\bigl[(n+2)(2n+3)-\textcolor{blue}{n(2n+1)}\bigr]\\
+					&=(n+1)\bigl(2n^2+7n+6-(2n^2+n)\bigr) =6(n+1)^2
+				\end{align*}
+			from which
+			\[
+				(n+1)\bigl[(n+1)+1\bigr]\bigl[2(n+1)+1\bigr] =6\bigl((n+1)^2+k\bigr)
+			\]
+			is divisible by 6.
+		\end{description}
+		By mathematical induction, $n(n-1)(2n-1)$ is divisible by 6 for all $n\in\N$.	
+	\end{enumerate}
+\end{examples}
+
+
+\boldinline{Scratch work is your friend!}
+
+Unless things are very simple, you should build an induction argument by starting with some scratch work for the hard part: the \emph{induction step.} If you're stuck, explicitly stating the propositions $P(n)$ and $P(n+1)$ might help you see how to manipulate one into the other. Here are the propositions for Example \ref{ex:ind2}.1:
+\begin{quote}
+	\begin{tabular}{ll}
+	$P(n)$: &$17^n-4^n=13k$ for some integer $k$\\[5pt]
+	$P(n+1)$: &$17^{n+1}-4^{n+1}=13l$ for some integer $l$
+	\end{tabular}
+\end{quote}
+Since $17^n$ is common to both, you could try multiplying both sides of $P(n)$ by 17; if you re-read the example, you'll see that this is essentially the induction step! For Example \ref*{ex:ind2}.2, you might try multiplying out the cubic expressions
+\[
+	n(n+1)(2n+1)\ \text{ and }\ (n+1)(n+2)(2n+3)
+\]
+and comparing coefficients. Since the leading term in both is $n^3$, the \emph{difference} is quadratic and therefore much easier to think about\ldots\smallbreak
+
+Remember that scratch work isn't a proof; while your scratch work may make perfect sense to you, if a reader cannot follow it without assistance, then it isn't a proof! It is essential, once you think you understand the induction step, to lay out the entire proof cleanly: \emph{set-up, base case, induction step, conclusion.} As an example of what happens when you don't, here is a typical attempt at Example \ref{ex:ind3} by a student who is new to induction:
+
+\begin{tcolorbox}[exstyle]\vspace{-10pt}
+	\begin{align*}
+		P(n+1)=\hspace{4pt}&2+5+\cdots+(3n-1)+[3(n+1)-1] =\smash{\frac 12}(n+1)\bigl[3(n+1)+1\bigr]\\
+		&\frac 12n(3n+1)+(3n+2) =\frac 12(n+1)(3n+4)\\
+		&3n^2+n+6n+4 =3n^2+7n+4
+	\end{align*}
+\end{tcolorbox}
+
+Is this convincing to you? While there are many issues,\footnote{\textbullet\lstsp $P(n)$ There is no \emph{set-up, base case} or \emph{conclusion} and the word \emph{induction} is missing. The argument needs some English!
+\begin{itemize}\itemsep0pt
+  \item $P(n)$ has not been \emph{defined}. If you don't define it, don't write it!
+  \item $P(n+1)$ is a \emph{proposition}: it cannot \emph{equal} a number! Replacing ``$P(n+1)=$'' with ``$P(n+1)\Longleftrightarrow$'' would correct this.
+  \item There are no conditional connectives to indicate the logical flow. Moreover, read top to bottom, the argument is essentially $P(n)\wedge P(n+1)\implies T$, rather than the correct induction step $P(n)\implies P(n+1)$.
+\end{itemize}} the student's work isn't without merit, since the required calculation is present (left side of 1\st{} line $=$ left side of 2\nd). While helpful as scratch work, a substantial re-write is needed to make this convincing.
+\medbreak
+
+We finish this section with a trickier example of this thinking at work.
+
+\begin{example}{}{}
+	An \emph{L-shaped tromino} is an arrangement of three squares in an ``L'' shape. We claim:\par
+	\begin{minipage}[t]{0.75\linewidth}\vspace{-4pt}
+		\begin{quote}
+			If \textcolor{Magenta}{any} single square is removed from a $2^n\times 2^n$ square gird, then the remaining grid may be tiled by L-shaped trominos.
+		\end{quote}
+		\vspace{-6pt}
+		The claim has the form $\forall n\in\N,P(n)$, but note that $P(n)$ is itself \textcolor{Magenta}{universal}. The picture shows one of the \emph{sixteen} possible examples when $n=2$. To get an idea of how to structure the induction step, think how you might use $2\times 2$ grids to analyse a $4\times 4$ grid. The picture shows how!
+		\begin{itemize}
+		  \item Whatever square we remove, one quarter of the $2^2\times 2^2$ grid is a $2^1\times 2^1$ grid with one square removed: this is \textcolor{blue}{tilable}.
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.24\linewidth}\vspace{0pt}
+		\flushright\includegraphics{induction-11-tilingexample}
+	\end{minipage}
+	\par
+% \begin{center}
+% \includegraphics{induction-08-bluetromino} \qquad \qquad \includegraphics{induction-07-greentromino} \qquad \qquad \includegraphics{induction-09-yellowtromino} \qquad \qquad \includegraphics{induction-10-redtromino}
+% \end{center}
+\vspace{-2pt}
+		
+	\begin{itemize}
+	 	\item Place a single tromino (yellow in the picture) so that one of its squares lies in each remaining quadrant. What's left of each quadrant is a $2^1\times 2^1$ grid with one missing square: again tilable.
+	\end{itemize}
+	
+	This scratch work is really an argument $P(1)\Longrightarrow P(2)$! It remains only to formalize this intuition into a general proof. We proceed by induction on $n$.
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=1$):] If a single square is removed from a $2\times 2$ grid, the three remaining squares form single L-shaped tromino.
+		\item[\normalfont\emph{Induction step}:] Fix $n\in\N$ and assume that after removing \emph{any} square from any $2^n\times 2^n$ grid, the remainder is tilable. Now take any $2^{n+1}\times 2^{n+1}$ grid and remove a square.
+	\begin{itemize}
+	  \item By the induction hypothesis, the $2^n\times 2^n$ quadrant with the removed square is tilable.
+	  \item Place a single tromino in the center so that one of its squares lies in each remaining quadrant. What's left of each quadrant is a $2^n\times 2^n$ grid with one missing square: again tilable by the induction hypothesis.
+	\end{itemize}  
+	\end{description}
+	By induction, we conclude that every $2^n\times 2^n$ grid is tilable by trominos after any square is removed.
+\end{example}
+
+
+\goodbreak
+% 
+% \paragraph{Self-test Questions}
+% 
+% 	\begin{enumerate}
+% 	  \item True or false: In an induction proof of a statement $\forall n\in\N,\ P(n)$, the \emph{induction hypothesis} is the assumption that, for some fixed $n\in\N$, the proposition $P(n)$ is true.
+% 	  \item What is the conclusion of the induction step?
+% 	  \item Summarize the steps in an induction proof.
+%     \item Explain why we shouldn't connect propositions using equals signs.
+%     \item True or false: It is possible to use any form of proof (direct, contrapositive, contradiction, or even another induction!) to demonstrate the truth of any part of an induction proof.
+%     \item True or false: The induction step is equivalent to
+%     \[\forall n\in\N_{\ge 2},\ \ \neg P(n+1)\implies \neg P(n)\]
+%   \end{enumerate}
+
+
+\begin{exercises}{}{}
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-1-induction.html}{online}.
+
+	\begin{enumerate}
+	  \item Suppose you can move one disk on the Tower of Hanoi per second.
+	  \begin{enumerate}
+	    \item One of the oldest versions of the problem has monks transferring a tower of 64 disks. Roughly how many years would this take?
+	    \item In a realistic human lifetime, how large a tower could be moved?
+	  \end{enumerate}
+	  
+	  
+	  \item Imagine you cut a large large piece of paper in half and stack the two pieces on top of each other. You then repeat the process, cutting all sheets in half and making a single taller stack.
+		\begin{center}
+			\includegraphics{induction-02-paper}
+		\end{center}
+		If a single sheet of paper has thickness $0.1$\,mm, how many times would you have to repeat the cut-and-stack process until the stack of paper reached to the sun? ($\approx 150$ million kilometers). \emph{Prove} that you are correct.
+	  
+	
+	  \item A room contains $n$ people. Everybody wants to shake everyone else's hand (but not their own).
+	  \begin{enumerate}
+	    \item Suppose $n$ people require $h_n$ handshakes. If person $n+1$ enters the room, how many \emph{additional} handshakes are required? Obtain a recurrence relation for $h_{n+1}$ in terms of $h_n$.
+	    \item Hypothesize a general formula for $h_n$, and prove it by induction.
+	  \end{enumerate}
+	  
+	%   \item Skippy the Kangaroo is playing jump rope, but he tires as the day goes on. The heights $h_n$ (inches) of successive jumps are related by the recurrence 
+	%   \[h_{n+1}=\frac 8{9} h_n+1.\]
+	%   \begin{enumerate}
+	%   	\item Suppose that Skippy's initial jump has height $h_1=100\,$in. Show that Skippy fails to jump above 10in for the first time on the 40th jump.
+	%   	\item Find the \emph{total} height jumped by Skippy in the first $n$ jumps.
+	%   \end{enumerate}
+	%   \emph{You may find it useful to define $H_n=h_n-9$ and think about the recurrence for $H_n$. Now guess and prove a general formula for $H_n$. Finally, remind yourself about geometric series.})
+	  
+	  
+	  \item\begin{enumerate}
+	%     \item Complete Gauss' direct proof of Theorem \ref{thm:ind1}.
+	%     \item Give a direct proof of Theorem \ref{thm:ind2}.
+	    \item In Example \ref*{ex:ind2}.\ref{ex:ind22}, what is the proposition $P(n+1)$?
+	    \item In the induction step of Example \ref*{ex:ind2}.\ref{ex:ind22}, explain why it would be incorrect to write
+	    \begin{align*}
+				P(n+1)-P(n)&=(n+1)\bigl[(n+2)(2n+3)-n(2n+1)\bigr]\\
+				&=(n+1)(2n^2+7n+6-2n^2-n)\\
+				&=6(n+1)^2
+			\end{align*}
+			\item Extend the Example by proving, by induction, that $\sum\limits_{k=1}^nk^2=\frac 16n(n+1)(2n+1)$.
+	  \end{enumerate}
+  
+	  \item Prove by induction that for each natural number $n$, we have $\smash{\sum\limits_{j=0}^n2^j=2^{n+1}-1}$.
+		
+		\item Consider the statement: If $n$ is a natural number, then $\sum\limits_{k=1}^nk^3=\frac 14n^2(n+1)^2$
+		\begin{enumerate}
+		  \item What, explicitly, is $\smash{\sum\limits_{k=1}^4k^3}$?
+		  \item What would be meant by the expression $\sum\limits_{k=1}^nn^3$, and why is it different to $\sum\limits_{k=1}^nk^3$?
+		  \item If the statement is written in the form $\forall n\in\N,P(n)$, what is the proposition $P(n)$?
+	% 	  \item Give as many reasons as you can as to why the following `proof' of the induction step is incorrect. 
+	% 	  \begin{align*}
+	% 	  P(n+1)&=\sum\limits_{k=1}^{n+1}k^3=\frac 14(n+1)^2((n+1)+1)^2\\
+	% 	  &=\sum\limits_{k=1}^nk^3+(n+1)^3=\frac 14(n+1)^2(n+2)^2\\
+	% 	  &=\frac 14n^2(n+1)^2+(n+1)^3=\frac 14(n+1)^2(n+2)^2\\
+	% 	  &=\frac 14(n+1)^2\left[n^2+4(n+1)\right]=\frac 14(n+1)^2(n+2)^2\\
+	% 	  &=\frac 14(n+1)^2(n+2)^2=\frac 14(n+1)^2(n+2)^2
+	% 	  \end{align*}
+		  \item Proof the statement by induction.
+	  \end{enumerate}
+	
+%   \item\begin{enumerate}
+%     \item Prove by induction that $\forall n\in\N$ we have $3\mid(2^n+2^{n+1})$.
+%     \item Give a direct proof that $3\mid(2^n+2^{n+1})$ for all integers $n\ge 1$ \emph{and} for $n=0$.
+%     \item Look carefully at your proof for part (a). If you had started with the base case $n=0$ instead of $n=1$, would your proof still be valid?
+%   \end{enumerate}
+  
+		\item Prove \emph{by induction} that for every $n\in\N$ we have $n\equiv 5$ or $n\equiv 6$ or $n\equiv 7\spmod 3$.
+	
+		\item Prove by induction that, for all $n\in\N$,
+		\[
+			1\cdot 2+2\cdot 3+3\cdot 4+\cdots +n(n+1)=\smash[t]{\frac 13n(n+1)(n+2)}
+		\]
+
+		\item\begin{enumerate}
+		  \item Show, by induction, that for all $n\in\N$, the number 4 divides the integer $11^n-7^n$.
+			\item More generally, prove by induction that $(a-b)\mid (a^n-b^n)$ for any $a,b,n\in\N$.
+		\end{enumerate}
+	
+ %\item Prove by induction that for all $k \in \N$, we have $8^k-1$ divisible is a multiple of $7$. 
+	
+		\item Find a formula for the sum of the first $n$ odd natural numbers. Prove your assertion.
+		%\item Give an alternative direct proof of your formula from part (a). You may use results such as $\sum\limits_{i=1}^ni=\frac 12n(n+1)$.
+
+  
+% 	\item We mimic the previous question for the sum of the squares of the first $n$ natural numbers.
+% 	\begin{enumerate}
+%     \item Use the fact that $\sum\limits_{i=1}^ni^2=\frac 16n(n+1)(2n+1)$ to compute directly an expression for the sum of the squares of the first $n$ \emph{odd} natural numbers.\\
+%     \emph{Hint: $\sum\limits_{i=1}^n(2i-1)^2=\sum\limits_{i=1}^{2n}i^2-\sum\limits_{i=1}^n(2i)^2$\ldots}
+% 		\item Prove the truth of your formula by induction.
+%   \end{enumerate}
+  
+%   \item Many statements from previous classes have implicitly assumed induction. For example: ``The sum of any finite number of differentiable functions is differentiable.'' Stated more properly, we have:
+%   \begin{thm*}
+%   Suppose that the functions $f_m(x)$ are differentiable, where each $m\in\N$. Then $\sum\limits_{m=1}^nf_m(x)$ is differentiable for each $n\in\N$.
+%   \end{thm*}
+%   \begin{enumerate}
+%     \item Recall the limit definition of `differentiable' from calculus (you shouldn't have to, but look it up if necessary\ldots). Prove directly that if $f$ and $g$ are differentiable, then so is $f+g$.
+%     \item Using part (a) to provide the induction step, prove the above Theorem.
+%   \end{enumerate}
+
+		\item Find the error in the following ``proof'' of the statement, ``All cats have the same color fur.''
+		\begin{proof}
+	    Let $P(n)$ be the proposition, ``Any set of $n$ cats have the same color fur.'' We prove by induction on $n$. 
+	    \begin{description}
+	    	\item[\normalfont\emph{Base case} ($n=1$):] Any cat has the same color fur as itself.
+	    	\item[\normalfont\emph{Induction step}:] Fix $n\in\N$ and assume $P(n)$. Take any set $S= \{C_1,C_2,\ldots,C_{n+1}\}$ of $n+1$ cats. The set $S\setminus\{C_1\}$ has $n$ cats; by the induction hypothesis all have the same color fur. Again by the induction hypothesis, all cats in $S\setminus\{C_2\}$ have the same color fur. Combining these observations, we see that all cats in $S$ have the same color fur. Since $S$ was arbitrary, we see that $P(n+1)$ holds.
+	    \end{description}
+	    By induction, $P(n)$ is true for all $n\in\N$, which establishes the claim.
+		\end{proof}
+
+		\item Use induction, the product rule, and the fact that $\diff xx=1$ to prove the power law from calculus:
+		\[
+	    \forall n\in\N,\ \diff x x^n =nx^{n-1}
+		\]
+
+		\item A polynomial $p(x)=a_nx^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0$ has \emph{degree} $n$ provided $a_n\neq 0$.
+		\begin{enumerate}
+%     \item Prove that for all $n \in \N$, 
+%     \[
+%         \frac{d^n}{dx^n} e^{x^2} = p(x) e^{x^2}
+%     \]
+%     where $p(x)$ is a polynomial.
+    %\item Strengthen the result in part (a) by 
+    	\item Prove: for all $n\in\N$,
+    	\[
+        \diff[{}^n]{x^n} e^{x^2} = p_n(x) e^{x^2}
+    	\]
+    	where $p_n(x)$ is some polynomial of degree $n$.
+
+			\item (Hard)\lstsp Let $p(x)$ be a polynomial of degree $n\ge 1$. Show $p$ has at most $n$ roots.\par
+			(\emph{Hint: induct on the degree $d$})
+		\end{enumerate}
+
+% \item Let $a,b \in \Z$ .
+% \begin{enumerate}
+%     \item Prove that for all $n \in \N$, if $a$ and $b$ are relatively prime, then $a^{2^n}$ and $b^{2^n}$ are relatively prime.
+%     \item Use part (a) to show that for all $k \in \N$, if $a$ and $b$ are relatively prime, then $a^k$ and $b^k$ are relatively prime.
+% \end{enumerate}
+
+		\item Consider the following scratch work. Determine what result is being proved, then convert the scratch work into a formal proof of that result.
+	    \begin{align*}
+	      (1+x)^{n+1}&=(1+x)^n(1+x)\ge (1+nx)(1+x)\\
+	      &= 1+x+nx+nx^2=1+(n+1)x+nx^2\\
+	      &\ge 1+(n+1)x
+	    \end{align*}
+	
+		\item Prove that for any $n\in\N$,
+		\[
+	    \sum_{i=1}^n\frac{1}{i^2}<2	
+		\]
+		(\emph{Hint: prove the stronger fact that $\sum_{i=1}^n \frac{1}{i^2} < 2 - \frac{1}{n}$ for all $n \ge 1$})
+	\end{enumerate}
+
+\end{exercises}
+
+\clearpage
+
+
+\subsection{Well-ordering and the Principle of Mathematical Induction}\label{sec:wellorder}
+
+
+
+%Wellorder stuff!
 %     \item Prove: $n! \le \left(\frac{n + 1}{2}\right)^n$.\par
 %      (\emph{Hint: find a formula for the sum of the first $n$ positive integers})
 %   
@@ -23,412 +545,6 @@
 %     
 %     \item No! If $m>m_1>m_2>m_3>\cdots$ is a sequence of decreasing positive integers, then in at most $m$ steps we must reach zero! In this case, since we divide by 2 each time, it will take only approximately $\log_2m$ steps to pass 1. We will therefore eventually run out of positive integers and so the sequence cannot continue indefinitely. This contradicts the appearance that we generated two such sequences in part (b). But this followed immediately from the assuption that $\sqrt 2$ was rational. Thus $\sqrt 2\not\in\Q$.
 %   \end{enumerate}
-
-In Section \ref{sec:proof} we discussed three methods of proof: direct, contrapositive, and contradiction. The fourth standard method of proof, \emph{induction,} has a very different flavor. In practice it formalizes the idea of spotting a pattern. Before we give the formal definition of induction, we consider where induction fits into the investigative process.
-
-\subsection{Investigating Recursive Processes}
-
-In applications of mathematics, one often has a simple recurrence relation but no general formula. For instance, a process might be described by an expression of the form
-\[
-	x_{n+1}=f(x_n)
-\]
-where some initial value $x_1$ is given. While investigating such recurrences, you might hypothesize a \emph{general formula}
-\[
-	x_n=g(n)
-\]
-Induction is a method of proof that allows us to \emph{prove} the correctness of such general formulæ. Here is a simple example of the process.
-
-\boldsubsubsection{Stacking Paper}
-
-Consider the operation whereby you take a stack of paper, cut all sheets in half, then stack both halves together.
-\begin{center}
-	\includegraphics[width=0.7\textwidth]{induction-02-paper}
-\end{center}
-If a single sheet of paper has thickness $0.1$\,mm, how many times would you have to repeat the process until the stack of paper reached to the sun? ($\approx 150$ million kilometers).\smallbreak
-
-The example is describing a recurrence relation. If $h_n$ is the height of the stack after $n$ operations, then we have a sequence $(h_n)_{n=0}^\infty$ satisfying
-\[
-	\begin{cases}
-		h_{n+1}=2h_n\\
-		h_0=0.1\,\text{mm}
-	\end{cases}
-\]
-It is easy to compute the first few terms of the sequence:
-\[
-	\begin{array}{c|cccccccccc}
-		n&0&1&2&3&4&5&6&7&8&\cdots\\\hline
-		h_n\text{ (mm)}&0.1&0.2&0.4&0.8&1.6&3.2&6.4&12.8&25.6&\cdots
-	\end{array}
-\]
-It is not hard to hypothesize that, after $n$ such operations, the stack of paper will have height
-\[
-	=2^n\times 0.1\text{\,mm}
-\]
-All we have done is to spot a pattern. We can reassure ourselves by checking that the first few terms of the sequence satisfy the formula: certainly $h_0=2^0\times 0.1$\,mm and $h_1=2^1\times 0.1$\,mm, etc. Unfortunately the sequence has \emph{infinitely many} terms, so we need a trick which confirms \emph{all of them at once.} Unless we can \emph{prove} that our formula is correct \emph{for all} $n\in\N_0$ it will remain just a guess. This is where induction steps in.\par
-
-The trick is called the \emph{induction step}. We \emph{assume} that we have already confirmed the formula for some fixed, but unspecified, value of $n$ and then use what we know (the recurrence relation $h_{n+1}=2h_n$) to confirm the formula for the \emph{next value $n+1$.} Here it goes:\par
-
-
-\emph{Induction Step}\quad Suppose that $h_n=2^n\times 0.1$ mm, for some fixed $n\in\N_0$. Then
-\[
-	h_{n+1}=2h_n=2(2^n\times 0.1)=2^{n+1}\times 0.1\ \text{mm}
-\]
-This is exactly the expression we hoped to find for the ($n+1$)th term of the sequence. Think about what the induction step is doing. By leaving $n$ unspecified, we have proved an \emph{infinite collection of implications at once!} Each implication has the form
-\[
-	h_n=2^n\times 0.1\implies h_{n+1}=2^{n+1}\times 0.1
-\]
-Since the implications have been proved for all $n\in\N_0$, we can string them together:
-\[
-	h_0=2^0\times 0.1\implies h_{1}=2^{1}\times 0.1\implies h_{2}=2^{2}\times 0.1\implies h_{3}=2^{3}\times 0.1\implies \cdots
-\]
-We have already checked that the first formula $h_0=2^0\times 0.1$ in the implication chain is true. By the induction step, the \emph{entire infinite collection of formulæ must be true.} We have therefore \emph{proved} that
-\[
-	h_n=2^n\times 0.1\text{\,mm\,$=2^n\times 10^{-4}$\,m,}\quad \forall n\ge 0
-\]
-Now that we've proved the formula for every $h_n$, finishing the original problem is easy: we need to find $n\in\N_0$ such that
-\[
-	h_n=2^n\times 10^{-4}\ge 150\times 10^9\,\mathrm{m}\iff 2^n\ge 15\times 10^{14}
-\]
-Since logarithms are increasing functions, they preserve inequalities and we may easily solve to see that
-\[
-	n\ge\log_2(15\times 10^{14})=\log_215+14\log_210\approx 50.4
-\]
-Thus 51 iterations of the cut-and-stack process are sufficient for the pile of paper to reach the sun!\par
-
-We will formalize the discussion of induction in the next section so that you will never have to write as much as we've just done. However, it is important to remember how induction fits into a practical investigation. It is the missing piece of logic that turns a \emph{guess} into a justified formula. Before we do so, here is a famous and slightly more complicated problem.
-
-
-\boldsubsubsection{The Tower of Hanoi}
-
-The \emph{Tower of Hanoi} is a game involving circular disks of decreasing radii stacked on three pegs. A `move' consists of transferring the top disk in any stack onto a larger disk or an empty peg. If we start with $n$ disks on the first peg, how many moves are required to transfer all the disks to one of the other pegs?\par
-
-The challenge here is that we have no formula to play with, only the variable $n$ for the number of disks. The first thing to do is to play the game. If the variable $r_n$ represents the number of moves required when there are $n$ disks, then it should be immediately clear that $r_1=1$: one disk only requires one move! The picture below shows that $r_2=3$.
-\begin{center}
-	\includegraphics[width=\textwidth]{induction-03-hanoi2}
-\end{center}
-
-With more disks you can keep experimenting and find that $r_3=7$, etc. At this point you may be ready to hypothesize a general formula.
-
-\begin{conj}{}{hanoi}
-	The Tower of Hanoi with $n$ disks requires $r_n=2^n-1$ moves.
-\end{conj}
-
-
-Certainly the conjecture is true for $n=1$, 2 and 3. To see that it is true in general, we need to think about how to move a stack of $n+1$ disks. Since the largest disk can only be moved onto an empty peg, it follows that the $n$ smaller disks must already be stacked on a single peg \emph{before} the ($n+1$)\th{} disk can move. From the starting position this requires $r_n$ moves.
-
-\begin{center}
-	\includegraphics[width=0.9\textwidth]{induction-04-hanoirn}
-\end{center}
-
-The largest disk can now be moved to the final peg, before the original $n$ disks are moved on top of it. In total this requires $r_n+1+r_n$ moves, as illustrated in the picture. We therefore have a recurrence relation for $r_n$:
-\[
-	\begin{cases}
-		r_{n+1}=2r_n+1\\
-		r_1=1
-	\end{cases}
-\]
-
-We are now in a position to prove our conjecture. We know that the conjecture is true for $n=1$ and we assume that the formula $r_n=2^n-1$ is true for some fixed but unspecified $n$. Now we use the recurrence relation to prove that $r_{n+1}=2^{n+1}-1$.\smallbreak
-
-\emph{Induction Step} Suppose that $r_n=2^n-1$ for some fixed $n\in\N$. Then
-\begin{align*}
-	r_{n+1}&=2r_n+1=2(2^n-1)+1\tag*{(since we are \emph{assuming} $r_n=2^n-1$)}\\
-	&=2^{n+1}-2+1=2^{n+1}-1
-\end{align*}
-Exactly as in the paper-stacking example, we have simultaneously proved an \emph{infinite collection of implications}:
-\[
-	r_1=2^1-1\implies r_2=2^2-1\implies r_3=2^3-1\implies r_4=2^4-1\implies \cdots
-\]
-Since the first of these statements is true, it follows that \emph{all of the others are true.} Hence Conjecture \ref{conj:hanoi} is true, and becomes a theorem.\par
-
-As an illustration of how ridiculously time-consuming the Tower becomes, the following table gives the time taken to complete the Tower if you were able to move one disk per second.
-
-\begin{center}
-	\begin{minipage}{0.4\textwidth}
-		\begin{tabular}{ll}
-			Disks&Time\\
-			5&31sec\\
-			10&17min 3sec\\
-			15&9hr 6min 7sec\\
-			20&12days 3hrs 16min 15sec\\
-			25&$\sim$ 1yr 23days\\
-			30&$\sim$ 34yrs 9days
-		\end{tabular}
-	\end{minipage}
-	\begin{minipage}{0.55\textwidth}
-	\centering
-	%\animategraphics[width=\textwidth]{2}{induction-01-hanoi}{0}{31}
-
-Animation of five disks (click)MISSING!!!
-	\end{minipage}
-\end{center}
-
-
-\begin{exercises}{}{}
-
-\begin{enumerate}
-    \item A room contains $n$ people. Everybody wants to shake everyone else's hand (but not their own).
-    \begin{enumerate}
-      \item Suppose that $n$ people require $h_n$ handshakes. If an $(n+1)$th person enters the room, how many \emph{additional} handshakes are required? Obtain a recurrence relation for $h_{n+1}$ in terms of $h_n$.
-      \item Hypothesize a general formula for $h_n$, and prove it using the method in this section.
-    \end{enumerate}
-  
-  \item Skippy the Kangaroo is playing jump rope, but he tires as the day goes on. The heights $h_n$ (inches) of successive jumps are related by the recurrence 
-  \[h_{n+1}=\frac 8{9} h_n+1.\]
-  \begin{enumerate}
-  	\item Suppose that Skippy's initial jump has height $h_1=100\,$in. Show that Skippy fails to jump above 10in for the first time on the 40th jump.
-  	\item Find the \emph{total} height jumped by Skippy in the first $n$ jumps.
-  \end{enumerate}
-  \emph{You may find it useful to define $H_n=h_n-9$ and think about the recurrence for $H_n$. Now guess and prove a general formula for $H_n$. Finally, remind yourself about geometric series.})
-\end{enumerate}
-
-\end{exercises}
-
-\clearpage
-
-
-
-\subsection{Proof by Induction}
-
-The previous section motivated the need for induction and helped us see where induction fits into a logical investigation. In this section we formally lay out several induction proofs.\par
-
-Induction is the mathematical equivalent of a domino rally; toppling the $n$th domino causes the $(n+1)$th domino to fall, hence to knock all the dominos over it is enough merely to topple the first. Instead of dominoes, in mathematics we consider a sequence of \emph{propositions:} $P(1),\ P(2),\ P(3)$, etc. Induction demonstrates the truth of \emph{every} proposition $P(n)$ by doing two things:
-\begin{enumerate}
-  \item Proving that $P(1)$ is true\hfill(\emph{Base Case}) 
-  \item Proving that $\forall n\in\N,\ P(n)\implies P(n+1)$\hfill(\emph{Induction Step})
-\end{enumerate}
-You could think of the base case as knocking over the first domino, and the induction step as the $n$th domino knocking over the $(n+1)$th, \emph{for all $n$.} Both of the examples in the previous section followed this pattern.\footnote{In the cut-and-stack example, the initial proposition would be labelled $P(0)$ rather than $P(1)$.} Unpacking the induction step gives an infinite chain of implications:
-\[
-	(1)\implies P(2)\implies P(3)\implies P(4)\implies P(5)\implies \cdots
-\]
-The base case says that $P(1)$ is true, and so \emph{all} of the remaining propositions $P(2),\ P(3),\ P(4),\ P(5),\ldots$ are also true.\par
-
-All induction proofs have the same formal structure:
-
-\begin{itemize}
-  \item (\emph{Set-up}) Define the propositions $P(n)$, set-up notation and orient the reader as to what you are about to prove.
-  \item	(\emph{Base Case}) Prove that $P(1)$ is true.
-	\item (\emph{Induction Step}) Let $n\in\N$ be fixed and assume that $P(n)$ is true. This assumption is the \emph{induction hypothesis.} Perform calculations or other reasoning to conclude that $P(n+1)$ is true.
-	\item (\emph{Conclusion}) Remind the reader what it is that you have proved.
-\end{itemize}
-
-As you read more mathematics, you will find that the induction step is typically the most involved part of the proof. The \emph{set-up} stage is often no more than a sentence: `We prove by induction,' and the explicit definition of $P(n)$ is commonly omitted. These are the only shortcuts that it is sensible to take until you are extremely comfortable with induction. Practice making it completely clear what you are doing at each juncture.\par
-
-Here is a straightforward theorem, where we write the proof in the above language.
-
-\begin{thm}{}{ind1}
-	The sum of the first $n$ positive integers is given by the formula
-	\[
-		\sum_{i=1}^ni=\frac 12n(n+1)
-	\]
-\end{thm}
-
-\begin{proof}
-	(\emph{Set-up})\quad We prove by induction. For each $n\in\N$, let $P(n)$ be the proposition
-	\[
-		\sum_{i=1}^ni=\frac 12n(n+1)
-	\]
-	(\emph{Base Case})\quad Clearly \smash[t]{$\sum\limits_{i=1}^1i=1=\frac 121(1+1)$,} and so $P(1)$ is true.\par
-	(\emph{Induction Step})\quad Assume that $P(n)$ is true for some fixed $n\ge 1$. We compute the sum of the first $n+1$ positive integers using our induction hypothesis $P(n)$ to simplify:
-	  \begin{align*}
-		\sum_{i=1}^{n+1}i&=(n+1)+\sum_{i=1}^ni=(n+1)+\frac 12n(n+1)\tag*{(by assumption of $P(n)$)}\\
-		&=\left(1+\frac 12n\right)(n+1)=\frac 12(n+2)(n+1)\\
-		&=\frac 12(n+1)\bigl[(n+1)+1\bigr].
-	  \end{align*}
-	This last says that $P(n+1)$ is true.\par
-	(\emph{Conclusion})\quad By mathematical induction, we conclude that $P(n)$ is true for all $n\in\N$. That is
-	\begin{gather*}
-		\forall n\in\N,\quad \sum\limits_{i=1}^ni=\frac 12n(n+1).\tag*{\qedhere}
-	\end{gather*}
-\end{proof}
-
-Note how we grouped $\frac 12(n+1)\bigl[(n+1)+1\bigr]$ so that it is obviously the right hand side of $P(n+1)$.\par
-
-Here is another example in the same vein, but done a little faster.
-
-\begin{thm}{}{ind2}
-	Prove that $n(n+1)(2n+1)$ is divisible by 6 for all natural numbers $n$.
-\end{thm}
-
-\begin{proof}
-	We prove by induction. For each $n\in\N$, let $P(n)$ be the proposition
-	\[
-		\text{$n(n+1)(2n+1)$ is divisible by 6}
-	\]
-	(\emph{Base Case})\quad Clearly $1\cdot (1+1)\cdot (2\cdot 1+1)=6$ is divisible by 6, hence $P(1)$ is true.\par
-	(\emph{Induction Step})\quad Assume that $P(n)$ is true for some fixed $n\in\N$. Then
-	\[
-		n(n+1)(2n+1)=6k
-	\]
-	for some $k\in\Z$. But now we have
-	\begin{align*}
-		(n+1)(n+2)\bigl[2(n+1)+1\bigr]-n(n+1)(2n+1)&=(n+1)\bigl[(n+2)(2n+3)-n(2n+1)\bigr]\\
-		&=(n+1)(2n^2+7n+6-2n^2-n)\\
-		&=6(n+1)^2
-	\end{align*}
-	By the induction hypothesis, we have that
-	\[
-		(n+1)(n+2)\bigl[2(n+1)+1\bigr]=n(n+1)(2n+1)+6(n+1)^2=6(k+(n+1)^2)
-	\]
-	is divisible by 6. Thus $P(n+1)$ is true. By mathematical induction, $P(n)$ is true for all $n\in\N$.
-\end{proof}
-
-Theorem \ref{thm:ind2} is also true for $n=0$, and indeed for \emph{all} integers $n$. As we shall see in the next section, induction works perfectly well with any base case (say $n=0$): you are not tied to $n=1$. We could even modify the argument to prove the same result when $n$ is a negative integer!\par
-
-After reading the proof, you are possibly thinking, `How would I know to do that calculation?' The answer is that you wouldn't, at least not without \emph{experience reading proofs.} It is better to think on how much scratch work was done before the originator stumbled on exactly this argument. Read more proofs and practice writing them, and you'll soon find that strategies like these will suggest themselves!\par
-
-Here is another example, written in a more advanced style: we don't explicitly name the propositions $P(n)$, and the reader is expected to be familiar enough with induction to realize when we are covering the base case and the induction step. If you find reading this proof a challenge, you should rewrite it in the same style as we used previously. Some assistance in this regard is given below.
-
-\begin{thm}{}{ind3}
-	For all $n\in\N$, \ $2+5+8+\cdots+(3n-1)=\frac 12n(3n+1)$.
-\end{thm}
-
-\begin{proof}
-	For $n=1$ we have $2=2$, hence the proposition holds. Now suppose that the proposition holds for some fixed $n\in\N$. Then
-	\begin{align*}
-		2+5+\cdots+[3(n+1)-1]&=\left[2+5+\cdots+(3n-1)\right]+3n+2\\
-		&=\frac 12n(3n+1)+3n+2=\frac 12(3n^2+7n+4)\\
-		&=\frac 12(n+1)(3n+4)=\frac 12(n+1)\bigl[3(n+1)+1\bigr]
-	\end{align*}
-	which says that the proposition holds for $n+1$. By mathematical induction the proposition holds for all $n\in\N$.
-\end{proof}
-
-\boldinline{Scratch work is your friend!}
-
-Once you are comfortable with the structure of an induction proof, the challenge is often in finding a clear argument for the induction step. Don't dive straight into the proof! First try some scratch calculations. Be creative, since the same approach will not work for all proofs.\\
-One of the benefits of explicitly stating $P(n)$ is that it helps you to isolate what you know and to identify your goal. When stuck, write down both expressions $P(n)$ and $P(n+1)$ and you will often see how to proceed. Consider, for example, the proof of Theorem \ref{thm:ind3}. We have:
-\begin{gather*}
-	\begin{array}{@{}l@{}l}
-		P(n):&\displaystyle 2+5+8+\cdots+(3n-1)=\frac 12n(3n+1).\\[-1pt]
-		P(n+1):\quad &\displaystyle 2+5+8+\cdots+[3(n+1)-1]=\frac 12(n+1)\bigl[3(n+1)+1\bigr]
-	\end{array}
-\end{gather*}
-Simply by writing these down, we know that our goal is to somehow convert the left hand side of $P(n+1)$ into the right hand side, using $P(n)$. In this situation it is clear how to proceed, for almost all of the left hand side of $P(n+1)$ can be substituted for that of $P(n)$.\par
-
-As a final comment on scratch work, remember that such is \emph{very unlikely} to constitute a proof. Here is a typical attempt at a proof of Theorem \ref{thm:ind3} by someone who is new to induction.
-% \begin{flalign*}
-% \text{\emph{False Proof.}}\quad P(n+1):&&\underbrace{2+5+\cdots+(3n-1)}_{=\frac 12n(3n+1)\text{ by }P(n)}+[3(n+1)-1]&=\frac 12(n+1)\bigl[3(n+1)+1\bigr]\phantom{osihasdhflzsjhfdk}\\[-15pt]
-% &&&=\frac 12(n+1)(3n+4)\\
-% \implies&&\frac 32n^2+\frac 12n+3n+3-1&=\frac 12(3n^2+7n+4)\\
-% \implies&&\frac 32n^2+\frac 72n+2&=\frac 32n^2+\frac 72n+2\tag*{\qed}
-% \end{flalign*}
-\begin{proof}[False Proof]
-	\begin{align*}
-		P(n+1):&&\underbrace{2+5+\cdots+(3n-1)}_{=\frac 12n(3n+1)\text{ by }P(n)}+[3(n+1)-1]&=\frac 12(n+1)\bigl[3(n+1)+1\bigr]\phantom{osihasdhflzsjhfdk}\\[-15pt]
-		&&&=\frac 12(n+1)(3n+4)\\
-		\implies&&\frac 32n^2+\frac 12n+3n+3-1&=\frac 12(3n^2+7n+4)\\
-		\implies&&\frac 32n^2+\frac 72n+2&=\frac 32n^2+\frac 72n+2\tag*{\qedhere}
-	\end{align*}
-\end{proof}
-
-Such an approach is likely to score very poorly in an exam! Here are some of the reasons why.
-\begin{itemize}
-  \item $P(n+1)$ is the \emph{goal,} the conclusion of the induction step. You cannot prove $P(n)\Longrightarrow P(n+1)$ by \emph{starting} with $P(n+1)$!
-  \item More subtly: the false proof's argument says that something we don't know ($P(n)\wedge P(n+1)$) implies something true (the trivial final line). Since the implications $T\Longrightarrow T$ and $F\Longrightarrow T$ are both true (Definition \ref{defn:implies}), this tells us \emph{nothing} about whether $P(n+1)$ is true.
-  \item Reversing the arrows and turning the false proof upside down would be a start. However there is no explanation as to \emph{why} the calculation is being done. The induction step is only part of an induction proof and it needs to be placed and explained in context. More concretely:
-  \begin{itemize}
-    \item There is no set-up. $P(n)$ has not been defined, neither indeed has $n$. You cannot use the expression $P(n)$ (or any other symbols) in a proof unless it has been properly defined.
-  	\item The base case is missing.
-  	\item There is no conclusion. Indeed the word \emph{induction} isn't mentioned: is the reader supposed to guess that we're doing induction?!
-	\end{itemize}
-\end{itemize}
-
-For all this negativity, there are some good things here. If you remove the $\Longrightarrow$ symbols, you are left with an excellent piece of scratch work. By simplifying both sides of your goal you can more easily see how to calculate. %For example, the expression $\frac 12(n+1)(3n+4)$ is an easier target to aim for when manipulating the left hand side of $P(n+1)$.
-
-Your scratch work may make perfect sense to you, but if a reader cannot follow it without your assistance, then it isn't a proof. The moral of the story is to do your scratch work for the induction step \emph{then} lay out the structure of the proof (set-up, base case, etc.) before incorporating your calculation into a coherent and convincing argument.
-% 
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-% 	  \item True or false: In an induction proof of a statement $\forall n\in\N,\ P(n)$, the \emph{induction hypothesis} is the assumption that, for some fixed $n\in\N$, the proposition $P(n)$ is true.
-% 	  \item What is the conclusion of the induction step?
-% 	  \item Summarize the steps in an induction proof.
-%     \item Explain why we shouldn't connect propositions using equals signs.
-%     \item True or false: It is possible to use any form of proof (direct, contrapositive, contradiction, or even another induction!) to demonstrate the truth of any part of an induction proof.
-%     \item True or false: The induction step is equivalent to
-%     \[\forall n\in\N_{\ge 2},\ \ \neg P(n+1)\implies \neg P(n)\]
-%   \end{enumerate}
-
-
-\begin{exercises}{}{}
-
-\begin{enumerate}
-  \item\begin{enumerate}
-    \item Complete Gauss' direct proof of Theorem \ref{thm:ind1}.
-    \item Give a direct proof of Theorem \ref{thm:ind2}.
-    \item In Theorem \ref{thm:ind2}, what is the proposition $P(n+1)$?
-    \item In the Induction Step of Theorem \ref{thm:ind2}, explain why it would be incorrect to write
-    \begin{align*}
-		P(n+1)-P(n)&=(n+1)\bigl[(n+2)(2n+3)-n(2n+1)\bigr]\\
-		&=(n+1)(2n^2+7n+6-2n^2-n)\\
-		&=6(n+1)^2.
-		\end{align*}
-  \end{enumerate}
-  
-  \item Prove by induction that for each natural number $n$, we have $\sum\limits_{j=0}^n2^j=2^{n+1}-1$.
-	
-	\item Consider the following Theorem: If $n$ is a natural number, then 
-	\[\sum\limits_{k=1}^nk^3=\frac 14n^2(n+1)^2\]
-	\begin{enumerate}
-	  \item What explicitly is the meaning of $\sum\limits_{k=1}^4k^3$?
-	  \item What would be meant by the expression $\sum\limits_{k=1}^nn^3$, and why is it different to $\sum\limits_{k=1}^nk^3$?
-	  \item If the Theorem is written in the form $\forall n\in\N,\ P(n)$, what is the proposition $P(n)$?
-	  \item Give as many reasons as you can as to why the following `proof' of the induction step is incorrect. 
-	  \begin{align*}
-	  P(n+1)&=\sum\limits_{k=1}^{n+1}k^3=\frac 14(n+1)^2((n+1)+1)^2\\
-	  &=\sum\limits_{k=1}^nk^3+(n+1)^3=\frac 14(n+1)^2(n+2)^2\\
-	  &=\frac 14n^2(n+1)^2+(n+1)^3=\frac 14(n+1)^2(n+2)^2\\
-	  &=\frac 14(n+1)^2\left[n^2+4(n+1)\right]=\frac 14(n+1)^2(n+2)^2\\
-	  &=\frac 14(n+1)^2(n+2)^2=\frac 14(n+1)^2(n+2)^2
-	  \end{align*}
-	  \item Give a correct proof of the Theorem by induction.
-  \end{enumerate}
-	
-  \item\begin{enumerate}
-    \item Prove by induction that $\forall n\in\N$ we have $3\mid(2^n+2^{n+1})$.
-    \item Give a direct proof that $3\mid(2^n+2^{n+1})$ for all integers $n\ge 1$ \emph{and} for $n=0$.
-    \item Look carefully at your proof for part (a). If you had started with the base case $n=0$ instead of $n=1$, would your proof still be valid?
-  \end{enumerate}
-  
-	\item Show by induction that for every $n\in\N$ we have: $n\equiv 5\pmod 3$ or $n\equiv 6\pmod 3$ or $n\equiv 7\pmod 3$.
-	
-	\item Prove by induction that, for all $n\in\N$,
-	\[
-		1\cdot 2+2\cdot 3+3\cdot 4+\cdots +n(n+1)=\frac 13n(n+1)(n+2)
-	\]
-
-	\item Show, by induction, that for all $n\in\N$, the number 4 divides the integer $11^n-7^n$.
-	
-	\item More generally, use induction to prove that $(a-b)\mid (a^n-b^n)$ for any positive integers $a,b,n$.
-	
-	\item\begin{enumerate}
-    \item Find a formula for the sum of the first $n$ odd natural numbers. Prove your assertion by induction.
-		\item Give an alternative direct proof of your formula from part (a). You may use results such as $\sum\limits_{i=1}^ni=\frac 12n(n+1)$.
-  \end{enumerate}
-  
-	\item We mimic the previous question for the sum of the squares of the first $n$ natural numbers.
-	\begin{enumerate}
-    \item Use the fact that $\sum\limits_{i=1}^ni^2=\frac 16n(n+1)(2n+1)$ to compute directly an expression for the sum of the squares of the first $n$ \emph{odd} natural numbers.\\
-    \emph{Hint: $\sum\limits_{i=1}^n(2i-1)^2=\sum\limits_{i=1}^{2n}i^2-\sum\limits_{i=1}^n(2i)^2$\ldots}
-		\item Prove the truth of your formula by induction.
-  \end{enumerate}
-  
-%   \item Many statements from previous classes have implicitly assumed induction. For example: ``The sum of any finite number of differentiable functions is differentiable.'' Stated more properly, we have:
-%   \begin{thm*}
-%   Suppose that the functions $f_m(x)$ are differentiable, where each $m\in\N$. Then $\sum\limits_{m=1}^nf_m(x)$ is differentiable for each $n\in\N$.
-%   \end{thm*}
-%   \begin{enumerate}
-%     \item Recall the limit definition of `differentiable' from calculus (you shouldn't have to, but look it up if necessary\ldots). Prove directly that if $f$ and $g$ are differentiable, then so is $f+g$.
-%     \item Using part (a) to provide the induction step, prove the above Theorem.
-%   \end{enumerate}
-\end{enumerate}
-
-\end{exercises}
-
-\clearpage
-
-
-\subsection{Well-ordering and the Principle of Mathematical Induction}\label{sec:wellorder}
 
 Before seeing more examples, it is worth thinking more carefully about the logic behind induction. The fact that induction really works depends on a fundamental property of the natural numbers.
 
@@ -606,6 +722,46 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 
 \footnotetext{We are obscuring two subtleties here. It is a fact, though not an obvious one, that it is always possible to choose a vertex $A$ so that the new polygon $\cP_n$ doesn't cross itself. Read about `ears' and `mouths' of polygons and triangulation if you're interested. There are also two other, less likely, cases which we didn't consider: when deleting a point from an ($n+1$)-gon it is possible to obtain  an $(n-1)$-gon, or even an $(n-2)$-gon. To think it out, try drawing a 12-gon in the shape of a Star of David. Deleting one of the outer corners creates a 9-gon! Dealing with these cases strictly requires strong induction, so we return to them later.}
 
+% \subsubsection*{Optional: Density of the Rationals}
+% 
+% In our last example, we offer a more direct application of $\N$ being well-ordered. One of the  key properties of the rational numbers $\Q$ is their density in the real line. Intuitively, the idea is that no matter how close you "zoom in" on the real line, you can always locate a rational number. We formalize this with the following definition.
+% 
+% \begin{defn}
+% We say a set $A \subseteq \R$ is \textbf{dense} (in $\R$) if for any real numbers $x$ and $y$ such that $x < y$, there is  $a \in A$ such that $x < a < y$.
+% \end{defn}
+% 
+% So if you take two real numbers, you can always find an element from $A$ in between them, no matter how close the two real numbers are from each other. Our goal will be to prove that the rational numbers $\Q$ are dense in $\R$. For this, we will use the well-orderedness of $\N$ along with the following:
+% 
+% \begin{axiom}
+% The real numbers $\R$ have the \textbf{Archimedean property}, that is, for any real numbers $x,y > 0$, there is $n \in \N$ such that $nx > y$.
+% \end{axiom}
+% 
+% It is not really necessary to take this as an axiom as the Archimedean property of $\R$ can be proved from more basic principles. However, this requires some knowledge about how to construct the real numbers which lies beyond the scope of this course. Back to our goal, we need the following lemma which states that if two real numbers differ by more than $1$, then there must be an integer between them.
+% 
+% \begin{lemm}\label{lemm:rationaldensityprep}
+% Suppose we have $x,y \in \R$ with $y - x > 1$. Then there exists $k \in \Z$ such that $x < k < y$.
+% \end{lemm}
+% 
+% \begin{proof}
+% The idea is to take $k$ to be the least integer greater than $x$. We will show such an integer exists using the fact that $\N$ is well-ordered. Let $A = \{n \in \Z : n > x\}$. Then $A \neq \emptyset$ by the Archimedean property (why?). Let $m \in \Z$ be a number such that $m < x$ (this is another application of the Archimedean property), and thus $m < n$ for all $n \in A$, by definition of $A$. Let 
+% \[
+% S = \{n - m + 1 : n \in A\}.
+% \]
+% So $S \subseteq \N$ and since $A \neq \emptyset$, we have $S \neq \emptyset$. Since $\N$ is well-ordered, $S$ has  a minimum element $s$. Then $k = s + m - 1$ is the minimum element of $A$ (why?).
+% 
+% By definition $x < k$. But by minimality of $k$, $k - 1 \notin A$, i.e., $x \geq k - 1$. Thus $x < k \leq x + 1$. Finally, since $y - x > 1$, we have $x + 1 < y$. All together, $x < k \leq x + 1 < y$. So $k$ is as required.
+% \end{proof}
+% 
+% Now we can prove our main result.
+% 
+% \begin{thm}
+% The rational numbers $\Q$ are dense in $\R$.
+% \end{thm}
+% 
+% \begin{proof}
+% Let $x,y \in \R$ with $x < y$ be arbitrary. We need to find $r \in \Q$ with $x < r < y$. Then $y - x > 0$. By the Archimedean property, there is $n \in \N$ such that $n(y - x) > 1$. Since $ny - nx > 1$, we can apply Lemma \ref{lemm:rationaldensityprep} to get $k \in \Z$ such that $nx < k < ny$. As $n \geq 1 > 0$, dividing yields $x < \frac{k}{n} < y$. Take $r = \frac{k}{n} \in \Q$.
+% \end{proof}
+
 \begin{aside}{}{}
 	{\bf Well-ordering more generally}
 	
@@ -654,6 +810,10 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
     \item Prove the result by induction (you may use whatever notation you wish).
   \end{enumerate}
 	
+	
+	
+  \item Show that for any $n \geq 3$, there is a set $A$ consisting of $n$ natural numbers such that the sum of the numbers in $A$ is divisible by every element of $A$.
+	
 	\item Recall the geometric series formula from calculus: if $r\neq 1$ is constant, and $n\in\N_0$, then
 	\[\sum_{k=0}^nr^k=\frac{1-r^{n+1}}{1-r}\tag*{$(\ast)$}\]
 	\begin{enumerate}
@@ -674,17 +834,17 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
   \item Here is an argument attempting to justify $\sum\limits_{i=1}^ni=\frac 12n(n+1)+7$. What is wrong with it?\\[5pt]
 	Assume that the statement is true for some fixed $n$. Then
 	\[\sum_{i=1}^{n+1}i=\sum_{i=1}^ni+(n+1)=\frac 12n(n+1)+7+(n+1)=\frac 12(n+1)[(n+1)+1]+7,\]
-	hence the statement is true for $n+1$ and, by induction, for all $n\in\N$.\pagebreak[4]
-	
-	\item Here is a `proof' that all human beings have the same age. Where is the flaw in the argument?
-	\begin{proof}
-	(\emph{Base case $n=1$})\quad In a set with only 1 person, all the people in the set have the same age.\\[2pt]
-	(\emph{Inductive hypothesis})\quad Suppose that for some integer $n\ge 1$ and for all sets with $n$ people, it is true that all of the people in the set have the same age.\\[2pt]
-	(\emph{Inductive step})\quad Let $A$ be a set with $n+1$ people, say $A=\{a_1,\dots,a_n,a_{n+1}\}$, and let
-		\[A'=\{a_1,\dots,a_n\}\quad\text{and}\quad A''=\{a_2,\dots,a_{n+1}\}.\]
-		The inductive hypothesis tells us that all the people in $A'$ have the same age and all the people in $A''$ have the same age. Since $a_2$ belongs to both sets, then all the people in $A$ have the same age as $a_2$. We conclude that all the people in $A$ have the same age.\\[2pt]
-	(\emph{Conclusion})\quad By induction, the claim holds for all $n\ge 1$.
-	\end{proof}
+	hence the statement is true for $n+1$ and, by induction, for all $n\in\N$.
+ 	
+% 	\item Here is a `proof' that all human beings have the same age. Where is the flaw in the argument?
+% 	\begin{proof}
+% 	(\emph{Base case $n=1$})\quad In a set with only 1 person, all the people in the set have the same age.\\[2pt]
+% 	(\emph{Inductive hypothesis})\quad Suppose that for some integer $n\ge 1$ and for all sets with $n$ people, it is true that all of the people in the set have the same age.\\[2pt]
+% 	(\emph{Inductive step})\quad Let $A$ be a set with $n+1$ people, say $A=\{a_1,\dots,a_n,a_{n+1}\}$, and let
+% 		\[A'=\{a_1,\dots,a_n\}\quad\text{and}\quad A''=\{a_2,\dots,a_{n+1}\}.\]
+% 		The inductive hypothesis tells us that all the people in $A'$ have the same age and all the people in $A''$ have the same age. Since $a_2$ belongs to both sets, then all the people in $A$ have the same age as $a_2$. We conclude that all the people in $A$ have the same age.\\[2pt]
+% 	(\emph{Conclusion})\quad By induction, the claim holds for all $n\ge 1$.
+% 	\end{proof}
 	
 	\item Let $P(n)$ and $Q(n)$ be propositions for each $n\in\N$.
 	\begin{enumerate}
@@ -701,6 +861,8 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 	\end{enumerate}
 	
 	\item Prove that if $A\subseteq\R$ is a \emph{finite} set, then $A$ is well-ordered.
+	
+	\item Prove that $\Q$ is not well-ordered.
   
 	\item In this question we use the fact that $\N_0$ is well-ordered to prove the Division Algorithm (Theorem \ref{thm:div}).\par
 	\emph{Theorem:\quad If $m\in\Z$ and $n\in\N$, then $\exists$ unique $q,r\in\Z$ such that $m=qn+r$ and $0\le r<n$.}\par
@@ -789,7 +951,7 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 \clearpage
 
 
-\subsection{Strong Induction}
+\subsection{Strong Induction}\label{sec:strongind}
 
 The principle of mathematical induction as stated in Theorem \ref{thm:ind} is sometimes known as \emph{weak} induction. In weak induction, we require only that one proposition $P(n)$ be true in order to demonstrate the truth of the succeeding proposition $P(n+1)$. By contrast, the induction step in \emph{strong} induction additionally requires that more, perhaps \emph{all}, of the propositions coming before $P(n)$ are also true.
 
@@ -934,12 +1096,18 @@ First recall Definition \ref{defn:irreducible}, that $p\in\N_{\ge 2}$ is \emph{p
 		\end{cases}\]
 		Prove: $\forall \,n\in\N$, \ $b_n$ is divisible by 3.
 	
-	\item\label{ex:ind3} Define a sequence $(c_n)_{n=0}^\infty$ as follows:
+	\item\label{ex:ind3strong} Define a sequence $(c_n)_{n=0}^\infty$ as follows:
 	  \[\begin{cases}
 			c_{n+1}=\frac{49}8c_n-\frac{225}8c_{n-2},\quad n\ge 2,\\
 			c_0=0, c_1=2, c_2=16.
 		\end{cases}\]
 		Prove that $c_n=5^n-3^n$ for all $n\in\N_0$. \emph{Hint: you need three base cases!}
+		
+			\item Prove that every $n \in \N$ can be written as 
+    \[
+        n = 2^{k_1} + 2^{k_2} + \cdots + 2^{k_\ell}
+    \]
+    for some $\ell \in \N$ and $k_1, k_2, \ldots k_\ell \geq 0$ such that all of the $k_i$ are distinct.
 		
 	\item Consider the proof of Theorem \ref{thm:fundarith}.
 	\begin{enumerate}
@@ -957,6 +1125,15 @@ First recall Definition \ref{defn:irreducible}, that $p\in\N_{\ge 2}$ is \emph{p
 		\exists i\in\{1,2,\ldots,n\}\text{ such that }p\mid a_i
 	\]
   \emph{Hint: you need to cover \emph{two} base cases. Why? Think about the induction step first and it will help you decide how many base cases you need.}
+  
+  
+    
+  \item The \emph{Fundamental Theorem of Arithmetic} states that every $n \geq 2$ can be written as a product of prime factors in a unique way (up to reordering of the prime factors). In other words, 
+\begin{enumerate}
+    \item $n = p_1 p_2 \cdots p_k$ for some primes $p_1, p_2, \ldots, p_k$ and,
+    \item if $n = q_1 q_2 \cdots q_\ell$ for primes $q_1, q_2, \ldots, q_\ell$, then $k = \ell$ and $p_i = q_i$ after possibly reordering the prime factors. 
+\end{enumerate}
+    We proved (1) in Theorem \ref{thm:fundarith}. Supply a proof of (2). [Hint: one way would be to use Exercise \ref{ex:primedef}.]
 	
 	\item Prove that the $n$th Fibonacci number $f_n$ is given by the formula
 \[f_n=\frac{\phi^n-\hat\phi^n}{\sqrt{5}},\quad\text{where}\quad \phi=\frac{1+\sqrt{5}}2\quad\text{and}\quad\hat\phi=\frac{1-\sqrt{5}}2.\]

@@ -1,19 +1,12 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 
-size(200);
+size(300,0);
 
 real sl=55;
 
@@ -32,4 +25,4 @@ for(int i=0; i<24; ++i){
 		rect(0.0+i/60,2.5,0.2);
 	}
 	
-draw(Label("\tiny Cut and stack",align=N),(1.2,0.2)..(1.7,0.25)..(2.4,0.27){E},Arrow);
+draw(Label("\small Cut and stack",align=N),(1.2,0.2)..(1.7,0.25)..(2.4,0.27){E},Arrow);

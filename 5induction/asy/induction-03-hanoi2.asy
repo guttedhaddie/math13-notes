@@ -1,16 +1,9 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 //import animate;
@@ -72,7 +65,7 @@ void mr(){r.insert(0,m[0]);
 
 picture p1;
 size(p1,100);
-draw((2,3){dir(-30)}..(3.5,1){SE},Arrow);
+draw((2,3)..(3.7,1){dir(300)},Arrow);
 tower();
 poles(M);
 add(p1,currentpicture.fit(),(0,0));
