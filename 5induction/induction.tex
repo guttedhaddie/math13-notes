@@ -89,63 +89,7 @@ To answer the original question, 10 disk require $r_{10}=2^{10}-1=1023$ moves; a
 % 	\end{minipage}
 % \end{center}
 
-% 
-% \boldsubsubsection{Stacking Paper}
-% 
-% Consider the operation whereby you take a stack of paper, cut all sheets in half, then stack both halves together.
-% \begin{center}
-% 	\includegraphics[width=0.7\textwidth]{induction-02-paper}
-% \end{center}
-% If a single sheet of paper has thickness $0.1$\,mm, how many times would you have to repeat the process until the stack of paper reached to the sun? ($\approx 150$ million kilometers).\smallbreak
-% 
-% The example is describing a recurrence relation. If $h_n$ is the height of the stack after $n$ operations, then we have a sequence $(h_n)_{n=0}^\infty$ satisfying
-% \[
-% 	\begin{cases}
-% 		h_{n+1}=2h_n\\
-% 		h_0=0.1\,\text{mm}
-% 	\end{cases}
-% \]
-% It is easy to compute the first few terms of the sequence:
-% \[
-% 	\begin{array}{c|cccccccccc}
-% 		n&0&1&2&3&4&5&6&7&8&\cdots\\\hline
-% 		h_n\text{ (mm)}&0.1&0.2&0.4&0.8&1.6&3.2&6.4&12.8&25.6&\cdots
-% 	\end{array}
-% \]
-% It is not hard to hypothesize that, after $n$ such operations, the stack of paper will have height
-% \[
-% 	=2^n\times 0.1\text{\,mm}
-% \]
-% All we have done is to spot a pattern. We can reassure ourselves by checking that the first few terms of the sequence satisfy the formula: certainly $h_0=2^0\times 0.1$\,mm and $h_1=2^1\times 0.1$\,mm, etc. Unfortunately the sequence has \emph{infinitely many} terms, so we need a trick which confirms \emph{all of them at once.} Unless we can \emph{prove} that our formula is correct \emph{for all} $n\in\N_0$ it will remain just a guess. This is where induction steps in.\par
-% 
-% The trick is called the \emph{induction step}. We \emph{assume} that we have already confirmed the formula for some fixed, but unspecified, value of $n$ and then use what we know (the recurrence relation $h_{n+1}=2h_n$) to confirm the formula for the \emph{next value $n+1$.} Here it goes:\par
-% 
-% 
-% \emph{Induction Step}\quad Suppose that $h_n=2^n\times 0.1$ mm, for some fixed $n\in\N_0$. Then
-% \[
-% 	h_{n+1}=2h_n=2(2^n\times 0.1)=2^{n+1}\times 0.1\ \text{mm}
-% \]
-% This is exactly the expression we hoped to find for the ($n+1$)th term of the sequence. Think about what the induction step is doing. By leaving $n$ unspecified, we have proved an \emph{infinite collection of implications at once!} Each implication has the form
-% \[
-% 	h_n=2^n\times 0.1\implies h_{n+1}=2^{n+1}\times 0.1
-% \]
-% Since the implications have been proved for all $n\in\N_0$, we can string them together:
-% \[
-% 	h_0=2^0\times 0.1\implies h_{1}=2^{1}\times 0.1\implies h_{2}=2^{2}\times 0.1\implies h_{3}=2^{3}\times 0.1\implies \cdots
-% \]
-% We have already checked that the first formula $h_0=2^0\times 0.1$ in the implication chain is true. By the induction step, the \emph{entire infinite collection of formulæ must be true.} We have therefore \emph{proved} that
-% \[
-% 	h_n=2^n\times 0.1\text{\,mm\,$=2^n\times 10^{-4}$\,m,}\quad \forall n\ge 0
-% \]
-% Now that we've proved the formula for every $h_n$, finishing the original problem is easy: we need to find $n\in\N_0$ such that
-% \[
-% 	h_n=2^n\times 10^{-4}\ge 150\times 10^9\,\mathrm{m}\iff 2^n\ge 15\times 10^{14}
-% \]
-% Since logarithms are increasing functions, they preserve inequalities and we may easily solve to see that
-% \[
-% 	n\ge\log_2(15\times 10^{14})=\log_215+14\log_210\approx 50.4
-% \]
-% Thus 51 iterations of the cut-and-stack process are sufficient for the pile of paper to reach the sun!\par
+
 
 
 
@@ -403,7 +347,9 @@ We finish this section with a trickier example of this thinking at work.
 			\item Extend the Example by proving, by induction, that $\sum\limits_{k=1}^nk^2=\frac 16n(n+1)(2n+1)$.
 	  \end{enumerate}
   
-	  \item Prove by induction that for each natural number $n$, we have $\smash{\sum\limits_{j=0}^n2^j=2^{n+1}-1}$.
+  
+	  \item Prove by induction that for each natural number $n$, we have $\smash{\sum\limits_{k=0}^n2^k=2^{n+1}-1}$.
+		
 		
 		\item Consider the statement: If $n$ is a natural number, then $\sum\limits_{k=1}^nk^3=\frac 14n^2(n+1)^2$
 		\begin{enumerate}
@@ -420,6 +366,7 @@ We finish this section with a trickier example of this thinking at work.
 	% 	  \end{align*}
 		  \item Proof the statement by induction.
 	  \end{enumerate}
+	
 	
 %   \item\begin{enumerate}
 %     \item Prove by induction that $\forall n\in\N$ we have $3\mid(2^n+2^{n+1})$.
