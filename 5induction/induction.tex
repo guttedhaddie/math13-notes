@@ -5,7 +5,7 @@ In Section \ref{sec:proof} we discussed three methods of proof: direct, contrapo
 
 \subsection{Iterative Processes \& Proof by Induction}\label{sec:induction}
 
-Recursive processes are very common in mathematics and its applications: an unknown $x_n$ satisfies a simple recurrence relation $x_{n+1}=f(x_n)$ where an initial value $x_1$ is given. The typical approach to such problems is to \emph{hypothesise} a general formula $x_n=g(n)$ (spot a pattern!), and then \emph{prove} the validity of the formula. Induction is the proof method often employed in such situations. To get us started, we investigate a famous game.
+Recursive processes are very common in mathematics and its applications: an unknown $x_n$ satisfies a simple recurrence relation $x_{n+1}=f(x_n)$ where an initial value $x_1$ is given. The typical approach to such problems is to \emph{hypothesize} a general formula $x_n=g(n)$ (spot a pattern!), and then \emph{prove} the validity of the formula. Induction is the proof method often employed in such situations. To get us started, we investigate a famous game.
 
 
 \boldsubsubsection{The Tower of Hanoi}
@@ -52,10 +52,9 @@ We are now in a position to prove our conjecture.
 \begin{proof}
 	Certainly the formula $r_n=2^n-1$ holds when $n=1$ disk (1 disk requires $r_1=1$ move).\smallbreak
 	Now suppose that $n$ disks require $r_n=2^n-1$ moves, where $n\in\N$ is some fixed number. Then $n+1$ disks require
-	\begin{align*}
-		r_{n+1}=2r_n+1=2(2^n-1)+1 =2^{n+1}-1 %\\
-		%&=2^{n+1}-2+1=2^{n+1}-1
-	\end{align*}
+	\[
+		r_{n+1}=2r_n+1=2(2^n-1)+1 =2^{n+1}-1
+	\]
 	moves ($\ast$). Since $n$ was arbitrary, we have in fact proved an \emph{infinite collection of implications}: 
 	\[
 		r_1=2^1-1\implies r_2=2^2-1\implies r_3=2^3-1 \implies \cdots \implies r_n=2^n-1\implies \cdots
@@ -64,32 +63,6 @@ We are now in a position to prove our conjecture.
 \end{proof}
 
 To answer the original question, 10 disk require $r_{10}=2^{10}-1=1023$ moves; at one move per second this would take 17 minutes, 3 seconds.
-
-
-
-% As an illustration of how ridiculously time-consuming the Tower becomes, the following table gives the time taken to complete the Tower if you were able to move one disk per second.
-% 
-% \begin{center}
-% 	\begin{minipage}{0.4\textwidth}
-% 		\begin{tabular}{ll}
-% 			Disks&Time\\
-% 			5&31sec\\
-% 			10&17min 3sec\\
-% 			15&9hr 6min 7sec\\
-% 			20&12days 3hrs 16min 15sec\\
-% 			25&$\sim$ 1yr 23days\\
-% 			30&$\sim$ 34yrs 9days
-% 		\end{tabular}
-% 	\end{minipage}
-% 	\begin{minipage}{0.55\textwidth}
-% 	\centering
-	%\animategraphics[width=\textwidth]{2}{induction-01-hanoi}{0}{31}
-
-% Animation of five disks (click)MISSING!!!
-% 	\end{minipage}
-% \end{center}
-
-
 
 
 
@@ -149,13 +122,6 @@ Note how we grouped $\frac 12(n+1)\bigl[(n+1)+1\bigr]$ so that it is obviously t
 
 We present several more examples in a similar vein, but done a little faster. As is typical, we don't explicitly introduce the symbol $P(n)$, though you should feel free to continue doing this if you find it helpful. Aim for a layout like these in your formal writing. 
 
-% \begin{thm}{}{ind2}
-% 	Prove that $n(n+1)(2n+1)$ is divisible by 6 for all natural numbers $n$.
-% \end{thm}% 
-% 
-% \begin{thm}{}{ind3}
-% 	For all $n\in\N$, \ $2+5+8+\cdots+(3n-1)=\frac 12n(3n+1)$.
-% \end{thm}
 
 \begin{example}{}{ind3}
 	We prove by induction that, for all $n\in\N$,
@@ -287,19 +253,6 @@ We finish this section with a trickier example of this thinking at work.
 
 
 \goodbreak
-% 
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-% 	  \item True or false: In an induction proof of a statement $\forall n\in\N,\ P(n)$, the \emph{induction hypothesis} is the assumption that, for some fixed $n\in\N$, the proposition $P(n)$ is true.
-% 	  \item What is the conclusion of the induction step?
-% 	  \item Summarize the steps in an induction proof.
-%     \item Explain why we shouldn't connect propositions using equals signs.
-%     \item True or false: It is possible to use any form of proof (direct, contrapositive, contradiction, or even another induction!) to demonstrate the truth of any part of an induction proof.
-%     \item True or false: The induction step is equivalent to
-%     \[\forall n\in\N_{\ge 2},\ \ \neg P(n+1)\implies \neg P(n)\]
-%   \end{enumerate}
-
 
 \begin{exercises}{}{}
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-1-induction.html}{online}.
@@ -335,8 +288,6 @@ We finish this section with a trickier example of this thinking at work.
 	  
 	  
 	  \item\begin{enumerate}
-	%     \item Complete Gauss' direct proof of Theorem \ref{thm:ind1}.
-	%     \item Give a direct proof of Theorem \ref{thm:ind2}.
 	    \item In Example \ref*{ex:ind2}.\ref{ex:ind22}, what is the proposition $P(n+1)$?
 	    \item In the induction step of Example \ref*{ex:ind2}.\ref{ex:ind22}, explain why it would be incorrect to write
 	    \begin{align*}
@@ -351,34 +302,25 @@ We finish this section with a trickier example of this thinking at work.
 	  \item Prove by induction that for each natural number $n$, we have $\smash{\sum\limits_{k=0}^n2^k=2^{n+1}-1}$.
 		
 		
-		\item Consider the statement: If $n$ is a natural number, then $\sum\limits_{k=1}^nk^3=\frac 14n^2(n+1)^2$
+		\item Consider the statement: If $n$ is a natural number, then $\smash{\sum\limits_{k=1}^nk^3=\frac 14n^2(n+1)^2}$
 		\begin{enumerate}
 		  \item What, explicitly, is $\smash{\sum\limits_{k=1}^4k^3}$?
-		  \item What would be meant by the expression $\sum\limits_{k=1}^nn^3$, and why is it different to $\sum\limits_{k=1}^nk^3$?
-		  \item If the statement is written in the form $\forall n\in\N,P(n)$, what is the proposition $P(n)$?
-	% 	  \item Give as many reasons as you can as to why the following `proof' of the induction step is incorrect. 
-	% 	  \begin{align*}
-	% 	  P(n+1)&=\sum\limits_{k=1}^{n+1}k^3=\frac 14(n+1)^2((n+1)+1)^2\\
-	% 	  &=\sum\limits_{k=1}^nk^3+(n+1)^3=\frac 14(n+1)^2(n+2)^2\\
-	% 	  &=\frac 14n^2(n+1)^2+(n+1)^3=\frac 14(n+1)^2(n+2)^2\\
-	% 	  &=\frac 14(n+1)^2\left[n^2+4(n+1)\right]=\frac 14(n+1)^2(n+2)^2\\
-	% 	  &=\frac 14(n+1)^2(n+2)^2=\frac 14(n+1)^2(n+2)^2
-	% 	  \end{align*}
+		  \item What would be meant by the expression $\smash{\sum\limits_{k=1}^nn^3}$, and why is it different to $\smash{\sum\limits_{k=1}^nk^3}$?
 		  \item Proof the statement by induction.
 	  \end{enumerate}
 	
 	
-%   \item\begin{enumerate}
-%     \item Prove by induction that $\forall n\in\N$ we have $3\mid(2^n+2^{n+1})$.
-%     \item Give a direct proof that $3\mid(2^n+2^{n+1})$ for all integers $n\ge 1$ \emph{and} for $n=0$.
-%     \item Look carefully at your proof for part (a). If you had started with the base case $n=0$ instead of $n=1$, would your proof still be valid?
-%   \end{enumerate}
+  	\item\begin{enumerate}
+    	\item Prove by induction that $\forall n\in\N$ we have $3\mid(2^n+2^{n+1})$.
+    	\item Give a direct proof that $3\mid(2^n+2^{n+1})$ for all integers $n\ge 1$.
+  	\end{enumerate}
+
   
 		\item Prove \emph{by induction} that for every $n\in\N$ we have $n\equiv 5$ or $n\equiv 6$ or $n\equiv 7\spmod 3$.
 	
 		\item Prove by induction that, for all $n\in\N$,
 		\[
-			1\cdot 2+2\cdot 3+3\cdot 4+\cdots +n(n+1)=\smash[t]{\frac 13n(n+1)(n+2)}
+			1\cdot 2+2\cdot 3+3\cdot 4+\cdots +n(n+1) =\frac 13n(n+1)(n+2)
 		\]
 
 		\item\begin{enumerate}
@@ -386,27 +328,15 @@ We finish this section with a trickier example of this thinking at work.
 			\item More generally, prove by induction that $(a-b)\mid (a^n-b^n)$ for any $a,b,n\in\N$.
 		\end{enumerate}
 	
- %\item Prove by induction that for all $k \in \N$, we have $8^k-1$ divisible is a multiple of $7$. 
 	
-		\item Find a formula for the sum of the first $n$ odd natural numbers. Prove your assertion.
-		%\item Give an alternative direct proof of your formula from part (a). You may use results such as $\sum\limits_{i=1}^ni=\frac 12n(n+1)$.
-
+ 		%\item Prove by induction that for all $k \in \N$, we have $8^k-1$ divisible is a multiple of $7$. 
+	
+	
+		\item\begin{enumerate}
+		  \item Find a formula for the sum of the first $n$ odd natural numbers. Prove your assertion.
+		 	\item Use Theorem \ref{thm:ind1} to give an alternative direct proof of your formula.
+		\end{enumerate} 
   
-% 	\item We mimic the previous question for the sum of the squares of the first $n$ natural numbers.
-% 	\begin{enumerate}
-%     \item Use the fact that $\sum\limits_{i=1}^ni^2=\frac 16n(n+1)(2n+1)$ to compute directly an expression for the sum of the squares of the first $n$ \emph{odd} natural numbers.\\
-%     \emph{Hint: $\sum\limits_{i=1}^n(2i-1)^2=\sum\limits_{i=1}^{2n}i^2-\sum\limits_{i=1}^n(2i)^2$\ldots}
-% 		\item Prove the truth of your formula by induction.
-%   \end{enumerate}
-  
-%   \item Many statements from previous classes have implicitly assumed induction. For example: ``The sum of any finite number of differentiable functions is differentiable.'' Stated more properly, we have:
-%   \begin{thm*}
-%   Suppose that the functions $f_m(x)$ are differentiable, where each $m\in\N$. Then $\sum\limits_{m=1}^nf_m(x)$ is differentiable for each $n\in\N$.
-%   \end{thm*}
-%   \begin{enumerate}
-%     \item Recall the limit definition of `differentiable' from calculus (you shouldn't have to, but look it up if necessary\ldots). Prove directly that if $f$ and $g$ are differentiable, then so is $f+g$.
-%     \item Using part (a) to provide the induction step, prove the above Theorem.
-%   \end{enumerate}
 
 		\item Find the error in the following ``proof'' of the statement, ``All cats have the same color fur.''
 		\begin{proof}
@@ -423,14 +353,9 @@ We finish this section with a trickier example of this thinking at work.
 	    \forall n\in\N,\ \diff x x^n =nx^{n-1}
 		\]
 
-		\item A polynomial $p(x)=a_nx^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0$ has \emph{degree} $n$ provided $a_n\neq 0$.
+
+		\item A (real) \emph{polynomial} of degree $n$ is a function $p(x)=a_nx^n+a_{n-1}x^{n-1}+ \cdots +a_1x+a_0$, whose \emph{coefficients} $a_k$ are real numbers and where $a_n\neq 0$.
 		\begin{enumerate}
-%     \item Prove that for all $n \in \N$, 
-%     \[
-%         \frac{d^n}{dx^n} e^{x^2} = p(x) e^{x^2}
-%     \]
-%     where $p(x)$ is a polynomial.
-    %\item Strengthen the result in part (a) by 
     	\item Prove: for all $n\in\N$,
     	\[
         \diff[{}^n]{x^n} e^{x^2} = p_n(x) e^{x^2}
@@ -438,32 +363,23 @@ We finish this section with a trickier example of this thinking at work.
     	where $p_n(x)$ is some polynomial of degree $n$.
 
 			\item (Hard)\lstsp Let $p(x)$ be a polynomial of degree $n\ge 1$. Show $p$ has at most $n$ roots.\par
-			(\emph{Hint: induct on the degree $d$})
+			(\emph{Hint: induct on the degree $n$})
 		\end{enumerate}
 
-% \item Let $a,b \in \Z$ .
-% \begin{enumerate}
-%     \item Prove that for all $n \in \N$, if $a$ and $b$ are relatively prime, then $a^{2^n}$ and $b^{2^n}$ are relatively prime.
-%     \item Use part (a) to show that for all $k \in \N$, if $a$ and $b$ are relatively prime, then $a^k$ and $b^k$ are relatively prime.
-% \end{enumerate}
 
 		\item Consider the following scratch work. Determine what result is being proved, then convert the scratch work into a formal proof of that result.
-	    \begin{align*}
-	      (1+x)^{n+1}&=(1+x)^n(1+x)\ge (1+nx)(1+x)\\
-	      &= 1+x+nx+nx^2=1+(n+1)x+nx^2\\
-	      &\ge 1+(n+1)x
-	    \end{align*}
-	
-		\item Prove that for any $n\in\N$,
-		\[
-	    \sum_{i=1}^n\frac{1}{i^2}<2	
-		\]
-		(\emph{Hint: prove the stronger fact that $\sum_{i=1}^n \frac{1}{i^2} < 2 - \frac{1}{n}$ for all $n \ge 1$})
+	  \begin{align*}
+	    (1+x)^{n+1}&=(1+x)^n(1+x)\ge (1+nx)(1+x)\\
+	    &=1+x+nx+nx^2=1+(n+1)x+nx^2\\
+	    &\ge 1+(n+1)x
+	  \end{align*}
 	\end{enumerate}
 
 \end{exercises}
 
 \clearpage
+
+\iffalse
 
 
 \subsection{Well-ordering and the Principle of Mathematical Induction}\label{sec:wellorder}
@@ -890,6 +806,13 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 % Since $(x_n)$ is decreasing from 1, it is clear that $\lim_{n\to\infty}x_n=\frac 12$.\\
 % Note that it is essential that we establish the existence of the limit before calculating it: the same sequence but with initial value $x_1=2$ is \emph{divergent} to $\infty$.
 % \end{example}
+
+
+
+
+	
+		\item Prove: for any $n\in\N$, $\sum\limits_{i=1}^n\frac{1}{i^2}<2$\par
+		(\emph{Hint: prove the stronger fact that $\smash{\sum\limits_{i=1}^n} \frac{1}{i^2} < 2 - \frac{1}{n}$ for all $n \ge 1$})
 \end{enumerate}
 
 \end{exercises}
@@ -1105,3 +1028,4 @@ First recall Definition \ref{defn:irreducible}, that $p\in\N_{\ge 2}$ is \emph{p
 \end{enumerate}
 \end{exercises}
 
+\fi
