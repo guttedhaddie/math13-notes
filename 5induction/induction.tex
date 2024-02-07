@@ -379,61 +379,51 @@ We finish this section with a trickier example of this thinking at work.
 
 \clearpage
 
-\iffalse
 
 
 \subsection{Well-ordering and the Principle of Mathematical Induction}\label{sec:wellorder}
 
 
-
-%Wellorder stuff!
-%     \item Prove: $n! \le \left(\frac{n + 1}{2}\right)^n$.\par
-%      (\emph{Hint: find a formula for the sum of the first $n$ positive integers})
-%   
-%   \item We prove that $\sqrt 2$ is irrational using the \emph{method of infinite descent,} which is very important in number theory.\par
-%   Suppose $\sqrt 2=\frac pq$ where $p,q$ are positive integers (we assume nothing else about $p,q$).
-%   \begin{enumerate}
-%     \item Prove that there exist sequences of positive integers $(p_n)$, $(q_n)$ which satisfy three conditions:
-%     \[
-%     	p_n^2=2q_n^2,\qquad p_{n+1}=\tfrac 12p_n,\qquad q_{n+1}=\tfrac 12q_n
-%     \] 
-%     Hence argue that there exist two sequences of decreasing positive integers $m>m_1>m_2>\cdots$ and $n>n_1>n_2>\cdots$ which satisfy $m_i^2=2n_i^2$ for each $i$.
-%     
-%     \item Is it possible to have an infinite sequence of decreasing \emph{positive} integers? Why not? Hence complete the argument that $\sqrt 2$ is irrational.
-% 	\end{enumerate}
-  
-%   \item\begin{enumerate}
-%     \item We are given positive integers $m$ and $n$ which satisfy $m^2=2n^2$. The right hand side is even, whence $m^2$ is even and so $m$ is even. Thus $m=2m_1$. Clearly $m_1<m$. Repeat the argument to find $n_1<n$.\par
-%     Since $m_1^2=2n_1^2$ for positive integers $m_1,n_1$, we can repeat this argument as many times as desired, thus generating the required sequences.
-%     
-%     \item No! If $m>m_1>m_2>m_3>\cdots$ is a sequence of decreasing positive integers, then in at most $m$ steps we must reach zero! In this case, since we divide by 2 each time, it will take only approximately $\log_2m$ steps to pass 1. We will therefore eventually run out of positive integers and so the sequence cannot continue indefinitely. This contradicts the appearance that we generated two such sequences in part (b). But this followed immediately from the assuption that $\sqrt 2$ was rational. Thus $\sqrt 2\not\in\Q$.
-%   \end{enumerate}
-
-Before seeing more examples, it is worth thinking more carefully about the logic behind induction. The fact that induction really works depends on a fundamental property of the natural numbers.
+In this section we think more carefully about the logic behind induction. Why does induction prove what we claim it does? The fact that induction really works depends on a fundamental property of the natural numbers.
 
 \begin{defn}{}{wellorder}
-	A set of real numbers $A$ is \emph{well-ordered} if every non-empty subset of $A$ has a minimum element.
+	A non-empty set of real numbers $A$ is \emph{well-ordered} if every non-empty subset of $A$ contains a minimum element.
 \end{defn}
 
-The definition is delicate: to test if a set $A$ is well-ordered, we need to check \emph{all} of its non-empty subsets. The definition could be written as follows:
-\[
-	\forall B\subseteq A\text{ such that }B\neq\emptyset,\ \text{we have that $\min(B)$ exists.}
-\]
-Consequently, to show that a set $A$ is \emph{not} well-ordered, we need only exhibit a non-empty subset $B$ which has \emph{no minimum.}
+To test if a set $A$ is well-ordered, we need to check \emph{all} of its non-empty subsets. The definition could be written as equivalently as follows, where in the second line we expand what is meant by a \emph{minimum}:
+\begin{itemize}
+  \item $\forall B\subseteq A$ such that $B\neq\emptyset$, $\min B$ exists.
+  \item $\forall B\subseteq A$ such that $B\neq\emptyset$, $\exists b\in B$ such that $\forall x\in B$, $b\le x$.
+\end{itemize}
+To show that a set $A$ is \emph{not} well-ordered, we need only exhibit a non-empty subset $B$ which has \emph{no minimum.}
 
 \begin{examples}{}{}
-	\exstart $A=\{4,-7,\pi,19,\ln 2\}$ is a well-ordered set. There are 31 non-empty subsets of $A$, each of which has a minimum element. Can you justify this fact \emph{without} listing the subsets?
+	\exstart $A=\{4,-7,\pi,19,\ln 2\}$ is a well-ordered set. There are 31(!) non-empty subsets of $A$, each of which has a minimum element.
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item The interval $[3,10)$ is not well-ordered. Indeed $(3,4)$ is a non-empty subset which has no minimum element (see the exercises).
+	  \item[] Can you justify this fact \emph{without} listing the subsets? It might be easier to think about why any \emph{finite} set $A=\{a_1,\ldots,a_n\}\subseteq\R$ is well-ordered\ldots 
+	  
+	  \item The interval $A=[3,10)$ is not well-ordered. Indeed $B=(3,4)$ is a non-empty subset which has no minimum element. While you should believe this, let's prove it anyway!\par
+	  We need to prove that $\forall b\in B, \exists x\in B$ with $x>b$. Given any $b\in(3,4)$, observe that $x:=\frac{b+3}2$ satisfies
+	  \[
+	  	3<x<b<4 \text{ from which }x\in B\text{ and }x<b
+	  \]
+	  You could also argue by contradiction (if $b\in B$ is $\min B$, then\ldots).
+	  
 	  \item The integers $\Z$ are not well-ordered. For instance, $\Z$ is a non-empty subset of itself, and there is no minimum integer.
 	\end{enumerate}
 \end{examples}
 
-More generally, every finite set of numbers is well-ordered, while intervals are not. Are there any \emph{infinite} sets which are also well-ordered? The answer is \emph{yes.} Indeed it is part of the standard definition (Peano's Axioms) of the natural numbers that $\N$ is such a set.
+From the examples, you might be suspect that \emph{well-ordered} simply means \emph{finite}: if is did, it wouldn't be anything like as interesting a concept. There are indeed \emph{infinite} sets which are also well-ordered!
 
 \begin{axiom}{}{}
-	$\N$ is well-ordered.
+	$\N$ is well-ordered.\footnotemark
 \end{axiom}
+
+\footnotetext{In Peano's axioms, the most commonly encountered axiomatization of the natural numbers, the validity of induction is usually taken to be an axiom in its own right:
+	\begin{quote}
+		Axiom of induction:\lstsp Suppose $B\subseteq\N$ satisfies $1\in B$ and $\forall n\in\N, n\in B\Rightarrow n+1\in B$. Then $B=\N$.
+	\end{quote}
+}
 
 Any set that `looks like' $\N$ is automatically well-ordered.\footnote{When the elements are written in increasing order, the set has the form $B=\{b_1,b_2,b_3,b_4,\ldots\}$.} For example
 \[
@@ -584,6 +574,34 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 \end{proof}
 
 \footnotetext{We are obscuring two subtleties here. It is a fact, though not an obvious one, that it is always possible to choose a vertex $A$ so that the new polygon $\cP_n$ doesn't cross itself. Read about `ears' and `mouths' of polygons and triangulation if you're interested. There are also two other, less likely, cases which we didn't consider: when deleting a point from an ($n+1$)-gon it is possible to obtain  an $(n-1)$-gon, or even an $(n-2)$-gon. To think it out, try drawing a 12-gon in the shape of a Star of David. Deleting one of the outer corners creates a 9-gon! Dealing with these cases strictly requires strong induction, so we return to them later.}
+
+
+
+
+
+
+%Wellorder stuff!
+%     \item Prove: $n! \le \left(\frac{n + 1}{2}\right)^n$.\par
+%      (\emph{Hint: find a formula for the sum of the first $n$ positive integers})
+%   
+%   \item We prove that $\sqrt 2$ is irrational using the \emph{method of infinite descent,} which is very important in number theory.\par
+%   Suppose $\sqrt 2=\frac pq$ where $p,q$ are positive integers (we assume nothing else about $p,q$).
+%   \begin{enumerate}
+%     \item Prove that there exist sequences of positive integers $(p_n)$, $(q_n)$ which satisfy three conditions:
+%     \[
+%     	p_n^2=2q_n^2,\qquad p_{n+1}=\tfrac 12p_n,\qquad q_{n+1}=\tfrac 12q_n
+%     \] 
+%     Hence argue that there exist two sequences of decreasing positive integers $m>m_1>m_2>\cdots$ and $n>n_1>n_2>\cdots$ which satisfy $m_i^2=2n_i^2$ for each $i$.
+%     
+%     \item Is it possible to have an infinite sequence of decreasing \emph{positive} integers? Why not? Hence complete the argument that $\sqrt 2$ is irrational.
+% 	\end{enumerate}
+  
+%   \item\begin{enumerate}
+%     \item We are given positive integers $m$ and $n$ which satisfy $m^2=2n^2$. The right hand side is even, whence $m^2$ is even and so $m$ is even. Thus $m=2m_1$. Clearly $m_1<m$. Repeat the argument to find $n_1<n$.\par
+%     Since $m_1^2=2n_1^2$ for positive integers $m_1,n_1$, we can repeat this argument as many times as desired, thus generating the required sequences.
+%     
+%     \item No! If $m>m_1>m_2>m_3>\cdots$ is a sequence of decreasing positive integers, then in at most $m$ steps we must reach zero! In this case, since we divide by 2 each time, it will take only approximately $\log_2m$ steps to pass 1. We will therefore eventually run out of positive integers and so the sequence cannot continue indefinitely. This contradicts the appearance that we generated two such sequences in part (b). But this followed immediately from the assuption that $\sqrt 2$ was rational. Thus $\sqrt 2\not\in\Q$.
+%   \end{enumerate}
 
 % \subsubsection*{Optional: Density of the Rationals}
 % 
@@ -1028,4 +1046,3 @@ First recall Definition \ref{defn:irreducible}, that $p\in\N_{\ge 2}$ is \emph{p
 \end{enumerate}
 \end{exercises}
 
-\fi
