@@ -341,7 +341,7 @@ We finish this section with a trickier example of this thinking at work.
 		\item Find the error in the following ``proof'' of the statement, ``All cats have the same color fur.''
 		\begin{proof}
 	    Let $P(n)$ be the proposition, ``Any set of $n$ cats have the same color fur.'' We prove by induction on $n$. 
-	    \begin{description}
+	    \begin{description}\itemsep0pt
 	    	\item[\normalfont\emph{Base case} ($n=1$):] Any cat has the same color fur as itself.
 	    	\item[\normalfont\emph{Induction step}:] Fix $n\in\N$ and assume $P(n)$. Take any set $S= \{C_1,C_2,\ldots,C_{n+1}\}$ of $n+1$ cats. The set $S\setminus\{C_1\}$ has $n$ cats; by the induction hypothesis all have the same color fur. Again by the induction hypothesis, all cats in $S\setminus\{C_2\}$ have the same color fur. Combining these observations, we see that all cats in $S$ have the same color fur. Since $S$ was arbitrary, we see that $P(n+1)$ holds.
 	    \end{description}
@@ -373,6 +373,7 @@ We finish this section with a trickier example of this thinking at work.
 	    &=1+x+nx+nx^2=1+(n+1)x+nx^2\\
 	    &\ge 1+(n+1)x
 	  \end{align*}
+
 	\end{enumerate}
 
 \end{exercises}
@@ -384,7 +385,7 @@ We finish this section with a trickier example of this thinking at work.
 \subsection{Well-ordering and the Principle of Mathematical Induction}\label{sec:wellorder}
 
 
-In this section we think more carefully about the logic behind induction. Why does induction prove what we claim it does? The fact that induction really works depends on a fundamental property of the natural numbers.
+In this section we think more carefully about the logic behind induction, by tying it to a fundamental property of the natural numbers.
 
 \begin{defn}{}{wellorder}
 	A non-empty set of real numbers $A$ is \emph{well-ordered} if every non-empty subset of $A$ contains a minimum element.
@@ -395,140 +396,210 @@ To test if a set $A$ is well-ordered, we need to check \emph{all} of its non-emp
   \item $\forall B\subseteq A$ such that $B\neq\emptyset$, $\min B$ exists.
   \item $\forall B\subseteq A$ such that $B\neq\emptyset$, $\exists b\in B$ such that $\forall x\in B$, $b\le x$.
 \end{itemize}
-To show that a set $A$ is \emph{not} well-ordered, we need only exhibit a non-empty subset $B$ which has \emph{no minimum.}
+To show that $A$ is \emph{not} well-ordered, we need only exhibit a non-empty subset $B$ with \emph{no minimum.}
 
 \begin{examples}{}{}
-	\exstart $A=\{4,-7,\pi,19,\ln 2\}$ is a well-ordered set. There are 31(!) non-empty subsets of $A$, each of which has a minimum element.
+	\exstart $A=\{4,-7,\pi,19,\ln 2\}$ is a well-ordered set. There are 31(!) non-empty subsets of $A$, each of which has a minimum element.\vspace{-5pt}
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item[] Can you justify this fact \emph{without} listing the subsets? It might be easier to think about why any \emph{finite} set $A=\{a_1,\ldots,a_n\}\subseteq\R$ is well-ordered\ldots 
 	  
 	  \item The interval $A=[3,10)$ is not well-ordered. Indeed $B=(3,4)$ is a non-empty subset which has no minimum element. While you should believe this, let's prove it anyway!\par
 	  We need to prove that $\forall b\in B, \exists x\in B$ with $x>b$. Given any $b\in(3,4)$, observe that $x:=\frac{b+3}2$ satisfies
 	  \[
-	  	3<x<b<4 \text{ from which }x\in B\text{ and }x<b
+	  	3<x<b<4 \quad\text{from which}\quad x\in B\text{ and }x<b
 	  \]
 	  You could also argue by contradiction (if $b\in B$ is $\min B$, then\ldots).
 	  
-	  \item The integers $\Z$ are not well-ordered. For instance, $\Z$ is a non-empty subset of itself, and there is no minimum integer.
+	  \item The integers $\Z$ are not well-ordered. For instance, $\Z$ is a non-empty subset of itself and there is no minimum integer.
 	\end{enumerate}
 \end{examples}
 
-From the examples, you might be suspect that \emph{well-ordered} simply means \emph{finite}: if is did, it wouldn't be anything like as interesting a concept. There are indeed \emph{infinite} sets which are also well-ordered!
+You might suspect (wrongly!) that every well-ordered set is finite. That the natural numbers form a well-ordered \emph{infinite} set is, for us, an axiom: a foundational claim that forms part of our basic conception of the natural numbers.
 
-\begin{axiom}{}{}
-	$\N$ is well-ordered.\footnotemark
+\begin{axiom}{Well-ordering Principle}{}
+	$\N$ is well-ordered.%\footnotemark
 \end{axiom}
 
-\footnotetext{In Peano's axioms, the most commonly encountered axiomatization of the natural numbers, the validity of induction is usually taken to be an axiom in its own right:
-	\begin{quote}
-		Axiom of induction:\lstsp Suppose $B\subseteq\N$ satisfies $1\in B$ and $\forall n\in\N, n\in B\Rightarrow n+1\in B$. Then $B=\N$.
-	\end{quote}
-}
+\footnotetext{Also known as the \emph{least natural number principle.}}
 
-Any set that `looks like' $\N$ is automatically well-ordered.\footnote{When the elements are written in increasing order, the set has the form $B=\{b_1,b_2,b_3,b_4,\ldots\}$.} For example
+% \footnotetext{There are several ways to define the natural numbers. THe most commonly  In Peano's axioms, the most commonly encountered axiomatization of the natural numbers, the validity of induction is usually taken to be an axiom in its own right:
+% 	\begin{quote}
+% 		Axiom of induction:\lstsp Suppose $B\subseteq\N$ satisfies $1\in B$ and $\forall n\in\N, n\in B\Rightarrow n+1\in B$. Then $B=\N$.
+% 	\end{quote}
+% }
+
+Also known as the \emph{least natural number principle}, the well-ordering principle is used repeatedly in mathematics. In fact we've already done so in this text! Consider the set of positive remainders generated by the Euclidean algorithm (Theorem \ref{thm:euclidalg}) applied to $a>b\in\N$:
 \[
-	B=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots\right\}=\left\{\frac n{n+1}:n\in\N\right\}
+	\{\ldots,r_2,r_1,b,a\}\subseteq\N
 \]
+Well-ordering guarantees that this set has a minimal element $r_t$ (which turns out to be $\gcd(a,b)$); this is essentially the argument for Exercise \ref*{sec:gcd}.\ref{exs:euclidalgproof}(a).
+
+\goodbreak  
+
+%  When written in roster notation in increasing order, any set that `looks like' $\N$, is also well-ordered. For example
+% \[
+% 	A=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots\right\}=\left\{\frac n{n+1}:n\in\N\right\}
+% \]
 Armed with this axiom, we can justify the method of proof by induction. 
 
 \begin{thm}{Principle of Mathematical Induction}{ind}
-	Let $P(n)$ be a proposition for each $n\in\N$. Suppose:
-	\begin{enumerate}
-	  \item[(a)] $P(1)$ is true.
-	  \item[(b)] $\forall n\in\N,\ P(n)\implies P(n+1)$.
-	\end{enumerate}
+	For each $n\in\N$, let $P(n)$ be a proposition. Additionally make the two standard assumptions for induction:
+	\begin{quote}
+		\emph{Base case}:\lstsp $P(1)$ is true\par
+		\emph{Induction step}:\lstsp $\forall n\in\N,\ P(n)\Longrightarrow P(n+1)$
+	\end{quote}
 	Then $P(n)$ is true for all $n\in\N$.
 \end{thm}
 
+Before attempting a proof, consider how the theorem could be written as a pure implication:
+\[
+	\textcolor{blue}{P(1)\wedge\bigl(\forall n\in\N,P(n)\Longrightarrow P(n+1)\bigr)}\Longrightarrow \textcolor{Green}{\bigl(\forall n\in\N, P(n)\bigr)}
+\]
+This helps us select a proof strategy: a direct approach seems hard since the \textcolor{Green}{conclusion} is universal; a contrapositive approach requires an ugly negation of the \textcolor{blue}{hypothesis}; a proof by contradiction seems most sensible since negation of the \textcolor{Green}{conclusion} is straightforward.
+
 \begin{proof}
-	We argue by contradiction. Assume that conditions (a) and (b) hold and that $\exists n\in\N$ such that $P(n)$ is \emph{false.} Then the set
+	We argue by contradiction. Assume the base case, the induction step, and that $\exists n\in\N$ for which $P(n)$ is \emph{false.} The set of natural numbers
 	\[
-		S:=\{k\in\N:P(k)\text{ is false}\}
-		\]
-	is a non-empty subset of the well-ordered set $\N$. It follows that $S$ has a minimum element
-	\[
-		m:=\min(S)
+		S:=\bigr\{k\in\N:P(k)\text{ is false}\bigr\}
 	\]
-	Note that $P(m)$ is \emph{false.}\par
-	By condition (a), $P(1)$ is true, and so $m\neq 1$. Therefore $m\ge 2$ from which we see that $m-1\in\N$.\par
-	Since $m=\min(S)$ it follows that $m-1\not\in S$ and so $P(m-1)$ must be \emph{true.}\par
-	However, by condition (b), we see that $P(m-1)\implies P(m)$, whence $P(m)$ is \emph{true.}\par
-	This is a contradiction. In addition to properties (a) and (b), our only assumption was that \emph{at least one} proposition $P(n)$ was false, therefore this is what we have contradicted. We conclude that conclude that $P(n)$ is true for all $n\in\N$.
+	is non-empty (since $n\in S$). Well-ordering guarantees that $s:=\min S$ exists. Observe:
+	\begin{itemize}\itemsep0pt\parskip2pt
+	  \item $s\in S\Longrightarrow$ \textcolor{red}{$P(s)$ is \emph{false}}.
+	  \item The \emph{base case} tells us that $s\neq 1$, whence $s-1\in\N$.
+	  \item $s-1<\min S\implies P(s-1)$ is \emph{true.}
+	  \item The \emph{induction step} ($P(s-1)\Longrightarrow P(s)$) tells us that \textcolor{red}{$P(s)$ is \emph{true}}.
+	\end{itemize}
+	\textcolor{red}{Contradiction}: $P(s)$ cannot be both true and false!
 \end{proof}
 
-\boldsubsubsection{Different Base Cases for Induction}
 
-An induction argument need not begin with the case $n=1$. By proving Theorem \ref{thm:ind} it should be clear where we used the well-ordering of $\N$ in order to justify induction. Now fix an integer $m$ (positive, negative or zero) and consider the set
+Now we have the proof, it is straightforward to extend the principle of induction. For any integer $m$ (positive, negative or zero), the set
 \[
 	\Z_{\ge m}=\{n\in\Z:n\ge m\}=\{m,m+1,m+2,m+3,\ldots\}
 \]
-This set is well-ordered, whence the following modification of the induction principle is immediate.
+is also well-ordered. By changing the base case to $P(m)$ and replacing $\N$ with $\Z_{\ge m}$, we immediately obtain the proof of a more general principle of induction.
 
-\begin{cor}{}{}
-	Let $m\in\Z$ be some fixed integer. Let $P(n)$ be a proposition for each integer $n\ge m$. Suppose:
-	\begin{enumerate}
-	  \item[(a)] $P(m)$ is true.
-	  \item[(b)] $\forall n\ge m,\ P(n)\implies P(n+1)$.
-	\end{enumerate}
-	Then $P(n)$ is true for all $n\ge m$.
+\begin{cor}{Induction with base case $m$}{}
+	Fix an integer $m$. For each integer $n\ge m$, let $P(n)$ be a proposition. Suppose:
+	\begin{quote}
+		\emph{Base case}:\lstsp $P(m)$ is true\par
+		\emph{Induction step}:\lstsp $\forall n\in\Z_{\ge m},\ P(n)\Longrightarrow P(n+1)$
+	\end{quote}
+	Then $P(n)$ is true for all $n\in\Z_{\ge m}$.
 \end{cor}
 
-We are simply changing the base case. The induction concept is exactly the same as before:
+The intuitive concept is exactly as before, just with a different base case!
 \[
 	P(m)\implies P(m+1)\implies P(m+2)\implies P(m+3)\implies\cdots
 \]
-As long as you explicitly prove the first claim in the sequence, and you show the induction step, then all the propositions are true.\par
+\goodbreak
+
+% As long as you explicitly prove the first claim in the sequence, and you show the induction step, then all the propositions are true.\par
 
 
-Here is an example where the induction argument begins with $m=4$.
 
-\begin{thm}{}{}
-	For all integers $n\ge 4$, we have $3^n>n^3$.
-\end{thm}
-
-\begin{proof}
-	%We prove by induction. The first case of interest is $n=4$, so we choose this to be our base case.\\
-	(\emph{Base Case})\quad If $n=4$, we have $3^n=81>64=n^3$. The proposition is therefore true for $n=4$.\par
-	(\emph{Induction Step})\quad Fix $n\in\Z_{\ge 4}$ and suppose that $3^n>n^3$. Then
+\begin{examples}{}{}
+	\exstart For all integers $n\ge 2$, we have\footnotemark
 	\[
-		3^{n+1}=3\cdot 3^n>3n^3
-	\]
-	To finish the proof, we want to see that this right hand side is at least $(n+1)^3$. Now
+		\sum\limits_{k=2}^n\frac 1{k(k-1)} =1-\frac 1n\tag{$\ast$}
+	\]	
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item[]\begin{description}
+			\item[\normalfont\emph{Base case} ($n=2$):] When $n=2$, ($\ast$) reads $\smash{\sum\limits_{i=2}^2}\frac 1{i(i-1)}=\frac 12=1-\frac 12$.
+			\item[\normalfont\emph{Induction step}:] Assume that ($\ast$) is true for some fixed $n\ge 2$. Then
+			\begin{align*}
+				\sum_{i=2}^{n+1}\frac 1{k(k-1)} &=\sum_{i=2}^{n}\frac 1{k(k-1)}+\frac 1{(n+1)n} =1-\frac 1n+\frac 1{n(n+1)}\tag{induction hypothesis}\\
+				&=1-\frac{(n+1)-1}{n(n+1)} =1-\frac 1{n+1}
+			\end{align*}
+			which is exactly ($\ast$) when $n$ is replaced by $n+1$.
+		\end{description}
+		By induction ($\ast$) holds for all integers $n\ge 2$.
+	
+	  \item For all integers $n\ge 4$, we claim that $3^n>n^3$.\par
+	  We really need a different base case: when $n=3$, the claim $3^3>3^3$ is false! As is often the case, it helps to do some scratch work first. The \textcolor{blue}{induction hypothesis} allows us to see that 
+	  \[
+	  	3^{n+1}=3\cdot \textcolor{blue}{3^n} >3 \textcolor{blue}{n^3}
+	  \] 
+	  The proof of the induction step therefore hinges on being able to show that $3n^2\ge (n+1)^3$. There are many ways to convince yourself of this: for instance
+	  \[
+	  	3n^3\ge(n+1)^3\iff 3\ge\left(\frac{n+1}n\right)^3 =\left(1+\frac 1n\right)^3 \tag{$\dag$}
+	  \]
+	  The right side \emph{decreases} as $n$ increases; since $n\ge 4$, the right side is at most $\left(\frac 54\right)^3=\frac{125}{64}<2$, whence ($\ast$) holds for all $n\ge 4$.\smallbreak
+	  
+	  We now prove the original claim by induction.	  
+	  \begin{description}
+	  	\item[\normalfont\emph{Base case} ($n=4$):] Observe that $3^4=81>64=4^3$.
+	  	\item[\normalfont\emph{Induction step}:] Fix $n\in\Z_{\ge 4}$ and suppose that $3^n>n^3$. By ($\dag$), we see that
+			\[
+				3^{n+1}=3\cdot 3^n>3n^3\ge (n+1)^3
+			\]
+	  \end{description}
+	  By induction, we conclude that $3^n>n^3$ whenever $n\in\Z_{\ge 4}$.
+	\end{enumerate}
+\end{examples}
+
+
+\footnotetext{You might have encountered this example as a \emph{telescoping series} in calculus:
+\[
+	\sum\limits_{k=2}^n\frac 1{k(k-1)}=\frac 1{2\cdot 1}+\frac 1{3\cdot 2}+\cdots +\frac 1{n(n-1)} =\left(1-\frac 12\right) +\left(\frac 12-\frac 13\right) +\cdots +\left(\frac 1{n-1}-\frac 1n\right) =1-\frac 1n
+\]
+In calculus, you'd take the limit as $n\to\infty$ to obtain the infinite series $\sum\limits_{k=2}^\infty\frac 1{k(k-1)}=1$}
+
+
+As a final example, we prove an extended version of de Morgan's law for sets (Theorem \ref{thm:setcomp}(a)).
+
+\begin{example}{}{}
+	For any collection of sets $A_1,\ldots,A_n$ where $n\ge 2$, we have
 	\[
-		3n^3\ge(n+1)^3\iff 3\ge\left(1+\frac 1n\right)^3
+	 	\comp{(A_1\cap \cdots\cap A_n)}=\comp{A_1}\cup\cdots\cup\comp{A_n} \tag{$\ddag$}
 	\]
-	This is true for $n=3$ and, since the right hand side is decreasing as $n$ increases, it is certainly true  when $n\ge 4$. We therefore conclude, for $n\ge 4$, that
-	\[
-		3^n>n^3\implies 3^{n+1}>(n+1)^3
-	\]
-	which is the induction step. By induction, we have shown that $3^n>n^3$ whenever $n\in\Z_{\ge 4}$.
-\end{proof}
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=2$):] $\comp{A_1\cap A_2}=\comp{A_1}\cup\comp{A_2}$ is precisely the standard de Morgan identity.
+		\item[\normalfont\emph{Induction step}:] Fix $n\in\N_{\ge 2}$ and suppose ($\ddag$) holds for \emph{all} collections of $n$ sets. Given a collection of $n+1$ sets, we see that
+		\begin{align*}
+			\comp{(A_1\cap \cdots\cap A_n\cap A_{n+1})} &=\comp{\bigl((A_1\cap \cdots\cap A_n)\cap A_{n+1}\bigr)}\\
+			&=\comp{(A_1\cap \cdots\cap A_n)}\cup \comp{A_{n+1}} \tag{de Morgan again!}\\
+			&=\comp{A_1}\cup\cdots\cup\comp{A_n}\cup\comp{A_{n+1}} \tag{induction hypothesis}
+		\end{align*}
+	\end{description}
+	By induction the claim ($\ddag$) holds for any collection of $n$ sets.
+\end{example}
 
+We could have approached the argument as a standard induction with base case $n=1$. Instead we deliberately chose the base case $n=2$, both to avoid confusion (the trivial $\comp{A_1}=\comp{A_1}$ isn't helpful or interesting) and to highlight the importance of de Morgan's law for two sets to the entire argument.
 
-Our next example is reminiscent of sequences and series from elementary calculus. If you follow a textbook derivation of such a formula, you'll probably see liberal use of ellipsis dots ($\ldots$). When you see these, it is often because the author is hiding an induction argument.
+\boldsubsubsection{Proof by Minimal Counter-example}
 
-\begin{thm}{}{}
-	For all integers $n\ge 3$, we have
-	\[
-		\sum\limits_{i=3}^n\frac 1{i(i-2)}=\frac 34-\frac{2n-1}{2n(n-1)}\tag{$\ast$}
-	\]
-\end{thm}
+Sometimes authors present induction arguments as contradiction proofs in line with Theorem \ref{thm:ind}: the element $s=\min S$ is known as the \emph{minimal counter-example.} Here are two variations on this idea; the first is a straight translation of an induction where the base case and induction step are clear.
 
-\begin{proof}
-	(\emph{Base Case})\quad When $n=3$, ($\ast$) reads $\sum\limits_{i=3}^3\frac 1{i(i-2)}=\frac 34-\frac 5{12}$. Both sides equal $\frac 13$, whence $(\ast)$ is true.\par
-	(\emph{Induction Step})\quad Assume that ($\ast$) is true for some fixed $n\ge 3$. Then
-	\begin{align*}
-		\sum_{i=3}^{n+1}\frac 1{i(i-2)}&=\sum_{i=3}^{n}\frac 1{i(i-2)}+\frac 1{(n+1)(n-1)}\\
-		&=\frac 34-\frac{2n-1}{2n(n-1)}+\frac 1{(n+1)(n-1)}\tag*{(\emph{by the induction hypothesis})}\\
-		&=\frac 34-\left[\frac{(2n-1)(n+1)-2n}{2(n+1)n(n-1)}\right]=\frac 34-\left[\frac{1+n-2n^2}{2(n+1)n(n-1)}\right]\\
-		&=\frac 34+\frac{(2n+1)(1-n)}{2(n+1)n(n-1)}=\frac 34-\frac{2n+1}{2(n+1)n}
-	\end{align*}
-	which is exactly ($\ast$) when $n$ is replaced by $n+1$.\par
-	By induction ($\ast$) holds for all integers $n\ge 3$.
-\end{proof}
+\begin{examples}{}{}
+	\exstart We prove: for all $n\in\N_0$, $\sum\limits_{k=0}^n 2^k=2^{n+1}-1$.\vspace{-10pt}
+	
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item[]Suppose to the contrary and let $s\ge 0$ be the minimal counter-example.
+	  \begin{itemize}
+	    \item Since $\smash{\sum\limits_{k=0}^0} 2^k=2^0=1=2^{0+1}-1$, we see that $s\neq 0$.\hfill (\emph{base case})
+	    \item But then
+	    \[
+	    	\sum\limits_{k=0}^s2^k=2^s+\sum\limits_{k=0}^{s-1} 2^k =2^s+2^s-1=2^{s+1}-1 \tag{\emph{induction step}}
+	    \]
+	    contradicts the fact that $s$ is a counter-example!
+	  \end{itemize} 
+	  
+	  
+	  \item We re-prove Theorem \ref{thm:sqrt2}: $\sqrt 2\notin\Q$. Suppose $\sqrt 2$ is rational and consider the set
+	  \[
+	  	S=\bigl\{x\in\N:\exists y\in \N\text{ with }x^2=2y^2\bigr\}
+	  \]
+	  Let $s=\min S$ and $t\in\N$ be such that $s^2=2t^2$: plainly $\textcolor{red}{t<s}$. Since $s^2$ even $\Longrightarrow s$ even, we can write $s=2k$, from which
+	  \[
+	  	4k^2=2t^2\implies n^2=2k^2\implies \textcolor{red}{t\in S}
+	  \]
+	  This contradicts the minimality of $m$.\par
+	  This approach is often used in number theory in the guise of Fermat's \emph{method of infinite descent.}
+	\end{enumerate}
+\end{examples}
 
-A calculus discussion would finish by taking the limit as $n\to\infty$ to conclude that $\sum\limits_{i=3}^\infty\frac 1{i(i-2)}=\frac 34$.
-
+\iffalse
 
 Our final example involves a little abstraction.
 
@@ -577,7 +648,24 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 
 
 
-
+%HOMEWORK!
+% For all integers $n\ge 3$, we have\footnotemark
+% 	\[
+% 		\sum\limits_{i=3}^n\frac 1{i(i-2)} =\frac 34-\frac{2n-1}{2n(n-1)}\tag{$\ast$}
+% 	\]	
+% 	\begin{enumerate}\setcounter{enumi}{1}
+% 		\item[]\begin{description}
+% 			\item[\normalfont\emph{Base case} ($n=3$):] When $n=3$, ($\ast$) reads $\smash{\sum\limits_{i=3}^3}\frac 1{i(i-2)}=\frac 13=\frac 34-\frac 5{12}=\frac 34-\frac{2\cdot 3-1}{2\cdot 3(3-1)}$.
+% 			\item[\normalfont\emph{Induction step}:] Assume that ($\ast$) is true for some fixed $n\ge 3$. Then
+% 			\begin{align*}
+% 				\sum_{i=3}^{n+1}\frac 1{i(i-2)}&=\sum_{i=3}^{n}\frac 1{i(i-2)}+\frac 1{(n+1)(n-1)}\\
+% 				&=\frac 34-\frac{2n-1}{2n(n-1)}+\frac 1{(n+1)(n-1)}\tag{induction hypothesis}\\
+% 				&=\frac 34-\left[\frac{(2n-1)(n+1)-2n}{2(n+1)n(n-1)}\right]=\frac 34-\left[\frac{1+n-2n^2}{2(n+1)n(n-1)}\right]\\
+% 				&=\frac 34+\frac{(2n+1)(1-n)}{2(n+1)n(n-1)}=\frac 34-\frac{2n+1}{2(n+1)n}
+% 			\end{align*}
+% 			which is exactly ($\ast$) when $n$ is replaced by $n+1$.
+% 		\end{description}
+% 		By induction ($\ast$) holds for all integers $n\ge 3$.
 
 
 %Wellorder stuff!
@@ -643,24 +731,24 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 % Let $x,y \in \R$ with $x < y$ be arbitrary. We need to find $r \in \Q$ with $x < r < y$. Then $y - x > 0$. By the Archimedean property, there is $n \in \N$ such that $n(y - x) > 1$. Since $ny - nx > 1$, we can apply Lemma \ref{lemm:rationaldensityprep} to get $k \in \Z$ such that $nx < k < ny$. As $n \geq 1 > 0$, dividing yields $x < \frac{k}{n} < y$. Take $r = \frac{k}{n} \in \Q$.
 % \end{proof}
 
-\begin{aside}{}{}
-	{\bf Well-ordering more generally}
-	
-	Well-ordering is a fundamental concept whose implications are far beyond what we're discussing here. Informally speaking, \emph{well-ordering} a set $A$ involves listing the elements of $A$ in some order so that every non-empty subset of $A$ has a first element \emph{with respect to that order.}\\
-	Consider, for example, the set of negative integers $\Z^-$. For the purposes of these notes we will always consider the standard ordering:
-	\[
-		\cdots<-4<-3<-2<-1
-	\]
-	Written in the standard order, $\Z^-=\{\ldots,-4,-3,-2,-1\}$ is \emph{not} a well-ordered set. In a more advanced discussion, one could consider alternative orderings, and the definition of well-ordered would change accordingly. If we choose the ordering
-	\[
-		\Z^-=\{-1,-2,-3,-4,\cdots\},\tag{$\ast$}
-	\]
-	then $\Z^-$ would be well-ordered: if $B\subseteq\Z^-$ is non-empty and has its elements listed in the same order as $(\ast)$, then $B$ has a first element. With a little thinking, we could modify the proof of the principle of mathematical induction to allow us to prove theorems of the form $\forall n\in\Z^-,\ P(n),$ by induction. The base case is $n=-1$ and the induction step justifies the chain
-	\[
-		P(-1)\implies P(-2)\implies P(-3)\implies\cdots
-	\]
-	An extremely important theorem in advanced set theory states that it is possible to well-order \emph{every} set. With a slight modification of the process, this massively increases the applicability of induction. In these notes we keep things simple: well-ordering is always in the sense of Definition \ref{defn:wellorder}, where we list the elements of a set in the usual increasing order. For a more esoteric example of a well-ordered set, see the final Exercise below.
-\end{aside}
+% \begin{aside}{}{}
+% 	{\bf Well-ordering more generally}
+% 	
+% 	Well-ordering is a fundamental concept whose implications are far beyond what we're discussing here. Informally speaking, \emph{well-ordering} a set $A$ involves listing the elements of $A$ in some order so that every non-empty subset of $A$ has a first element \emph{with respect to that order.}\\
+% 	Consider, for example, the set of negative integers $\Z^-$. For the purposes of these notes we will always consider the standard ordering:
+% 	\[
+% 		\cdots<-4<-3<-2<-1
+% 	\]
+% 	Written in the standard order, $\Z^-=\{\ldots,-4,-3,-2,-1\}$ is \emph{not} a well-ordered set. In a more advanced discussion, one could consider alternative orderings, and the definition of well-ordered would change accordingly. If we choose the ordering
+% 	\[
+% 		\Z^-=\{-1,-2,-3,-4,\cdots\},\tag{$\ast$}
+% 	\]
+% 	then $\Z^-$ would be well-ordered: if $B\subseteq\Z^-$ is non-empty and has its elements listed in the same order as $(\ast)$, then $B$ has a first element. With a little thinking, we could modify the proof of the principle of mathematical induction to allow us to prove theorems of the form $\forall n\in\Z^-,\ P(n),$ by induction. The base case is $n=-1$ and the induction step justifies the chain
+% 	\[
+% 		P(-1)\implies P(-2)\implies P(-3)\implies\cdots
+% 	\]
+% 	An extremely important theorem in advanced set theory states that it is possible to well-order \emph{every} set. With a slight modification of the process, this massively increases the applicability of induction. In these notes we keep things simple: well-ordering is always in the sense of Definition \ref{defn:wellorder}, where we list the elements of a set in the usual increasing order. For a more esoteric example of a well-ordered set, see the final Exercise below.
+% \end{aside}
 
 % \paragraph{Self-test Questions}
 % 
@@ -671,9 +759,13 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 %     \item Discuss the following: suppose that $A$ is a set of real numbers with the property that every non-empty subset of $A$ has a minimum element \emph{and} a maximum element. Can you say anything interesting about $A$?
 %   \end{enumerate}
 
-\begin{exercises}{}{}
+\fi
 
-\begin{enumerate}
+
+\begin{exercises}
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-2-wellorder.html}{online}.
+
+	\begin{enumerate}
   \item Prove by contradiction that the interval $(3,4)$ has no minimum element.
   
   \item\begin{enumerate}
@@ -830,7 +922,7 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 
 	
 		\item Prove: for any $n\in\N$, $\sum\limits_{i=1}^n\frac{1}{i^2}<2$\par
-		(\emph{Hint: prove the stronger fact that $\smash{\sum\limits_{i=1}^n} \frac{1}{i^2} < 2 - \frac{1}{n}$ for all $n \ge 1$})
+		(\emph{Hint: prove the stronger fact that $\smash{\sum\limits_{i=1}^n} \frac{1}{i^2} < 2 - \frac{1}{n}$ for all $n \ge 2$})
 \end{enumerate}
 
 \end{exercises}
