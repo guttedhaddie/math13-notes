@@ -128,7 +128,7 @@ We present several more examples in a similar vein, but done a little faster. As
 	\[
 		2+5+8+\cdots+(3n-1)=\frac 12n(3n+1) \tag{$\ast$}
 	\]
-	\begin{description}
+	\begin{description}\itemsep0pt
 		\item[\normalfont\emph{Base case} ($n=1$):] The proposition ($\ast$) is trivially true: $2=\frac 12\cdot 1\cdot(3\cdot 1+1)$.
 		\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume ($\ast$) holds for this value of $n$. Then
 		\begin{align*}
@@ -141,7 +141,8 @@ We present several more examples in a similar vein, but done a little faster. As
 	By mathematical induction ($\ast$) holds for all $n\in\N$.
 \end{example}
 
-To speed things up we labelled the desired proposition (what we'd have called $P(n)$ previously) by $(\ast)$ so it could be repeatedly referenced. The structure of the induction step in this first example was similar to Theorem \ref{thm:ind1}. Since the goal is to evaluate a sum, the induction step is little more than adding the same thing ($3n+2$) to both sides of the \textcolor{blue}{induction hypothesis}.\medbreak\goodbreak
+For brevity we labelled the desired proposition (what we'd have called $P(n)$) by $(\ast)$ so it could be referenced. The structure is similar to Theorem \ref{thm:ind1}: since the goal is to evaluate a sum, the induction step is little more than adding the same thing ($3n+2$) to both sides of the \textcolor{blue}{induction hypothesis}. In fact, the example could have been proved directly by invoking Theorem \ref{thm:ind1}---can you see how?
+\medbreak\goodbreak
 
 Our next two examples are a little harder, requiring more creativity to invoke the induction hypothesis. Both could alternatively be proved directly using modular arithmetic (Chapter \ref{chap:gcd}).
 
@@ -394,7 +395,7 @@ In this section we think more carefully about the logic behind induction, by tyi
 To test if a set $A$ is well-ordered, we need to check \emph{all} of its non-empty subsets. The definition could be written as equivalently as follows, where in the second line we expand what is meant by a \emph{minimum}:
 \begin{itemize}
   \item $\forall B\subseteq A$ such that $B\neq\emptyset$, $\min B$ exists.
-  \item $\forall B\subseteq A$ such that $B\neq\emptyset$, $\exists b\in B$ such that $\forall x\in B$, $b\le x$.
+  \item $\forall B\subseteq A$, $B\neq\emptyset\implies \exists b\in B$ such that $\forall x\in B$, $b\le x$.
 \end{itemize}
 To show that $A$ is \emph{not} well-ordered, we need only exhibit a non-empty subset $B$ with \emph{no minimum.}
 
@@ -640,27 +641,7 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 
 \footnotetext{We are obscuring two subtleties here. It is a fact, though not an obvious one, that it is always possible to choose a vertex $A$ so that the new polygon $\cP_n$ doesn't cross itself. Read about `ears' and `mouths' of polygons and triangulation if you're interested. There are also two other, less likely, cases which we didn't consider: when deleting a point from an ($n+1$)-gon it is possible to obtain  an $(n-1)$-gon, or even an $(n-2)$-gon. To think it out, try drawing a 12-gon in the shape of a Star of David. Deleting one of the outer corners creates a 9-gon! Dealing with these cases strictly requires strong induction, so we return to them later.}
 
-
-
-%HOMEWORK!
-% For all integers $n\ge 3$, we have\footnotemark
-% 	\[
-% 		\sum\limits_{i=3}^n\frac 1{i(i-2)} =\frac 34-\frac{2n-1}{2n(n-1)}\tag{$\ast$}
-% 	\]	
-% 	\begin{enumerate}\setcounter{enumi}{1}
-% 		\item[]\begin{description}
-% 			\item[\normalfont\emph{Base case} ($n=3$):] When $n=3$, ($\ast$) reads $\smash{\sum\limits_{i=3}^3}\frac 1{i(i-2)}=\frac 13=\frac 34-\frac 5{12}=\frac 34-\frac{2\cdot 3-1}{2\cdot 3(3-1)}$.
-% 			\item[\normalfont\emph{Induction step}:] Assume that ($\ast$) is true for some fixed $n\ge 3$. Then
-% 			\begin{align*}
-% 				\sum_{i=3}^{n+1}\frac 1{i(i-2)}&=\sum_{i=3}^{n}\frac 1{i(i-2)}+\frac 1{(n+1)(n-1)}\\
-% 				&=\frac 34-\frac{2n-1}{2n(n-1)}+\frac 1{(n+1)(n-1)}\tag{induction hypothesis}\\
-% 				&=\frac 34-\left[\frac{(2n-1)(n+1)-2n}{2(n+1)n(n-1)}\right]=\frac 34-\left[\frac{1+n-2n^2}{2(n+1)n(n-1)}\right]\\
-% 				&=\frac 34+\frac{(2n+1)(1-n)}{2(n+1)n(n-1)}=\frac 34-\frac{2n+1}{2(n+1)n}
-% 			\end{align*}
-% 			which is exactly ($\ast$) when $n$ is replaced by $n+1$.
-% 		\end{description}
-% 		By induction ($\ast$) holds for all integers $n\ge 3$.
-
+\fi
 
 %Wellorder stuff!
 %     \item Prove: $n! \le \left(\frac{n + 1}{2}\right)^n$.\par
@@ -727,17 +708,6 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 % 	An extremely important theorem in advanced set theory states that it is possible to well-order \emph{every} set. With a slight modification of the process, this massively increases the applicability of induction. In these notes we keep things simple: well-ordering is always in the sense of Definition \ref{defn:wellorder}, where we list the elements of a set in the usual increasing order. For a more esoteric example of a well-ordered set, see the final Exercise below.
 % \end{aside}
 
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-%     \item True or false: A well-ordered set of real numbers must have a minimum element.
-%     \item True or false: If a set of real numbers has a minimum element, then it is well-ordered.
-%     \item True or false: Any finite set of numbers is well-ordered.
-%     \item Discuss the following: suppose that $A$ is a set of real numbers with the property that every non-empty subset of $A$ has a minimum element \emph{and} a maximum element. Can you say anything interesting about $A$?
-%   \end{enumerate}
-
-\fi
-
 
 \begin{exercises}
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-2-wellorder.html}{online}.
@@ -768,45 +738,22 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 % 	    Rewrite the statement using $\Pi$-notation.
 	    \item Prove the result by induction.
 	  \end{enumerate}
-	
-	
-  	\item Show that for any $n \geq 3$, there is a set $A$ consisting of $n$ natural numbers such that the sum of the numbers in $A$ is divisible by every element of $A$.
-  
+	  
+	  
 	
 		\item Prove the geometric series formula: if $r\neq 1$ and $n\in\N_0$, then
 			$\sum\limits_{k=0}^nr^k=\frac{1-r^{n+1}}{1-r}$
+			
 		
-% 	\begin{enumerate}
-% 	  \item Here is an incorrect proof by induction. Explain why it is incorrect.
-% 	  \begin{proof}
-% 	  Let $P(n)=\sum\limits_{k=0}^nr^k=\frac{1-r^{n+1}}{1-r}$.\\
-% 	  (\emph{Base Case} $n=0$)\quad $P(0)=\sum\limits_{k=0}^0r^k=r^0=1=\frac{1-r^{0+1}}{1-r}$ is true.\\
-% 	  (\emph{Induction Step})\quad Fix $n\in\N_0$ and assume that $P(n)$ is true. Then
-% 	  \begin{align*}
-% 	  P(n+1)&=\sum_{k=0}^{n+1}r^k=\sum_{k=0}^nr^k+r^{n+1}=\frac{1-r^{n+1}}{1-r}+r^{n+1}\\
-% 	  &=\frac{1-r^{n+1}}{1-r}+\frac{r^{n+1}-r^{n+2}}{1-r}=\frac{1-r^{n+2}}{1-r}\text{, \ is true.}
-% 	  \end{align*}
-% 	  By induction, $(\ast)$ is true for all $n\in\N_0$.
-% 	  \end{proof}
-% 	  \item Give a correct proof of $(\ast)$.
-% 	\end{enumerate}
+		\item For all integers $n\ge 3$, prove that $\sum\limits_{k=3}^n\frac 1{k(k-2)} =\frac 34-\frac{2n-1}{2n(n-1)}$	
 	
 	
-	
-%   \item Here is an argument attempting to justify $\sum\limits_{i=1}^ni=\frac 12n(n+1)+7$. What is wrong with it?\\[5pt]
-% 	Assume that the statement is true for some fixed $n$. Then
-% 	\[\sum_{i=1}^{n+1}i=\sum_{i=1}^ni+(n+1)=\frac 12n(n+1)+7+(n+1)=\frac 12(n+1)[(n+1)+1]+7,\]
-% 	hence the statement is true for $n+1$ and, by induction, for all $n\in\N$.
- 	
-% 	\item Here is a `proof' that all human beings have the same age. Where is the flaw in the argument?
-% 	\begin{proof}
-% 	(\emph{Base case $n=1$})\quad In a set with only 1 person, all the people in the set have the same age.\\[2pt]
-% 	(\emph{Inductive hypothesis})\quad Suppose that for some integer $n\ge 1$ and for all sets with $n$ people, it is true that all of the people in the set have the same age.\\[2pt]
-% 	(\emph{Inductive step})\quad Let $A$ be a set with $n+1$ people, say $A=\{a_1,\dots,a_n,a_{n+1}\}$, and let
-% 		\[A'=\{a_1,\dots,a_n\}\quad\text{and}\quad A''=\{a_2,\dots,a_{n+1}\}.\]
-% 		The inductive hypothesis tells us that all the people in $A'$ have the same age and all the people in $A''$ have the same age. Since $a_2$ belongs to both sets, then all the people in $A$ have the same age as $a_2$. We conclude that all the people in $A$ have the same age.\\[2pt]
-% 	(\emph{Conclusion})\quad By induction, the claim holds for all $n\ge 1$.
-% 	\end{proof}
+  	\item The set $A_3=\{1,2,3\}$ satisfies the property that the sum of its elements (6) is divisible by every element.
+  	\begin{enumerate}
+  	  \item Use induction to prove that for any $n\ge 3$, there is a set $A_n$ consisting of $n$ natural numbers such that the sum of the numbers in $A_n$ is divisible by every element of $A_n$.
+  	  \item Prove that no set of \emph{two} natural numbers satisfies the property.
+  	\end{enumerate}
+ 
 	
 		\item For each $n\in\N$, let $P(n)$ and $Q(n)$ be propositions.
 		\begin{enumerate}
@@ -817,9 +764,6 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 		\end{enumerate}
 	
 		
-		
-		\item For all integers $n\ge 3$, prove that $\sum\limits_{k=3}^n\frac 1{k(k-2)} =\frac 34-\frac{2n-1}{2n(n-1)}$	
-	
 	
 		\item Prove that if $A\subseteq\R$ is a \emph{finite} set, then $A$ is well-ordered.
 	
@@ -911,6 +855,13 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 	\[B=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots,1,\frac 32,\frac 53,\frac 74,\frac 95,\ldots\right\}=\left\{\frac n{n+1}:n\in\N\right\}\cup\left\{\frac{2n-1}{n}:n\in\N\right\}\]
 	Prove that $B$ is well-ordered.\footnotemark\par
 	(\emph{Hint: If $C\subseteq B$ is non-empty, consider the cases where $\exists c<1$ and when all $c\ge 1$ separately.})
+	
+	
+	\item Suppose that the equation $x^2+4y^2=3z^2$ has a solution $(x,y,z)$ where all three are \emph{positive integers.}
+	\begin{enumerate}
+	  \item By considering remainders modulo 3, prove that $3\mid z$ and that there is a new solution $(x_1,y_1,z_1)$ in positive integers, where $z_1<z$.
+	  \item Argue by contradiction that $x^2+4y^2=3z^2$ has no solutions in positive integers.
+	\end{enumerate}
 
 % The induction arguments in the above examples are so simple that they hardly seem worth mentioning. In other situations things can be much harder.\\
 % Bob
