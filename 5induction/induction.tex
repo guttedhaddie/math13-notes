@@ -440,8 +440,10 @@ Armed with this axiom, we can justify the method of proof by induction.
 \begin{thm}{Principle of Mathematical Induction}{ind}
 	For each $n\in\N$, let $P(n)$ be a proposition. Additionally make the two standard assumptions for induction:
 	\begin{quote}
-		\emph{Base case}:\lstsp $P(1)$ is true\par
-		\emph{Induction step}:\lstsp $\forall n\in\N,\ P(n)\Longrightarrow P(n+1)$
+		\begin{tabular}{@{}ll}
+			\emph{Base case}: &$P(1)$ is true\\[5pt]
+			\emph{Induction step}: &$\forall n\in\N,\ P(n)\Longrightarrow P(n+1)$
+		\end{tabular}
 	\end{quote}
 	Then $P(n)$ is true for all $n\in\N$.
 \end{thm}
@@ -474,11 +476,13 @@ Now we have the proof, it is straightforward to extend the principle of inductio
 \]
 is also well-ordered. By changing the base case to $P(m)$ and replacing $\N$ with $\Z_{\ge m}$, we immediately obtain the proof of a more general principle of induction.
 
-\begin{cor}{Induction with base case $m$}{}
+\begin{cor}{Induction with base case $m$}{indbasem}
 	Fix an integer $m$. For each integer $n\ge m$, let $P(n)$ be a proposition. Suppose:
 	\begin{quote}
-		\emph{Base case}:\lstsp $P(m)$ is true\par
-		\emph{Induction step}:\lstsp $\forall n\in\Z_{\ge m},\ P(n)\Longrightarrow P(n+1)$
+		\begin{tabular}{@{}ll}
+			\emph{Base case}: &$P(m)$ is true\\[5pt]
+			\emph{Induction step}: &$\forall n\in\Z_{\ge m},\ P(n)\Longrightarrow P(n+1)$
+		\end{tabular}
 	\end{quote}
 	Then $P(n)$ is true for all $n\in\Z_{\ge m}$.
 \end{cor}
@@ -594,54 +598,222 @@ Sometimes authors present induction arguments as contradiction proofs in line wi
 	\end{enumerate}
 \end{examples}
 
-\iffalse
 
-Our final example involves a little abstraction.
 
-\begin{thm}{}{polygon}
-	The interior angles of an $n$-gon ($n$-sided polygon) sum to $180(n-2)$ degrees.
-\end{thm}
+\begin{aside}{}{}
+	\boldinline{Aside: Well-ordering more generally}
 
-We will take the initial case ($n=3$) that the angles of a triangle sum to \ang{180} as given (can you prove it?) and merely prove the induction step. The main logical difficulty is that we must consider \emph{all} $n$-gons simultaneously. If we were to write the induction step in the form
-\[
-	\forall n\in\Z_{\ge 3},\ P(n)\implies P(n+1)
-\]
-then the proposition $P(n)$ would be
-\[
-	P(n):\quad \forall n\text{-gons }\cP_n,\text{ the sum of the interior angles of $\cP_n$ is $180(n-2)$\textdegree}
-\]
-To prove our induction step for a \emph{fixed} integer $n$, we must show that \emph{all} $(n+1)$-gons have the correct sum of interior angles. We therefore assume that we are given some $(n+1)$-gon $\cP_{n+1}$ and proceed to compute its interior angles in terms of a related $n$-gon.
+	Definition \ref{defn:wellorder} is a weak version of a much deeper concept. Informally, to \emph{well-order} a set means to list its elements in some order so that every non-empty subset has an initial element \emph{with respect to that order.}\par
+	For instance, the set of negative integers $\Z^-=\{\ldots,-4,-3,-2,-1\}$ is \emph{not} well-ordered with respect to the standard ordering of the integers, but is well-ordered with respect to the \emph{reverse} ordering
+	\[
+		\Z^-=\{-1,-2,-3,-4,\ldots\}
+	\]
+	The principle of mathematical induction is easily modified to accommodate theorems of the form $\forall n\in\Z^-,\ P(n)$: the base case is $P(-1)$ and the induction step justifies the chain
+	\[
+		P(-1)\implies P(-2)\implies P(-3)\implies\cdots
+	\]
+	All the infinite well-ordered sets we've thus far seen have ``looked like'' the natural numbers, however more esoteric examples exist. For instance, the following well-ordered set looks like two copies of the natural numbers, one following the other:
+	\[
+		A=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots,1,\frac 32,\frac 53,\frac 74,\frac 95,\ldots\right\}=\left\{1-\frac 1n:n\in\N\right\}\cup\left\{2-\frac 1n:n\in\N\right\}
+	\]
+	Every non-empty subset of $A$ really does have a minimum!	It is possible to modify induction to apply to propositions indexed by well-ordered sets like this, though an extra step is required to deal with \emph{limit elements} (like $1\in A$) with no immediate predecessor. If your further studies include set theory, you'll likely spend much time considering well-orders and their associated \emph{ordinals.}
+\end{aside}
 
-\begin{proof}
-	Fix an integer $n\ge 3$, and suppose that \emph{all} $n$-gons have interior angles summing to $180(n-2)$\textdegree. Suppose we are given an $(n+1)$-gon $\cP_{n+1}$. Select any vertex $A$ and label the adjacent vertices $B$ and $C$. Delete $A$, and join $B$ and $C$ with a straight edge. The result is an $n$-gon $\cP_n$. There are two cases to consider.\footnotemark{}\par
 
-	\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
-		Case 1: The deleted point $A$ is \emph{outside} $\mathcal{P}_n$. The sum of the interior angles of $\mathcal{P}_{n+1}$ exceeds those of $P_n$ by $\alpha+\beta+\gamma=180$\textdegree. Therefore $\mathcal{P}_{n+1}$ has interior angles summing to $180(n-2)\text{\textdegree}+180\text{\textdegree}=180[(n+1)-2]$\textdegree.\par
+\begin{exercises}
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-2-wellorder.html}{online}.
+
+	\begin{enumerate}
+  	\item Prove that the interval $(-2,5]$ has no minimum element.
 	
-		Case 2: The deleted point $A$ is \emph{inside} $\mathcal{P}_n$. To obtain the sum of the interior angles of $\mathcal{P}_{n+1}$, we take the sum of the interior angles of $\mathcal{P}_n$ and do three things:
-		\begin{itemize}\setlength{\itemsep}{0pt}
-	  	\item \emph{Subtract} $\beta$
-	  	\item \emph{Subtract} $\gamma$
-	  	\item \emph{Add the reflex angle $360$\textdegree$-\alpha$ at $A$}
-		\end{itemize}
-		We are therefore adding an additional
+	
+		\item Prove that every finite set of real numbers is well-ordered.
+  
+  
+  	\item\begin{enumerate}
+    	\item Suppose that $n\ge 3$. Prove that $\left(\frac{n+1}n\right)^2<2$.
+    	\item Hence or otherwise, prove that $n^2<2^n$ for all natural numbers $n\ge 5$.
+  	\end{enumerate}
+  	
+
+	  \item Consider the following result. For every natural number $n\ge 2$,
 		\[
-			-\beta-\gamma+(360\text{\textdegree}-\alpha)=360\text{\textdegree}-(\alpha+\beta+\gamma)=180\text{\textdegree}
+			\left(1-\frac{1}{4}\right) \left(1-\frac{1}{9}\right) \left(1-\frac{1}{16}\right) \cdots \left(1-\frac{1}{n^2}\right) = \frac{n+1}{2n}
 		\]
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-		\includegraphics[width=\textwidth]{induction-05-polygon}\\
-		Case 1: $A$ outside $\mathcal{P}_n$\\[25pt]
-		\includegraphics[width=\textwidth]{induction-06-polygon}\\
-		Case 2: $A$ inside $\mathcal{P}_n$
-	\end{minipage}\\[8pt]
-	$\mathcal{P}_{n+1}$ again has interior angles summing to $180[(n+1)-2]$\textdegree.
-\end{proof}
+	  \begin{enumerate}
+	    \item If the statement is written in the form $\forall n\in\N_{\ge 2},\ P(n)$, what is the proposition $P(n)$?
+% 	    \item $\Pi$-notation is used for products in the same way as $\Sigma$-notation for sums: for example
+% 	    \[\prod_{k=1}^5(k+1)^k=2^1\cdot 3^2\cdot 4^3\cdot 5^4\cdot 6^5\]
+% 	    Rewrite the statement using $\Pi$-notation.
+	    \item Prove the result by induction.
+	  \end{enumerate}
+	  
+	  
+	
+		\item Prove the geometric series formula: if $r\neq 1$ and $n\in\N_0$, then
+			$\smash{\sum\limits_{k=0}^n}r^k=\frac{1-r^{n+1}}{1-r}$
+			
+		
+		\item For all integers $n\ge 3$, prove that $\smash{\sum\limits_{k=3}^n}\frac 1{k(k-2)} =\frac 34-\frac{2n-1}{2n(n-1)}$	
+		
+		
+		\item Prove: for any $n\in\N$, $\smash{\sum\limits_{i=1}^n}\frac{1}{i^2}<2$\par
+	(\emph{Hint: prove the stronger fact that $\smash{\sum\limits_{i=1}^n} \frac{1}{i^2} < 2 - \frac{1}{n}$ for all $n \ge 2$})
+	
+	
+		\goodbreak
+		
+	
+  	\item The set $A_3=\{1,2,3\}$ satisfies the property that the sum of its elements ($1+2+3=6$) is divisible by every element of $A_3$.
+  	\begin{enumerate}
+  	  \item Use induction to prove that for any $n\ge 3$, there is a set $A_n$ of $n$ natural numbers such that the sum of its elements is divisible by every element of $A_n$.
+  	  \item Prove by contradiction that no set of \emph{two} natural numbers satisfies this property.
+  	\end{enumerate}
+ 	
+	
+		%\item Prove that $\Q$ is not well-ordered.
+		
+	
+		\item Suppose that $x^2+4y^2=3z^2$ has a solution $(x,y,z)$ where all three are \emph{positive integers.}
+		\begin{enumerate}
+	  	\item By considering remainders modulo 3, prove that $3\mid z$. Thus create a new solution $(X,Y,Z)$ in positive integers, where $Z<z$.
+	  	\item Use the method of minimal counter-example to prove that $x^2+4y^2=3z^2$ has no solutions where $x,y,z\in\N$.
+		\end{enumerate}
+  
+	
+		\item We use the fact that $\N_0$ is well-ordered to prove the division algorithm (Theorem \ref{thm:div}).
+		\begin{quote}
+			\emph{If $m\in\Z$ and $n\in\N$, then $\exists$ unique $q,r\in\Z$ such that $m=qn+r$ and $0\le r<n$.}
+		\end{quote}
+	
+		Given $m,n$, define
+		\[
+			S=\N_0\cap\bigl(m+n\Z\bigr) =\bigl\{k\in\N_0:k=m-qn\text{ for some } q\in\Z\bigr\}
+		\]	
+		\begin{enumerate}
+			\item (Existence)\lstsp Show that $S$ is a \emph{non-empty} subset of $\N_0$. By well-ordering, \emph{define} $r:=\min S$. Prove that $0\le r<n$.
+			\item (Uniqueness)\lstsp Suppose two pairs of integers $(q_1,r_1)$ and $(q_2,r_2)$ satisfy $m=q_in+r_i$ and $0\le r_1,r_2<n$. Prove that $r_1=r_2$.
+		\end{enumerate}
+		
+	
+	  \item\label{exs:peano} (Hard)\lstsp We consider a version of Peano's axioms for the natural numbers.
+		\begin{itemize}
+			\item[i.] (\emph{Initial element})\lstsp $1\in\N$
+			\item[ii.] (\emph{Successor function})\lstsp $f(n)=n+1$ is a function $f:\N\to\N$
+			\item[iii.] (\emph{No predecessor of the initial element})\lstsp $1\not\in\range(f)$
+			\item[iv.] (\emph{Unique predecessor/order})\lstsp $f$ is injective: $m+1=n+1\Longrightarrow m=n$
+			\item[v.] (\emph{Induction})\lstsp Any subset $A\subseteq\N$ with the following properties \emph{equals} $\N$:
+			\[
+				1\in A\quad\text{and}\quad \forall a\in A,\ a+1\in A
+			\]
+		\end{itemize}
+		\begin{enumerate}
+			\item Replace $\N$ with $\Z$ in each axiom. Which are true and which false?
+			\item Let $T=\bigl\{(m,n):m,n\in\N\bigr\}$ be the set of all ordered pairs of natural numbers.
+			\begin{enumerate}
+			  \item Let $f:T\to T$ be the function $f(m,n)=(m+1,n)$. Letting the pair $(1,1)$ play the role of 1, and $f$ the successor function, decide which of Peano's axioms are satisfied by $T$.
+				\item Repeat the question for the same initial element and 
+				\[
+					f:T\to T:(m,n)\mapsto
+					\begin{cases}
+						(m-1,n+1)&\text{if }m\ge 2\\
+						(m+n,1)&\text{if }m=1
+					\end{cases}
+				\]
+			\end{enumerate}
+			\item Prove that $\range(f)=\N\setminus\{1\}$: every element except 1 is the successor of something.\par
+			(\emph{Hint: let $A=\{1\}\cup\range(f)$ in the induction axiom})
+			\item Prove that $\N$, as defined by Peano, is well-ordered (with respect to $x<x+1$, etc.).
+		\end{enumerate}
+	
+	
+% 	\item (\emph{Ignore this question if you haven't studied matrices}) Suppose that $A=\begin{smatrix}7&12\\-2&-3\end{smatrix}$. We prove that
+% 	\[\forall n\in\Z,\quad A^n=\begin{pmatrix}-2&-6\\1&3\end{pmatrix}+3^n\begin{pmatrix}3&6\\-1&-2\end{pmatrix}.\tag*{($\dag$)}\]
+% 	Here $A^{-n}=(A^n)^{-1}$ is the inverse of $A^n$, and we follow the convention that $A^0=\begin{smatrix}
+% 	1&0\\0&1
+% 	\end{smatrix}$ is the identity matrix.
+% 	\begin{enumerate}
+%   	\item Prove by induction that $(\dag)$ holds $\forall n\in\N_0$.
+% 		\item Modify your argument in part (a) to prove that $(\dag)$ holds $\forall n\in\Z^-_0$. (\emph{Use the fact that, when written in reverse order, $\Z_0^-=\{0,-1,-2,-3,-4,\ldots\}$ is a well-ordered set.)}
+% 		\item Using what you know about matrix inverses, give a direct proof that $(\dag)$ holds $\forall n\in\Z^-_0$. 		(\emph{If $C$ and $D$ are $2\times 2$ matrices such that $CD=\begin{smatrix}
+% 		1&0\\0&1
+% 		\end{smatrix}$, then $D=C^{-1}$.})
+% 		\item Diagonalize the matrix $A$ and thereby give a direct proof of $(\dag)$ for all integers $n$.
+% 	\end{enumerate}
 
-\footnotetext{We are obscuring two subtleties here. It is a fact, though not an obvious one, that it is always possible to choose a vertex $A$ so that the new polygon $\cP_n$ doesn't cross itself. Read about `ears' and `mouths' of polygons and triangulation if you're interested. There are also two other, less likely, cases which we didn't consider: when deleting a point from an ($n+1$)-gon it is possible to obtain  an $(n-1)$-gon, or even an $(n-2)$-gon. To think it out, try drawing a 12-gon in the shape of a Star of David. Deleting one of the outer corners creates a 9-gon! Dealing with these cases strictly requires strong induction, so we return to them later.}
+	\end{enumerate}
 
-\fi
+\end{exercises}
+
+
+% The induction arguments in the above examples are so simple that they hardly seem worth mentioning. In other situations things can be much harder.\\
+% Bob
+% 
+% \begin{example}
+% Recall the monotone convergence theorem from sequences. If $(x_n)$ is an increasing (decreasing) sequence bounded above (below), then it is convergent. Here we use this theorem to prove that the following sequence converges to $\frac 12$:
+% \[\begin{cases}
+% x_{n+1}=\frac 13(x_n+1)+(x_n-\tfrac 12)^2,\\
+% x_1=1.
+% \end{cases}\]
+% You can try hunting for a general formula for $x_n$ (if you find one, let us know\ldots). Instead we observe the first few terms of the sequence: $(x_n)=(1,\frac{11}{12},\frac{13}{16},\frac{539}{768},\ldots)$ and hypothesize:\\[10pt]
+% Conjecture:\quad $(x_n)$ is a decreasing sequence and $x_n>\frac 12$ for all $n\in\N$.\\
+% We prove by induction.\\
+% Certainly $x_1=1>\frac 12$. Now if $x_n>\frac 12$, we have $x_n-\frac 12\neq 0$, whence
+% \[x_{n+1}>\frac 13\left(x_n+1\right)>\frac 13\left(\frac 12+1\right)=\frac 13\cdot\frac 32=\frac 12.\]
+% Thus all $x_n>\frac 12$ by induction.\\[10pt]
+% Given this, we can now see that
+% \[x_{n+1}-x_n=\frac 13(1-2x_n)-\left(x_n-\frac 12\right)^2<0,\]
+% thus $(x_n)$ is decreasing. Since $(x_n)$ is also bounded below (by $\frac 12$), the monotone convergence theorem says that the sequence converges.\\
+% Call the limit $x$. Clearly $x\ge 1$. But then
+% \[x=\frac 13(x+1)+\left(x-\frac 12\right)^2\iff x=\frac 12\text{ or }\frac 76.\]
+% Since $(x_n)$ is decreasing from 1, it is clear that $\lim_{n\to\infty}x_n=\frac 12$.\\
+% Note that it is essential that we establish the existence of the limit before calculating it: the same sequence but with initial value $x_1=2$ is \emph{divergent} to $\infty$.
+% \end{example}
+
+% Our final example involves a little abstraction.
+% 
+% \begin{thm}{}{polygon}
+% 	The interior angles of an $n$-gon ($n$-sided polygon) sum to $180(n-2)$ degrees.
+% \end{thm}
+% 
+% We will take the initial case ($n=3$) that the angles of a triangle sum to \ang{180} as given (can you prove it?) and merely prove the induction step. The main logical difficulty is that we must consider \emph{all} $n$-gons simultaneously. If we were to write the induction step in the form
+% \[
+% 	\forall n\in\Z_{\ge 3},\ P(n)\implies P(n+1)
+% \]
+% then the proposition $P(n)$ would be
+% \[
+% 	P(n):\quad \forall n\text{-gons }\cP_n,\text{ the sum of the interior angles of $\cP_n$ is $180(n-2)$\textdegree}
+% \]
+% To prove our induction step for a \emph{fixed} integer $n$, we must show that \emph{all} $(n+1)$-gons have the correct sum of interior angles. We therefore assume that we are given some $(n+1)$-gon $\cP_{n+1}$ and proceed to compute its interior angles in terms of a related $n$-gon.
+% 
+% \begin{proof}
+% 	Fix an integer $n\ge 3$, and suppose that \emph{all} $n$-gons have interior angles summing to $180(n-2)$\textdegree. Suppose we are given an $(n+1)$-gon $\cP_{n+1}$. Select any vertex $A$ and label the adjacent vertices $B$ and $C$. Delete $A$, and join $B$ and $C$ with a straight edge. The result is an $n$-gon $\cP_n$. There are two cases to consider.\footnotemark{}\par
+% 
+% 	\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
+% 		Case 1: The deleted point $A$ is \emph{outside} $\mathcal{P}_n$. The sum of the interior angles of $\mathcal{P}_{n+1}$ exceeds those of $P_n$ by $\alpha+\beta+\gamma=180$\textdegree. Therefore $\mathcal{P}_{n+1}$ has interior angles summing to $180(n-2)\text{\textdegree}+180\text{\textdegree}=180[(n+1)-2]$\textdegree.\par
+% 	
+% 		Case 2: The deleted point $A$ is \emph{inside} $\mathcal{P}_n$. To obtain the sum of the interior angles of $\mathcal{P}_{n+1}$, we take the sum of the interior angles of $\mathcal{P}_n$ and do three things:
+% 		\begin{itemize}\setlength{\itemsep}{0pt}
+% 	  	\item \emph{Subtract} $\beta$
+% 	  	\item \emph{Subtract} $\gamma$
+% 	  	\item \emph{Add the reflex angle $360$\textdegree$-\alpha$ at $A$}
+% 		\end{itemize}
+% 		We are therefore adding an additional
+% 		\[
+% 			-\beta-\gamma+(360\text{\textdegree}-\alpha)=360\text{\textdegree}-(\alpha+\beta+\gamma)=180\text{\textdegree}
+% 		\]
+% 	\end{minipage}
+% 	\hfill
+% 	\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
+% 		\includegraphics[width=\textwidth]{induction-05-polygon}\\
+% 		Case 1: $A$ outside $\mathcal{P}_n$\\[25pt]
+% 		\includegraphics[width=\textwidth]{induction-06-polygon}\\
+% 		Case 2: $A$ inside $\mathcal{P}_n$
+% 	\end{minipage}\\[8pt]
+% 	$\mathcal{P}_{n+1}$ again has interior angles summing to $180[(n+1)-2]$\textdegree.
+% \end{proof}
+% 
+% \footnotetext{We are obscuring two subtleties here. It is a fact, though not an obvious one, that it is always possible to choose a vertex $A$ so that the new polygon $\cP_n$ doesn't cross itself. Read about `ears' and `mouths' of polygons and triangulation if you're interested. There are also two other, less likely, cases which we didn't consider: when deleting a point from an ($n+1$)-gon it is possible to obtain  an $(n-1)$-gon, or even an $(n-2)$-gon. To think it out, try drawing a 12-gon in the shape of a Star of David. Deleting one of the outer corners creates a 9-gon! Dealing with these cases strictly requires strong induction, so we return to them later.}
 
 %Wellorder stuff!
 %     \item Prove: $n! \le \left(\frac{n + 1}{2}\right)^n$.\par
@@ -689,418 +861,242 @@ To prove our induction step for a \emph{fixed} integer $n$, we must show that \e
 % Let $x,y \in \R$ with $x < y$ be arbitrary. We need to find $r \in \Q$ with $x < r < y$. Then $y - x > 0$. By the Archimedean property, there is $n \in \N$ such that $n(y - x) > 1$. Since $ny - nx > 1$, we can apply Lemma \ref{lemm:rationaldensityprep} to get $k \in \Z$ such that $nx < k < ny$. As $n \geq 1 > 0$, dividing yields $x < \frac{k}{n} < y$. Take $r = \frac{k}{n} \in \Q$.
 % \end{proof}
 
-% \begin{aside}{}{}
-% 	{\bf Well-ordering more generally}
-% 	
-% 	Well-ordering is a fundamental concept whose implications are far beyond what we're discussing here. Informally speaking, \emph{well-ordering} a set $A$ involves listing the elements of $A$ in some order so that every non-empty subset of $A$ has a first element \emph{with respect to that order.}\\
-% 	Consider, for example, the set of negative integers $\Z^-$. For the purposes of these notes we will always consider the standard ordering:
-% 	\[
-% 		\cdots<-4<-3<-2<-1
-% 	\]
-% 	Written in the standard order, $\Z^-=\{\ldots,-4,-3,-2,-1\}$ is \emph{not} a well-ordered set. In a more advanced discussion, one could consider alternative orderings, and the definition of well-ordered would change accordingly. If we choose the ordering
-% 	\[
-% 		\Z^-=\{-1,-2,-3,-4,\cdots\},\tag{$\ast$}
-% 	\]
-% 	then $\Z^-$ would be well-ordered: if $B\subseteq\Z^-$ is non-empty and has its elements listed in the same order as $(\ast)$, then $B$ has a first element. With a little thinking, we could modify the proof of the principle of mathematical induction to allow us to prove theorems of the form $\forall n\in\Z^-,\ P(n),$ by induction. The base case is $n=-1$ and the induction step justifies the chain
-% 	\[
-% 		P(-1)\implies P(-2)\implies P(-3)\implies\cdots
-% 	\]
-% 	An extremely important theorem in advanced set theory states that it is possible to well-order \emph{every} set. With a slight modification of the process, this massively increases the applicability of induction. In these notes we keep things simple: well-ordering is always in the sense of Definition \ref{defn:wellorder}, where we list the elements of a set in the usual increasing order. For a more esoteric example of a well-ordered set, see the final Exercise below.
-% \end{aside}
-
-
-\begin{exercises}
-	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-2-wellorder.html}{online}.
-
-	\begin{enumerate}
-  	\item Prove that the interval $(-2,5]$ has no minimum element.
-  
-  	\item\begin{enumerate}
-    	\item Suppose that $n\ge 3$. Prove that $\left(\frac{n+1}n\right)^2<2$.
-    	\item Hence or otherwise, prove that $n^2<2^n$ for all natural numbers $n\ge 5$.
-  	\end{enumerate}
-  	
-  	
-%   	\item Prove the second extended de Morgan result: for any sets $A_1,\ldots,A_n$,
-%   	\[
-%   		\comp{(A_1\cup\cdots \cup A_n)} =\comp{A_1}\cap\cdots\cap\comp{A_n}
-%   	\]
-
-
-	  \item Consider the following result. For every natural number $n\ge 2$,
-		\[
-			\left(1-\frac{1}{4}\right) \left(1-\frac{1}{9}\right) \left(1-\frac{1}{16}\right) \cdots \left(1-\frac{1}{n^2}\right) = \frac{n+1}{2n}
-		\]
-	  \begin{enumerate}
-	    \item If the statement is written in the form $\forall n\in\N_{\ge 2},\ P(n)$, what is the proposition $P(n)$?
-% 	    \item $\Pi$-notation is used for products in the same way as $\Sigma$-notation for sums: for example
-% 	    \[\prod_{k=1}^5(k+1)^k=2^1\cdot 3^2\cdot 4^3\cdot 5^4\cdot 6^5\]
-% 	    Rewrite the statement using $\Pi$-notation.
-	    \item Prove the result by induction.
-	  \end{enumerate}
-	  
-	  
-	
-		\item Prove the geometric series formula: if $r\neq 1$ and $n\in\N_0$, then
-			$\sum\limits_{k=0}^nr^k=\frac{1-r^{n+1}}{1-r}$
-			
-		
-		\item For all integers $n\ge 3$, prove that $\sum\limits_{k=3}^n\frac 1{k(k-2)} =\frac 34-\frac{2n-1}{2n(n-1)}$	
-	
-	
-  	\item The set $A_3=\{1,2,3\}$ satisfies the property that the sum of its elements (6) is divisible by every element.
-  	\begin{enumerate}
-  	  \item Use induction to prove that for any $n\ge 3$, there is a set $A_n$ consisting of $n$ natural numbers such that the sum of the numbers in $A_n$ is divisible by every element of $A_n$.
-  	  \item Prove that no set of \emph{two} natural numbers satisfies the property.
-  	\end{enumerate}
- 
-	
-		\item For each $n\in\N$, let $P(n)$ and $Q(n)$ be propositions.
-		\begin{enumerate}
-			\item Let $s$ be the smallest natural number such that $P(s)$ is false. What can you say about the elements of the set $A=\{n\in\N:n<s\}$ with respect to the property $P$?
-			\item Let $a$ be minimal such that $P(a)\vee Q(a)$ is false. What can you say about the elements of the set $B=\{n\in\N:n<a\}$ with respect to the properties $P$ and $Q$?
-			\item Let $u$ be minimal such that $P(u)\wedge Q(u)$ is false. What can you say about the elements of the set $C=\{n\in\N:n<u\}$ with respect to the properties $P$ and $Q$?
-			\item Assume that $P(1)$ is true, but that ``$\forall n\in\N,\ P(n)$'' is false. Show that there exists a natural number $k$ such that the implication $P(k)\Longrightarrow P(k+1)$ is false.
-		\end{enumerate}
-	
-		
-	
-		\item Prove that if $A\subseteq\R$ is a \emph{finite} set, then $A$ is well-ordered.
-	
-	
-		\item Prove that $\Q$ is not well-ordered.
-  
-	
-		\item We use the fact that $\N_0$ is well-ordered to prove the division algorithm (Theorem \ref{thm:div}).
-		\begin{quote}
-			\emph{If $m\in\Z$ and $n\in\N$, then $\exists$ unique $q,r\in\Z$ such that $m=qn+r$ and $0\le r<n$.}
-		\end{quote}
-	
-		Given $m,n$, define $S=\bigl\{k\in\N_0:k=m-qn\text{ for some }q\in\Z\bigr\}$.	
-		\begin{enumerate}
-			\item (Existence)\lstsp Show that $S$ is a \emph{non-empty} subset of $\N_0$. By well-ordering, \emph{define} $r:=\min S$. Prove that $0\le r<n$.
-			\item (Uniqueness)\lstsp Suppose two pairs of integers $(q_1,r_1)$ and $(q_2,r_2)$ satisfy $m=q_in+r_i$ and $0\le r_1,r_2<n$. Prove that $r_1=r_2$.
-		\end{enumerate}
-		
-		
-		
-
-
-
-	
-	\item Prove: for any $n\in\N$, $\sum\limits_{i=1}^n\frac{1}{i^2}<2$\par
-	(\emph{Hint: prove the stronger fact that $\smash{\sum\limits_{i=1}^n} \frac{1}{i^2} < 2 - \frac{1}{n}$ for all $n \ge 2$})
-		
-	
-  \item\label{exs:peano} (Hard)\lstsp We consider a slimmed-down version of Peano's axioms for the natural numbers.
-	\begin{itemize}
-		%\item[i.] (\emph{Initial element})\lstsp $1\in\N$
-		\item[i.] (\emph{Successor/unique predecessor})\lstsp $\exists f:\N\to\N$ injective. We write this as $f(n)=n+1$, so
-		\[
-			n\in\N\Longrightarrow n+1\in\N\quad\text{and}\quad m+1=n+1\implies m=n
-		\]
-		\item[ii.] (\emph{Initial element})\lstsp $1\in\N$ and $1\notin\range(f)$: there is no $x\in\N$ for which $x+1=1$.
-		%\item[ii.] (\emph{No predecessor of the initial element})\lstsp $1\not\in\range(f)$
-		%\item[iv.] (\emph{Unique predecessor/order})\lstsp $f$ is injective: $m+1=n+1\implies m=n$
-		\item[iii.] (\emph{Induction})\lstsp Any subset $A\subseteq\N$ with the following properties \emph{equals} $\N$:\footnotemark
-		\[
-			1\in A\quad\text{and}\quad \forall a\in A,\ a+1\in A
-		\]
-	\end{itemize}
-	\begin{enumerate}
-		\item Replace $\N$ with $\Z$ in each axiom. Which are true and which false?
-		\item Let $T=\bigl\{(m,n):m,n\in\N\bigr\}$ be the set of all ordered pairs of natural numbers.
-		\begin{enumerate}
-		  \item Let $f:T\to T$ be the function $f(m,n)=(m+1,n)$. Letting the pair $(1,1)$ play the role of 1, and $f$ the successor function, decide which of Peano's axioms are satisfied by $T$.
-			\item Repeat the question for the same initial element and 
-			\[
-				f:T\to T:(m,n)\mapsto
-				\begin{cases}
-					(m-1,n+1)&\text{if }m\ge 2\\
-					(m+n,1)&\text{if }m=1
-				\end{cases}
-			\]
-		\end{enumerate}
-		
-		\item Prove that $\range(f)=\N\setminus\{1\}$: every element except 1 is the successor of something.\par
-		(\emph{Hint: let $A=\{1\}\cup\range(f)$ in the induction axiom)}
-		
-		
-		\item For $x,a\in\N$ we say that $x<a$ if $a=f(f(\cdots f(f(x))\cdots)) =(\cdots((x+1)+1)\cdots)+1$.
-		\begin{enumerate}
-		  \item Prove that $a<a$ is a contradiction.
-		  \item Prove that $\N$, as defined by Peano, is well-ordered.\par
-			(\emph{Hint: if $B\subseteq\N$ is non-empty, consider $A:=\{x\in\N:\forall b\in B, x<b\}$})
-		\end{enumerate}
-
-	\end{enumerate}
-	
-% 	\item (\emph{Ignore this question if you haven't studied matrices}) Suppose that $A=\begin{smatrix}7&12\\-2&-3\end{smatrix}$. We prove that
-% 	\[\forall n\in\Z,\quad A^n=\begin{pmatrix}-2&-6\\1&3\end{pmatrix}+3^n\begin{pmatrix}3&6\\-1&-2\end{pmatrix}.\tag*{($\dag$)}\]
-% 	Here $A^{-n}=(A^n)^{-1}$ is the inverse of $A^n$, and we follow the convention that $A^0=\begin{smatrix}
-% 	1&0\\0&1
-% 	\end{smatrix}$ is the identity matrix.
-% 	\begin{enumerate}
-%   	\item Prove by induction that $(\dag)$ holds $\forall n\in\N_0$.
-% 		\item Modify your argument in part (a) to prove that $(\dag)$ holds $\forall n\in\Z^-_0$. (\emph{Use the fact that, when written in reverse order, $\Z_0^-=\{0,-1,-2,-3,-4,\ldots\}$ is a well-ordered set.)}
-% 		\item Using what you know about matrix inverses, give a direct proof that $(\dag)$ holds $\forall n\in\Z^-_0$. 		(\emph{If $C$ and $D$ are $2\times 2$ matrices such that $CD=\begin{smatrix}
-% 		1&0\\0&1
-% 		\end{smatrix}$, then $D=C^{-1}$.})
-% 		\item Diagonalize the matrix $A$ and thereby give a direct proof of $(\dag)$ for all integers $n$.
-% 	\end{enumerate}
-	
-	
-	
-	\item (Hard!)\lstsp You might assume from our earlier discussion that all well-ordered sets must look like the natural numbers.	To disabuse you of this error, consider the set
-	\[B=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots,1,\frac 32,\frac 53,\frac 74,\frac 95,\ldots\right\}=\left\{\frac n{n+1}:n\in\N\right\}\cup\left\{\frac{2n-1}{n}:n\in\N\right\}\]
-	Prove that $B$ is well-ordered.\footnotemark\par
-	(\emph{Hint: If $C\subseteq B$ is non-empty, consider the cases where $\exists c<1$ and when all $c\ge 1$ separately.})
-	
-	
-	\item Suppose that the equation $x^2+4y^2=3z^2$ has a solution $(x,y,z)$ where all three are \emph{positive integers.}
-	\begin{enumerate}
-	  \item By considering remainders modulo 3, prove that $3\mid z$ and that there is a new solution $(x_1,y_1,z_1)$ in positive integers, where $z_1<z$.
-	  \item Argue by contradiction that $x^2+4y^2=3z^2$ has no solutions in positive integers.
-	\end{enumerate}
-
-% The induction arguments in the above examples are so simple that they hardly seem worth mentioning. In other situations things can be much harder.\\
-% Bob
-% 
-% \begin{example}
-% Recall the monotone convergence theorem from sequences. If $(x_n)$ is an increasing (decreasing) sequence bounded above (below), then it is convergent. Here we use this theorem to prove that the following sequence converges to $\frac 12$:
-% \[\begin{cases}
-% x_{n+1}=\frac 13(x_n+1)+(x_n-\tfrac 12)^2,\\
-% x_1=1.
-% \end{cases}\]
-% You can try hunting for a general formula for $x_n$ (if you find one, let us know\ldots). Instead we observe the first few terms of the sequence: $(x_n)=(1,\frac{11}{12},\frac{13}{16},\frac{539}{768},\ldots)$ and hypothesize:\\[10pt]
-% Conjecture:\quad $(x_n)$ is a decreasing sequence and $x_n>\frac 12$ for all $n\in\N$.\\
-% We prove by induction.\\
-% Certainly $x_1=1>\frac 12$. Now if $x_n>\frac 12$, we have $x_n-\frac 12\neq 0$, whence
-% \[x_{n+1}>\frac 13\left(x_n+1\right)>\frac 13\left(\frac 12+1\right)=\frac 13\cdot\frac 32=\frac 12.\]
-% Thus all $x_n>\frac 12$ by induction.\\[10pt]
-% Given this, we can now see that
-% \[x_{n+1}-x_n=\frac 13(1-2x_n)-\left(x_n-\frac 12\right)^2<0,\]
-% thus $(x_n)$ is decreasing. Since $(x_n)$ is also bounded below (by $\frac 12$), the monotone convergence theorem says that the sequence converges.\\
-% Call the limit $x$. Clearly $x\ge 1$. But then
-% \[x=\frac 13(x+1)+\left(x-\frac 12\right)^2\iff x=\frac 12\text{ or }\frac 76.\]
-% Since $(x_n)$ is decreasing from 1, it is clear that $\lim_{n\to\infty}x_n=\frac 12$.\\
-% Note that it is essential that we establish the existence of the limit before calculating it: the same sequence but with initial value $x_1=2$ is \emph{divergent} to $\infty$.
-% \end{example}
-
-\end{enumerate}
-
-\end{exercises}
-
-\footnotetext{The principle of mathematical induction does not apply to propositions indexed by this set. The reason is that `1' is not a successor element in $B$: there is no element $b\in B$ such that 1 is `the element after $b$.' Happily, there is a more general notion of \emph{transfinite induction} which extends induction to propositions indexed by well-ordered sets like $B$. Transfinite induction proofs require an additional step in order to deal with \emph{limit elements} like $1\in B$.}
-
 
 \clearpage
 
 
+
 \subsection{Strong Induction}\label{sec:strongind}
 
-The principle of mathematical induction as stated in Theorem \ref{thm:ind} is sometimes known as \emph{weak} induction. In weak induction, we require only that one proposition $P(n)$ be true in order to demonstrate the truth of the succeeding proposition $P(n+1)$. By contrast, the induction step in \emph{strong} induction additionally requires that more, perhaps \emph{all}, of the propositions coming before $P(n)$ are also true.
+The principle of mathematical induction (Theorem \ref{thm:ind}) is often known as \emph{weak} induction. The primary difference with \emph{strong} induction is that the induction step assumes more than one proposition.
 
 \begin{thm}{Principle of Strong Induction}{indstrong}
-	Let $m$ be an integer and suppose that $P(n)$ is a proposition for each $n\in\Z_{\ge m}$. Also fix an integer $l\ge m$. Suppose:
-	\begin{enumerate}
-	  \item[(a)] $P(m),P(m+1),\ldots,P(l)$ are true.
-	  \item[(b)] $\forall n\ge l,\ (P(m)\wedge P(m+1)\wedge\cdots\wedge P(n))\implies P(n+1)$.
-	\end{enumerate}
-	Then $P(n)$ is true for all $n\in\Z_{\ge m}$.
+	Let $l\ge m$ be fixed integers and suppose $P(n)$ is a proposition, one for each $n\in\Z_{\ge m}$. Suppose:
+	\begin{quote}
+		\begin{tabular}{@{}ll}
+			\emph{Base case(s)}: &$P(m),P(m+1),\ldots,P(l)$ are true\\[5pt]
+			\emph{Induction step}: &$\forall n\ge l,\ \bigl(P(m)\wedge P(m+1)\wedge\cdots\wedge P(n)\bigr)\Longrightarrow P(n+1)$
+		\end{tabular}
+	\end{quote}
+	Then $P(n)$ is true for all $n\ge m$.
 \end{thm}
 
-The statement is a little complicated: we show in the Exercises that it is equivalent to the earlier Principle of Mathematical Induction. What matters is that $\Z_{\ge m}$ is a well-ordered set. In the simplest examples, we have $m=1$ and $\Z_{\ge 1}=\N$. The challenge in strong induction is identifying how much you need to assume in order to effect the induction step (b), and then how many base cases $l-m+1$ are required.\par
-It is much easier to learn strong induction by seeing it in action. Consider the Fibonacci numbers, an excellent source of strong induction examples.
+Exercise \ref{exs:strongindproof} provides a proof by showing that strong and weak induction are equivalent. We instead concentrate on a few examples. The main additional challenge of strong induction lies in determining how many base cases are required and in identifying precisely how to phrase the induction hypothesis: in practice one rarely needs to use all the propositions $P(m),\ldots,P(n)$ explicitly.
 
-\begin{defn}{}{}
-	The \emph{Fibonacci numbers} are the sequence $(f_n)_{n=1}^\infty=(1,1,2,3,5,8,13,21,\ldots)$ defined by the recurrence relation
+
+\begin{example}{Fibonacci numbers}{fibonacci}
+	This famous sequence $(f_n)_{n=1}^\infty=(1,1,2,3,5,8,13,21,\ldots)$ is defined by the 2\nd-order recurrence relation
 	\[
 		\begin{cases}
 			f_{n+1}=f_n+f_{n-1}&\text{if }n\ge 2\\
 			f_1=f_2=1&
 		\end{cases}
 	\]
-\end{defn}
-
-
-\begin{thm}{}{fibon}
-	$\forall n\in\N$, $f_n<2^n$.
-\end{thm}
-
-\begin{proof}
-	For each natural number $n$, let $P(n)$ be the proposition $f_n<2^n$.\par
-	(\emph{Base cases} $n=1,2$)\quad $f_1=1<2^1$ and $f_2=1<2^2$, whence $P(1)$ and $P(2)$ are true.\par
-	(\emph{Induction step})\quad Fix $n\ge 2$ and suppose that $P(1),\ldots,P(n)$ are true. Then
-	\[f_{n+1}=f_n+f_{n-1}<2^n+2^{n-1}<2^n+2^n=2^{n+1}\]
-	which says that $P(n+1)$ is true.\par
-	By strong induction $P(n)$ is true for all $n\in\N$, and so $f_n<2^n$.
-\end{proof}
-
-In terms of Theorem \ref{thm:indstrong}, we have $m=1$ and $l=2$ with $l-m+1=2$ base cases. The reason we need $m=1$ is because the first claim in the Theorem is about the integer 1, namely $f_1<2^1$. We need two base cases because the recurrence relation defining the Fibonacci numbers requires the previous \emph{two} terms of the sequence in order to construct the next.\par
-
-To help us understand strong induction, it is instructive to see why a proof by weak induction would fail in this setting.
-
-\begin{proof}[Wrong Proof A]
-	We show, by weak induction, that $\forall n\in\N,\ f_n<2^n$.\par
-	(\emph{Base Case} $n=1$)\quad By definition, $f_1=1<2^1$, whence the claim is true for $n=1$.\par
-	(\emph{Induction Step})\quad Fix $n\in\N$ and assume that $f_n<2^n$. We want to show that $f_{n+1}<2^{n+1}$. By the recurrence relation, we can write
+	While the Fibonacci sequence seems to be increasing, it also appears to be less than doubling at each step, suggesting the claim
 	\[
-		f_{n+1}=f_n+f_{n-1}\tag*{($\ast$)}
+		\tcbhighmath{\forall n\in\N,\ f_n<2^n}
 	\]
-	The inductive hypothesis tells us that $f_n<2^n$, but what can we say about $f_{n-1}$? Absolutely nothing! We are stuck: weak induction fails to prove the theorem.
+	We prove this using strong induction. \emph{Two base cases} are suggested since the sequence is defined by two initial conditions ($f_1=f_2=1$): in the language of the Theorem, $m=1$ and $l=2$. Moreover, the fact that each term from $f_3$ onwards is the sum of its \emph{two predecessors} suggests that the induction step requires the explicit use of two propositions.
+	\begin{quote}
+		\begin{proof}
+			\begin{description}
+				\item[\normalfont\emph{Base cases} ($n=1,2$):] $f_1=1<2^1$ and $f_2=1<2^2$.
+				\item[\normalfont\emph{Induction step}:] Fix $n\ge 2$ and suppose\footnotemark{} that $f_{n-1}<2^{n-1}$ and $f_n<2^n$. Then
+				\[
+					f_{n+1}=f_n+f_{n-1}<2^n+2^{n-1}<2^n+2^n=2^{n+1}
+				\]
+			\end{description} 
+			By induction, $f_n<2^n$ for all $n\in\N$.
+		\end{proof}
+	\end{quote}
+	The Fibonacci numbers satisfy many identities which can often be established by induction. See Exercise \ref{exs:fib} for two such.
+\end{example}
+
+\vspace{-5pt}
+
+\footnotetext{To follow Theorem \ref{thm:indstrong} precisely, we would assume that $f_k<2^k$ for \emph{all} $k\le n$. Feel free to write this if you like, though our phrasing is more typical. Since we only make explicit use of two cases in the induction step, it is clearer to state these concretely rather than introducing a new variable $k$.}
+
+\goodbreak
+
+Before seeing further examples, it is instructive to consider why we really needed strong induction to prove our Fibonacci example. Here are two broken attempts to prove the claim by weak induction.
+
+\begin{proof}[Broken Proof A]
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=1$):] $f_1=1<2^1$.
+		\item[\normalfont\emph{Induction step}:] Fix $n\ge 2$ and suppose that $f_n<2^n$. Then\footnotemark
+		\[
+			f_{n+1}=f_n+f_{n-1}<2^n+\text{????} \tag*{\phantom{\qedhere}}
+		\]
+	\end{description} 
 \end{proof}
 
-The incorrect proof tells us why we need strong induction: the recurrence relation defines each Fibonacci number (except $f_1$ and $f_2$) in terms of \emph{the previous two.} To make use of the recurrence, our induction hypothesis must assume something about \emph{at least $f_n$ and $f_{n-1}$.} Assuming something about only $f_n$ is insufficient.\par
+\footnotetext{The induction step requires $n\ge 2$ so as to invoke the recurrence relation: $f_{n+1}=f_n+f_{n-1}$ is meaningless when $n=1$ ($f_{n-1}=f_0$ doesn't exist).}
+	
+What is the problem? The induction hypothesis assumes $f_n<2^n$, but not anything about $f_{n-1}$: we are stuck! Let's correct this flaw by making the induction hypothesis as in the correct proof.
 
-From \emph{Wrong Proof A} we learned that we needed to prove Theorem \ref{thm:fibon} by strong induction. Now suppose that we try the following, which looks almost identical to the correct proof.
-
-\begin{proof}[Wrong Proof B]
-	For each $n\in\N$, let $P(n)$ be the proposition $f_n<2^n$. We prove that $P(n)$ is true for all $n\in\N$ by strong induction.\par]
-	(\emph{Base Case} $n=1$)\quad By definition, $f_1=1<2^1$, whence $P(1)$ is true.\par
-	(\emph{Induction Step})\quad Fix $n\in\N$ and assume that $P(1),\ldots,P(n)$ are all true. We want to show that $f_{n+1}<2^{n+1}$. By the recurrence relation, we can write
-	\[
-		f_{n+1}=f_n+f_{n-1}<2^n+2^{n-1}<2\cdot 2^n=2^{n+1}.\tag*{($\dag$)}
-	\]
-	Hence $P(n)$ is true for all $n\ge 1$.
+\begin{proof}[Broken Proof B]
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=1$):] $f_1=1<2^1$.
+		\item[\normalfont\emph{Induction step}:] Fix $n\ge 2$ and suppose that $f_{n-1}<2^{n-1}$ and $f_n<2^n$. Then
+		\[
+			f_{n+1}=f_n+f_{n-1}<2^n+2^{n-1}<2^n+2^n=2^{n+1}
+		\]
+	\end{description} 
+	By induction, $f_n<2^n$ for all $n\in\N$.\phantom{\qedhere}
 \end{proof}
 
-Where is the problem with this second argument? The recursive formula $f_{n+1}=f_n+f_{n-1}$ \emph{only} applies if $n\ge 2$. If we take $n=1$, then it reads $f_2=f_1+f_0$, but $f_0$ is not defined! In the induction step of \emph{Wrong Proof B,} we are letting $n$ be any integer $\ge 1$. When $n=1$, step ($\dag$) is not justified, and so the proof fails. For ($\dag$) to be legitimate, we must have $n\ge 2$. This is why, in our correct proof, we had to prove $P(1)$ \emph{and} $P(2)$ separately.\par
+Where is the problem now? Consider the first instance, $n=2$, in which the induction step is invoked:
+\[
+	f_3=\textcolor{red}{f_2}+f_1<\textcolor{red}{2^2}+2^1
+\] 
+We haven't proved enough base cases to get us started: the single base case establishes $f_1<2^1$, but not $\textcolor{red}{f_2<2^2}$. The induction step correctly establishes the chain of implications
+\[
+	P(1)\wedge P(2)\Longrightarrow P(3),\quad P(3)\wedge P(4)\Longrightarrow P(5),\quad P(4)\wedge P(5)\Longrightarrow P(6),\ \ldots
+\]
+but we can only get the process started if we prove \emph{both} base cases $P(1)$ \emph{and} $\textcolor{red}{P(2)}$.\smallbreak
 
-The moral here is to try the induction step as scratch work. Your attempt will tell you \emph{if} you need strong induction and, if you do, \emph{how many} base cases are required.
+The moral here is to try the induction step as scratch work. Your attempt should tell you \emph{if} you need strong induction and \emph{how many} base cases are required.
 
 
-\boldsubsubsection{Strong Induction on Well-ordered Sets}
-
-In the next example the first term is suffixed by $n=0$. In the language of Theorem \ref{thm:indstrong}, we have $m=0$ and $l=1$ with $l-m+1=2$ base cases. Just like the Fibonacci example, two base cases are required because the defining recurrence relation constructs the next term in the sequence from the two previous terms.
-
-\begin{thm}{}{}
+\begin{example}{}{}
 	A sequence of integers $(a_n)_{n=0}^\infty$ is defined by
 	\[
 		\begin{cases}
-			a_n=5a_{n-1}-6a_{n-2},\quad n\ge 2,\\
+			a_{n+1}=5a_n-6a_{n-1}&\text{if }n\ge 1\\
 			a_0=0,\ a_1=1
 		\end{cases}
 	\]
-	Then $a_n=3^n-2^n$ for all $n\in\N_0$.
-\end{thm}
+	We prove by induction that $a_n=3^n-2^n$ for all $n\in\N_0$.
+	
+	\begin{quote}
+		\begin{proof}
+			\begin{description}
+				\item[\normalfont\emph{Base cases} ($n=0,1$):] $a_0=0=3^0-2^0$ and $a_1=1=3^1-2^1$.
+				\item[\normalfont\emph{Induction step}:] Fix $n\ge 1$ and suppose that$a_k=3^k-2^k$ for all $k\le n$. Then
+				\begin{align*}
+					a_{n+1}&=5a_n-6a_{n-1}=5(3^n-2^n)-6(3^{n-1}-2^{n-1})\\
+					&=(15-6)3^{n-1}+(10-6)2^{n-1}=3^{n+1}-2^{n+1}
+				\end{align*}
+			\end{description} 
+			By induction, $a_n=3^n-2^n$ for all $n\in\N_0$.
+		\end{proof}
+	\end{quote}
+\end{example}
 
-\begin{proof}
-	We prove by strong induction.\par
-	(\emph{Base cases} $n=0,1$)\quad The formula is true in both cases: $a_0=0=3^0-2^0$ and $a_1=1=3^1-2^1$.\par
-	(\emph{Induction step})\quad Fix an integer $n\ge 1$ and suppose that $a_k=3^k-2^k$ for all $k\le n$. Then
-	\begin{align*}
-		a_{n+1}&=5a_n-6a_{n-1}=5(3^n-2^n)-6(3^{n-1}-2^{n-1})\\
-		&=(15-6)3^{n-1}+(10-6)2^{n-1}=3^{n+1}-2^{n+1}.
-	\end{align*}
-	By strong induction $a_n=3^n-2^n$ is true for all $n\in\N_0$.
-\end{proof}
-
-\emph{Think about why we wrote $a_{n+1}=5a_n-6a_{n-1}$ in the induction step, whereas the statement in the Theorem reads $a_n=5a_{n-1}-6a_{n-2}$. Does it matter? What does it mean to say that $n$ is a `dummy variable'?}\par
-
-In the two previous examples, it might seem that strong induction is something of a logical overkill. In the induction step we are assuming far more than we need. In both examples, establishing the truth of $P(n+1)$ required only the truth of $P(n)$ and $P(n-1)$. We assumed that the earlier propositions were also true, but we never used them. Depending on the proof, you might need two, three or even all of the propositions prior to $P(n+1)$ to complete the induction step. Once you are used to strong induction you may feel comfortable slimming a proof down so that you only mention precisely what you need. For the present, the way we've stated the principle is maximally safe! For some practice with this, see Exercise \ref{ex:ind3} where \emph{three} base cases are needed, and the induction step requires the \emph{three} previous propositions $P(n),P(n-1),P(n-2)$ in order to prove $P(n+1)$.\par
-
-To see strong induction in all its glory, where the induction step requires \emph{all} of the previous propositions, we prove part of the famous Fundamental Theorem of Arithmetic, which states that all natural numbers may be factored (uniquely) into a product of primes: for example $3564=2^2\times 3^4\times 11$.
-
+\goodbreak
 
 
-As you read the proof of the next theorem, think carefully about why \emph{only one} base case is required.
+For another sequential induction example in the same vein, see Exercise \ref{ex:ind3} where \emph{three} base cases are required, and the induction step explicitly uses \emph{three} propositions.\medbreak
+
+To see strong induction in all its glory, where the induction step requires \emph{all} previous propositions, we prove the existence part of the Fundamental Theorem of Arithmetic, which states that all integers $\ge 2$ can be (uniquely) expressed as a product of primes: e.g.,\ $3564=2^2\times 3^4\times 11$. 
+
 
 \begin{thm}{}{fundarith}
-	Every natural number $n\ge 2$ is either prime, or a product of primes.
+	Every integer $n\ge 2$ is either prime or a product of primes.
 \end{thm}
 
-First recall Definition \ref{defn:irreducible}, that $p\in\N_{\ge 2}$ is \emph{prime} if its only positive divisors are itself and 1. Otherwise said, if $q\in\N_{\ge 2}$ is not prime, then it is said to be \emph{composite:} $\exists a,b\in\N_{\ge 2}$ such that $q=ab$.
+This provides the missing piece in our discussion of Euclid's Theorem (\ref{thm:euclidprime}) on the existence of infinitely many primes. First recall Definition \ref{defn:irreducible}: $p\in\N_{\ge 2}$ is \emph{prime} if and only if its only positive divisors are itself and 1. A non-prime $q\in\N_{\ge 2}$ is said to be \emph{composite}: $\exists a,b\in\N_{\ge 2}$ such that $q=ab$.
+
 
 \begin{proof}
-	We prove by strong induction.\par
-	(\emph{Base case} $n=2$)\quad The only positive divisors of 2 are itself and 1, hence 2 is prime.\par
-	(\emph{Induction step})\quad Fix $n\in\N_{\ge 2}$ and assume that \emph{every} natural number $k$ satisfying $2\le k\le n$ is either prime or a product of primes. There are two possibilities:
-	\begin{itemize}
-	  \item $n+1$ is prime. In this case we are done.
-	  \item $n+1$ is composite. Thus $n+1=ab$ for some natural numbers $a,b\ge 2$. Clearly $a,b\le n$, and so, by the induction hypothesis, \emph{both} are prime or the product of primes. Therefore $n+1$ is also the product of primes.
-	\end{itemize}
-	By strong induction we see that all natural numbers $n\ge 2$ are either prime, or a product of primes.
+	We prove by induction.
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=2$):] The only positive divisors of 2 are itself and 1, hence 2 is prime.
+		\item[\normalfont\emph{Induction step}:] Fix $n\ge 2$ and suppose that \emph{every} natural number $k$ satisfying $2\le k\le n$ is either prime or a product of primes. There are two possibilities:
+		\begin{itemize}
+		  \item $n+1$ is prime. Certainly $n+1$ is divisible by a prime!
+		  \item $n+1$ is composite. Then $n+1=ab$ for some natural numbers $a,b\ge 2$. Clearly $a,b\le n$; by the induction hypothesis, \emph{both} are prime or the product of primes. Therefore $n+1$ is also the product of primes.
+		\end{itemize}
+	\end{description}
+	By induction we see that all natural numbers $n\ge 2$ are either prime, or a product of primes.
 \end{proof}
-% 
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-%     \item True or false: if natural numbers $a$ and $b$ are composite then $ab$ is composite.
-%     \item True or false: the number of base cases required is always equal to the number of propositions you need to assume to be true in the induction hypothesis.
-%     \item True or false: an induction argument uses strong induction if and only if the number of base cases is at least 2.
-%     \item Explain in a sentence the difference between strong and weak induction.
-%   \end{enumerate}
+
+Think carefully about why \emph{only one} base case is required!
+
 
 \begin{exercises}{}{}
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-3-strongind.html}{online}.
 
-\begin{enumerate}
-  \item Define a sequence $(b_n)_{n=1}^\infty$ as follows:
-  	\[\begin{cases}
-			b_n=b_{n-1}+b_{n-2},\quad n\ge 3,\\
-			b_1=3,\ b_2=6.
-		\end{cases}\]
-		Prove: $\forall \,n\in\N$, \ $b_n$ is divisible by 3.
+	\begin{enumerate}  
+  	\item Define sequence $(b_n)_{n=1}^\infty$ as follows:
+  	\[
+  		\begin{cases}
+				b_{n+1}=2b_n+b_{n-1} &\text{if } n\ge 2\\
+				b_1=3, \ b_2=6
+			\end{cases}
+		\]
+		Prove by induction that $b_n$ is divisible by 3 for all $n\in\N$.
 	
-	\item\label{ex:ind3strong} Define a sequence $(c_n)_{n=0}^\infty$ as follows:
-	  \[\begin{cases}
-			c_{n+1}=\frac{49}8c_n-\frac{225}8c_{n-2},\quad n\ge 2,\\
-			c_0=0, c_1=2, c_2=16.
-		\end{cases}\]
-		Prove that $c_n=5^n-3^n$ for all $n\in\N_0$. \emph{Hint: you need three base cases!}
+	
+		\item\label{ex:ind3strong} Define a sequence $(c_n)_{n=0}^\infty$:
+	 	\[
+	 		\begin{cases}
+				c_{n+1}=\frac{49}8c_n-\frac{225}8c_{n-2}&\text{if }n\ge 2\\
+				c_0=0, \ c_1=2, \ c_2=16
+			\end{cases}
+		\]
+		Prove by induction (use three base cases!) that $c_n=5^n-3^n$ for all $n\in\N_0$.
 		
-			\item Prove that every $n \in \N$ can be written as 
-    \[
-        n = 2^{k_1} + 2^{k_2} + \cdots + 2^{k_\ell}
-    \]
-    for some $\ell \in \N$ and $k_1, k_2, \ldots k_\ell \geq 0$ such that all of the $k_i$ are distinct.
 		
-	\item Consider the proof of Theorem \ref{thm:fundarith}.
-	\begin{enumerate}
-	  \item If the Theorem is written in the form $\forall n\in\N_{\ge 2}, P(n)$, what is the proposition $P(n)$?
-	  \item Explicitly carry out the induction step for the three situations $n+1=9$, $n+1=106$ and $n+1=45$. How many different ways can you perform the calculation for $n+1=45$? Explain why it is only necessary in the induction step to assume that all integers $k$ satisfying $2\le k\le\frac{n+1}2$ are prime or products of primes.
-	  \item Rewrite the proof in the style of Theorem \ref{thm:fibon}, explicitly mentioning the propositions $P(n)$, and thus making the logical flow of strong induction absolutely clear.
-	\end{enumerate}
+		\item\label{exs:fib} Let $f_n$ be the $n\th$ Fibonacci number (Example \ref{ex:fibonacci}). Prove the following by induction $\forall n\in\N$:
+		\begin{enumerate}
+		  \item $\sum\limits_{k=1}^nf_k^2=f_nf_{n+1}$ \qquad\qquad (b) (Hard)\lstsp $f_n=\frac 1{\sqrt 5}\bigl(\phi^n-\hat\phi^n\bigr)$, where $\phi=\frac{1+\sqrt{5}}2$ and $\hat\phi=\frac{1-\sqrt{5}}2$
+		\end{enumerate}
+		(\emph{Hints: Weak induction is good enough for (a)! $\phi$ is the famous \emph{golden ratio}: $\phi,\hat\phi$ are the solutions to the quadratic equation $x^2+x+1$})
+	
+	
+		\goodbreak
+  
+%   
+% 		\item Prove: $\forall n\in\N$, $(3+\sqrt{5})^n+(3-\sqrt{5})^n$ is an \emph{even} integer.\par
+% 		(\emph{Hint: Prove simultaneously that $(3+\sqrt{5})^n-(3-\sqrt{5})^n$ is an even multiple of $\sqrt 5$})
+	
+	
+% 	\item (Hard!) Return to the proof of Theorem \ref{thm:polygon}. Can you make a watertight argument using strong induction that also covers the two missing cases? Draw a picture to illustrate each case.
+		
+		
+		\item Prove by induction that every $n\in\N$ can be written in the form
+	  \[
+	    n=2^{r_1}+2^{r_2}+\cdots+2^{r_\ell}
+	  \]
+	  for some $\ell\in\N$ and \emph{distinct} integers $r_1,r_2,\ldots r_\ell \ge 0$.\par
+	  (\emph{Hints: try proving in the style of Theorem \ref{thm:fundarith}; consider the cases when $n+1$ is even/odd separately})
+	
+	
+		\item\label{exs:strongindproof} Prove the principle of strong induction (Theorem \ref{thm:indstrong}) by applying \emph{weak induction} to a new family of propositions $Q(n)$ via:
+		\[
+			Q(n)\iff P(m)\wedge P(m+1)\wedge\cdots\wedge P(n)
+		\]
+	
+	
+		\item Consider the proof of Theorem \ref{thm:fundarith}.
+		\begin{enumerate}
+	  	\item If the Theorem is written in the form $\forall n\in\N_{\ge 2}, P(n)$, what is the proposition $P(n)$?
+	  	\item Explicitly carry out the induction step for the three situations $n+1=9$, $n+1=106$ and $n+1=45$. How many different ways can you perform the calculation for $n+1=45$? 
+	  	\item Explain why it is only necessary in the induction step to assume that all integers $k$ satisfying $2\le k\le\frac{n+1}2$ are prime or products of primes.
+		\end{enumerate}
 
-	\item In this question we use recall an alternative definition of prime.\footnote{This is the strict definition of what it means for $p$ to be \emph{prime,} while Definition \ref{defn:irreducible} is what is meant by \emph{irreducible.} In the ring of integers, \emph{prime} and \emph{irreducible} are synonymous. For the details, take a Number Theory course.}
-	\begin{defn*}{}{}
-		$p\in\N_{\ge 2}$ is \emph{prime} if $\forall a,b\in\N,\ p\mid ab\implies p\mid a$ or $p\mid b$.
-	\end{defn*}
-	Let $p$ be prime, let $n\in\N$, and let $\lst an$ be natural numbers such that $p$ divides the product $a_1a_2\cdots a_n$. Prove by induction that,
-	\[
-		\exists i\in\{1,2,\ldots,n\}\text{ such that }p\mid a_i
-	\]
-  \emph{Hint: you need to cover \emph{two} base cases. Why? Think about the induction step first and it will help you decide how many base cases you need.}
-  
-  
-    
-  \item The \emph{Fundamental Theorem of Arithmetic} states that every $n \geq 2$ can be written as a product of prime factors in a unique way (up to reordering of the prime factors). In other words, 
-\begin{enumerate}
-    \item $n = p_1 p_2 \cdots p_k$ for some primes $p_1, p_2, \ldots, p_k$ and,
-    \item if $n = q_1 q_2 \cdots q_\ell$ for primes $q_1, q_2, \ldots, q_\ell$, then $k = \ell$ and $p_i = q_i$ after possibly reordering the prime factors. 
-\end{enumerate}
-    We proved (1) in Theorem \ref{thm:fundarith}. Supply a proof of (2). [Hint: one way would be to use Exercise \ref{ex:primedef}.]
-	
-	\item Prove that the $n$th Fibonacci number $f_n$ is given by the formula
-\[f_n=\frac{\phi^n-\hat\phi^n}{\sqrt{5}},\quad\text{where}\quad \phi=\frac{1+\sqrt{5}}2\quad\text{and}\quad\hat\phi=\frac{1-\sqrt{5}}2.\]
-\emph{$\phi$ is the famous Golden ratio. $\phi$ and $\hat\phi$ are the two solutions to the equation $x^2=x+1$.}
-  
-  
-	\item Show that for every positive integer $n$, $(3+\sqrt{5})^n + (3-\sqrt{5})^n$ is an even integer.\\
-	\emph{Hints: Prove simultaneously that $(3+\sqrt{5})^n-(3-\sqrt{5})^n$ is an even multiple of $\sqrt 5$.\\
-	Subtract the $n$th expression from the $(n+1)$th in both cases\ldots}
-	
-	\item (Hard!) Return to the proof of Theorem \ref{thm:polygon}. Can you make a watertight argument using strong induction that also covers the two missing cases? Draw a picture to illustrate each case.
-	
-	\item Suppose that $\{P(n):n\ge m\}$ are a collection of propositions as considered in the Principle of Strong Induction. For each $n\ge m$, let $Q(n)$ be the proposition
-	\[Q(n)\iff P(m)\wedge P(m+1)\wedge\cdots\wedge P(n)\]
-	Prove that the Principle of Strong Induction is equivalent to the Principle of Induction stated as follows: Suppose that
-	\begin{enumerate}
-  	\item[(a)] $Q(l)$ is true.
-  	\item[(b)] $\forall n\ge l,\ Q(n)\implies Q(n+1)$.
+		\item\label{exs:primedef2} In this question we use the alternative definition of prime (Exercise \ref*{sec:gcd}.\ref{exs:primedef1}).\footnotemark
+		\begin{quote}
+			An integer $p\ge 2$ is \emph{prime} if and only if $\forall a,b\in\N,\ p\mid ab\implies p\mid a$ or $p\mid b$.
+		\end{quote}
+		Let $p$ be prime, let $n\in\N$, and let $\lst an$ be natural numbers such that $p\mid a_1a_2\cdots a_n$. Prove by induction that,
+		\[
+			p\mid a_i\ \text{ for some }\ i\in\{1,2,\ldots,n\}
+		\]
+	  (\emph{Hint: $n=1$ isn't really part of the induction, but you can treat it as a base case})
+	  
+	    
+	  \item The \emph{Fundamental Theorem of Arithmetic} states that every integer $n\ge 2$ can be written as a product of prime factors in a \emph{unique} way (up to reordering of the prime factors). In other words, 
+		\begin{itemize}
+	    \item[i.] $n=p_1p_2\cdots p_k$ for some primes $p_1,p_2,\ldots,p_k$, \ and,
+	    \item[ii.] If $n=q_1q_2\cdots q_\ell$ for primes $q_1,q_2,\ldots,q_\ell$, then $k=\ell$ and $p_i=q_i$ after possibly reordering the prime factors. 
+		\end{itemize}
+	  Part i.{} is Theorem \ref{thm:fundarith}. Supply a proof of part ii.\par
+	  (\emph{Hint: one way would be to use Exercise \ref{exs:primedef2}})
+		
 	\end{enumerate}
-	Then $Q(n)$ is true for all $n\in\Z_{\ge l}$.
-	
-\end{enumerate}
 \end{exercises}
+
+\footnotetext{This is the strict definition of \emph{prime,} while Definition \ref{defn:irreducible} is the  definition of \emph{irreducible.} Exercise \ref*{sec:gcd}.\ref{exs:primedef1} says that, in the integers, these concepts are synonymous.}
 
