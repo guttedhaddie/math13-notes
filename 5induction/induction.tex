@@ -909,7 +909,7 @@ Exercise \ref{exs:strongindproof} provides a proof by showing that strong and we
 			By induction, $f_n<2^n$ for all $n\in\N$.
 		\end{proof}
 	\end{quote}
-	The Fibonacci numbers satisfy many identities which can often be established by induction. See Exercise \ref{exs:fib} for two such.
+	The Fibonacci numbers satisfy many identities which can often be established by induction (e.g., Exercises \ref{exs:fib} \& \ref{exs:fib2}).
 \end{example}
 
 \vspace{-5pt}
@@ -1040,12 +1040,19 @@ Think carefully about why \emph{only one} base case is required!
 		
 		\item\label{exs:fib} Let $f_n$ be the $n\th$ Fibonacci number (Example \ref{ex:fibonacci}). Prove the following by induction $\forall n\in\N$:
 		\begin{enumerate}
-		  \item $\sum\limits_{k=1}^nf_k^2=f_nf_{n+1}$ \qquad\qquad (b) (Hard)\lstsp $f_n=\frac 1{\sqrt 5}\bigl(\phi^n-\hat\phi^n\bigr)$, where $\phi=\frac{1+\sqrt{5}}2$ and $\hat\phi=\frac{1-\sqrt{5}}2$
+		  \item $\sum\limits_{k=1}^nf_k^2=f_nf_{n+1}$ \qquad\qquad (b)\lstsp $f_n\ge\left(\frac 32\right)^{n-2}$
 		\end{enumerate}
-		(\emph{Hints: Weak induction is good enough for (a)! $\phi$ is the famous \emph{golden ratio}: $\phi,\hat\phi$ are the solutions to the quadratic equation $x^2+x+1$})
+		(\emph{Hints: Weak induction is good enough for (a); why?})
 	
 	
 		\goodbreak
+		
+
+	  \item\label{exs:fib2} Extending Exercise \ref{exs:fib}(b), prove \emph{Binet's formula} for the $n\th$ Fibonacci number:
+	  \[
+	  	f_n=\frac 1{\sqrt 5}\bigl(\phi^n-\hat\phi^n\bigr) \quad \text{where}\quad \phi=\frac 12(1+\sqrt{5})\text{ and } \hat\phi=\frac 12(1-\sqrt{5})
+	  \]
+		(\emph{$\phi$ is the famous \emph{golden ratio}: $\phi,\hat\phi$ are the solutions to the quadratic equation $x^2+x+1$})
   
 %   
 % 		\item Prove: $\forall n\in\N$, $(3+\sqrt{5})^n+(3-\sqrt{5})^n$ is an \emph{even} integer.\par
@@ -1092,11 +1099,12 @@ Think carefully about why \emph{only one} base case is required!
 	    \item[i.] $n=p_1p_2\cdots p_k$ for some primes $p_1,p_2,\ldots,p_k$, \ and,
 	    \item[ii.] If $n=q_1q_2\cdots q_\ell$ for primes $q_1,q_2,\ldots,q_\ell$, then $k=\ell$ and $p_i=q_i$ after possibly reordering the prime factors. 
 		\end{itemize}
-	  Part i.{} is Theorem \ref{thm:fundarith}. Supply a proof of part ii.\par
-	  (\emph{Hint: one way would be to use Exercise \ref{exs:primedef2}})
+	  Part i.{} is Theorem \ref{thm:fundarith}. Using Exercise \ref{exs:primedef2}, or otherwise, supply a proof of part ii.
 		
 	\end{enumerate}
 \end{exercises}
 
 \footnotetext{This is the strict definition of \emph{prime,} while Definition \ref{defn:irreducible} is the  definition of \emph{irreducible.} Exercise \ref*{sec:gcd}.\ref{exs:primedef1} says that, in the integers, these concepts are synonymous.}
 
+
+\clearpage
