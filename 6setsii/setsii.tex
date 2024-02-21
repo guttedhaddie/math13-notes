@@ -6,54 +6,64 @@
 
 In this chapter we return to set theory and consider several more-advanced constructions.
 
-\subsection{Cartesian Products}
+\subsection{Cartesian Products}\label{sec:cartprod}
 
-You have been working with Cartesian products for years, referring to a point in the plane $\R^2$ by its \emph{Cartesian co-ordinates} $(x,y)$. The basic idea is that each of the co-ordinates $x$ and $y$ is a member of the set $\R$. The same approach can be used for any two sets.
+You have been working with Cartesian products for years, referring to a point in the plane $\R^2$ by its \emph{Cartesian co-ordinates} $(x,y)$, an \emph{ordered pair} where each co-ordinate ($x,y$) is a member of the set $\R$. The same approach can be used for any sets.
 
 \begin{defn}{}{}
-	Let $A$ and $B$ be sets. The \emph{Cartesian product} of $A$ and $B$ is the set
+	The \emph{Cartesian product} of sets $A$ and $B$ is the set of ordered pairs
 	\[
-		A\times B=\{(a,b):a\in A\text{ and }b\in B\}
+		A\times B=\bigl\{(a,b):a\in A\text{ and }b\in B\bigr\}
 	\]
+	Otherwise said: $(a,b)\in A\times B\iff a\in A$ and $b\in B$.
 \end{defn}
 
- $A\times B$ is simply the set of \emph{ordered pairs} $(a,b)$ where $a\in A$ and $b\in B$.
-
 \begin{examples}{}{}
-	\exstart The Cartesian product of the real line $\R$ with itself is the $xy$-plane: rather than writing $\R\times\R$ which is unwieldy, we write $\R^2$.
-	\[
-		\R^2=\R\times\R=\{(x,y):x,y\in\R\}
-	\]
-	More generally, $\R^n=\underbrace{\R\times\R\times\cdots\R}_{\text{$n$ times}}$ is the set of $n$-tuples of real numbers:
-	\[
-		\R^n=\{(x_1,x_2,\ldots,x_n):x_1,x_2,\ldots,x_n\in\R\}
-	\]
+	\exstart The Cartesian product of the real line $\R$ with itself is the usual $xy$-plane.
 	\begin{enumerate}\setcounter{enumi}{1}
+	\begin{minipage}[t]{0.7\linewidth}\vspace{-8pt}
+		\item[]As you've seen in other classes, rather than writing $\R\times\R$ which is unwieldy, we denote this set
+		\[
+			\R^2=\bigl\{(x,y):x,y\in\R\bigr\}
+		\]
+		More generally, the set of $n$-tuples of real numbers is\footnotemark
+		\[
+			\R^n=\bigl\{(x_1,x_2,\ldots,x_n):x_1,x_2,\ldots,x_n\in\R\bigr\} =\underbrace{\R\times\R\times\cdots\times\R}_{\text{$n$ times}}
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.29\linewidth}\vspace{-8pt}
+		\flushright\includegraphics{setsii-cartesianplane}
+	\end{minipage}
+
 		\item If $A=\{1,2,3\}$ and $B=\{\alpha,\beta\}$, then the Cartesian product of $A$ and $B$ is
 		\[
-			A\times B=\{(1,\alpha),\ (1,\beta),\ (2,\alpha),\ (2,\beta),\ (3,\alpha),\ (3,\beta)\}
+			A\times B=\bigl\{(1,\alpha),\ (1,\beta),\ (2,\alpha),\ (2,\beta),\ (3,\alpha),\ (3,\beta)\bigr\}
 		\]
-		Notice that this is a \emph{different set} to the Cartesian product of $B$ and $A$:
+		The order of terms in an ordered pair really matters: the Cartesian product with the roles reversed is 
 		\[
-			B\times A=\{(\alpha,1),\ (\beta,1),\ (\alpha,2),\ (\beta,2),\ (\alpha,3),\ (\beta,3)\}
+			B\times A=\bigl\{(\alpha,1),\ (\beta,1),\ (\alpha,2),\ (\beta,2),\ (\alpha,3),\ (\beta,3)\bigr\}
 		\]
-		\item Suppose you go to a restaurant where you have a choice of one main course and one side. The menu might be summarized set-theoretically: consider the sets
+		While $A\times B\neq B\times A$, note that both Cartesian products have \emph{six} $(=3\cdot 2=2\cdot 3)$ elements.
+		
+		\item The menu in a restaurant might be summarized set-theoretically:
 		\begin{gather*}
-			\text{Mains}=\{\text{fish, steak, eggplant, pasta}\}\\
-			\text{Sides}=\{\text{asparagus, salad, potatoes}\}
+			\text{Mains}=\{\text{fish, steak, eggplant, pasta}\}, \qquad \text{Sides}=\{\text{asparagus, salad, potatoes}\}
 		\end{gather*}
-		The Cartesian product Mains\,$\times$\,Sides is the set of all possible meals made up of one main and one side. It should be obvious that there are $4\times 3=12$ possible meal choices.
+		The Cartesian product Mains\,$\times$\,Sides is the set of all possible meals consisting of one main and one side. It should be obvious that there are $4\times 3=12$ possible meal choices.
 	\end{enumerate}
 \end{examples}
 
-These last two examples illustrates the next theorem, which explains the use of the word \emph{product.}
+\footnotetext{Strictly this should be defined inductively, e.g., $\R^3:=\R^2\times\R=\Bigl\{\bigl((x,y),z\bigr):x,y,z\in\R\Bigr\}$, but this is very tedious!}
+
+The last two examples illustrate one of the simplest properties of Cartesian products, in a result which indeed justifies the very use of the word \emph{product}!
 
 \begin{thm}{}{}
 	If $A$ and $B$ are finite sets, then $\nm{A\times B}=\nm A\cdot\nm B$.
 \end{thm}
 
 \begin{proof}
-	Label the elements of each set and list the elements of $A\times B$ lexicographically. If $\nm A=m$ and $\nm B=n$, then we have:
+	Label the elements of each set and list the elements of $A\times B$ lexicographically. If $\nm A=m$ and $\nm B=n$, then
 	\[
 		\begin{array}{rccccccl}
 			A\times B=\big\{&(a_1,b_1),&(a_1,b_2),&(a_1,b_3),&\cdots&(a_1,b_n),&\\
@@ -62,135 +72,165 @@ These last two examples illustrates the next theorem, which explains the use of 
 			&(a_m,b_1),&(a_m,b_2),&(a_m,b_3),&\cdots&(a_m,b_n)&\big\}
 		\end{array}
 	\]
-	It should be clear that every element of $A\times B$ is listed exactly once. There are $m$ rows and $n$ columns, thus $\nm{A\times B}=mn$.
+	Every element of $A\times B$ is listed exactly once. There are $m$ rows and $n$ columns, so $\nm{A\times B}=mn$.
 \end{proof}
 
-Before we go any further, consider the complement of a Cartesian product $A\times B$. If you had to guess an expression for $\comp{(A\times B)}$, you might well try $\comp A\times\comp B$. Let us think more carefully.
-% \begin{align*}
-% (x,y)\in\comp{(A\times B)}&\iff (x,y)\not\in A\times B&&(x,y)\in\comp A\times\comp B\iff x\not\in A\text{ and }x\not\in B\\
-% &\iff \neg((x,y)\in A\times B)&&\\
-% &\iff \neg(x\in A\text{ and }y\in B)&&\\
-% &\iff x\not\in A\text{ or }y\not\in B&&
-% \end{align*}
-\begin{gather*}
-	\begin{aligned}
-		(x,y)\in\comp{(A\times B)}&\iff (x,y)\not\in A\times B\\
-		&\iff \neg((x,y)\in A\times B)\\
-		&\iff \neg(x\in A\text{ and }y\in B)\\
-		&\iff x\not\in A\text{ or }y\not\in B
-	\end{aligned}
-\end{gather*}
-However $(x,y)\in\comp A\times\comp B\iff x\not\in A\text{ and }x\not\in B$. Since the definition of Cartesian product involves \emph{and,} its negation, by De Morgan's laws, involves \emph{or.} It follows that the complement of a Cartesian product is \emph{not a Cartesian product!} For more on this, see Exercise \ref{ex:cartneg}.\par
+\boldinline{Set Identities}
+
+These may be established as we've done previously (Section \ref{chap:sets}): convert everything into propositions regarding elements of sets and use basic logic. If you're feeling more confident, you might also be able to invoke previously established rules of set algebra.
+
+\begin{examples}{}{cartex}
+	 	\exstart Consider the complement of a Cartesian product $A\times B$. If you had to guess an expression for $\comp{(A\times B)}$, you might mistakenly think it is $\comp A\times\comp B$. Let us think more carefully:
+		\begin{align*}
+			(x,y)\in\comp{(A\times B)}&\iff \neg((x,y)\in A\times B) \tag{definition of complement}\\
+			&\iff \neg(x\in A\text{ and }y\in B) \tag{definition of $A\times B$}\\
+			&\iff x\not\in A\text{ or }y\not\in B \tag{de Morgan (logic)}
+		\end{align*}
+		By contrast, $(x,y)\in\comp A\times\comp B\iff x\notin A\text{ and }x\notin B$, so $\comp{(A\times B)}\neq \comp A\times\comp B$. Indeed the complement of a Cartesian product is \emph{not a Cartesian product!} For more on this, see Exercise \ref{ex:cartneg}.
+
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item\label{ex:cartex2}	Let $A,B,C,D$ be any sets. We prove that $(A\times B)\cup(C\times D)\subseteq(A\cup C)\times(B\cup D)$.
+		\begin{align*}
+			(x,y)\in(A\times B)\cup(C\times D)&\implies (x,y)\in A\times B \text{ or }(x,y)\in C\times D\\
+			&\implies (x\in A\text{ and }y\in B)\text{ or }(x\in C\text{ and }y\in D)\\
+			&\mathrel{\textcolor{red}{\implies}} (x\in A\text{ or }x\in C)\text{ and }(y\in B\text{ or }y\in D)\\
+			&\implies x\in A\cup C\text{ and }y\in B\cup D\\
+			&\implies (x,y)\in (A\cup C)\times(B\cup D)
+		\end{align*}
+		\begin{minipage}[t]{0.66\linewidth}\vspace{0pt}
+			All implications except the \textcolor{red}{red arrow} are in fact \emph{biconditional.} To convince yourself of its truth, first consider what must be true about $x$, then do the same for $y$. The picture provides a visualization where $A,B,C,D$ are intervals of real numbers:
+			\begin{itemize}\itemsep2pt
+			  \item $(A\times B)\cup(C\times D)$ is the solid shaded region.
+			  \item $(A\cup C)\times(B\cup D)$ is the larger dashed square.
+			\end{itemize}  If $x\in C\setminus A$ and $y\in B\setminus D$, then $(x,y)\in (A\cup C)\times (B\cup D)$ but $(x,y)\not\in (A\times B)\cup(C\times D)$, so we do not, in general, expect these sets to be equal.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.32\linewidth}\vspace{0pt}
+			\hfill
+			\includegraphics{setsii-04-cartesian}
+		\end{minipage}
+	\end{enumerate}
+\end{examples} 
 
 
-As an example of a basic set relationship involving Cartesian products, we prove a theorem.
-
-\begin{thm}{}{cartex}
-	Let $A,B,C,D$ be any sets. Then $(A\times B)\cup(C\times D)\subseteq(A\cup C)\times(B\cup D)$.
-\end{thm}
-
-\begin{proof}
-	Since we are dealing with Cartesian products, the general element has the form $(x,y)$.\par
-	\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-		Let $(x,y)\in(A\times B)\cup(C\times D)$. Then 
-		\[(x,y)\in A\times B\qquad \text{or}\qquad (x,y)\in C\times D.\]
-		But then
-		\[(x\in A\text{ and }y\in B)\qquad\text{or}\qquad(x\in C\text{ and }y\in D).\]
-		Clearly $x\in A$ or $x\in C$, so $x\in A\cup C$.\\
-		Similarly $y\in B$ or $y\in D$, so $y\in B\cup D$.\\
-		Therefore $(x,y)\in (A\cup C)\times(B\cup D)$, as required.
-	\end{minipage}
-	\qquad
-	\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
-		\centering
-		\includegraphics[width=\textwidth]{setsii-04-cartesian}
-	\end{minipage}
-\end{proof}
-
-The picture is an visualization of the theorem, where we assume that the sets $A,B,C$ and $D$ are all intervals of real numbers. $(A\times B)\cup(C\times D)$ is the yellow shaded region, while $(A\cup C)\times(B\cup D)$ is the larger dashed square. While helpful, the picture is not a proof! The theorem is a statement about \emph{any} sets, whereas the picture implicitly assumes that these sets are intervals.\\
-For an application of the picture, it should be clear that if $x\in C\setminus A$ and $y\in B\setminus D$, then $(x,y)\in (A\cup C)\times (B\cup D)$ but $(x,y)\not\in (A\times B)\cup(C\times D)$. We do not therefore expect these sets to be equal.
-
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-%     \item The Cartesian product of sets $A$ and $B$ is \underline{\phantom{the set of ordered pairs $\{(a,b):a\in A,\ b\in B\}$,\qquad}}
-%     \item True or false: $A\times B=\emptyset\iff A=B=\emptyset$.
-%     \item True or false: The cardinality of $A\times B$ is at least as large as $\max(\nm A,\nm B)$.
-%   \end{enumerate}
 
 \begin{exercises}{}{}
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/6-1-cartprod.html}{online}.
 
-\begin{enumerate}
-  \item\begin{enumerate}
-    \item Suppose that $A=\{1,2\}$ and $B=\{3,4,5\}$. State the set $A\times B$ in roster notation.
-    \item Sketch both $A\times B$ and $B\times A$ using dots on the plane. What do you observe about your pictures?
-    \item If $A,B,C$ are any sets, we may define the triple Cartesian product as
-    \[A\times B\times C=\big\{(a,b,c):a\in A,\ b\in B,\ c\in C\big\}\]
-    If $C=\{6,7\}$ and $A,B$ are as above, state the set $A\times B\times C$ in roster notation.
-  \end{enumerate}
-  
-  \item Consider the following subintervals of the real line: $A=[2,5],\ B=(0,4)$.
-  \begin{enumerate}
-    \item Express the set $\comp{(A\setminus B)}$ in interval notation, as a disjoint union of intervals.
-    \item Draw a picture of the set $\comp{(A\setminus B)}\times (B\setminus A)$.
-  \end{enumerate}
-
-	\item Rewrite the condition
-	\[(x,y)\in (\comp{A}\cup B)\times (C\setminus D)\]
-	in terms of (some of) the following propositions:
-	\[x\in A,\quad x\not\in A,\quad x\in B,\quad x\not\in B,\quad y\in C,\quad y\not\in C,\quad y\in D,\quad y\not\in D.\]
-
-	\item Let $A=[1,3]$, $B=[2,4]$ and $C=[2,3]$. \emph{Prove or disprove} that
-	\[(A\times B)\cap (B\times A)=C\times C.\]
-	\emph{Hint: Draw the sets $A\times B$, $B\times A$ and $C\times C$ in the Cartesian plane. The picture will give you a hint on whether or not the statement is true, but it does not constitute a proof.}
+	\begin{enumerate}
+	  \item\begin{enumerate}
+	    \item Suppose that $A=\{1,2\}$ and $B=\{3,4,5\}$. State the set $A\times B$ in roster notation.
+	    \item Sketch both $A\times B$ and $B\times A$ using dots in $\R^2$. What do you observe about your pictures?
+	    \item If $A,B,C$ are any sets, we may define
+	    \[
+	    	A\times B\times C=\bigl\{(a,b,c):a\in A,\ b\in B,\ c\in C\bigr\}
+	    \]
+	    If $C=\{6,7\}$ and $A,B$ are as above, state the set $A\times B\times C$ in roster notation.
+	  \end{enumerate}
 	
-	\item A straight line subset of the plane $\R^2$ is a subset of the form
-	  \[A_{a,b,c}=\{(x,y):ax+by=c\},\quad\text{for some constants $a,b,c$, with $ab\neq 0$.}\]
+	
+		\item Rewrite the condition $(x,y)\in (\comp{A}\cup B)\times (C\setminus D)$ in terms of (some of) the propositions
+		\[
+			x\in A,\quad x\not\in A,\quad x\in B,\quad x\not\in B,\quad y\in C,\quad y\not\in C,\quad y\in D,\quad y\not\in D
+		\]
+	  
+	  
+	  \item Consider the intervals $A=[2,5]$ and $B=(0,4)$ of real numbers.
 	  \begin{enumerate}
-	  \item Draw the set $A_{1,2,3}$. Is it a Cartesian product?
-	 	\item Which straight line subsets in the plane $\R^2$ are Cartesian products? Otherwise said, find a condition on the constants $a,b,c$ for which the set $A_{a,b,c}$ is a Cartesian product.
+	    \item Express the set $\comp{(A\setminus B)}$ in interval notation, as a disjoint union of intervals.
+	    \item Draw a picture of the set $\comp{(A\setminus B)}\times (B\setminus A)$.
+	  \end{enumerate}
+	  (\emph{Be careful: In this problem $B=(0,4)$ is an \textbf{interval} (a subset of $\R$), not a \textbf{point} in $\R^2$!})
+	
+		
+		\item A \emph{straight line} in $\R^2$ is a subset of the form
+		\[
+			A_{a,b,c}=\bigl\{(x,y):ax+by=c\bigr\},\quad\text{for some constants $a,b,c$, with $a,b$ not both zero}
+		\]
+		\begin{enumerate}
+		  \item Draw the set $A_{1,2,3}$. Is it a Cartesian product?
+		 	\item Which straight line subsets in the plane $\R^2$ are Cartesian products? Otherwise said, find a condition on the constants $a,b,c$ for which the set $A_{a,b,c}$ is a Cartesian product.
+		\end{enumerate}
+		
+		
+		\item\label{ex:cartneg} Draw a picture, similar to that in Example \ref*{ex:cartex}.\ref{ex:cartex2}, which illustrates the fact that
+		\[
+			\comp{(A\times B)} =(\comp A\times\comp B)\cup (\comp A\times B) \cup (A\times\comp B)
+		\]
+		Now give a rigorous proof of the claim.
+		
+		
+		\item Let $A=[1,3]$, $B=[2,4]$ and $C=[2,3]$. Prove or disprove:
+		\[
+			(A\times B)\cap (B\times A)=C\times C
+		\]
+		(\emph{Hint: Draw the sets $A\times B$, $B\times A$ and $C\times C$ in the Cartesian plane})
+		
+			
+		\item Prove that $A\cap B=\emptyset\iff (A\times B)\cap(B\times A)=\emptyset$.\par
+		(\emph{Hint: try the previous question first})
+		
+		
+		\item Let $A,B,C$ be sets. Prove:
+		\begin{enumerate}
+	  	\item $A\times (B\cup C)=(A\times B)\cup (A\times C)$
+	    \item $A\times (B\cap C)=(A\times B)\cap (A\times C)$
+	    \item $A\times (B\setminus C)=(A\times B)\setminus (A\times C)$
 		\end{enumerate}
 	
-	\item\label{ex:cartneg} Draw a picture, similar to that in Theorem \ref{thm:cartex}, which illustrates the fact that
-	\[\comp{(A\times B)}\neq \comp A\times \comp B.\]
-	Using your picture, write the set $\comp{(A\times B)}$ in the form
-	\[(C_1\times D_1)\cup (C_2\times D_2)\cup\cdots\]
-	where each of the unions are \emph{disjoint:} that is $i\neq j\implies (C_i\times D_i)\cap (C_j\times D_j)=\emptyset$. You don't have to prove your assertion.
+	
+		\item\begin{enumerate}
+	    \item Give an explicit example of sets $A,B,C,D$ such that
+	    \[
+	    	(A\times B)\cup (C\times D)\neq (A\cup C) \times (B\cup D)
+	    \]
+	    \item For any sets $A,B,C,D$, prove that
+	    \[
+	      (A\cup C)\times (B\cup D)=(A\times B)\cup (A\times D)\cup (C\times B)\cup (C\times D)
+	    \]
+		\end{enumerate}
 		
-	\item Prove that $A\cap B=\emptyset\iff (A\times B)\cap(B\times A)=\emptyset$.
+		
+	  \item Prove by induction. For all $n\in\N$, if $A_1,\ldots,A_n$ are finite sets, then
+	  \[
+	  	\nm{A_1\times\cdots\times A_n}=\nm{A_1}\cdots\nm{A_n}
+	  \] 
 	
-  \item\begin{enumerate}
-		\item Suppose that $\nm A=3$, and $\nm B=4$. What are the minimum and maximum values for the cardinalities $\nm{(A\times B)\cap(B\times A)}$ and $\nm{(A\times B)\cup(B\times A)}$?
-		\item More generally, suppose that $\nm A=m$, $\nm B=n$ and $\nm{A\cap B}=c$. What are the above cardinalities?
+		
+	  \item\begin{enumerate}
+			\item Suppose $\nm A=3$, and $\nm B=4$. What are the minimum and maximum values for the cardinalities $\nm{(A\times B)\cap(B\times A)}$ and $\nm{(A\times B)\cup(B\times A)}$?
+			\item (Hard)\lstsp More generally, suppose $\nm A=m$, $\nm B=n$ and $\nm{A\cap B}=c$. What can you say about the cardinalities $\nm{(A\times B)\cap(B\times A)}$ and $\nm{(A\times B)\cup(B\times A)}$?
+		\end{enumerate}
+		
+	
+		\item Let $A$ and $B$ be nonempty sets. Define functions $\pi_1:A\times B\to A$ and $\pi_2:A\times B\to B$ by $\pi_1(a,b)=a$ and $\pi_2(a,b)=b$ respectively (these are called \emph{projection maps}). 
+		\begin{enumerate}
+	    \item If $A=B=\R$ and $X=[1,3]$, $Y=(2,4]$, then $X\times Y\subseteq A\times B$. Compute the images $\pi_1(X\times Y)$ and $\pi_2(X\times Y)$.
+	    \item Let $Z$ be any set and suppose there are functions $\rho_1:Z\to A$ and $\rho_2:Z\to B$. Show that there is a unique function $h:Z\to A\times B$ such that $\rho_1=\pi_1\circ h$ and $\rho_2=\pi_2\circ h$.
+		\end{enumerate}
+		
+		
+		\item Let $E\subseteq\N\times\N$ be the smallest subset satisfying the following conditions:
+		\begin{itemize}
+			\item Base case: $(1,1)\in E$
+			\item Generating Rule I: If $(a,b)\in E$ then $(a,a+b)\in E$
+			\item Generating Rule II: If $(a,b)\in E$ then $(b,a)\in E$
+		\end{itemize}
+		\begin{enumerate}
+			\item Show in detail that $(4,3)\in E$.
+			\item Show by induction that for every $n\in\N$, $(1,n)\in E$.
+			\item (Hard!)\lstsp Show that $E=\bigl\{(a,b)\in\N\times\N:\gcd(a,b)=1\bigr\}$.\par
+			(\emph{Hint: what do the generating rules have to do with the Euclidean algorithm?})
+		\end{enumerate}
+		
+		\item (Hard)\lstsp A strict set-theoretic definition requires that ordered pair $(a,b)$ be defined as a set for instance $(a,b):=\bigl\{a,\{a,b\}\bigr\}$. We \emph{prove} that $(a,b)=(c,d)\Longleftrightarrow a=c$ and $b=d$.
+		\begin{enumerate}
+		  \item The \emph{regularity axiom} of set theory says there is no set $a$ for which $a\in a$. Use this to prove that the cardinality of $\bigl\{a,\{a,b\}\bigr\}$ is two.
+		  \item Prove that $(a,b)=(c,d)\implies \bigl(a=c\text{ and }b=d\bigr) \text{ or }\bigl(a=\{c,d\}\text{ and }c=\{a,b\}\bigr)$
+		  \item In the second case, prove that there exists a set $S$ such that $a\in S\in a$. The axiom of regularity also says that this is illegal. Conclude that $(a,b)=(c,d)\iff a=c$ and $b=d$.
+		\end{enumerate}
+		
 	\end{enumerate}
-	
-  \item Prove the following by induction. For all $n\in\N$, if $A_1,\ldots,A_n$ are finite sets, then
-  \[\nm{A_1\times\cdots\times A_n}=\nm{A_1}\cdots\nm{A_n}\] 
-	
-	\item Let $E\subseteq\N\times\N$ be the smallest subset which satisfies the following conditions:
-	\begin{itemize}
-		\item Base case: $(1,1)\in E$
-		\item Generating Rule I: If $(a,b)\in E$ then $(a,a+b)\in E$
-		\item Generating Rule II: If $(a,b)\in E$ then $(b,a)\in E$
-	\end{itemize}
-
-	\begin{enumerate}
-		\item Show in detail that $(4,3)\in E$.
-		\item Show by induction that for every $n\in\N$, $(1,n)\in E$.
-		\item (Very hard!!!) Show that $E=\{(a,b)\in\N\times\N:\gcd(a,b)=1\}$. \emph{Think carefully about how the Euclidean algorithm works, and what the generating rules might have to do with it\ldots}
-	\end{enumerate}
-	
-	\item A strict set-theoretic definition requires you to build the ordered pair $(a,b)$ as a set: typically $(a,b)=\{a,\{a,b\}\}$. One then proves that $(a,b)=(c,d)\iff a=c$ and $b=d$.
-	\begin{enumerate}
-	  \item One of the axioms of set theory (\emph{regularity}) says that there is no set $a$ for which $a\in a$. Use this to prove that the cardinality of $(a,b)=\{a,\{a,b\}\}$ is two.
-	  \item Prove that $(a,b)=(c,d)\implies\begin{cases}
-	  a=c\text{ and }b=d,\\
-	  \qquad\quad\text{\emph{or}}\\
-	  a=\{c,d\}\text{ and }c=\{a,b\}.
-	  \end{cases}$
-	  \item In the second case, prove that there exists a set $S$ such that $a\in S\in a$. The axiom of regularity also says that this is illegal. Conclude that $(a,b)=(c,d)\iff a=c$ and $b=d$.
-	\end{enumerate}
-\end{enumerate}
 
 \end{exercises}
 
