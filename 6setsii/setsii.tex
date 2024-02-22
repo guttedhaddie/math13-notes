@@ -223,7 +223,7 @@ These may be established as we've done previously (Section \ref{chap:sets}): con
 			(\emph{Hint: what do the generating rules have to do with the Euclidean algorithm?})
 		\end{enumerate}
 		
-		\item (Hard)\lstsp A strict set-theoretic definition requires that ordered pair $(a,b)$ be defined as a set for instance $(a,b):=\bigl\{a,\{a,b\}\bigr\}$. We \emph{prove} that $(a,b)=(c,d)\Longleftrightarrow a=c$ and $b=d$.
+		\item\label{exs:ordpairdef} (Hard)\lstsp A strict set-theoretic definition requires that ordered pair $(a,b)$ be defined as a set for instance $(a,b):=\bigl\{a,\{a,b\}\bigr\}$. We \emph{prove} that $(a,b)=(c,d)\Longleftrightarrow a=c$ and $b=d$.
 		\begin{enumerate}
 		  \item The \emph{regularity axiom} of set theory says there is no set $a$ for which $a\in a$. Use this to prove that the cardinality of $\bigl\{a,\{a,b\}\bigr\}$ is two.
 		  \item Prove that $(a,b)=(c,d)\implies \bigl(a=c\text{ and }b=d\bigr) \text{ or }\bigl(a=\{c,d\}\text{ and }c=\{a,b\}\bigr)$
@@ -236,92 +236,95 @@ These may be established as we've done previously (Section \ref{chap:sets}): con
 
 
 \clearpage
-\iffalse
+
 
 \subsection{Power Sets}\label{sec:power}
 
-Thus far we have seen how to build new sets from old using the operations of subset, complement, union, intersection and Cartesian product. There is essentially only one further method whereby we can produce new sets; given a set $A$, we consider the collection of all of the subsets of $A$ and we insist that this collection is a set.
+Thus far we have used the operations of subset, complement, union, intersection and Cartesian product to build new sets from old. There is essentially only one further method available.
 
 \begin{defn}{}{}
-	The \emph{power set} of $A$ is the set $\cP(A)$ of all subsets of $A$. That is,
+	Let $A$ be a set. Its \emph{power set} $\cP(A)$ is the set\footnotemark{} of all subsets of $A$:
 	\[
-		\cP(A)=\{B:B\subseteq A\}
+		\cP(A)=\bigl\{B:B\subseteq A\bigr\}
 	\]
 	Otherwise said: $B\in\cP(A)\iff B\subseteq A$.
 \end{defn}
 
+\footnotetext{That the \emph{collection} of subsets forms a \emph{set} is one of the axioms of set theory.
+%Set-builder and Union are axiom: really the version seen in the enxt section. Intersection needs only set-builder notation and Cartesian product is as defined in Exercise \ref{exs:ordpairdef}.
+}
+
 \begin{examples}{}{}
-	\exstart Let $A=\{1,3,7\}$. Then $A$ has the following subsets, listed by how many elements are in each subset.
-	\[
-		\begin{array}{ll}
-			\text{0-elements:}&\emptyset\\
-			\text{1-element:}&\{1\},\ \{3\},\ \{7\}\\
-			\text{2-elements:}&\{1,3\},\ \{1,7\},\ \{3,7\}\\
-			\text{3-elements:}&\{1,3,7\}
-		\end{array}
-	\]
-	Gathering these together, we have the power set:
-	\[
-		\cP(A)=\Bigl\{\emptyset,\{1\},\{3\},\{7\},\{1,3\},\{1,7\},\{3,7\},\{1,3,7\}\Bigr\}
-	\]
+	\exstart The set $A=\{1,3,7\}$ has the following subsets:
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item Consider $B=\Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}$. It is essential that you use different size set brackets to prevent confusion. $B$ has only \emph{two} elements, namely $1$ and $\bigl\{\{2\},3\bigr\}$. We can gather the subsets of $B$ in a table.
+		\item[]
+		\begin{quote}
+			\begin{tabular}{@{}ll}
+				0-element subsets:&$\emptyset$\\
+				1-element subsets:&$\{1\}$,\ $\{3\}$,\ $\{7\}$\\
+				2-element subsets:&$\{1,3\}$,\ $\{1,7\}$,\ $\{3,7\}$\\
+				3-element subsets:&$\{1,3,7\}$
+			\end{tabular}
+		\end{quote}
+		Gathering these together yields the power set:
 		\[
-			\begin{array}{ll}
-				\text{0-elements:}&\emptyset\\
-				\text{1-element:}&\{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\\
-				\text{2-elements:}&\Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}
-			\end{array}
+			\cP(A)=\bigl\{\emptyset,\{1\},\{3\},\{7\},\{1,3\},\{1,7\},\{3,7\},\{1,3,7\}\bigr\}
 		\]
-		In the second line, remember that to make a subset out of a single element you must surround the element with set brackets. Thus $1\in B\implies \{1\}\subseteq B$ and
+		The power set therefore has \emph{eight} elements. Be absolutely certain you understand the difference between $\in$ and $\subseteq$. Here are eight propositions; which are true and which false?\footnotemark
+		\begin{enumerate}
+			\item \makebox[100pt]{$1\in A$\hfill (b)} \ \makebox[100pt]{$1\in\cP(A)$\hfill (c)} \ \makebox[100pt]{$\{1\}\in A$\hfill (d)} \ $\{1\}\in\cP(A)$
+			\setcounter{enumii}{4}
+			\item \makebox[100pt]{$1\subseteq A$\hfill (f)} \ \makebox[100pt]{$1\subseteq\cP(A)$\hfill (g)} \ \makebox[100pt]{$\{1\}\subseteq A$\hfill (h)} \ $\{1\}\subseteq\cP(A)$
+		\end{enumerate}
+	
+	  \item The set $B=\Bigl\{\textcolor{red}{1},\textcolor{blue}{\bigl\{\{2\},3\bigr\}}\Bigr\}$ has precisely \emph{two} elements, namely $\textcolor{red}{1}$ and $\textcolor{blue}{\bigl\{\{2\},3\bigr\}}$. As before, we gather the subsets of $B$ in a table:
+	  \begin{quote}
+			\begin{tabular}{@{}ll}
+				0-element subsets:&$\emptyset$\\
+				1-element subsets:&$\{\textcolor{red}{1}\}$,\ $\Bigl\{\textcolor{blue}{\bigl\{\{2\},3\bigr\}}\Bigr\}$\\
+				2-element subsets:&$\Bigl\{\textcolor{red}{1},\textcolor{blue}{\bigl\{\{2\},3\bigr\}}\Bigr\}$
+			\end{tabular}
+		\end{quote}
+		Remember that to make a subset out of a single element you surround the element with braces:
+		\begin{gather*}
+			\textcolor{red}{1}\in B\implies \{\textcolor{red}{1}\}\subseteq B\implies \{\textcolor{red}{1}\}\in\cP(B)\\
+			\bigl\{\{2\},3\bigr\}\in B\implies \Bigl\{\textcolor{blue}{\bigl\{\{2\},3\bigr\}}\Bigr\}\subseteq B \implies \Bigl\{\textcolor{blue}{\bigl\{\{2\},3\bigr\}}\Bigr\} \in\cP(B)
+		\end{gather*}
+		Using different-sized braces is essential here! The power set of $B$ has \emph{four} elements:
 		\[
-			\bigl\{\{2\},3\bigr\}\in B\implies \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\}\subseteq B
-		\]
-		The power set of $B$ is therefore
-		\[
-			\cP(B)=\biggl\{\emptyset,\ \{1\},\ \Bigl\{\bigl\{\{2\},3\bigr\}\Bigr\},\ \Bigl\{1,\bigl\{\{2\},3\bigr\}\Bigr\}\biggr\}
+			\cP(B)=\biggl\{\emptyset,\ \{\textcolor{red}{1}\},\ \Bigl\{\textcolor{blue}{\bigl\{\{2\},3\bigr\}}\Bigr\},\ \Bigl\{\textcolor{red}{1},\textcolor{blue}{\bigl\{\{2\},3\bigr\}}\Bigr\} \biggr\}
 		\]
 	\end{enumerate}
 \end{examples}
 
+\footnotetext{Only (a), (d), and (g) are true. Make sure you understand why!}
 
-\boldinline{Notation}
+\goodbreak
 
-Be absolutely certain that you understand the difference between $\in$ and $\subseteq$. It is easy to become confused when considering power sets. In the context of the previous examples, here are eight propositions. Which are true and which are false?\footnote{Only (a), (d), and (g) are true. Make sure you understand why!}
-\[
-	\begin{array}{r@{\quad}l@{\qquad\qquad}r@{\quad}l@{\qquad\qquad}r@{\quad}l@{\qquad\qquad}r@{\quad}l}
-		\text{(a)}&1\in A
-				&\text{(b)}&1\in\cP(A)
-				&\text{(c)}&\{1\}\in A
-				&\text{(d)}&\{1\}\in\cP(A)\\
-		\text{(e)}&1\subseteq A
-				&\text{(f)}&1\subseteq\cP(A)
-				&\text{(g)}&\{1\}\subseteq A
-				&\text{(h)}&\{1\}\subseteq\cP(A)
-	\end{array}
-\]
-
-As a further exercise in being careful with notation, consider the following theorem.
+As a further exercise in making careful use of notation, we prove a simple theorem.
 
 \begin{thm}{}{powersub}
 	If $A\subseteq B$, then $\cP(A)\subseteq\cP(B)$.
 \end{thm}
 
 \begin{proof}
-	Suppose that $A\subseteq B$ and let $C\in\cP(A)$. We must show that $C\in\cP(B)$.\\
-	By definition, $C\in\cP(A)\implies C\subseteq A$. Since subset inclusion is transitive (Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}}), we have
-	\[
-		C\subseteq A\subseteq B\implies C\subseteq B
-	\]
-	This says that $C\in\cP(B)$. Therefore $\cP(A)\subseteq\cP(B)$.
+	Suppose $A\subseteq B$ and let $C\in\cP(A)$. We must show that $C\in\cP(B)$.
+	\begin{align*}
+		C\in\cP(A)&\implies C\subseteq A \tag{definition of power set}\\
+		&\implies C\subseteq B \tag{since $C\subseteq A$ and $A\subseteq B$}\\
+		&\implies C\in\cP(B) \tag{definition of power set}
+	\end{align*}
+	We conclude that $\cP(A)\subseteq\cP(B)$.
 \end{proof}
 
-It is very easy to get confused by the proof of this theorem. Exercises \ref{ex:powersub1} and \ref{ex:powersub2} discuss things further.
+The converse to this is also true: $\cP(A)\subseteq\cP(B)\Longrightarrow A\subseteq B$. Try proving it yourself.
+
+%It is very easy to get confused by the proof of this theorem. Exercises \ref{ex:powersub1} and \ref{ex:powersub2} discuss things further.
 
 
 \boldsubsubsection{Cardinality and Power Sets}
 
-Let's investigate how the cardinality of a set and its power set are related. Consider a few basic examples where we list all of the subsets, grouped by cardinality.
+Let's investigate the relationship between the cardinality of a set and its power set. Consider a few basic examples where we list all of the subsets, grouped by cardinality.
 \[
 	\begin{array}{|c||c|c|c|c||c|}
 		\hline
@@ -332,149 +335,182 @@ Let's investigate how the cardinality of a set and its power set are related. Co
 		\{a,b,c\}&\emptyset&\{a\},\{b\},\{c\}&\{a,b\},\{a,c\},\{b,c\}&\{a,b,c\}&1+3+3+1=8\\\hline
 	\end{array}
 \]
-You should have seen this pattern before: we are looking at the first few lines of Pascal's Triangle.\footnote{If you know a little about combinations from probability, it should be clear that a set $A$ with $n$ elements has precisely ${}^nC_r=\binom nr=\frac{n!}{r!(n-r)!}$ distinct $r$-element subsets.} It should be no surprise that if $\nm A=4$, then $\nm{\cP(A)}=1+4+6+4+1=16$. The progression $1,2,4,8,16,\ldots$ in the final column immediately suggests the following theorem.
+You've seen this pattern before: we are looking at the first few lines of Pascal's Triangle!%\footnote{If you know about \emph{combinations}, a set with $n$ elements has precisely ${}^nC_r=\binom nr=\frac{n!}{r!(n-r)!}$ distinct $r$-element subsets.}
+It should be no surprise that if $\nm A=4$, then $\nm{\cP(A)}=1+4+6+4+1=16$. The progression $1,2,4,8,16,\ldots$ in the final column immediately suggests a general result.
 
 \begin{thm}{}{powercard}
-	Suppose that $A$ is a finite set. Then $\nm{\cP(A)}=2^{\nm A}$.
+	Let $A$ be a finite set. Then $\nm{\cP(A)}=2^{\nm A}$.
 \end{thm}
 
-Conjuring up a proof may seem daunting given how little we know about $A$! In fact we have only one thing to work with: the \emph{cardinality} of $A$. Indeed you might find it helpful to rephrase the theorem as follows:
+Conjuring a proof may seem daunting given how little we know about $A$; only its \emph{cardinality.} By introducing a variable $n$ for the cardinality and rephrasing the theorem
 \[
 	\forall n\in\N_0,\ \ \nm A=n\implies \nm{\cP(A)}=2^{n}
 \]
-Viewed this way, we see that we want to prove an infinite collection of propositions, indexed by the set $\N_0$:  induction seems like the way forward. What might the induction step look like? The basic idea is that every set with $n+1$ elements is the disjoint union of a set with $n$ elements and a single-element set. The induction step is essentially the observation that any $n+1$-element set $B$ has \emph{twice} the number of subsets of some $n$-element set $A$. It is instructive to see an example of this before writing the proof. 
+induction seems like a sensible approach. But what might the induction step look like? The basic idea is to view a set with $n+1$ elements as the disjoint union of a set with $n$ elements and a single-element set. It is instructive to see an example of the strategy before writing the proof. 
 
-\begin{example}{}{}
-	Let $B=\{1,2,3\}$. Now choose the element $3\in B$ and delete it to create the smaller set
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.2\linewidth]{}{}
+	Let $B=\{1,2,3\}$. Delete $3\in B$ to create a smaller set
 	\[
-		A=\{1,2\}=B\setminus\{3\}
+		A=B\setminus\{3\}=\{1,2\}
 	\]
-	We can split the subsets of $B$ into two groups: those which contain 3 and those which do not. In the following table we list all of the subsets of $B$. In the first column are those subsets $X$ which do not contain 3. These are exactly the subsets of $A$. In the second column are the subsets $Y=X\cup\{3\}$ of $B$ which do contain 3.
-	\[
-		\begin{array}{c|c}
-			X&X\cup\{3\}\\\hline
-			\emptyset&\{3\}\\
-			\{1\}&\{1,3\}\\
-			\{2\}&\{2,3\}\\
-			\{1,2\}&\{1,2,3\}
-		\end{array}
-	\]
-	It is clear that $B$ has twice the number of subsets of $A$.
+	In the table, the subsets of $Y\subseteq B$ are split into two groups depending on whether $3\in Y$. Each subset $Y\subseteq B$ either has the form $X$ or $X\cup\{3\}$ where $X\subseteq A$.\smallbreak
+	Plainly $B$ has twice the number of subsets of $A$; two for each subset $X\subseteq A$.
+	\tcblower
+	\hfill
+	$\begin{array}{|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\text{Subsets of $B$}}\\\hline\hline
+ 		X&X\cup\{3\}\\\hline
+ 		\emptyset&\{3\}\\
+ 		\{1\}&\{1,3\}\\
+ 		\{2\}&\{2,3\}\\
+ 		\{1,2\}&\{1,2,3\}\\\hline
+	\end{array}$
 \end{example}
 
-This method of pairing is exactly mirrored in the proof.
+
+This method of pairing is exactly mirrored in the induction step of our formal proof.
 
 \begin{proof}
-	We prove by induction on the cardinality of $A$. For each $n\in\N_0$, we consider the proposition
+ 	We prove by induction on the cardinality of $A$. For each $n\in\N_0$, consider the proposition
 	\[
-		\nm A=n\implies\nm{\cP(A)}=2^n.\tag{$\ast$}
+		\text{Every set $A$ with cardinality $n$ has $\nm{\cP(A)}=2^n$}\tag{$\ast$}
 	\]
-	(\emph{Base Case})\quad If $n=0$, then $A=\emptyset$ (Theorem \hyperlink{thm:subsettranslnk}{\ref*{thm:subsettrans}}). But then $\cP(A)=\{\emptyset\}$, whence $\nm{\cP(A)}=1=2^0$.\par
-	(\emph{Induction Step})\quad Fix $n\in\N_0$ and assume that ($\ast$) is true for this $n$. That is, we assume that any set with $n$ elements has $2^n$ subsets. Now let $B$ be \emph{any} set with $n+1$ elements. Choose one of the elements $b\in B$ and define $A=B\setminus\{b\}$. The subsets of $B$ can then be separated into the following two types:
-	\begin{enumerate}\itemsep0pt
+	\begin{description}
+		\item[\normalfont\emph{Base case} ($n=0$):] If $n=0$, then $A=\emptyset$ (Lemma \ref{lemm:emptysetunique}). But then $\cP(A)=\{\emptyset\}\Longrightarrow\nm{\cP(A)}=1=2^0$.
+		\item[\normalfont\emph{Induction step}:] Fix $n\in\N_0$ and assume ($\ast$) is true for this $n$. Let $B$ be \emph{any} set with $n+1$ elements. Choose an element $b\in B$ and define $A=B\setminus\{b\}$. The subsets of $B$ may be separated into two types:
+	\begin{enumerate}
 	  \item Subsets $X\subseteq B$ which do not contain $b$.
 	  \item Subsets $Y\subseteq B$ which contain $b$.
 	\end{enumerate}
-	In the first case, $X$ is really a subset of $A$.\par
+	In the first case, $X$ is a subset of $A$.\par
 	In the second case we can write $Y=X\cup\{b\}$, where $X$ is again a subset of $A$.\par
-	Each subset $X\subseteq A$ therefore corresponds to precisely two subsets $X$ and $X\cup\{b\}$ of $B$. Since $\nm{A}=n$, the induction hypothesis tells us that there are $2^n$ subsets $X\subseteq A$, whence
+	Each subset $X\subseteq A$ therefore corresponds to precisely two subsets $X$ and $X\cup\{b\}$ of $B$. Since $\nm{A}=n$, the induction hypothesis ($\ast$) tells us there are $2^n$ subsets $X\subseteq A$, whence
 	\[
 		\nm{\cP(B)}=2\nm{\cP(A)}=2^{n+1}
 	\]
-	By induction, $(\ast)$ is true for all $n\in\N_0$.
+	\end{description}
+	By induction, $(\ast)$ holds for all $n\in\N_0$.
 \end{proof}
 
-Once you understand the proof, you should compare it to the proof of Theorem \ref{thm:polygon} on the interior angles of a polygon: the idea is very similar. Exercise \ref{ex:binom} gives an alternative proof of this result.\par
+% Once you understand the proof, you should compare it to the proof of Theorem \ref{thm:polygon} on the interior angles of a polygon: the idea is very similar. 
+Exercise \ref{ex:binom} gives an alternative proof.
 
-As a final example, we consider the interaction of power sets and Cartesian products.
+%As a final example, we consider the interaction of power sets and Cartesian products.
 
 \begin{example}{}{}
-	Suppose that $A=\{a\}$ and $B=\{b,c\}$. Then
+	You might erroneously expect the sets $\cP(A\times B)$ and $\cP(A)\times\cP(B)$ to be the same. Here is a simple counter-example to convince you otherwise!\smallbreak
+	Let $A=\{a\}$ and $B=\{b,c\}$. Think about cardinalities:
+	\begin{gather*}
+		\nm{\cP(A\times B)}=2^{\nm{A\times B}}=2^{\nm A\nm B}=2^2=4\\[2pt]
+		\nm{\cP(A)\times\cP(B)} =\nm{\cP(A)}\nm{\cP(B)} =2^{\nm A}2^{\nm B}=2^{\nm A+\nm B}=2^3=8
+	\end{gather*}
+	Since the cardinalities are different, the sets cannot be equal: $\cP(A\times B)\neq \cP(A)\times\cP(B)$. But what about \emph{subset}? Might the smaller set be a subset of the larger? Again the answer is no, as can be seen by computing the sets explicitly.
 	\[
-		A\times B=\{(a,b),(a,c)\}
+		A\times B=\bigl\{(a,b),(a,c)\bigr\} \implies \cP(A\times B)=\big\{\emptyset,\ \{(a,b)\},\ \{(a,c)\},\ \{(a,b),(a,c)\}\big\}
 	\]
-	The power set $\cP(A\times B)$ therefore contains $2^2=4$ elements: indeed
-	\[
-		\cP(A\times B)=\Big\{\emptyset,\ \{(a,b)\},\ \{(a,c)\},\ \{(a,b),(a,c)\}\Big\}
-	\]
-	The power sets of $A$ and $B$ have 2 and 4 elements respectively:
-	\[
-		\cP(A)=\big\{\emptyset,\{a\}\big\},\qquad\cP(B)=\big\{\emptyset,\{b\},\{c\},\{b,c\}\big\}
-	\]
-	The Cartesian product of the power sets therefore has $2\times 4=8$ elements:
+	The elements of $\cP(A\times B)$ are \emph{sets of ordered pairs.} By contrast, the elements of $\cP(A)\times\cP(B)$ are \emph{ordered pairs of sets}:
 	\begin{multline*}
-		\cP(A)\times\cP(B)
-		=\Big\{\big(\emptyset,\emptyset\big),\  \big(\emptyset,\{b\}\big),\  \big(\emptyset,\{c\}\big),\  \big(\emptyset,\{b,c\}\big)\\*
-		\big(\{a\},\emptyset\big),\  \big(\{a\},\{b\}\big),\  \big(\{a\},\{c\}\big),\  \big(\{a\},\{b,c\}\big)\Big\}
+			\cP(A)\times\cP(B) =\big\{\emptyset,\{a\}\big\}\times \big\{\emptyset,\{b\},\{c\},\{b,c\}\big\}\\*
+			=\Bigl\{\bigl(\emptyset,\emptyset\bigr), \bigl(\emptyset,\{b\}\bigr), \bigl(\emptyset,\{c\}\bigr), \bigl(\emptyset,\{b,c\}\bigr), \bigl(\{a\},\emptyset\bigr), \bigl(\{a\},\{b\}\bigr), \bigl(\{a\},\{c\}\bigr), \bigl(\{a\},\{b,c\}\bigr)\Bigr\}
 	\end{multline*}
-	It should be clear from this example not only that $\cP(A\times B)\neq\cP(A)\times\cP(B)$, but that the elements of the two sets are completely different. The elements of $\cP(A\times B)$ are \emph{sets of ordered pairs,} while the elements of $\cP(A)\times\cP(B)$ are \emph{ordered pairs of sets.}
+	The elements of the two sets have completely different types, so there is no way that one could be a subset of the other!
 \end{example}
 
+\goodbreak
 
-
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-%     \item The power set of a set $A$ is \underline{\phantom{the set of all subsets of $A$\qquad\qquad\qquad}}
-%     \item Which of the following are correct statements?
-%     \[[0,1)\in\cP(\R),\qquad 7\in\cP(\N),\qquad \{(3,5),(2,9)\}\subseteq\cP(\N\times\N),\qquad \{4,\pi\}\in\cP(\R)\]
-%   \end{enumerate}
 
 
 \begin{exercises}{}{}
-A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/6-2-power.html}{online}.
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/6-2-power.html}{online}.
 
-\begin{enumerate}
-  \item Find $\cP(A)$ and $\nm{\cP(A)}$ for the following:\\[5pt]
-	\begin{tabular}{r@{\ \ }l@{\qquad\qquad\qquad\qquad}r@{\ \ }l}
-	(a)&$A=\{1,2\}$.&(d)&$A=\{\emptyset,1,\{a\}\}$.\\[2pt]
-	(b)&$A=\{1,2,3\}$.&(e)&$A=\Big\{\big\{1,2\big\},3,\big\{4,\{5\}\big\}\Big\}$.\\[5pt]
-	(c)&$A=\bigl\{(1,2),(2,3)\bigr\}$.&(f)&$A=\Big\{(1,2),\ 3,\ \bigl(4,\{5\}\bigr)\Big\}$.
-	\end{tabular}
-	
-	\item Let $A=\{1,3\}$ and $B=\{2,4\}$.
+
 	\begin{enumerate}
-	  \item Draw a picture of the set $A\times B$.
-	  \item Compute $\cP(A\times B)$.
-	  \item What is the cardinality of $\cP(A)\times\cP(B)$? \emph{Don't compute the set!}
-	\end{enumerate}
+	  \item For each $A$, find $\cP(A)$ and $\nm{\cP(A)}$.
+	  \begin{enumerate}
+	    \item \makebox[120pt][l]{$A=\{1,2\}$\hfill (b)} \ \makebox[160pt][l]{$A=\{1,2,3\}$\hfill (c)} \ $A=\bigl\{(1,2),(2,3)\bigr\}$
+	    \setcounter{enumii}{3}
+	    \item \makebox[120pt][l]{$A=\bigl\{\emptyset,1,\{a\}\bigr\}$\hfill (e)} \ \makebox[160pt][l]{$A=\Big\{\big\{1,2\big\},3,\big\{4,\{5\}\big\}\Big\}$\hfill (f)} \ $A=\Big\{(1,2),\ 3,\ \bigl(4,\{5\}\bigr)\Big\}$   
+	  \end{enumerate}
+% 		\begin{tabular}{r@{\ \ }l@{\qquad\qquad}r@{\ \ }l}
+% 		(a)&$A=\{1,2\}$&(d)&$A=\{\emptyset,1,\{a\}\}$\\[2pt]
+% 		(b)&$A=\{1,2,3\}$&(e)&$A=\Big\{\big\{1,2\big\},3,\big\{4,\{5\}\big\}\Big\}$\\[5pt]
+% 		(c)&$A=\bigl\{(1,2),(2,3)\bigr\}$&(f)&$A=\Big\{(1,2),\ 3,\ \bigl(4,\{5\}\bigr)\Big\}$
+% 		\end{tabular}
+		
+		
+		\item Let $A=\{1,3\}$ and $B=\{2,4\}$.
+		\begin{enumerate}
+		  \item Draw a picture of the set $A\times B$ as a subset of $\R^2$.
+		  \item Compute $\cP(A\times B)$.
+		  \item What is the cardinality of $\cP(A)\times\cP(B)$? %\emph{Don't compute the set!}
+		\end{enumerate}
+	  
+	  
+		\item Determine whether the following statements are true or false. Justify your answers.
+	  \begin{enumerate}
+	    \item If $\{7\}\in\cP(A)$, then $\{7\}\notin A$.
+	    \item Suppose that $A\subsetneq\cP(B)\subsetneq C$ where $\nm A=2$. Then $\nm C$ can be 5, but $\nm C$ cannot be 4.
+	    \item If $\nm B=\nm A+1$, then $\cP(B)$ has at least two more elements than $\cP(A)$.
+	    \item If $A,B,C,D$ are cardinality-two subsets of $\{1,2,3\}$. Then at least two of them are equal. 
+	  \end{enumerate}
   
-	\item Determine whether the following statements are true or false (\emph{in (b), the symbol $\subsetneq$ means `proper subset'}). Justify your answers.
-  \begin{enumerate}
-    \item If $\{7\}\in\cP(A)$, then $7\in A$ and $\{7\}\notin A$.
-    \item Suppose that $A,B$ and $C$ are sets such that $A\subsetneq\cP(B)\subsetneq C$ and $\nm A=2$. Then $\nm C$ can be 5, but $\nm C$ cannot be 4.
-    \item If a set $B$ has one more element than a set $A$, then $\cP(B)$ has at least two more elements than $\cP(A)$.
-    \item Suppose that the sets $A,B,C$ and $D$ are all subsets of $\{1,2,3\}$ with cardinality two. Then at least two of these sets are equal. 
-  \end{enumerate}
-  
-	\item\label{ex:powersub1} Here are three incorrect proofs of Theorem \ref{thm:powersub}. Explain why each fails.
-	\begin{enumerate}
-		\item Let $x\in\cP(A)$. Then $x\in A$. Since $A\subseteq B$, we have $x\in B$. Therefore $x\in\cP(B)$, and so $\cP(A)\subseteq\cP(B)$.
-		\item Let $A=\{1,2\}$ and $B=\{1,2,3\}$. Then $\cP(A)=\{\emptyset,\{1\},\{2\},A\}$, and\\
-		$\cP(B)=\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},B\}$. Thus $\cP(A)\subseteq\cP(B)$.
-		\item Let $x\in A$. Since $A\subseteq B$, we have $x\in B$. Since $x\in A$ and $x\in B$, we have $\{x\}\in\cP(A)$, and $\{x\}\in\cP(B)$.
-	\end{enumerate}
 	
-	\item\label{ex:powersub2} Consider the converse of Theorem \ref{thm:powersub}. Is it true or false? Prove or disprove your conjecture.
+		\item\label{ex:powersub1} Here are three incorrect proofs of Theorem \ref{thm:powersub}: $A\subseteq B\Longrightarrow\cP(A)\subseteq\cP(B)$. Why does each fail?
+		\begin{enumerate}
+			\item Let $x\in\cP(A)$. Since $A\subseteq B$, we have $x\in B$. Therefore $x\in\cP(B)$, and so $\cP(A)\subseteq\cP(B)$.
+			\item Let $A=\{1,2\}$ and $B=\{1,2,3\}$. Then
+			\[
+				\cP(A)=\bigl\{\emptyset,\{1\},\{2\},\{1,2\}\bigr\} \subseteq \bigl\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},B\bigr\}
+				=\cP(B)
+			\]
+			\item Let $\{x\}\in\cP(A)$. Then $x\in A$. Since $A\subseteq B$, we have $x\in B$. But then $\{x\}\in\cP(B)$.
+		\end{enumerate}
 	
-	\item\begin{enumerate}
-	  \item Prove that $\cP(A)\cup\cP(B)\subseteq\cP(A\cup B)$. Provide a counter-example to show that we do not expect equality.
-	  \item Does anything change if you replace $\cup$ with $\cap$ in part (a)? Justify your answer.
-	\end{enumerate}
 	
-	\item Consider the proof of Theorem \ref{thm:powercard}. Let $B$ be a set with $n+1$ elements, let $b\in B$ and let $A=B\setminus\{b\}$. Prove that the function $f:\cP(A)\times\{1,2\}\to\cP(B)$ defined by
-	\[f(X,1)=X,\qquad f(X,2)=X\cup\{b\}\]
-	is a bijection, and that consequently, by Theorem \ref{thm:finitecard}, $\nm{\cP(A)\times\{1,2\}}=\nm{\cP(B)}$.
+		\item\begin{enumerate}
+		  \item Prove that $\cP(A)\cup\cP(B)\subseteq\cP(A\cup B)$. Provide a counter-example to show that we do not expect equality.
+		  \item Does anything change if you replace $\cup$ with $\cap$ in part (a)? Justify your answer.
+		\end{enumerate}
 	
-	\item\label{ex:binom} We use the following notation for the binomial coefficient: $\binom nr=\frac{n!}{r!(n-r)!}$. This symbol denotes the number of distinct ways one can choose $r$ objects from a set of $n$ objects.
-	\begin{enumerate}
-	  \item Use the definition of the binomial coefficient to prove the following:
-	  \[\text{If } 1\le r\le n,\ \text{ then }\ \binom{n+1}r=\binom nr+\binom n{r-1}.\]
-		\item Prove by induction that $\forall n\in\N_0,\,\sum\limits_{r=0}^n\binom nr=2^n$.\\
-		\emph{Hint: Use part (a) in the induction step. Note that the smallest $n$ for which it applies is $n=1\ldots$}
-		\item Explain why part (b) provides an alternative proof of Theorem \ref{thm:powercard}.
-	\end{enumerate}
-	\emph{If you found this easy, try proving the binomial theorem: $\forall n\in\N,\,(x+y)^n=\sum\limits_{r=0}^n\binom nrx^ry^{n-r}$.}
+	
+% 	\item Consider the proof of Theorem \ref{thm:powercard}. Let $B$ be a set with $n+1$ elements, let $b\in B$ and let $A=B\setminus\{b\}$. Prove that the function $f:\cP(A)\times\{1,2\}\to\cP(B)$ defined by
+% 	\[f(X,1)=X,\qquad f(X,2)=X\cup\{b\}\]
+% 	is a bijection, and that consequently, by Theorem \ref{thm:finitecard}, $\nm{\cP(A)\times\{1,2\}}=\nm{\cP(B)}$.
+	
+ 
+		\item\begin{enumerate}
+			\item For any set $A$, show there is an injection $\iota : A \to \cP(A)$. (Explicitly construct a map, and show that it is one-to-one.)
+			\item Is there any set $A$ such that $A \cap \cP(A) \neq \emptyset$?
+		\end{enumerate}
+
+% 
+% 		\item (Recall Exercise \ref*{sec:cartprod}.\ref{exs:ordpairdef})\lstsp If we define an ordered pair $(a,b)$ as $\bigl\{\{a\}, \{a,b\}\bigr\}$, prove that $A\times B \subseteq \cP(\cP(A\cup B))$.
+
+	
+		\item\label{ex:binom} If you've studied combinatorics, you'll know that the binomial coefficient $\binom nr=\frac{n!}{r!(n-r)!}$ denotes the number of distinct ways one can choose $r$ objects from a set of $n$ objects.
+		\begin{enumerate}
+		  \item Prove directly: $\binom{n+1}r=\binom nr+\binom n{r-1}$ whenever $1\le r\le n$.
+			\item (Hard)\lstsp Prove by induction that $\forall n\in\N_0,\,\sum\limits_{r=0}^n\binom nr=2^n$, by using part (a) in the induction step.
+			\item Explain why part (b) provides an alternative proof of Theorem \ref{thm:powercard}.
+		\end{enumerate}
+		\emph{If you found this easy, try proving the binomial theorem: $\forall n\in\N_0,\,(x+y)^n=\sum\limits_{r=0}^n\binom nrx^ry^{n-r}$.}
+
+
+% \item Let $X$ be an infinite set. A collection of sets $\mathcal{F} \subseteq \cP(X)$ is called a \emph{filter} if the following conditions are satisfied:
+% \begin{enumerate}[label=(\arabic*)]
+%     \item $\emptyset \notin \mathcal{F}$ and $X \in \mathcal{F}$,
+%     \item if $A \subseteq B \subseteq X$ and $A \in \mathcal{F}$, then $B \in \mathcal{F}$,
+%     \item if $A,B \in \mathcal{F}$, then $A \cap B \in \mathcal{F}$.
+% \end{enumerate}
+% Filters are meant to capture a notion of largeness for sets.
+% \begin{enumerate}
+%     \item Show that $\{A : X \setminus A \text{ is finite}\}$ is a filter (this is called the \emph{cofinite} or \emph{Frech\'et filter}).
+%     \item A filter $\mathcal{U} \subseteq \cP(X)$ is called an \emph{ultrafilter} if it is a filter and for any $A \in \cP(X)$, we have either $A \in \mathcal{U}$ or $X \setminus A \in \mathcal{U}$. Show that the cofinite filter is not an ultrafilter.
+%     \item Show that a filter $\mathcal{F}$ is an ultrafilter if and only if for any $A_1,\ldots,A_n \in \cP(X)$ such that $A_1 \cup \cdots \cup A_n \in \mathcal{F}$, there is $1 \leq i \leq n$ such that $A_i \in \mathcal{F}$.
+%     \item Let $s \in X$, and define $\mathcal{U}_s = \{A \in \cP(X) : s \in A\}$. Show $\mathcal{U}_s$ is an ultrafilter, called the \emph{principal ultrafilter generated by $s$}.
+%     \item An ultrafilter $\mathcal{U}$ is \emph{nonprincipal} if it is not equal to $\mathcal{U}_s$ for any $s \in X$. Show an ultrafilter $\mathcal{U}$ is nonprincipal if and only if it contains the cofinite filter (as a subset).
+% \end{enumerate}
 \end{enumerate}
 
 \end{exercises}
@@ -970,6 +1006,64 @@ A reading quiz and several questions with linked video solutions can be found \h
     \end{center}
     \item Repeat parts (c) and (d) for the \emph{area} under the curve at each step. Prove that the area between the fractal curve and the $x$-axis is $\frac 18$.
 	\end{enumerate}
+	
+	
+		\item Suppose we are working in a universal set $\cU$ (so every set is considered a subset of $\cU$). Give an explanation for why it makes sense to define $\bigcap_{n \in I} A_n = \cU$ when $I = \emptyset$.
+
+\item Let $\{A_n : n \in I\}$ and $\{B_n : n \in I\}$ be indexed families of sets. Give explicit examples for which the following hold:
+\begin{enumerate}
+    \item \[\left(\bigcup_{n \in I} A_n \right) \cap \left(\bigcup_{n \in I} B_n \right) \neq \bigcup_{n \in I} (A_n \cap B_n)\]
+    \item \[\left(\bigcap_{n \in I} A_n \right) \cup \left(\bigcap_{n \in I} B_n \right) \neq \bigcap_{n \in I} (A_n \cup B_n)\]
+\end{enumerate}
+
+\item (De Morgan's laws) Let $\{A_n : n \in I\}$ be an indexed family of sets and $B$ a set. Prove
+\begin{enumerate}
+    \item \[B \setminus \left(\bigcup_{n \in I} A_n \right) = \bigcap_{n \in I} (B \setminus A_n)\]
+    \item \[B \setminus \left(\bigcap_{n \in I} A_n \right) = \bigcup_{n \in I} (B \setminus A_n)\]
+\end{enumerate}
+
+\item Let $\{A_n : n \in I\}$ be an indexed family of sets and $B$ a set. Prove
+\begin{enumerate}
+    \item \[\left(\bigcup_{n \in I} A_n \right) \setminus B = \bigcup_{n \in I} (A_n \setminus B)\]
+    \item \[\left(\bigcap_{n \in I} A_n \right) \setminus B = \bigcap_{n \in I} (A_n \setminus B)\]
+\end{enumerate}\
+
+\item We can take the Cartesian product of arbitrarily many sets. Let $\{A_n : n \in I\}$ be a family of sets. Define
+\[
+\prod_{n \in I} A_n = \left\{f : I \to \bigcup_{n \in I} A_n \bigm| f(n) \in A_n\right\}.
+\]
+\begin{enumerate}
+    \item If $I = \N$ and $A_n = \R$ for each $n \in \N$, can you give a more intuitive description of the elements of $\prod_{n \in \N} A_n$?
+    \item Suppose we have two families $\{A_n : n \in I\}$ and $\{B_n : n \in I\}$. Prove
+    \[
+        \left(\prod_{n \in I} A_n \right) \cap \left(\prod_{n \in I} B_n \right) = \prod_{n \in I} (A_n \cap B_n)
+    \]
+\end{enumerate}
+
+	\item Let $X$ be a set. A collection of sets $\tau \subseteq \cP(X)$ is called a \emph{topology} if the following conditions are satisfied:
+\begin{enumerate}
+    \item $\emptyset \in \tau$ and $X \in \tau$;
+    \item $\tau$ is closed under arbitrary union. That is, if $\{U_n : n \in I\} \subseteq \tau$ for any index set $I$, then $\bigcup_{n \in I} U_n \in \tau$;
+    \item $\tau$ is closed under finite intersection. That is, if $U_1,\ldots,U_n \in \tau$ for any $n \in \N$, then $U_1 \cap \cdots \cap U_n \in \tau$.
+\end{enumerate}
+Elements of $\tau$ are called \emph{open sets}.
+\begin{enumerate}
+    \item Let $X = \{a,b,c,d\}$. Let $\tau_1 = \{\emptyset, X\}$, $\tau_2 = \cP(X)$, $\tau_3 = \{\emptyset, \{d\}, \{a,b\}, \{b,c\}, \{a,b,c\}, X\}$, and $\tau_4 = \{\emptyset, \{b\}, \{a,b\}, \{b,c\}, \{a,b,c\}, X\}$. Show $\tau_1,\tau_2$ and $\tau_4$ are topologies while $\tau_3$ is not.
+    
+    \item Let $X$ be an infinite set and define $\tau = \{A \in \cP(X) : X \setminus A \text{ is finite}\} \cup \{\emptyset\}$. Show $\tau$ is a topology.
+    \item The \emph{standard topology} $\tau$ on $\R$ can be defined by declaring that a set $U \subseteq \R$ is open (i.e. an element of $\tau$) if and only if for every $x \in U$, there is an open interval $(a,b)$ such that $x \in (a,b)$ and $(a,b) \subseteq U$. Show this defines a topology on $\R$.
+\end{enumerate}
+
+\item Let $X$ be a set and $\tau$ a topology on $X$. A set $C \subseteq X$ is called \emph{closed} if its complement is open, i.e., if $X \setminus C \in \tau$. 
+\begin{enumerate}
+    \item Show the following properties of closed sets:
+    \begin{enumerate}
+        \item $\emptyset$ and $X$ are both closed.
+        \item If $\{A_n : n \in I\}$ is an arbitrary collection of closed sets, then $\bigcap_{n \in I} A_n$ is closed.
+        \item If $A_1,\ldots,A_n$ are closed sets, then $A_1 \cup \cdots \cup A_n$ is closed.
+    \end{enumerate}
+    \item In the standard topology on $\R$, show that a closed interval $[a,b]$ is a closed set but that a half-open interval $[a,b)$ is neither open nor closed.
+\end{enumerate}
 \end{enumerate}
 
 \end{exercises}

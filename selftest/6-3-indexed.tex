@@ -3,13 +3,47 @@
 \boldsubsection{Reading Quiz Section \ref*{sec:indexed}}
 
 \begin{enumerate}
-	\item 
+\item Let $I$ be a set and $\{A_n : n \in I\}$ a family of sets indexed by $I$. Then the definition of $\bigcup_{n \in I} A_n$ uses the \rule{2.5cm}{0.15mm} quantifier and the definition of $\bigcap_{n \in I} A_n$ uses the \rule{2.5cm}{0.15mm} quantifier.
+\begin{enumerate}
+    \item existential; existential
+    \item existential; universal
+    \item universal; existential
+    \item universal; universal
+\end{enumerate}
+
+\item Let $I$ be a set and $\{A_n : n \in I\}$ a collection of sets indexed by $I$ which is nested. What can you conclude? Select all that apply.
+\begin{enumerate}
+    \item $\bigcap_{n \in I} A_n \neq \emptyset$.
+    \item $\bigcup_{n \in I} A_n = A_1$.
+    \item The collection of sets is pairwise disjoint.
+    \item Each $A_n$ must be an interval.
+\end{enumerate}
+
+\item True or False:
+\[
+    B\subseteq \bigcup_{n\in I}A_n\iff \forall n\in I,\ B\subseteq A_n
+\]
 \end{enumerate}
 
 
 \boldsubsection{Practice Problems Section \ref*{sec:indexed}}
 
 \begin{enumerate}
-	\item 
+\item (From previous exercises) For each non-negative real number $r\ge 0$ let 
+  \[A_r=\big\{(x,y)\in\R^2:x^2+y^2=r^2\big\}\]
+		\begin{enumerate}
+  		\item Describe each of the sets $A_r$ geometrically.
+  		\item Prove that $\bigcup_{r\in\R^+_0}A_r=\R^2$.
+		\end{enumerate}
+		
+		\href{https://youtu.be/WuSucjuxjbU}{Video Solution}
+		
+\item Let $I$ be a set, $\{A_n : n \in I\}$ a family of sets indexed by $I$ and $B$ a set. Prove:
+\begin{enumerate}
+    \item \[ \left(\bigcup_{n \in I} A_n \right) \cap B = \bigcup_{n \in I} (A_n \cap B) \]
+    \item \[ \left(\bigcap_{n \in I} A_n \right) \cup B = \bigcap_{n \in I} (A_n \cup B) \]
+\end{enumerate}
+
+\href{https://youtu.be/CtIg2lrsyAs}{Video Solution}
 \end{enumerate}
 
