@@ -42,4 +42,4 @@ label("\smash[b]{$A\cap B$}",(0,0));
 
 
 path p=box((-3.2,-2.5),(3.2,2.3));
-draw(p);
+//draw(p);

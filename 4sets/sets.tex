@@ -434,30 +434,30 @@ We finish with a couple of simple results regarding the empty set.
 
 \subsection{Unions, Intersections and Complements}\label{sec:union}
 
-In this section we construct new sets from old, modeled precisely on the logical concepts of \emph{and, or,} and \emph{not} (compare Definition \ref{defn:andornot}). 
+In this section we construct new sets from old, modeled on the logical concepts of \emph{and, or,} and \emph{not.}
 
 
 \begin{defn}{}{unionint}
-	Let $\cU$ be a (universal) set,\footnotemark{} and suppose $A,B$ are subsets of $\cU$.
+	Suppose $A$ and $B$ are sets.
 	\begin{enumerate}\itemsep0pt
 		\item The \emph{union} of $A$ and $B$ is the set of elements in $A$ or $B$:
 		\[
-			\makebox[210pt][l]{$A\cup B:=\bigl\{x\in\cU:x\in A\text{ or }x\in B\bigr\}$\hfill} (x\in A\cup B\iff x\in A\text{ or }x\in B)
+			\makebox[210pt][l]{$A\cup B:=\bigl\{x:x\in A\text{ or }x\in B\bigr\}$\hfill} (x\in A\cup B\iff x\in A\text{ or }x\in B)
 		\]
 		\item The \emph{intersection} of $A$ and $B$ is the set of elements in both $A$ and $B$:
 		\[
-			\makebox[210pt][l]{$A\cap B:=\bigl\{x\in\cU:x\in A\text{ and }x\in B\bigr\}$\hfill} (x\in A\cap B\iff x\in A\text{ and }x\in B)
+			\makebox[210pt][l]{$A\cap B:=\bigl\{x:x\in A\text{ and }x\in B\bigr\}$\hfill} (x\in A\cap B\iff x\in A\text{ and }x\in B)
 		\]
 		We say that $A$ and $B$ are \emph{disjoint} if $A\cap B=\emptyset$.
-	  \item The \emph{complement} of $A$ is the set of all elements not in $A$:
+	  \item The \emph{complement} of $A$ is the set of all elements not in $A$ (with respect to some \emph{universal set}\footnotemark{} $\cU$):
 		\[
 			\makebox[210pt][l]{$\comp A:=\bigl\{x\in\cU:x\notin A\bigr\}$ \hfill} (x\in\comp A\iff x\notin A \ (\text{and }x\in\cU))
 		\]
-		This can be read ``$B$ minus $A$'', indeed some authors write $B-A$. Similarly $\comp A=\cU\setminus A$, etc.
 		\item The \emph{complement of $A$ relative $B$} is the set of elements in $B$ which are not in $A$:
 		\[
-			\makebox[210pt][l]{$B\setminus A:=B\cap \comp A=\bigl\{x\in B:x\notin A\bigr\}$\hfill} (x\in B\setminus A\iff x\in B\text{ and } x\notin A)
+			\makebox[210pt][l]{$B\setminus A=\bigl\{x\in B:x\notin A\bigr\} =B\cap\comp A$\hfill} (x\in B\setminus A\iff x\in B\text{ and } x\notin A)
 		\]
+		This can be read ``$B$ minus $A$'' (some authors write $B-A$). Similarly $\comp A=\cU\setminus A$, etc.
 	\end{enumerate}
 	
 	\begin{center}
@@ -467,9 +467,9 @@ In this section we construct new sets from old, modeled precisely on the logical
 	\end{center}
 \end{defn}
 
-\footnotetext{Of which everything else will be a subset. This is needed particularly for complements, but more generally is required to invoke set-builder notation. In certain contexts, the universal set is naturally assumed: $\cU=\R$ makes sense if you are working within the real numbers, $\cU=\Z$ if doing modular arithmetic.}
+\footnotetext{This is needed for complements since $x$ has to live somewhere: should, say, $\comp{\{1\}}$ be the set of all \emph{integers} except 1, \emph{real numbers} except 1, etc.?! In many contexts the universal set is naturally assumed: $\cU=\R$ makes sense if you are doing calculus, $\cU=\Z$ if doing modular arithmetic. The universal set is not needed for the rest of the definition (that the union is a set is typically an axiom, while intersections and relative complements are automatically subsets of pre-existing sets).}
 
-In the Venn diagrams, the outer box depicts the universal set $\cU$. Though it doesn't constitute a proof, the diagram makes certainly suggests that
+In the first Venn diagram, the outer box depicts the universal set $\cU$. Though it doesn't constitute a proof, the second diagram certainly suggests that
 \[
 	A=(A\setminus B)\cup (A\cap B) \quad\text{and}\quad B=(B\setminus A)\cup(A\cap B)
 \]
