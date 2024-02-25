@@ -527,7 +527,7 @@ In Definition \ref{defn:unionint} we defined the union of \emph{two} sets $A\cup
 \[
 	A_1\cup\cdots\cup A_n=\{x:x\in A_k\text{ for some }k\}
 \]
-In this section compute unions and intersections of larger collections of sets.
+In this section we consider a stronger definition and compute unions and intersections of (potentially) infinite collections of sets.
 
 \begin{defn}{}{indexed}
 	Given a set of sets $\{A_n\}$ (each $A_n$ is a set!), we form its \emph{union} and \emph{intersection}:
@@ -538,7 +538,7 @@ In this section compute unions and intersections of larger collections of sets.
 	We say that $\{A_n\}$ is \emph{pairwise disjoint} if $A_m\cap A_n=\emptyset$ whenever $m\neq n$.
 \end{defn}
 
-In all examples we'll consider, the sets $A_n$ will be \emph{indexed} in the sense that each $n$ lies in some indexing set, typically $\N,\Z$ or $\R$. It is common to decorate the union/intersection symbols to indicate the indexing set. For instance, if $n\in\N$ we might use the notation $\bigcup\limits_{n=1}^\infty A_n$, etc.
+For all examples in this section, the sets $A_n$ are \emph{indexed}: each $n$ lies in some indexing set, typically $\N,\Z$ or $\R$. It is typical to decorate the union/intersection symbols to indicate this: e.g., if $n\in\N$ we might use the notation $\bigcup_{n\in\N} A_n$ or $\bigcup_{n=1}^{\infty} A_n$.
 
 % \begin{examples}{}{}
 % 	\exstart Let $A_n=[-n,n]\subseteq \R$, for each $n\in\N$. For example $A_1=[-1,1]$, $A_2=[-2,2]$, etc.
@@ -552,14 +552,14 @@ In all examples we'll consider, the sets $A_n$ will be \emph{indexed} in the sen
 
 
 \begin{example}{}{}
-	Here is a simple, finite, example to get us used to the notation. Let the indexing set be $I=\{1,2,3\}$, and let
+	Here is a simple (finite) example to get us used to the notation. Let
 	\[
 		A_1=\{1,3,5\},\quad A_2=\{2,3,4,6\},\quad A_3=\{1,2,3,6\}
 	\]
-	Then
+	The indexed collection $\{A_n:n\in I\}$ is indexed by $I=\{1,2,3\}$. Then
 	\begin{gather*}
-		\bigcup_{n\in I}A_n =\bigcup_{n=1}^3A_n =A_1\cup A_2\cup A_3=\{1,2,3,4,5,6\} \\
-		\bigcap_{n\in I}A_n =\bigcap_{n=1}^3A_n =A_1\cap A_2\cap A_3=\{3\}
+		\bigcup_{n=1}^3A_n =A_1\cup A_2\cup A_3=\{1,2,3,4,5,6\} \qquad
+		\bigcap_{n=1}^3A_n =A_1\cap A_2\cap A_3=\{3\}
 	\end{gather*}
 \end{example}
 
@@ -581,489 +581,478 @@ A proof is almost immediate from the definition: can you supply it?
 % \end{proof}
 
 
-\boldsubsubsection{Infinite Unions and Intersections: don't take limits!}
+\boldsubsubsection{Nested Collections}
 
-The challenge with indexed sets often involves computing unions and intersections of \emph{infinitely many} sets. Be very careful with this: it is very tempting to `take limits' when this doesn't make sense. With this in mind, we dissect an important example.\par
-
-For each $n\in\N$, consider the interval $A_n=\Bigl[0\,,\,\frac 1n\Bigr)$. We analyze the collection $\{A_n:n\in\N\}$. First observe that $m\le n\implies \frac 1n\le \frac 1m\implies A_n\subseteq A_m$; the sets are therefore nested:
+When a collection of sets is indexed by the natural numbers $\N$ in such a way that successive sets satisfy a subset relation, we describe the collection as \emph{nested,} for instance
 \[
-	A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots\tag{$\ast$}
+	A_1\supseteq A_2\supseteq A_3\supseteq\cdots
 \]
-Since every set in the collection is a subset of $A_1$, it follows that this is the union,
+Since $A_n\subseteq A_1$ for all $n$, we see that $\bigcup_{n=1}^\infty A_n=A_1$:
 \[
-	\bigcup_{n=1}^\infty A_n=A_1=[0,1)
+	x\in\bigcup_{n=1}^\infty A_n\iff \exists n\in\N, x\in A_n  \iff x\in A_1
 \]
-Before considering the full intersection, we first compute all finite intersections. Since the sets $A_n$ are nested in the form ($\ast$), it follows that any \emph{finite} intersection is simply the smallest of the listed sets: i.e., for any constant $m\in\N$ we have
-\[
-	\bigcap_{n=1}^mA_n=A_m=\Bigl[0\,,\,\frac 1m\Bigr)
-\]
-Observe that this is non-empty \emph{for every $m$}. Now what about the infinite intersection? You might be tempted to take a limit and make an argument such as
-\[
-	\bigcap\limits_{n=1}^\infty A_n\overset{?}{=}\lim_{m\to\infty}\bigcap_{n=1}^mA_n\overset{?}{=}\lim_{m\to\infty}\Bigl[0\,,\,\frac 1m\Bigr)\overset{?}{=}\Bigl[0\,,\lim_{m\to\infty}\frac 1m\Bigr)=[0,0)
-\]
-Quite apart from the issue that $[0,0)$ is ugly and could only mean the empty set, we should worry about whether this is a legitimate use of limits. It isn't! We are only allows to take limits of sequences of numbers, not of \emph{sets.} Perhaps you could forgive the abuse of limits if the approach yielded the correct conclusion. Unfortunately it doesn't: the infinite intersection is in fact non-empty, and we claim the following.
+Computing the \emph{intersection} in such a situation typically requires much more care\ldots
 
-\begin{thm}{}{}
-	$\bigcap\limits_{n=1}^\infty A_n=\{0\}$.
-\end{thm}
-
-Before we give a formal proof, it is instructive to see a calculation. Let us show, for example, that $\frac 29\not\in\bigcap\limits_{n=1}^\infty A_n$. To prove that $\frac 29$ is not in the intersection of \emph{all} the $A_n$, it is enough to exhibit a single integer $m$ such that $\frac 29\not\in A_m$. The picture shows that we can choose $m=10$: since $\frac 1{10}<\frac 29$, we have $\frac 29\not\in [0,\frac 1{10}]=A_{10}$. Since $\frac 29\not\in A_{10}$, we conclude that $\frac 29\not\in\bigcap\limits_{n=1}^\infty A_n$.
-\begin{center}
-	\includegraphics[width=0.5\textwidth]{setsii-06-intervalex}
-\end{center}
-
-\begin{proof}
-	We prove that $x\in\bigcap\limits_{n=1}^\infty A_n\iff x=0$.\par
-	Suppose that $x\in\bigcap\limits_{n=1}^\infty A_n$. Then $x\in\bigl[0\,,\,\frac 1n\bigr)$ for all $n$. Otherwise said,
+\begin{example}{}{}
+	\def\vs{\vspace*{2pt}}
+	Consider the nested collection $\{A_n:n\in\N\}$ of half-open intervals $A_n=\bigl[0,\frac 1n\bigr)$:
 	\[
-		\forall n\in\N,\text{ we have }0\le x<\frac 1n.\tag{$\dag$}
+		m\le n\implies \tfrac 1n\le \tfrac 1m\implies A_n\subseteq A_m \implies A_1\supseteq A_2\supseteq A_3\supseteq \cdots
 	\]
-	Certainly $x=0$ satisfies these inequalities.\par
-	Now suppose, for a contradiction, that $x>0$. Since $\lim\limits_{n\to\infty}\frac 1n=0$, we can certainly choose\footnote{Explicitly, you may choose choose $N=\lceil\frac 1x\rceil$, or anything larger. Here $\lceil x\rceil$ is the \emph{ceiling function:} the smallest integer greater than or equal to $x$.} $N$ large enough so that $\frac 1N\le x$. But this says that $x\not\in A_N$, which contradicts ($\dag$).\par
-	The intersection contains no positive elements, and we conclude that
+	The union is therefore $\bigcup_{n=1}^\infty [0,\frac 1n) =A_1=[0,1)$.\smallbreak
+	
+	Before considering the full intersection, we first compute all \emph{finite} intersections. The nesting condition says that a finite intersection is simply the smallest of the listed sets: for any constant $m\in\N$,
 	\[
-		\bigcap\limits_{n=1}^\infty A_n=\{0\}\tag*{\qedhere}
+		\smash{\bigcap_{n=1}^m} \bigl[0,\tfrac 1n\bigr) =A_1\cap\cdots\cap A_m =A_m=\bigl[0,\tfrac 1m\bigr)
 	\]
-\end{proof}
+	To find the \emph{infinite} intersection, it is very tempting to take limits:
+	\[
+		\smash{\bigcap\limits_{n=1}^\infty \bigl[0,\tfrac 1m\bigr) \mathrel{\overset{?}{\textcolor{red}{=}}} \lim_{m\to\infty}\bigcap_{n=1}^m} \bigl[0,\tfrac 1m\bigr)  \mathrel{\overset{?}{\textcolor{red}{=}}} \Bigl[0,\lim_{m\to\infty}\tfrac 1m\Bigr)=[0,0)
+	\]
+	This is mathematical garbage! Nothing you know about limits justifies either \textcolor{red}{questionable equality}. Moreover, the `answer' $[0,0)$ could only mean the \emph{empty set}, which is \emph{incorrect}: we claim that
+	\[
+		\tcbhighmath{\bigcap\limits_{n=1}^\infty \bigl[0,\tfrac 1n\bigr)=\{0\}}
+	\]
 
-By modifying the sets $A_n$ to either include or exclude endpoints, we can obtain slightly different results. Consider each of the following in turn. How would the argument for computing each intersection differ from what we did above?
-\begin{itemize}
-  \item If $B_n=\Bigl(0\,,\,\frac 1n\Bigr)$, then $\bigcap\limits_{n=1}^\infty B_n=\emptyset$.
-  \item If $C_n=\Bigl(0\,,\,\frac 1n\Bigr]$, then $\bigcap\limits_{n=1}^\infty C_n=\emptyset$.
-  \item If $D_n=\Bigl[0\,,\,\frac 1n\Bigr]$, then $\bigcap\limits_{n=1}^\infty D_n=\{0\}$.
-\end{itemize}
-The moral of these examples is that you cannot naïvely apply limits to sequences of sets. Your intuition is often a good guide, but that doesn't mean you should trust it blindly!\par
+	\begin{quote}
+		\begin{proof}
+			First observe that
+			\[
+				x\in \smash[t]{\bigcap\limits_{n=1}^\infty A_n=\bigcap\limits_{n=1}^\infty \bigl[0,\tfrac 1n\bigr)} \iff \forall n\in\N,\ 0\le x<\tfrac 1n
+			\]
+			Certainly $x=0$ satisfies these inequalities. It remains to eliminate the other possibilities.
+			\begin{itemize}\itemsep2pt
+			  \item If $x<0$, then $x\notin A_1=[0,1)$ and so $x\notin\bigcap A_n$.
+			  \item	Suppose that $x>0$. There exists\footnotemark{} $N$ large enough so that $\frac 1N\le x$. Otherwise said, $x\notin A_N$, whence $x\notin\bigcap A_n$. \qedhere
+			\end{itemize}
+		\end{proof}
+	\end{quote}
+	
+	If the last part of the argument seems difficult, try an example! If $x=0.13$, observe that\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-10pt}
+		\[
+			0.1<0.13 \implies x\notin A_{10} \implies x\notin\smash{\bigcap\limits_{n=1}^\infty} A_n
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\linewidth}\vspace{3pt}
+		\hfill \includegraphics{setsii-06-intervalex}
+	\end{minipage}
+	\medbreak
 
-Here are a few more examples.
+	By modifying the endpoints of the sets $A_n$ we obtain slightly different results:
+	\[
+		\bigcap_{n=1}^\infty \bigl(0,\tfrac 1n) =\emptyset \qquad \bigcap_{n=1}^\infty \bigl(0,\tfrac 1n] =\emptyset\qquad \bigcap_{n=1}^\infty \bigl[0,\tfrac 1n] =\{0\}
+	\]
+	How would the arguments differ from what we did above?
+\end{example}
+
+
+\footnotetext{The existence of $N\ge\frac 1x$ should be intuitive; it is in fact guaranteed by the Archimedean property (Exercise \ref*{sec:proof2}.\ref{exs:archimedes}).}
+
+
+The moral is that you cannot naïvely apply limits to sequences of sets. If thinking about limits helps your intuition, great, but you can't trust it blindly!\bigbreak
+
+An indexed collection can also be nested the other way round, in which case the intersection is straightforward
+\[
+	A_1\subseteq A_2\subseteq A_3\subseteq\cdots \implies {\bigcap_{n=1}^\infty} A_n=A_1
+\]
+though the union requires more work.
 
  
 \begin{examples}{}{}
+	Here are a few more simple examples of computing unions and intersections of indexed collections; some are nested, some not.
 	\begin{enumerate}
-	\item\label{ex:index2} Let $A_n=[n,n+1)\subseteq\R$, for each $n\in\Z$. For example,
-	\[
-		A_3=[3,4),\quad\text{and}\quad A_{-17}=[-17,-16)
-	\]
-In this case the sets $A_n$ are pairwise disjoint, and we have
-	\[
-		\bigcup\limits_{n\in\Z}A_n=\R,\quad\text{and}\quad\bigcap\limits_{n\in\Z}A_n=\emptyset
-	\]
-To prove the former, note that $\forall x\in\R$ we have $x\in[n,n+1)$ where $n=\lfloor x\rfloor$ is the greatest integer which is less than or equal to $x$: i.e. $x\in A_{\lfloor x\rfloor}$.
+		\item\label{ex:index2} Let $A_n=[n,n+1)\subseteq\R$, for each $n\in\Z$. For example $A_3=[3,4)$ and $A_{-17}=[-17,-16)$. Every real number lies in precisely one such set (the sets $A_n$ are pairwise disjoint), whence
+		\[
+			\bigcup\limits_{n\in\Z}A_n=\R\quad\text{and}\quad\bigcap\limits_{n\in\Z}A_n=\emptyset
+		\]
+		To prove the former, note that $x\in[n,n+1)$ where $n=\lfloor x\rfloor$ is the greatest integer less than or equal to $x$: i.e., $\forall x\in\R$, we have $x\in A_{\lfloor x\rfloor}$, whence $\R\subseteq\bigcup_{n\in\Z} A_n$ (the reversed subset inclusion is trivial since each $A_n\subseteq \R$).
 
+		\item For each $n\in\N$, let $A_n=[-n,n]$ be a closed interval. This is a nested collection
+		\[
+			A_1\subseteq A_2\subseteq A_3\subseteq\cdots \implies {\bigcap_{n=1}^\infty} A_n=A_1=[-1,1]
+		\]
+		Similarly to the previous example, $\forall x\in\R$ we have $x\in A_n$ where $n$ is any integer $\ge\nm x$: we conclude that $\bigcup_{n=1}^\infty A_n=\R$. 
 
-	\item\vspace*{5pt} For each $n\in\N$, let $A_n=[-n,n]$. Each of the sets $A_n$ is a closed interval. E.g.,
-	\[
-		A_1=[-1,1],\qquad A_2=[-2,2],\qquad A_3=[-3,3]
-	\]
-	It should be clear that $n\le m\implies A_n\subseteq A_m$ so that we have a \emph{nested} sequence of sets:
-	\[
-		A_1\subseteq A_2\subseteq A_3\subseteq\cdots
-	\]
-	It follows immediately that the intersection is $\bigcap\limits_{n\in\N}A_n=A_1=[-1,1]$.\par
-	With a little thinking you might hypothesize that the union is $\bigcup\limits_{n\in\N}A_n=\R$. To prove this, assume that $x\in\R$ is non-zero, and observe that
-	\[
-		-\lceil\nm x\rceil\le x\le\lceil\nm x\rceil\implies x\in A_{\lceil\nm x\rceil}
-	\]
-	Since $0\in A_1$, it follows that $\R\subseteq\bigcup\limits_{n\in\N}A_n$, whence these sets are equal.\\
-	If the notation is causing difficulty, consider for example,
-	\[
-		-3.124\in A_{\lceil 3.124\rceil}=A_4
-	\]
 	
-	\item For each $n\in\N$, let $A_n=\{x\in\R:\nm{x^2-1}<\frac 1n\}$. Before computing the union and intersection of these sets, it is helpful to write each set as a pair of intervals. Note that
+		\item For each $n\in\N$, let $A_n=\{x\in\R:\nm{x^2-1}<\frac 1n\}$. Before computing the union and intersection of these sets, it is helpful to write each set as a pair of intervals. Note that
 	\[
 		\nm{x^2-1}<\frac 1n\iff -\frac 1n< x^2-1<\frac 1n\iff \sqrt{1-\frac 1n}< \nm x< \sqrt{1+\frac 1n}
 	\]
-	Therefore
-	\[
-		A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right)
-	\]
-	As the picture suggests, the sets $A_n$ are nested: $A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots$.\par
-	\begin{minipage}[t]{0.55\linewidth}\vspace{0pt}
-		Since $A_1$ is the largest of the nested sets, we see that
+	\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+		The sets are nested: $A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots$, where
 		\[
-			\bigcup\limits_{n\in\N}A_n=A_1=(-\sqrt{2},0)\cup(0,\sqrt{2})
+			A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right)
 		\]
-		For the intersection, note that
-		\begin{align*}
-			\forall n\in\N,\ x\in A_n&\iff \forall n\in\N,\ \nm{x^2-1}<\frac 1n\\
-			&\iff x^2-1=0
-		\end{align*}
-		It follows that $\bigcap\limits_{n\in\N}A_n=\{1,-1\}$.
+		Since $A_1$ is the largest set,
+		\[
+			\bigcup_{n=1}^\infty A_n=A_1=(-\sqrt{2},0)\cup(0,\sqrt{2})
+		\]
+		For the intersection,
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
-		\includegraphics[scale=0.5]{setsii-05-intervalex}
+	\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+		\hfill\includegraphics{setsii-05-intervalex}
 	\end{minipage}
-	\end{enumerate}
-\end{examples}
-
-
-\boldsubsubsection{Indexed Unions: Don't Confuse Sets and Elements}
-
-It is easy to confuse and important to distinguish between the sets
-\[
-	\{A_n:n\in I\}\qquad\text{and}\qquad\bigcup_{n\in I}A_n
-\]
-The first is a set whose \emph{elements} are themselves sets. The second is the collection of all elements in \emph{any} set $A_n$. Consider the following examples.
-
-
-\begin{examples}{}{}
-	\begin{enumerate}
-		\item For each $n\in\{1,2,3\}$, let $A_n$ be the plane $\{(x,y,z):x+ny+n^2z=1\}\subseteq\R^3$.\\[2pt]
-		The indexed collection $\{A_1,A_2,A_3\}$ has \emph{three} elements: each of the planes $A_1,A_2,A_3$ is an element in its own right.\par
-	  The union $A_1\cup A_2\cup A_3$ is an \emph{infinite} set consisting of all the \emph{points} lying on any of the three planes.\par
-	  For the intersection, a little work with simultaneous equations should convince you that
-	  \[
-	  	(x,y,z)\in\negthickspace\negthickspace\bigcap_{n\in\{1,2,3\}}\negthickspace\negthickspace A_n\iff
-	  	\begin{cases}
-	  		x+y+z=1\\
-	  		x+2y+4z=1\\
-	  		x+3y+9z=1
-	  	\end{cases}
-	  	\iff (x,y,z)=(1,0,0)
-	  \]
-	  Thus $\bigcap A_n=\{(1,0,0)\}$. The planes are drawn below.
-  
-  	\item\label{ex:projline} Let $I=\R\cup\{\infty\}$. For each $m\in I$, let $A_m$ be the line\footnote{We include the vertical line $A_\infty$.} through the origin in $\R^2$ with gradient $m$.\par
-  	Each element of $\{A_m:m\in I\}$ is a \emph{line}: there is one for each direction through the origin.\par
-  	The union $\bigcup A_m$ consists of all of the \emph{points} that lie on \emph{any} line through the origin. Since any point in the plane lies on some line through the origin, we see that $\bigcup A_m=\R^2$.\par
-  	It should be clear that all the lines intersect at the origin, and so $\bigcap A_m=\{(0,0)\}$.\par
-  	The collection of lines $\{A_m:m\in I\}$ is the famous \emph{projective space} $\mathbb P(\R^2)$; this is a very different set from $\R^2$!\par
-  	This example also shows that indexing sets don't have to be simple sets of integers. It is also possible to index the same set using $I=[0,\pi)$. If we define $B_\theta$ to be the line through the origin making an angle $\theta$ with the positive $x$-axis, we would then have $B_\theta=A_{\tan\theta}$.
-	\end{enumerate}
-\end{examples}
-
-\begin{center}
-\begin{minipage}[b]{0.45\textwidth}
-\centering
-% \includemedia[width=0.8\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, add3Djscript=3Dspintool.js, 3Dmenu,
-% 3Dcoo=-0.2646917402744293 -9.039887428283691 17.85630226135254,
-% 3Dc2c=0.781423807144165 -0.5375411510467529 0.31690123677253723,
-% 3Droo=261.5486749519297,
-% 3Dlights=Headlamp]{\includegraphics{setsii-01-planes+0_0}}{setsii-01-planes+0.prc}\\[15pt]
-Example 1: Three elements, or an infinite number?
-\end{minipage}\qquad\qquad
-\begin{minipage}[b]{0.35\textwidth}
-\centering
-\includegraphics[width=\textwidth]{setsii-03-projective}\\
-Example 2: Elements in $\mathbb P(\R^2)$
-\end{minipage}
-\end{center}
-
-
-\boldsubsubsection{Finite Decimals}%\label{ex:finitedec}
-
-Here is another example where our intuition of `taking the limit' leads us astray. This time it is the union that behaves surprisingly.\par
-
-For each $n\in\N$, let $A_n$ be the set of decimals of length $n$. That is
-\[
-	A_n=\bigl\{0.a_1a_2\ldots a_n:\text{where each $a_i\in\{0,1,\ldots,9\}$}\bigr\}
-\]
-For example $0.134\in A_3$. Since $0.134=0.1340$, we also have $0.134\in A_4$. Once again we have a nested sequence of sets
-\[
-	A_1\subseteq A_2\subseteq A_3\subseteq A_4\subseteq\cdots
-\]
-The infinite intersection is therefore simply
-\[
-	\bigcap_{n\in\N}A_n=A_1=\{0,0.1,\ldots,0.9\}
-\]
-Now consider a finite union: if $m\in\N$, then
-\[
-	\bigcup_{n=1}^mA_n=A_m=\bigl\{x\in [0,1):x\text{ has a decimal representation of length $\le m$}\bigr\}
-\]
-At this point, we might be inclined to take the limit as $m\to\infty$ of the \emph{property} `length $m$ decimal.' If so, then it would seem that the infinite union should be the entire\footnote{We would include $1=0.9999\cdots$} interval $[0,1]$.\par
-What is wrong with our reasoning? We have again abused the idea of limits: one cannot take the limit of a property! Instead we use the definition:
-\begin{align*}
-	x\in\bigcup_{n\in\N}A_n&\iff\exists n\in\N\text{ such that }x\in A_n\\
-	&\iff\exists n\in\N \text{ such that $x$ is a decimal of length $n$.}
-\end{align*}
-It follows that
-\[
-	\bigcup_{n\in\N}A_n=\big\{x\in[0,1):x\text{ has a \emph{finite} decimal representation}\big\}
-\]
-In particular, there are no irrational numbers in $\bigcup\limits_{n\in\N}A_n$:
-\[
-	\text{If $x\in A_n$, then $y=10^nx$ is an integer, whence $x=\frac y{10^n}\in\Q$.}
-\]
-Many rational numbers are also excluded. For example $\frac 13=0.3333\cdots$ is not in any set $A_n$ and is therefore not in the union.
-
-
-\boldsubsubsection{The Cantor Set}%\label{ex:cantor}
-
-We finish this section with a bit of fun. We can use infinite intersections to create self-similar sets, otherwise known as \emph{fractals.} The \emph{Cantor middle-third set} is a famous example.\par
-
-Staring with the interval $C_0=[0,1]$, we construct a sequence of sets $C_n$ for each $n\in\N_0$ by repeatedly removing the middle third of each of the intervals contained in $C_n$.
-
-\begin{minipage}[t]{0.40\linewidth}\vspace{0pt}
-	$C_0=[0,1]$,\\[4pt]
-	$C_1=[0,\frac 13]\cup [\frac 23,1]$,\\[4pt]
-	$C_2=[0,\frac 19]\cup [\frac 29,\frac 13]\cup [\frac 23,\frac 79]\cup [\frac 89,1]$, etc.
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.40\linewidth}\vspace{0pt}
-	\includegraphics[width=\textwidth]{setsii-02-cantor}
-\end{minipage}\par
-
-The sequence is drawn up to $C_{9}$, with an animation below. To see the detail for the last few sets, try zooming in as far as you can.
-\begin{center}
-	%\animategraphics[width=\textwidth]{1}{setsii-07-cantor}{0}{9}
-\end{center}\vspace{-8pt}
-
-\begin{defn}{}{}
-	The \emph{Cantor set} $\mathcal C$ is the infinite intersection $\mathcal C=\negthickspace\bigcap\limits_{n=0}^\infty\negthickspace C_n$.
-\end{defn}
-
-This set has several interesting properties.\par
-
-{\bf Zero Measure} (length)\quad Intuitively, the \emph{length} of a set of real numbers is the sum of the lengths of all the intervals contained in the set. Since we start with the interval $[0,1]$ and remove a third of the set each time, it should be clear that
-\[
-	\operatorname{length}(C_0)=1,\qquad \operatorname{length}(C_1)=\frac 23,\qquad\operatorname{length}(C_2)=\left(\frac 23\right)^2,\quad\text{etc.}
-\]
-Induction then gives us
-\[
-	\operatorname{length}(C_n)=\left(\frac 23\right)^n
-\]
-As $n\to\infty$ this goes to zero, so the Cantor set contains no intervals. This at least seems reasonable from the picture.\par
-
-{\bf Infinite Cardinality}\quad The Cantor set $\mathcal{C}$ contains the endpoints of every interval removed at any stage of its construction. In particular, $\frac 1{3^n}\in\mathcal C$ for all $n\in\N_0$, and so $\mathcal C$ is an \emph{infinite} set. Indeed it is more than merely infinite, it is \emph{uncountably} so, as we shall see in Chapter \ref{chap:cantor}.\par
-
-{\bf Self-similarity}\quad If $\frac 13\mathcal C$ means `take all the elements of $\mathcal C$ and divide them by three,' and $\frac 13\mathcal C+\frac 23$ means `take all the elements of $\frac 13\mathcal C$ and add $\frac 23$,' then
-\[
-	\mathcal C=\frac{\mathcal C}{3}\cup\left(\frac{\mathcal C}{3}+\frac 23\right) \tag{$\ast$}
-\]
-Otherwise said, $\mathcal C$ is made up of two shrunken copies of itself, a classic property of fractals. If you were to zoom into the Cantor set far enough that you couldn't see the whole set, you would not know what the scale was. In the following animation we are repeatedly zooming in on the second (of four) groups of points.
-\begin{center} 
-%\animategraphics[width=0.6\textwidth,loop]{6}{setsii-08-cantor}{0}{22}
-\end{center}
-
-
-\boldsubsubsection{Optional: Analyzing the Cantor Set}
-
-To get further with the Cantor set, it is necessary to explicitly describe the elements of the set. This can be accomplished using the \emph{ternary representation.}\label{page:cantor} It can be shown that every number $x\in[0,1]$ may be written in the form\footnote{Analogous to a decimal representation $x=\sum\limits_{n=1}^\infty 10^{-n}a_n=\frac{a_1}{10}+\frac{a_2}{10^2}+\frac{a_3}{10^3}+\cdots$ where $a_n\in\{0,1,2,\ldots,9\}$.}
-\[
-	x=\sum\limits_{n=1}^\infty 3^{-n}a_n=\frac{a_1}{3}+\frac{a_2}{3^2}+\frac{a_3}{3^3}+\cdots
-\]
- where each $a_n\in\{0,1,2\}$. We write $x=[0.a_1a_2a_3\cdots]_3$. For example:
-\[
-	[0.12]_3=\frac 13+\frac 2{3^2}=\frac 59,\qquad \frac{64}{243}=\frac 2{3^2}+\frac 1{3^3}+\frac 1{3^5}=[0.02101]_3,\qquad 1=[0.22222\cdots]_3
-\]
-For this last, use the formula for the sum of a geometric series to calculate $\sum\limits_{n=1}^\infty 2\left(\frac 13\right)^n=2\cdot\frac{1/3}{1-1/3}=1$.\par
-To convince yourself of the existence of a ternary representation, note that if $0\le x<1$ it follows that $x<3$ and so, we can take
-\[
-	a_1=\lfloor 3x\rfloor\in\{0,1,2\}
-\]
-Now repeat, with $a_2=\lfloor x-\frac{a_1}3\rfloor$, etc. It can also be shown that the only possibility whereby $x$ can have two ternary expansions is if one of them terminates. The other will eventually become a sequence of repeating 2's. For example:\footnote{This is ticklish to prove, as is the corresponding result for decimals: compare with $1=0.99999999\cdots$}
-\[
-	[0.0222222\cdots]_3=[0.1]_3=\frac 13\quad \text{and}\quad [0.10122222\cdots]_3=[0.102]_3=\frac 13+\frac 2{27}=\frac{11}{27}
-\]
-We can now describe precisely the elements of each of the sets $C_n$ and consequently the Cantor set.
-
-\begin{thm}{}{}
-	$C_n$ is the set of all numbers $x\in[0,1]$ with a ternary expansion whose first $n$ digits are only 0 or 2. It follows that $\mathcal C$ is the set of $x\in[0,1]$ with a ternary expansion containing only 0 and 2.
-\end{thm}
-
-The Theorem tells us that the Cantor set contains \emph{a lot} of elements. For example:
-\[
-	[0.020202020\cdots]_3=2\sum_{n=1}^\infty 3^{-2n}=\frac{2/9}{1-1/9}=\frac 14
-\]
-is an element of the Cantor set! What is strange is that $\frac 14$ is not the endpoint of any of the open intervals deleted during the construction of $\mathcal C$, and yet we've already established that $\mathcal C$ contains no intervals! Cantor introduced his set precisely because it was so challenging to the traditional concept of size: $\mathcal C$ seems to simultaneously have very few elements and enormously many.
-
-\begin{proof}
-	We prove by induction.\par
-	(\emph{Base Case})\quad The proposition is clearly true for $C_0=[0,1]$, as there is nothing to check.\par
-	(\emph{Induction Step})\quad Assume that the proposition is true for some fixed $n\in\N_0$. Analogously to ($\ast$) above, observe that $C_{n+1}$ is built from two shrunken copies of $C_n$:
-	\[
-		C_{n+1}=\frac 13C_n\cup\left(\frac 13C_n+\frac 23\right)
-	\]
-	Now consider what division by 3 and addition of $\frac 23$ does to a ternary representation.
-	\begin{itemize}
-	  \item Since $\frac 13\sum_{n=1}^\infty 3^{-n}a_n=\sum_{n=1}^\infty 3^{-n-1}a_1$, we see that multiplication by $\frac 13$ shifts a ternary representation one position to the right.\footnote{Compare to multiplication of a decimal by $\frac 1{10}$.}
 		\[
-			\frac 13[0.a_1a_2a_3\ldots]_3=[0.0a_1a_2a_3\ldots]_3
+			\forall n\in\N,\ x\in A_n\iff \forall n\in\N,\ \nm{x^2-1}<\frac 1n \iff x^2-1=0
 		\]
-		\item Since $\frac 23=[0.2]_3$ we see that
+		It follows that $\bigcap_{n=1}^\infty A_n=\{1,-1\}$.
+	\end{enumerate}
+\end{examples}
+
+
+\boldsubsubsection{Unions: Don't Confuse Sets and Elements}
+
+When working with large unions, it is easy to confuse two sets:
+\begin{itemize}\itemsep2pt
+  \item $\{A_n\}$ is a set of sets, each element of which is some set $A_n$.
+  \item $\bigcup A_n$ is the set whose elements lie in at least one $A_n$.
+\end{itemize}
+It is important to understand the difference! Sometimes the indexed collection itself is the object of interest, other times we may want to use its union or intersection to define something new.
+
+
+
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{Projective space}{projline}
+	Let $A_m$ be the line\footnotemark{} through the origin in $\R^2$ with gradient $m\in\R\cup\{\infty\}$. 	Since every point in $\R^2$ lies on such a line, and distinct lines intersect at the origin, we see that
+	\[
+		\bigcup A_m=\R^2 \quad \text{and} \quad \bigcap A_m=\bigl\{(0,0)\bigr\}
+	\]
+  The indexed collection is known as \emph{projective space} 
+  \tcblower
+	\hfill\includegraphics[scale=0.85]{setsii-03-projective}
+\end{example}
+
+\vspace*{-45pt}
+
+\begin{tcolorbox}[exstyle]
+	\[
+  	\pr(\R^2)=\bigl\{A_m:m\in \R\cup\{\infty\}\bigr\}
+  \]
+	and is interesting in its own right. Each \emph{element} of projective space is a \emph{line}, making $\pr(\R^2)$ a very different set to $\R^2$. This example also shows that indexing sets don't have to be simple sets of integers! %It is also possible to index the same set using $I=[0,\pi)$. If we define $B_\theta$ to be the line through the origin making an angle $\theta$ with the positive $x$-axis, then $B_\theta=A_{\tan\theta}$.
+\end{tcolorbox}
+
+\footnotetext{The symbol $\infty$ is used to indicate the vertical line $A_\infty$ with `infinite gradient.'}
+
+% 		\item For each $n\in\{1,2,3\}$, consider the \emph{plane} $A_n=\bigl\{(x,y,z):x+ny+n^2z=1\bigr\}\subseteq\R^3$.\par
+% 		The indexed collection $\{A_1,A_2,A_3\}$ has \emph{three} elements: the planes $A_1,A_2,A_3$.\par
+% 	  The union $A_1\cup A_2\cup A_3$ is an \emph{infinite} set: all points lying on \emph{at least one} of the three planes.\par
+% 	  For the intersection, solve some simultaneous equations:
+% 	  \[
+% 	  	(x,y,z)\in\negthickspace\negthickspace\bigcap_{n\in\{1,2,3\}}\negthickspace\negthickspace A_n\iff
+% 	  	\begin{cases}
+% 	  		x+y+z=1\\
+% 	  		x+2y+4z=1\\
+% 	  		x+3y+9z=1
+% 	  	\end{cases}
+% 	  	\iff (x,y,z)=(1,0,0)
+% 	  \]
+% 	  Thus $\bigcap A_n=\bigl\{(1,0,0)\bigr\}$. The planes are drawn below.
+
+	
+% \begin{center}
+% 	\begin{tabular}{c@{\qquad\qquad}c}
+% 		\includegraphics{setsii-01-planes}
+% 		&
+% 		\includegraphics{setsii-03-projective}
+% 		\\
+% 		Three elements or infinitely many?
+% 		&
+% 		Projective space $\mathbb P(\R^2)$
+% 	\end{tabular}
+% \end{center}
+
+%
+
+In the next example we use an infinite union to define an interesting set.
+
+\begin{example}{Finite Decimals}{finitedec}
+	For each $n\in\N$, let $A_n$ be the set of decimals of length $n$,
+	\[
+		A_n=\bigl\{0.a_1a_2\ldots a_n:\text{where each $a_i\in\{0,1,\ldots,9\}$}\bigr\}
+	\]
+	For example $0.134\in A_3$. Since $0.134=0.1340$, we also have $0.134\in A_4$. This is a nested collection
+	\[
+		A_1\subseteq A_2\subseteq A_3\subseteq A_4\subseteq\cdots \implies \smash[b]{\bigcap_{n\in\N}}A_n=A_1=\bigl\{0,0.1,\ldots,0.9\bigr\}
+	\]
+	Now consider unions. If $m\in\N$, then
+	\[
+		\smash{\bigcup_{n=1}^m}A_n=A_m=\bigl\{x\in [0,1):x\text{ has a decimal representation of length $\le m$}\bigr\}
+	\]
+	You might guess that the infinite union would be the entire\footnotemark{} interval $[0,1]$, but this is incorrect:
+	\begin{align*}
+		x\in\bigcup_{n\in\N}A_n &\iff\exists n\in\N\text{ such that }x\in A_n\\
+		&\iff x\text{ is a decimal with some \emph{finite} length $n$}
+	\end{align*}
+	The infinite union $\bigcup A_n$ is precisely the set of $x\in[0,1)$ which have a \emph{finite} decimal representation! This is far from the entire interval: many rational numbers are excluded (e.g., $\frac 13=0.3333\cdots \notin\bigcup A_n$), and the union contains \emph{no irrational numbers}. %in $\bigcup\limits_{n\in\N}A_n$:
+% 	\[
+% 		x\in A_n\implies y=10^nx\in\N \implies x=\frac y{10^n}\in\Q
+% 	\]
+%Many rational numbers are also excluded. For example .
+\end{example}
+
+\footnotetext{We would include $1=0.9999\cdots$}
+
+\goodbreak
+
+
+%\boldsubsubsection{Cantor's Middle-third Set}%\label{ex:cantor}
+
+\boldinline{Optional!} We finish this section with a bit of fun, using an infinite intersection to create a \emph{fractal} set.
+
+\begin{example}{Cantor's middle-third set}{cantorthird}
+	Starting with the interval $C_0=[0,1]$, construct a sequence of sets $C_n$ by repeatedly removing the middle third of all intervals in $C_n$.\par
+	
+	\begin{minipage}[t]{0.45\linewidth}\vspace{-15pt}
+		\begin{align*}
+			C_0&=[0,1]\\
+			C_1&=[0,\tfrac 13]\cup [\tfrac 23,1]\\
+			C_2&=[0,\tfrac 19]\cup [\tfrac 29,\tfrac 13]\cup [\tfrac 23,\tfrac 79]\cup [\tfrac 89,1]\\
+			&\mathrel{\,\,\vdots}
+		\end{align*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.54\linewidth}\vspace{-10pt}
+		\hfill \href{http://www.math.uci.edu/~ndonalds/math13/cantoranim.html}{\includegraphics{setsii-02-cantor}}
+	\end{minipage}
+	\par
+
+	The sequence is drawn up to $C_9$, though you'll have to zoom in a long way to see the detail!\par
+
+	\emph{Cantor's middle-third set} is defined to be the infinite intersection $\mathcal C:=\negthickspace\bigcap\limits_{n=0}^\infty\negthickspace C_n$.\par
+
+	Cantor's set has several interesting properties which we state non-rigorously.
+	\begin{description}\itemsep2pt
+		\item[Zero Measure (length)] It should seem reasonable to write
 		\[
-			\frac 23+\frac 13[0.a_1a_2a_3\ldots]_3=[0.2a_1a_2a_3\ldots]_3
-			\]
-	\end{itemize}
-	By the induction hypothesis, $C_n$ contains only 0's and 2's in its first $n$ entries. By moving ternary representations one step to the right and inserting 0 or 2 in the first position, we conclude that $C_{n+1}$ contains only 0's and 2's in its first $n+1$ entries.\par
-	By induction the proposition is true for all $n\in\N_0$.
-\end{proof}
+			\operatorname{len}(C_0)=1,\quad \operatorname{len}(C_1)=\tfrac 23,\quad\operatorname{len}(C_2)=\left(\tfrac 23\right)^2,\quad \ldots\quad ,\quad \operatorname{len}(C_n)=\left(\tfrac 23\right)^n,\quad\ldots
+		\]
+		where $\operatorname{len}(C_n)$ is the sum of the lengths of all intervals in $C_n$. Since $\mathcal C\subseteq C_n$ for all $n$, we conclude that $\operatorname{len}(\mathcal C)=0$: Cantor's set contains \emph{no intervals} of positive length.
+	
+		\item[Infinite Cardinality] Cantor's set contains the endpoints of every interval removed at any stage of its construction. In particular, $\frac 1{3^n}\in\mathcal C$ for all $n\in\N_0$, whence $\mathcal C$ is an \emph{infinite set}.\footnotemark
+	
+		\begin{minipage}[t]{0.6\linewidth}\vspace{-2pt}
+		\item[Self-similarity] Let $f,g:\R\to\R$ be functions $f(x)=\frac 13 x$ and $g(x)=\frac 13x+\frac 23$. Since $C_{n+1}=f(C_n)\cup g(C_n)$, we conclude
+		\[
+			\mathcal C=\textcolor{red}{f(\mathcal C)}\cup \textcolor{blue}{g(\mathcal C)}
+		\]
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.39\linewidth}\vspace{-4pt}
+			\hfill\includegraphics{setsii-09-cantorselfsim}
+		\end{minipage}
+		\smallbreak
+		
+		Cantor's set consists of \emph{two shrunken copies of itself}, a classic property of fractals.
+	\end{description}
 
-Other fractal sets based on $\mathcal C$ include the Cantor dust $\mathcal C\times\mathcal C$, the \href{http://en.wikipedia.org/wiki/Sierpinski_carpet}{Sierpi\'nski carpet} and \href{http://en.wikipedia.org/wiki/Sierpinski_triangle}{gasket}, and the \href{http://en.wikipedia.org/wiki/Koch_snowflake}{von Koch snowflake.}
+\end{example}
 
+\footnotetext{In fact it is more than merely infinite, it is \emph{uncountably} so, as we'll discuss in Chapter \ref{chap:cantor}. The bizarre contrast between this and the zero measure property was part of the reason Cantor introduced his set.}
+
+We'll analyze Cantor's set a little and consider a related construction in Exercises \ref{exs:cantorset} \& \ref{exs:modsnowflake}. Other fractal sets with a similar construction include the \emph{Sierpiński carpet} and the \emph{von Koch snowflake}.
 
 
 
 \begin{exercises}{}{}
-A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/6-3-indexed.html}{online}.
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/6-3-indexed.html}{online}.
 
-\begin{enumerate}
-  	\item For each integer $n$, consider the set $B_n=\{n\}\times\R$.
 	\begin{enumerate}
-		\item Draw a picture of $\bigcup\limits_{n=2}^4B_n$ (in the Cartesian plane).\\
-		\emph{Hint}:  $\bigcup \limits_{n=2}^{4} B_n= B_2 \cup B_3 \cup B_4.$
-		\item Draw a picture of the set $C=[1,5]\times\{-2,2\}.$
-		\emph{Careful!} $[1,5]$ is an interval, while $\{-2,2\}$ is a set containing two points.
-		\item Compute $\left(\bigcup\limits_{n=2}^4B_n\right)\cap C$.
-		\item Compute $\bigcup\limits_{n=2}^4\left(B_n\cap C\right)$.
-		\item Compare $\left(\bigcup\limits_{n=2}^4B_n\right)\cap C$ and $\bigcup\limits_{n=2}^4\left(B_n\cap C\right)$. What do you notice?
-	\end{enumerate}
-
-  \item For each real number $r$, define the interval $S_r=[r-1,r+3]$. Let $I=\{1,3,4\}$. Determine $\bigcup\limits_{r\in I}S_r$ and $\bigcap\limits_{r\in I}S_r$.
-
-
-  \item Give an example of four different subsets $A,B,C$ and $D$ of $\{1,2,3,4\}$ such that all intersections of two subsets are different.
-
-  \item For each of the following collections of intervals, define an interval $A_n$ for each $n\in\N$ such that indexed collection $\{A_n\}_{n\in\N}$ is the given collection of sets. Then find both the union and intersection of the indexed collections of sets.
-   \begin{enumerate}
-     \item $\big\{[1,2+1),\,[1,2+\frac 12),\,[1,2+\frac 13),\,\ldots\big\}$
-     \item $\big\{(-1,2),\,(-\frac 32,4),\,(-\frac 53,6),\,(-\frac 74,8),\,\ldots\big\}$
-     \item $\big\{(\frac 14,1),\,(\frac 18,\frac 12),\,(\frac 1{16},\frac 14),\,(\frac 1{32},\frac 18), \,(\frac 1{64},\frac 1{16}),\,\ldots\big\}$
-   \end{enumerate}
-  
-  \item For each non-negative real number $r\ge 0$ let 
-  \[A_r=\big\{(x,y)\in\R^2:x^2+y^2=r^2\big\}\]
+	  \item Let $I=\{1,3,4\}$. Determine $\bigcup_{r\in I}S_r$ and $\bigcap_{r\in I}S_r$, where each $S_r=[r-1,r+3]$ is an interval.
+	  
+	  
+	  \item For each integer $n$, consider the set $B_n=\{n\}\times\R$.
 		\begin{enumerate}
-  		\item Describe each of the sets $A_r$ geometrically.
-  		\item Prove that $\bigcup_{r\in\R^+_0}A_r=\R^2$.
+			\item Draw a picture (in the Cartesian plane) of $\bigcup_{n=2}^4B_n=B_2\cup B_3\cup B_4$.
+			\item Draw a picture of the set $C=[1,5]\times\{-2,2\}$.\par
+			(\emph{Careful! $[1,5]$ is an interval, while $\{-2,2\}$ is a set containing two points})
+			\item Compute $\left(\bigcup_{n=2}^4B_n\right)\cap C$.
+			\item Compute $\bigcup_{n=2}^4\left(B_n\cap C\right)$. Compare with your answer to part (c).
 		\end{enumerate}
-
-  \item For each real number $x$, let $A_x=\{3,-2\}\cup\{y\in\R:y>x\}$. Find $\bigcup\limits_{x\in\R}A_x$ and $\bigcap\limits_{x\in\R}A_x$.
-  
-  \item Use Definition \ref{defn:indexed} to prove the following results about nested sets.
-		\begin{enumerate}
-  		\item $A_1\supseteq A_2\supseteq A_3\supseteq\cdots\implies \bigcup\limits_{n\in\N}A_n=A_1$.
-  		\item $A_1\subseteq A_2\subseteq A_3\subseteq\cdots\implies \bigcap\limits_{n\in\N}A_n=A_1$.
-		\end{enumerate}
-
-  \item Let $C_0(\R)$ denote the set of continuous functions $f:\R\to\R$ which satisfy $f(0)=0$.\\
-  Let $A_f=\{x\in[0,1]:f(x)=0\}$ (so, for example, if $f:\R\to\R,\,x \mapsto x(2x-1)$, then $A_f=\{0,\frac 12\}$).
-    \emph{Prove} that
-  \[\bigcup\limits_{f\in C_0(\R)}\negthickspace\negthickspace A_f=[0,1]\qquad\text{and}\qquad\bigcap\limits_{f\in C_0(\R)}\negthickspace\negthickspace A_f=\{0\}.\]
+	  
+	  
+	  \goodbreak
+	
+	
+	  \item Give an example of four subsets $A,B,C,D$ of $\{1,2,3,4\}$ such that all intersections of two subsets are different.
+	
+	
+	  \item For each of collection, define an interval $A_n$ such that the given collection is $\{A_n:n\in\N\}$. Then find both the union and intersection of the collection.
+	   \begin{enumerate}
+	     \item $\bigl\{[1,2+1),\,[1,2+\frac 12),\,[1,2+\frac 13),\,\ldots\bigr\}$
+	     \item $\bigl\{(-1,2),\,(-\frac 32,4),\,(-\frac 53,6),\,(-\frac 74,8),\,\ldots\bigr\}$
+	     \item $\bigl\{(\frac 14,1),\,(\frac 18,\frac 12),\,(\frac 1{16},\frac 14),\,(\frac 1{32},\frac 18), \,(\frac 1{64},\frac 1{16}),\,\ldots\bigr\}$
+	   \end{enumerate}
+	  
+	  
+	%   \item For each non-negative real number $r\ge 0$ let 
+	%   \[A_r=\big\{(x,y)\in\R^2:x^2+y^2=r^2\big\}\]
+	% 		\begin{enumerate}
+	%   		\item Describe each of the sets $A_r$ geometrically.
+	%   		\item Prove that $\bigcup_{r\in\R^+_0}A_r=\R^2$.
+	% 		\end{enumerate}
+	
+	
+	  \item For each real number $x$, let $A_x=\{3,-2\}\cup\{y\in\R:y>x\}$. Find $\bigcup_{x\in\R}A_x$ and $\bigcap_{x\in\R}A_x$.
+	  
+	  
+	  \item Use Definition \ref{defn:indexed} to prove that $A_1\subseteq A_2\subseteq A_3\subseteq\cdots\implies \bigcap_{n\in\N}A_n=A_1$
 		
-	\item Let $A_n$ be the set of decimals of length $n$, as described on page \pageref{ex:finitedec}.
+	
+	%   \item Let $C_0(\R)$ denote the set of continuous functions $f:\R\to\R$ which satisfy $f(0)=0$.\\
+	%   Let $A_f=\{x\in[0,1]:f(x)=0\}$ (so, for example, if $f:\R\to\R,\,x \mapsto x(2x-1)$, then $A_f=\{0,\frac 12\}$).
+	%     \emph{Prove} that
+	%   \[\bigcup\limits_{f\in C_0(\R)}\negthickspace\negthickspace A_f=[0,1]\qquad\text{and}\qquad\bigcap\limits_{f\in C_0(\R)}\negthickspace\negthickspace A_f=\{0\}.\]
+			
+			
+		\item Let $A_n$ be the set of decimals of length $n$, as described in Example \ref{ex:finitedec}.
 		\begin{enumerate}
-	  	\item Prove directly that the cardinality of $A_n$ is $10^n$.
-	  	\item Prove by induction that $\nm{A_n}=10^n$.
-	  	\item Prove that $\bigcup\limits_{n=1}^\infty A_n\subseteq\Q$.
-			\item Prove by contradiction that $\frac 13\not\in\bigcup\limits_{n=1}^\infty A_n$.
+		  \item Prove \emph{directly} that the cardinality of $A_n$ is $10^n$. 
+		  \item Prove \emph{by induction} that $\nm{A_n}=10^n$.
+		  \item Prove that $\bigcup_{n=1}^\infty A_n\subseteq\Q$.
+			\item Explain why $\frac 19\notin\bigcup_{n=1}^\infty A_n$.
 		\end{enumerate}
-
-  \item Suppose that the following are true:
-  \begin{itemize}
-    \item $\forall n\in\N$, $A_n\neq\emptyset$.
-    \item $m\ge n\Longrightarrow A_m\subseteq A_n$.
-  \end{itemize}
-  Prove or disprove the following conjectures:\\
-	\begin{minipage}{0.4\textwidth}
-  \begin{enumerate}
-    \item $\bigcup\limits_{n=1}^{293}A_n\neq\emptyset$
-    \item $\bigcap\limits_{n=1}^{293}A_n\neq\emptyset$
-	\end{enumerate}
-	\end{minipage}
-	\begin{minipage}{0.4\textwidth}
-  \begin{enumerate}\setcounter{enumii}{2}
-    \item $\bigcup\limits_{n\in\N}^{\phantom{293}}A_n\neq\emptyset$
-		\item $\bigcap\limits_{n\in\N}^{\phantom{293}}A_n\neq\emptyset$
-	\end{enumerate}
-	\end{minipage}
-
-	\item (Hard) Let $A_n=\{\frac mn\in\Q:0<m<n, m\in \N\}$, for each $n\in\N$.
-	\begin{enumerate}
-		\item Write down $A_1,A_2,A_3,A_4$ explicitly.
-		\item Prove that $A_m\subseteq A_{pm}$ for any $p\in\N$.
-		\item Argue that $\bigcup\limits_{n\in\N}A_n=\Q\cap (0,1)$.
-		\item Argue that further $\bigcup\limits_{n\in\N}A_{2n}=\Q\cap (0,1)$.
-		\item Extend your proof to show that, for any fixed $p\in\N$, $\bigcup\limits_{n\in\N}A_{pn}=\Q\cap (0,1)$.
-	\end{enumerate}
-	
-	\item In this question we construct a fractal shape, similar to the von Koch curve. Let $F_0=[0,1]$ be a straight line of length 1. Delete the segment between $\frac 12$ and $\frac 34$ to obtain the set
-    \[F_1=[0,\tfrac 12]\cup[\tfrac 34,1]\]
-    Now repeat: delete the third quarter of each of the two line segments in $F_1$ to obtain
-    \[F_2=[0,\tfrac 14]\cup[\tfrac 38,\tfrac 12]\cup[\tfrac 34,\tfrac 78]\cup[\tfrac{15}{16},1]\]
-    Suppose we repeat this process to create an infinite sequence of sets $F_0,F_1,F_2,F_3,F_4,\ldots$
-  \begin{enumerate}
-    \item Prove that the total length of all of the line segments making up the set $F_n$ is $\left(\frac 34\right)^n$.
-    \item Prove by contradiction that the intersection $\bigcap\limits_{n=1}^\infty F_n$ does not contain any intervals of positive length.
-    \item Now suppose that instead of simply deleting the third quarter of each line segment at each step, we replace it with the other three sides of a square. The first three steps in this process are shown below.
-    \begin{center}
-    \begin{tabular}{ccc}
-    \includegraphics[width=0.27\textwidth]{fractal1}
-    &
-    \includegraphics[width=0.27\textwidth]{fractal2}
-    &
-    \includegraphics[width=0.27\textwidth]{fractal3}
-   	\\
-   	Step 1&Step 2&Step 3
-    \end{tabular}
-    \end{center}
-    After each step, we are left with a curve. After step 1 the curve has length $\ell_1=\frac 32$. After step 2 the length is $\ell_2=\frac 94$. What is the \emph{length} $\ell_n$ of the curve after $n$ steps? Prove your assertion.
-    \item Below is the result of repeating the steps in part 3 infinitely many times. What is the `length' of the resulting fractal curve?
-    \begin{center}
-    \includegraphics[width=0.75\textwidth]{fractal}
-    \end{center}
-    \item Repeat parts (c) and (d) for the \emph{area} under the curve at each step. Prove that the area between the fractal curve and the $x$-axis is $\frac 18$.
-	\end{enumerate}
 	
 	
+	  \item Suppose that $\forall n\in\N,\ A_n\neq\emptyset$ and $m\ge n\Longrightarrow A_m\subseteq A_n$. Prove or disprove the following:
+	  \begin{enumerate}
+	    \item $\bigcup\limits_{n=1}^{293}A_n\neq\emptyset$\qquad\quad 
+	    (b) \ $\bigcap\limits_{n=1}^{293}A_n\neq\emptyset$\qquad\quad
+	    (c) \ $\bigcup\limits_{n\in\N} A_n\neq\emptyset$\qquad\quad 
+	    (d) \ $\bigcap\limits_{n\in\N} A_n\neq\emptyset$
+		\end{enumerate}
+		
+		
+		\item Compute the set $\bigcup_{n=1}^\infty\bigcap_{k=n}^\infty [\frac 1k,2+\frac 1k]$
+		
+		
+		\item Let $\{A_n:n\in I\}$ and $\{B_n:n\in I\}$ be indexed families of sets. Give explicit examples for which the following hold:
+		\begin{enumerate}
+	    \item $\left(\bigcup_{n\in I} A_n\right) \cap \left(\bigcup_{n\in I}B_n\right) \neq \bigcup_{n\in I} (A_n \cap B_n)$
+	    \item $\left(\bigcap_{n\in I} A_n\right) \cup \left(\bigcap_{n\in I}B_n\right) \neq \bigcap_{n\in I} (A_n \cup B_n)$
+		\end{enumerate}
+	
+		
+		\item (De Morgan's laws)\lstsp Let $\{A_n:n\in I\}$ be an indexed family of sets and $B$ a set. Prove
+		\begin{enumerate}
+	    \item $B\setminus \left(\bigcup_{n\in I} A_n\right) = \bigcap_{n\in I} (B\setminus A_n)$
+	    \item $B\setminus \left(\bigcap_{n\in I} A_n\right) = \bigcup_{n\in I}(B\setminus A_n)$
+		\end{enumerate}
+		
+		
 		\item Suppose we are working in a universal set $\cU$ (so every set is considered a subset of $\cU$). Give an explanation for why it makes sense to define $\bigcap_{n \in I} A_n = \cU$ when $I = \emptyset$.
+		
+		\item (Hard) Let $A_n=\{\frac mn\in\Q:0<m<n, m\in \N\}$, for each $n\in\N$.
+		\begin{enumerate}
+			\item State $A_1,A_2,A_3,A_4$ explicitly.
+			\item Prove that $A_m\subseteq A_{pm}$ for any $p\in\N$.
+			\item Argue that $\bigcup_{n\in\N}A_n=\Q\cap (0,1)$.
+			\item Argue that further $\bigcup_{n\in\N}A_{2n}=\Q\cap (0,1)$.
+			\item Extend your proof to show that, for any fixed $p\in\N$, $\bigcup_{n\in\N}A_{pn}=\Q\cap (0,1)$.
+		\end{enumerate}
+		
+		\goodbreak
+		
+			
+		\item\label{exs:cantorset} (Hard)\lstsp A \emph{ternary representation}\footnotemark{} of a number $x\in[0,1]$ is an expression
+		\[
+			x=\sum\limits_{n=1}^\infty \frac{a_n}{3^n}=\frac{a_1}{3}+\frac{a_2}{3^2}+\frac{a_3}{3^3}+\cdots \text{ where each }a_n\in\{0,1,2\}
+		\]
+		We write $x=[0.a_1a_2a_3\cdots]_3$. For example $[0.12]_3=\frac 13+\frac 2{3^2}=\frac 59$.
+		\begin{enumerate}
+		  \item Verify that $[0.02101]_3=\frac{64}{243}$, \ $[0.22222\cdots]_3=1$ and $[0.020202020\cdots]_3=\frac 14$.\par
+		  (\emph{Hint: You'll need the geometric series formula $\sum_{n=1}^\infty r^n=\frac r{1-r}$ for the latter two})
+		  
+		  \item Let $C_n$ be the $n\th$ set in the construction of Cantor's middle-third set $\mathcal C$ (Example \ref{ex:cantorthird}).\par
+		  Prove by induction that $C_n$ is the set of all $x\in[0,1]$ with a ternary representation whose first $n$ digits are only 0 or 2.\par
+		  (\emph{Hints: Use $C_{n+1}=f(C_n)\cup g(C_n)$; What does division by 3 do to a ternary representation?})
+		  	  
+		  \item Argue that $\frac 14\in\mathcal C$, but that it is not an endpoint of any of the deleted middle-thirds removed during the construction of $\mathcal C$.
+		\end{enumerate}
+		
+		
+		\item\label{exs:modsnowflake} (Hard)\lstsp In this question we construct a fractal shape similar to construction of the von Koch curve from the Cantor set. Starting with the interval $F_0=[0,1]$, repeatedly delete the \emph{third quarter} segment of each interval to obtain a sequence of sets $F_0,F_1,F_2,\ldots$ starting
+	  \begin{gather*}  
+	  	F_1=[0,\tfrac 12]\cup[\tfrac 34,1],\quad
+	  	F_2=[0,\tfrac 14]\cup[\tfrac 38,\tfrac 12]\cup[\tfrac 34,\tfrac 78]\cup[\tfrac{15}{16},1],\quad \ldots
+	  \end{gather*}
+	  \begin{enumerate}
+	    \item Prove that the sum of the lengths of all of all line segments in $F_n$ is $\left(\frac 34\right)^n$.
+	    \item Prove that the intersection $\bigcap_{n=1}^\infty F_n$ does not contain any intervals of positive length.
+	    
+	    \begin{minipage}[t]{0.61\linewidth}\vspace{-5pt}
+	    \item Instead of deleting the third quarter of each line segment, replace it with the other three sides of a square. The first three steps and the result of applying the process infinitely many times are shown in the pictures.\smallbreak
+	
+	    After step 1 the curve has length $\ell_1=\frac 32$ and the area under the curve is $A_1=\frac 1{4^2}$. After step 2 the length is $\ell_2=\frac 94$ and the area $A_2=A_1+\frac 14A_1+\frac 1{16}A_1 =\frac{21}{4^4}$. 
+	    \begin{enumerate}
+	      \item Find the length $\ell_n$ of the curve after $n$ steps. What is the `length' of the resulting fractal curve?
+	      \item Repeat for the \emph{area} under the curve at each step. Prove that the area between the fractal and the $x$-axis is $\frac 18$.
+	    \end{enumerate}
+	    \end{minipage}
+	    \hfill
+	    \begin{minipage}[t]{0.38\linewidth}\vspace{-5pt}
+	    \flushright
+	    	\includegraphics[scale=0.7]{fractal1}
+	    	\\
+	    	\includegraphics[scale=0.7]{fractal2}
+	    	\\
+	    	\includegraphics[scale=0.7]{fractal3}
+	    	\\
+	    	\includegraphics[scale=0.7]{fractal}
+	    \end{minipage}
+		\end{enumerate}
+	
+	
 
-\item Let $\{A_n : n \in I\}$ and $\{B_n : n \in I\}$ be indexed families of sets. Give explicit examples for which the following hold:
-\begin{enumerate}
-    \item \[\left(\bigcup_{n \in I} A_n \right) \cap \left(\bigcup_{n \in I} B_n \right) \neq \bigcup_{n \in I} (A_n \cap B_n)\]
-    \item \[\left(\bigcap_{n \in I} A_n \right) \cup \left(\bigcap_{n \in I} B_n \right) \neq \bigcap_{n \in I} (A_n \cup B_n)\]
-\end{enumerate}
 
-\item (De Morgan's laws) Let $\{A_n : n \in I\}$ be an indexed family of sets and $B$ a set. Prove
-\begin{enumerate}
-    \item \[B \setminus \left(\bigcup_{n \in I} A_n \right) = \bigcap_{n \in I} (B \setminus A_n)\]
-    \item \[B \setminus \left(\bigcap_{n \in I} A_n \right) = \bigcup_{n \in I} (B \setminus A_n)\]
-\end{enumerate}
+% 
+% \item Let $\{A_n : n \in I\}$ be an indexed family of sets and $B$ a set. Prove
+% \begin{enumerate}
+%     \item \[\left(\bigcup_{n \in I} A_n \right) \setminus B = \bigcup_{n \in I} (A_n \setminus B)\]
+%     \item \[\left(\bigcap_{n \in I} A_n \right) \setminus B = \bigcap_{n \in I} (A_n \setminus B)\]
+% \end{enumerate}
 
-\item Let $\{A_n : n \in I\}$ be an indexed family of sets and $B$ a set. Prove
-\begin{enumerate}
-    \item \[\left(\bigcup_{n \in I} A_n \right) \setminus B = \bigcup_{n \in I} (A_n \setminus B)\]
-    \item \[\left(\bigcap_{n \in I} A_n \right) \setminus B = \bigcap_{n \in I} (A_n \setminus B)\]
-\end{enumerate}\
+% \item We can take the Cartesian product of arbitrarily many sets. Let $\{A_n : n \in I\}$ be a family of sets. Define
+% \[
+% \prod_{n \in I} A_n = \left\{f : I \to \bigcup_{n \in I} A_n \bigm| f(n) \in A_n\right\}.
+% \]
+% \begin{enumerate}
+%     \item If $I = \N$ and $A_n = \R$ for each $n \in \N$, can you give a more intuitive description of the elements of $\prod_{n \in \N} A_n$?
+%     \item Suppose we have two families $\{A_n : n \in I\}$ and $\{B_n : n \in I\}$. Prove
+%     \[
+%         \left(\prod_{n \in I} A_n \right) \cap \left(\prod_{n \in I} B_n \right) = \prod_{n \in I} (A_n \cap B_n)
+%     \]
+% \end{enumerate}
 
-\item We can take the Cartesian product of arbitrarily many sets. Let $\{A_n : n \in I\}$ be a family of sets. Define
-\[
-\prod_{n \in I} A_n = \left\{f : I \to \bigcup_{n \in I} A_n \bigm| f(n) \in A_n\right\}.
-\]
-\begin{enumerate}
-    \item If $I = \N$ and $A_n = \R$ for each $n \in \N$, can you give a more intuitive description of the elements of $\prod_{n \in \N} A_n$?
-    \item Suppose we have two families $\{A_n : n \in I\}$ and $\{B_n : n \in I\}$. Prove
-    \[
-        \left(\prod_{n \in I} A_n \right) \cap \left(\prod_{n \in I} B_n \right) = \prod_{n \in I} (A_n \cap B_n)
-    \]
-\end{enumerate}
-
-	\item Let $X$ be a set. A collection of sets $\tau \subseteq \cP(X)$ is called a \emph{topology} if the following conditions are satisfied:
-\begin{enumerate}
-    \item $\emptyset \in \tau$ and $X \in \tau$;
-    \item $\tau$ is closed under arbitrary union. That is, if $\{U_n : n \in I\} \subseteq \tau$ for any index set $I$, then $\bigcup_{n \in I} U_n \in \tau$;
-    \item $\tau$ is closed under finite intersection. That is, if $U_1,\ldots,U_n \in \tau$ for any $n \in \N$, then $U_1 \cap \cdots \cap U_n \in \tau$.
-\end{enumerate}
-Elements of $\tau$ are called \emph{open sets}.
-\begin{enumerate}
-    \item Let $X = \{a,b,c,d\}$. Let $\tau_1 = \{\emptyset, X\}$, $\tau_2 = \cP(X)$, $\tau_3 = \{\emptyset, \{d\}, \{a,b\}, \{b,c\}, \{a,b,c\}, X\}$, and $\tau_4 = \{\emptyset, \{b\}, \{a,b\}, \{b,c\}, \{a,b,c\}, X\}$. Show $\tau_1,\tau_2$ and $\tau_4$ are topologies while $\tau_3$ is not.
-    
-    \item Let $X$ be an infinite set and define $\tau = \{A \in \cP(X) : X \setminus A \text{ is finite}\} \cup \{\emptyset\}$. Show $\tau$ is a topology.
-    \item The \emph{standard topology} $\tau$ on $\R$ can be defined by declaring that a set $U \subseteq \R$ is open (i.e. an element of $\tau$) if and only if for every $x \in U$, there is an open interval $(a,b)$ such that $x \in (a,b)$ and $(a,b) \subseteq U$. Show this defines a topology on $\R$.
-\end{enumerate}
-
-\item Let $X$ be a set and $\tau$ a topology on $X$. A set $C \subseteq X$ is called \emph{closed} if its complement is open, i.e., if $X \setminus C \in \tau$. 
-\begin{enumerate}
-    \item Show the following properties of closed sets:
-    \begin{enumerate}
-        \item $\emptyset$ and $X$ are both closed.
-        \item If $\{A_n : n \in I\}$ is an arbitrary collection of closed sets, then $\bigcap_{n \in I} A_n$ is closed.
-        \item If $A_1,\ldots,A_n$ are closed sets, then $A_1 \cup \cdots \cup A_n$ is closed.
-    \end{enumerate}
-    \item In the standard topology on $\R$, show that a closed interval $[a,b]$ is a closed set but that a half-open interval $[a,b)$ is neither open nor closed.
-\end{enumerate}
-\end{enumerate}
+% 	\item Let $X$ be a set. A collection of sets $\tau \subseteq \cP(X)$ is called a \emph{topology} if the following conditions are satisfied:
+% \begin{enumerate}
+%     \item $\emptyset \in \tau$ and $X \in \tau$;
+%     \item $\tau$ is closed under arbitrary union. That is, if $\{U_n : n \in I\} \subseteq \tau$ for any index set $I$, then $\bigcup_{n \in I} U_n \in \tau$;
+%     \item $\tau$ is closed under finite intersection. That is, if $U_1,\ldots,U_n \in \tau$ for any $n \in \N$, then $U_1 \cap \cdots \cap U_n \in \tau$.
+% \end{enumerate}
+% Elements of $\tau$ are called \emph{open sets}.
+% \begin{enumerate}
+%     \item Let $X = \{a,b,c,d\}$. Let $\tau_1 = \{\emptyset, X\}$, $\tau_2 = \cP(X)$, $\tau_3 = \{\emptyset, \{d\}, \{a,b\}, \{b,c\}, \{a,b,c\}, X\}$, and $\tau_4 = \{\emptyset, \{b\}, \{a,b\}, \{b,c\}, \{a,b,c\}, X\}$. Show $\tau_1,\tau_2$ and $\tau_4$ are topologies while $\tau_3$ is not.
+%     
+%     \item Let $X$ be an infinite set and define $\tau = \{A \in \cP(X) : X \setminus A \text{ is finite}\} \cup \{\emptyset\}$. Show $\tau$ is a topology.
+%     \item The \emph{standard topology} $\tau$ on $\R$ can be defined by declaring that a set $U \subseteq \R$ is open (i.e. an element of $\tau$) if and only if for every $x \in U$, there is an open interval $(a,b)$ such that $x \in (a,b)$ and $(a,b) \subseteq U$. Show this defines a topology on $\R$.
+% \end{enumerate}
+% 
+% \item Let $X$ be a set and $\tau$ a topology on $X$. A set $C \subseteq X$ is called \emph{closed} if its complement is open, i.e., if $X \setminus C \in \tau$. 
+% \begin{enumerate}
+%     \item Show the following properties of closed sets:
+%     \begin{enumerate}
+%         \item $\emptyset$ and $X$ are both closed.
+%         \item If $\{A_n : n \in I\}$ is an arbitrary collection of closed sets, then $\bigcap_{n \in I} A_n$ is closed.
+%         \item If $A_1,\ldots,A_n$ are closed sets, then $A_1 \cup \cdots \cup A_n$ is closed.
+%     \end{enumerate}
+%     \item In the standard topology on $\R$, show that a closed interval $[a,b]$ is a closed set but that a half-open interval $[a,b)$ is neither open nor closed.
+% \end{enumerate}
+	\end{enumerate}
 
 \end{exercises}
+
+
+\footnotetext{Analogous to a decimal representation $x=\sum_{n=1}^\infty \frac{a_n}{10^n}=\frac{a_1}{10}+\frac{a_2}{10^2}+\frac{a_3}{10^3}+\cdots$ where $a_n\in\{0,1,2,\ldots,9\}$.}
 
