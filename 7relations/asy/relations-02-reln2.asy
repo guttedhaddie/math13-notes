@@ -1,33 +1,27 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
-size(180,160,IgnoreAspect);
+size(80,0);
 
-fill(box((1,3),(3,4)),lightblue+opacity(0.5));
+xaxis(0,5.2,red,RightTicks(new real[]{0,2,4},new real[]{1,3,5}));
+yaxis(0,4.5,red,LeftTicks(new real[]{0,2,4},new real[]{1,3}));
 
-draw((1,3)--(1,4));
-draw((1,4)--(3,4));
-draw((3,4)--(3,3),Dotted);
-draw((3,3)--(1,3),Dotted);
+fill(box((1,3),(3,4)),heavygreen+opacity(0.5));
+
+draw((1,3)--(1,4),heavygreen);
+draw((1,4)--(3,4),heavygreen);
+draw((3,4)--(3,3),heavygreen+Dotted);
+draw((3,3)--(1,3),heavygreen+Dotted);
 
 pair f(real t){return (2t+1,t^2);}
-draw(graph(f,0.5,2));
-dot(f(0.5));
-dot(f(2));
+draw(graph(f,0.5,2),heavygreen);
+dot(f(0.5),heavygreen);
+dot(f(2),heavygreen);
 
-xaxis("$\mathbb R$",0,5.5,RightTicks(new real[]{0,1,2,3,4,5}));
-yaxis("$\mathbb R$",0,5.5,LeftTicks(new real[]{0,1,2,3,4,5}));
 

@@ -2,219 +2,222 @@
 
 \section{Relations and Partitions}\label{chap:relations}
 
-The mathematics of sets is rather basic, at least until one has a notion of how to relate elements of sets to each other. We are already familiar with examples of this:
-\begin{enumerate}
-  \item The usual \emph{order} of numbers (e.g. $3<7$) is a way of relating/comparing two elements of $\R$.% Recall that, as sets, order doesn't matter: $\{3,7\}=\{7,3\}$. As \emph{ordered pairs} however, $(3,7)\neq(7,3)$.
+The mathematics of sets is rather basic until one has a notion of how to relate elements of sets to each other. We are already familiar with several examples of this, for instance:
+\begin{enumerate}\itemsep0pt
+  \item The usual \emph{order} of numbers (e.g., $3<7$) is a way of relating/comparing two elements of $\R$.
   \item A \emph{function} $f:A\to B$ relates elements in a set $A$ with those in $B$.
 \end{enumerate}
-It turns out that the concept of ordered pair (Cartesian product) is essential to relating elements.
 
-\subsection{Relations}
+In this chapter we discuss a general framework based on the Cartesian product (Section \ref{sec:cartprod}).
+
+\subsection{Binary Relations on Sets}\label{sec:relations}
 
 \begin{defn}{}{}
 	Let $A$ and $B$ be sets. A \emph{(binary) relation} $\cR$ from $A$ to $B$ is a set of ordered pairs
 	\[
 		\cR\subseteq A\times B
 	\]
-	A \emph{relation on} $A$ is a relation from $A$ to itself.\par
-	If $(x,y)\in\cR$ we can also write $x\,\cR\,y$, and say `$x$ is related to $y$.' Similarly $x\not\!\!\cR\,y$ means $(x,y)\not\in\cR$.
+	A \emph{relation on} $A$ is a relation from $A$ to itself. The \emph{domain} and \emph{range} of $\cR$ are the sets
+	\begin{gather*}
+		\dom(\cR)=\bigl\{a\in A:\exists b\in B, (a,b)\in\cR\bigr\} \qquad
+		\range(\cR)=\bigl\{b\in B:\exists a\in A, (a,b)\in\cR\bigr\}
+	\end{gather*}
 \end{defn}
 
-\begin{examples}{}{}
-	\exstart $\cR=\{(1,3),(2,2),(2,3),(3,2),(4,1),(5,2)\}$ is a relation from $\N$ to $\N$. It is also a relation from $\{1,2,3,4,5\}$ to $\{1,2,3\}$. Various true statements about this relation include
-	\[
-		(2,2)\in\cR,\qquad (4,2)\not\in\cR,\qquad 2\not\!\!\cR\,5,\qquad 3\,\cR\,2
-	\]
+If $(a,b)\in\cR$ we can also write $a\relR b$, and say `$a$ is related to $b$.' Similarly $a\notR b$ means $(a,b)\not\in\cR$.
+
+\begin{examples}{}{relationexs}
+	\exstart $\cR=\bigl\{(1,3),(2,2),(2,3),(3,2),(4,1),(5,2)\bigr\}$ defines a relation on $\N$. Various true statements about this relation include\par	
 	\begin{enumerate}\setcounter{enumi}{1}
-		\item $\cR=\Bigl([1,3)\times (3,4]\Bigr)\cup\big\{(2t+1,t^2):t\in [\frac 12,2]\big\}$ is a relation from $\R$ to $\R$. Be careful: it is easy to confuse interval notation with the notation for ordered pair!
-		\item The set $\cR=\{(a,a):a\in A\}$ is a relation on $A$, indeed
-		\[
-			(x,y)\in \cR\iff x=y
+	  \begin{minipage}[t]{0.79\linewidth}\vspace{-18pt}
+	  \item[]
+	  \[
+			(2,2)\in\cR,\qquad (4,2)\notin\cR,\qquad 2\notR 5,\qquad 3\relR 2
 		\]
-		defines a relation on \emph{any} set $A$. This example is where the term \emph{equivalence relation} (Section \ref{sec:equiv}) comes from. $x\,\cR\,y\iff x=y$ simply says that $\cR$ is `equals.'
-		\item If $A=\{\text{all humans}\}$, we may define $\cR\subseteq A\times A$ by
+		In this case $\dom(\textcolor{blue}{\cR})=\{1,2,3,4,5\}$ and $\range(\textcolor{blue}{\cR})=\{1,2,3\}$.
+		
+		\item $\cR=\Bigl([1,3)\times (3,4]\Bigr)\cup\bigl\{(2t+1,t^2):t\in [\frac 12,2]\bigr\}$ is a relation on $\R$. This time we have $\dom(\textcolor{Green}{\cR})=[1,5]$ and $\range(\textcolor{Green}{\cR})=[\frac 14,4]$.
+	 
+	 	\item\label{ex:relationexs3} For any set $A$, the set $\cR=\bigl\{(a,a):a\in A\bigr\}$ is a relation on $A$. The relation $\cR$ is simply `equals:'
 		\[
-			(a_1,a_2)\in \cR\iff a_1,a_2\text{ have a parent-child, or a sibling relationship.}
+			(a,b)\in \cR\iff a=b
+		\]		
+		
+		\item On $\R$, the relation $\le$ can be \textcolor{cyan}{graphed}: we plot all points $(x,y)\in\R^2$ such that $x\le y$.
+		
+		\item If $A$ is the set of all humans, we may define $\cR\subseteq A\times A$ by
+		\[
+			(a,b)\in \cR\iff a,b\text{ have a parent/child or sibling relationship}
 		\]
-		In this example, the mathematical use of the word relation is identical to that in English. For example, I am related to my sister, and my mother is related to me.
-		\item If $A$ is a set, then $\subseteq$ is a relation on the power set $\cP(A)$.\par
-		For example, if $A=\{1,2,3\}$ then $\{1\}\in\cP(A)$ and $\{1,3\}\in\cP(A)$. We'd say that $\{1\}$ is related to $\{1,3\}$ since $\{1\}\subseteq\{1,3\}$.\par
-		It should be clear that, under the relation $\subseteq$, that $\{1,3\}$ is not related to $\{1\}$.
+		In this example, the mathematical use of \emph{relation} is similar to that in English: I am related to my sister, and my mother is related to me.
+		
+		\item If $A$ is a set, then $\subseteq$ is a relation on the power set $\cP(A)$ (the set of subsets).\smallbreak
+		For instance, if $A=\{1,2,3\}$ then $\{1\}\subseteq\{1,3\}$ but $\{1,3\}\nsubseteq\{1\}$.
+	  \end{minipage}
+	  \hfill
+	  \begin{minipage}[t]{0.2\linewidth}\vspace{-20pt}
+	  	\hfill
+	  	\begin{tabular}{@{}c@{}}
+	  	\includegraphics{relations-01-reln1}\\
+			Example 1\\[5pt]
+			\includegraphics{relations-02-reln2}\\
+			Example 2\\[5pt]
+			\includegraphics{relations-02-reln3}\\
+			Example 4
+	  	\end{tabular}
+	  \end{minipage}
+	  
+	  \item\label{ex:relationexs7} If $f:A\to B$ is a function then $\bigl\{\bigl(a,f(a)\bigr):a\in A\bigr\}$ is a relation! We'll revisit this in Section \ref{sec:func2}.
 	\end{enumerate}
 \end{examples}
 
-When $\cR$ is a relation between sets of numbers, we can often \emph{graph} the relation. Examples 1 and 2 above would be graphed as follows:
-\begin{center}
-	\begin{minipage}{0.3\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-01-reln1}\\
-		Example 1.
-	\end{minipage}\qquad\qquad\qquad
-	\begin{minipage}{0.3\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-02-reln2}\\
-		Example 2.
-	\end{minipage}
-\end{center}
-Not all relations between sets of numbers can be graphed: for example, graphing the relation $\cR=\Q\times\Q$ is impossible!\par
-
-
-\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-	To refer to the introduction, the standard ordering $<$ on $\N$ is a relation, and we can graph it: for all $x,y\in\N$, we define
-	\[
-		x\,\cR\,y\iff x<y
-	\]
-	or equivalently,
-	\[
-		\cR=\{(x,y)\in\N\times\N:x<y\}
-	\]
-	\vspace*{10pt}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-	\includegraphics[width=\textwidth]{relations-25-less}
-\end{minipage}\par
-
-We can also think about functions in this language: if $f:\R\to\R$ is a function, then we could define
-\[
-	x\,\cR\,y\iff y=f(x)
-\]
-or equivalently
-\[
-	\cR=\{(x,y)\in\R^2:y=f(x)\}
-\]
-We will return to this viewpoint on function in the Section \ref{sec:func2}.
-
-
-\boldsubsubsection{Basic results regarding relations}
+\goodbreak
 
 With abstract relations, there are only a small number of things we can do.
 
 \begin{defn}{}{relnsym}
-	If $\cR\subseteq A\times B$ is a relation, then its \emph{inverse} $\cR^{-1}\subseteq B\times A$ is the set
+	Given a relation $\cR\subseteq A\times B$, its \emph{inverse} $\cR^{-1}\subseteq B\times A$ is the set
 	\[
-		\cR^{-1}=\{(y,x)\in B\times A:(x,y)\in\cR\}
+		\cR^{-1}=\bigl\{(b,a)\in B\times A:(a,b)\in\cR\bigr\}
 	\]
 	To find the elements of $\cR^{-1}$, you simply switch the components of each ordered pair in $\cR$.\par
-	Suppose $A=B$. We say that $\cR$ is \emph{symmetric} if $\cR=\cR^{-1}$.
+	We say that $\cR$ is \emph{symmetric} if $\cR=\cR^{-1}$ (this requires $A=B$!).
 \end{defn}
 
-The following results should seem natural, even if some of the proofs may not be obvious.
-
 \begin{thm}{}{relbasic}
-	Given any relations $\cR,\cS\subseteq A\times B$:
-	\begin{enumerate}
-		\item $(\cR^{-1})^{-1}=\cR$
-		\item $\cR\subseteq \cS\iff \cR^{-1}\subseteq \cS^{-1}$
-		\item $(\cR\cup \cS)^{-1}=\cR^{-1}\cup \cS^{-1}$
-		\item $(\cR\cap \cS)^{-1}=\cR^{-1}\cap \cS^{-1}$
-		\item If $A=B$, then $\cR\cup \cR^{-1}$ is symmetric
-		\item If $A=B$, then $\cR\cap \cR^{-1}$ is symmetric
+	For any relations $\cR,\cS\subseteq A\times B$:
+	\begin{enumerate}\itemsep2pt
+	  \item \makebox[200pt][l]{$\dom(\cR^{-1})=\range(\cR)$ \hfill 2.} \ $\range(\cR^{-1})=\dom(\cR)$
+		\setcounter{enumi}{2}
+		\item \makebox[200pt][l]{$(\cR^{-1})^{-1}=\cR$ \hfill 2.} \ $\cR\subseteq \cS\iff \cR^{-1}\subseteq \cS^{-1}$
+		\setcounter{enumi}{4}
+		\item \makebox[200pt][l]{$(\cR\cup \cS)^{-1}=\cR^{-1}\cup \cS^{-1}$ \hfill 4.} \ $(\cR\cap \cS)^{-1}=\cR^{-1}\cap \cS^{-1}$
+		\setcounter{enumi}{6}
+		\item If $A=B$, then $\cR\cup \cR^{-1}$ and $\cR\cap \cR^{-1}$ are both symmetric
 	\end{enumerate}
 \end{thm}
 
 \begin{proof}
 	Here are two of the arguments. Try the others yourself.
-	\begin{enumerate}
-		\item[2.] Assume that $\cR\subseteq\cS$, and suppose that $(x,y)\in\cR^{-1}$. We must prove that $(x,y)\in\cS^{-1}$. By the definition of inverse,
+	\begin{enumerate}\itemsep0pt
+		\item[4.] Suppose $\cR\subseteq\cS$. Then,
 		\begin{align*}
-			(x,y)\in\cR^{-1}&\implies (y,x)\in\cR\implies (y,x)\in\cS\\
-			&\implies (x,y)\in\cS^{-1}
+			(b,a)\in\cR^{-1}&\implies (a,b)\in\cR \tag{definition of inverse}\\
+			&\implies (a,b)\in\cS \tag{since $\cR\subseteq\cS$}\\
+			&\implies (b,a)\in\cS^{-1} \tag{definition of inverse}
 		\end{align*}
-		Therefore $\cR^{-1}\subseteq\cS^{-1}$. For the converse, suppose that $\cR^{-1}\subseteq\cS^{-1}$. Then, by an argument similar to the above, we see that $(\cR^{-1})^{-1}\subseteq (\cS^{-1})^{-1}$. Now use 1.\ to see that
+		Therefore $\cR^{-1}\subseteq\cS^{-1}$. Replacing $\cR,\cS$ with $\cR^{-1},\cS^{-1}$ and applying part 1, we also see that
 		\[
-			\cR^{-1}\subseteq\cS^{-1}\implies\cR\subseteq \cS
+			\cR^{-1}\subseteq\cS^{-1}\implies (\cR^{-1})^{-1}\subseteq (\cS^{-1})^{-1} \implies \cR\subseteq \cS
 		\]
-		\item[5.] By 3,
+		\item[7.] We prove the first half. By part 3,
 		\[
-			(\cR\cup \cR^{-1})^{-1}=\cR^{-1}\cup (\cR^{-1})^{-1}=\cR^{-1}\cup \cR=\cR\cup \cR^{-1}
+			(\cR\cup \cR^{-1})^{-1}=\cR^{-1}\cup (\cR^{-1})^{-1}=\cR^{-1}\cup \cR=\cR\cup \cR^{-1} \tag*{\qedhere}
 		\]
-		and so $\cR\cup \cR^{-1}$ is symmetric.\qedhere
 	\end{enumerate}
 \end{proof}
 
-{\bf Keep your proof skills sharp!}\quad Several parts of Theorem \ref{thm:relbasic} look suspiciously similar to earlier results and it is easy to get confused. For example, 3 and 4 look almost like De Morgan's laws, except that $\cup$ and $\cap$ do not switch over. This is why it is important to be able to conjure up examples and \emph{prove} such statements. There are many facts in mathematics: trying to memorize everything is too difficult! Instead, you will be forever conjecturing and having to justify your guesses. For example, suppose that you forget results 3 and 4: it seems reasonable to conjecture that
-\[
-	(\cR\cup \cS)^{-1}=
-	\begin{cases}
-		\cR^{-1}\cup \cS^{-1}\\
-		\qquad\text{or}\\
-		\cR^{-1}\cap \cS^{-1}
-	\end{cases}
-\]
-Now that you have two sensible guesses, you should be able to decide the correct one by thinking about examples and, if necessary, proving your assertion!
 
-\begin{example}{}{}
-	Consider Example 1 from before: $\cR=\{(1,3),(2,2),(2,3),(3,2),(4,1),(5,2)\}\subseteq\N\times\N$. This is not symmetric since, for example, $1\,\cR\,3$ but $3\not\!\!\cR\,1$. We compute
-	\[
-		\cR^{-1}=\{(3,1),(2,2),(3,2),(2,3),(1,4),(2,5)\},
-	\]
-	and observe that
-	\begin{gather*}
-		\cR\cap \cR^{-1}=\{(2,2), (2,3), (3,2)\}\quad\text{and}\quad \\
-		\cR\cup \cR^{-1}=\{(1,3),(3,1),(2,2),(2,3),(3,2),(4,1),(1,4),(5,2),(2,5)\}
-	\end{gather*}
-	are both symmetric.
-\end{example}
-
-\begin{center}
-	\begin{minipage}{0.35\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-03-relnint}\\
-		The relation $\cR\cap \cR^{-1}$
+\begin{example*}{\ref{ex:relationexs}.1, cont.}{}
+	$\cR=\bigl\{(1,3),(2,2),(2,3),(3,2),(4,1),(5,2)\bigr\}$ is not\par
+	\begin{minipage}[t]{0.75\linewidth}\vspace{-8pt}
+		symmetric. Indeed
+		\[
+			\cR^{-1}=\bigl\{(3,1),(2,2),(3,2),(2,3),(1,4),(2,5)\bigr\} \neq \cR
+		\]
+		as should be plain: e.g., $(1,3)\in\cR$ but $(3,1)\notin\cR$. However,
+		\begin{gather*}
+			\textcolor{Green}{\cR\cap \cR^{-1}}=\bigl\{(2,2), (2,3), (3,2)\bigr\}\quad\text{and}\quad \\
+			\textcolor{blue}{\cR\cup \cR^{-1}}=\bigl\{(1,3),(3,1),(2,2),(2,3),(3,2),(4,1),(1,4),(5,2),(2,5)\bigr\}
+		\end{gather*}
 	\end{minipage}
-	\qquad\qquad\qquad
-	\begin{minipage}{0.35\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-04-relnun}\\
-		The relation $\cR\cup \cR^{-1}$
+	\hfill
+	\begin{minipage}[t]{0.24\linewidth}\vspace{-20pt}
+		\hfill
+		\includegraphics{relations-04-relnun}
 	\end{minipage}
-\end{center}
+	\medbreak
+	are both symmetric.	Observe the symmetry in the picture. One obtains $\cR^{-1}$ by \emph{reflecting\footnotemark} $\cR$ in the line $y=x$: a \emph{symmetric} relation on $\R$ has \emph{reflection symmetry} in this line.
+\end{example*}
 
-These pictures should confirm something intuitive: if you are able to graph a symmetric relation, then the graph will have symmetry about the line $y=x$. Indeed, $\cR^{-1}$ is obtained by reflecting $\cR$ in the line $y=x$. Recall how to graph an inverse functions from calculus\ldots
+\vspace{-10pt}
 
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-%     \item A \emph{relation} $\cR$ from a set $A$ to a set $B$ is \underline{\phantom{a subset of $A\times B$}\qquad\qquad} 
-%     \item If $A\subseteq\R$, then the graph of a symmetric relation $\cR\subseteq A\times A$ has what sort of symmetry?
-%     \item True or false: if $\cR$ is symmetric, then it must contain an even number of elements.
-%   \end{enumerate}
+\footnotetext{Just as one does for inverse functions in calculus\ldots}
+
+\goodbreak
+
 
 \begin{exercises}{}{}
+	A reading quiz and practice question can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-1-relations.html}{online}.
+	
 \begin{enumerate}
   \item Let $\cR$ be the relation on $\{0,1,2\}$ defined by
-  \[0\,\cR\,0\qquad 0\,\cR\,1\qquad 2\,\cR\,1\]
+  \[
+  	0\relR 0\qquad 0\relR 1\qquad 2\relR 1\]
   \begin{enumerate}
-    \item Write $\cR$ as a set of ordered pairs.
+    \item Write $\cR$ as a set of ordered pairs. What are its domain and range?
     \item What is the inverse of $\cR$?
 	\end{enumerate}
 	
-	\item Let $\cR$ be the relation on $\R$ defined by $x\,\cR\,y\iff\nm{x-y}=1$. Draw $\cR$. Is it symmetric?
+	\item\begin{enumerate}
+	  \item Let $\cR$ be the relation on $\R$ defined by $a\relR b\iff\nm{a-b}=1$. Is this relation symmetric? 
+ 		\item Let $\cS$ be the relation on $\R$ defined by 
+		\[
+			a \mathrel{\cS} b \iff \exists x \in \Q\setminus\{0\} \text{ such that } a=x^2b
+		\]
+		Is this relation symmetric? 
+	\end{enumerate}
+	
   
 	\item Draw pictures of the following relations on the set of real numbers $\R$.
-		\begin{enumerate}
-			\item $\cR=\{(x,y):y\le x\text{ and }y\le 2\text{ and }y\le 2-x\}$.
-			\item $\cS=\{(x,y):(x-4)^2+(y-1)^2\le 9\}$.
-		\end{enumerate}
-	Also draw the inverse of each relation.
+	\begin{enumerate}
+		\item $\cR=\bigl\{(x,y):y\le 2\text{ and }y\ge x\text{ and }y\ge 2-x\bigr\}$
+		\item $\cS=\bigl\{(x,y):(x-4)^2+(y-1)^2\le 9\bigr\}$
+	\end{enumerate}
+	State the domain and range and draw the inverse of each relation.
 	
-	\item A relation is defined on $\N$ by $a\,\cR\,b\!\iff\! \frac ab\in\N$. Let $c,d\in\N$. Under what conditions is it permissable to write $c\,\cR^{-1}\,d$?
+	
+	\item A relation is defined on $\N$ by $a\relR b \Leftrightarrow \frac ab\in\N$. Let $c,d\in\N$. Under what conditions can we write $c\mathrel{\cR^{-1}} d$?
+	
 	
 	\item Let $\cR\subseteq\{1,2,3,4\}\times\{1,2,3,4\}$ be the relation
-	\[\cR=\{(1,3),(1,4),(2,2),(2,4),(3,1),(3,2),(4,4)\}.\]
+	\[
+		\cR=\bigl\{(1,3),(1,4),(2,2),(2,4),(3,1),(3,2),(4,4)\bigr\}
+	\]
 	\begin{enumerate}
-	  \item Compute $\cR^{-1}$.
-	  \item Compute the relations $\cR\cup \cR^{-1}$ and $\cR\cap \cR^{-1}$, and check that they are symmetric.
+	  \item Find $\dom(\cR)$, $\range(\cR)$ and $\cR^{-1}$.
+	  \item Compute the relations $\cR\cup\cR^{-1}$ and $\cR\cap\cR^{-1}$, and check that they are symmetric.
 	\end{enumerate}
+	
   
-  \item For the relation $\cR=\{(x,y):x\le y\}$ defined on $\N$, what is $\cR^{-1}$, and what is the intersection $\cR\cap\cR^{-1}$?
+  \item For the relation $\cR=\bigl\{(x,y):x\le y\bigr\}$ on $\N$, what is $\cR^{-1}$, and what is the intersection $\cR\cap\cR^{-1}$?
+	
+	
+	\item Let $\cR \subseteq \Z\times\Z$ be the relation $m\relR n$ iff $m\mid n$. Compute $\cR\cap\cR^{-1}$.
+  
 
   \item Let $A$ be a set with $\nm A=4$. What is the maximum number of elements that a relation $\cR$ on $A$ can contain such that $\cR\cap \cR^{-1}=\emptyset$?
+   
   
-  \item Give formal proofs of the remaining cases (1, 3, 4 \& 6) of Theorem \ref{thm:relbasic}.
+  \item Give formal proofs of the remaining parts of Theorem \ref{thm:relbasic}.
   
-  \item Let $\cR$ be a relation on a set $A$ and define $\cS=\cR\cup\cR^{-1}$. We know that $\cS$ is symmetric. Prove that $\cS$ is the intersection of all \emph{symmetric} relations on $A$ which contain $\cR$. Otherwise said: if
-  \[\mathrm T=\Bigl\{\mathcal T\subseteq A\times A:\mathcal T\text{ symmetric and }\cR\subseteq\mathcal T\bigr\}\]
+    
+  \item Let $\cR$ and $\cS$ be two symmetric relations on a set $A$. 
+	\begin{enumerate}
+    \item Show $\cR \cap \cS$ is symmetric.
+    \item Does $\cR \cup \cS$ have to be symmetric? Give a proof or counterexample.
+	\end{enumerate}
+  
+  
+  \item Let $\cR$ be a relation on a set $A$ and define $\cS=\cR\cup\cR^{-1}$. Prove that $\cS$ is the \emph{smallest symmetric relation on $A$ containing $\cR$} in the following sense: if
+  \[
+  	\mathrm T=\Bigl\{\mathcal T\subseteq A\times A:\mathcal T\text{ symmetric and }\cR\subseteq\mathcal T\bigr\}
+  \]
   then
-  \[\cS=\bigcap\limits_{\mathcal T\in \mathrm T} \mathcal T\]
-  \emph{$\cS$ is known as the \emph{symmetric closure} of $\cR$.}
+  \[
+  	\cS=\bigcap\limits_{\mathcal T\in \mathrm T} \mathcal T
+  \]
+  (\emph{$\cS$ is known as the \emph{symmetric closure} of $\cR$})
 \end{enumerate}
 
 \end{exercises}
@@ -222,244 +225,233 @@ These pictures should confirm something intuitive: if you are able to graph a sy
 \clearpage
 
 
+
 \subsection{Functions revisited}\label{sec:func2}
 
-Now that we have the language of relations, we can properly define functions. Recall that a function $f:A\to B$ is a rule that assigns one, and only one, element of $B$ to each element of $A$. We may therefore view $f$ as a collection of ordered pairs in $A\times B$:
+In Section \ref{sec:func1}, we naïvely defined a function $f:A\to B$ as a \emph{rule} associating to each element $a\in A$ an element $f(a)\in B$. But what do we mean by a \emph{rule}? We address this issue by turning Example \ref*{ex:relationexs}.\ref{ex:relationexs7} on its head: a function $f:A\to B$ is precisely its \emph{graph}, the relation
 \[
-	\big\{(a,f(a)):a\in A\big\}
+	\bigl\{\bigl(a,f(a)\bigr):a\in A\bigr\}\subseteq A\times B
 \]
-This set is nothing more than the \emph{graph} of the function, and, being a set of ordered pairs, it is a relation.
+The difficulty is that we cannot use the notation $f(a)$ until we know that we have a function\ldots
 
 \begin{defn}{}{func}
-	Let $\cR\subseteq A\times B$ be a relation from $A$ to $B$. The \emph{domain} and \emph{range} of $\cR$ are the sets
-	\begin{gather*}
-		\dom(\cR)=\{a\in A:(a,b)\in \cR\text{ for some }b\in B\},\\
-		\range(\cR)=\{b\in B:(a,b)\in \cR\text{ for some }a\in A\}.
-	\end{gather*}
-	A \emph{function} from $A$ to $B$ is a relation $f\subseteq A\times B$ satisfying the following conditions:
+	A \emph{function} from $A$ to $B$ is a relation $f\subseteq A\times B$ satisfying two conditions:
 	\begin{enumerate}
-	  \item $\dom(f)=A$,
-	  \item $(a,b_1),(a,b_2)\in f\implies b_1=b_2$.
+	  \item $\dom(f)=A$ \hfill (each $a\in A$ is related to \emph{at least one} $b\in B$)
+	  \item $(a,b_1),(a,b_2)\in f\Longrightarrow b_1=b_2$ \hfill (each $a\in A$ is related to \emph{at most one} $b\in B$)
 	\end{enumerate}
 \end{defn}
 
-The two conditions can be thought of as saying:
-\begin{enumerate}
-  \item Every element of $A$ is related to \emph{at least one} element of $B$.
-  \item Every element of $A$ is related to \emph{at most one} element of $B$.
-\end{enumerate}
-Putting these together, we see that a relation $f\subseteq A\times B$ is a function if \emph{every} $a\in A$ is the first entry of one (and only one) ordered pair $(a,b)\in f$. The second condition is the vertical line test, familiar from calculus.
-
-\begin{center}
-	\begin{minipage}{0.32\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-05-funcvert}\\
-		$b_1=b_2=f(a)$: a function
-	\end{minipage}\qquad\qquad\qquad\qquad
-	\begin{minipage}{0.32\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-06-funcvert}\\
-		$b_1\neq b_2$: not a function
-	\end{minipage}
-\end{center}
-
-We can also think about injectivity and surjectivity (recall Definition \ref{defn:11}) in this context. A function $f\subseteq A\times B$ is:
-\begin{itemize}
-  \item \emph{Injective} if no two pairs in $f$ share the same second entry.
-  \item \emph{Surjective} if every $b\in B$ appears as the second entry of at least one pair in $f$.
-  \item \emph{Bijective} if every $b\in B$ appears as the second entry of one (and only one) ordered pair $(a,b)\in f$.
-\end{itemize}
-
+A relation $f\subseteq A\times B$ is a function if and only if \emph{every} $a\in A$ is the first entry of \emph{exactly one} ordered pair $(a,b)\in f$. This is simply an abstraction of the \emph{vertical line test} from calculus.
 
 \begin{example}{}{}
-	Let $A=B=\{1,2,3\}$ and consider the relation\par
-	\begin{minipage}[t]{0.62\linewidth}\vspace{0pt}
-		\[
-			f=\{(1,3),(2,1),(3,3)\}
-		\]
-		Observe that $\dom(f)=\{1,2,3\}=A$, and that each element of $A$ appears exactly once as the first element in a pair $(a,b)\in f$. The relation therefore satisfies both conditions necessary to be a function. In more elementary language we would write $f(1)=3$, \ $f(2)=1$ and $f(3)=3$.\par
-		Since 3 appears twice as a second entry of an ordered pair in $f$ we see that $f$ is \emph{not injective.}\par
-		Since 2 never appears as the second entry of an ordered pair in $f$ we see that $f$ is \emph{not surjective.}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-		\centering
-		\includegraphics[scale=0.8]{relations-18-reln1}\\
-		A function $f:A\to B$
-	\end{minipage}
+	Let $A=[0,4]$ and $B=[0,5]$. Two relations $f,\cR\subseteq A\times B$ are drawn below.\smallbreak
+	The \textcolor{blue}{first relation} defines a function $f:A\to B$ since every $a\in A$ corresponds to exactly one $b\in B$: the \textcolor{cyan}{vertical line} through any $a\in A$ intersects the \textcolor{blue}{graph} in exactly one point $(a,b)$.\smallbreak
+	The \textcolor{Green}{second relation} $\cR$ does not define a function. In fact it fails \emph{both} parts of the definition:
+	\begin{enumerate}\itemsep0pt
+	  \item The \textcolor{Brown}{vertical line} through $\tilde a\in A$ does not intersect the \textcolor{Green}{graph}: $\tilde a\notin\dom(\cR)$.
+	  \item The \textcolor{Magenta}{vertical line} through $a\in A$ intersects the \textcolor{Green}{graph} in \emph{two} points $(a,b_1)\neq (a,b_2)$.
+	\end{enumerate}
+	\begin{center}
+	\begin{tabular}{c@{\qquad\qquad}c}
+		\includegraphics{relations-05-funcvert}
+		&
+		\includegraphics{relations-06-funcvert}
+		\\
+		$f\subseteq [0,4]\times[0,5]$ a function
+		&
+		$\cR\subseteq [0,4]\times[0,5]$ not a function
+	\end{tabular}
+	\end{center}
 \end{example}
 
-\boldsubsubsection{The Inverse of a Function}
+\emph{Injectivity} (Definition \ref{defn:11}) can be rephrased in this new context: $f:A\to B$ injective means
+\[
+	\tcbhighmath{(\forall a\in A)\ \ (a_1,b),(a_2,b)\in f\implies a_1=a_2}
+\]
+\emph{Surjectivity} has the same meaning as before: $\range(f)=B$.
 
-Since every function is a relation, it is a straightforward business to define the inverse of a function.
-
-\begin{defn}{}{}
-	The \emph{inverse} of a function $f\subseteq A\times B$ is the inverse relation $f^{-1}\subseteq B\times A$.
-\end{defn}
-
-To compute an inverse relation we simply reverse the components of each ordered pair: the following should therefore be clear.
-
-\begin{thm}{}{inversedomrange}
-	$\dom(f^{-1})=\range(f)$ \ and \ $\range(f^{-1})=\dom(f)$
-\end{thm}
-
-In general, you should expect the inverse of a function to be merely a relation and not a function in its own right. We shall shortly (Theorem \ref{thm:finverse}) discuss when the inverse relation is a function.
-
-\begin{example*}{cont}{}
-	Consider the above example.\par
-	\begin{minipage}[t]{0.62\linewidth}\vspace{0pt}
-		The inverse relation
-		\[
-			f^{-1}=\{(3,1),(1,2),(3,3)\}\subseteq B\times A
-		\]
-		is \emph{not} a function due to failing \emph{both} conditions of Definition \ref{defn:func}.
-		\begin{itemize}
-		  \item $\dom(f^{-1})=\{1,3\}$ is not the whole of $B$.
-		  \item $(3,1)\in f^{-1}$ and $(3,3)\in f^{-1}$, but $1\neq 3$.
-		\end{itemize}
-		Both failures are clearly visible in the picture.
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.33\linewidth}\vspace{0pt}
-		\centering
-		\includegraphics[width=\textwidth]{relations-19-reln1}\\
-		$f^{-1}\subseteq B\times A$: not a function
-	\end{minipage}
-\end{example*}
-
-Before we consider exactly when the inverse of a function is a function in its own right, we consider a few more examples.
+\goodbreak
 
 
-\begin{examples}{}{}
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.33\linewidth]{}{}
+	Let $A=\{1,2,3\}$ and $B=\{p,q,r\}$. The relation
+	\[
+		f=\bigl\{(1,r),(2,p),(3,r)\bigr\}
+	\]
+	satisfies both conditions necessary to be a function. In elementary language, $f(1)=r$, \ $f(2)=p$ and $f(3)=r$. Moreover $f$ is:
+	\begin{quote}
+		\emph{Not injective} since $(1,r),(3,r)\in f$ and $1\neq 3$\par
+		\emph{Not surjective} since $\range(f)=\{p,r\}\neq B$
+	\end{quote}
+	The inverse relation
+	\[
+		f^{-1}=\bigl\{(r,1),(p,2),(r,3)\bigr\}\subseteq B\times A
+	\]
+	is \emph{not} a function due to failing \emph{both} conditions of Definition \ref{defn:func}.
 	\begin{enumerate}
-		\item\label{ex:reln1} Let $A=B=\R$ and $f=\{(x,x^2):x\in\R\}$. This is simply the function with formula $f(x)=x^2$. The inverse relation $f^{-1}\subseteq\R\times\R$ is then
-		\[
-			f^{-1}=\bigl\{(x^2,x):x\in\R\bigr\}=\bigl\{(y,\pm\sqrt y):y\ge 0\bigr\}
-		\]
-		In this case, $f^{-1}$ is \emph{not a function.} In the language of Definition \ref{defn:func}:
-		\begin{itemize}
-		  \item $\dom(f^{-1})=\R^+_0\neq B$. E.g., $-1\in B$ but $-1\not\in\dom(f^{-1})$.
-		  \item $(4,2)$ and $(4,-2)$ are distinct elements of $f^{-1}$ with the same first entry.
-		\end{itemize}
-		\begin{center}
-			\begin{minipage}{0.35\textwidth}\centering
-				\includegraphics[width=\textwidth]{relations-20-reln2}\\
-				$f:A\to B$
-			\end{minipage}\qquad\qquad\qquad
-			\begin{minipage}{0.35\textwidth}\centering
-				\includegraphics[width=\textwidth]{relations-21-reln2}\\
-				$f^{-1}\subseteq B\times A$: not a function
-			\end{minipage}
-		\end{center}
-		It should be obvious that $f$ is neither injective nor surjective: in the language of relations,
-		\begin{description}
-			\item[Not injective]\quad $(2,4)$ and $(-2,4)$ are distinct elements of $f$ with the same second entry.
-			\item[Not surjective]\quad For instance, $-1$ never appears as the second entry of any pair in $f$.
-		\end{description}
-		Observe how these are merely a rewriting of what it means for $f^{-1}$ to fail to be a function.
-		
-		\item\label{ex:reln2} Let $A=B=\R$ and $f=\{(x,x^3):x\in\R\}$, so that $f$ has formula $f(x)=x^3$. This time, the inverse is also a function and we could write $f^{-1}(y)=\sqrt[3]{y}$:
-		\[
-			f^{-1}=\bigl\{(x^3,x):x\in\R\bigr\}=\bigl\{(y,\sqrt[3]{y}):y\in\R\bigr\}
-		\]
-		\begin{center}
-			\begin{minipage}{0.35\textwidth}\centering
-				\includegraphics[width=\textwidth]{relations-22-reln3}\\
-				$f:A\to B$
-			\end{minipage}\qquad\qquad\qquad
-			\begin{minipage}{0.35\textwidth}\centering
-				\includegraphics[width=\textwidth]{relations-23-reln3}\\
-				$f^{-1}:B\to A$ is a function
-			\end{minipage}
-		\end{center}
+		 \item $\dom(f^{-1})=\{p,r\} \neq B$. The \textcolor{Brown}{vertical line} through $b=q$ does not intersect (the graph of) $f^{-1}$.
+		 \item $(r,1)\in f^{-1}$ and $(r,3)\in f^{-1}$, but $1\neq 3$. The \textcolor{magenta}{vertical line} through $b=r$ intersects $f^{-1}$ twice.
 	\end{enumerate}
-\end{examples}
+	Note how the manner of these failures are \emph{identical} to the failures of injectivity and surjectivity\ldots
+	\tcblower
+	\hfill
+	\begin{tabular}{@{}c@{}}
+		\includegraphics{relations-18-reln1}\\
+		The function $f:A\to B$\\[6pt]
+		\includegraphics{relations-19-reln1}\\
+		$f^{-1}\subseteq B\times A$: not a function
+	\end{tabular}
+\end{example}
 
-All three of our examples help to illustrate the following important result.
+The example highlights one advantage of the relational approach: the inverse of a function $f:A\to B$ \emph{always exists}; it is the \emph{inverse relation} $f^{-1}\subseteq B\times A$. The question is whether $f^{-1}$ is also a function. From the example and our discussions in Section \ref{sec:func1}, you should strongly suspect the answer.
 
 \begin{thm}{}{finverse}
-	A relation $f^{-1}\subseteq B\times A$ is a function $\iff f$ is bijective (both injective and surjective).
+	Let $f:A\to B$ be a function and consider its inverse relation $f^{-1}\subseteq B\times A$. Then
+	\begin{quote}
+		$f^{-1}$ is a function $\iff f$ is bijective (both injective and surjective)
+	\end{quote} 
 \end{thm}
 
 \begin{proof}
-	Recalling Definition \ref{defn:func}, we see that
-	\[
-		f^{-1}\text{ is a function }\iff
-		\begin{cases}
-			\dom(f^{-1})=B,\\
-			\qquad\text{\emph{and}}\\
-			(b,a_1),(b,a_2)\in f^{-1}\implies a_1=a_2.
-		\end{cases}
-	\]
-	The first of these is equivalent to $\range(f)=B$, which says that $f$ is surjective.\par
-	The second is equivalent to $(a_1,b),(a_2,b)\in f\implies a_1=a_2$, which says that $f$ is injective.
+	Recalling Definition \ref{defn:func}, we see that $f^{-1}$ is a function if and only if the two conditions hold:
+	\begin{enumerate}
+	  \item $\dom(f^{-1})=B$
+	  \item $(b,a_1),(b,a_2)\in f^{-1}\Longrightarrow a_1=a_2$
+	\end{enumerate}
+	By Theorem \ref{thm:relbasic}, condition 1 is equivalent to $\range(f)=B$; that is, $f$ is surjective.\par
+	Condition 2 is equivalent to $(a_1,b),(a_2,b)\in f\Longrightarrow a_1=a_2$: i.e., $f$ is injective.
 \end{proof}
+ 
+We'll leave several more examples to the exercises. Here is a very easy one to finish things off.
 
-Here is a final example, where the function $f$ is harder to visualize.
-
-\begin{example}{}{}
-	Let $A=\R$, $B=\Q$ and define $f$ using the formula 
+\begin{example}{Identity function}{}
+	Let $A$ be any set and define the relation $\id_A$ on $A$ by
 	\[
-		f(x)=
-		\begin{cases}
-			x&\text{if }x\in\Q,\\
-			0&\text{if }x\not\in\Q.
-		\end{cases}
+		\id_A=\bigl\{(a,a):a\in A\bigr\}
 	\]
-	In the language of relations, this is $f=\bigl\{(x,x):x\in\Q\bigr\}\cup\bigl\{(x,0):x\not\in\Q\bigr\}$.\par
-	This is a surjective function since every element of $B=\Q$ appears as the second entry in an ordered pair $(a,b)\in f$. It is not injective since zero appears more than once in the second entry. For example,
-	\[
-		(\sqrt 2,0),\ (\sqrt 3,0)\in f
-	\]
-	Written in the more common manner, we are observing that $f(\sqrt 3)=f(\sqrt 2)$.\par
-	The inverse $f^{-1}$ is not a function, and it fails to be so precisely because $f$ is non-injective. For example
-	\[
-		(0,\sqrt 2)\text{ and } (0,\sqrt 3)\text{ are distinct elements of $f^{-1}$ with the same  first component.}
-	\]
+	Then $\id_A:A\to A$ is a bijective function, whose inverse is itself: $\id_A^{-1}=\id_A$! This is in fact the same as the relation \emph{equals} (Example \ref*{ex:relationexs}.\ref{ex:relationexs3}). 
 \end{example}
 
-\boldinline{Inverse Images}
-
-Analogously to the concept of images of sets (Section \ref{sec:func1}), we can define the \emph{inverse image} of a subset $V\subseteq B$ under a function $f:A\to B$ by
-\[
-	f^{-1}(V)=\{a\in A:f(a)\in V\}
-\]
-In particular, if $\{b\}\subseteq B$ has only one element, then its inverse image is
-\[
-	f^{-1}(\{b\})=\{a\in A:f(a)=b\}
-\]
-Both are \emph{subsets} of $A$. For instance, in the last example the inverse image of $\{0\}$ consists of zero and all irrational numbers!
-\[
-	f^{-1}(\{0\})=\{0\}\cup(\R\setminus\Q)
-\]
-When $f^{-1}\subseteq B\times A$ is a function, each inverse image of a singleton consists of one point of $A$: thus $f^{-1}(\{b\})=\{a\}$. \emph{Only} in such a case are we entitled to write $f^{-1}(b)=a$.
+\goodbreak
 
 
+% \begin{examples}{}{}
+% 	\begin{enumerate}
+% 		\item\label{ex:reln1} Let $A=B=\R$ and $f=\{(x,x^2):x\in\R\}$. This is simply the function with formula $f(x)=x^2$. The inverse relation $f^{-1}\subseteq\R\times\R$ is then
+% 		\[
+% 			f^{-1}=\bigl\{(x^2,x):x\in\R\bigr\}=\bigl\{(y,\pm\sqrt y):y\ge 0\bigr\}
+% 		\]
+% 		In this case, $f^{-1}$ is \emph{not a function.} In the language of Definition \ref{defn:func}:
+% 		\begin{itemize}
+% 		  \item $\dom(f^{-1})=\R^+_0\neq B$. E.g., $-1\in B$ but $-1\not\in\dom(f^{-1})$.
+% 		  \item $(4,2)$ and $(4,-2)$ are distinct elements of $f^{-1}$ with the same first entry.
+% 		\end{itemize}
+% 		\begin{center}
+% 			\begin{minipage}{0.35\textwidth}\centering
+% 				\includegraphics[width=\textwidth]{relations-20-reln2}\\
+% 				$f:A\to B$
+% 			\end{minipage}\qquad\qquad\qquad
+% 			\begin{minipage}{0.35\textwidth}\centering
+% 				\includegraphics[width=\textwidth]{relations-21-reln2}\\
+% 				$f^{-1}\subseteq B\times A$: not a function
+% 			\end{minipage}
+% 		\end{center}
+% 		It should be obvious that $f$ is neither injective nor surjective: in the language of relations,
+% 		\begin{description}
+% 			\item[Not injective]\quad $(2,4)$ and $(-2,4)$ are distinct elements of $f$ with the same second entry.
+% 			\item[Not surjective]\quad For instance, $-1$ never appears as the second entry of any pair in $f$.
+% 		\end{description}
+% 		Observe how these are merely a rewriting of what it means for $f^{-1}$ to fail to be a function.
+% 		
+% 		\item\label{ex:reln2} Let $A=B=\R$ and $f=\{(x,x^3):x\in\R\}$, so that $f$ has formula $f(x)=x^3$. This time, the inverse is also a function and we could write $f^{-1}(y)=\sqrt[3]{y}$:
+% 		\[
+% 			f^{-1}=\bigl\{(x^3,x):x\in\R\bigr\}=\bigl\{(y,\sqrt[3]{y}):y\in\R\bigr\}
+% 		\]
+% 		\begin{center}
+% 			\begin{minipage}{0.35\textwidth}\centering
+% 				\includegraphics[width=\textwidth]{relations-22-reln3}\\
+% 				$f:A\to B$
+% 			\end{minipage}\qquad\qquad\qquad
+% 			\begin{minipage}{0.35\textwidth}\centering
+% 				\includegraphics[width=\textwidth]{relations-23-reln3}\\
+% 				$f^{-1}:B\to A$ is a function
+% 			\end{minipage}
+% 		\end{center}
+% 	\end{enumerate}
+% \end{examples}
+% 
+% All three of our examples help to illustrate the following important result.
+% 
+% 
+% 
+% Here is a final example, where the function $f$ is harder to visualize.
+% 
+% \begin{example}{}{}
+% 	Let $A=\R$, $B=\Q$ and define $f$ using the formula 
+% 	\[
+% 		f(x)=
+% 		\begin{cases}
+% 			x&\text{if }x\in\Q,\\
+% 			0&\text{if }x\not\in\Q.
+% 		\end{cases}
+% 	\]
+% 	In the language of relations, this is $f=\bigl\{(x,x):x\in\Q\bigr\}\cup\bigl\{(x,0):x\not\in\Q\bigr\}$.\par
+% 	This is a surjective function since every element of $B=\Q$ appears as the second entry in an ordered pair $(a,b)\in f$. It is not injective since zero appears more than once in the second entry. For example,
+% 	\[
+% 		(\sqrt 2,0),\ (\sqrt 3,0)\in f
+% 	\]
+% 	Written in the more common manner, we are observing that $f(\sqrt 3)=f(\sqrt 2)$.\par
+% 	The inverse $f^{-1}$ is not a function, and it fails to be so precisely because $f$ is non-injective. For example
+% 	\[
+% 		(0,\sqrt 2)\text{ and } (0,\sqrt 3)\text{ are distinct elements of $f^{-1}$ with the same  first component.}
+% 	\]
+% \end{example}
+
+% \boldinline{Inverse Images}
+% 
+% Analogously to the concept of images of sets (Section \ref{sec:func1}), we can define the \emph{inverse image} of a subset $V\subseteq B$ under a function $f:A\to B$ by
+% \[
+% 	f^{-1}(V)=\{a\in A:f(a)\in V\}
+% \]
+% In particular, if $\{b\}\subseteq B$ has only one element, then its inverse image is
+% \[
+% 	f^{-1}(\{b\})=\{a\in A:f(a)=b\}
+% \]
+% Both are \emph{subsets} of $A$. For instance, in the last example the inverse image of $\{0\}$ consists of zero and all irrational numbers!
+% \[
+% 	f^{-1}(\{0\})=\{0\}\cup(\R\setminus\Q)
+% \]
+% When $f^{-1}\subseteq B\times A$ is a function, each inverse image of a singleton consists of one point of $A$: thus $f^{-1}(\{b\})=\{a\}$. \emph{Only} in such a case are we entitled to write $f^{-1}(b)=a$.
 
 
-\begin{aside}{}{}
-{\bf Equality of functions}
-
-There are two competing notions of what it means for two functions to be \emph{equal.}
-
-\begin{description}
-	\item[Same domain, same graph, same codomain]\quad $f=g$ means that $f$ and $g$ are the same subset of the \emph{same} $A\times B$. This notion is preferred by set theorists because it sticks rigidly to the idea that a function is a \emph{relation,} and it requires both the domain $A$ and codomain $B$ to be explicit.
-	\item[Same domain, same graph]\quad $f=g$ means that $f\subseteq A\times B$, \ $g\subseteq A\times C$, and
-	\[(a,b)\in f\iff (a,b)\in g.\]
-	This notion considers what a function \emph{does} to be fundamental; if two functions do the same thing to elements of the same domain then they are the same. This looser notion of equality is used more often, especially in elementary calculus.
-\end{description}
-
-The second conception of equality, while intuitive, has a problem. For example, let
-\[
-	f:\R\to\R,\quad\text{and}\quad g:\R\to[-1,1]\quad\text{satisfy}\quad f(x)=g(x)=\sin x
-\]
-Although $f$ and $g$ have the same graph, the different codomains of $f$ and $g$ mean that these are \emph{different functions} with respect to the first notion. Under the second notion, they are the \emph{same function.} However, $g$ is surjective while $f$ is not, so wouldn't we prefer $f$ and $g$ to be non-equal?\footnote{In elementary calculus, we usually say that a function is invertible if it is 1--1. In order for this to make sense, we have to ignore surjectivity and use the second notion of functional equality.}\par
-
-
-The same problem does not arise when considering domains. For example, in calculus you might have compared functions such as
-\[
-	f(x)=x^2+2,\quad\text{and}\quad g(x)=\frac{(x^2+2)(x-1)}{x-1}
-\]
-The implied domains of these functions are $\dom(f)=\R$ and $\dom(g)=\R\setminus\{1\}$. Even though these have the same graph whenever \emph{both} are defined, regardless of which notion you choose we have $f\neq g$, since the functions have \emph{different domains.}
-\end{aside}
+% 
+% 
+% \begin{aside}{}{}
+% {\bf Equality of functions}
+% 
+% There are two competing notions of what it means for two functions to be \emph{equal.}
+% 
+% \begin{description}
+% 	\item[Same domain, same graph, same codomain]\quad $f=g$ means that $f$ and $g$ are the same subset of the \emph{same} $A\times B$. This notion is preferred by set theorists because it sticks rigidly to the idea that a function is a \emph{relation,} and it requires both the domain $A$ and codomain $B$ to be explicit.
+% 	\item[Same domain, same graph]\quad $f=g$ means that $f\subseteq A\times B$, \ $g\subseteq A\times C$, and
+% 	\[(a,b)\in f\iff (a,b)\in g.\]
+% 	This notion considers what a function \emph{does} to be fundamental; if two functions do the same thing to elements of the same domain then they are the same. This looser notion of equality is used more often, especially in elementary calculus.
+% \end{description}
+% 
+% The second conception of equality, while intuitive, has a problem. For example, let
+% \[
+% 	f:\R\to\R,\quad\text{and}\quad g:\R\to[-1,1]\quad\text{satisfy}\quad f(x)=g(x)=\sin x
+% \]
+% Although $f$ and $g$ have the same graph, the different codomains of $f$ and $g$ mean that these are \emph{different functions} with respect to the first notion. Under the second notion, they are the \emph{same function.} However, $g$ is surjective while $f$ is not, so wouldn't we prefer $f$ and $g$ to be non-equal?\footnote{In elementary calculus, we usually say that a function is invertible if it is 1--1. In order for this to make sense, we have to ignore surjectivity and use the second notion of functional equality.}\par
+% 
+% 
+% The same problem does not arise when considering domains. For example, in calculus you might have compared functions such as
+% \[
+% 	f(x)=x^2+2,\quad\text{and}\quad g(x)=\frac{(x^2+2)(x-1)}{x-1}
+% \]
+% The implied domains of these functions are $\dom(f)=\R$ and $\dom(g)=\R\setminus\{1\}$. Even though these have the same graph whenever \emph{both} are defined, regardless of which notion you choose we have $f\neq g$, since the functions have \emph{different domains.}
+% \end{aside}
 % 
 % \paragraph{Self-test Questions}
 % 
@@ -471,10 +463,15 @@ The implied domains of these functions are $\dom(f)=\R$ and $\dom(g)=\R\setminus
 
 
 \begin{exercises}{}{}
+	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-2-functions.html}{online}.
+
+Insert $f(x)=x^2,x^3$, etc? Fill up page\ldots
 
 \begin{enumerate}
-  \item Suppose that $f\subseteq\{1,2,3,4\}\times\{1,2,3,4,5,6,7\}$ is the relation
-  \[f=\{(1,1),(2,3),(3,5),(4,7)\}.\]
+  \item Suppose $f$ is the relation
+  \[
+  	f=\bigl\{(1,1),(2,3),(3,5),(4,7)\bigr\} \subseteq\{1,2,3,4\}\times\{1,2,3,4,5,6,7\}
+  \]
   \begin{enumerate}
     \item Show that $f$ is a function $f:\{1,2,3,4\}\to\{1,2,3,4,5,6,7\}$. Can you find a concise formula $f(x)$ to describe $f$?
     \item Is $f$ injective? Justify your answer.
@@ -492,13 +489,13 @@ The implied domains of these functions are $\dom(f)=\R$ and $\dom(g)=\R\setminus
   
   \item In Example \ref{ex:reln2} on page \pageref{ex:reln2}, explain why the function $f$ is both injective and surjective using the language of relations: i.e., in the same manner as we analyzed Example \ref{ex:reln1}.
   
-  \item For each of the examples on page \pageref{ex:reln2}, compute the following inverse images:
-  \begin{enumerate}
-    \item $f^{-1}(\{0,1\})$
-    \item $f^{-1}\Big([0,1)\Big)$
-    \item $f^{-1}\Big((-\infty,0]\Big)$
-    \item $f^{-1}\Big(\{-8\}\cup[-7,2]\cup (3,9)\Big)$
-  \end{enumerate}
+%   \item For each of the examples on page \pageref{ex:reln2}, compute the following inverse images:
+%   \begin{enumerate}
+%     \item $f^{-1}(\{0,1\})$
+%     \item $f^{-1}\Big([0,1)\Big)$
+%     \item $f^{-1}\Big((-\infty,0]\Big)$
+%     \item $f^{-1}\Big(\{-8\}\cup[-7,2]\cup (3,9)\Big)$
+%   \end{enumerate}
   
   \item\begin{enumerate}
     \item Express the function $f:\R\to\R:x\mapsto x^4+3$ as a relation.
@@ -509,10 +506,19 @@ The implied domains of these functions are $\dom(f)=\R$ and $\dom(g)=\R\setminus
   
   \item Repeat the previous question for $f:\R\to\R:x\mapsto \sqrt{x^2-4x+5}$.
   
-  \item Give a formal proof of Theorem \ref{thm:inversedomrange}.
+  %\item Give a formal proof of Theorem \ref{thm:inversedomrange}.
   
-  \item Prove or disprove the following: if $f:A\to B$ is a function, and $U,V\subseteq B$, then
-  \[f^{-1}(U\cap V)=f^{-1}(U)\cap f^{-1}(V)\]
+%   \item Prove or disprove the following: if $f:A\to B$ is a function, and $U,V\subseteq B$, then
+%   \[f^{-1}(U\cap V)=f^{-1}(U)\cap f^{-1}(V)\]
+  
+  \item Suppose $f\subseteq A\times B$ is a function and let $U\subseteq A$.
+  \begin{enumerate}
+    \item Explain why it would be reasonable to write the \emph{image of $U$} (recall Definition \ref{defn:function1}) as
+    \[
+    	f(U)=\bigl\{ b\in B:\exists u\in U\text{ with }(u,b)\in f\bigr\}
+    \]
+    \item If $V\subseteq B$, how would you write the inverse image $f^{-1}(V)$ in this language?
+  \end{enumerate}
 \end{enumerate}
 
 \end{exercises}
@@ -721,6 +727,7 @@ Let $\sim$ be the relation on $\R^2$ defined by $(x,y)\sim(v,w)\iff x^2+y^2=v^2+
 %   \end{enumerate}
 
 \begin{exercises}{}{}
+	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-3-equivreln.html}{online}.
 
 \begin{enumerate}
 	\item A relation $\cR$ is \emph{antisymmetric} if $((x,y)\in \cR)\wedge((y,x)\in \cR)\implies x=y$. Give examples of relations $\cR$ on $A=\{1,2,3\}$ having the stated property.
@@ -1095,6 +1102,7 @@ on $\R^2$ defines a torus (the surface of a ring-doughnut).
 
 
 \begin{exercises}{}{}
+	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-4-partitions.html}{online}.
 
 \begin{enumerate}
 	\item For each of the collections $\{A_n:n\in\R\}$, determine whether the collections partition $\R^2$. Justify your answers, and sketch several of the sets $A_n$.
@@ -1275,6 +1283,7 @@ When using this description of $\Z_n$, you should realize that we are working wi
 % \end{enumerate}
 
 \begin{exercises}{}{}
+	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-5-welldef.html}{online}.
 
 \begin{enumerate}
   \item\begin{enumerate}
@@ -1308,7 +1317,7 @@ When using this description of $\Z_n$, you should realize that we are working wi
 
 
 
-\subsection{Functions and Partitions (Optional)}
+\boldsubsection{Functions and Partitions (Optional) --- include in well-def???}
 
 To complete our discussion of partitions and equivalence relations, we consider how to define a function whose domain is a set of equivalence classes. We take congruence as our motivating example.\par
 
@@ -1495,6 +1504,8 @@ This result will be resurrected when you study Groups, Rings \& Fields as part o
 % \end{enumerate}
 
 \begin{exercises}{}{}
+	%A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-6-funcpart.html}{online}.
+	
 \begin{enumerate}
 	\item\begin{enumerate}
 	  	\item Prove or disprove: $f:\Z_3\to\Z_5:x\mapsto x^3\pmod 5$ is well-defined.

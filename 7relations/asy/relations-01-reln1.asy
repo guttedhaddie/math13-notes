@@ -1,27 +1,20 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
-size(180,160,IgnoreAspect);
+size(80,0);
 
-xaxis("$\mathbb N$",0,5.5,RightTicks(new real[]{1,2,3,4,5}));
-yaxis("$\mathbb N$",0,5.5,LeftTicks(new real[]{1,2,3,4,5}));
+xaxis(0,5.2,red,RightTicks(new real[]{0,2,4},new real[]{1,3,5}));
+yaxis(0,4.5,red,LeftTicks(new real[]{0,2,4},new real[]{1,3}));
 
-dot((3,2));
-dot((4,1));
-dot((5,2));
-dot((2,2));
-dot((1,3));
-dot((2,3));
+dot((3,2),blue);
+dot((4,1),blue);
+dot((5,2),blue);
+dot((2,2),blue);
+dot((1,3),blue);
+dot((2,3),blue);

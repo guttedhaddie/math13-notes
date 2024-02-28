@@ -1,10 +1,4 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
@@ -13,11 +7,19 @@ texpreamble("\usepackage{amsmath}
 ");
 import graph;
 
-size(180,140,IgnoreAspect);
+size(125);
 
-xaxis(Label("$A$",align=dir(-1)),0,3.5,RightTicks(new real[]{1,2,3}));
-yaxis("$B$",0,3.5,LeftTicks(new real[]{1,2,3}));
+xaxis(0,3.6,red,RightTicks(new real[]{1,2,3}));
+yaxis(0,3.5,red);
 
-dot((1,3));
-dot((2,1));
-dot((3,3));
+labelx("$A$",3.5,red);
+labely("$B$",3.5,red);
+ytick(Label("$p$",align=W),1,W,red);
+ytick(Label("$q$",align=W),2,W,red);
+ytick(Label("$r$",align=W),3,W,red);
+
+dotfactor=8;
+
+dot((1,3),blue);
+dot((2,1),blue);
+dot((3,3),blue);
