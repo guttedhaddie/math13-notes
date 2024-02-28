@@ -652,11 +652,11 @@ Computing the \emph{intersection} in such a situation typically requires much mo
 
 The moral is that you cannot naïvely apply limits to sequences of sets. If thinking about limits helps your intuition, great, but you can't trust it blindly!\bigbreak
 
-An indexed collection can also be nested the other way round, in which case the intersection is straightforward
+An indexed collection can also be nested the other way round, in which case the intersection is straightforward (though unions need more work)
 \[
 	A_1\subseteq A_2\subseteq A_3\subseteq\cdots \implies {\bigcap_{n=1}^\infty} A_n=A_1
 \]
-though the union requires more work.
+%though the union requires more work.
 
  
 \begin{examples}{}{}
@@ -681,13 +681,10 @@ though the union requires more work.
 	\]
 	\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
 		The sets are nested: $A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots$, where
-		\[
-			A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right)
-		\]
-		Since $A_1$ is the largest set,
-		\[
-			\bigcup_{n=1}^\infty A_n=A_1=(-\sqrt{2},0)\cup(0,\sqrt{2})
-		\]
+		\begin{gather*}
+			A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right) \\
+			\implies \bigcup_{n=1}^\infty A_n=A_1=(-\sqrt{2},0)\cup(0,\sqrt{2})
+		\end{gather*}
 		For the intersection,
 	\end{minipage}
 	\hfill
@@ -698,6 +695,12 @@ though the union requires more work.
 			\forall n\in\N,\ x\in A_n\iff \forall n\in\N,\ \nm{x^2-1}<\frac 1n \iff x^2-1=0
 		\]
 		It follows that $\bigcap_{n=1}^\infty A_n=\{1,-1\}$.
+		
+		\item Let $A_0=\{0,1\}$, $A_n=\{1\}$ is $n\ge 1$ is odd, and $A_n=\{2\}$ if $n\ge 2$ is even. Then,
+		\[
+			\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k = \left(\bigcup_{k=1}^\infty A_k\right)\cap\left(\bigcup_{k=2}^\infty A_k\right)\cap \cdots = \{0,1,2\}\cap\{0,1\}\cap\{0,1\}\cap\cdots =\{0,1\}
+		\]
+		Think about why $x\in \bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k \Longleftrightarrow x$ lies in infinitely many of the sets $A_n$.
 	\end{enumerate}
 \end{examples}
 
@@ -923,7 +926,10 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 		\end{enumerate}
 		
 		
-		\item Compute the set $\bigcup_{n=1}^\infty\bigcap_{k=n}^\infty [\frac 1k,2+\frac 1k]$
+		\item Compute the set $\bigcup_{n=1}^\infty\bigcap_{k=n}^\infty [\frac 1k,2+\frac 1k]$. For a general family of sets $\{A_n:n\in\N\}$ Explain why it is is reasonable to write
+		\[
+			x\in \bigcup_{n=1}^\infty\bigcap_{k=n}^\infty A_k\iff x\text{ lies in all except finitely many $A_n$}
+		\]
 		
 		
 		\item Let $\{A_n:n\in I\}$ and $\{B_n:n\in I\}$ be indexed families of sets. Give explicit examples for which the following hold:
@@ -942,8 +948,10 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 		
 		\item Suppose we are working in a universal set $\cU$ (so every set is considered a subset of $\cU$). Give an explanation for why it makes sense to define $\bigcap_{n \in I} A_n = \cU$ when $I = \emptyset$.
 		
+		\goodbreak
+		
 		\item (Hard) Let $A_n=\{\frac mn\in\Q:0<m<n, m\in \N\}$, for each $n\in\N$.
-		\begin{enumerate}
+		\begin{enumerate}\itemsep1pt
 			\item State $A_1,A_2,A_3,A_4$ explicitly.
 			\item Prove that $A_m\subseteq A_{pm}$ for any $p\in\N$.
 			\item Argue that $\bigcup_{n\in\N}A_n=\Q\cap (0,1)$.
@@ -971,38 +979,36 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 		\end{enumerate}
 		
 		
-		\item\label{exs:modsnowflake} (Hard)\lstsp In this question we construct a fractal shape similar to construction of the von Koch curve from the Cantor set. Starting with the interval $F_0=[0,1]$, repeatedly delete the \emph{third quarter} segment of each interval to obtain a sequence of sets $F_0,F_1,F_2,\ldots$ starting
+		\item\label{exs:modsnowflake} (Hard)\lstsp We construct a modified Cantor set and fractal curve. Starting with $F_0=[0,1]$, repeatedly delete the \emph{third quarter} segment of each interval to obtain a sequence of sets $F_0,F_1,F_2,\ldots$:
 	  \begin{gather*}  
 	  	F_1=[0,\tfrac 12]\cup[\tfrac 34,1],\quad
 	  	F_2=[0,\tfrac 14]\cup[\tfrac 38,\tfrac 12]\cup[\tfrac 34,\tfrac 78]\cup[\tfrac{15}{16},1],\quad \ldots
 	  \end{gather*}
 	  \begin{enumerate}
 	    \item Prove that the sum of the lengths of all of all line segments in $F_n$ is $\left(\frac 34\right)^n$.
-	    \item Prove that the intersection $\bigcap_{n=1}^\infty F_n$ does not contain any intervals of positive length.
+	    \item Prove that $\bigcap_{n=1}^\infty F_n$ contains no intervals of positive length.
 	    
-	    \begin{minipage}[t]{0.61\linewidth}\vspace{-5pt}
+	    \begin{minipage}[t]{0.62\linewidth}\vspace{-5pt}
 	    \item Instead of deleting the third quarter of each line segment, replace it with the other three sides of a square. The first three steps and the result of applying the process infinitely many times are shown in the pictures.\smallbreak
 	
 	    After step 1 the curve has length $\ell_1=\frac 32$ and the area under the curve is $A_1=\frac 1{4^2}$. After step 2 the length is $\ell_2=\frac 94$ and the area $A_2=A_1+\frac 14A_1+\frac 1{16}A_1 =\frac{21}{4^4}$. 
-	    \begin{enumerate}
+	    \begin{enumerate}\itemsep0pt
 	      \item Find the length $\ell_n$ of the curve after $n$ steps. What is the `length' of the resulting fractal curve?
-	      \item Repeat for the \emph{area} under the curve at each step. Prove that the area between the fractal and the $x$-axis is $\frac 18$.
+	      \item Repeat for the \emph{area} under each curve $F_n$. Prove that the area between the fractal and the $x$-axis is $\frac 18$.
 	    \end{enumerate}
 	    \end{minipage}
 	    \hfill
-	    \begin{minipage}[t]{0.38\linewidth}\vspace{-5pt}
+	    \begin{minipage}[t]{0.35\linewidth}\vspace{-25pt}
 	    \flushright
-	    	\includegraphics[scale=0.7]{fractal1}
+	    	\includegraphics[scale=0.64]{fractal1}
 	    	\\
-	    	\includegraphics[scale=0.7]{fractal2}
+	    	\includegraphics[scale=0.64]{fractal2}
 	    	\\
-	    	\includegraphics[scale=0.7]{fractal3}
+	    	\includegraphics[scale=0.64]{fractal3}
 	    	\\
-	    	\includegraphics[scale=0.7]{fractal}
+	    	\includegraphics[scale=0.64]{fractal}
 	    \end{minipage}
 		\end{enumerate}
-	
-	
 
 
 % 
@@ -1051,6 +1057,10 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 	\end{enumerate}
 
 \end{exercises}
+	
+	
+	\vspace{-20pt}
+	
 
 
 \footnotetext{Analogous to a decimal representation $x=\sum_{n=1}^\infty \frac{a_n}{10^n}=\frac{a_1}{10}+\frac{a_2}{10^2}+\frac{a_3}{10^3}+\cdots$ where $a_n\in\{0,1,2,\ldots,9\}$.}
