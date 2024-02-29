@@ -7,7 +7,7 @@ texpreamble("\usepackage{amsmath}
 ");
 import graph;
 
-size(200,180,IgnoreAspect);
+size(190,140,IgnoreAspect);
 
 real k=(13/15)*pi;
 real a=4/(sin(3*k)-3*k*cos(3*k));

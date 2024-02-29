@@ -228,10 +228,18 @@ With abstract relations, there are only a small number of things we can do.
 
 \subsection{Functions revisited}\label{sec:func2}
 
-In Section \ref{sec:func1}, we naïvely defined a function $f:A\to B$ as a \emph{rule} associating to each element $a\in A$ an element $f(a)\in B$. But what do we mean by a \emph{rule}? We address this issue by turning Example \ref*{ex:relationexs}.\ref{ex:relationexs7} on its head: a function $f:A\to B$ is precisely its \emph{graph}, the relation
-\[
-	\bigl\{\bigl(a,f(a)\bigr):a\in A\bigr\}\subseteq A\times B
-\]
+In Section \ref{sec:func1}, we naïvely defined a function $f:A\to B$ as a \emph{rule} associating to each element $a\in A$ an element $f(a)\in B$. But what do we mean by a \emph{rule}? We address this issue by turning Example \ref*{ex:relationexs}.\ref{ex:relationexs7} on its head: a function $f:A\to B$ is precisely its \emph{graph.}
+
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{}{relfuncsqrt}
+	The function $f:[0,4]\to[0,2]:x\mapsto \sqrt x$ corresponds to the \textcolor{blue}{relation}
+	\[
+		\bigl\{\bigl(x,\sqrt x\bigr):x\in [0,4]\bigr\} \subseteq [0,4]\times [0,2]
+	\]
+	\tcblower
+	\hfill
+	\includegraphics{relations-20-reln3}
+\end{example}
+
 The difficulty is that we cannot use the notation $f(a)$ until we know that we have a function\ldots
 
 \begin{defn}{}{func}
@@ -257,10 +265,6 @@ A relation $f\subseteq A\times B$ is a function if and only if \emph{every} $a\i
 		\includegraphics{relations-05-funcvert}
 		&
 		\includegraphics{relations-06-funcvert}
-		\\
-		$f\subseteq [0,4]\times[0,5]$ a function
-		&
-		$\cR\subseteq [0,4]\times[0,5]$ not a function
 	\end{tabular}
 	\end{center}
 \end{example}
@@ -322,16 +326,17 @@ The example highlights one advantage of the relational approach: the inverse of 
 	By Theorem \ref{thm:relbasic}, condition 1 is equivalent to $\range(f)=B$; that is, $f$ is surjective.\par
 	Condition 2 is equivalent to $(a_1,b),(a_2,b)\in f\Longrightarrow a_1=a_2$: i.e., $f$ is injective.
 \end{proof}
- 
-We'll leave several more examples to the exercises. Here is a very easy one to finish things off.
 
-\begin{example}{Identity function}{}
-	Let $A$ be any set and define the relation $\id_A$ on $A$ by
-	\[
-		\id_A=\bigl\{(a,a):a\in A\bigr\}
-	\]
-	Then $\id_A:A\to A$ is a bijective function, whose inverse is itself: $\id_A^{-1}=\id_A$! This is in fact the same as the relation \emph{equals} (Example \ref*{ex:relationexs}.\ref{ex:relationexs3}). 
-\end{example}
+\begin{example*}{\ref{ex:relfuncsqrt} cont.}{}
+	$f=\bigl\{(x,\sqrt x):x\in[0,4]\bigr\}\subseteq [0,4]\times[0,2]$ is
+	\begin{quote}
+		\emph{Injective} since $(x_1,y),(x_2,y)\in f\implies x_1=y^2$ and $x_2=y^2$, whence $x_1=x_2$.\par
+		\emph{Surjective} since $\range(f)=\bigl\{\sqrt x:x\in[0,4]\bigr\}=[0,2]$.
+	\end{quote}
+	Since $f$ is bijective, its inverse relation is a \emph{function}: $f^{-1}=\bigl\{(y,y^2):y\in[0,2]\bigr\}$ or, as we'd normally write, $f^{-1}:[0,2]\to[0,4]:y\mapsto y^2$.
+\end{example*}
+ 
+
 
 \goodbreak
 
@@ -380,8 +385,7 @@ We'll leave several more examples to the exercises. Here is a very easy one to f
 % 		\end{center}
 % 	\end{enumerate}
 % \end{examples}
-% 
-% All three of our examples help to illustrate the following important result.
+%
 % 
 % 
 % 
@@ -407,24 +411,6 @@ We'll leave several more examples to the exercises. Here is a very easy one to f
 % 		(0,\sqrt 2)\text{ and } (0,\sqrt 3)\text{ are distinct elements of $f^{-1}$ with the same  first component.}
 % 	\]
 % \end{example}
-
-% \boldinline{Inverse Images}
-% 
-% Analogously to the concept of images of sets (Section \ref{sec:func1}), we can define the \emph{inverse image} of a subset $V\subseteq B$ under a function $f:A\to B$ by
-% \[
-% 	f^{-1}(V)=\{a\in A:f(a)\in V\}
-% \]
-% In particular, if $\{b\}\subseteq B$ has only one element, then its inverse image is
-% \[
-% 	f^{-1}(\{b\})=\{a\in A:f(a)=b\}
-% \]
-% Both are \emph{subsets} of $A$. For instance, in the last example the inverse image of $\{0\}$ consists of zero and all irrational numbers!
-% \[
-% 	f^{-1}(\{0\})=\{0\}\cup(\R\setminus\Q)
-% \]
-% When $f^{-1}\subseteq B\times A$ is a function, each inverse image of a singleton consists of one point of $A$: thus $f^{-1}(\{b\})=\{a\}$. \emph{Only} in such a case are we entitled to write $f^{-1}(b)=a$.
-
-
 % 
 % 
 % \begin{aside}{}{}
@@ -452,20 +438,11 @@ We'll leave several more examples to the exercises. Here is a very easy one to f
 % \]
 % The implied domains of these functions are $\dom(f)=\R$ and $\dom(g)=\R\setminus\{1\}$. Even though these have the same graph whenever \emph{both} are defined, regardless of which notion you choose we have $f\neq g$, since the functions have \emph{different domains.}
 % \end{aside}
-% 
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-%     \item What does it mean for a \emph{relation} $\cR\subseteq A\times B$ to be a \emph{function}?
-%     \item If $f\subseteq A\times B$ is a function, what does it mean, in the language of relations, for $f$ to be \emph{injective}? \emph{Surjective}?
-%     \item True or false: a relation $\cR$ has a domain and range if and only if it is a function.
-%   \end{enumerate}
 
 
 \begin{exercises}{}{}
 	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-2-functions.html}{online}.
 
-Insert $f(x)=x^2,x^3$, etc? Fill up page\ldots
 
 \begin{enumerate}
   \item Suppose $f$ is the relation
@@ -473,21 +450,23 @@ Insert $f(x)=x^2,x^3$, etc? Fill up page\ldots
   	f=\bigl\{(1,1),(2,3),(3,5),(4,7)\bigr\} \subseteq\{1,2,3,4\}\times\{1,2,3,4,5,6,7\}
   \]
   \begin{enumerate}
-    \item Show that $f$ is a function $f:\{1,2,3,4\}\to\{1,2,3,4,5,6,7\}$. Can you find a concise formula $f(x)$ to describe $f$?
+    \item Show that we have a function $f:\{1,2,3,4\}\to\{1,2,3,4,5,6,7\}$. Can you find a concise formula $f(x)$ to describe this function?
     \item Is $f$ injective? Justify your answer.
-    \item Suppose that $g\subseteq\{1,2,3,4\}\times B$ is another relation so that the \emph{graphs} of $f$ and $g$ are identical: i.e.
-    \[\bigl\{(a,f(a)):a\in\{1,2,3,4\}\bigr\}=\bigl\{(a,g(a)):a\in\{1,2,3,4\}\bigr\}.\] \emph{as sets.} If $g$ is a bijective function, what is $B$?
+    \item Suppose $g\subseteq\{1,2,3,4\}\times B$ is another relation so that the \emph{graphs} of $f$ and $g$ are identical: that is, \emph{as sets,}
+    \[
+    	\bigl\{(a,f(a)):a\in\{1,2,3,4\}\bigr\} = \bigl\{(a,g(a)):a\in\{1,2,3,4\}\bigr\}
+    \]
+    If $g$ is a bijective function, what is $B$?
   \end{enumerate}
   
   \item Decide whether each of the following relations are functions. For those which are, decide whether the function is injective and/or surjective.
   \begin{enumerate}
-    \item $\cR=\{(x,y)\in[-1,1]\times[-1,1]:x^2+y^2=1\}$
-    \item $\cS=\{(x,y)\in[-1,1]\times[0,1]:x^2+y^2=1\}$
-    \item $\mathcal T=\{(x,y)\in[0,1]\times[-1,1]:x^2+y^2=1\}$
-    \item $\mathcal U=\{(x,y)\in[0,1]\times[0,1]:x^2+y^2=1\}$
+    \item $\cR=\bigl\{(x,y)\in[-1,1]\times[-1,1]:x^2+y^2=1\bigr\}$
+    \item $\cS=\bigl\{(x,y)\in[-1,1]\times[0,1]:x^2+y^2=1\bigr\}$
+    \item $\mathcal T=\bigl\{(x,y)\in[0,1]\times[-1,1]:x^2+y^2=1\bigr\}$
+    \item $\mathcal U=\bigl\{(x,y)\in[0,1]\times[0,1]:x^2+y^2=1\bigr\}$
   \end{enumerate}
   
-  \item In Example \ref{ex:reln2} on page \pageref{ex:reln2}, explain why the function $f$ is both injective and surjective using the language of relations: i.e., in the same manner as we analyzed Example \ref{ex:reln1}.
   
 %   \item For each of the examples on page \pageref{ex:reln2}, compute the following inverse images:
 %   \begin{enumerate}
@@ -497,6 +476,7 @@ Insert $f(x)=x^2,x^3$, etc? Fill up page\ldots
 %     \item $f^{-1}\Big(\{-8\}\cup[-7,2]\cup (3,9)\Big)$
 %   \end{enumerate}
   
+  
   \item\begin{enumerate}
     \item Express the function $f:\R\to\R:x\mapsto x^4+3$ as a relation.
     \item What is the inverse relation $f^{-1}$?
@@ -504,19 +484,38 @@ Insert $f(x)=x^2,x^3$, etc? Fill up page\ldots
     \item Prove directly from Definition \ref{defn:11} that $f$ is not injective and not surjective. Compare your arguments with your answer to part (c).
   \end{enumerate}
   
+  
   \item Repeat the previous question for $f:\R\to\R:x\mapsto \sqrt{x^2-4x+5}$.
+  
+  
+  \item\begin{enumerate}
+    \item Express the function $f:\R\to\R:x\mapsto x^3$ as a relation on $\R$.
+    \item What is the inverse relation $f^{-1}$? Is it a function? Justify your answer.
+  \end{enumerate} 
+  
+  
+  \item	Let $A$ be any set and define the relation $\id_A=\bigl\{(a,a):a\in A\bigr\}$ on $A$. Show that $\id_A$ is a bijective function (it is called the \emph{identity function} on $A$). What is its inverse?
+
+  
+  \item Consider the relation $f=\bigl\{(x,x):x\in\Q\bigr\}\cup\bigl\{(x,0):x\not\in\Q\bigr\} \subseteq \R^2$
+  \begin{enumerate}
+    \item Prove that $f$ is a function $\R\to\R$.
+    \item Is $f$ injective? Surjective? Explain.
+  \end{enumerate}
+  
   
   %\item Give a formal proof of Theorem \ref{thm:inversedomrange}.
   
 %   \item Prove or disprove the following: if $f:A\to B$ is a function, and $U,V\subseteq B$, then
 %   \[f^{-1}(U\cap V)=f^{-1}(U)\cap f^{-1}(V)\]
   
-  \item Suppose $f\subseteq A\times B$ is a function and let $U\subseteq A$.
+  \item Suppose $f\subseteq A\times B$ is a function.
   \begin{enumerate}
-    \item Explain why it would be reasonable to write the \emph{image of $U$} (recall Definition \ref{defn:function1}) as
+    \item If $U\subseteq A$, explain why it would be reasonable to write the \emph{image of $U$}  as
     \[
     	f(U)=\bigl\{ b\in B:\exists u\in U\text{ with }(u,b)\in f\bigr\}
     \]
+    (\emph{Recall Definition \ref{defn:function1} if you're unsure what this means})
     \item If $V\subseteq B$, how would you write the inverse image $f^{-1}(V)$ in this language?
   \end{enumerate}
 \end{enumerate}
@@ -524,7 +523,6 @@ Insert $f(x)=x^2,x^3$, etc? Fill up page\ldots
 \end{exercises}
 
 \clearpage
-
 
 
 \subsection{Equivalence Relations}\label{sec:equiv}

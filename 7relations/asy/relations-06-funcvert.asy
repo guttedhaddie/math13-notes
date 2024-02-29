@@ -7,7 +7,7 @@ texpreamble("\usepackage{amsmath}
 ");
 import graph;
 
-size(200,180,IgnoreAspect);
+size(190,140,IgnoreAspect);
 
 pair R(real t){return (1.5+1.5*cos(t),2*sin(2t)+2.5);}
 
