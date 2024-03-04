@@ -15,16 +15,14 @@
   \begin{enumerate}
   	 \item (1) is reflexivity, (2) is symmetry, and (3) is transitivity
   	 \item (1) is transitivity, (2) is symmetry, and (3) is reflexivity
-  	 \item (1) is transitivity, (2) is reflexivity, and (3) is antisymmetry
+  	 \item (1) is transitivity, (2) is reflexivity, and (3) is antisymmetry (Exercise \ref{sec:equiv}.\ref*{exs:anstisymm})
   	 \item (1) is transitivity, (2) is reflexivity, and (3) is symmetry
  	\end{enumerate}
   	
   	
-	\item Suppose $\cR$ is an equivalence relation on a set $X$. Then $\cR^{-1}$ is \rule{2cm}{0.15mm} also an equivalence relation.
+	\item Let $\cR$ be an equivalence relation on a set $X$. Then $\cR^{-1}$ is \rule{2cm}{0.15mm} an equivalence relation.
 	\begin{enumerate}
-    \item never
-    \item sometimes
-    \item always
+    \item never \qquad\qquad (b) \ sometimes\qquad\qquad (c) \ always
 	\end{enumerate}
 
 
@@ -37,7 +35,7 @@
 	\end{enumerate}
 
 
-	\item Which of the following describe the relationship between partitions and equivalence relations? Select all that apply.
+	\item Which of the following sentence are true? Select all that apply.
 	\begin{enumerate}
     \item Equivalence relations have nothing to do with partitions in general.
     \item For any set $X$ and equivalence relation $\sim$ on $X$, the quotient set $\quotient X\sim$ is a partition of $X$.
@@ -50,13 +48,31 @@
 	\begin{quote}
 		$x\sim y\iff x-y\ \underline{\phantom{\in\Q\quad}}$
 	\end{quote}
+	
+		
+	
+	\item Give examples of an infinite set $X$ and an equivalence relation $\sim$ on $X$ such that
+	\begin{enumerate}
+    \item $\sim$ has finitely many equivalence classes.
+    \item $\sim$ has infinitely many classes, each of which have finitely many elements.
+    \item $\sim$ has infinitely many classes, each of which have infinitely many elements.
+    \item $\sim$ has a class of size $n$ for each $n \in \N$.
+	\end{enumerate}
 \end{enumerate}
 
 
 \boldsubsection{Practice Problems Section \ref*{sec:equiv}}
 
 \begin{enumerate}
+	\item Let $\cS=\bigl\{(x,y)\in\R^2:\sin^2x+\cos^2y=1\bigr\}$.
+	\begin{enumerate}
+	  \item Give an example of two real numbers $x,y$ such that $x\mathbin{\cS}y$.
+	  \item Is $\cS$ reflexive? symmetric? transitive? Justify your answers.
+	\end{enumerate}
+  
+  
 	\item Define $\cR$ on $\N_{\ge 2}$ by $a\relR b$ if and only if $\gcd(a,b) > 1$. Determine whether $\cR$ is reflexive, symmetric, or transitive. 
+
 
 	\item Let $\sim$ be the relation on $\R$ defined by $x \sim y$ if and only if $x - y \in \Z$.
 	\begin{enumerate}
@@ -65,7 +81,9 @@
     \item Describe the quotient $\quotient{\R}\sim$.
 	\end{enumerate}
 
+
 	\item Let $X$ be a non-empty set. Then $\{X\}$ and $\bigl\{\{x\} : x \in X\bigr\}$ are both partitions of $X$. For both partitions, determine the equivalence relation whose equivalence classes form the subsets of the partition.
+
 
 	\item Determine whether each collections $\{A_n\}$ partitions $\R^2$. Justify your answers and sketch several of the sets $A_n$.
 	\begin{enumerate}
@@ -73,5 +91,16 @@
 	  \item $A_n=\bigl\{(x,y)\in\R^2:y=x^2+n\bigr\}$, for $n\in\R$.
 	  \item $A_n=\bigl\{(x,y)\in\R^2:y=\cos(x-n)\bigr\}$, for $n\in\R$.
 	\end{enumerate}
+	
+	
+	\item Let $X=\{1,2,3,4\}$ and define a relation $\cR$ on $X$ by
+	\[
+		\cR=\bigl\{(1,3),(1,4),(2,2),(2,3),(3,1),(3,2),(4,3),(4,4)\bigr\}
+	\]
+	Show that the subsets
+	\[
+		A_n=\{x\in X:(n,x)\in\cR\} \tag{where $n=1,2,3,4$}
+	\]
+	do not partition $X$. Also verify that $\cR$ is \emph{not} an equivalence relation.
 \end{enumerate}
 

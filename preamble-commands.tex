@@ -196,3 +196,8 @@
 
 \def\relR{\mathbin{\cR}}
 \def\notR{\mathbin{\not\!\!\cR}}
+\newsavebox\eqbox
+\sbox{\eqbox}{\emph{Transitivity}:\lstsp}
+\def\eqrefl{\makebox[\wd\eqbox][l]{\emph{Reflexivity}:}}
+\def\eqsymm{\makebox[\wd\eqbox][l]{\emph{Symmetry}:}}
+\def\eqtrans{\makebox[\wd\eqbox][l]{\emph{Transitivity}:}}
