@@ -1,0 +1,77 @@
+\pagestyle{empty}
+
+\boldsubsection{Reading Quiz Section \ref*{sec:equiv}}
+
+\begin{enumerate}
+	\item True or False: a relation $\sim$ on a set $X$ is \emph{reflexive} if $\exists x\in X$ such that $x\sim x$.
+
+
+	\item Suppose that $x,y,z\in X$ and $\sim$ is an equivalence relation on $X$. Express each of the following assertions in terms of the properties satisfied by an equivalence relation.
+  \begin{itemize}
+    \item[(1)] $x\in[y]$ and $y\in[z]\implies x\in[z]$
+    \item[(2)] $x\in[x]$
+    \item[(3)] $x\in[y]\iff y\in[x]$
+  \end{itemize}
+  \begin{enumerate}
+  	 \item (1) is reflexivity, (2) is symmetry, and (3) is transitivity
+  	 \item (1) is transitivity, (2) is symmetry, and (3) is reflexivity
+  	 \item (1) is transitivity, (2) is reflexivity, and (3) is antisymmetry
+  	 \item (1) is transitivity, (2) is reflexivity, and (3) is symmetry
+ 	\end{enumerate}
+  	
+  	
+	\item Suppose $\cR$ is an equivalence relation on a set $X$. Then $\cR^{-1}$ is \rule{2cm}{0.15mm} also an equivalence relation.
+	\begin{enumerate}
+    \item never
+    \item sometimes
+    \item always
+	\end{enumerate}
+
+
+	\item Which of the following statements are true? Select all that apply.
+	\begin{enumerate}
+    \item If $X$ is partitioned into the equivalence classes of some equivalence relation $\sim$, then each element of $X$ lies in some equivalence class $[x]$.
+    \item Suppose that $X$ is partitioned into subsets and that $x,y,z\in X$. If $x,y$ lie in the same subset, and $y,z$ lie in the same subset of the partition, then it is possible for $x$ and $z$ to lie in different subsets.
+    \item $\bigl\{\emptyset, \{a\}, \{b,c\}\bigr\}$ is a partition of $\{a,b,c\}$.
+    \item Every subset in a partition of a set must have the same size.
+	\end{enumerate}
+
+
+	\item Which of the following describe the relationship between partitions and equivalence relations? Select all that apply.
+	\begin{enumerate}
+    \item Equivalence relations have nothing to do with partitions in general.
+    \item For any set $X$ and equivalence relation $\sim$ on $X$, the quotient set $\quotient X\sim$ is a partition of $X$.
+    \item There exists an infinite set $X$ and a partition $\{A_n\}$ of $X$ such that for any equivalence relation $\sim$ on $X$, there is $A \in \{A_n\}$ for which $A \neq [x]$ for any $x \in X$.
+    \item Given any partition $\{A_n\}$ of $X$, there is an equivalence relation whose equivalence classes are exactly the subsets of $X$ in $\{A_n\}$.
+	\end{enumerate}
+	
+	
+	\item The set of real numbers $\R=\Q\cup(\R\setminus\Q)$ is partitioned into the subsets of rational and irrational numbers. Describe an equivalence relation on $\R$ whose equivalence classes form this partition:
+	\begin{quote}
+		$x\sim y\iff x-y\ \underline{\phantom{\in\Q\quad}}$
+	\end{quote}
+\end{enumerate}
+
+
+\boldsubsection{Practice Problems Section \ref*{sec:equiv}}
+
+\begin{enumerate}
+	\item Define $\cR$ on $\N_{\ge 2}$ by $a\relR b$ if and only if $\gcd(a,b) > 1$. Determine whether $\cR$ is reflexive, symmetric, or transitive. 
+
+	\item Let $\sim$ be the relation on $\R$ defined by $x \sim y$ if and only if $x - y \in \Z$.
+	\begin{enumerate}
+    \item Prove that $\sim$ is an equivalence relation.
+    \item List three distinct elements of the equivalence class $[\frac 52]$. In general, what is an equivalence class $[x]$ as a set?
+    \item Describe the quotient $\quotient{\R}\sim$.
+	\end{enumerate}
+
+	\item Let $X$ be a non-empty set. Then $\{X\}$ and $\bigl\{\{x\} : x \in X\bigr\}$ are both partitions of $X$. For both partitions, determine the equivalence relation whose equivalence classes form the subsets of the partition.
+
+	\item Determine whether each collections $\{A_n\}$ partitions $\R^2$. Justify your answers and sketch several of the sets $A_n$.
+	\begin{enumerate}
+		\item $A_n=\bigl\{(x,y)\in\R^2:y=2x+n\bigr\}$, for $n\in\Z$.
+	  \item $A_n=\bigl\{(x,y)\in\R^2:y=x^2+n\bigr\}$, for $n\in\R$.
+	  \item $A_n=\bigl\{(x,y)\in\R^2:y=\cos(x-n)\bigr\}$, for $n\in\R$.
+	\end{enumerate}
+\end{enumerate}
+

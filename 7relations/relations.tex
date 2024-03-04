@@ -80,8 +80,8 @@ With abstract relations, there are only a small number of things we can do.
 	\[
 		\cR^{-1}=\bigl\{(b,a)\in B\times A:(a,b)\in\cR\bigr\}
 	\]
-	To find the elements of $\cR^{-1}$, you simply switch the components of each ordered pair in $\cR$.\par
-	We say that $\cR$ is \emph{symmetric} if $\cR=\cR^{-1}$ (this requires $A=B$!).
+	To find the elements of $\cR^{-1}$, you simply switch the components of each ordered pair in $\cR$.\smallbreak
+	We say that $\cR$ is \emph{symmetric} if $\cR=\cR^{-1}$ (requires $A=B$): i.e., $(x,y)\in \cR\Longleftrightarrow (y,x)\in \cR$.
 \end{defn}
 
 \begin{thm}{}{relbasic}
@@ -525,355 +525,607 @@ The example highlights one advantage of the relational approach: the inverse of 
 \clearpage
 
 
-\subsection{Equivalence Relations}\label{sec:equiv}
+\subsection{Equivalence Relations \& Partitions}\label{sec:equiv}
 
-In mathematics, the notion of \emph{equality} is not as simple as one might think. The idea of two numbers being equal is straightforward, but suppose we want to consider two paths between given points as `equal' if and only if they have the same length? Since two `equal' paths might look very different, is this a good notion of equality? Mathematicians often want to gather together objects that have a common property and then treat them as if they were a single object. This is done using equivalence relations and equivalence classes.\par
 
-First recall the alternative notation for a relation on a set $A$: if $\cR\subseteq A\times A$ is a relation on $A$, then $x\,\cR\,y$ has the same meaning as $(x,y)\in\cR$. We might read $x\,\cR\,y$ as `$x$ is $\cR$-related to $y$.'
+\newsavebox\eqbox
+\sbox{\eqbox}{\emph{Transitivity}:\lstsp}
+\def\eqrefl{\makebox[\wd\eqbox][l]{\emph{Reflexivity}:}}
+\def\eqsymm{\makebox[\wd\eqbox][l]{\emph{Symmetry}:}}
+\def\eqtrans{\makebox[\wd\eqbox][l]{\emph{Transitivity}:}}
 
-\newsavebox\mybox
-\sbox{\mybox}{\emph{Transitivity}}
-\def\refl{\makebox[\wd\mybox][l]{\emph{Reflexivity}}}
-\def\symm{\makebox[\wd\mybox][l]{\emph{Symmetry}}}
-\def\trans{\makebox[\wd\mybox][l]{\emph{Transitivity}}}
 
-\begin{defn}{}{}
-A relation $\cR$ on a set $A$ may be described as \emph{reflexive, symmetric} or \emph{transitive} if it satisfies the following properties:
-\begin{itemize}
-  \item \refl $\forall x\in A$, \ $x\,\cR\,x$\hfill(every element of $A$ is related to itself)
-  \item	\symm $\forall x,y\in A,\ x\,\cR\,y\implies y\,R\,x$\hfill(if $x$ is related to $y$, then $y$ is related to $x$)
-  \item	\trans $\forall x,y,z\in A,\ x\,\cR\,y$ \ and \ $y\,\cR\,z\implies x\,\cR\,z$\hfill(if $x$ is related to $y$, and $y$ is related to $z$, \phantom{bob}\hfill then $x$ is related to $z$)
+What do we mean when we say that two objects are \emph{equal}? Mathematicians use the word flexibly, often in reference to non-identical objects which share some common property.\footnote{This goes back at least to Euclid, who used \emph{equal} to refer to congruent triangles. To Euclid, congruent triangles were \emph{essentially identical} and therefore not worth distinguishing.} You've been doing this for years, indeed our very first result (Theorem \ref{thm:sumeven}: even + even $=$ even) has exactly this flavor.\smallbreak
+
+To help develop a more flexible notion of equality, consider three important concepts.
+
+\begin{example}{}{equals}
+	Let $X$ be a set. The following are immediate:
+	\begin{itemize}\itemsep1pt
+	  \item[]\eqrefl $\forall x\in X$, \ $x=x$
+		\item[]\eqsymm $(\forall x,y\in X)\lstsp x=y\implies y=x$
+		\item[]\eqtrans $(\forall x,y,z\in X)\lstsp x=y$ \ and \ $y=z\implies x=z$
 	\end{itemize}
-\end{defn}
-
-Symmetry is exactly the same notion as in Definition \ref{defn:relnsym}.
-
-\begin{examples}{}{}
-	\begin{enumerate}
-	\item Let $A=\R$ and let $\cR$ be $\le$. Thus $2\le 3$, but $7\nleq 4$. We check whether $\cR$ satisfies the above properties.
-	\begin{itemize}
-		\item \refl True. $\forall x\in\R$, \ $x\le x$.
-		\item \symm False. For example, $2\le 3$ but $3\nleq 2$.
-		\item \trans True. $\forall x,y,z\in\R$, if $x\le y$ and $y\le z$, then $x\le z$.
-	\end{itemize}
-	\item Let $A$ be the set of lines in the plane and define $\ell_1\,R\,\ell_2\iff \ell_1$ and $\ell_2$ intersect.\par
-	\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-		\begin{itemize}
-			\item \refl True. Every line intersects itself, so $\ell\,\cR\,\ell$ for all $\ell\in A$.
-			\item \symm True. For all lines $\ell_1,\ell_2\in A$, if $\ell_1$ intersects $\ell_2$, then $\ell_2$ intersects $\ell_1$.
-			\item \trans False. As the picture illustrates, we may let $\ell_1$ and $\ell_3$ be parallel lines, and $\ell_2$ cross both of these. Then $\ell_1\,\cR\,\ell_2$ and $\ell_2\,\cR\,\ell_3$, but $\ell_1\not\!\!\cR\,\ell_3$.
-		\end{itemize}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
-		\includegraphics[width=\textwidth]{relations-07-parallel}
-	\end{minipage}
-\end{enumerate}
-\end{examples}
-
-\begin{defn}{}{}
-	An \emph{equivalence relation} is a relation $\sim$ which is reflexive, symmetric and transitive.
-\end{defn}
-
-The symbol $\sim$ is almost universally used for an abstract equivalence relation. It can be read as `related to,' `tilde,' or `twiddles.' The two examples above are \emph{not} equivalence relations because they fail one of the three conditions. We now exhibit the simplest equivalence relation.
-
-\begin{example}{}{}
-	Equals `=' is an equivalence relation on any set, hence the name!
 \end{example}
 
-Read the definitions of reflexive, symmetric and transitive until you are certain of this fact. There are countless other equivalence relations: here are a few.
+We turn this simple example on its head to create an abstract, generalized notion of equality.
 
-\begin{examples}{}{}
-\begin{enumerate}
-	\item For all $x,y\in\Z$, we define the relation $\sim$ by
+\begin{defn}{}{}
+	We define the following properties for a relation\footnotemark{} $\sim$ on a set $X$:
+	\begin{itemize}\itemsep1pt
+	  \item[]\eqrefl $\forall x\in X$, \ $x\sim x$\hfill(every element of $X$ is related to itself)
+		\item[]\eqsymm $x\sim y\implies y\sim x$\hfill(if $x$ is related to $y$, then $y$ is related to $x$)
+		\item[]\eqtrans $x\sim y$ \ and \ $y\sim z\implies x\sim z$\hfill(if $x$ is related to $y$ and $y$ is related to $z$,\\
+		\phantom{bob}\hfill then $x$ is related to $z$)
+	\end{itemize}
+	An \emph{equivalence relation} on $X$ is a relation $\sim$ satisfying all three properties.
+\end{defn}
+
+\footnotetext{\emph{Symmetry} is precisely as in Definition \ref{defn:relnsym}. As we've done, the universal quantifiers for symmetry and transitivity are typically hidden. The symbol $\sim$ (`tilde,' or `twiddles') is commonly used for an abstract equivalence relation. It is the same symbol used to denote \emph{similar triangles}: congruence and similarity are both equivalence relations on the set of triangles!}
+
+\smallbreak
+
+Example \ref{ex:equals} says that `equals' is indeed an equivalence relation on any set $X$. Things would be very boring if this were the only example\ldots
+
+
+\begin{example}{}{eqrelmod2}
+	Define a relation $\sim$ on $\Z$ by
 	\[
-		x\sim y\iff x-y\ \text{ is even.}
+		x\sim y\iff x-y\ \text{ is even} \tag{otherwise said, $x\equiv y\spmod 2$}
 	\]
 	We claim that $\sim$ is an equivalence relation on $\Z$.
 	\begin{itemize}
-		\item \refl $\forall x\in\Z,\ x-x=0$ is even, hence $x\sim x$.
-		\item \symm $\forall x,y\in\Z,\ x\sim y\implies x-y$ is even $\implies y-x$ is even $\implies y\sim x$.
-		\item \trans$\forall x,y,z\in\Z$, if $x\sim y$ and $y\sim z$, then $x-y$ and $y-z$ are even. But the sum of two even numbers is even, hence $x-z=(x-y)+(y-z)$ is even, and so $x\sim z$.
+		\item[]\eqrefl $\forall x\in\Z,\ x-x=0$ is even, hence $x\sim x$.
+		\item[]\eqsymm Given $x,y\in\Z$, \ $x\sim y\implies x-y$ even $\implies y-x$ even $\implies y\sim x$.
+		\item[]\eqtrans Given $x,y,z\in\Z$,
+		\begin{align*}
+			x\sim y \text{ and } y\sim z&\implies x-y\text{ even \ and }y-z\text{ even }\\
+			&\implies x-z=(x-y)+(y-z)\text{ is even } \tag{Theorem \ref{thm:sumeven}!}\\
+			&\implies x\sim z
+		\end{align*}
 	\end{itemize}
-	
-	\item Let $A=\{$all students taking this course$\}$. For all $x,y\in A$, let
-	\[x\sim y\iff x\ \text{ achieves the same letter-grade as $y$.}\]
-	Then $\sim$ is an equivalence relation on $A$; here is the proof.
-	\begin{itemize}
-		\item \refl $\forall x\in A,\ x\sim x$ since everyone scores the same as themself!
-		\item \symm $\begin{array}[t]{@{}rl}
-			\forall x,y\in A,\ x\sim y&\implies x\ \text{achieves the same letter-grade as $y$}\\
-			&\implies y\ \text{achieves the same letter-grade as $x$}\\
-			&\implies y\sim x
-		\end{array}$
-		\item \trans$\forall x,y,z\in A$, if $x\sim y$ and $y\sim z$, then $x$ achieves the same as $y$ who achieves the same as $z$, whence $x$ achieves the same as $z$. Thus $x\sim z$.
-	\end{itemize}
+As we'll see shortly, an equivalence relation algebraically characterizes what it means for elements to share a common property: here $x\sim y$ if and only if they have the same \emph{parity.}
+\end{example}
 
-	\item We define an equivalence relation on $\Z$ by
-	\[
-		\forall x,y\in\Z,\ \ x\sim y\iff x^2\equiv y^2\pmod 5
-	\]
-		\begin{itemize}
-			\item \refl $\forall x\in\Z,\ x\sim x$ since $x^2$ is always congruent to itself!
-			\item \symm $\begin{array}[t]{@{}rl}
-				\forall x,y\in\Z,\ x\sim y&\implies x^2\equiv y^2\pmod 5\\
-				&\implies y^2\equiv x^2\pmod 5\\
-				&\implies y\sim x
-			\end{array}$
-			\item \trans $\forall x,y,z\in\Z$, if $x\sim y$ and $y\sim z$, then $x^2\equiv y^2$ and $y^2\equiv z^2\pmod 5$. But then $x^2\equiv z^2\pmod 5$ and so $x\sim z$.
-	\end{itemize}
-\end{enumerate}
-\end{examples}
+\goodbreak
 
-The most important thing to observe in each of these examples is that {\bf an equivalence relation separates elements of a set into subsets where elements share a common property} (even/oddness, letter-grade, etc.). The next definition formalizes this idea.
 
-\begin{defn}{}{equivrel}
-	Let $\sim$ be an equivalence relation on a set $X$. The \emph{equivalence class} of an element $x\in X$ is the set
-	\[
-		[x]=\{y\in X:y\sim x\}
-	\]
-	Otherwise said, $y\sim x\iff y\in[x]$. The set of all equivalence classes is known as the \emph{quotient} of $X$ by $\sim$ or simply `$X$ mod $\sim$,' and is denoted
-	\[
-		\quotient X\sim=\Big\{[x]:x\in X\Big\}
-	\]
-\end{defn}
-
-Let us think about the definition of equivalence class in the context of our previous examples.
+It would also be somewhat dull if every relation were an equivalence relation. In fact most are not.
 
 \begin{examples}{}{}
-	\begin{enumerate}
-		\item $[0]=\{y\in\Z:y\sim 0\}=\{y\in\Z:y\text{ is even}\}$ is the set of even numbers. Note that $[0]=[2]=[4]=[6]$, etc. The other equivalence class is $[1]=\{y\in\Z:y-1\text{ is even}\}$, which is the set of odd numbers. The quotient set is
-		\[
-			\smash{\quotient \Z\sim}=\bigl\{[0],[1]\bigr\}=\bigl\{\{\text{even numbers}\},\{\text{odd numbers}\}\bigr\}
-		\]
-	
-		\item There is one equivalence class for each letter grade awarded. Each equivalence class contains all the students who obtain a particular letter-grade. If we call the equivalence classes $\mathrm{A^+,A,A^-,B^+,\ldots,F}$, where, say, $\mathrm B=\{$students obtaining a B-grade$\}$, then
-		\[
-			\smash{\quotient{\{\text{Students}\}}{\sim}}=\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\}
-		\]
-	
-		\item The equivalence classes for this example are a little tricky. First observe that
-		\[
-			x\equiv y\spmod 5\implies x^2\equiv y^2\spmod 5
-		\]
-		so that there are at most five equivalence classes; those of 0, 1, 2, 3 and 4. Are they distinct?	If we square each of these and consider the remainder modulo 5, we obtain
-		\[
-			\begin{array}{l@{}r|c|c|c|c|c}
-				x&\spmod 5&0&1&2&3&4\\\hline
-				x^2&\spmod 5&0&1&4&4&1
-			\end{array}
-		\]
-		Notice that $1\sim 4$, so they share an equivalence class. Similarly $2\sim 3$. Indeed the distinct equivalence classes are
-		\begin{gather*}
-			[0]=\{x\in\Z:x\equiv 0\spmod 5\}\\
-			[1]=\{x\in\Z:x\equiv 1,4\spmod 5\}\\
-			[2]=\{x\in\Z:x\equiv 2,3\spmod 5\}
-		\end{gather*}
-		In this case the quotient is the set
-		\[
-			\smash{\quotient{\Z}{\sim}}=\Bigl\{[0],[1],[2]\Bigr\}
-		\]
+	\exstart Consider the relation $\le$ on the natural numbers $\N$. We check each condition:
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item[]\begin{itemize}
+			\item[]\eqrefl True. $\forall x\in\R$, \ $x\le x$.
+			\item[]\eqsymm False. For example, $2\le 3$ but $3\nleq 2$.
+			\item[]\eqtrans True. $\forall x,y,z\in\R$, if $x\le y$ and $y\le z$, then $x\le z$.
+		\end{itemize}
+		Plainly $\le$ is \emph{not} an equivalence relation on $\N$.
+		
+		\item Let $X$ be the set of lines in the plane and define $\ell_1\relR\ell_2\Longleftrightarrow \ell_1,\ell_2$ intersect.
+		\begin{itemize}
+			\item[]\eqrefl True. Every line intersects itself, so $\ell\relR\ell$ for all $\ell\in X$.\par
+			\begin{minipage}[t]{0.67\linewidth}\vspace{-5pt}
+				\item[]\eqsymm True. For all lines $\ell_1,\ell_2\in A$, if $\ell_1$ intersects $\ell_2$, then $\ell_2$ intersects $\ell_1$.\vspace{1pt}
+				\item[]\eqtrans False. As the picture illustrates, if $\ell_1,\ell_3$ are parallel and $\ell_2$ crosses both, then $\ell_1\relR\ell_2$, $\ell_2\relR\ell_3$ and $\ell_1\notR\ell_3$.
+			\end{minipage}
+			\hfill
+			\begin{minipage}[t]{0.3\linewidth}\vspace{-3pt}
+				\includegraphics{relations-07-parallel}
+			\end{minipage}
+		\end{itemize}
+		Again $\cR$ is not an equivalence relation on $X$.
+		
+		\item The relation $\cS=\bigl\{(1,1),(1,3),(3,1),(3,3)\bigr\}$ is not an equivalence relation on $X=\{1,2,3\}$.
+		\begin{itemize}
+			\item[]\eqrefl False. For instance $(2,2)\not\in\cS$ \ (otherwise said, $2\mathbin{\not\!\cS} 2$).
+			\item[]\eqsymm True. In all four cases, $(x,y)\in\cS\Longrightarrow (y,x)\in\cS$ is clear.
+			\item[]\eqtrans True. Check this yourself; there are six valid combinations!
+		\end{itemize} 
 	\end{enumerate}
 \end{examples}
 
-Here is one further example of an equivalence relation, this time on $\R^2$. Be careful with the notation: $\R^2=\R\times\R$ is already a Cartesian product, so a relation on $\R^2$ is a subset of $\R^2\times\R^2$!
 
+The usefulness of equivalence relations comes when we group together all related elements.
 
-\begin{example}{}{equivcircle}
-Let $\sim$ be the relation on $\R^2$ defined by $(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2$. We claim that this is an equivalence relation.
-	\begin{itemize}
-		\item \refl $\forall (x,y)\in\R^2,\ x^2+y^2=x^2+y^2$.
-		\item \symm $\begin{array}[t]{@{}rl}
-		\forall (x,y),(v,w)\in\R^2,\ (x,y)\sim(v,w)&\implies x^2+y^2=v^2+w^2\\
-		&\implies v^2+w^2=x^2+y^2\\
-		&\implies (v,w)\sim(x,y)
-		\end{array}$
-		\item \trans $\forall (x,y),(v,w),(p,q)\in\R^2$, if $(x,y)\sim (v,w)$ and $(v,w)\sim (p,q)$, then $x^2+y^2=v^2+w^2$ and $v^2+w^2=p^2+q^2$. But then $x^2+y^2=p^2+q^2$ and so $(x,y)\sim (p,q)$.
-	\end{itemize}
-	
-	$\sim$ is therefore an equivalence relation. But what are the equivalence classes? By definition,
+\begin{defn}{}{equivrel}
+	Given an equivalence relation $\sim$ on $X$, the \emph{equivalence class} of $x\in X$ is the set
 	\[
-		[(x,y)]=\Bigl\{(v,w)\in\R^2:v^2+w^2=x^2+y^2\Bigr\}
+		[x]=\{y\in X:y\sim x\} \tag{$y\in [x]\Longleftrightarrow y\sim x$}
 	\]
-	\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-		This isn't particularly helpful. Indeed it is easier to think of each of these sets as
+	If $y\in[x]$, we call $y$ a \emph{representative} of the equivalence class $[x]$. The \emph{quotient} of $X$ by $\sim$ is the set of equivalence classes:
+	\[
+		\quotient X\sim=\bigl\{[x]:x\in X\bigr\} \tag{read `$X$ modulo $\sim$'}
+	\]
+\end{defn}
+
+\begin{examples}{}{}
+	We start by revisiting our first two examples.
+	\begin{enumerate}
+	  \item (Example \ref{ex:equals})\lstsp For the equivalence relation $x\sim y\Longleftrightarrow x=y$ on a set $X$, each equivalence class has precisely one element $[x]=\{x\}$; the quotient is the set of singleton subsets,
+	  \[
+	  	\quotient X\sim=\bigl\{\{x\}:x\in X\bigr\}
+	  \]
+	  \item (Example \ref{ex:eqrelmod2})\lstsp For the relation $x\sim y\Longleftrightarrow x-y$ is even, there are two equivalence classes:
+	  \begin{gather*}
+	  	[0]=\{\ldots,-4,-2,0,2,4,\ldots\}=2\Z=\{\text{even integers}\}\\
+	  	[1]=\{\ldots,-3,-1,1,3,5,\ldots\}=1+2\Z=\{\text{odd integers}\}
+	  \end{gather*}
+	  and the quotient has two elements: $\quotient{\Z}\sim=\bigl\{[0],[1]\bigr\}$.
+	\end{enumerate}
+\end{examples}
+
+Note that any even number is a representative of the first class in the even/odd example: for instance
+\[
+	4\in[0]\ \text{ since\ }\ 4-0=4\ \text{ is even.}
+\]
+Indeed $[4]=[0]$, which leads us a simple piece of bookkeeping\ldots
+
+
+\begin{lemm}{}{preequiv}
+	Suppose $\sim$ is an equivalence relation. Then $x\sim y\Longleftrightarrow [x]=[y]$.
+\end{lemm}
+
+Observe how the proof uses all three \textcolor{red}{defining properties} of an equivalence relation.
+
+\begin{proof}
+	\begin{description}
+		\item[$(\Leftarrow)$] By \textcolor{red}{reflexivity}, $x\in[x]$. Thus $[x]=[y] \Longrightarrow x\in[y]\Longrightarrow x\sim y$.
+		\item[$(\Rightarrow)$] Suppose $x\sim y$. We prove that $[x]=[y]$ by showing that each side is a subset of the other.
+		\begin{description}
+			\item[$(\subseteq)$] Let $z\in[x]$. By definition, $z\sim x$. By \textcolor{red}{transitivity},
+			\[
+				z\sim x\ \text{ and }\ x\sim y\implies z\sim y\implies z\in[y]
+			\]
+			We conclude that $[x]\subseteq[y]$.
+			\item[$(\supseteq)$] By \textcolor{red}{symmetry}, we also have $y\sim x$. Repeating the previous argument yields $[y]\subseteq [x]$.\qedhere
+		\end{description}
+	\end{description}
+\end{proof}
+
+
+\begin{example}{}{}
+	Let $X=\{$students taking this course$\}$ and defined, $\forall x,y\in X$,
+	\[
+		x\sim y\iff x \text{ achieves the same letter-grade as $y$}
+	\]
+	It should be clear that this is an equivalence relation (try saying out loud what reflexivity, symmetry \& transitivity mean here!).	There is one equivalence class for each letter-grade awarded, each class being the set of all students who obtain a given grade. If we label the equivalence classes $\mathrm{A^+,A,A^-,B^+,\ldots,F}$, where, say, $\mathrm B=\{$students obtaining a B-grade$\}$, then the quotient
 		\[
-			\Bigl\{(v,w)\in\R^2:v^2+w^2\text{ is \emph{constant}}\Bigr\}
+			\smash{\quotient{X}{\sim}}=\bigl\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\bigr\}
 		\]
-		Each equivalence class is therefore a \emph{circle} centered at the origin! Some of the equivalence classes are drawn in the picture: the class $[(1,0)]$ is highlighted. Moreover, the quotient set is
+		is essentially the set of possible letter-grades!	Suppose Laura \& Jorge both achieve a $\mathrm{B^+}$; both are representatives of this equivalence class and the following propositions are all true:
 		\[
-			\quotient{\R^2}{\sim}=\{\text{circles centered at the origin}\}
-		\]
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-		\includegraphics[width=\textwidth]{relations-24-circles}
-	\end{minipage}
+			\text{Laura}\in \mathrm{B^+},\qquad \text{Jorge}\in\mathrm{B^+},\qquad \text{Laura}\sim\text{Jorge},\qquad [\text{Laura}]=[\text{Jorge}] =\mathrm{B^+}
+		\] 
 \end{example}
 
-% \paragraph{Self-test Questions}
-% 
-% 	\begin{enumerate}
-%     \item True or false: a relation $\sim$ on a set $X$ is \emph{reflexive} if $\exists x\in X$ such that $x\sim x$.
-%    	\item An \emph{equivalence relation} satisfies which three properties? What do they mean?
-%     \item Suppose that $x,y,z\in X$ and $\sim$ is an equivalence relation on $X$. Express each of the following assertions in terms of the properties satisfied by an equivalence relation.
-%     \begin{enumerate}
-%       \item $x\in[y]$ and $y\in[z]\implies x\in[z]$.
-%       \item $x\in[x]$.
-%       \item $x\in[y]\iff y\in[x]$.
-%   	\end{enumerate}
-%   \end{enumerate}
+
+The example is a special case of a general construction.
+
+\begin{thm}{}{funceqreln}
+	Suppose $f$ is a function with domain $X$. Then 
+	\[
+		x\sim y\iff f(x)=f(y)
+	\]
+	defines an equivalence relation on $X$. There is one equivalence class $[x]=\{y\in X:f(x)=f(y)\}$ for each value in $\range(f)$.
+\end{thm}
+
+The proof is an exercise. Observe that a suitable function in the previous example would be
+\[
+	f:X\to \bigl\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\bigr\}\quad \text{where} \quad f(x) =\text{``$x$'s letter grade''}
+\]
+
+
+\begin{examples}{}{funceqreln}
+	\exstart The function
+	\[
+		f:\Z\to\{0,1,2,3,4\}:x\mapsto x^2\pmod 5 \tag{take the remainder on division by 5}
+	\]
+	defines an equivalence relation on $\Z$:
+	\[
+		x\sim y\iff x^2\equiv y^2\pmod 5
+	\]
+	%We could verify this instead using the definition.
+% 		\begin{itemize}
+% 			\item[]\eqrefl $\forall x\in\Z,\ x\sim x$ since $x^2$ is always congruent to itself!
+% 			\item[]\eqsymm $\begin{array}[t]{@{}rl}
+% 				\forall x,y\in\Z,\ x\sim y&\implies x^2\equiv y^2\pmod 5\\
+% 				&\implies y^2\equiv x^2\pmod 5\\
+% 				&\implies y\sim x
+% 			\end{array}$
+% 			\item[]\eqtrans $\forall x,y,z\in\Z$, if $x\sim y$ and $y\sim z$, then $x^2\equiv y^2$ and $y^2\equiv z^2\pmod 5$. But then $x^2\equiv z^2\pmod 5$ and so $x\sim z$.
+% 	\end{itemize}
+% 	The equivalence classes for this example are a little tricky. First observe that
+% 		\[
+% 			x\equiv y\spmod 5\implies x^2\equiv y^2\spmod 5
+% 		\]
+% 		so that there are at most five equivalence classes; those of 0, 1, 2, 3 and 4. Are they distinct?	If we square each of these and consider the remainder modulo 5, we obtain
+% 		\[
+% 			\begin{array}{l@{}r|c|c|c|c|c}
+% 				x&\spmod 5&0&1&2&3&4\\\hline
+% 				x^2&\spmod 5&0&1&4&4&1
+% 			\end{array}
+% 		\]
+% 		Notice that $1\sim 4$, so they share an equivalence class. Similarly $2\sim 3$. Indeed the distinct equivalence classes are
+% 		\begin{gather*}
+% 			[0]=\{x\in\Z:x\equiv 0\spmod 5\}\\
+% 			[1]=\{x\in\Z:x\equiv 1,4\spmod 5\}\\
+% 			[2]=\{x\in\Z:x\equiv 2,3\spmod 5\}
+% 		\end{gather*}
+% 		In this case the quotient is the set
+% 		\[
+% 			\smash{\quotient{\Z}{\sim}}=\Bigl\{[0],[1],[2]\Bigr\}
+% 		\]
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item\label{ex:equivcircle} The function $f:\R^2\to\R:(x,y)\mapsto x^2+y^2$ defines an equivalence relation\footnotemark{} on $\R^2$:
+		\[
+			(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2
+		\]
+		\begin{minipage}[t]{0.67\linewidth}\vspace{-10pt}
+			As stated in the Theorem, there is one equivalence classes for each element $r^2\in\range(f)=\R^+_0$: if $x^2+y^2=r^2$, then
+			\[
+		  	[(x,y)]=\Bigl\{(v,w)\in\R^2:v^2+w^2=r^2\Bigr\}
+			\]
+			is the \emph{circle of radius $r$ centered at the origin.} The equivalence class $[(1,0)]$ \textcolor{blue}{highlighted} in the picture. Moreover, the quotient set is
+			\[
+				\quotient{\R^2}{\sim}=\{\text{circles centered at the origin}\}
+			\]
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.3\linewidth}\vspace{-20pt}
+			\hfill
+			\includegraphics{relations-24-circles}
+		\end{minipage}
+	\end{enumerate}
+	
+\end{examples}
+
+\footnotetext{Be careful: $\sim$ is a subset of $\R^2\times\R^2$, whereas each \emph{equivalence class} is a subset of $\R^2$!}
+
+\vspace{-8pt}
+
+\boldinline{Partitions}
+
+When you cut a cake, each crumb ends up in exactly one slice. To \emph{partition} a set is to do precisely this: split into disjoint subsets so that each element lies in exactly one subset.
+
+\begin{defn}{}{partition}
+	Let $X$ be a set. A collection $\{A_n\}$ of non-empty subsets $A_n\subseteq X$ \emph{partitions} $X$ if
+	\begin{enumerate}
+		\item $X=\bigcup A_n$ \hfill(each $x\in X$ lies in \emph{at least one} subset $A_n$)
+		\item If $A_m\neq A_n$, then $A_m\cap A_n=\emptyset$\hfill(each $x\in X$ lies in \emph{at most one\footnotemark} subset $A_n$)
+	\end{enumerate}
+\end{defn}
+
+\footnotetext{\emph{Distinct} sets $A_n$ are \emph{pairwise disjoint} (Definition \ref{defn:unionint}). It is sometimes useful in examples to permit $A_m=A_n$.}
+
+
+Partitions are intimately related to equivalence relations, as the next example illustrates.
+
+\begin{example}{}{}
+	Partition $X=\{1,2,3,4,5\}$ into subsets
+	\[
+		A_1=\{1,3\},\quad A_2=\{2,4\},\quad A_3=\{5\}
+	\]
+	and consider the relation $\sim$ on $X$ defined by\footnotemark
+	\[
+		x\sim y\iff \text{$x,y$ are in the \emph{same} subset $A_n$}
+	\]
+	Run through the checklist: $\sim$ is reflexive, symmetric \& transitive; it is an equivalence relation! Moreover, its equivalence classes are precisely the partitioning subsets $A_1,A_2$ and $A_3$:
+	\[
+		[1]=[3]=\{1,3\}=A_1,\qquad [2]=[4]=\{2,4\}=A_2,\qquad [5]=\{5\}=A_5 \rule[-10pt]{0pt}{10pt}
+	\]
+\end{example} 
+
+\footnotetext{Otherwise said, $\sim$ is the set $\bigl\{(1,1),(1,3),(3,1),(3,3),(2,2),(2,4),(4,2),(4,4),(5,5)\bigr\}\subseteq X\times X$.}
+
+
+\vspace*{-10pt}
+
+\goodbreak
+
+
+This tight relationship between partitions and equivalence relations is completely general: equivalence relations provide a straightforward \emph{algebraic} method of working with partitions.
+
+\begin{thm}{}{equivpart}
+	%Let $X$ be a set.
+	\exstart If $\sim$ is an equivalence relation on $X$, then its equivalence classes partition $X$.
+	\begin{enumerate}\setcounter{enumi}{1}
+		%\item If $\sim$ is an equivalence relation on $X$, then its equivalence classes partition $X$.
+		\item A partition $\{A_n\}$ of $X$ defines an equivalence relation $\sim$ on $X$ by
+		\[
+			x\sim y\iff \exists A_n\text{ such that }x,y\in A_n
+		\]
+		Its equivalence classes are the distinct subsets $A_n$: otherwise said, $\smash[t]{\quotient X\sim}=\{A_n\}$.
+	\end{enumerate}
+\end{thm}
+
+\begin{minipage}[t]{0.5\linewidth}\vspace{-3pt}
+	In short, \emph{equivalence relations and partitions are essentially the same thing!} The picture illustrates part 2 and the cake-cutting metaphor:
+	\begin{gather*}
+		A_1=[a],\quad A_2=[b]=[c],\\[3pt]
+		b\sim c,\quad a\nsim b, \quad a\nsim c
+	\end{gather*}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.49\linewidth}\vspace{-6pt}
+	\hfill
+	\includegraphics[scale=1]{relations-08-part}
+\end{minipage}
+\medbreak
+
+Before reading the proof, look back at \emph{every} example of an equivalence relation in this section and convince yourself that the equivalence classes really do partition the `big set.' In both parts of the proof look for where the \textcolor{red}{assumptions} are used---reflexive, symmetric, transitive in part 1; the two partition conditions in part 2---and think about why they are needed.
+
+\goodbreak
+
+
+\begin{proof}
+	\begin{enumerate}
+		\item Given an equivalence relation $\sim$ on $X$, we must establish two claims:
+		\begin{enumerate}
+	  	\item Every $x\in X$ lies in some equivalence class. This follows by \textcolor{red}{reflexivity}: for each $x\in X$,
+	  	\[
+	  		x\sim x\implies x\in [x]
+	  	\]
+	  	Every element of $X$ lies in the equivalence class defined by itself!
+	  	
+	  	\item Distinct equivalence classes are pairwise disjoint: $[x]\neq[y]\Longrightarrow [x]\cap[y]=\emptyset$. We establish the contrapositive. If $[x]\cap [y]\neq\emptyset$, then $\exists z\in [x]\cap [y]$. But then
+			\begin{align*}
+				z\sim x\ \text{ and }\ z\sim y&\implies x\sim z\ \text{ and }\ z\sim y \tag{\textcolor{red}{symmetry}}\\
+				&\implies x\sim y \tag{\textcolor{red}{transitivity}}\\
+				&\implies [x]=[y] \tag{\textcolor{red}{Lemma \ref{lemm:preequiv}}}
+			\end{align*}
+		\end{enumerate}
+		
+		\item We need only demonstrate the reflexivity, symmetry and transitivity of $\sim$.
+		\begin{itemize}
+			\item[]\eqrefl $\textcolor{red}{X=\bigcup A_n}\implies$ every $x\in X$ lies in some $A_n$. Thus $x\sim x$ for all $x\in X$.
+			\item[]\eqsymm $x\sim y \implies \exists A_n$ such that $x,y\in A_n \implies y,x\in A_n\implies y\sim x$.
+			\item[]\eqtrans If $x\sim y$ and $y\sim z$, then $\exists A_m,A_n$ such that $x,y\in A_m$ and $y,z\in A_n$. Then
+			\begin{align*}
+				y\in A_m\cap A_n &\implies \textcolor{red}{A_m\cap A_n\neq\emptyset\implies A_m=A_n}\\
+				&\implies x,z\in A_n \implies x\sim z \tag*{\qedhere}
+			\end{align*}
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+
 
 \begin{exercises}{}{}
-	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-3-equivreln.html}{online}.
+	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-3-equiv.html}{online}.
 
 \begin{enumerate}
-	\item A relation $\cR$ is \emph{antisymmetric} if $((x,y)\in \cR)\wedge((y,x)\in \cR)\implies x=y$. Give examples of relations $\cR$ on $A=\{1,2,3\}$ having the stated property.
+  \item Show that $x\sim y\iff x\equiv y\spmod 3$ defines an equivalence relation on $\Z$. What are the equivalence classes?
+  
+  
+  \item A relation $\cR$ is \emph{antisymmetric} if $\bigl((x,y)\in \cR\bigr)\wedge\bigl((y,x)\in \cR\bigr)\Longrightarrow x=y$. Give examples of relations $\cR$ on $X=\{1,2,3\}$ having the stated property.
 	\begin{enumerate}
 		\item $\cR$ is both symmetric and antisymmetric.
 		\item $\cR$ is neither symmetric nor antisymmetric.
 		\item $\cR$ is transitive but $\cR\cup \cR^{-1}$ is not transitive.
 	\end{enumerate}
 	
-	\item Let $\cS=\{(x,y)\in\R^2:\sin^2x+\cos^2y=1\}$.
+	\item Let $\cS=\bigl\{(x,y)\in\R^2:\sin^2x+\cos^2y=1\bigr\}$.
 	\begin{enumerate}
-	  \item Give an example of two real numbers $x,y$ such that $x\,\cS\,y$.
+	  \item Give an example of two real numbers $x,y$ such that $x\mathbin{\cS}y$.
 	  \item Is $\cS$ reflexive? Symmetric? Transitive? Justify your answers.
 	\end{enumerate}
 
 	\item Each of the following relations $\sim$ is an equivalence relation on $\R^2$. Identify the equivalence classes and draw several of them.
 	\begin{enumerate}
-		\item $(a,b)\sim(c,d)\iff ab=cd$.
-	  \item $(v,w)\sim(x,y)\iff v^2w=x^2y$.
+		\item $(a,b)\sim(c,d)\iff ab=cd$ \qquad\qquad\qquad (b)\lstsp $(v,w)\sim(x,y)\iff v^2w=x^2y$
 	\end{enumerate}
 	
+	
+	\item (Example \ref*{ex:funceqreln}.\ref{ex:equivcircle})\lstsp Prove directly that the circles $A_r=\bigl\{(x,y):x^2+y^2=r^2\bigr\}$ partition $\R^2$: i.e.,
+	\[
+		\R^2=\smash[b]{\bigcup_{r\ge 0}}A_r\quad\text{and}\quad A_{r_1}\cap A_{r_2}\neq\emptyset \implies A_{r_1}=A_{r_2}
+	\]
+	
+	
   \item\begin{enumerate}
-  \item Let $\sim$ be the relation defined on $\Z$ by $a\sim b\iff a+b$ is even. Show that $\sim$ is an equivalence relation and determine the distinct equivalence classes.
-  \item Suppose that `even' is replaced by `odd' in part (a). Which of the properties reflexive, symmetric, transitive does $\sim$ possess?
+  	\item Let $\sim$ be the relation on $\Z$ defined by $a\sim b\Longleftrightarrow a+b$ is even. Show that $\sim$ is an equivalence relation and determine its equivalence classes.
+  	\item If `even' is replaced by `odd' in part (a), which of the properties reflexive, symmetric, transitive does $\sim$ now possess?
   \end{enumerate}
 
-  \item For each of the following relations $\cR$ on $\Z$, decide whether $\cR$ is reflexive, symmetric, or transitive, and whether $\cR$ is an equivalence relation.
+
+  \item For each relation $\cR$ on $\Z$, decide whether $\cR$ is reflexive, symmetric, or transitive, and whether $\cR$ is an equivalence relation.
 	\begin{enumerate}
-		\item $a\,\cR\,b \iff a\equiv b\pmod 3 \textbf{ or } a\equiv b\pmod 4$.
-		\item $a\,\cR\,b \iff a\equiv b\pmod 3 \textbf{ and } a\equiv b\pmod 4$.
+		\item $a\relR b \iff a\equiv b\pmod 3$ or $a\equiv b\pmod 4$.
+		\item $a\relR b \iff a\equiv b\pmod 3$ and $a\equiv b\pmod 4$.
 	\end{enumerate}
 
-	\item For the purposes of this question, we call a real number $x$ \emph{small} if $\nm x\le 1$. Let $\cR$ be the relation on the set of real numbers defined by
-	\[x\,\cR\,y \iff x-y \text{ is small}.\]
-	\emph{Prove or disprove}: $\cR$ is an equivalence relation on $\R$.
 
-	\item Let $A=\{1,2,3,4,5,6\}$. The distinct equivalence classes resulting from an equivalence relation $\sim$ on $A$ are $\{1,4,5\}$, $\{2,6\}$, and $\{3\}$. What is $\sim$? Give your answer as a subset of $A\times A$.
+	\item For the purposes of this question, we call a real number $x$ \emph{small} if $\nm x\le 1$. Let $\cR$ be the relation on the set of real numbers defined by
+	\[
+		x \relR y \iff x-y \text{ is small}
+	\]
+	Prove or disprove: $\cR$ is an equivalence relation on $\R$.
+
+
+	\item Let $X=\{1,2,3,4,5,6\}$. The distinct equivalence classes resulting from an equivalence relation $\sim$ on $X$ are $\{1,4,5\}$, $\{2,6\}$, and $\{3\}$. What is $\sim$? Give your answer as a subset of $X\times X$.
+
 
 	\item $\subseteq$ is a relation on any set of sets. Is $\subseteq$ reflexive, symmetric, transitive? Prove your assertions.
 
-	\item Let $S$ be the set of all polynomials of degree at most 3. An element $s\in S$ can then be expressed as
-  \[s(x)=ax^3+bx^2+cx+d,\qquad\text{where $a,b,c,d\in\R$.}\]
-  A relation $\cR$ on $S$ is defined by
-  \[p\,\cR\,q\iff p\text{ and $q$ have a common root.}\]
-  For example $p(x)=(x-1)^2$ and $q(x)=x^2-1$ have the root 1 in common so that $p\,\cR\,q$. Determine which of the properties reflexive, symmetric and transitive are possessed by $\cR$.
+
+	\item Let $X=\{ax^3+bx^2+cx+d:a,b,c,d\in\R\}$ be the set of polynomials of degree $\le 3$. Define a relation $\cR$ on $X$ by
+  \[
+  	p\relR q\iff p\text{ and $q$ have a common root}
+  \]
+  For example $p(x)=(x-1)^2$ and $q(x)=x^2-1$ have the root 1 in common, so $p\relR q$. Determine which of the properties reflexive, symmetric and transitive are possessed by $\cR$.
+
 
   \item Let $A=\{2^m:m\in\Z\}$. A relation $\sim$ is defined on the set $\Q^+$ of positive rational numbers by
-  \[a\sim b\iff \frac ab\in A\]
+  \[
+  	a\sim b\iff ab^{-1}\in A
+  \]
   \begin{enumerate}
     \item Show that $\sim$ is an equivalence relation.
     \item Describe the elements in the equivalence class $[3]$.
   \end{enumerate}
 
-  \item A relation is defined on the set $A=\{a+b\sqrt 2:a,b\in\Q,\,a+b\sqrt 2\neq 0\}$ by $x\sim y\iff \frac xy\in\Q$. Show that $\sim$ is an equivalence relation and determine the distinct equivalence classes.
 
-	\item The \emph{reflexive, symmetric} and \emph{transitive closures} of a relation $\cR$ are defined respectively as the smallest relations containing $\cR$ which also exhibit the given property. Find each of the three closures of $\cR=\{(1,2),(2,3),(3,3)\}\subseteq\Z\times\Z$.
+  \item A relation is defined on the set $X=\{a+b\sqrt 2:a,b\in\Q,\,a+b\sqrt 2\neq 0\}$ by $x\sim y\iff \frac xy\in\Q$. Show that $\sim$ is an equivalence relation and determine the distinct equivalence classes.
 
-	\item Recall the description of the real projective line (page \pageref{ex:projline}): if $A_m$ is the line through the origin with gradient $m$, then
-	\[\pr(\R^2)=\{A_m:m\in\R\cup\{\infty\}\}.\]
-	Define a relation $\sim$ on $\R^2_*=\R^2\setminus\{(0,0)\}$ by $(a,b)\sim(c,d)\iff ad=bc$.
+
+% 	\item The \emph{reflexive, symmetric} and \emph{transitive closures} of a relation $\cR$ are defined respectively as the smallest relations containing $\cR$ which also exhibit the given property. Find each of the three closures of $\cR=\{(1,2),(2,3),(3,3)\}\subseteq\Z\times\Z$.
+	
+	
+% 	\item Let $\cR$ be a relation on a set $X$. Show that $\cS = \cR \cup \{(x,x) : x \in X\}$ is the smallest reflexive relation on $X$ containing $\cR$. That is,
+% \begin{enumerate}
+%     \item $\cS$ is reflexive.
+%     \item $\cR \subseteq \cS$.
+%     \item If $\cT$ is a reflexive relation on $X$ such that $\cR \subseteq \cT$, then $\cS \subseteq \cT$.
+% \end{enumerate}
+% We call $\cS$ the \emph{reflexive closure} of $\cR$.
+
+
+	\item Define a relation $\sim$ on $\R^2\setminus\{(0,0)\}$ by
+	\[
+		(a,b)\sim (c,d)\iff \exists\lambda\in\R\setminus\{0\}\ \text{ such that }\ (c,d)=(\lambda a,\lambda b)
+	\]
 	\begin{enumerate}
 	  \item Prove that $\sim$ is an equivalence relation.
-	  \item Find the equivalence classes of $\sim$. How do the equivalence classes differ from the lines $A_m$?
+	  \item What does this relation have to do with the projective line $\pr(\R^2)$ (page \pageref{ex:projline}).
 	\end{enumerate}
   
-	\item Suppose that $\cR,\cS$ are relations on some set $X$. Define the \emph{composition} $\cR\circ \cS$ to be the relation
-	\[(a,c)\in \cR\circ \cS\iff \exists b\in X\text{ such that }(a,b)\in \cR\text{ and }(b,c)\in \cS.\]
-	\begin{enumerate}
-		\item If $\cR=\{(1,1),(1,2),(2,3),(3,1),(3,3)\}$ and $\cS=\{(1,2),(1,3),(2,1),(3,3)\}$, find $\cR\circ \cS$.
-		\item Suppose that $\cR$ and $\cS$ are reflexive. Prove that $\cR\circ \cS$ is reflexive.
-		\item Suppose that $\cR$ and $\cS$ are symmetric. Prove that $(x,y)\in \cR\circ \cS\iff (y,x)\in \cS\circ \cR$.
-		\item Give an example of symmetric relations $\cR,\cS$ such that $\cR\circ \cS$ is \emph{not} symmetric. Conclude that if $\cR,\cS$ are equivalence relations, then $\cR\circ \cS$ need not be an equivalence relation.
-	\end{enumerate}
+% 	\item Suppose that $\cR,\cS$ are relations on some set $X$. Define the \emph{composition} $\cR\circ \cS$ to be the relation
+% 	\[(a,c)\in \cR\circ \cS\iff \exists b\in X\text{ such that }(a,b)\in \cR\text{ and }(b,c)\in \cS.\]
+% 	\begin{enumerate}
+% 		\item If $\cR=\{(1,1),(1,2),(2,3),(3,1),(3,3)\}$ and $\cS=\{(1,2),(1,3),(2,1),(3,3)\}$, find $\cR\circ \cS$.
+% 		\item Suppose that $\cR$ and $\cS$ are reflexive. Prove that $\cR\circ \cS$ is reflexive.
+% 		\item Suppose that $\cR$ and $\cS$ are symmetric. Prove that $(x,y)\in \cR\circ \cS\iff (y,x)\in \cS\circ \cR$.
+% 		\item Give an example of symmetric relations $\cR,\cS$ such that $\cR\circ \cS$ is \emph{not} symmetric. Conclude that if $\cR,\cS$ are equivalence relations, then $\cR\circ \cS$ need not be an equivalence relation.
+% 	\end{enumerate}
+	
+% 		\item Let $\cR$ be a relation on a set $X$. Inductively define $\cR^n$ for $n \in \N$ as follows:
+% \begin{itemize}
+%     \item $\cR^1 = \cR$
+%     \item $\cR^{n + 1} = \cR \circ \cR^n$.
+% \end{itemize}
+% Set
+% \[
+% \cR^+ = \bigcup_{n \in \N} \cR^n.
+% \]
+% Show that $\cR^+$ is the smallest transitive relation on $X$ containing $\cR$. That is,
+% \begin{enumerate}
+%     \item $\cR^+$ is transitive.
+%     \item $\cR \subseteq \cR^+$.
+%     \item If $\cT$ is a transitive relation on $X$ such that $\cR \subseteq \cT$, then $\cR^+ \subseteq \cT$. [Hint: use induction to show $\cR^n \subseteq \cT$ for all $n \in \N$.]
+% \end{enumerate}
+% We call $\cR^+$ the \emph{transitive closure} of $\cR$.
+% \begin{enumerate}\setcounter{enumii}{3}
+%     \item Let $X = \{a,b,c,d\}$ and $\cR = \{(a,b), (b,c), (c,d)\}$. Compute $\cR^+$.
+% \end{enumerate}
 
-  \item (\emph{Only for those who have studied Linear Algebra}) Let $\sim$ be the relation on the set of $2\times 2$ real matrices given by $A\sim B\iff\exists M$ such that $B=MAM^{-1}$.
+  \item (\emph{If you've studied Linear Algebra})\lstsp Let $\sim$ be the relation on the set $M_2(\R)$ of $2\times 2$ real matrices given by $A\sim B\Longleftrightarrow\exists M$ such that $B=MAM^{-1}$.
   \begin{enumerate}
     \item Prove that $\sim$ is an equivalence relation.
     \item What is the equivalence class of the identity matrix?
-    \item Show that $\left(\begin{smallmatrix}
-    -11&15\\-5&9
-    \end{smallmatrix}\right)\sim \left(\begin{smallmatrix}
-    4&10\\0&-6
-    \end{smallmatrix}\right)$ (\emph{Hint: think about diagonalizing})
-    \item (Hard) Suppose that $L:\R^2\to\R^2$ is a linear map and $\beta,\gamma$ are bases of $\R^2$. Suppose that $A=[L]_\beta$ and $B=[L]_\gamma$ are the matrix representations of $L$ with respect to the two bases. Prove that $A\sim B$.
-    \item (Hard) Suppose that $A,B$ have the same, but distinct, eigenvalues $\lambda_1\neq\lambda_2$. Prove that $A\sim B$. \emph{Again use diagonalization, the challenge here is to make your proof work even when the eigenvalues are complex numbers.}
+    \item Show that $\begin{smatrix}
+    	-11&15\\-5&9
+    \end{smatrix}
+		\sim
+		\begin{smatrix}
+    	4&10\\0&-6
+    \end{smatrix}$
+    \par
+    (\emph{Hint: try diagonalizing the matrices!})
+    %\item (Hard) Suppose $L:\R^2\to\R^2$ is a linear map and $\beta,\gamma$ are bases of $\R^2$. Suppose that $A=[L]_\beta$ and $B=[L]_\gamma$ are the matrix representations of $L$ with respect to the two bases. Prove that $A\sim B$.
+%     \item (Hard) Suppose that $A,B$ have the same, but distinct, eigenvalues $\lambda_1\neq\lambda_2$. Prove that $A\sim B$. \emph{Again use diagonalization, the challenge here is to make your proof work even when the eigenvalues are complex numbers.}
 	\end{enumerate}
-\end{enumerate}
 
+
+	\item Determine whether each collection $\{A_n:n\in\R\}$ partitions $\R^2$. Sketch several of the sets $A_n$.
+	\begin{enumerate}
+		\item $A_n=\big\{(x,y)\in\R^2:y=2x+n\big\}$
+	  \item $A_n=\big\{(x,y)\in\R^2:y=(x-n)^2\big\}$
+	  \item $A_n=\big\{(x,y)\in\R^2:xy=n\big\}$
+	  \item $A_n=\big\{(x,y)\in\R^2:y^4-y^2=x-n\big\}$
+	\end{enumerate}
+	
+	
+	\item Let $X$ be the set of all humans. If $x\in X$, define the set
+	\[
+		A_x=\{\text{people who had the same breakfast \emph{or} lunch as $x$}\}
+	\]
+	\begin{enumerate}
+	  \item Does the collection $\{A_x:x\in X\}$ partition $X$? Explain your answer.
+	  \item Is your answer different if the \emph{or} in the definition of $A_x$ is changed to \emph{and}?
+	\end{enumerate}
+	%\emph{If Jane and Tom both had the same breakfast and lunch, then $A_{\text{Jane}}=A_{\text{Tom}}$ so there are likely many fewer \emph{distinct} sets $A_x$ than there are humans!}
+	
+	\item Let $X=\{1,2,3\}$. Define the relation $\cR=\big\{(1,1),(1,2),(1,3),(2,1),(2,2),(3,1),(3,3)\big\}$ on $X$.
+	\begin{enumerate}
+	  \item Which of the properties reflexive, symmetric, transitive are satisfied by $\cR$?
+	  \item Compute the sets $A_1,A_2,A_3$ where $A_n=\{x\in X:x\relR n\}$. Show that $\{A_1,A_2,A_3\}$ do not form a partition of $X$.
+	  \item Repeat parts (a) and (b) for the relations $\cS$ and $\cT$ on $X$, where
+	  \begin{gather*}
+	  	\cS=\bigl\{(1,1),(1,3),(3,1),(3,3)\bigr\}\\
+	  	\cT=\bigl\{(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,3)\bigr\}
+	  \end{gather*}
+	\end{enumerate}
+	(\emph{Warning! Some of the sets $A_1,A_2,A_3$ might be the same in these examples})
+	%If, for example, $A_1=A_3$, then the collection $\{A_1,A_2,A_3\}$ only contains two sets: $\{A_1,A_2\}$. Is this a partition? Compare with the example on page \pageref{ex:partnot}.}
+	
+	\item Give examples of an infinite set $X$ and an equivalence relation $\sim$ on $X$ such that
+	\begin{enumerate}
+    \item $\sim$ has finitely many equivalence classes.
+    \item $\sim$ has infinitely many classes, each of which have finitely many elements.
+    \item $\sim$ has infinitely many classes, each of which have infinitely many elements.
+    \item $\sim$ has a class of size $n$ for each $n \in \N$.
+	\end{enumerate}
+	
+	
+	\item\begin{enumerate}
+	  \item Prove Theorem \ref{thm:funceqreln}.\footnotemark
+	  \item If $f$ has domain $X$, explain why $\bigl\{f^{-1}(\{b\}):b\in\range(f)\bigr\}$ forms a partition of $X$.
+	\end{enumerate}
+	
+  
+  \item Find the equivalence classes for the relation $\sim$ in Example \ref{ex:funceqreln}.1.
+  
+  \item FOr Example not equiv, compute the `class' $\{y:x\sim y\}$. What do you observe?
+  
+	
+
+  
+% 	\item Using the equivalence relation description of the Möbius strip, prove that you may cut a Möbius strip round the middle and yet still end up with a single loop.\\
+% 	\emph{Where would you cut the defining rectangle and how can you tell that you still have one piece?}
+% 
+% 	
+% 	\item (Hard!) A \emph{Klein bottle} can be visualized as follows. Define an equivalence relation $\sim$ on the unit square $X=[0,1]\times[0,1]$ so that:
+% 	\begin{itemize}
+% 	  \item $(0,y)\sim (1,y)$ for $0\le y\le 1$.
+% 	  \item $(x,0)\sim(1-x,1)$ for $0\le x\le 1$.
+% 	\end{itemize}
+% 	The result is the picture: the blue edges are identified in the same direction and the red edges in the opposite. Attempting to visualize this in 3D requires a willingness to stretch and distort the square, but results in the green bottle. The original red and blue arrows have become curves on the bottle. If you are using Acrobat Reader, click on the bottle and move it around.
+% 	\begin{enumerate}
+% 	  \item Suppose you cut the Klein bottle along the horizontal dashed line of the defining square. What is the resulting object? What happens to the green bottle?
+% 	  \item Now cut the square along the vertical dashed line. What do you get this time?
+% 	\end{enumerate}
+% 	Can you visualize where the two dashed lines are on the green bottle?
+% 	
+% 	\includegraphics{relations-hw01-kleinsquare}
+% 	\includemedia[width=0.99\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, %add3Djscript=3Dspintool.js,
+% 3Dmenu,
+%   3Dcoo=7.8239054679870605 -2.621169090270996 -71.13204956054688,
+%   3Dc2c=-0.4364800751209259 0.7419548630714417 0.5089088082313538,
+%   3Droo=219.44206346507434,
+%   3Droll=-1.9382490979948275,
+% 3Dlights=Headlamp]{\includegraphics{relations-hw02-klein+0_0}}{relations-hw02-klein+0.prc}
+
+\end{enumerate}
 \end{exercises}
+
+
+	\footnotetext{That the converse also holds is very important in advanced algebra: If $\sim$ is an equivalence relation on $X$, then the \emph{canonical map} $f:X\to\quotient X\sim:x\mapsto [x]$ satisfies $x\sim y\Longleftrightarrow f(x)=f(y)$.}
+
+
 \clearpage
 
 
-
-\subsection{Partitions}
-
-Recall the important observation about our equivalence relation examples: every element of the original set of objects ends up in \emph{exactly one equivalence class.} For instance, every integer is either even or odd but not both. The equivalence classes \emph{partition} the original set in the same way that cutting a cake partitions the crumbs: each crumb ends up in exactly one slice. We shall prove in a moment that equivalence relations \emph{always} do this. Before doing so we reverse the discussion.
-
-\begin{defn}{}{partition}
-	Let $X$ be a set and $\{A_n:n\in I\}$ be a collection of non-empty subsets $A_n\subseteq X$. We say that $X$ is \emph{partitioned by} the collection of subsets if
-	\begin{enumerate}
-		\item $X=\bigcup\limits_{n\in I}A_n$.\hfill(the $A_n$ together make up $X$)
-		\item If $A_m\neq A_n$, then $A_m\cap A_n=\emptyset$.\hfill(\emph{distinct} $A_n$ are pairwise disjoint\footnote{Recall that two sets $A,B$ are \emph{disjoint} if $A\cap B=\emptyset$: see Definition \ref{defn:unionint}. In this definition we \emph{don't} require the sets $A_n$ all to be different, some could be identical to each other.})
-	\end{enumerate}
-	We describe the collection $\cA$ as a \emph{partition} of $X$.
-\end{defn}
-
-The conditions can be viewed as saying that every element of $X$ lies in (1.) \emph{at least one} subset $A_n$ and (2.) \emph{at most one} subset $A_n$: otherwise said, every element of $X$ lies in \emph{exactly one} subset.
-
-\begin{example}{}{}
-	Partition the set $X=\{1,2,3,4,5\}$ into subsets
-	\[
-		A_1=\{1,3\},\qquad A_2=\{2,4\},\qquad A_3=\{5\}
-	\]
-	Now consider the relation $\cR$ on $X$, defined by
-	\[
-		\cR=\{(1,1),(1,3),(3,1),(3,3),(2,2),(2,4),(4,2),(4,4),(5,5)\}
-	\]
-	What does $\cR$ have to do with the partition? It should be clear that $\cR$ could be defined by insisting that
-	\[
-		x\,\cR\,y\iff \text{$x$ and $y$ are in the \emph{same} subset $A_n$.}
-	\]
-	Run through your mental checklist: is $\cR$ reflexive? symmetric? transitive? Indeed $\cR$ is an equivalence relation! Moreover, the equivalence classes of $\cR$ are precisely the sets $A_1,A_2$ and $A_3$. For instance, 1 is related to itself and 3, but isn't related to anything else. Indeed
-	\[
-		[1]=[3]=\{1,3\}=A_1,\qquad [2]=[4]=\{2,4\}=A_2,\qquad [5]=\{5\}=A_5
-	\]
-\end{example} 
-
-The example suggests that partitioning a set defines a natural equivalence relation. Combining this with our observations in the previous section and you should be starting to believe that \emph{partitions and equivalence relations are essentially the same thing.} Before we prove this important fact, here are some further examples of partitions.
-
-\begin{examples}{}{}
-	\begin{enumerate}
-		\item The integers can be partitioned according to their remainder modulo 3: define
-		\[
-			A_r=\{z\in\Z:z\equiv r\spmod 3\}
-		\]
-		Then $\Z=A_0\cup A_1\cup A_2$. This is certainly a partition:
-		\begin{itemize}
-		  \item Every integer $z$ has remainder of 0, 1 or 2 after division by 3, and so every integer is in some set $A_r$.
-		  \item No integer has two distinct remainders modulo 3, so the sets $A_0,A_1,A_2$ are disjoint.
-		\end{itemize}
-		\item\label{ex:cong} More generally, if $n\in\N$, then the set of integers $\Z$ is partitioned into $n$ sets $A_0,\ldots,A_{n-1}$ where
-		\[
-			A_r=\{z\in\Z:z\equiv r\pmod n\}
-		\]
-		is the set of integers with remainder $r$ upon dividing by $n$. We are appealing to the Division Algorithm (Theorem \ref{thm:div}) which tells us that every integer $z$ has a \emph{unique remainder} $r\in\{0,1,\ldots,n-1\}$.
-		\item The set of real numbers $\R$ is partitioned into the sets of rational and irrational numbers: $\R=\Q\cup(\R\setminus\Q)$.
-	\end{enumerate}
-\end{examples}
 
 Finally, here is an example of a relation which doesn't produce a partition.
 
@@ -903,149 +1155,72 @@ Finally, here is an example of a relation which doesn't produce a partition.
 
 
 
-\boldsubsubsection{Equivalence Relations and Partitions}
-
-Before we present the fundamental result of the chapter, we prove a helpful lemma.
-
-\begin{lemm}{}{preequiv}
-	Suppose that $\sim$ is an equivalence relation. Then $x\sim y\iff [x]=[y]$.
-\end{lemm}
-
-\begin{proof}
-	\begin{description}
-		\item[$(\Leftarrow)$]\quad By reflexivity, $x\in[x]$. If $[x]=[y]$, then we have $x\in[y]$. Finally, recalling Definition \ref{defn:equivrel}, we see that that this is the same as saying $x\sim y$.
-		\item[$(\Rightarrow)$]\quad Suppose that $x\sim y$. We begin by showing the inclusion $[x]\subseteq [y]$. Let $z\in[x]$, then
-		\[z\sim x\ \text{ and }\ x\sim y\implies z\sim y\implies z\in[y].\tag{Transitivity}\]
-		Therefore $[x]\subseteq[y]$. By symmetry, we also have $y\sim x$: repeating the argument yields $[y]\subseteq [x]$, and thus $[x]=[y]$.\qedhere
-	\end{description}
-\end{proof}
-
-\begin{thm}{}{equivpart}
-	Let $X$ be any set.
-	\begin{enumerate}
-		\item If $\sim$ is an equivalence relation on $X$, then $X$ is partitioned by the equivalence classes of $\sim$.
-		\item If $\{A_n:n\in I\}$ is a partition of $X$, then the relation $\sim$ on $X$ defined by
-		\[
-			x\sim y\iff \exists n\in I\text{ such that $x\in A_n$ and }y\in A_n
-		\]
-		is an equivalence relation.
-	\end{enumerate}
-\end{thm}
-
-\begin{center}
-	\includegraphics[width=0.7\textwidth]{relations-08-part}\\
-	Each element of $X$ ends up in exactly one subset. In the language of the Theorem, we have\\[5pt]
-	$A_1=[a]$,\quad $A_2=[b]=[c]$,\quad $b\sim c$,\quad $a\nsim b$, \quad $a\nsim c$.
-\end{center}
-
-Some things to consider while reading the proof:
-\begin{itemize}
-  \item Think about the picture! The result is nothing more than the notion of partitioning a cake by cutting it into slices. The slices are the equivalence classes of the obvious relation: two crumbs are related if and only if they lie in the same slice. The algebra that follows merely confirms that the picture is telling a legitimate story.
-  \item In part 1.\ of the proof, look for where the reflexive, symmetric and transitive assumptions about $\sim$ are used. Why do we need $\sim$ to be an equivalence relation? Why does the proof fail if any of the three assumptions are dropped?
-  \item Similarly, in part 2., look for where we use both parts of the definition of partition. Why are both assumptions required?
-\end{itemize}
 
 
 
-\begin{proof}
-	\begin{enumerate}
-		\item Assume that $\sim$ is an equivalence relation on $X$. To prove that the equivalence classes of $\sim$ partition $X$, we must show two things:
-		\begin{enumerate}
-	  	\item That every element of $X$ is in some equivalence class.
-	  	\item That the distinct equivalence classes are pairwise disjoint: if $[x]\neq[y]$, then $[x]\cap[y]=\emptyset$.
-		\end{enumerate}
-		For (a), we only need reflexivity: $\forall x\in X$ we have $x\sim x$. Otherwise said, $x\in[x]$, whence every element of $X$ is in the equivalence class defined by itself.\par
-		For (b), we prove by the contrapositive method and show that $[x]\cap [y]\neq\emptyset\implies [x]=[y]$.\par
-		Assume that $[x]\cap [y]\neq\emptyset$. Then $\exists z\in [x]\cap [y]$. This gives
-		\begin{align*}
-			z\sim x\ \text{ and }\ z\sim y&\implies x\sim z\ \text{ and }\ z\sim y\tag*{(Symmetry)}\\*
-			&\implies x\sim y\tag*{(Transitivity)}\\*
-			&\implies [x]=[y]\tag*{(Lemma \ref{lemm:preequiv})}
-		\end{align*}
-		We have proved (b) and therefore part 1.\ of the theorem.
-		\item Now suppose that $\{A_n:n\in I\}$ is a partition of $X$ and define $\sim$ by
-		\[
-			x\sim y\iff \exists n\in I\text{ such that $x\in A_n$ and $y\in A_n$.}
-		\]
-		We must prove the reflexivity, symmetry and transitivity of $\sim$.
-		\begin{itemize}
-			\item \refl Every $x\in X$ is in some $A_n$. Thus $x\sim x$ for all $x\in X$.
-			\item \symm If $x\sim y$, then $\exists n\in I$ such that $x,y\in A_n$. But then $y,x\in A_n$ and so $y\sim x$.
-			\item \trans Let $x\sim y$ and $y\sim z$. Then $\exists p,q\in I$ such that $x,y\in A_p$ and $y,z\in A_q$. Since $\{A_n:n\in I\}$ is a partition and $y\in A_p\cap A_q$, we necessarily have $A_p=A_q$. Thus $x,z\in A_p$ and so $x\sim z$.
-		\end{itemize}
-	
-		We have shown $\sim$ is an equivalence relation, and the proof is complete.\qedhere
-	\end{enumerate}
-\end{proof}
-	
-Reading the proof carefully, you should see that reflexivity in part 2.\ comes from the fact that $X=\bigcup\limits_{n\in I}A_n$, while transitivity is due to the pairwise disjointness of the pieces of the partition. Symmetry is essentially free because the definition of $\sim$ is symmetric in $x$ and $y$.\par
-
-The ability to partition sets and view the resulting subsets as individual objects is crucial to advanced mathematics. The importance of the Theorem comes from the fact that equivalence relations provide a straightforward \emph{algebraic} method of working with partitions.
-
-
-\boldsubsubsection{Geometric Examples}
-
-The language of equivalence relations and partitions is used heavily in geometry and topology to describe complex shapes. We finish this section with several examples. Since examples of partitions are especially easy to visualize with curves in the plane, we first return to the example on page \pageref{ex:equivcircle} and describe things in our new language.
-
-\begin{example}{}{}
-	For each real number $r\ge 0$, define the set\par
-	\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
-		\[
-			A_r=\bigl\{(x,y)\in\R^2:x^2+y^2=r^2\bigr\}
-		\]
-		This is simply the circle of radius $r$ centered at the origin. We check that $\{A_r:r\in\R^+_0\}$ is a partition of $\R^2$.
-		\begin{itemize}
-	 		\item Every point of the plane lies on some circle. Precisely, $(x,y)\in A_{\sqrt{x^2+y^2}}$ since $\sqrt{x^2+y^2}$ is the distance of $(x,y)$ from the origin. Thus \smash{$\R^2=\bigcup\limits_{r\in\R^+_0}A_r$.}
-	  	\item If $r_1\neq r_2$, then the concentric circles $A_{r_1}$ and $A_{r_2}$ do not intersect. Thus $A_{r_1}\cap A_{r_2}=\emptyset$.
-		\end{itemize}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.32\linewidth}\vspace{0pt}
-		\includegraphics[width=\textwidth]{relations-09-circles}
-	\end{minipage}\par
-
-	Now define a relation $\sim$ on $\R^2$ via
-	\[
-		(x,y)\sim(v,w)\iff \exists r\ge 0\text{ such that $(x,y),(v,w)$ both lie on the circle $A_r$}
-	\]
-	By Theorem \ref{thm:equivpart} this is an equivalence relation. We can also check explicitly: dropping any mention of the radius $r$, we see that
-	\[
-		(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2
-	\]
-	This is exactly the equivalence relation described on page \pageref{ex:equivcircle}. The equivalence classes are precisely the sets $A_r$. Indeed for a given point $(v,w)$,
-	\[
-		[(v,w)]=\{(x,y)\in\R^2:x^2+y^2=v^2+w^2\}=A_{\sqrt{v^2+w^2}}
-	\]
-	is just the circle of radius $\sqrt{v^2+w^2}$.
-\end{example}
+% \boldsubsubsection{Geometric Examples}
+% 
+% The language of equivalence relations and partitions is used heavily in geometry and topology to describe complex shapes. We finish this section with several examples. Since examples of partitions are especially easy to visualize with curves in the plane, we first return to the example on page \pageref{ex:equivcircle} and describe things in our new language.
+% 
+% \begin{example}{}{}
+% 	For each real number $r\ge 0$, define the set\par
+% 	\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
+% 		\[
+% 			A_r=\bigl\{(x,y)\in\R^2:x^2+y^2=r^2\bigr\}
+% 		\]
+% 		This is simply the circle of radius $r$ centered at the origin. We check that $\{A_r:r\in\R^+_0\}$ is a partition of $\R^2$.
+% 		\begin{itemize}
+% 	 		\item Every point of the plane lies on some circle. Precisely, $(x,y)\in A_{\sqrt{x^2+y^2}}$ since $\sqrt{x^2+y^2}$ is the distance of $(x,y)$ from the origin. Thus \smash{$\R^2=\bigcup\limits_{r\in\R^+_0}A_r$.}
+% 	  	\item If $r_1\neq r_2$, then the concentric circles $A_{r_1}$ and $A_{r_2}$ do not intersect. Thus $A_{r_1}\cap A_{r_2}=\emptyset$.
+% 		\end{itemize}
+% 	\end{minipage}
+% 	\hfill
+% 	\begin{minipage}[t]{0.32\linewidth}\vspace{0pt}
+% 		\includegraphics[width=\textwidth]{relations-09-circles}
+% 	\end{minipage}\par
+% 
+% 	Now define a relation $\sim$ on $\R^2$ via
+% 	\[
+% 		(x,y)\sim(v,w)\iff \exists r\ge 0\text{ such that $(x,y),(v,w)$ both lie on the circle $A_r$}
+% 	\]
+% 	By Theorem \ref{thm:equivpart} this is an equivalence relation. We can also check explicitly: dropping any mention of the radius $r$, we see that
+% 	\[
+% 		(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2
+% 	\]
+% 	This is exactly the equivalence relation described on page \pageref{ex:equivcircle}. The equivalence classes are precisely the sets $A_r$. Indeed for a given point $(v,w)$,
+% 	\[
+% 		[(v,w)]=\{(x,y)\in\R^2:x^2+y^2=v^2+w^2\}=A_{\sqrt{v^2+w^2}}
+% 	\]
+% 	is just the circle of radius $\sqrt{v^2+w^2}$.
+% \end{example}
 
 
-\boldinline{The Möbius Strip}
-
-Take a rectangle, for example $X=[0,6]\times[0,1]$, and partition into the following subsets.
-\begin{itemize}
-	\item If a point does not lie on the left or right edge of the rectangle, place it in a subset by itself: $\{(x,y)\}$ for $x\neq 0,6$,
-	\item If a point does lie on the left or right edge of the rectangle, place it in a subset with one point from the other edge: $\{(0,y),(6,1-y)\}$ for any $y$.
-\end{itemize}
-The rectangle is drawn below, where the points on the left and right edges are colored red. The arrows indicate how the edges are paired up. For example the point $(0,0.8)$ (high on the left near the tip of the arrow) is paired with $(6,0.2)$ (low on the right edge of the rectangle).\par
-These subsets clearly partition the rectangle $X$. The partitions define an equivalence relation $\sim$ on $X$ in accordance with Theorem \ref{thm:equivpart}. Note that there are infinitely many equivalence classes. The question is how we should interpret the quotient set $\quotient X\sim$?\par
-This is easier to visualize than you might think. Since each point on the left edge of the rectangle lies in an equivalence class with a point on the right edge, we imagine gluing the two edges together in such a way that the corresponding points touch. In the picture, we imagine holding $X$ like a strip of paper, giving it a twist, and then gluing the edges together. This is the classic construction of a Möbius strip. The advantage of the quotient set calculation is that it is very easy to work with points in the original rectangle. As long as you permanently assume that equivalent points of the rectangle correspond to the same point of the Möbius strip you can easily work only in the rectangle.\par
-
-\begin{center}
-	\begin{tabular}{c}
-		\includegraphics[scale=3.4]{relations-10-mobius}\\
-		Rectangle
-	\end{tabular}
-	\hspace*{.5cm}
-	\begin{tabular}{c}
-		\includegraphics[scale=3.4]{relations-11-mobius}\\
-		Half twist
-	\end{tabular}\\[15pt]
-	\begin{tabular}{c}
-		\includegraphics[width=0.65\textwidth,height=75pt]{relations-12-mobius}\\
-		Glue arrows to obtain Möbius strip\\[15pt]
-	\end{tabular}
-\end{center}
+% \boldinline{The Möbius Strip}
+% 
+% Take a rectangle, for example $X=[0,6]\times[0,1]$, and partition into the following subsets.
+% \begin{itemize}
+% 	\item If a point does not lie on the left or right edge of the rectangle, place it in a subset by itself: $\{(x,y)\}$ for $x\neq 0,6$,
+% 	\item If a point does lie on the left or right edge of the rectangle, place it in a subset with one point from the other edge: $\{(0,y),(6,1-y)\}$ for any $y$.
+% \end{itemize}
+% The rectangle is drawn below, where the points on the left and right edges are colored red. The arrows indicate how the edges are paired up. For example the point $(0,0.8)$ (high on the left near the tip of the arrow) is paired with $(6,0.2)$ (low on the right edge of the rectangle).\par
+% These subsets clearly partition the rectangle $X$. The partitions define an equivalence relation $\sim$ on $X$ in accordance with Theorem \ref{thm:equivpart}. Note that there are infinitely many equivalence classes. The question is how we should interpret the quotient set $\quotient X\sim$?\par
+% This is easier to visualize than you might think. Since each point on the left edge of the rectangle lies in an equivalence class with a point on the right edge, we imagine gluing the two edges together in such a way that the corresponding points touch. In the picture, we imagine holding $X$ like a strip of paper, giving it a twist, and then gluing the edges together. This is the classic construction of a Möbius strip. The advantage of the quotient set calculation is that it is very easy to work with points in the original rectangle. As long as you permanently assume that equivalent points of the rectangle correspond to the same point of the Möbius strip you can easily work only in the rectangle.\par
+% 
+% \begin{center}
+% 	\begin{tabular}{c}
+% 		\includegraphics[scale=3.4]{relations-10-mobius}\\
+% 		Rectangle
+% 	\end{tabular}
+% 	\hspace*{.5cm}
+% 	\begin{tabular}{c}
+% 		\includegraphics[scale=3.4]{relations-11-mobius}\\
+% 		Half twist
+% 	\end{tabular}\\[15pt]
+% 	\begin{tabular}{c}
+% 		\includegraphics[width=0.65\textwidth,height=75pt]{relations-12-mobius}\\
+% 		Glue arrows to obtain Möbius strip\\[15pt]
+% 	\end{tabular}
+% \end{center}
 
 
 % Let $L$ be the set of lines in the plane $\R^2$ and consider the relation $\ell_1\sim\ell_2\iff \ell_1$  is parallel to $\ell_2$. Then
@@ -1060,30 +1235,30 @@ This is easier to visualize than you might think. Since each point on the left e
 % Alternatively, all lines in an equivalence class make the same angle $\theta\in[0,180^\circ)$ with the $x$-axis. Replace each equivalence class by the point $(\cos 2\theta,\sin 2\theta)$ and we see that there is precisely one equivalence class for every point on the circle of radius one.\\
 % We are tempted to say something like $L/\sim=\R\cup\{\infty\}=S^1$ (where $S^1$ is the circle). This is not correct, but the three sets are \emph{bijective} (we will see this in section \ref{sec:func}) and indeed \emph{homeomorphic}, which means topologically identical.
 
-\boldinline{The Cylinder}%\label{page:cylinder}
-
-We could construct a cylinder similarly to the Möbius strip, by identifying edges of the rectangle but \emph{without} applying the half-twist. Instead we do something a little different.\par
-
-Let $X=\R^2$ with equivalence relation $\sim$ defined by
-\[
-	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b=d
-\]
-The equivalence classes are horizontal strings of points with the same $y$ co-ordinate. If we imagine wrapping $\R^2$ repeatedly around a cylinder of circumference 1, all of the points in a given equivalence class will now line up. The set of equivalence classes $\quotient{\R^2}\sim$ can therefore be visualized as a cylinder.
-
-Alternatively, you may imagine piercing a roll of toilet paper and unrolling it. The single puncture now becomes a row of (almost!\footnote{Unfortunately for the analogy, toilet paper has purposeful thickness!}) equally spaced holes.\par
-
-In the picture, the left hand side is (part of) the plane $\R^2$, displayed so that points in each equivalence class have the same height and color. The three horizontal dots all lie in the same equivalence class. When we roll up the plane, all three points end up at the same point on the cylinder.
-
-\begin{center}
-	%\includegraphics[scale=1.2]{relations-13-cylinder(mp)}\\
-	\includegraphics[width=0.8\textwidth]{relations-13-cylinder}
-\end{center}
-
-More complex shapes can be created by other partitions/relations. If you want a challenge in visualization, consider why the equivalence relation
-\[
-	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b-d\in\Z
-\]
-on $\R^2$ defines a torus (the surface of a ring-doughnut).
+% \boldinline{The Cylinder}%\label{page:cylinder}
+% 
+% We could construct a cylinder similarly to the Möbius strip, by identifying edges of the rectangle but \emph{without} applying the half-twist. Instead we do something a little different.\par
+% 
+% Let $X=\R^2$ with equivalence relation $\sim$ defined by
+% \[
+% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b=d
+% \]
+% The equivalence classes are horizontal strings of points with the same $y$ co-ordinate. If we imagine wrapping $\R^2$ repeatedly around a cylinder of circumference 1, all of the points in a given equivalence class will now line up. The set of equivalence classes $\quotient{\R^2}\sim$ can therefore be visualized as a cylinder.
+% 
+% Alternatively, you may imagine piercing a roll of toilet paper and unrolling it. The single puncture now becomes a row of (almost!\footnote{Unfortunately for the analogy, toilet paper has purposeful thickness!}) equally spaced holes.\par
+% 
+% In the picture, the left hand side is (part of) the plane $\R^2$, displayed so that points in each equivalence class have the same height and color. The three horizontal dots all lie in the same equivalence class. When we roll up the plane, all three points end up at the same point on the cylinder.
+% 
+% \begin{center}
+% 	%\includegraphics[scale=1.2]{relations-13-cylinder(mp)}\\
+% 	\includegraphics[width=0.8\textwidth]{relations-13-cylinder}
+% \end{center}
+% 
+% More complex shapes can be created by other partitions/relations. If you want a challenge in visualization, consider why the equivalence relation
+% \[
+% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b-d\in\Z
+% \]
+% on $\R^2$ defines a torus (the surface of a ring-doughnut).
 
 % \paragraph{Self-test Questions}
 % 
@@ -1099,66 +1274,6 @@ on $\R^2$ defines a torus (the surface of a ring-doughnut).
 % \end{enumerate}
 
 
-\begin{exercises}{}{}
-	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-4-partitions.html}{online}.
-
-\begin{enumerate}
-	\item For each of the collections $\{A_n:n\in\R\}$, determine whether the collections partition $\R^2$. Justify your answers, and sketch several of the sets $A_n$.
-	\begin{enumerate}
-		\item $A_n=\big\{(x,y)\in\R^2:y=2x+n\big\}$.
-	  \item $A_n=\big\{(x,y)\in\R^2:y=(x-n)^2\big\}$.
-	  \item $A_n=\big\{(x,y)\in\R^2:xy=n\big\}$.
-	  \item $A_n=\big\{(x,y)\in\R^2:y^4-y^2=x-n\big\}$.
-	\end{enumerate}\pagebreak[2]
-	
-	\item Let $X$ be the set of all humans. If $x\in X$, we define the set
-	\[A_x=\{\text{people who had the same breakfast \emph{or} lunch as $x$}\}.\]
-	\begin{enumerate}
-	  \item Does the collection $\{A_x:x\in X\}$ partition $X$? Explain your answer.
-	  \item Is your answer different if the \emph{or} in the definition of $A_x$ is changed to \emph{and}?
-	\end{enumerate}
-	\emph{If Jane and Tom had both had the same breakfast and lunch, then $A_{\text{Jane}}=A_{\text{Tom}}$ so there are likely many fewer \emph{distinct} sets $A_x$ than there are humans!}
-	
-	\item Let $X=\{1,2,3\}$. Define the relation $\cR=\big\{(1,1),(1,2),(1,3),(2,1),(2,2),(3,1),(3,3)\big\}$ on $X$.
-	\begin{enumerate}
-	  \item Which of the properties reflexive, symmetric, transitive are satisfied by $\cR$?
-	  \item Compute the sets $A_1,A_2,A_3$ where $A_n=\{x\in X:x\,\cR\,n\}$. Show that $\{A_1,A_2,A_3\}$ do not form a partition of $X$.
-	  \item Repeat parts (a) and (b) for the relations $\cS$ and $\mathcal T$ on $X$, where
-	  \begin{gather*}
-	  \cS=\{(1,1),(1,3),(3,1),(3,3)\}\\
-	  \mathcal T=\{(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,3)\}
-	  \end{gather*}
-	\end{enumerate}
-	\emph{Some of the sets $A_1,A_2,A_3$ might be the same in each of your examples. If, for example, $A_1=A_3$, then the collection $\{A_1,A_2,A_3\}$ only contains two sets: $\{A_1,A_2\}$. Is this a partition? Compare with the example on page \pageref{ex:partnot}.}
-  
-	\item Using the equivalence relation description of the Möbius strip, prove that you may cut a Möbius strip round the middle and yet still end up with a single loop.\\
-	\emph{Where would you cut the defining rectangle and how can you tell that you still have one piece?}
-
-	
-	\item (Hard!) A \emph{Klein bottle} can be visualized as follows. Define an equivalence relation $\sim$ on the unit square $X=[0,1]\times[0,1]$ so that:
-	\begin{itemize}
-	  \item $(0,y)\sim (1,y)$ for $0\le y\le 1$.
-	  \item $(x,0)\sim(1-x,1)$ for $0\le x\le 1$.
-	\end{itemize}
-	The result is the picture: the blue edges are identified in the same direction and the red edges in the opposite. Attempting to visualize this in 3D requires a willingness to stretch and distort the square, but results in the green bottle. The original red and blue arrows have become curves on the bottle. If you are using Acrobat Reader, click on the bottle and move it around.
-	\begin{enumerate}
-	  \item Suppose you cut the Klein bottle along the horizontal dashed line of the defining square. What is the resulting object? What happens to the green bottle?
-	  \item Now cut the square along the vertical dashed line. What do you get this time?
-	\end{enumerate}
-	Can you visualize where the two dashed lines are on the green bottle?
-	
-	\includegraphics{relations-hw01-kleinsquare}
-% 	\includemedia[width=0.99\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, %add3Djscript=3Dspintool.js,
-% 3Dmenu,
-%   3Dcoo=7.8239054679870605 -2.621169090270996 -71.13204956054688,
-%   3Dc2c=-0.4364800751209259 0.7419548630714417 0.5089088082313538,
-%   3Droo=219.44206346507434,
-%   3Droll=-1.9382490979948275,
-% 3Dlights=Headlamp]{\includegraphics{relations-hw02-klein+0_0}}{relations-hw02-klein+0.prc}
-
-\end{enumerate}
-
-\end{exercises}
 
 \clearpage
 

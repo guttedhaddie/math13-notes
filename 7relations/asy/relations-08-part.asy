@@ -1,20 +1,13 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
-size(350,120);
+size(260,90);
 
 draw(circle((0,0),1));
 
@@ -26,17 +19,17 @@ for(int i=1; i<=n; ++i){
 	label("$X$",(0,0));
 	}
 	
-pair a=0.3dir(45);
-dot("$a$",a,SE);
-dot("$a$",shift((3.5,0)+0.1*dir((1-1)*360/n+180/n))*a,SE);
+pair a=0.3dir(50);
+dot("$a$",a,SE,heavygreen);
+dot("$a$",shift((3.5,0)+0.1*dir((1-1)*360/n+180/n))*a,SE,heavygreen);
 
-pair b=0.7dir(90);
-dot("$b$",b,N);
-dot("$b$",shift((3.5,0)+0.1*dir((2-1)*360/n+180/n))*b,N);
+pair b=0.65dir(85);
+dot("$b$",b,N,blue);
+dot("$b$",shift((3.5,0)+0.1*dir((2-1)*360/n+180/n))*b,N,blue);
 
-pair c=0.9dir(135);
-dot("$c$",c,NE);
-dot("$c$",shift((3.5,0)+0.1*dir((2-1)*360/n+180/n))*c,NE);
+pair c=0.85dir(135);
+dot("$c$",c,NE,blue);
+dot("$c$",shift((3.5,0)+0.1*dir((2-1)*360/n+180/n))*c,NE,blue);
 
 draw("\small partition",(1.1,0.1)..(1.7,0.15)..(2.3,0.1),Arrow);
 
