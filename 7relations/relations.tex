@@ -861,7 +861,7 @@ Before reading the proof, look back at \emph{every} example of an equivalence re
 	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-3-equiv.html}{online}.
 
 	\begin{enumerate}
-	  \item Show that $x\sim y\Longleftrightarrow x\equiv y\pmod 3$ defines an equivalence relation on $\Z$. What are the equivalence classes?
+	  \item\label{exs:cong3} Show that $x\sim y\Longleftrightarrow x\equiv y\pmod 3$ defines an equivalence relation on $\Z$. What are the equivalence classes?
 	  
 	  	
 	  \item\begin{enumerate}
@@ -1014,185 +1014,19 @@ Before reading the proof, look back at \emph{every} example of an equivalence re
 \clearpage
 
 
-
-% \boldsubsubsection{Geometric Examples}
-% 
-% The language of equivalence relations and partitions is used heavily in geometry and topology to describe complex shapes. We finish this section with several examples. Since examples of partitions are especially easy to visualize with curves in the plane, we first return to the example on page \pageref{ex:equivcircle} and describe things in our new language.
-% 
-% \begin{example}{}{}
-% 	For each real number $r\ge 0$, define the set\par
-% 	\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
-% 		\[
-% 			A_r=\bigl\{(x,y)\in\R^2:x^2+y^2=r^2\bigr\}
-% 		\]
-% 		This is simply the circle of radius $r$ centered at the origin. We check that $\{A_r:r\in\R^+_0\}$ is a partition of $\R^2$.
-% 		\begin{itemize}
-% 	 		\item Every point of the plane lies on some circle. Precisely, $(x,y)\in A_{\sqrt{x^2+y^2}}$ since $\sqrt{x^2+y^2}$ is the distance of $(x,y)$ from the origin. Thus \smash{$\R^2=\bigcup\limits_{r\in\R^+_0}A_r$.}
-% 	  	\item If $r_1\neq r_2$, then the concentric circles $A_{r_1}$ and $A_{r_2}$ do not intersect. Thus $A_{r_1}\cap A_{r_2}=\emptyset$.
-% 		\end{itemize}
-% 	\end{minipage}
-% 	\hfill
-% 	\begin{minipage}[t]{0.32\linewidth}\vspace{0pt}
-% 		\includegraphics[width=\textwidth]{relations-09-circles}
-% 	\end{minipage}\par
-% 
-% 	Now define a relation $\sim$ on $\R^2$ via
-% 	\[
-% 		(x,y)\sim(v,w)\iff \exists r\ge 0\text{ such that $(x,y),(v,w)$ both lie on the circle $A_r$}
-% 	\]
-% 	By Theorem \ref{thm:equivpart} this is an equivalence relation. We can also check explicitly: dropping any mention of the radius $r$, we see that
-% 	\[
-% 		(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2
-% 	\]
-% 	This is exactly the equivalence relation described on page \pageref{ex:equivcircle}. The equivalence classes are precisely the sets $A_r$. Indeed for a given point $(v,w)$,
-% 	\[
-% 		[(v,w)]=\{(x,y)\in\R^2:x^2+y^2=v^2+w^2\}=A_{\sqrt{v^2+w^2}}
-% 	\]
-% 	is just the circle of radius $\sqrt{v^2+w^2}$.
-% \end{example}
-
-
-% \boldinline{The Möbius Strip}
-% 
-% Take a rectangle, for example $X=[0,6]\times[0,1]$, and partition into the following subsets.
-% \begin{itemize}
-% 	\item If a point does not lie on the left or right edge of the rectangle, place it in a subset by itself: $\{(x,y)\}$ for $x\neq 0,6$,
-% 	\item If a point does lie on the left or right edge of the rectangle, place it in a subset with one point from the other edge: $\{(0,y),(6,1-y)\}$ for any $y$.
-% \end{itemize}
-% The rectangle is drawn below, where the points on the left and right edges are colored red. The arrows indicate how the edges are paired up. For example the point $(0,0.8)$ (high on the left near the tip of the arrow) is paired with $(6,0.2)$ (low on the right edge of the rectangle).\par
-% These subsets clearly partition the rectangle $X$. The partitions define an equivalence relation $\sim$ on $X$ in accordance with Theorem \ref{thm:equivpart}. Note that there are infinitely many equivalence classes. The question is how we should interpret the quotient set $\quotient X\sim$?\par
-% This is easier to visualize than you might think. Since each point on the left edge of the rectangle lies in an equivalence class with a point on the right edge, we imagine gluing the two edges together in such a way that the corresponding points touch. In the picture, we imagine holding $X$ like a strip of paper, giving it a twist, and then gluing the edges together. This is the classic construction of a Möbius strip. The advantage of the quotient set calculation is that it is very easy to work with points in the original rectangle. As long as you permanently assume that equivalent points of the rectangle correspond to the same point of the Möbius strip you can easily work only in the rectangle.\par
-% 
-% \begin{center}
-% 	\begin{tabular}{c}
-% 		\includegraphics[scale=3.4]{relations-10-mobius}\\
-% 		Rectangle
-% 	\end{tabular}
-% 	\hspace*{.5cm}
-% 	\begin{tabular}{c}
-% 		\includegraphics[scale=3.4]{relations-11-mobius}\\
-% 		Half twist
-% 	\end{tabular}\\[15pt]
-% 	\begin{tabular}{c}
-% 		\includegraphics[width=0.65\textwidth,height=75pt]{relations-12-mobius}\\
-% 		Glue arrows to obtain Möbius strip\\[15pt]
-% 	\end{tabular}
-% \end{center}
-
-
-% Let $L$ be the set of lines in the plane $\R^2$ and consider the relation $\ell_1\sim\ell_2\iff \ell_1$  is parallel to $\ell_2$. Then
-% \begin{description}\itemsep=0pt
-% \item[Reflexivity] $\ell\sim\ell$ since any line is parallel to itself.
-% \item[Symmetry] $\ell_1\sim\ell_2\Rightarrow\ell_2\sim\ell_1$ since one line is parallel to a second iff the second is parallel to the first.
-% \item[Transitivity] Suppose that $\ell_1$ is parallel to $\ell_2$, which is parallel to $\ell_3$, then $\ell_1$ is parallel to $\ell_3$; hence $\ell_1\sim \ell_2$ and $\ell_2\sim\ell_3\Rightarrow \ell_1\sim \ell_3$.
-% \end{description}
-% $\sim$ is therefore an equivalence relation. The equivalence class of a line is the set of all lines parallel to it: for example
-% \[[y=2x-1]=\{y=2x+c:c\in\R\}.\]
-% Each equivalence class is a copy of the real numbers. We can say more to get a handle on what the set of equivalence classes looks like. Every line in a fixed equivalence class has the same gradient $m\in\R\cup\{\infty\}$ (vertical, infinite gradient, lines are allowed!). To each $m\in\R\cup\{\infty\}$ there is exactly one equivalence class. In some sense you may therefore view $\{[\ell]\}=L/\sim$ as the set $\R\cup\{\infty\}$.\\
-% Alternatively, all lines in an equivalence class make the same angle $\theta\in[0,180^\circ)$ with the $x$-axis. Replace each equivalence class by the point $(\cos 2\theta,\sin 2\theta)$ and we see that there is precisely one equivalence class for every point on the circle of radius one.\\
-% We are tempted to say something like $L/\sim=\R\cup\{\infty\}=S^1$ (where $S^1$ is the circle). This is not correct, but the three sets are \emph{bijective} (we will see this in section \ref{sec:func}) and indeed \emph{homeomorphic}, which means topologically identical.
-
-% \boldinline{The Cylinder}%\label{page:cylinder}
-% 
-% We could construct a cylinder similarly to the Möbius strip, by identifying edges of the rectangle but \emph{without} applying the half-twist. Instead we do something a little different.\par
-% 
-% Let $X=\R^2$ with equivalence relation $\sim$ defined by
-% \[
-% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b=d
-% \]
-% The equivalence classes are horizontal strings of points with the same $y$ co-ordinate. If we imagine wrapping $\R^2$ repeatedly around a cylinder of circumference 1, all of the points in a given equivalence class will now line up. The set of equivalence classes $\quotient{\R^2}\sim$ can therefore be visualized as a cylinder.
-% 
-% Alternatively, you may imagine piercing a roll of toilet paper and unrolling it. The single puncture now becomes a row of (almost!\footnote{Unfortunately for the analogy, toilet paper has purposeful thickness!}) equally spaced holes.\par
-% 
-% In the picture, the left hand side is (part of) the plane $\R^2$, displayed so that points in each equivalence class have the same height and color. The three horizontal dots all lie in the same equivalence class. When we roll up the plane, all three points end up at the same point on the cylinder.
-% 
-% \begin{center}
-% 	%\includegraphics[scale=1.2]{relations-13-cylinder(mp)}\\
-% 	\includegraphics[width=0.8\textwidth]{relations-13-cylinder}
-% \end{center}
-% 
-% More complex shapes can be created by other partitions/relations. If you want a challenge in visualization, consider why the equivalence relation
-% \[
-% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b-d\in\Z
-% \]
-% on $\R^2$ defines a torus (the surface of a ring-doughnut).
-
-
-  % 	\item Suppose that $\cR,\cS$ are relations on some set $X$. Define the \emph{composition} $\cR\circ \cS$ to be the relation
-% 	\[(a,c)\in \cR\circ \cS\iff \exists b\in X\text{ such that }(a,b)\in \cR\text{ and }(b,c)\in \cS.\]
-% 	\begin{enumerate}
-% 		\item If $\cR=\{(1,1),(1,2),(2,3),(3,1),(3,3)\}$ and $\cS=\{(1,2),(1,3),(2,1),(3,3)\}$, find $\cR\circ \cS$.
-% 		\item Suppose that $\cR$ and $\cS$ are reflexive. Prove that $\cR\circ \cS$ is reflexive.
-% 		\item Suppose that $\cR$ and $\cS$ are symmetric. Prove that $(x,y)\in \cR\circ \cS\iff (y,x)\in \cS\circ \cR$.
-% 		\item Give an example of symmetric relations $\cR,\cS$ such that $\cR\circ \cS$ is \emph{not} symmetric. Conclude that if $\cR,\cS$ are equivalence relations, then $\cR\circ \cS$ need not be an equivalence relation.
-% 	\end{enumerate}
-	
-% 		\item Let $\cR$ be a relation on a set $X$. Inductively define $\cR^n$ for $n \in \N$ as follows:
-% \begin{itemize}
-%     \item $\cR^1 = \cR$
-%     \item $\cR^{n + 1} = \cR \circ \cR^n$.
-% \end{itemize}
-% Set
-% \[
-% \cR^+ = \bigcup_{n \in \N} \cR^n.
-% \]
-% Show that $\cR^+$ is the smallest transitive relation on $X$ containing $\cR$. That is,
-% \begin{enumerate}
-%     \item $\cR^+$ is transitive.
-%     \item $\cR \subseteq \cR^+$.
-%     \item If $\cT$ is a transitive relation on $X$ such that $\cR \subseteq \cT$, then $\cR^+ \subseteq \cT$. [Hint: use induction to show $\cR^n \subseteq \cT$ for all $n \in \N$.]
-% \end{enumerate}
-% We call $\cR^+$ the \emph{transitive closure} of $\cR$.
-% \begin{enumerate}\setcounter{enumii}{3}
-%     \item Let $X = \{a,b,c,d\}$ and $\cR = \{(a,b), (b,c), (c,d)\}$. Compute $\cR^+$.
-% \end{enumerate}
-  
-  
-% 	\item Using the equivalence relation description of the Möbius strip, prove that you may cut a Möbius strip round the middle and yet still end up with a single loop.\\
-% 	\emph{Where would you cut the defining rectangle and how can you tell that you still have one piece?}
-% 
-% 	
-% 	\item (Hard!) A \emph{Klein bottle} can be visualized as follows. Define an equivalence relation $\sim$ on the unit square $X=[0,1]\times[0,1]$ so that:
-% 	\begin{itemize}
-% 	  \item $(0,y)\sim (1,y)$ for $0\le y\le 1$.
-% 	  \item $(x,0)\sim(1-x,1)$ for $0\le x\le 1$.
-% 	\end{itemize}
-% 	The result is the picture: the blue edges are identified in the same direction and the red edges in the opposite. Attempting to visualize this in 3D requires a willingness to stretch and distort the square, but results in the green bottle. The original red and blue arrows have become curves on the bottle. If you are using Acrobat Reader, click on the bottle and move it around.
-% 	\begin{enumerate}
-% 	  \item Suppose you cut the Klein bottle along the horizontal dashed line of the defining square. What is the resulting object? What happens to the green bottle?
-% 	  \item Now cut the square along the vertical dashed line. What do you get this time?
-% 	\end{enumerate}
-% 	Can you visualize where the two dashed lines are on the green bottle?
-% 	
-% 	\includegraphics{relations-hw01-kleinsquare}
-% 	\includemedia[width=0.99\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, %add3Djscript=3Dspintool.js,
-% 3Dmenu,
-%   3Dcoo=7.8239054679870605 -2.621169090270996 -71.13204956054688,
-%   3Dc2c=-0.4364800751209259 0.7419548630714417 0.5089088082313538,
-%   3Droo=219.44206346507434,
-%   3Droll=-1.9382490979948275,
-% 3Dlights=Headlamp]{\includegraphics{relations-hw02-klein+0_0}}{relations-hw02-klein+0.prc}
-
-
-\clearpage
-
-
 \subsection{Well-definition, Rings and Congruence}\label{sec:welldefn}
 
-PUT CYLINDER DISUCSSION IN AT END - OPTIONAL!
-
-We return to our discussion of congruence (recall Section \ref{sec:cong}) in the context of equivalence relations and partitions. The important observation is that \emph{congruence modulo $n$ is an equivalence relation on $\Z$,} each equivalence class being the set of all integers sharing a remainder modulo $n$.
+We return to our discussion of congruence (Section \ref{sec:cong}) in the context of equivalence relations and partitions. The important observation is that \emph{congruence modulo $n$ is an equivalence relation on $\Z$,} each equivalence class being the set of all integers sharing a remainder modulo $n$.
 
 \begin{thm}{}{congequiv1}
 	For a fixed $n\in\N$, define $x\sim_n y\iff x\equiv y\pmod n$. Then $\sim_n$ is an equivalence relation on $\Z$.
 \end{thm}
 
-The theorem is a restatement of Example \ref{ex:cong} on page \pageref{ex:cong}, in conjunction with Theorem \ref{thm:equivpart}. You should prove this yourself, as practice in using the definition of equivalence relation.\par
-The equivalence classes are precisely those integers which are congruent modulo $n$: the integers which share the same remainder.
+The theorem is merely a generalization of Example \ref{ex:eqrelmod2} and Exercise \ref*{sec:equiv}.\ref{exs:cong3}. You should prove this yourself. The equivalence classes are precisely the integers which are congruent modulo $n$:
 \begin{align*}
-	[a]&=\big\{x\in\Z:x\equiv a\spmod n\big\}\\
-	&=\big\{x\in\Z:x\text{ has the same remainder as $a$ when divided by $n$}\big\}\\
-	&=\big\{x\in\Z:x-a\text{ is divisible by $n$}\big\}
+	[a]&=\bigl\{x\in\Z:x\equiv a\spmod n\bigr\}\\
+	&=\bigl\{x\in\Z:x\text{ and $a$ have the same remainder as when divided by $n$}\bigr\}\\
+	&=\bigl\{x\in\Z:x-a\text{ is divisible by $n$}\bigr\}
 \end{align*}
 In this language, we can restate what it means for two equivalence classes to be equal.
 
@@ -1200,38 +1034,40 @@ In this language, we can restate what it means for two equivalence classes to be
 	$[a]=[b]\iff a\equiv b\pmod n\iff \exists k\in\Z\text{ such that }b=a+kn$.
 \end{thm}
 
-If the meaning of \emph{any} of the above is unclear, re-read the previous two sections: they are critically important!\par
-The equivalence classes of $\sim_n$ partition the integers $\Z$. According to Theorem \ref{thm:congequiv2}, there are exactly $n$ equivalence classes, whence we may describe the quotient set as
+If the meaning of \emph{any} of the above is unclear, re-read the previous section! The equivalence classes of $\sim_n$ partition the integers  into  exactly $n$ subsets, one for each remainder. The quotient set is therefore
 \[
-	\quotient \Z{\sim_n}=\big\{[0],[1],\ldots,[n-1]\big\}
+	\quotient \Z{\sim_n}=\bigl\{[0],[1],\ldots,[n-1]\bigr\}
 \]
 We use this set to define an extremely important object.
 
 \begin{defn}{}{}
-	Define operations $+_n$ and $\cdot_n$ on the set $\quotient\Z{\sim_n}$ as follows:
+	Define operations $\textcolor{red}{+_n}$ and $\textcolor{red}{\cdot_n}$ on the quotient set $\quotient\Z{\sim_n}$ as follows:
 	\[
-		[x]+_n[y]:=[x+y],\qquad [x]\cdot_n[y]:=[x\cdot y]
+		[x]\mathbin{\textcolor{red}{+_n}}[y]:=[x\mathbin{\textcolor{cyan}{+}}y],\qquad [x]\mathbin{\textcolor{red}{\cdot_n}}[y]:=[x\mathbin{\textcolor{cyan}{\cdot}} y]
 	\]
-	The \emph{ring} $\Z_n$ is the set $\quotient\Z{\sim_n}$ together with the operations $+_n$ and $\cdot_n$.
+	The \emph{ring} $\Z_n$ is the set $\quotient\Z{\sim_n}$ together with the operations $\textcolor{red}{+_n}$ and $\textcolor{red}{\cdot_n}$.
 \end{defn}
 
-The operation $+_n$ is telling us how to add \emph{equivalence classes,} that is, how to produce a new equivalence class from two old ones. It is important to understand that $+_n$ is \emph{not the same} operation as $+$: we are \emph{defining} $+_n$ using $+$. The former combines equivalence classes, while the latter sums integers. The operation $\cdot_n$ similarly tells us how to multiply equivalence classes. The challenge here is that you have to think of each equivalence class as a single object. 
+It is important to appreciate that $\textcolor{red}{+_n}$ and $\textcolor{red}{\cdot_n}$ are \emph{new operations,} defining addition/multiplication of \emph{equivalance classes} in terms of standard \textcolor{cyan}{addition/multiplication} of integers.
 
 \begin{example}{}{}
-	When we write
+	We work in the ring $\Z_8$. According to the definition,
 	\[
 		[3]+_8[6]=[3+6]=[9]=[1]
 	\]
-	we are thinking about the equivalence classes $[3]$ and $[6]$ as individual objects rather than as collections of elements: remember that $[3]=\{\ldots,-5,3,11,19,\ldots\}$ is an infinite set! There is, moreover, a matter of choice: since, for example, $[3]=[11]$ and $[6]=[22]$ we should be able to observe that
+	There is a potential difficulty: each equivalence class is \emph{large} (e.g., $[3]=\{\ldots,-5,3,11,19,\ldots\}$), so we have lots of \emph{choice} regarding representatives. For instance, since $[3]=[11]$ and $[6]=[22]$ we should be able to observe that
 	\[
-		[3]+_8[6]=[11]+_8[22]
+		[11]+_8[22] =[3]+_8[6]
 	\]
-	Is this true? If not, then the operation $+_8$ would not be particularly useful. Thankfully this is not a problem: according to the definition of $+_8$, we have
+	Is this true? If not, then the operation $+_8$ would not be particularly useful. Thankfully this is not a problem: according to the definition of $+_8$, things turn out exactly as we'd like,
 	\[
-		[11]+_8[22]=[11+22]=[33]=[1]
+		[11]+_8[22]=[11+22]=[33]=[1] =[3]+_8[6]
 	\]
-	exactly as we would wish.
 \end{example}
+
+
+\goodbreak
+
 
 Let us think a little more abstractly. Suppose we are given equivalence classes $X$ and $Y$, how do we compute $X+_nY$? Here is the process.
 \begin{enumerate}
@@ -1281,54 +1117,6 @@ Given the usefulness of $\Z_n$ and the cumbersome nature of the above notation, 
 \]
 When using this description of $\Z_n$, you should realize that we are working with equivalence classes, not numbers. In this context, $-3\in\Z_8$ makes perfect sense, for it really means $[-3]\in\Z_8$. This is perfectly fine, since $[-3]=[5]$ as equivalence classes, whence it is legitimate to write $-3=5$ in $\Z_8$. Until you are 100\% sure that you know when 3 represents an equivalence class and when it represents a number, you should keep the brackets in place: in particular it might be a good idea to keep using them until you have passed \emph{this course}!
 \end{aside}
-
-% 
-% \paragraph{Self-test Questions}
-% 
-% \begin{enumerate}
-%   \item Which of the following are true and which false?
-%   \begin{enumerate}
-%     \item $[28]=[5]$ in $\Z_6$.
-%     \item $[24]+\big([3]+[17]\big)=[-10]$ in $\Z_9$.
-%     \item $[2]^3+[3]^3=[4]^3$ in $\Z_{29}$.
-% 	\end{enumerate}
-% 	\item Explain the difference between the operations $+,\cdot$ on $\Z_n$ and $+,\cdot$ on $\Z$. Is the following true or false?
-% 	\[[x]+[y]=[z]\iff x+y=z.\]
-% \end{enumerate}
-
-\begin{exercises}{}{}
-	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-5-welldef.html}{online}.
-
-\begin{enumerate}
-  \item\begin{enumerate}
-    \item Explicitly check that $[7]+[21]=[98]+[-5]$ in $\Z_{13}$.
-    \item Suppose that $[5]\cdot[7]=[8]\cdot[9]$ makes sense. Find the value of $n$ if we are working in the ring $\Z_n$.
-  \end{enumerate}
-  
-  \item\begin{enumerate}
-    \item Prove the second half of Theorem \ref{thm:congwd}, that $\cdot_n$ is well-defined.
-	  \item Prove by induction that the operation of raising to the power $m\in\N$ is well-defined in $\Z_n$. I.e., prove that
-  \[\forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have } [x^m]=[x]^m.\]
-  \emph{Be careful! $n$ is fixed, your induction variable is $m$. What base case(s) do you need?}
-  \end{enumerate} 
-  
-  \item Give an explicit proof of Theorem \ref{thm:congequiv1}.
-  
-  \item\label{ex:qequiv} Consider the relation $\sim$ defined on $\Z\times\N=\{(x,y):x\in\Z,\text{ and }y\in\N\}$ by
-  \[(a,b)\sim(c,d)\iff ad=bc.\]
-  \begin{enumerate}
-    \item Prove that $\sim$ is an equivalence relation.
-    \item List several elements of the equivalence class of $(2,3)$. Repeat for the equivalence class of $(-3,7)$. What do the equivalence classes have to do with the set of rational numbers $\Q$?
-    \item Define operations $\oplus$ and $\otimes$ on $\quotient{\Z\times\N}\sim$ by
-    \[[(a,b)]\oplus[(c,d)]=[(ad+bc,bd)],\qquad [(a,b)]\otimes[(c,d)]=[(ac,bd)].\]
-    Prove that $\oplus$ and $\otimes$ are well-defined.
-  \end{enumerate}
-  \emph{Try to do this question \emph{without} using division! We will return to this example in the next section.}
-\end{enumerate}
-
-\end{exercises}
-\clearpage
-
 
 
 \boldsubsection{Functions and Partitions (Optional) --- include in well-def???}
@@ -1517,14 +1305,54 @@ This result will be resurrected when you study Groups, Rings \& Fields as part o
 %   \item State what it means for a function $f:\quotient X\sim\to A$ to be well-defined.
 % \end{enumerate}
 
+
+
 \begin{exercises}{}{}
-	%A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-6-funcpart.html}{online}.
-	
+	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-4-welldefn.html}{online}.
+
 \begin{enumerate}
+  \item\begin{enumerate}
+    \item Explicitly check that $[7]+[21]=[98]+[-5]$ in $\Z_{13}$.
+    \item Suppose that $[5]\cdot[7]=[8]\cdot[9]$ makes sense. Find the value of $n$ if we are working in the ring $\Z_n$.
+  \end{enumerate}
+  
+  \item\begin{enumerate}
+    \item Prove the second half of Theorem \ref{thm:congwd}, that $\cdot_n$ is well-defined.
+	  \item Prove by induction that the operation of raising to the power $m\in\N$ is well-defined in $\Z_n$. I.e., prove that
+  \[\forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have } [x^m]=[x]^m.\]
+  \emph{Be careful! $n$ is fixed, your induction variable is $m$. What base case(s) do you need?}
+  \end{enumerate} 
+  
+  
+  
+  \item Suppose that $p$ is prime and that in $\Z_p$, we have $[a] \neq [0]$. Show $[a]^2 \neq [0]$. [Hint: See Exercise \ref{ex:primedef} in Section \ref{sec:stronginduction}.]
+  
+  \item Give an explicit proof of Theorem \ref{thm:congequiv1}.
+  
+  \item\label{ex:qequiv} Consider the relation $\sim$ defined on $\Z\times\N=\{(x,y):x\in\Z,\text{ and }y\in\N\}$ by
+  \[(a,b)\sim(c,d)\iff ad=bc.\]
+  \begin{enumerate}
+    \item Prove that $\sim$ is an equivalence relation.
+    \item List several elements of the equivalence class of $(2,3)$. Repeat for the equivalence class of $(-3,7)$. What do the equivalence classes have to do with the set of rational numbers $\Q$?
+    \item Define operations $\oplus$ and $\otimes$ on $\quotient{\Z\times\N}\sim$ by
+    \[[(a,b)]\oplus[(c,d)]=[(ad+bc,bd)],\qquad [(a,b)]\otimes[(c,d)]=[(ac,bd)].\]
+    Prove that $\oplus$ and $\otimes$ are well-defined.
+  \end{enumerate}
+  \emph{Try to do this question \emph{without} using division! We will return to this example in the next section.}
+
+
 	\item\begin{enumerate}
 	  	\item Prove or disprove: $f:\Z_3\to\Z_5:x\mapsto x^3\pmod 5$ is well-defined.
 			\item Prove or disprove: $f:\Z_{10}\to\Z_{20}:x\mapsto x^2\pmod{20}$ is well-defined.
 		\end{enumerate}
+		
+		
+				
+	\item Determine whether the following are well-defined.
+        \begin{enumerate}
+            \item Define $f : \Z_8 \to \Z_{16}$ by $f([a]_8) = [2a]_{16}$.
+            \item Define $g : \Z_8 \to \Z_{12}$ by $g([a]_8) = [2a]_{12}$.
+        \end{enumerate}
 		
 	\item Can we view $F(x,y)=(y^2-1)\sin^2(\pi x)$ as a function whose domain is the cylinder, as described on page \pageref{subsec:cylinder}? Explain your answer. 
 
@@ -1561,7 +1389,188 @@ This result will be resurrected when you study Groups, Rings \& Fields as part o
 			\end{gather*}
 			\emph{The technical term for this is that $f:\left(\quotient{\Z\times\N}\sim,\oplus,\otimes\right)\to(\Q,+,\cdot)$ is an isomorphism of rings.}
 		\end{enumerate}
+		
+		
+				\item Let $\mathcal{C} = \{\text{circles centered at the origin}\} \cup \{(0,0)\}$.
+\begin{enumerate}
+    \item Find an equivalence relation $\sim$ on $\R^2$ such that $\R^2/\sim \, = \mathcal{C}$.
+    \item Let $f : \mathcal{C} \to \R$ by $f(C) = \text{radius of } C$. Theorem 7.21 says there is a function $F : \R^2 \to \R$ such that $F = f \circ \gamma$ where $\gamma$ is the canonical map. Determine an explicit formula for $F$.
+\end{enumerate}
+
+\item Define $\sim$ on $\R$ by $x \sim y$ if and only if $x - y \in \Z$. 
+\begin{enumerate}
+    \item Show $\sim$ is an equivalence relation on $\R$.
+    \item Find a function $F : \R \to [0,1)$ such that $x \sim y$ implies $F(x) = F(y)$.
+    \item Use part (b) to find a well-defined function $f : \R / \sim \to [0,1)$. Is $f$ a bijection?
+\end{enumerate}
+
+\item Every function can be factored as a composition of a surjection followed by a bijection followed by an injection. Let $f : A \to B$ be a function. We show that $f = i \circ g \circ \gamma$ where $i$ is an injection, $g$ a bijection, and $\gamma$ a surjection.
+\begin{enumerate}
+    \item Define $\sim$ on $A$ by $a \sim b$ if and only if $f(a) = f(b)$. Show $\sim$ is an equivalence relation on $A$.
+    \item Let $\gamma : A \to A/\sim$ be the canonical projection. Show there is a well-defined function $g : A/\sim \to \range(f)$ such that $f^* = g \circ \gamma$ where $f^* : A \to \range(f)$ is the function $f^*(a) = f(a)$.
+    \item Show that $g$ is a bijection.
+    \item Let $i : \range(f) \to B$ be the inclusion map $i(b) = b$. Show $f = i \circ f^*$, and conclude that $f = i \circ g \circ \gamma$.
+\end{enumerate}
 \end{enumerate}
 
 \end{exercises}
+
+
+% \boldsubsubsection{Geometric Examples}
+% 
+% The language of equivalence relations and partitions is used heavily in geometry and topology to describe complex shapes. We finish this section with several examples. Since examples of partitions are especially easy to visualize with curves in the plane, we first return to the example on page \pageref{ex:equivcircle} and describe things in our new language.
+% 
+% \begin{example}{}{}
+% 	For each real number $r\ge 0$, define the set\par
+% 	\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
+% 		\[
+% 			A_r=\bigl\{(x,y)\in\R^2:x^2+y^2=r^2\bigr\}
+% 		\]
+% 		This is simply the circle of radius $r$ centered at the origin. We check that $\{A_r:r\in\R^+_0\}$ is a partition of $\R^2$.
+% 		\begin{itemize}
+% 	 		\item Every point of the plane lies on some circle. Precisely, $(x,y)\in A_{\sqrt{x^2+y^2}}$ since $\sqrt{x^2+y^2}$ is the distance of $(x,y)$ from the origin. Thus \smash{$\R^2=\bigcup\limits_{r\in\R^+_0}A_r$.}
+% 	  	\item If $r_1\neq r_2$, then the concentric circles $A_{r_1}$ and $A_{r_2}$ do not intersect. Thus $A_{r_1}\cap A_{r_2}=\emptyset$.
+% 		\end{itemize}
+% 	\end{minipage}
+% 	\hfill
+% 	\begin{minipage}[t]{0.32\linewidth}\vspace{0pt}
+% 		\includegraphics[width=\textwidth]{relations-09-circles}
+% 	\end{minipage}\par
+% 
+% 	Now define a relation $\sim$ on $\R^2$ via
+% 	\[
+% 		(x,y)\sim(v,w)\iff \exists r\ge 0\text{ such that $(x,y),(v,w)$ both lie on the circle $A_r$}
+% 	\]
+% 	By Theorem \ref{thm:equivpart} this is an equivalence relation. We can also check explicitly: dropping any mention of the radius $r$, we see that
+% 	\[
+% 		(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2
+% 	\]
+% 	This is exactly the equivalence relation described on page \pageref{ex:equivcircle}. The equivalence classes are precisely the sets $A_r$. Indeed for a given point $(v,w)$,
+% 	\[
+% 		[(v,w)]=\{(x,y)\in\R^2:x^2+y^2=v^2+w^2\}=A_{\sqrt{v^2+w^2}}
+% 	\]
+% 	is just the circle of radius $\sqrt{v^2+w^2}$.
+% \end{example}
+
+
+% \boldinline{The Möbius Strip}
+% 
+% Take a rectangle, for example $X=[0,6]\times[0,1]$, and partition into the following subsets.
+% \begin{itemize}
+% 	\item If a point does not lie on the left or right edge of the rectangle, place it in a subset by itself: $\{(x,y)\}$ for $x\neq 0,6$,
+% 	\item If a point does lie on the left or right edge of the rectangle, place it in a subset with one point from the other edge: $\{(0,y),(6,1-y)\}$ for any $y$.
+% \end{itemize}
+% The rectangle is drawn below, where the points on the left and right edges are colored red. The arrows indicate how the edges are paired up. For example the point $(0,0.8)$ (high on the left near the tip of the arrow) is paired with $(6,0.2)$ (low on the right edge of the rectangle).\par
+% These subsets clearly partition the rectangle $X$. The partitions define an equivalence relation $\sim$ on $X$ in accordance with Theorem \ref{thm:equivpart}. Note that there are infinitely many equivalence classes. The question is how we should interpret the quotient set $\quotient X\sim$?\par
+% This is easier to visualize than you might think. Since each point on the left edge of the rectangle lies in an equivalence class with a point on the right edge, we imagine gluing the two edges together in such a way that the corresponding points touch. In the picture, we imagine holding $X$ like a strip of paper, giving it a twist, and then gluing the edges together. This is the classic construction of a Möbius strip. The advantage of the quotient set calculation is that it is very easy to work with points in the original rectangle. As long as you permanently assume that equivalent points of the rectangle correspond to the same point of the Möbius strip you can easily work only in the rectangle.\par
+% 
+% \begin{center}
+% 	\begin{tabular}{c}
+% 		\includegraphics[scale=3.4]{relations-10-mobius}\\
+% 		Rectangle
+% 	\end{tabular}
+% 	\hspace*{.5cm}
+% 	\begin{tabular}{c}
+% 		\includegraphics[scale=3.4]{relations-11-mobius}\\
+% 		Half twist
+% 	\end{tabular}\\[15pt]
+% 	\begin{tabular}{c}
+% 		\includegraphics[width=0.65\textwidth,height=75pt]{relations-12-mobius}\\
+% 		Glue arrows to obtain Möbius strip\\[15pt]
+% 	\end{tabular}
+% \end{center}
+
+
+% Let $L$ be the set of lines in the plane $\R^2$ and consider the relation $\ell_1\sim\ell_2\iff \ell_1$  is parallel to $\ell_2$. Then
+% \begin{description}\itemsep=0pt
+% \item[Reflexivity] $\ell\sim\ell$ since any line is parallel to itself.
+% \item[Symmetry] $\ell_1\sim\ell_2\Rightarrow\ell_2\sim\ell_1$ since one line is parallel to a second iff the second is parallel to the first.
+% \item[Transitivity] Suppose that $\ell_1$ is parallel to $\ell_2$, which is parallel to $\ell_3$, then $\ell_1$ is parallel to $\ell_3$; hence $\ell_1\sim \ell_2$ and $\ell_2\sim\ell_3\Rightarrow \ell_1\sim \ell_3$.
+% \end{description}
+% $\sim$ is therefore an equivalence relation. The equivalence class of a line is the set of all lines parallel to it: for example
+% \[[y=2x-1]=\{y=2x+c:c\in\R\}.\]
+% Each equivalence class is a copy of the real numbers. We can say more to get a handle on what the set of equivalence classes looks like. Every line in a fixed equivalence class has the same gradient $m\in\R\cup\{\infty\}$ (vertical, infinite gradient, lines are allowed!). To each $m\in\R\cup\{\infty\}$ there is exactly one equivalence class. In some sense you may therefore view $\{[\ell]\}=L/\sim$ as the set $\R\cup\{\infty\}$.\\
+% Alternatively, all lines in an equivalence class make the same angle $\theta\in[0,180^\circ)$ with the $x$-axis. Replace each equivalence class by the point $(\cos 2\theta,\sin 2\theta)$ and we see that there is precisely one equivalence class for every point on the circle of radius one.\\
+% We are tempted to say something like $L/\sim=\R\cup\{\infty\}=S^1$ (where $S^1$ is the circle). This is not correct, but the three sets are \emph{bijective} (we will see this in section \ref{sec:func}) and indeed \emph{homeomorphic}, which means topologically identical.
+
+% \boldinline{The Cylinder}%\label{page:cylinder}
+% 
+% We could construct a cylinder similarly to the Möbius strip, by identifying edges of the rectangle but \emph{without} applying the half-twist. Instead we do something a little different.\par
+% 
+% Let $X=\R^2$ with equivalence relation $\sim$ defined by
+% \[
+% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b=d
+% \]
+% The equivalence classes are horizontal strings of points with the same $y$ co-ordinate. If we imagine wrapping $\R^2$ repeatedly around a cylinder of circumference 1, all of the points in a given equivalence class will now line up. The set of equivalence classes $\quotient{\R^2}\sim$ can therefore be visualized as a cylinder.
+% 
+% Alternatively, you may imagine piercing a roll of toilet paper and unrolling it. The single puncture now becomes a row of (almost!\footnote{Unfortunately for the analogy, toilet paper has purposeful thickness!}) equally spaced holes.\par
+% 
+% In the picture, the left hand side is (part of) the plane $\R^2$, displayed so that points in each equivalence class have the same height and color. The three horizontal dots all lie in the same equivalence class. When we roll up the plane, all three points end up at the same point on the cylinder.
+% 
+% \begin{center}
+% 	%\includegraphics[scale=1.2]{relations-13-cylinder(mp)}\\
+% 	\includegraphics[width=0.8\textwidth]{relations-13-cylinder}
+% \end{center}
+% 
+% More complex shapes can be created by other partitions/relations. If you want a challenge in visualization, consider why the equivalence relation
+% \[
+% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b-d\in\Z
+% \]
+% on $\R^2$ defines a torus (the surface of a ring-doughnut).
+
+
+  % 	\item Suppose that $\cR,\cS$ are relations on some set $X$. Define the \emph{composition} $\cR\circ \cS$ to be the relation
+% 	\[(a,c)\in \cR\circ \cS\iff \exists b\in X\text{ such that }(a,b)\in \cR\text{ and }(b,c)\in \cS.\]
+% 	\begin{enumerate}
+% 		\item If $\cR=\{(1,1),(1,2),(2,3),(3,1),(3,3)\}$ and $\cS=\{(1,2),(1,3),(2,1),(3,3)\}$, find $\cR\circ \cS$.
+% 		\item Suppose that $\cR$ and $\cS$ are reflexive. Prove that $\cR\circ \cS$ is reflexive.
+% 		\item Suppose that $\cR$ and $\cS$ are symmetric. Prove that $(x,y)\in \cR\circ \cS\iff (y,x)\in \cS\circ \cR$.
+% 		\item Give an example of symmetric relations $\cR,\cS$ such that $\cR\circ \cS$ is \emph{not} symmetric. Conclude that if $\cR,\cS$ are equivalence relations, then $\cR\circ \cS$ need not be an equivalence relation.
+% 	\end{enumerate}
+	
+% 		\item Let $\cR$ be a relation on a set $X$. Inductively define $\cR^n$ for $n \in \N$ as follows:
+% \begin{itemize}
+%     \item $\cR^1 = \cR$
+%     \item $\cR^{n + 1} = \cR \circ \cR^n$.
+% \end{itemize}
+% Set
+% \[
+% \cR^+ = \bigcup_{n \in \N} \cR^n.
+% \]
+% Show that $\cR^+$ is the smallest transitive relation on $X$ containing $\cR$. That is,
+% \begin{enumerate}
+%     \item $\cR^+$ is transitive.
+%     \item $\cR \subseteq \cR^+$.
+%     \item If $\cT$ is a transitive relation on $X$ such that $\cR \subseteq \cT$, then $\cR^+ \subseteq \cT$. [Hint: use induction to show $\cR^n \subseteq \cT$ for all $n \in \N$.]
+% \end{enumerate}
+% We call $\cR^+$ the \emph{transitive closure} of $\cR$.
+% \begin{enumerate}\setcounter{enumii}{3}
+%     \item Let $X = \{a,b,c,d\}$ and $\cR = \{(a,b), (b,c), (c,d)\}$. Compute $\cR^+$.
+% \end{enumerate}
+  
+  
+% 	\item Using the equivalence relation description of the Möbius strip, prove that you may cut a Möbius strip round the middle and yet still end up with a single loop.\\
+% 	\emph{Where would you cut the defining rectangle and how can you tell that you still have one piece?}
+% 
+% 	
+% 	\item (Hard!) A \emph{Klein bottle} can be visualized as follows. Define an equivalence relation $\sim$ on the unit square $X=[0,1]\times[0,1]$ so that:
+% 	\begin{itemize}
+% 	  \item $(0,y)\sim (1,y)$ for $0\le y\le 1$.
+% 	  \item $(x,0)\sim(1-x,1)$ for $0\le x\le 1$.
+% 	\end{itemize}
+% 	The result is the picture: the blue edges are identified in the same direction and the red edges in the opposite. Attempting to visualize this in 3D requires a willingness to stretch and distort the square, but results in the green bottle. The original red and blue arrows have become curves on the bottle. If you are using Acrobat Reader, click on the bottle and move it around.
+% 	\begin{enumerate}
+% 	  \item Suppose you cut the Klein bottle along the horizontal dashed line of the defining square. What is the resulting object? What happens to the green bottle?
+% 	  \item Now cut the square along the vertical dashed line. What do you get this time?
+% 	\end{enumerate}
+% 	Can you visualize where the two dashed lines are on the green bottle?
+% 	
+% 	\includegraphics{relations-hw01-kleinsquare}
+% 	\includemedia[width=0.99\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, %add3Djscript=3Dspintool.js,
+% 3Dmenu,
+%   3Dcoo=7.8239054679870605 -2.621169090270996 -71.13204956054688,
+%   3Dc2c=-0.4364800751209259 0.7419548630714417 0.5089088082313538,
+%   3Droo=219.44206346507434,
+%   3Droll=-1.9382490979948275,
+% 3Dlights=Headlamp]{\includegraphics{relations-hw02-klein+0_0}}{relations-hw02-klein+0.prc}
 
