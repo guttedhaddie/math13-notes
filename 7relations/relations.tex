@@ -805,7 +805,7 @@ This tight relationship between partitions and equivalence relations is complete
 \end{thm}
 
 \begin{minipage}[t]{0.5\linewidth}\vspace{-3pt}
-	In short, \emph{equivalence relations and partitions are essentially the same thing!} The picture illustrates part 2 and the cake-cutting metaphor:
+	In short, \emph{equivalence relations and partitions are essentially the same thing!}\footnotemark{} The picture illustrates part 2 and the cake-cutting metaphor:
 	\begin{gather*}
 		A_1=[a],\quad A_2=[b]=[c],\\[3pt]
 		b\sim c,\quad a\nsim b, \quad a\nsim c
@@ -820,7 +820,7 @@ This tight relationship between partitions and equivalence relations is complete
 
 Before reading the proof, look back at \emph{every} example of an equivalence relation in this section and convince yourself that the equivalence classes really do partition the `big set.' In both parts of the proof look for where the \textcolor{red}{assumptions} are used---reflexive, symmetric, transitive in part 1; the two partition conditions in part 2---and think about why they are needed.
 
-\goodbreak
+\footnotetext{Even more is true. If you think carefully, conditions 1 \& 2 in the definition of partition (\ref{defn:partition}) now form a disguised version of the vertical line test for the canonical map (Theorem \ref{thm:funceqreln})!}
 
 
 \begin{proof}
@@ -855,6 +855,9 @@ Before reading the proof, look back at \emph{every} example of an equivalence re
 	\end{enumerate}
 \end{proof}
 
+
+
+\goodbreak
 
 
 \begin{exercises}{}{}
@@ -1030,9 +1033,9 @@ The theorem is merely a generalization of Example \ref{ex:eqrelmod2} and Exercis
 \end{align*}
 In this language, we can restate what it means for two equivalence classes to be equal.
 
-\begin{thm}{}{congequiv2}
+\begin{lemm}{}{congequiv2}
 	$[a]=[b]\iff a\equiv b\pmod n\iff \exists k\in\Z\text{ such that }b=a+kn$.
-\end{thm}
+\end{lemm}
 
 If the meaning of \emph{any} of the above is unclear, re-read the previous section! The equivalence classes of $\sim_n$ partition the integers  into  exactly $n$ subsets, one for each remainder. The quotient set is therefore
 \[
@@ -1069,233 +1072,268 @@ It is important to appreciate that $\textcolor{red}{+_n}$ and $\textcolor{red}{\
 \goodbreak
 
 
-Let us think a little more abstractly. Suppose we are given equivalence classes $X$ and $Y$, how do we compute $X+_nY$? Here is the process.
+Consider things more abstractly. Given equivalence classes $X$ and $Y$, here is the process for computing the equivalence class $X+_nY$:
 \begin{enumerate}
-  \item \emph{Choose} elements $x\in X$ and $y\in Y$ so that $X=[x]$ and $Y=[y]$.
-  \item Add $x$ and $y$ to get a new element $x+y\in\Z$.
-  \item Then $X+_nY$ is the equivalence class $[x+y]$.
+  \item \emph{Choose representatives} $x\in X$ and $y\in Y$ so that $X=[x]$ and $Y=[y]$.
+  \item \emph{Sum the integers} $x$ and $y$ to get a \emph{new integer} $x+y\in\Z$.
+  \item \emph{Take the equivalence class} $X+_nY=[x+y]$.
 \end{enumerate}
-The issue is that there are \emph{infinitely many possibilities} for the elements $x\in X$ and $y\in Y$ chosen at step 1. If $+_n$ is to make sense, we must obtain the \emph{same} equivalence class $[x+y]$ {\bf regardless of our choices of $x\in X$ and $y\in Y$.}
+The concern is that there are \emph{infinitely many possible choices} for elements $x\in X$ and $y\in Y$ in step 1. If $+_n$ is to make sense, we must obtain the \emph{same} equivalence class $[x+y]$ {\bf regardless of our choices of $x$ and $y$.} This indeed happens, as we indicate with a special piece of terminology.
 
-\begin{defn}{}{well}
-	A concept is \emph{well-defined} if it is \emph{independent of all choices used in the definition.}
-\end{defn}
+
+% 
+% \begin{defn}{}{well}
+% 	A concept is \emph{well-defined} if it is \emph{independent of all choices used in the definition.}
+% \end{defn}
+
 
 \begin{thm}{}{congwd}
 	The operations $+_n$ and $\cdot_n$ are well-defined.
 \end{thm}
 
-The choices made in the definitions of $+_n$ and $\cdot_n$ were of representative elements $x$ and $y$ of the equivalence classes $[x]$ and $[y]$. All representatives of these classes have the form
+This is nothing more than a rehash of Theorem \ref{thm:congbasic}: compare it with what follows until you are comfortable we are doing the same thing! Observe that
 \[
-	x+kn\in[x]\quad\text{and}\quad y+ln\in[y]
+	[x]=\bigl\{z\in\Z:z\equiv x\spmod n\bigr\} =\bigl\{x+kn:k\in\Z\bigr\}
 \]
-for some integers $k,l$. It therefore suffices to prove that
+Otherwise said, all representatives (all possible choices in step 1) of the equivalence class $[x]$ have the form $x+kn$ for some $k\in\Z$. Thinking similarly for $y$, the Theorem requires only that we prove
 \[
 	\forall k,l\in\Z,\quad [x+kn]+_n[y+ln]=[x]+_n[y]\quad\text{and}\quad [x+kn]\cdot_n[y+ln]=[x]\cdot_n[y]
 \]
-We are now in a position to prove the Theorem.
 
 \begin{proof}
 	We prove that $+_n$ is well-defined.
 	\begin{align*}
-		[x+kn]+_n[y+ln]&=[(x+kn)+(y+ln)]\tag*{(by definition of $+_n$)}\\
-		&=[x+y+(k+l)n]\\
-		&=[x+y]\tag*{(by Theorem \ref{thm:congequiv2})}\\
-		&=[x]+_n[y]\tag*{(by definition of $+_n$)}
+		[x+kn]+_n[y+ln]&=[(x+kn)+(y+ln)] \tag{definition of $+_n$}\\
+		&=[x+y+(k+l)n] =[x+y] \tag{Lemma \ref{lemm:congequiv2}}\\
+		&=[x]+_n[y] \tag{definition of $+_n$}
 	\end{align*}
 	The argument for $\cdot_n$ is similar.
 \end{proof}
 
-You should re-read Theorem \ref{thm:congbasic} until you are comfortable that we are doing the same thing!
+
+
+Compare our equivalence class notation with that from Section \ref{sec:cong}. For instance
+\[
+	[-3]+_8[12]=[1] \quad \text{means the same thing as} \quad -3+12\equiv 1\spmod 8 \tag{$\ast$}
+\]
+
 
 \begin{aside}{}{}
-{\bf Aside: Ugly notation}
-
-Given the usefulness of $\Z_n$ and the cumbersome nature of the above notation, it is customary to drop the square brackets and subscripts and simply write
-\[
-	\Z_n=\{0,1,2,\ldots,n-1\},\qquad x+y:=x+y\spmod n,\qquad x\cdot y:=xy\spmod n
-\]
-When using this description of $\Z_n$, you should realize that we are working with equivalence classes, not numbers. In this context, $-3\in\Z_8$ makes perfect sense, for it really means $[-3]\in\Z_8$. This is perfectly fine, since $[-3]=[5]$ as equivalence classes, whence it is legitimate to write $-3=5$ in $\Z_8$. Until you are 100\% sure that you know when 3 represents an equivalence class and when it represents a number, you should keep the brackets in place: in particular it might be a good idea to keep using them until you have passed \emph{this course}!
+\boldinline{Aside: Advanced Notation}
+	Given the applicability of $\Z_n$, it is customary in higher-level mathematics to drop the square brackets and all subscripts, simply writing
+	\[
+		\Z_n=\bigl\{0,1,2,\ldots,n-1\bigr\}
+	\]
+	In this language, ($\ast$) would simply be written $-3+12=1$ in $\Z_8$. It is critical to appreciate here that $-3,12$ and 1 denote \emph{sets} (equivalence classes), not \emph{integers.} Until you are 100\% certain of this, you should stick to either of the notations in $(\ast)$.\smallbreak
+	It is something of a mathematical joke to write $1+1=0$ (in $\Z_2$). Even in this context, $1+1$ still equals 2; the issue is that $2=0$ in $\Z_2$, hence the seemingly paradoxical statement. This is really a very simple claim about \emph{sets}: that the sum of any two odd numbers is even!
 \end{aside}
 
 
-\boldsubsection{Functions and Partitions (Optional) --- include in well-def???}
+\goodbreak
 
-To complete our discussion of partitions and equivalence relations, we consider how to define a function whose domain is a set of equivalence classes. We take congruence as our motivating example.\par
 
-Suppose we want to define a function $f:\Z_4\to\Z_6$. Say $f(x)=3x\pmod 6$. This certainly looks like a function, but is it? Remember that `$x$' and `$3x$' are really equivalence classes, so we should say\footnote{The notation $[x]_4$ is helpful for reminding us which equivalence relation is being applied. When dealing with functions between different quotient sets, it is easy to become confused.}
-\[
-	f\bigl([x]_4\bigr)=[3x]_6,\qquad\text{where}\quad [x]_4\in\Z_4\quad\text{and}\quad [3x]_6\in\Z_6
-\]
-Is \emph{this} a function? To make sure, we need to check that \emph{any} representative $a\in[x]_4$ gives the same result. That is, we need to prove that
-\[
-	a\equiv b\spmod 4\implies 3a\equiv 3b\spmod 6
-\]
-This is not so hard:
-\begin{align*}
-	a\equiv b\spmod 4&\implies \exists n\in\Z\text{ such that }a=b+4n\\
-	&\implies 3a=3b+12n\implies 3a\equiv 3b\spmod 6.
-\end{align*}
-It might appear to be a minor difference, but attempting to define $g:\Z_4\to\Z_6$ by $g(x)=2x\pmod 6$ does \emph{not} result in a function. If it were, then we should have
-\[
-	a\equiv b\spmod 4\implies 2a\equiv 2b\spmod 6
-\]
-But this is simply not true: for example $4\equiv 0\pmod 4$, but $8\not\equiv 0\pmod 6$. It might look like $g$ is a function, but it is not well-defined because $[4]=[0]$ in $\Z_4$ and $g\bigl([4]\bigr)\neq g\bigl([0]\bigr)$ in $\Z_6$.\par
+\boldinline{Functions and Partitions}
 
-Just as in Definition \ref{defn:well}, the process of verifying that a rule really is a function is called checking \emph{well-definition.} In general, if we are defining a function
-\[
-	f:\quotient X\sim\to A
-\]
-whose domain is a quotient set, then it is usually necessary to construct $f$ by saying what happens to a \emph{representative} $x$ of an equivalence class $[x]$:
-\[
-	f\bigl([x]\bigr)=\text{ `do something to $x$'.}\tag{$\ast$}
-\]
-We need to make sure that the `something' is \emph{independent of the choice of element} $x$.
+Our construction of $\Z_n$ is a special case of a more general situation.%
+\footnote{Theorem \ref{thm:congwd} verifies the well-definition of two functions $+_n,\cdot_n:\quotient\Z{\sim_n}\times\quotient\Z{\sim_n}\to\quotient\Z{\sim_n}$}
 
 \begin{defn}{}{}
-	Suppose that $f:\quotient X\sim\to A$ is a rule of the form ($\ast$). We say that $f$ is a \emph{well-defined} function if
+	Let $\sim$ be an equivalence relation on a set $X$ and let $A$ be any set. Suppose we construct $f:\quotient X\sim\to A$ using a rule of the form
 	\[
-		[x]=[y]\implies f\bigl([x]\bigr)=f\bigl([y]\bigr)
+		f([x]):= \text{``do something to a representative $x$''}
+	\]
+	We say that $f$ is \emph{well-defined} if this construction defines a legitimate function. More formally:
+	\[
+		[x]=[y] \implies f([x])=f([y])
 	\]
 \end{defn}
 
-If you think carefully, this is nothing more than condition 2.\ of Definition \ref{defn:func}.
 
 \begin{examples}{}{}
-\begin{enumerate}
-	\item Show that $f:\Z_n\to\Z_n$ defined by $f(x)=x^2+4\pmod n$ is well-defined.\par
-	We must check that $x\equiv y\pmod n\implies x^2+4\equiv y^2+4\pmod n$. But this is trivial!
-	\item For which integers $k$ is the rule $f_k:\Z_4\to\Z_6$ defined by $f_k(x)=kx\pmod 6$ a well-defined function?\par
-	We start with a special case. If $k=1$, then we can attempt to construct a table of values for $f_1(x)$:
+	\exstart Consider $\Z_3=\quotient\Z\sim$, that is $X=\Z$ where $x\sim y\Longleftrightarrow x\equiv y\pmod 3$. The rule $f([x])=2x+1$ does \emph{not} produce a well-defined function $f:\Z_3\to\Z$ since, for instance
 	\[
-		\begin{array}{c|cccc|cccc|cc}
-			x&0&1&2&3&4&5&6&7&8&\cdots\\\hline
-			f_1(x)&0&1&2&3&4&5&0&1&2&\cdots
-		\end{array}
+		[0]=[9]\quad \text{but}\quad f([0])=1\neq 19 =f([9])  
 	\]
-	The problem is immediately visible! In $\Z_4$ we have $0=4$, however $f_1(0)=0$ and $f_1(4)=4$ \emph{which are not equal in $\Z_6$}! It follows that $f_1$ is not a function.\par
-	Rather than try out all possible values of $k$, we proceed systematically. If $f_k$ is to be well-defined, we require $x\equiv y\pmod 4\implies kx\equiv ky\pmod 6$. Now
-	\begin{align*}
-		x\equiv y\pmod 4&\implies \exists n\in\Z\text{ such that }x-y=4n\\*
-		&\implies kx-ky=4kn
-	\end{align*}
-	For $f_k$ to be well-defined, we need to see that $k(x-y)=4kn$ is a multiple of 6 \emph{independently} of $x$ and $y$. Thus $f_k$ is well-defined if and only if $6\mid 4kn$\, \emph{for all} $n\in\Z$. This is the case if and only if $6\mid 4k$. Otherwise said,
-	\[
-		\text{$f_k$ is well-defined}\iff 6\mid 4k\iff 3\mid 2k\iff 3\mid k
-	\]
-	Given that we want $kx\in\Z_6$, we need only consider $k\in\{0,1,2,3,4,5\}$: equivalent values of $k$ modulo 6 won't change the definition of $f_k$. It follows that there are only \emph{two} well-defined functions $f_k:\Z_4\to\Z_6:x\mapsto kx$, namely $f_0(x)=0$ and $f_3(x)=3x$. Here they are in tabular form.
-	\[
-		\begin{array}{c|cccc|cccc|cc}
-			x&0&1&2&3&4&5&6&7&8&\cdots\\\hline
-			f_0(x)&0&0&0&0&0&0&0&0&0&\cdots\\\hline
-			f_3(x)&0&3&0&3&0&3&0&3&0&\cdots
-		\end{array}
-	\]
-	It should be clear that well-defined functions $f_k$ produce tables whose $f_k(x)$ line is \emph{periodic with period four.} To ram this point home, here is the table when $k=5$:
-	\[
-		\begin{array}{c|cccc|cccc|cc}
-			x&0&1&2&3&4&5&6&7&8&\cdots\\\hline
-			f_5(x)&0&5&4&3&2&1&0&5&4&\cdots
-		\end{array}
-	\]
-	This is palpably not a function! You should compare these examples with those on page \pageref{ex:functmod1} and with Exercise \ref*{sec:func1}.\ref{ex:kfunc}. Are these earlier example still functions when the domains are assumed to be a ring $\Z_n$ rather than simply a set of integers?
-\end{enumerate}
+	
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item The rule $f([x])=[2x+1]$ does produce a well-defined function $f:\Z_3\to\Z_3$ however:
+	  \begin{align*}
+	  	[x]=[y]&\implies y=x+3k\ \ \text{for some integer $k$}\\
+	  	&
+	  	\begin{array}{@{}r@{}l}
+	  		{}\implies f([y])&{}=f([x+3k]) =[2x+6k+1] =[2x+1] \\[3pt]
+	  		&{}=f([x])
+	  	\end{array}
+	  	\tag{since $6x\equiv 0\spmod 3$}
+	  \end{align*}
+	  \begin{minipage}[t]{0.72\linewidth}\vspace{0pt}
+	  	If this seems very abstract, note that the function is easily stated in tabular form since there are only three possible inputs!
+	  \end{minipage}
+	  \hfill
+	  \begin{minipage}[t]{0.25\linewidth}\vspace{-10pt}
+	  	\hfill $\def\arraystretch{1.2}
+	  	\begin{array}{c|ccc}
+	  		[x]&[0]&[1]&[2]\\\hline
+	  		f([x])&[1]&[0]&[2]
+	  	\end{array}$
+	  \end{minipage}
+
+	
+		\item This last example is something of an advert for the advanced notation in the previous aside. We ask for which integers $k$ the rule $f_k(x)=kx$ produces a well-defined function $f_k:\Z_4\to\Z_6$. If this is confusing, re-rewrite using either of the notations
+		\[
+			f_k(x)=kx\spmod 6 \quad\text{or}\quad f_k([x]_4)=[kx]_6
+		\]		
+		\begin{minipage}[t]{0.59\linewidth}\vspace{-10pt}
+		 	Start with a special case to get a feel for things. A table of values for $f_1(x)$ shows an immediate problem! 
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.4\linewidth}\vspace{-12pt}
+		  \hfill $\begin{array}{c|cccc|cccc}
+				x&\textcolor{blue}{0}&1&2&3&\textcolor{blue}{4}&5&6&\cdots\\\hline
+				f_1(x)&\textcolor{red}{0}&1&2&3&\textcolor{red}{4}&5&0&\cdots
+			\end{array}$
+		\end{minipage}\par
+		In $\Z_4$, we have $\textcolor{blue}{0}=\textcolor{blue}{4}$, however $f_1(\textcolor{blue}{0})=\textcolor{red}{0}$ and $f_1(\textcolor{blue}{4})=\textcolor{red}{4}$ \emph{which are not equal in $\Z_6$}! It follows that $f_1$ is \emph{not well-defined}: it isn't a function (and never was!).\par
+		Now proceed systematically.
+		\[
+			x\equiv y\spmod 4\implies x-y=4n \implies kx-ky=4kn \tag{for some $n\in\Z$}
+		\]
+		It follows that $f_k$ is well-defined ($f_k(x)=f_k(y)\in\Z_6$) if and only if $6\mid 4kn$\, \emph{for all} $n\in\Z$. This is the case if and only if $6\mid 4k$. Otherwise said,
+		\[
+			\text{$f_k$ is well-defined}\iff 6\mid 4k\iff 3\mid 2k\iff 3\mid k
+		\]
+		\begin{minipage}[t]{0.59\linewidth}\vspace{-10pt}
+			Since $kx\in\Z_6$, equivalent values of $k$ modulo 6 won't change $f_k$: there are only \emph{two} well-defined functions $f_0(x)=0$ and $f_3(x)=3x$.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.4\linewidth}\vspace{-12pt}
+		  \hfill $\begin{array}{c|cccc|cccc}
+				x&0&1&2&3&4&5&6&\cdots\\\hline
+				f_0(x)&0&0&0&0&0&0&0&\cdots\\\hline
+				f_3(x)&0&3&0&3&0&3&0&\cdots
+			\end{array}$
+		\end{minipage}\smallbreak
+		You'll have much more practice with problems like these when you study group theory.
+	\end{enumerate}
 \end{examples}
 
 
-\boldsubsubsection{Functions on the Cylinder and Torus}%\label{subsec:cylinder}
 
-Recall our construction on page \pageref{page:cylinder}, where we viewed the cylinder as the set $\quotient{\R^2}\sim$ with respect to the equivalence relation
-\[
-	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{and}\quad b=d
-\]
-We wish to define a function $f$ whose domain is a cylinder. Using the equivalence relation, this is the same as defining a function $f:\quotient{\R^2}\sim\to A$ where $A$ is our chosen codomain. \emph{Well-definition} requires that $f$ satisfy
-\[
-	(a,b)\sim(c,d)\implies \smash{f\Bigl(\bigl[(a,b)\bigr]\Bigr)=f\Bigl(\bigl[(c,d)\bigr]\Bigr)}
-\]
-Since $(a,b)\sim(a+1,b)$, we require $f\Bigl(\bigl[(a,b)\bigr]\Bigr)=f\Bigl(\bigl[(a+1,b)\bigr]\Bigr)$, for all $a,b\in\R$.
-Otherwise said, $f\Bigl(\bigl[(x,y)\bigr]\Bigr)$ must be periodic in $x$ with period one. It is easy to see that
-\[
-	\smash{f\Bigl(\bigl[(x,y)\bigr]\Bigr)=y^2\sin(2\pi x)}
-\]
-is a suitable choice of function $f:\quotient{\R^2}\sim\to\R$.\par
+\boldsubsubsection{Geometric Applications: the cylinder and the torus (optional!)}
 
-More generally, to define a function whose domain is the torus
-\[
-	T^2=\quotient{\R^2}\sim\quad\text{where}\quad (a,b)\sim (c,d)\iff a-c\in\Z\quad\text{and}\quad b-d\in\Z
-\]
-requires a function which is periodic in \emph{both} $x$ and $y$. The function
-\[
-	f\Bigl(\bigl[(x,y)\bigr]\Bigr)=\sin(2\pi x)\cos(2\pi y)
-\]
-is plotted below, with the color on the torus indicating the value of $f$. It is easier to instead consider the function
-\[
-	F:\R^2\to\R:(x,y)\mapsto\sin(2\pi x)\cos(2\pi y)
-\]
-This is also plotted, with the same color for each value. The point is that $F$ is really $f$ in disguise, but has the advantage of being much easier to work with.
+As a fun application, we consider how the equivalence relations permit the easy construction of functions on certain geometric objects.
 
-% \begin{center}
-% \includegraphics[scale=1]{relations-14-torus(maple)}\\
-% The function $f$: domain $T^2$\\[.2cm]
-% \includegraphics[scale=.6]{relations-15-plane}\quad\includegraphics[scale=.6]{relations-16-plane2}\\
-% The function $F$: domains $0\le x,y\le 1$ and $0\le x,y\le 2$ respectively
-% \end{center}
-
-\begin{center}
-	\begin{minipage}{0.45\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-14-torus}\\[14pt]
-		The function $f$: domain $T^2$\\
-		The arrows in the two pictures correspond
-	\end{minipage}\qquad
-	\begin{minipage}{0.45\textwidth}\centering
-		\includegraphics[width=\textwidth]{relations-14-torus2}\\
-		The function $F$ restricted to $[0,1)\times [0,1)$
-	\end{minipage}
-\end{center}
-
-\boldsubsubsection{Optional: The Canonical Map}
-
-To do this justice, and to give you a taste for the details which are necessary in pure mathematics, here is the important definition.
-
-\begin{defn}{}{}
-	Suppose that $\sim$ is an equivalence relation on a set $X$. The function $\gamma:X\to \quotient X\sim$ defined by $\gamma(x)=[x]$ is the \emph{canonical map.}\footnote{Canonical, in mathematics, just means natural or obvious.}
-\end{defn}
-
-For us, the purpose of the canonical map is to allow us to construct functions $f:\quotient X\sim\to A$.
-
-\begin{thm}{}{}
-	Suppose that $\sim$ is an equivalence relation on $X$.
-	\begin{enumerate}
-  	\item If $f:\quotient X\sim\to A$ is a function, then $F:X\to A$ defined by $F=f\circ\gamma$ satisfies
-  	\[
-  		x\sim y\implies F(x)=F(y)
-  	\]
-  	\item If $F:X\to A$ satisfies $x\sim y\implies F(x)=F(y)$, then there is a unique function $f:\quotient X\sim\to A$ satisfying $F=f\circ\gamma$.
+\begin{examples}{}{}
+	\exstart Define an equivalence relation on $\R^2$ by
+	\[
+		(a,b)\sim (c,d)\iff a-c\in\Z \ \text{ and }\ b=d
+	\]
+	The equivalence classes are horizontal strings of points with the same $y$ co-ordinate:
+	\[
+		[(a,b)]=\bigl\{(a+n,b):n\in\Z\bigr\}
+	\]
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \begin{minipage}[t]{0.53\linewidth}\vspace{-17pt}
+			\item[]The set of equivalence classes $\quotient{\R^2}\sim$ may be visualized as a \emph{cylinder} by imagining rolling the plane into a tube of circumference 1 so that all points in a given \textcolor{cyan}{equivalence class} coincide.\footnotemark\smallbreak
+			Now consider the rule $f([(x,y]))=y\sin(2\pi x)$. %Observe that
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.45\linewidth}\vspace{-50pt}
+			\hfill\includegraphics[scale=0.85]{relations-13-cylinder}
+		\end{minipage}
+		\par\vspace{-19pt}
+		\begin{align*}
+	  	[(x,y)]=[(v,w)]
+	  	&\implies
+	  	\begin{cases}
+				x=v+n,\text{ for some $n\in\Z$}\\
+				y=w
+			\end{cases}\\
+	  	&
+	  	\begin{array}{@{}r@{}l}
+	  		{}\implies f\bigl([(x,y)]\bigr)&{}=y\sin(2\pi x) =w\sin(2\pi v)\\[3pt]
+	  		&{}=f\bigl([(v,w)]\bigr)
+	  	\end{array}
+	  \end{align*}
+	  Otherwise said, $f:\smash{\quotient{\R^2}\sim}\to\R$ is a well-defined function whose \emph{domain is the cylinder.}
+	   
+	  \item As a natural extension, see if you can visualize why the equivalence classes of the relation
+	  \[
+			(a,b)\sim (c,d)\iff a-c\in\Z \ \text{ and }\ b-d\in\Z
+		\]
+		on $\R^2$ may be identified with a torus (the surface of a ring-doughnut). The function
+		\[
+			f\bigl([x,y]\bigr) =\sin(2\pi x)\cos(2\pi y)
+		\]
+		is well-defined and may thought of as having domain the torus. The pictures below illustrate $f$, where the colors correspond.\par
+		\begin{minipage}[t]{0.49\linewidth}\vspace{-5pt}
+			\centering
+			\includegraphics[scale=0.9]{relations-14-torus}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.49\linewidth}\vspace{-22pt}
+			\centering
+			\includegraphics[scale=0.7]{relations-14-torus2}
+		\end{minipage}
+% 				\\
+% 				The function $f$: domain $T^2$
+% 				&
+% 				The function $f$ restricted to $[0,1)\times [0,1)$
 	\end{enumerate}
-\end{thm}
+\end{examples}
 
-\begin{proof}
-\begin{enumerate}
-  \item\begin{align*}
-	\hspace{4.3pt}\text{This is trivial:}\quad x\sim y&\implies [x]=[y]\implies \gamma(x)=\gamma(y)\\
-	&\implies f(\gamma(x))=f(\gamma(y))\implies F(x)=F(y).
-	\end{align*}\
-	\item $f:\quotient X\sim\to A$ can only be the function \emph{defined} by $f([x])=F(x)$. We show that this is well-defined:
-	\begin{gather*}
-	[x]=[y]\implies x\sim y\implies F(x)=F(y)\implies f([x])=f([y]).\tag*{\qedhere}
-	\end{gather*}
-\end{enumerate}
-\end{proof}
+\footnotetext{Alternatively, imagine piercing a roll of toilet paper and unrolling it: the \textcolor{cyan}{single puncture} becomes a \textcolor{cyan}{row} of (almost!) equally spaced holes. Unfortunately for the analogy, toilet paper has purposeful thickness!}
 
-\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-	The proof, like much of mathematics, is a masterpiece in concision that seems to be doing nothing at all. The point is that functions of the form $f:\quotient X\sim\to A$ are \emph{difficult} to work with. The Theorem says that we never need to explicitly use such functions, and can instead work with \emph{simpler} functions of the form $F:X\to A$. The only condition is that we must have $x\sim y\implies F(x)=F(y)$. Essentially, $F$ is $f$ in disguise!
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
-	\includegraphics[width=\textwidth]{relations-17-isomthm}
-\end{minipage}\par
+%Some related examples and ideas are in the exercises.
 
-This result will be resurrected when you study Groups, Rings \& Fields as part of the famous \emph{First Isomorphism Theorem.}
+\goodbreak
+
+
+
+
+% \boldsubsubsection{Optional: The Canonical Map}
+% 
+% To do this justice, and to give you a taste for the details which are necessary in pure mathematics, here is the important definition.
+% 
+% \begin{defn}{}{}
+% 	Suppose that $\sim$ is an equivalence relation on a set $X$. The function $\gamma:X\to \quotient X\sim$ defined by $\gamma(x)=[x]$ is the \emph{canonical map.}\footnote{Canonical, in mathematics, just means natural or obvious.}
+% \end{defn}
+% 
+% For us, the purpose of the canonical map is to allow us to construct functions $f:\quotient X\sim\to A$.
+% 
+% \begin{thm}{}{}
+% 	Suppose that $\sim$ is an equivalence relation on $X$.
+% 	\begin{enumerate}
+%   	\item If $f:\quotient X\sim\to A$ is a function, then $F:X\to A$ defined by $F=f\circ\gamma$ satisfies
+%   	\[
+%   		x\sim y\implies F(x)=F(y)
+%   	\]
+%   	\item If $F:X\to A$ satisfies $x\sim y\implies F(x)=F(y)$, then there is a unique function $f:\quotient X\sim\to A$ satisfying $F=f\circ\gamma$.
+% 	\end{enumerate}
+% \end{thm}
+% 
+% \begin{proof}
+% \begin{enumerate}
+%   \item\begin{align*}
+% 	\hspace{4.3pt}\text{This is trivial:}\quad x\sim y&\implies [x]=[y]\implies \gamma(x)=\gamma(y)\\
+% 	&\implies f(\gamma(x))=f(\gamma(y))\implies F(x)=F(y).
+% 	\end{align*}\
+% 	\item $f:\quotient X\sim\to A$ can only be the function \emph{defined} by $f([x])=F(x)$. We show that this is well-defined:
+% 	\begin{gather*}
+% 	[x]=[y]\implies x\sim y\implies F(x)=F(y)\implies f([x])=f([y]).\tag*{\qedhere}
+% 	\end{gather*}
+% \end{enumerate}
+% \end{proof}
+% 
+% \begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
+% 	The proof, like much of mathematics, is a masterpiece in concision that seems to be doing nothing at all. The point is that functions of the form $f:\quotient X\sim\to A$ are \emph{difficult} to work with. The Theorem says that we never need to explicitly use such functions, and can instead work with \emph{simpler} functions of the form $F:X\to A$. The only condition is that we must have $x\sim y\implies F(x)=F(y)$. Essentially, $F$ is $f$ in disguise!
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
+% 	\includegraphics[width=\textwidth]{relations-17-isomthm}
+% \end{minipage}\par
+% 
+% This result will be resurrected when you study Groups, Rings \& Fields as part of the famous \emph{First Isomorphism Theorem.}
 
 
 % \paragraph{Self-test Questions}
@@ -1306,39 +1344,45 @@ This result will be resurrected when you study Groups, Rings \& Fields as part o
 % \end{enumerate}
 
 
+% 
+% \begin{examples}{}{}
+% \begin{enumerate}
+% 	\item Show that $f:\Z_n\to\Z_n$ defined by $f(x)=x^2+4\pmod n$ is well-defined.\par
+% 	We must check that $x\equiv y\pmod n\implies x^2+4\equiv y^2+4\pmod n$. But this is trivial!
+% \end{enumerate}
+% \end{examples}
+
 
 \begin{exercises}{}{}
 	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-4-welldefn.html}{online}.
 
 \begin{enumerate}
+  \item Let $X$ be the set of students in a (large) math class and define an equivalence relation on $X$ via
+  \[
+  	x\sim y\iff x,y\text{ either both wear glasses, or both do not wear glasses}
+  \]
+  Does the rule $f([x])=$ ``$x$'s name'' describe a well-defined function? Explain.
+  
   \item\begin{enumerate}
     \item Explicitly check that $[7]+[21]=[98]+[-5]$ in $\Z_{13}$.
-    \item Suppose that $[5]\cdot[7]=[8]\cdot[9]$ makes sense. Find the value of $n$ if we are working in the ring $\Z_n$.
+    \item Suppose that $[5]\cdot[7]=[8]\cdot[9]$ makes sense in the ring $\Z_n$. Find $n$.
   \end{enumerate}
   
-  \item\begin{enumerate}
+%   \item\begin{enumerate}
     \item Prove the second half of Theorem \ref{thm:congwd}, that $\cdot_n$ is well-defined.
-	  \item Prove by induction that the operation of raising to the power $m\in\N$ is well-defined in $\Z_n$. I.e., prove that
-  \[\forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have } [x^m]=[x]^m.\]
-  \emph{Be careful! $n$ is fixed, your induction variable is $m$. What base case(s) do you need?}
-  \end{enumerate} 
+% 	  \item Prove by induction that the operation of raising to the power $m\in\N$ is well-defined in $\Z_n$. I.e., prove that
+%   \[\forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have } [x^m]=[x]^m.\]
+%   \emph{Be careful! $n$ is fixed, your induction variable is $m$. What base case(s) do you need?}
+%   \end{enumerate} 
   
   
   
-  \item Suppose that $p$ is prime and that in $\Z_p$, we have $[a] \neq [0]$. Show $[a]^2 \neq [0]$. [Hint: See Exercise \ref{ex:primedef} in Section \ref{sec:stronginduction}.]
+  \item Suppose that $p$ is prime and that in $\Z_p$, we have $[a] \neq [0]$. Show $[a]^2 \neq [0]$.\par
+  (\emph{Hint: See Exercise \ref{ex:primedef} in Section \ref{sec:strongind}})
   
   \item Give an explicit proof of Theorem \ref{thm:congequiv1}.
   
-  \item\label{ex:qequiv} Consider the relation $\sim$ defined on $\Z\times\N=\{(x,y):x\in\Z,\text{ and }y\in\N\}$ by
-  \[(a,b)\sim(c,d)\iff ad=bc.\]
-  \begin{enumerate}
-    \item Prove that $\sim$ is an equivalence relation.
-    \item List several elements of the equivalence class of $(2,3)$. Repeat for the equivalence class of $(-3,7)$. What do the equivalence classes have to do with the set of rational numbers $\Q$?
-    \item Define operations $\oplus$ and $\otimes$ on $\quotient{\Z\times\N}\sim$ by
-    \[[(a,b)]\oplus[(c,d)]=[(ad+bc,bd)],\qquad [(a,b)]\otimes[(c,d)]=[(ac,bd)].\]
-    Prove that $\oplus$ and $\otimes$ are well-defined.
-  \end{enumerate}
-  \emph{Try to do this question \emph{without} using division! We will return to this example in the next section.}
+
 
 
 	\item\begin{enumerate}
@@ -1349,10 +1393,10 @@ This result will be resurrected when you study Groups, Rings \& Fields as part o
 		
 				
 	\item Determine whether the following are well-defined.
-        \begin{enumerate}
-            \item Define $f : \Z_8 \to \Z_{16}$ by $f([a]_8) = [2a]_{16}$.
-            \item Define $g : \Z_8 \to \Z_{12}$ by $g([a]_8) = [2a]_{12}$.
-        \end{enumerate}
+	\begin{enumerate}
+		\item $f:\Z_8\to\Z_{16}$ by $f(x)=2x$ \hfill (equivalently $f(x)=2x\spmod{16}$, or $f([x]_8)=[2x]_{16}$).
+		\item $g:\Z_8\to\Z_{12}$ by $g(x)=2x$ \ ($g([x]_8)=[2x]_{12}$).
+	\end{enumerate}
 		
 	\item Can we view $F(x,y)=(y^2-1)\sin^2(\pi x)$ as a function whose domain is the cylinder, as described on page \pageref{subsec:cylinder}? Explain your answer. 
 
@@ -1369,33 +1413,48 @@ This result will be resurrected when you study Groups, Rings \& Fields as part o
 	  \item Repeat part (b) for the function $f:\Z_{100}\to\Z_{300}:x\mapsto 9x$. Compare your arguments for well-definition and injectivity.\\
 	  \emph{This forces you to write your argument abstractly, rather than using a table! You may find it useful that $9\cdot(-11)\equiv 1\pmod{100}$.}
 	\end{enumerate}
-
-	\item Define a partition of the sphere $S^2=\bigl\{(x,y,z):x^2+y^2+z^2=1\bigr\}$ into subsets of the form
-	\[\bigl\{(x,y,z),(-x,-y,-z)\bigr\}.\]
-	Each subset consists of two points directly opposite each other on the sphere (antipodal points). Let $\sim$ be the equivalence relation whose equivalence classes are the above subsets.
-		\begin{enumerate}
-	  	\item $f:\quotient{S^2}{\sim}\to\R:[(x,y,z)]\mapsto xyz$ is not well-defined. Explain why.
-	  	\item Prove that $f:\quotient{S^2}{\sim}\to\R^3:[(x,y,z)]\to(yz,xz,xy)$ is a well-defined function.\\
-			\emph{The image of this function is Steiner's famous \href{http://en.wikipedia.org/wiki/Roman_surface}{Roman Surface}, another example, like the Klein Bottle, of a generalization of the M\"obius Strip.}
-		\end{enumerate}
 		
-		\item Recall Exercise \ref*{sec:welldefn}.\ref{ex:qequiv}, where we defined an equivalence relation $\sim$ on $\Z\times\N$.
-		\begin{enumerate}
-			\item	Prove that the function $f:\quotient{\Z\times\N}\sim\to\Q$ defined by $f\Bigl(\bigl[(x,y)\bigr]\Bigr)=\frac xy$ is a \emph{well-defined bijection.}
-			\item Prove that $f$ transforms the operations $\oplus$ and $\otimes$ into the usual addition and multiplication of rational numbers. That is:
-			\begin{gather*}
+		
+	\item\label{ex:qequiv} Consider the relation $\sim$ defined on $\Z\times\N$ by
+  \[
+  	(a,b)\sim(c,d)\iff ad=bc
+  \]
+  \begin{enumerate}
+    \item Prove that $\sim$ is an equivalence relation.
+    \item List several elements of the equivalence class of $(2,3)$. Repeat for the equivalence class of $(-3,7)$. What do the equivalence classes have to do with the set of rational numbers $\Q$?
+    \item Define operations $\oplus$ and $\otimes$ on $\quotient{\Z\times\N}\sim$ by
+    \[
+    	[(a,b)]\oplus[(c,d)]=[(ad+bc,bd)],\qquad [(a,b)]\otimes[(c,d)]=[(ac,bd)]
+    \]
+    Prove that $\oplus$ and $\otimes$ are well-defined (\emph{do this without using division!}).
+    \item	(Hard)\lstsp Prove that $f\bigl([(x,y)]\bigr)=\frac xy$ is a \emph{well-defined bijection} $f:\quotient{\Z\times\N}\sim\to\Q$, and that $f$ transforms the operations $\oplus$ and $\otimes$ into the usual addition and multiplication of rational numbers: that is,
+		\begin{gather*}
 			f\Bigl(\bigl[(a,b)\bigr]\oplus\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)+f\Bigl(\bigl[(c,d)\bigr]\Bigr)\\
 			f\Bigl(\bigl[(a,b)\bigr]\otimes\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)\cdot f\Bigl(\bigl[(c,d)\bigr]\Bigr)
-			\end{gather*}
-			\emph{The technical term for this is that $f:\left(\quotient{\Z\times\N}\sim,\oplus,\otimes\right)\to(\Q,+,\cdot)$ is an isomorphism of rings.}
-		\end{enumerate}
+		\end{gather*}
+		(\emph{This is essentially a formal definition of the ring of rational numbers!})
+  \end{enumerate}
+  
+  
+  
+
+	\item Define a partition of the sphere $S^2=\bigl\{(x,y,z):x^2+y^2+z^2=1\bigr\}$ into subsets of the form
+	\[
+		\bigl\{(x,y,z),(-x,-y,-z)\bigr\}
+	\]
+	Each subset consists of two points directly opposite each other on the sphere (antipodal points). Let $\sim$ be the equivalence relation whose equivalence classes are the above subsets.
+	\begin{enumerate}
+	  \item $f:\quotient{S^2}{\sim}\to\R:[(x,y,z)]\mapsto xyz$ is not well-defined. Explain why.
+	  \item Prove that $f:\quotient{S^2}{\sim}\to\R^3:[(x,y,z)]\to(yz,xz,xy)$ is a well-defined function.\\
+		\emph{The image of this function is Steiner's \href{http://en.wikipedia.org/wiki/Roman_surface}{Roman Surface}, another example, like the Klein Bottle, of a generalization of the M\"obius Strip.}
+	\end{enumerate}
 		
 		
-				\item Let $\mathcal{C} = \{\text{circles centered at the origin}\} \cup \{(0,0)\}$.
-\begin{enumerate}
-    \item Find an equivalence relation $\sim$ on $\R^2$ such that $\R^2/\sim \, = \mathcal{C}$.
-    \item Let $f : \mathcal{C} \to \R$ by $f(C) = \text{radius of } C$. Theorem 7.21 says there is a function $F : \R^2 \to \R$ such that $F = f \circ \gamma$ where $\gamma$ is the canonical map. Determine an explicit formula for $F$.
-\end{enumerate}
+% 				\item Let $\mathcal{C} = \{\text{circles centered at the origin}\} \cup \{(0,0)\}$.
+% \begin{enumerate}
+%     \item Find an equivalence relation $\sim$ on $\R^2$ such that $\R^2/\sim \, = \mathcal{C}$.
+%     \item Let $f : \mathcal{C} \to \R$ by $f(C) = \text{radius of } C$. Theorem 7.21 says there is a function $F : \R^2 \to \R$ such that $F = f \circ \gamma$ where $\gamma$ is the canonical map. Determine an explicit formula for $F$.
+% \end{enumerate}
 
 \item Define $\sim$ on $\R$ by $x \sim y$ if and only if $x - y \in \Z$. 
 \begin{enumerate}
@@ -1404,53 +1463,50 @@ This result will be resurrected when you study Groups, Rings \& Fields as part o
     \item Use part (b) to find a well-defined function $f : \R / \sim \to [0,1)$. Is $f$ a bijection?
 \end{enumerate}
 
-\item Every function can be factored as a composition of a surjection followed by a bijection followed by an injection. Let $f : A \to B$ be a function. We show that $f = i \circ g \circ \gamma$ where $i$ is an injection, $g$ a bijection, and $\gamma$ a surjection.
-\begin{enumerate}
-    \item Define $\sim$ on $A$ by $a \sim b$ if and only if $f(a) = f(b)$. Show $\sim$ is an equivalence relation on $A$.
-    \item Let $\gamma : A \to A/\sim$ be the canonical projection. Show there is a well-defined function $g : A/\sim \to \range(f)$ such that $f^* = g \circ \gamma$ where $f^* : A \to \range(f)$ is the function $f^*(a) = f(a)$.
-    \item Show that $g$ is a bijection.
-    \item Let $i : \range(f) \to B$ be the inclusion map $i(b) = b$. Show $f = i \circ f^*$, and conclude that $f = i \circ g \circ \gamma$.
-\end{enumerate}
+% \item Every function can be factored as a composition of a surjection followed by a bijection followed by an injection. Let $f : A \to B$ be a function. We show that $f = i \circ g \circ \gamma$ where $i$ is an injection, $g$ a bijection, and $\gamma$ a surjection.
+% \begin{enumerate}
+%     \item Define $\sim$ on $A$ by $a \sim b$ if and only if $f(a) = f(b)$. Show $\sim$ is an equivalence relation on $A$.
+%     \item Let $\gamma : A \to A/\sim$ be the canonical projection. Show there is a well-defined function $g : A/\sim \to \range(f)$ such that $f^* = g \circ \gamma$ where $f^* : A \to \range(f)$ is the function $f^*(a) = f(a)$.
+%     \item Show that $g$ is a bijection.
+%     \item Let $i : \range(f) \to B$ be the inclusion map $i(b) = b$. Show $f = i \circ f^*$, and conclude that $f = i \circ g \circ \gamma$.
+% \end{enumerate}
+
+
+	\item Suppose that $\sim$ is an equivalence relation on $X$. Prove the following:
+	\begin{enumerate}
+		\item If $f:\quotient X\sim\to A$ is well-defined, then $F:X\to A$ defined by $F=f\circ\gamma$ satisfies
+		\[
+			x\sim y\implies F(x)=F(y)
+		\]
+		\item If $F:X\to A$ satisfies $x\sim y\Longrightarrow F(x)=F(y)$, then there is a unique function $\smash{f:\quotient X\sim\to A}$ satisfying $F=f\circ\gamma$.
+	\end{enumerate}
+
+% 
+% \begin{proof}
+% \begin{enumerate}
+%   \item\begin{align*}
+% 	\hspace{4.3pt}\text{This is trivial:}\quad x\sim y&\implies [x]=[y]\implies \gamma(x)=\gamma(y)\\
+% 	&\implies f(\gamma(x))=f(\gamma(y))\implies F(x)=F(y).
+% 	\end{align*}\
+% 	\item $f:\quotient X\sim\to A$ can only be the function \emph{defined} by $f([x])=F(x)$. We show that this is well-defined:
+% 	\begin{gather*}
+% 	[x]=[y]\implies x\sim y\implies F(x)=F(y)\implies f([x])=f([y]).\tag*{\qedhere}
+% 	\end{gather*}
+% \end{enumerate}
+% \end{proof}
+
+	\item\begin{enumerate}
+	 	\item Partition the square $[0,1]\times[0,1]$ into subsets
+	 	\[
+	 		\{(0,y),(1,1-y)\}\quad\text{and}\quad \{(x,y)\} \ (\text{whenever }x\neq 0,1)
+	 	\]
+		
+	\end{enumerate}
 \end{enumerate}
 
 \end{exercises}
 
 
-% \boldsubsubsection{Geometric Examples}
-% 
-% The language of equivalence relations and partitions is used heavily in geometry and topology to describe complex shapes. We finish this section with several examples. Since examples of partitions are especially easy to visualize with curves in the plane, we first return to the example on page \pageref{ex:equivcircle} and describe things in our new language.
-% 
-% \begin{example}{}{}
-% 	For each real number $r\ge 0$, define the set\par
-% 	\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
-% 		\[
-% 			A_r=\bigl\{(x,y)\in\R^2:x^2+y^2=r^2\bigr\}
-% 		\]
-% 		This is simply the circle of radius $r$ centered at the origin. We check that $\{A_r:r\in\R^+_0\}$ is a partition of $\R^2$.
-% 		\begin{itemize}
-% 	 		\item Every point of the plane lies on some circle. Precisely, $(x,y)\in A_{\sqrt{x^2+y^2}}$ since $\sqrt{x^2+y^2}$ is the distance of $(x,y)$ from the origin. Thus \smash{$\R^2=\bigcup\limits_{r\in\R^+_0}A_r$.}
-% 	  	\item If $r_1\neq r_2$, then the concentric circles $A_{r_1}$ and $A_{r_2}$ do not intersect. Thus $A_{r_1}\cap A_{r_2}=\emptyset$.
-% 		\end{itemize}
-% 	\end{minipage}
-% 	\hfill
-% 	\begin{minipage}[t]{0.32\linewidth}\vspace{0pt}
-% 		\includegraphics[width=\textwidth]{relations-09-circles}
-% 	\end{minipage}\par
-% 
-% 	Now define a relation $\sim$ on $\R^2$ via
-% 	\[
-% 		(x,y)\sim(v,w)\iff \exists r\ge 0\text{ such that $(x,y),(v,w)$ both lie on the circle $A_r$}
-% 	\]
-% 	By Theorem \ref{thm:equivpart} this is an equivalence relation. We can also check explicitly: dropping any mention of the radius $r$, we see that
-% 	\[
-% 		(x,y)\sim(v,w)\iff x^2+y^2=v^2+w^2
-% 	\]
-% 	This is exactly the equivalence relation described on page \pageref{ex:equivcircle}. The equivalence classes are precisely the sets $A_r$. Indeed for a given point $(v,w)$,
-% 	\[
-% 		[(v,w)]=\{(x,y)\in\R^2:x^2+y^2=v^2+w^2\}=A_{\sqrt{v^2+w^2}}
-% 	\]
-% 	is just the circle of radius $\sqrt{v^2+w^2}$.
-% \end{example}
 
 
 % \boldinline{The Möbius Strip}

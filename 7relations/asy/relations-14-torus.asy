@@ -1,18 +1,17 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-//if(settings.render < 0) settings.render=4;
-settings.outformat="";
-//settings.inlineimage=true;
-settings.embed=true;
-settings.prc=false;
-settings.toolbar=false;
 
-texpreamble("\usepackage{amsmath}
-\usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-%\input{../../preamble}
-");
+//OpenGL (default) - no opacity
+
+//PNG - no opacity
+//if(!settings.multipleView) settings.batchView=false;
+//settings.render=4;settings.outformat="png";
+
+//HTML - opacity fine
+//settings.outformat="html";
+
+//PDF
+if(!settings.multipleView) settings.batchView=false;
+settings.render=4;settings.outformat="pdf";
 
 import graph3;
 import three;
@@ -21,7 +20,7 @@ import palette;
 
 currentprojection=orthographic(1,1,2.3);
 
-size3(400,400,100,IgnoreAspect);
+size3(200,200,50,IgnoreAspect);
 
 defaultrender.merge=true;
 

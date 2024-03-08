@@ -1,21 +1,14 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 import palette;
 
-size(400,200,IgnoreAspect);
+size(240,140,IgnoreAspect);
 
 picture shad;
 picture lll;
@@ -46,11 +39,13 @@ clip(p);
 draw(p);
 draw(graph(g,-1/3,1/3),dashed);
 
-dot((0.2,1.05-b));
+dotfactor=8;
+
+dot((0.2,1.05-b),Cyan);
 
 draw(Label("\begin{minipage}{4cm}\centering
 wrap\\around
-\end{minipage}",align=4S),(-1.3,0.7)..(-0.9,1.1)..(-0.5,1.3),EndArrow);
+\end{minipage}",align=3dir(273)),(-1.3,0.7)..(-0.9,1.1)..(-0.5,1.3),EndArrow);
 
 image(shad,v,(0,-1),(1,2));
 
@@ -58,9 +53,9 @@ add(lll,shad);
 add(lll,shift(1,0)*shad);
 add(lll,shift(-1,0)*shad);
 
-draw(lll,(-1.2,0)--(2.2,0),Arrow);
-draw(lll,(0,-1.1)--(0,2.3),Arrow);
-draw(lll,(1,-1.1)--(1,2.1),dashed);
+draw(lll,(-1.0,0)--(2.2,0),Arrow);
+draw(lll,(0,-1.0)--(0,2.3),Arrow);
+draw(lll,(1,-1.0)--(1,2.0),dashed);
 
 label(lll,"$x$",(2.15,-0.15));
 label(lll,"$y$",(-0.15,2.15));
@@ -68,8 +63,8 @@ label(lll,"$0$",(-0.1,-0.15));
 label(lll,"$1$",(0.9,-0.15));
 
 for(int i=0; i<3; ++i){
-	dot(lll,(i-0.75,1.1));
-	}
+	dot(lll,(i-0.75,1.1),Cyan);
+}
 	
 real r=3.5;
 
