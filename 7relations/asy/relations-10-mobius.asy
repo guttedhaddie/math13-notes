@@ -1,10 +1,4 @@
-if(!settings.multipleView) settings.batchView=false;
 settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="";
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
@@ -13,14 +7,16 @@ texpreamble("\usepackage{amsmath}
 ");
 import graph;
 
-size(0,0);
+size(0,45);
 
-pair z0=(30,7);
-pair z1=(-30,7);
-//pickup pencircle scaled 2pt;
-draw(z0--z1,heavygreen);
-draw(-z0--(-z1),heavygreen);
-draw((z1-z0)/2--z1,heavyred,Arrow(3));
-draw(-z0--(z1-z0)/2,heavyred,Arrow(3));
-draw((z0-z1)/2--(-z1),heavyred,Arrow(3));
-draw(z0--(z0-z1)/2,heavyred,Arrow(3));
+draw((0,0)--(5,0),heavygreen+linewidth(2));
+draw((0,1)--(5,1),heavygreen+linewidth(2));
+draw((0,0)--(0,1),red+linewidth(2),Arrow(8,Relative(0.6)));
+draw((5,1)--(5,0),red+linewidth(2),Arrow(8,Relative(0.6)));
+
+dotfactor=10;
+dot("$P$",(2,0.4),blue);
+dot("$Q$",(0,0.2),heavyred);
+dot("$\hat Q$",(5,0.8),W,heavyred);
+
+

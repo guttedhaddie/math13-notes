@@ -1159,19 +1159,14 @@ Our construction of $\Z_n$ is a special case of a more general situation.%
 	  \item The rule $f([x])=[2x+1]$ does produce a well-defined function $f:\Z_3\to\Z_3$ however:
 	  \begin{align*}
 	  	[x]=[y]&\implies y=x+3k\ \ \text{for some integer $k$}\\
-	  	&
-	  	\begin{array}{@{}r@{}l}
-	  		{}\implies f([y])&{}=f([x+3k]) =[2x+6k+1] =[2x+1] \\[3pt]
-	  		&{}=f([x])
-	  	\end{array}
-	  	\tag{since $6x\equiv 0\spmod 3$}
+	  	&\implies f([y])=f([x+3k]) =[2x+6k+1] =[2x+1] =f([x])
 	  \end{align*}
-	  \begin{minipage}[t]{0.72\linewidth}\vspace{0pt}
-	  	If this seems very abstract, note that the function is easily stated in tabular form since there are only three possible inputs!
+	  \begin{minipage}[t]{0.72\linewidth}\vspace{-8pt}
+	  	since $6x\equiv 0\spmod 3$. If this seems abstract, note that $f$ is easily stated in tabular form since there are only three possible inputs!
 	  \end{minipage}
 	  \hfill
 	  \begin{minipage}[t]{0.25\linewidth}\vspace{-10pt}
-	  	\hfill $\def\arraystretch{1.2}
+	  	\hfill $\def\arraystretch{1.1}
 	  	\begin{array}{c|ccc}
 	  		[x]&[0]&[1]&[2]\\\hline
 	  		f([x])&[1]&[0]&[2]
@@ -1219,11 +1214,11 @@ Our construction of $\Z_n$ is a special case of a more general situation.%
 
 
 
-\boldsubsubsection{Geometric Applications: the cylinder and the torus (optional!)}
+\boldsubsubsection{Just for Fun: Geometric Applications (optional!)}
 
-As a fun application, we consider how the equivalence relations permit the easy construction of functions on certain geometric objects.
+We consider how equivalence relations permit the easy construction of certain geometric objects and of functions on such.
 
-\begin{examples}{}{}
+\begin{examples}{}{cylinder}
 	\exstart Define an equivalence relation on $\R^2$ by
 	\[
 		(a,b)\sim (c,d)\iff a-c\in\Z \ \text{ and }\ b=d
@@ -1233,8 +1228,8 @@ As a fun application, we consider how the equivalence relations permit the easy 
 		[(a,b)]=\bigl\{(a+n,b):n\in\Z\bigr\}
 	\]
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \begin{minipage}[t]{0.53\linewidth}\vspace{-17pt}
-			\item[]The set of equivalence classes $\quotient{\R^2}\sim$ may be visualized as a \emph{cylinder} by imagining rolling the plane into a tube of circumference 1 so that all points in a given \textcolor{cyan}{equivalence class} coincide.\footnotemark\smallbreak
+	  \begin{minipage}[t]{0.53\linewidth}\vspace{-15pt}
+			\item[]The set of equivalence classes $\smash[t]{\quotient{\R^2}\sim}$ may be visualized as a \emph{cylinder} by imagining rolling the plane into a tube of circumference 1 so that all points in a given \textcolor{cyan}{equivalence class} coincide.\footnotemark\medbreak
 			Now consider the rule $f([(x,y]))=y\sin(2\pi x)$. %Observe that
 		\end{minipage}
 		\hfill
@@ -1244,18 +1239,10 @@ As a fun application, we consider how the equivalence relations permit the easy 
 		\par\vspace{-19pt}
 		\begin{align*}
 	  	[(x,y)]=[(v,w)]
-	  	&\implies
-	  	\begin{cases}
-				x=v+n,\text{ for some $n\in\Z$}\\
-				y=w
-			\end{cases}\\
-	  	&
-	  	\begin{array}{@{}r@{}l}
-	  		{}\implies f\bigl([(x,y)]\bigr)&{}=y\sin(2\pi x) =w\sin(2\pi v)\\[3pt]
-	  		&{}=f\bigl([(v,w)]\bigr)
-	  	\end{array}
+	  	&\implies y=w\ \text{ and }\ x=v+n,\text{ for some $n\in\Z$}\\
+	  	&\implies f\bigl([(x,y)]\bigr) =y\sin(2\pi x) =w\sin(2\pi v) =f\bigl([(v,w)]\bigr)
 	  \end{align*}
-	  Otherwise said, $f:\smash{\quotient{\R^2}\sim}\to\R$ is a well-defined function whose \emph{domain is the cylinder.}
+	  Otherwise said, $f:\smash{\quotient{\R^2}\sim}\to\R$ is a well-defined function whose \emph{domain is the cylinder.} More generally, and $F:\R^2\to\R$ for which $(x,y)\sim(v,w)\Longrightarrow F(x,y)=F(v,w)$ may be viewed as a function on the cylinder.
 	   
 	  \item As a natural extension, see if you can visualize why the equivalence classes of the relation
 	  \[
@@ -1275,20 +1262,124 @@ As a fun application, we consider how the equivalence relations permit the easy 
 			\centering
 			\includegraphics[scale=0.7]{relations-14-torus2}
 		\end{minipage}
-% 				\\
-% 				The function $f$: domain $T^2$
-% 				&
-% 				The function $f$ restricted to $[0,1)\times [0,1)$
 	\end{enumerate}
 \end{examples}
 
 \footnotetext{Alternatively, imagine piercing a roll of toilet paper and unrolling it: the \textcolor{cyan}{single puncture} becomes a \textcolor{cyan}{row} of (almost!) equally spaced holes. Unfortunately for the analogy, toilet paper has purposeful thickness!}
 
-%Some related examples and ideas are in the exercises.
 
 \goodbreak
 
 
+Equivalence relations and partitions are regularly used in this manner to describe objects in geometry and topology. Here is a final famous example written using the language of partitions. 
+
+\begin{example}{Möbius Strip}{mobius}
+	Partition the a rectangle $X$ as follows:
+	\begin{itemize}
+		\item If $P\in X$ does not lie on the left or right edges, place it in a subset $\textcolor{blue}{\{P\}}$ by itself.
+		\item Otherwise, pair $Q$ with a point on the other edge identified in the opposite direction $\textcolor{red}{\bigl\{Q,\hat Q\bigr\}}$.
+	\end{itemize}
+	These subsets clearly partition the rectangle $X$ and thus describe an equivalence relation $\sim$ on $X$. The quotient set $\quotient X\sim$ may be visualized via the classic construction of a Möbius strip: give the rectangle a half-twist and glue the two \textcolor{red}{edges} so that both points in each \textcolor{red}{equivalance class} coincide. This construction allows us to analyse the strip while working on the rectangle: if you walk off the right side of the rectangle (at $\textcolor{red}{\hat Q}$) you simply end up at the corresponding point ($\textcolor{red}{Q}$) on the left side!
+
+\begin{center}
+	\begin{tabular}{c@{\quad}c}
+		\includegraphics{relations-10-mobius}
+		&
+		\includegraphics{relations-12-mobius}
+		\\
+		Rectangle
+		&
+		Half-twist and glue
+	\end{tabular}
+\end{center}
+
+% \begin{center}
+% 	\begin{tabular}{c}
+% 		\includegraphics[scale=3.4]{relations-10-mobius}\\
+% 		Rectangle
+% 	\end{tabular}
+% 	\hspace*{.5cm}
+% 	\begin{tabular}{c}
+% 		\includegraphics[scale=3.4]{relations-11-mobius}\\
+% 		Half twist
+% 	\end{tabular}\\[15pt]
+% 	\begin{tabular}{c}
+% 		\includegraphics[scale=3.4]{relations-12-mobius}\\
+% 		Glue arrows to obtain Möbius strip\\[15pt]
+% 	\end{tabular}
+% \end{center}
+\end{example}
+
+
+
+
+% Let $L$ be the set of lines in the plane $\R^2$ and consider the relation $\ell_1\sim\ell_2\iff \ell_1$  is parallel to $\ell_2$. Then
+% \begin{description}\itemsep=0pt
+% \item[Reflexivity] $\ell\sim\ell$ since any line is parallel to itself.
+% \item[Symmetry] $\ell_1\sim\ell_2\Rightarrow\ell_2\sim\ell_1$ since one line is parallel to a second iff the second is parallel to the first.
+% \item[Transitivity] Suppose that $\ell_1$ is parallel to $\ell_2$, which is parallel to $\ell_3$, then $\ell_1$ is parallel to $\ell_3$; hence $\ell_1\sim \ell_2$ and $\ell_2\sim\ell_3\Rightarrow \ell_1\sim \ell_3$.
+% \end{description}
+% $\sim$ is therefore an equivalence relation. The equivalence class of a line is the set of all lines parallel to it: for example
+% \[[y=2x-1]=\{y=2x+c:c\in\R\}.\]
+% Each equivalence class is a copy of the real numbers. We can say more to get a handle on what the set of equivalence classes looks like. Every line in a fixed equivalence class has the same gradient $m\in\R\cup\{\infty\}$ (vertical, infinite gradient, lines are allowed!). To each $m\in\R\cup\{\infty\}$ there is exactly one equivalence class. In some sense you may therefore view $\{[\ell]\}=L/\sim$ as the set $\R\cup\{\infty\}$.\\
+% Alternatively, all lines in an equivalence class make the same angle $\theta\in[0,180^\circ)$ with the $x$-axis. Replace each equivalence class by the point $(\cos 2\theta,\sin 2\theta)$ and we see that there is precisely one equivalence class for every point on the circle of radius one.\\
+% We are tempted to say something like $L/\sim=\R\cup\{\infty\}=S^1$ (where $S^1$ is the circle). This is not correct, but the three sets are \emph{bijective} (we will see this in section \ref{sec:func}) and indeed \emph{homeomorphic}, which means topologically identical.
+
+
+  % 	\item Suppose that $\cR,\cS$ are relations on some set $X$. Define the \emph{composition} $\cR\circ \cS$ to be the relation
+% 	\[(a,c)\in \cR\circ \cS\iff \exists b\in X\text{ such that }(a,b)\in \cR\text{ and }(b,c)\in \cS.\]
+% 	\begin{enumerate}
+% 		\item If $\cR=\{(1,1),(1,2),(2,3),(3,1),(3,3)\}$ and $\cS=\{(1,2),(1,3),(2,1),(3,3)\}$, find $\cR\circ \cS$.
+% 		\item Suppose that $\cR$ and $\cS$ are reflexive. Prove that $\cR\circ \cS$ is reflexive.
+% 		\item Suppose that $\cR$ and $\cS$ are symmetric. Prove that $(x,y)\in \cR\circ \cS\iff (y,x)\in \cS\circ \cR$.
+% 		\item Give an example of symmetric relations $\cR,\cS$ such that $\cR\circ \cS$ is \emph{not} symmetric. Conclude that if $\cR,\cS$ are equivalence relations, then $\cR\circ \cS$ need not be an equivalence relation.
+% 	\end{enumerate}
+	
+% 		\item Let $\cR$ be a relation on a set $X$. Inductively define $\cR^n$ for $n \in \N$ as follows:
+% \begin{itemize}
+%     \item $\cR^1 = \cR$
+%     \item $\cR^{n + 1} = \cR \circ \cR^n$.
+% \end{itemize}
+% Set
+% \[
+% \cR^+ = \bigcup_{n \in \N} \cR^n.
+% \]
+% Show that $\cR^+$ is the smallest transitive relation on $X$ containing $\cR$. That is,
+% \begin{enumerate}
+%     \item $\cR^+$ is transitive.
+%     \item $\cR \subseteq \cR^+$.
+%     \item If $\cT$ is a transitive relation on $X$ such that $\cR \subseteq \cT$, then $\cR^+ \subseteq \cT$. [Hint: use induction to show $\cR^n \subseteq \cT$ for all $n \in \N$.]
+% \end{enumerate}
+% We call $\cR^+$ the \emph{transitive closure} of $\cR$.
+% \begin{enumerate}\setcounter{enumii}{3}
+%     \item Let $X = \{a,b,c,d\}$ and $\cR = \{(a,b), (b,c), (c,d)\}$. Compute $\cR^+$.
+% \end{enumerate}
+  
+  
+% 	\item Using the equivalence relation description of the Möbius strip, prove that you may cut a Möbius strip round the middle and yet still end up with a single loop.\\
+% 	\emph{Where would you cut the defining rectangle and how can you tell that you still have one piece?}
+% 
+% 	
+% 	\item (Hard!) A \emph{Klein bottle} can be visualized as follows. Define an equivalence relation $\sim$ on the unit square $X=[0,1]\times[0,1]$ so that:
+% 	\begin{itemize}
+% 	  \item $(0,y)\sim (1,y)$ for $0\le y\le 1$.
+% 	  \item $(x,0)\sim(1-x,1)$ for $0\le x\le 1$.
+% 	\end{itemize}
+% 	The result is the picture: the blue edges are identified in the same direction and the red edges in the opposite. Attempting to visualize this in 3D requires a willingness to stretch and distort the square, but results in the green bottle. The original red and blue arrows have become curves on the bottle. If you are using Acrobat Reader, click on the bottle and move it around.
+% 	\begin{enumerate}
+% 	  \item Suppose you cut the Klein bottle along the horizontal dashed line of the defining square. What is the resulting object? What happens to the green bottle?
+% 	  \item Now cut the square along the vertical dashed line. What do you get this time?
+% 	\end{enumerate}
+% 	Can you visualize where the two dashed lines are on the green bottle?
+% 	
+% 	\includegraphics{relations-hw01-kleinsquare}
+% 	\includemedia[width=0.99\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, %add3Djscript=3Dspintool.js,
+% 3Dmenu,
+%   3Dcoo=7.8239054679870605 -2.621169090270996 -71.13204956054688,
+%   3Dc2c=-0.4364800751209259 0.7419548630714417 0.5089088082313538,
+%   3Droo=219.44206346507434,
+%   3Droll=-1.9382490979948275,
+% 3Dlights=Headlamp]{\includegraphics{relations-hw02-klein+0_0}}{relations-hw02-klein+0.prc}
 
 
 % \boldsubsubsection{Optional: The Canonical Map}
@@ -1356,130 +1447,123 @@ As a fun application, we consider how the equivalence relations permit the easy 
 \begin{exercises}{}{}
 	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-4-welldefn.html}{online}.
 
-\begin{enumerate}
-  \item Let $X$ be the set of students in a (large) math class and define an equivalence relation on $X$ via
-  \[
-  	x\sim y\iff x,y\text{ either both wear glasses, or both do not wear glasses}
-  \]
-  Does the rule $f([x])=$ ``$x$'s name'' describe a well-defined function? Explain.
-  
-  \item\begin{enumerate}
-    \item Explicitly check that $[7]+[21]=[98]+[-5]$ in $\Z_{13}$.
-    \item Suppose that $[5]\cdot[7]=[8]\cdot[9]$ makes sense in the ring $\Z_n$. Find $n$.
-  \end{enumerate}
-  
-%   \item\begin{enumerate}
-    \item Prove the second half of Theorem \ref{thm:congwd}, that $\cdot_n$ is well-defined.
-% 	  \item Prove by induction that the operation of raising to the power $m\in\N$ is well-defined in $\Z_n$. I.e., prove that
-%   \[\forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have } [x^m]=[x]^m.\]
-%   \emph{Be careful! $n$ is fixed, your induction variable is $m$. What base case(s) do you need?}
-%   \end{enumerate} 
-  
-  
-  
-  \item Suppose that $p$ is prime and that in $\Z_p$, we have $[a] \neq [0]$. Show $[a]^2 \neq [0]$.\par
-  (\emph{Hint: See Exercise \ref{ex:primedef} in Section \ref{sec:strongind}})
-  
-  \item Give an explicit proof of Theorem \ref{thm:congequiv1}.
-  
-
-
-
-	\item\begin{enumerate}
-	  	\item Prove or disprove: $f:\Z_3\to\Z_5:x\mapsto x^3\pmod 5$ is well-defined.
-			\item Prove or disprove: $f:\Z_{10}\to\Z_{20}:x\mapsto x^2\pmod{20}$ is well-defined.
+	\begin{enumerate}
+	  \item Let $X$ be the set of students in a (large) math class and define an equivalence relation on $X$ via
+	  \[
+	  	x\sim y\iff x,y\text{ either both wear glasses, or both do not wear glasses}
+	  \]
+	  Does the rule $f([x])=$ ``$x$'s name'' describe a well-defined function? Explain.
+	  
+	  \item\begin{enumerate}
+	    \item Explicitly check that $[7]+[21]=[98]+[-5]$ in $\Z_{13}$.
+	    \item Suppose that $[5]\cdot[7]=[8]\cdot[9]$ makes sense in the ring $\Z_n$. Find $n$.
+	  \end{enumerate}
+	  
+	%   \item\begin{enumerate}
+	    \item Prove the second half of Theorem \ref{thm:congwd}, that $\cdot_n$ is well-defined.
+	% 	  \item Prove by induction that the operation of raising to the power $m\in\N$ is well-defined in $\Z_n$. I.e., prove that
+	%   \[\forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have } [x^m]=[x]^m.\]
+	%   \emph{Be careful! $n$ is fixed, your induction variable is $m$. What base case(s) do you need?}
+	%   \end{enumerate} 
+	  
+	  
+	  \item Suppose that $p$ is prime and that in $\Z_p$, we have $[a] \neq [0]$. Show $[a]^2 \neq [0]$.\par
+	  (\emph{Hint: Recall Exercise \ref*{sec:gcd}.\ref{exs:primedef1}})
+	  
+	  
+	  \item Give an explicit proof of Theorem \ref{thm:congequiv1}.
+	 
+	
+		\item Determine whether the following are well-defined.
+		\begin{enumerate}
+		  \item $f:\Z_3\to\Z_5:[x]_3\mapsto [x^3]_5$
+			\item $g:\Z_{10}\to\Z_{20}:[x]_{10}\mapsto [x^2]_{20}$
+			\item $h:\Z_8\to\Z_{16}$ where $h(x)=2x$ \hfill (equivalently $h(x)=2x\spmod{16}$, or $h([x]_8)=[2x]_{16}$).
+			\item $j:\Z_8\to\Z_{12}$ where $j(x)=2x$.
+		\end{enumerate}
+		
+	
+		\item\begin{enumerate}
+		  \item Suppose $\forall n\in\Z,\ (x+4n)^2\equiv x^2\pmod m$. Find all integers $m\ge 2$ for which this is true.
+		  \item For what $m\in\N_{\ge 2}$ is the function $f:\Z_4\to\Z_m:x\mapsto x^2\pmod m$ well-defined.
 		\end{enumerate}
 		
 		
-				
-	\item Determine whether the following are well-defined.
-	\begin{enumerate}
-		\item $f:\Z_8\to\Z_{16}$ by $f(x)=2x$ \hfill (equivalently $f(x)=2x\spmod{16}$, or $f([x]_8)=[2x]_{16}$).
-		\item $g:\Z_8\to\Z_{12}$ by $g(x)=2x$ \ ($g([x]_8)=[2x]_{12}$).
-	\end{enumerate}
+		\item In the sense of Example \ref{ex:cylinder}, can we view $F(x,y)=(y^2-1)\sin^2(\pi x)$ as a function whose domain is the cylinder? Explain. 
 		
-	\item Can we view $F(x,y)=(y^2-1)\sin^2(\pi x)$ as a function whose domain is the cylinder, as described on page \pageref{subsec:cylinder}? Explain your answer. 
-
-	\item\begin{enumerate}
-	  	\item Compute $(x+4n)^2$.
-	  	\item Suppose that $\forall n\in\Z$, we have $(x+4n)^2\equiv x^2\pmod m$. Find all the integers $m$ for which this is a true statement.
-	  	\item For what $m\in\N_{\ge 2}$ is the function $f:\Z_4\to\Z_m:x\mapsto x^2\pmod m$ well-defined.
+		
+		\goodbreak
+		
+			
+		\item\begin{enumerate}
+		  \item Suppose $f:\smash{\quotient X\sim}\to A$ is well-defined. State what it means for $f$ to be \emph{injective.} What do you notice?
+		  \item Prove that $f:\Z_7\to\Z_{35}:[x]_7\mapsto [15x]_{35}$ is a well-defined, injective function.
+		  \item Repeat part (b) for $g:\Z_{100}\to\Z_{300}:[x]_{100}\mapsto [9x]_{300}$.\par
+		  (\emph{Hint: You may find it useful that $9\cdot(-11)\equiv 1\pmod{100}$})
 		\end{enumerate}
 		
-	\item A rule $f:\quotient X\sim\to A$ is well-defined if $[x]=[y]\implies f\bigl([x]\bigr)=f\bigl([y]\bigr)$.
+		
+		\item Define a partition of the sphere $S^2=\bigl\{(x,y,z):x^2+y^2+z^2=1\bigr\}$ into subsets consisting of pairs of antipodal points:
+			$\bigl\{(x,y,z),(-x,-y,-z)\bigr\}$\par
+		Let $\sim$ be the equivalence relation whose equivalence classes are the above subsets.
+		\begin{enumerate}
+		  \item $f:\smash{\quotient{S^2}{\sim}}\to\R:[(x,y,z)]\mapsto xyz$ is not well-defined. Explain why.
+		  \item Prove that $f:\quotient{S^2}{\sim}\to\R^3:[(x,y,z)]\to(yz,xz,xy)$ is a well-defined function.\par
+			\emph{The image of this function is Steiner's Roman Surface; look it up!}
+		\end{enumerate}
+			
+			
+		\item\label{ex:qequiv} Consider the relation $(a,b)\sim(c,d)\iff ad=bc$ on $\Z\times\N$.
+	  \begin{enumerate}
+	    \item Prove that $\sim$ is an equivalence relation.
+	    \item List several elements of the equivalence class of $(2,3)$. Repeat for  $[(-3,7)]$. What does $\sim$ have to do with the set of rational numbers $\Q$?
+	    \item Define operations $+$ and $\times$ on $\quotient{\Z\times\N}\sim$ by
+	    \[
+	    	[(a,b)]+[(c,d)]=[(ad+bc,bd)]\qquad [(a,b)]\times[(c,d)]=[(ac,bd)]
+	    \]
+	    Prove that $+$ and $\times$ are well-defined (\emph{do this without using division!}).
+	    \item	(Hard)\lstsp Prove that $f\bigl([(x,y)]\bigr)=\frac xy$ is a \emph{well-defined bijection} $f:\quotient{\Z\times\N}\sim\to\Q$, and that $f$ transforms $+$ and $\times$ into the usual addition and multiplication on $\Q$: that is,
+			\begin{gather*}
+				f\bigl([(a,b)]+[(c,d)]\bigr) = f\bigl([(a,b)]\bigr)+f\bigl([(c,d)]\bigr),\text{ \ etc.}
+	% 			\\
+	% 			f\Bigl(\bigl[(a,b)\bigr]\otimes\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)\cdot f\Bigl(\bigl[(c,d)\bigr]\Bigr)
+			\end{gather*}
+			(\emph{This is essentially a formal definition of the ring of rational numbers!})
+	  \end{enumerate}
+	  
+	  
+	  
+	
+	
+			
+			
+	% 				\item Let $\mathcal{C} = \{\text{circles centered at the origin}\} \cup \{(0,0)\}$.
+	% \begin{enumerate}
+	%     \item Find an equivalence relation $\sim$ on $\R^2$ such that $\R^2/\sim \, = \mathcal{C}$.
+	%     \item Let $f : \mathcal{C} \to \R$ by $f(C) = \text{radius of } C$. Theorem 7.21 says there is a function $F : \R^2 \to \R$ such that $F = f \circ \gamma$ where $\gamma$ is the canonical map. Determine an explicit formula for $F$.
+	% \end{enumerate}
+	
+	\item Define $\sim$ on $\R$ by $x\sim y$ if and only if $x-y\in \Z$. 
 	\begin{enumerate}
-	  \item State what it means for $f:\quotient X\sim\to A$ to be \emph{injective.} What do you observe?
-	  \item Prove that $f:\Z_7\to\Z_{35}:x\mapsto 15x$ is a well-defined, injective function.
-	  \item Repeat part (b) for the function $f:\Z_{100}\to\Z_{300}:x\mapsto 9x$. Compare your arguments for well-definition and injectivity.\\
-	  \emph{This forces you to write your argument abstractly, rather than using a table! You may find it useful that $9\cdot(-11)\equiv 1\pmod{100}$.}
+	    \item Show $\sim$ is an equivalence relation on $\R$.
+	    \item Find a function $F:\R\to [0,1)$ such that $x\sim y \Longrightarrow F(x)=F(y)$.
+	    \item Use part (b) to find a well-defined function $f:\quotient\R\sim \to [0,1)$. Is $f$ a bijection?
 	\end{enumerate}
-		
-		
-	\item\label{ex:qequiv} Consider the relation $\sim$ defined on $\Z\times\N$ by
-  \[
-  	(a,b)\sim(c,d)\iff ad=bc
-  \]
-  \begin{enumerate}
-    \item Prove that $\sim$ is an equivalence relation.
-    \item List several elements of the equivalence class of $(2,3)$. Repeat for the equivalence class of $(-3,7)$. What do the equivalence classes have to do with the set of rational numbers $\Q$?
-    \item Define operations $\oplus$ and $\otimes$ on $\quotient{\Z\times\N}\sim$ by
-    \[
-    	[(a,b)]\oplus[(c,d)]=[(ad+bc,bd)],\qquad [(a,b)]\otimes[(c,d)]=[(ac,bd)]
-    \]
-    Prove that $\oplus$ and $\otimes$ are well-defined (\emph{do this without using division!}).
-    \item	(Hard)\lstsp Prove that $f\bigl([(x,y)]\bigr)=\frac xy$ is a \emph{well-defined bijection} $f:\quotient{\Z\times\N}\sim\to\Q$, and that $f$ transforms the operations $\oplus$ and $\otimes$ into the usual addition and multiplication of rational numbers: that is,
-		\begin{gather*}
-			f\Bigl(\bigl[(a,b)\bigr]\oplus\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)+f\Bigl(\bigl[(c,d)\bigr]\Bigr)\\
-			f\Bigl(\bigl[(a,b)\bigr]\otimes\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)\cdot f\Bigl(\bigl[(c,d)\bigr]\Bigr)
-		\end{gather*}
-		(\emph{This is essentially a formal definition of the ring of rational numbers!})
-  \end{enumerate}
-  
-  
-  
-
-	\item Define a partition of the sphere $S^2=\bigl\{(x,y,z):x^2+y^2+z^2=1\bigr\}$ into subsets of the form
-	\[
-		\bigl\{(x,y,z),(-x,-y,-z)\bigr\}
-	\]
-	Each subset consists of two points directly opposite each other on the sphere (antipodal points). Let $\sim$ be the equivalence relation whose equivalence classes are the above subsets.
-	\begin{enumerate}
-	  \item $f:\quotient{S^2}{\sim}\to\R:[(x,y,z)]\mapsto xyz$ is not well-defined. Explain why.
-	  \item Prove that $f:\quotient{S^2}{\sim}\to\R^3:[(x,y,z)]\to(yz,xz,xy)$ is a well-defined function.\\
-		\emph{The image of this function is Steiner's \href{http://en.wikipedia.org/wiki/Roman_surface}{Roman Surface}, another example, like the Klein Bottle, of a generalization of the M\"obius Strip.}
-	\end{enumerate}
-		
-		
-% 				\item Let $\mathcal{C} = \{\text{circles centered at the origin}\} \cup \{(0,0)\}$.
-% \begin{enumerate}
-%     \item Find an equivalence relation $\sim$ on $\R^2$ such that $\R^2/\sim \, = \mathcal{C}$.
-%     \item Let $f : \mathcal{C} \to \R$ by $f(C) = \text{radius of } C$. Theorem 7.21 says there is a function $F : \R^2 \to \R$ such that $F = f \circ \gamma$ where $\gamma$ is the canonical map. Determine an explicit formula for $F$.
-% \end{enumerate}
-
-\item Define $\sim$ on $\R$ by $x \sim y$ if and only if $x - y \in \Z$. 
-\begin{enumerate}
-    \item Show $\sim$ is an equivalence relation on $\R$.
-    \item Find a function $F : \R \to [0,1)$ such that $x \sim y$ implies $F(x) = F(y)$.
-    \item Use part (b) to find a well-defined function $f : \R / \sim \to [0,1)$. Is $f$ a bijection?
-\end{enumerate}
-
-% \item Every function can be factored as a composition of a surjection followed by a bijection followed by an injection. Let $f : A \to B$ be a function. We show that $f = i \circ g \circ \gamma$ where $i$ is an injection, $g$ a bijection, and $\gamma$ a surjection.
-% \begin{enumerate}
-%     \item Define $\sim$ on $A$ by $a \sim b$ if and only if $f(a) = f(b)$. Show $\sim$ is an equivalence relation on $A$.
-%     \item Let $\gamma : A \to A/\sim$ be the canonical projection. Show there is a well-defined function $g : A/\sim \to \range(f)$ such that $f^* = g \circ \gamma$ where $f^* : A \to \range(f)$ is the function $f^*(a) = f(a)$.
-%     \item Show that $g$ is a bijection.
-%     \item Let $i : \range(f) \to B$ be the inclusion map $i(b) = b$. Show $f = i \circ f^*$, and conclude that $f = i \circ g \circ \gamma$.
-% \end{enumerate}
-
-
-	\item Suppose that $\sim$ is an equivalence relation on $X$. Prove the following:
-	\begin{enumerate}
-		\item If $f:\quotient X\sim\to A$ is well-defined, then $F:X\to A$ defined by $F=f\circ\gamma$ satisfies
-		\[
-			x\sim y\implies F(x)=F(y)
-		\]
-		\item If $F:X\to A$ satisfies $x\sim y\Longrightarrow F(x)=F(y)$, then there is a unique function $\smash{f:\quotient X\sim\to A}$ satisfying $F=f\circ\gamma$.
-	\end{enumerate}
+	
+	% \item Every function can be factored as a composition of a surjection followed by a bijection followed by an injection. Let $f : A \to B$ be a function. We show that $f = i \circ g \circ \gamma$ where $i$ is an injection, $g$ a bijection, and $\gamma$ a surjection.
+	% \begin{enumerate}
+	%     \item Define $\sim$ on $A$ by $a \sim b$ if and only if $f(a) = f(b)$. Show $\sim$ is an equivalence relation on $A$.
+	%     \item Let $\gamma : A \to A/\sim$ be the canonical projection. Show there is a well-defined function $g : A/\sim \to \range(f)$ such that $f^* = g \circ \gamma$ where $f^* : A \to \range(f)$ is the function $f^*(a) = f(a)$.
+	%     \item Show that $g$ is a bijection.
+	%     \item Let $i : \range(f) \to B$ be the inclusion map $i(b) = b$. Show $f = i \circ f^*$, and conclude that $f = i \circ g \circ \gamma$.
+	% \end{enumerate}
+	
+	
+		\item\label{exs:canonical} Suppose $\sim$ is an equivalence relation on $X$. Prove the following:
+		\begin{enumerate}
+			\item If $f:\smash{\quotient X\sim}\to A$ is well-defined, then $F=f\circ\gamma:X\to A$ satisfies $x\sim y\Longrightarrow F(x)=F(y)$.
+			\item If $F:X\to A$ satisfies $x\sim y\Longrightarrow F(x)=F(y)$, then there is a unique function $\smash{f:\quotient X\sim\to A}$ satisfying $F=f\circ\gamma$.
+		\end{enumerate}
 
 % 
 % \begin{proof}
@@ -1495,47 +1579,19 @@ As a fun application, we consider how the equivalence relations permit the easy 
 % \end{enumerate}
 % \end{proof}
 
-	\item\begin{enumerate}
-	 	\item Partition the square $[0,1]\times[0,1]$ into subsets
-	 	\[
-	 		\{(0,y),(1,1-y)\}\quad\text{and}\quad \{(x,y)\} \ (\text{whenever }x\neq 0,1)
-	 	\]
-		
+		\begin{minipage}[t]{0.79\linewidth}\vspace{0pt}
+			\item (Just for fun!)\lstsp Prove that you can cut a Möbius strip round the middle yet still end up with a single loop.\smallbreak
+			Look up the description of a \textcolor{Green}{Klein bottle}: how is the relationship between it and the Möbius strip similar to the torus/cylinder relationship?
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.2\linewidth}\vspace{0pt}
+			\hfill \href{http://www.math.uci.edu/~ndonalds/math13/relations-klein.html}{\includegraphics[scale=0.6]{relations-klein}}
+		\end{minipage}
 	\end{enumerate}
-\end{enumerate}
 
 \end{exercises}
 
-
-
-
-% \boldinline{The Möbius Strip}
-% 
-% Take a rectangle, for example $X=[0,6]\times[0,1]$, and partition into the following subsets.
-% \begin{itemize}
-% 	\item If a point does not lie on the left or right edge of the rectangle, place it in a subset by itself: $\{(x,y)\}$ for $x\neq 0,6$,
-% 	\item If a point does lie on the left or right edge of the rectangle, place it in a subset with one point from the other edge: $\{(0,y),(6,1-y)\}$ for any $y$.
-% \end{itemize}
-% The rectangle is drawn below, where the points on the left and right edges are colored red. The arrows indicate how the edges are paired up. For example the point $(0,0.8)$ (high on the left near the tip of the arrow) is paired with $(6,0.2)$ (low on the right edge of the rectangle).\par
-% These subsets clearly partition the rectangle $X$. The partitions define an equivalence relation $\sim$ on $X$ in accordance with Theorem \ref{thm:equivpart}. Note that there are infinitely many equivalence classes. The question is how we should interpret the quotient set $\quotient X\sim$?\par
-% This is easier to visualize than you might think. Since each point on the left edge of the rectangle lies in an equivalence class with a point on the right edge, we imagine gluing the two edges together in such a way that the corresponding points touch. In the picture, we imagine holding $X$ like a strip of paper, giving it a twist, and then gluing the edges together. This is the classic construction of a Möbius strip. The advantage of the quotient set calculation is that it is very easy to work with points in the original rectangle. As long as you permanently assume that equivalent points of the rectangle correspond to the same point of the Möbius strip you can easily work only in the rectangle.\par
-% 
-% \begin{center}
-% 	\begin{tabular}{c}
-% 		\includegraphics[scale=3.4]{relations-10-mobius}\\
-% 		Rectangle
-% 	\end{tabular}
-% 	\hspace*{.5cm}
-% 	\begin{tabular}{c}
-% 		\includegraphics[scale=3.4]{relations-11-mobius}\\
-% 		Half twist
-% 	\end{tabular}\\[15pt]
-% 	\begin{tabular}{c}
-% 		\includegraphics[width=0.65\textwidth,height=75pt]{relations-12-mobius}\\
-% 		Glue arrows to obtain Möbius strip\\[15pt]
-% 	\end{tabular}
-% \end{center}
-
+\clearpage
 
 % Let $L$ be the set of lines in the plane $\R^2$ and consider the relation $\ell_1\sim\ell_2\iff \ell_1$  is parallel to $\ell_2$. Then
 % \begin{description}\itemsep=0pt
@@ -1548,31 +1604,6 @@ As a fun application, we consider how the equivalence relations permit the easy 
 % Each equivalence class is a copy of the real numbers. We can say more to get a handle on what the set of equivalence classes looks like. Every line in a fixed equivalence class has the same gradient $m\in\R\cup\{\infty\}$ (vertical, infinite gradient, lines are allowed!). To each $m\in\R\cup\{\infty\}$ there is exactly one equivalence class. In some sense you may therefore view $\{[\ell]\}=L/\sim$ as the set $\R\cup\{\infty\}$.\\
 % Alternatively, all lines in an equivalence class make the same angle $\theta\in[0,180^\circ)$ with the $x$-axis. Replace each equivalence class by the point $(\cos 2\theta,\sin 2\theta)$ and we see that there is precisely one equivalence class for every point on the circle of radius one.\\
 % We are tempted to say something like $L/\sim=\R\cup\{\infty\}=S^1$ (where $S^1$ is the circle). This is not correct, but the three sets are \emph{bijective} (we will see this in section \ref{sec:func}) and indeed \emph{homeomorphic}, which means topologically identical.
-
-% \boldinline{The Cylinder}%\label{page:cylinder}
-% 
-% We could construct a cylinder similarly to the Möbius strip, by identifying edges of the rectangle but \emph{without} applying the half-twist. Instead we do something a little different.\par
-% 
-% Let $X=\R^2$ with equivalence relation $\sim$ defined by
-% \[
-% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b=d
-% \]
-% The equivalence classes are horizontal strings of points with the same $y$ co-ordinate. If we imagine wrapping $\R^2$ repeatedly around a cylinder of circumference 1, all of the points in a given equivalence class will now line up. The set of equivalence classes $\quotient{\R^2}\sim$ can therefore be visualized as a cylinder.
-% 
-% Alternatively, you may imagine piercing a roll of toilet paper and unrolling it. The single puncture now becomes a row of (almost!\footnote{Unfortunately for the analogy, toilet paper has purposeful thickness!}) equally spaced holes.\par
-% 
-% In the picture, the left hand side is (part of) the plane $\R^2$, displayed so that points in each equivalence class have the same height and color. The three horizontal dots all lie in the same equivalence class. When we roll up the plane, all three points end up at the same point on the cylinder.
-% 
-% \begin{center}
-% 	%\includegraphics[scale=1.2]{relations-13-cylinder(mp)}\\
-% 	\includegraphics[width=0.8\textwidth]{relations-13-cylinder}
-% \end{center}
-% 
-% More complex shapes can be created by other partitions/relations. If you want a challenge in visualization, consider why the equivalence relation
-% \[
-% 	(a,b)\sim (c,d)\iff a-c\in\Z\quad\text{\emph{and}}\quad b-d\in\Z
-% \]
-% on $\R^2$ defines a torus (the surface of a ring-doughnut).
 
 
   % 	\item Suppose that $\cR,\cS$ are relations on some set $X$. Define the \emph{composition} $\cR\circ \cS$ to be the relation
@@ -1603,11 +1634,7 @@ As a fun application, we consider how the equivalence relations permit the easy 
 % \begin{enumerate}\setcounter{enumii}{3}
 %     \item Let $X = \{a,b,c,d\}$ and $\cR = \{(a,b), (b,c), (c,d)\}$. Compute $\cR^+$.
 % \end{enumerate}
-  
-  
-% 	\item Using the equivalence relation description of the Möbius strip, prove that you may cut a Möbius strip round the middle and yet still end up with a single loop.\\
-% 	\emph{Where would you cut the defining rectangle and how can you tell that you still have one piece?}
-% 
+
 % 	
 % 	\item (Hard!) A \emph{Klein bottle} can be visualized as follows. Define an equivalence relation $\sim$ on the unit square $X=[0,1]\times[0,1]$ so that:
 % 	\begin{itemize}
