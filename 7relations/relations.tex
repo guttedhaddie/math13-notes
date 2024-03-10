@@ -466,16 +466,7 @@ The example highlights one advantage of the relational approach: the inverse of 
     \item $\mathcal T=\bigl\{(x,y)\in[0,1]\times[-1,1]:x^2+y^2=1\bigr\}$
     \item $\mathcal U=\bigl\{(x,y)\in[0,1]\times[0,1]:x^2+y^2=1\bigr\}$
   \end{enumerate}
-  
-  
-%   \item For each of the examples on page \pageref{ex:reln2}, compute the following inverse images:
-%   \begin{enumerate}
-%     \item $f^{-1}(\{0,1\})$
-%     \item $f^{-1}\Big([0,1)\Big)$
-%     \item $f^{-1}\Big((-\infty,0]\Big)$
-%     \item $f^{-1}\Big(\{-8\}\cup[-7,2]\cup (3,9)\Big)$
-%   \end{enumerate}
-  
+    
   
   \item\begin{enumerate}
     \item Express the function $f:\R\to\R:x\mapsto x^4+3$ as a relation.
@@ -503,12 +494,7 @@ The example highlights one advantage of the relational approach: the inverse of 
     \item Is $f$ injective? Surjective? Explain.
   \end{enumerate}
   
-  
-  %\item Give a formal proof of Theorem \ref{thm:inversedomrange}.
-  
-%   \item Prove or disprove the following: if $f:A\to B$ is a function, and $U,V\subseteq B$, then
-%   \[f^{-1}(U\cap V)=f^{-1}(U)\cap f^{-1}(V)\]
-  
+    
   \item Suppose $f\subseteq A\times B$ is a function.
   \begin{enumerate}
     \item If $U\subseteq A$, explain why it would be reasonable to write the \emph{image of $U$}  as
@@ -1427,22 +1413,6 @@ Equivalence relations and partitions are regularly used in this manner to descri
 % This result will be resurrected when you study Groups, Rings \& Fields as part of the famous \emph{First Isomorphism Theorem.}
 
 
-% \paragraph{Self-test Questions}
-% 
-% \begin{enumerate}
-%   \item Let $k$ be a constant integer. If $f:\Z_5\to\Z_{18}:x\mapsto kx$ is a well-defined function, what period must the sequence of values $f(0),f(1),f(2),\ldots$ have?
-%   \item State what it means for a function $f:\quotient X\sim\to A$ to be well-defined.
-% \end{enumerate}
-
-
-% 
-% \begin{examples}{}{}
-% \begin{enumerate}
-% 	\item Show that $f:\Z_n\to\Z_n$ defined by $f(x)=x^2+4\pmod n$ is well-defined.\par
-% 	We must check that $x\equiv y\pmod n\implies x^2+4\equiv y^2+4\pmod n$. But this is trivial!
-% \end{enumerate}
-% \end{examples}
-
 
 \begin{exercises}{}{}
 	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-4-welldefn.html}{online}.
@@ -1459,13 +1429,9 @@ Equivalence relations and partitions are regularly used in this manner to descri
 	    \item Suppose that $[5]\cdot[7]=[8]\cdot[9]$ makes sense in the ring $\Z_n$. Find $n$.
 	  \end{enumerate}
 	  
-	%   \item\begin{enumerate}
-	    \item Prove the second half of Theorem \ref{thm:congwd}, that $\cdot_n$ is well-defined.
-	% 	  \item Prove by induction that the operation of raising to the power $m\in\N$ is well-defined in $\Z_n$. I.e., prove that
-	%   \[\forall m\in\N,\ \forall [x]\in\quotient{\Z}{\sim_n}\text{ we have } [x^m]=[x]^m.\]
-	%   \emph{Be careful! $n$ is fixed, your induction variable is $m$. What base case(s) do you need?}
-	%   \end{enumerate} 
-	  
+
+	  \item Prove the second half of Theorem \ref{thm:congwd}, that $\cdot_n$ is well-defined.
+
 	  
 	  \item Suppose that $p$ is prime and that in $\Z_p$, we have $[a] \neq [0]$. Show $[a]^2 \neq [0]$.\par
 	  (\emph{Hint: Recall Exercise \ref*{sec:gcd}.\ref{exs:primedef1}})
@@ -1516,7 +1482,7 @@ Equivalence relations and partitions are regularly used in this manner to descri
 		\item\label{ex:qequiv} Consider the relation $(a,b)\sim(c,d)\iff ad=bc$ on $\Z\times\N$.
 	  \begin{enumerate}
 	    \item Prove that $\sim$ is an equivalence relation.
-	    \item List several elements of the equivalence class of $(2,3)$. Repeat for  $[(-3,7)]$. What does $\sim$ have to do with the set of rational numbers $\Q$?
+	    \item List several elements of the equivalence class $[(2,3)]$. Repeat for $[(-3,7)]$. What does $\sim$ have to do with the set of rational numbers $\Q$?
 	    \item Define operations $+$ and $\times$ on $\quotient{\Z\times\N}\sim$ by
 	    \[
 	    	[(a,b)]+[(c,d)]=[(ad+bc,bd)]\qquad [(a,b)]\times[(c,d)]=[(ac,bd)]
@@ -1525,8 +1491,6 @@ Equivalence relations and partitions are regularly used in this manner to descri
 	    \item	(Hard)\lstsp Prove that $f\bigl([(x,y)]\bigr)=\frac xy$ is a \emph{well-defined bijection} $f:\quotient{\Z\times\N}\sim\to\Q$, and that $f$ transforms $+$ and $\times$ into the usual addition and multiplication on $\Q$: that is,
 			\begin{gather*}
 				f\bigl([(a,b)]+[(c,d)]\bigr) = f\bigl([(a,b)]\bigr)+f\bigl([(c,d)]\bigr),\text{ \ etc.}
-	% 			\\
-	% 			f\Bigl(\bigl[(a,b)\bigr]\otimes\bigl[(c,d)\bigr]\Bigr)=f\Bigl(\bigl[(a,b)\bigr]\Bigr)\cdot f\Bigl(\bigl[(c,d)\bigr]\Bigr)
 			\end{gather*}
 			(\emph{This is essentially a formal definition of the ring of rational numbers!})
 	  \end{enumerate}
@@ -1535,49 +1499,20 @@ Equivalence relations and partitions are regularly used in this manner to descri
 	  
 	
 	
-			
-			
-	% 				\item Let $\mathcal{C} = \{\text{circles centered at the origin}\} \cup \{(0,0)\}$.
-	% \begin{enumerate}
-	%     \item Find an equivalence relation $\sim$ on $\R^2$ such that $\R^2/\sim \, = \mathcal{C}$.
-	%     \item Let $f : \mathcal{C} \to \R$ by $f(C) = \text{radius of } C$. Theorem 7.21 says there is a function $F : \R^2 \to \R$ such that $F = f \circ \gamma$ where $\gamma$ is the canonical map. Determine an explicit formula for $F$.
-	% \end{enumerate}
-	
 	\item Define $\sim$ on $\R$ by $x\sim y$ if and only if $x-y\in \Z$. 
 	\begin{enumerate}
 	    \item Show $\sim$ is an equivalence relation on $\R$.
-	    \item Find a function $F:\R\to [0,1)$ such that $x\sim y \Longrightarrow F(x)=F(y)$.
-	    \item Use part (b) to find a well-defined function $f:\quotient\R\sim \to [0,1)$. Is $f$ a bijection?
+	    \item Find an example of a surjective function $F:\R\to [0,1)$ such that $x\sim y \Longrightarrow F(x)=F(y)$.
+	    \item Use part (b) to find a well-defined function $f:\quotient\R\sim \to [0,1)$.
 	\end{enumerate}
 	
-	% \item Every function can be factored as a composition of a surjection followed by a bijection followed by an injection. Let $f : A \to B$ be a function. We show that $f = i \circ g \circ \gamma$ where $i$ is an injection, $g$ a bijection, and $\gamma$ a surjection.
-	% \begin{enumerate}
-	%     \item Define $\sim$ on $A$ by $a \sim b$ if and only if $f(a) = f(b)$. Show $\sim$ is an equivalence relation on $A$.
-	%     \item Let $\gamma : A \to A/\sim$ be the canonical projection. Show there is a well-defined function $g : A/\sim \to \range(f)$ such that $f^* = g \circ \gamma$ where $f^* : A \to \range(f)$ is the function $f^*(a) = f(a)$.
-	%     \item Show that $g$ is a bijection.
-	%     \item Let $i : \range(f) \to B$ be the inclusion map $i(b) = b$. Show $f = i \circ f^*$, and conclude that $f = i \circ g \circ \gamma$.
-	% \end{enumerate}
 	
-	
-		\item\label{exs:canonical} Suppose $\sim$ is an equivalence relation on $X$. Prove the following:
+		\item\label{exs:canonical} Suppose $\sim$ is an equivalence relation on $X$ and let $\gamma(x)=[x]$. Prove the following:
 		\begin{enumerate}
 			\item If $f:\smash{\quotient X\sim}\to A$ is well-defined, then $F=f\circ\gamma:X\to A$ satisfies $x\sim y\Longrightarrow F(x)=F(y)$.
 			\item If $F:X\to A$ satisfies $x\sim y\Longrightarrow F(x)=F(y)$, then there is a unique function $\smash{f:\quotient X\sim\to A}$ satisfying $F=f\circ\gamma$.
 		\end{enumerate}
 
-% 
-% \begin{proof}
-% \begin{enumerate}
-%   \item\begin{align*}
-% 	\hspace{4.3pt}\text{This is trivial:}\quad x\sim y&\implies [x]=[y]\implies \gamma(x)=\gamma(y)\\
-% 	&\implies f(\gamma(x))=f(\gamma(y))\implies F(x)=F(y).
-% 	\end{align*}\
-% 	\item $f:\quotient X\sim\to A$ can only be the function \emph{defined} by $f([x])=F(x)$. We show that this is well-defined:
-% 	\begin{gather*}
-% 	[x]=[y]\implies x\sim y\implies F(x)=F(y)\implies f([x])=f([y]).\tag*{\qedhere}
-% 	\end{gather*}
-% \end{enumerate}
-% \end{proof}
 
 		\begin{minipage}[t]{0.79\linewidth}\vspace{0pt}
 			\item (Just for fun!)\lstsp Prove that you can cut a Möbius strip round the middle yet still end up with a single loop.\smallbreak
@@ -1590,70 +1525,3 @@ Equivalence relations and partitions are regularly used in this manner to descri
 	\end{enumerate}
 
 \end{exercises}
-
-\clearpage
-
-% Let $L$ be the set of lines in the plane $\R^2$ and consider the relation $\ell_1\sim\ell_2\iff \ell_1$  is parallel to $\ell_2$. Then
-% \begin{description}\itemsep=0pt
-% \item[Reflexivity] $\ell\sim\ell$ since any line is parallel to itself.
-% \item[Symmetry] $\ell_1\sim\ell_2\Rightarrow\ell_2\sim\ell_1$ since one line is parallel to a second iff the second is parallel to the first.
-% \item[Transitivity] Suppose that $\ell_1$ is parallel to $\ell_2$, which is parallel to $\ell_3$, then $\ell_1$ is parallel to $\ell_3$; hence $\ell_1\sim \ell_2$ and $\ell_2\sim\ell_3\Rightarrow \ell_1\sim \ell_3$.
-% \end{description}
-% $\sim$ is therefore an equivalence relation. The equivalence class of a line is the set of all lines parallel to it: for example
-% \[[y=2x-1]=\{y=2x+c:c\in\R\}.\]
-% Each equivalence class is a copy of the real numbers. We can say more to get a handle on what the set of equivalence classes looks like. Every line in a fixed equivalence class has the same gradient $m\in\R\cup\{\infty\}$ (vertical, infinite gradient, lines are allowed!). To each $m\in\R\cup\{\infty\}$ there is exactly one equivalence class. In some sense you may therefore view $\{[\ell]\}=L/\sim$ as the set $\R\cup\{\infty\}$.\\
-% Alternatively, all lines in an equivalence class make the same angle $\theta\in[0,180^\circ)$ with the $x$-axis. Replace each equivalence class by the point $(\cos 2\theta,\sin 2\theta)$ and we see that there is precisely one equivalence class for every point on the circle of radius one.\\
-% We are tempted to say something like $L/\sim=\R\cup\{\infty\}=S^1$ (where $S^1$ is the circle). This is not correct, but the three sets are \emph{bijective} (we will see this in section \ref{sec:func}) and indeed \emph{homeomorphic}, which means topologically identical.
-
-
-  % 	\item Suppose that $\cR,\cS$ are relations on some set $X$. Define the \emph{composition} $\cR\circ \cS$ to be the relation
-% 	\[(a,c)\in \cR\circ \cS\iff \exists b\in X\text{ such that }(a,b)\in \cR\text{ and }(b,c)\in \cS.\]
-% 	\begin{enumerate}
-% 		\item If $\cR=\{(1,1),(1,2),(2,3),(3,1),(3,3)\}$ and $\cS=\{(1,2),(1,3),(2,1),(3,3)\}$, find $\cR\circ \cS$.
-% 		\item Suppose that $\cR$ and $\cS$ are reflexive. Prove that $\cR\circ \cS$ is reflexive.
-% 		\item Suppose that $\cR$ and $\cS$ are symmetric. Prove that $(x,y)\in \cR\circ \cS\iff (y,x)\in \cS\circ \cR$.
-% 		\item Give an example of symmetric relations $\cR,\cS$ such that $\cR\circ \cS$ is \emph{not} symmetric. Conclude that if $\cR,\cS$ are equivalence relations, then $\cR\circ \cS$ need not be an equivalence relation.
-% 	\end{enumerate}
-	
-% 		\item Let $\cR$ be a relation on a set $X$. Inductively define $\cR^n$ for $n \in \N$ as follows:
-% \begin{itemize}
-%     \item $\cR^1 = \cR$
-%     \item $\cR^{n + 1} = \cR \circ \cR^n$.
-% \end{itemize}
-% Set
-% \[
-% \cR^+ = \bigcup_{n \in \N} \cR^n.
-% \]
-% Show that $\cR^+$ is the smallest transitive relation on $X$ containing $\cR$. That is,
-% \begin{enumerate}
-%     \item $\cR^+$ is transitive.
-%     \item $\cR \subseteq \cR^+$.
-%     \item If $\cT$ is a transitive relation on $X$ such that $\cR \subseteq \cT$, then $\cR^+ \subseteq \cT$. [Hint: use induction to show $\cR^n \subseteq \cT$ for all $n \in \N$.]
-% \end{enumerate}
-% We call $\cR^+$ the \emph{transitive closure} of $\cR$.
-% \begin{enumerate}\setcounter{enumii}{3}
-%     \item Let $X = \{a,b,c,d\}$ and $\cR = \{(a,b), (b,c), (c,d)\}$. Compute $\cR^+$.
-% \end{enumerate}
-
-% 	
-% 	\item (Hard!) A \emph{Klein bottle} can be visualized as follows. Define an equivalence relation $\sim$ on the unit square $X=[0,1]\times[0,1]$ so that:
-% 	\begin{itemize}
-% 	  \item $(0,y)\sim (1,y)$ for $0\le y\le 1$.
-% 	  \item $(x,0)\sim(1-x,1)$ for $0\le x\le 1$.
-% 	\end{itemize}
-% 	The result is the picture: the blue edges are identified in the same direction and the red edges in the opposite. Attempting to visualize this in 3D requires a willingness to stretch and distort the square, but results in the green bottle. The original red and blue arrows have become curves on the bottle. If you are using Acrobat Reader, click on the bottle and move it around.
-% 	\begin{enumerate}
-% 	  \item Suppose you cut the Klein bottle along the horizontal dashed line of the defining square. What is the resulting object? What happens to the green bottle?
-% 	  \item Now cut the square along the vertical dashed line. What do you get this time?
-% 	\end{enumerate}
-% 	Can you visualize where the two dashed lines are on the green bottle?
-% 	
-% 	\includegraphics{relations-hw01-kleinsquare}
-% 	\includemedia[width=0.99\textwidth, transparent=false, activate=onclick, add3Djscript=asylabels.js, %add3Djscript=3Dspintool.js,
-% 3Dmenu,
-%   3Dcoo=7.8239054679870605 -2.621169090270996 -71.13204956054688,
-%   3Dc2c=-0.4364800751209259 0.7419548630714417 0.5089088082313538,
-%   3Droo=219.44206346507434,
-%   3Droll=-1.9382490979948275,
-% 3Dlights=Headlamp]{\includegraphics{relations-hw02-klein+0_0}}{relations-hw02-klein+0.prc}
-

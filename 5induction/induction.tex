@@ -231,9 +231,7 @@ We finish this section with a trickier example of this thinking at work.
 		\flushright\includegraphics{induction-11-tilingexample}
 	\end{minipage}
 	\par
-% \begin{center}
-% \includegraphics{induction-08-bluetromino} \qquad \qquad \includegraphics{induction-07-greentromino} \qquad \qquad \includegraphics{induction-09-yellowtromino} \qquad \qquad \includegraphics{induction-10-redtromino}
-% \end{center}
+
 \vspace{-2pt}
 		
 	\begin{itemize}
@@ -279,14 +277,6 @@ We finish this section with a trickier example of this thinking at work.
 	    \item Hypothesize a general formula for $h_n$, and prove it by induction.
 	  \end{enumerate}
 	  
-	%   \item Skippy the Kangaroo is playing jump rope, but he tires as the day goes on. The heights $h_n$ (inches) of successive jumps are related by the recurrence 
-	%   \[h_{n+1}=\frac 8{9} h_n+1.\]
-	%   \begin{enumerate}
-	%   	\item Suppose that Skippy's initial jump has height $h_1=100\,$in. Show that Skippy fails to jump above 10in for the first time on the 40th jump.
-	%   	\item Find the \emph{total} height jumped by Skippy in the first $n$ jumps.
-	%   \end{enumerate}
-	%   \emph{You may find it useful to define $H_n=h_n-9$ and think about the recurrence for $H_n$. Now guess and prove a general formula for $H_n$. Finally, remind yourself about geometric series.})
-	  
 	  
 	  \item\begin{enumerate}
 	    \item In Example \ref*{ex:ind2}.\ref{ex:ind22}, what is the proposition $P(n+1)$?
@@ -329,10 +319,7 @@ We finish this section with a trickier example of this thinking at work.
 			\item More generally, prove by induction that $(a-b)\mid (a^n-b^n)$ for any $a,b,n\in\N$.
 		\end{enumerate}
 	
-	
- 		%\item Prove by induction that for all $k \in \N$, we have $8^k-1$ divisible is a multiple of $7$. 
-	
-	
+		
 		\item\begin{enumerate}
 		  \item Find a formula for the sum of the first $n$ odd natural numbers. Prove your assertion.
 		 	\item Use Theorem \ref{thm:ind1} to give an alternative direct proof of your formula.
@@ -671,9 +658,6 @@ Sometimes authors present induction arguments as contradiction proofs in line wi
   	\end{enumerate}
  	
 	
-		%\item Prove that $\Q$ is not well-ordered.
-		
-	
 		\item Suppose that $x^2+4y^2=3z^2$ has a solution $(x,y,z)$ where all three are \emph{positive integers.}
 		\begin{enumerate}
 	  	\item By considering remainders modulo 3, prove that $3\mid z$. Thus create a new solution $(X,Y,Z)$ in positive integers, where $Z<z$.
@@ -725,21 +709,6 @@ Sometimes authors present induction arguments as contradiction proofs in line wi
 			(\emph{Hint: let $A=\{1\}\cup\range(f)$ in the induction axiom})
 			\item Prove that $\N$, as defined by Peano, is well-ordered (with respect to $x<x+1$, etc.).
 		\end{enumerate}
-	
-	
-% 	\item (\emph{Ignore this question if you haven't studied matrices}) Suppose that $A=\begin{smatrix}7&12\\-2&-3\end{smatrix}$. We prove that
-% 	\[\forall n\in\Z,\quad A^n=\begin{pmatrix}-2&-6\\1&3\end{pmatrix}+3^n\begin{pmatrix}3&6\\-1&-2\end{pmatrix}.\tag*{($\dag$)}\]
-% 	Here $A^{-n}=(A^n)^{-1}$ is the inverse of $A^n$, and we follow the convention that $A^0=\begin{smatrix}
-% 	1&0\\0&1
-% 	\end{smatrix}$ is the identity matrix.
-% 	\begin{enumerate}
-%   	\item Prove by induction that $(\dag)$ holds $\forall n\in\N_0$.
-% 		\item Modify your argument in part (a) to prove that $(\dag)$ holds $\forall n\in\Z^-_0$. (\emph{Use the fact that, when written in reverse order, $\Z_0^-=\{0,-1,-2,-3,-4,\ldots\}$ is a well-ordered set.)}
-% 		\item Using what you know about matrix inverses, give a direct proof that $(\dag)$ holds $\forall n\in\Z^-_0$. 		(\emph{If $C$ and $D$ are $2\times 2$ matrices such that $CD=\begin{smatrix}
-% 		1&0\\0&1
-% 		\end{smatrix}$, then $D=C^{-1}$.})
-% 		\item Diagonalize the matrix $A$ and thereby give a direct proof of $(\dag)$ for all integers $n$.
-% 	\end{enumerate}
 
 	\end{enumerate}
 
@@ -1053,14 +1022,7 @@ Think carefully about why \emph{only one} base case is required!
 	  	f_n=\frac 1{\sqrt 5}\bigl(\phi^n-\hat\phi^n\bigr) \quad \text{where}\quad \phi=\frac 12(1+\sqrt{5})\text{ and } \hat\phi=\frac 12(1-\sqrt{5})
 	  \]
 		(\emph{$\phi$ is the famous \emph{golden ratio}: $\phi,\hat\phi$ are the solutions to the quadratic equation $x^2=x+1$})
-  
-%   
-% 		\item Prove: $\forall n\in\N$, $(3+\sqrt{5})^n+(3-\sqrt{5})^n$ is an \emph{even} integer.\par
-% 		(\emph{Hint: Prove simultaneously that $(3+\sqrt{5})^n-(3-\sqrt{5})^n$ is an even multiple of $\sqrt 5$})
-	
-	
-% 	\item (Hard!) Return to the proof of Theorem \ref{thm:polygon}. Can you make a watertight argument using strong induction that also covers the two missing cases? Draw a picture to illustrate each case.
-		
+  		
 		
 		\item Prove by induction that every $n\in\N$ can be written in the form
 	  \[
@@ -1104,7 +1066,5 @@ Think carefully about why \emph{only one} base case is required!
 	\end{enumerate}
 \end{exercises}
 
-\footnotetext{This is the strict definition of \emph{prime,} while Definition \ref{defn:irreducible} is the  definition of \emph{irreducible.} Exercise \ref*{sec:gcd}.\ref{exs:primedef1} says that, in the integers, these concepts are synonymous.}
+\footnotetext{This is the strict definition of \emph{prime,} while Definition \ref{defn:irreducible} is the  definition of \emph{irreducible.} For the integers, Exercise \ref*{sec:gcd}.\ref{exs:primedef1} says that these concepts are synonymous.}
 
-
-\clearpage

@@ -4,13 +4,13 @@
 \input{preamble-commands}
 
 \includeonly{
-%1intro/intro,
-%2logic/logic,
-%3gcd/gcd,
-%4sets/sets,
-%5induction/induction,
-%6setsii/setsii,
-%7relations/relations,
+1intro/intro,
+2logic/logic,
+3gcd/gcd,
+4sets/sets,
+5induction/induction,
+6setsii/setsii,
+7relations/relations,
 8cardinality/cardinality,
 %selftest/2-1-props,
 %selftest/2-2-quants,
@@ -31,11 +31,13 @@
 %selftest/7-2-functions,
 %selftest/7-3-equiv,
 %selftest/7-4-welldefn,
+%selftest/8-1-cantor,
+%selftest/8-2-uncountable,
 }
 
 
 %\newlabel{chap:relations}{{7}{47}{Relations and Partitions}{section.7}{}}
-\newlabel{chap:cantor}{{8}{48}{Cardinalities of Infinite Sets}{section.8}{}}
+%\newlabel{chap:cantor}{{8}{48}{Cardinalities of Infinite Sets}{section.8}{}}
 
 \begin{document}
 
@@ -47,7 +49,7 @@
 \include{5induction/induction}
 \include{6setsii/setsii}
 \include{7relations/relations}
-%\include{8cardinality/cardinality}
+\include{8cardinality/cardinality}
 
 \pagenumbering{Roman}
 \include{selftest/2-1-props}
@@ -69,5 +71,7 @@
 \include{selftest/7-2-functions}
 \include{selftest/7-3-equiv}
 \include{selftest/7-4-welldefn}
+\include{selftest/8-1-cantor}
+\include{selftest/8-2-uncountable}
 
 \end{document}

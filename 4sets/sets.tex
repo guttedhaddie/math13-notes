@@ -69,12 +69,16 @@ Roster notation is ideal for small sets, but is of limited utility when trying t
 defines a set $A$ as \emph{the subset} of $\cU$ all of whose elements $x$ satisfy the property $P(x)$. A vertical separator $\mid$ is often used instead of a colon: we'll use both, though it might be essential in a given context to use one rather than the other for clarity.
 
 \begin{examples}{}{}
-\exstart Continuing Example \ref{ex:easysetnotation}, recall that $\R$ represents the set of real numbers and $\Z$ the set of integers. In set-builder notation, our solution sets may be written
-	\[A=\bigl\{x\in\R:2x^2-7x+3=0\bigr\},\qquad B=\bigl\{x\in\Z:2x^2-7x+3=0\bigr\}\]
+	\exstart Continuing Example \ref{ex:easysetnotation}, recall that $\R$ represents the set of real numbers and $\Z$ the set of integers. In set-builder notation, our solution sets may be written
+	\[
+		A=\bigl\{x\in\R:2x^2-7x+3=0\bigr\},\qquad B=\bigl\{x\in\Z:2x^2-7x+3=0\bigr\}
+	\]
 	In this case the qualifying proposition $P(x)$ is ``$2x^2-7x+3=0$.''
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item[]We can also express the fact that $B$ is a subset of $A$ in this notation (this time with a vertical separator),
-	\[B=\bigl\{x\in A\bigm| x\in\Z\} \tag{``the set of elements $x$ in $A$ such that $x$ is an integer"}\]
+	\[
+		B=\bigl\{x\in A\bigm| x\in\Z\} \tag{``the set of elements $x$ in $A$ such that $x$ is an integer"}
+	\]
 	
 	\item Let $X=\{2,4,6\}$ and $Y=\{1,2,5,6\}$. There are many options for how to write these in set-builder notation. For instance:
 	\[
@@ -135,7 +139,7 @@ We've used some of this notation already, and much of the rest should be familia
 
 \begin{examples}{}{}
 	\exstart For instance: \ $7\in\N$, \ $\pi\in\R$, \ $-\frac 79\notin\Z$, \ $\sqrt 2\notin\Q$ \ and \ $3+\sqrt 5i\in\C$.
-	\begin{enumerate}\setcounter{enumi}{1}%\itemsep2pt
+	\begin{enumerate}\setcounter{enumi}{1}
 	  \item The basic symbols can be decorated to make natural modifications. For example:
 \vspace{-3pt}
 		\begin{itemize}
@@ -159,7 +163,7 @@ We've used some of this notation already, and much of the rest should be familia
 
 \vspace{-5pt}
 
-\footnotetext{Be careful!---the colon is the ``such that" separator while $\mid$ denotes the property ``4 divides $x$.''} %The unreadability of $\bigl\{x\in\Z\bigm| 4\mid x\bigr\}$ illustrates the benefit of having two separator symbols to choose from.}
+\footnotetext{Be careful!---the colon is the ``such that" separator while $\mid$ denotes the property ``4 divides $x$.''}
 
 \goodbreak
 
@@ -185,7 +189,7 @@ Compare this to Exercise \ref*{sec:prop}.\ref{exs:iftransitive}: if we translate
 
 It is helpful to introduce some terminology to describe the \emph{size} of a set.
 
-\begin{defn}{}{}
+\begin{defn}{}{card1}
 	A \emph{finite set} contains only a finite number of elements: this number is its \emph{cardinality,} written $\nm A$. A set with infinitely many elements is said to be an \emph{infinite set.}\par
 	The symbol $\emptyset$ denotes the \emph{empty set}: a set containing no elements (cardinality zero: $\nm\emptyset=0$).
 \end{defn}
@@ -295,10 +299,6 @@ We finish with a couple of simple results regarding the empty set.
 \begin{exercises}{}{}
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/4-1-subset.html}{online}.
 
-
-% Write the set $A=\{x\in\R:x^2+3x+2=0\}$ in roster notation.\\[5pt]
-% 	We are looking for the set of all real number solutions to the quadratic equation $x^2+3x+2=0$. A simple factorization tells us that $x^2+3x+2=(x+1)(x+2)$, whence $A=\{-1,-2\}$.
-
 	\begin{enumerate}
 	  \item Describe the following sets in roster notation: that is, list their elements.
 		\begin{enumerate}
@@ -328,10 +328,7 @@ We finish with a couple of simple results regarding the empty set.
 			
 		\item Is the set $\{x\in\Z:-1\le x<43\}$ finite or infinite? If finite, what is its cardinality?
 				
-		
-		%\item Compare the sets $A=\{3x\in\Z:x\in 2\Z\}$ and $B=\{x\in\Z:x\equiv 12\pmod 6\}$. Are they equal?
-			
-			
+					
 		\item What is the cardinality of the set $\Bigl\{\emptyset,\bigl\{\emptyset\bigr\},\bigl\{\emptyset,\{\emptyset\}\bigr\}\Bigr\}$? \ What are its elements?
 		
 		\item Let $A=\emptyset$, \ $B=\{A\}$, \ $C=\bigl\{\{A\}\bigr\}$ \ and \ $D=\bigl\{A,\{0\},\{0,1\}\bigr\}$.\par
@@ -414,10 +411,6 @@ We finish with a couple of simple results regarding the empty set.
   	\end{enumerate}
 
 
-     % \item (Hammack's \href{http://www.people.vcu.edu/~rhammack/BookOfProof/}{\emph{Book of Proof}}, Section 1.3, Exercise 6)
-%List all subsets of $\{\R,\Q,\N\}$.
-    
-
 		\item Consider the set $A=\{a,b,c,d\}$. 
     \begin{enumerate}
       \item Of each cardinality 0, 1, 2, 3 and 4, how many subsets has $A$? Is there a pattern?
@@ -486,15 +479,6 @@ Observe the notational similarity with logic: $\cup$ looks a bit like $\vee$ (OR
 		
 	\begin{enumerate}\setcounter{enumi}{1}
 		\item Using interval notation, let $\cU=[-4,5]$, \ $A=[-3,2]$, \ and \ $B=[-4,1)$. Then\par
-% 		\begin{align*}
-% 			&\comp A=[-4,-3)\cup (2,5] &&\comp B=[1,5] &&A\cup B=[-4,2] \\
-% 			&A\setminus B=[1,2] &&B\setminus A=[-4,-3) &&A\cap B=[-3,1) 
-% 		\end{align*}
-% 		\vspace{-24pt}
-% 		\begin{center}
-% 		\includegraphics[width=0.7\textwidth]{sets-13-intervalex}
-% 		\end{center}
-% 		\vspace{-13pt}
 		\begin{minipage}[t]{0.3\linewidth}\vspace{-13pt}
 			\begin{gather*}
 			\comp A=[-4,-3)\cup (2,5]\\
@@ -580,20 +564,6 @@ The next batch of rules describe how complements interact with other set operati
 	\includegraphics[scale=1]{sets-08-venndemorgan2}
 \end{thm}
 
-% \begin{proof}[Proof of 1.]
-% We start by trying to show that the left hand side is a subset of the right hand side.
-% \begin{align*}
-% x\in\comp{(A\cap B)}&\implies x\notin A\cap B\\
-% &\implies x\text{ is not a member of \emph{both} $A$ and $B$}\\
-% &\implies x\text{ is not in \emph{at least one} of $A$ and $B$}\\
-% &\implies x\notin A\text{ or }x\notin B\\
-% &\implies x\in\comp A\text{ or }x\in\comp B\\
-% &\implies x\in\comp A\cup\comp B
-% \end{align*}
-% With a little thinking, we realize that all of the $\Longrightarrow$ arrows may be replaced with if and only if arrows $\Longleftrightarrow$ without compromising the argument. We've therefore shown that the sets $\comp{(A\cap B)}$ and $\comp A\cup \comp B$ have the same elements, and are thus equal.
-% \end{proof}
-
-
 \begin{proof}
 	We prove only part 1. As before, the natural approach is to restate the result using propositions.
 	\begin{align*}
@@ -616,25 +586,6 @@ Our final pair of results describe the interaction of unions and intersections.\
 	\tcblower
 	\flushright\includegraphics{sets-07-venndist}
 \end{thm}
-
-
-% 
-% \begin{proof}
-% \begin{itemize}
-%   \item[($\subseteq$)] Let $x\in A\cup (B\cap C)$. Then $x\in A$ or $x\in B\cap C$. There are two cases:
-%   \begin{itemize}
-%     \item[(a)] If $x\in A$, then $x\in A\cup B$ and $x\in A\cup C$ by Theorem \ref{thm:setbasic}, part 2.
-%     \item[(b)] If $x\in B\cap C$, then $x\in B$ and $x\in C$. It follows that $x\in A\cup B$ and $x\in A\cup C$, again by Theorem \ref{thm:setbasic}.
-%   \end{itemize}
-%   In both cases $x\in (A\cup B)\cap(A\cup C)$.
-%   \item[($\supseteq$)] Let $y\in (A\cup B)\cap(A\cup C)$. Then $y\in A\cup B$ and $y\in A\cup C$. There are again two cases:
-%   \begin{itemize}
-%     \item[(a)] If $y\in A$, then we are done, for then $y\in A\cup (B\cap C)$.
-%     \item[(b)] If $y\notin A$, then $y\in B$ and $y\in C$. Hence $y\in B\cap C$. In particular $y\in A\cup (B\cap C)$.
-%   \end{itemize}
-%   In both cases $y\in A\cup (B\cap C)$.\qedhere
-% \end{itemize}
-% \end{proof}
 
 
 \begin{proof}
@@ -1307,47 +1258,6 @@ When $m=n$, the constructed functions are plainly \emph{bijections} with $f^{-1}
 		  \item If $f(X\cap Y)=f(X)\cap f(Y)$ for \emph{all} $X,Y\subseteq A$, prove that $f$ is injective.
 		\end{enumerate}
 		
-		
-		
-	
-	%   \item (\emph{If you did Exercise \ref*{sec:quant}.\ref{ex:decreasing} you should find this easy}) Let $X$ be a subset of $\R$. A function $f:X\to\R$ is \emph{strictly increasing} if 
-	% 	\[\forall \,a,\, b \in X,\quad a<b \Longrightarrow f(a)<f(b).\]
-	% 	For example, the function $f \colon [0,\,\infty)\to \R, \,x \mapsto x^2$  is increasing because 
-	% 	\[\forall a,\,b \in  [0,\,\infty) , \quad a<b \Longrightarrow f(a) = a^2< b^2=f(b).\]
-	% 		\begin{enumerate}
-	% 	  	\item Give another example of a function that is increasing. Draw its graph, and prove that  the function is increasing.  
-	% 	  	\item By negating the above definition, state what it means for a function \emph{not to be strictly increasing.} 
-	% 	  	\item Give an example of a function that is \emph{not} strictly increasing. Draw its graph, and prove that the function is not strictly increasing.  
-	% 	  	\item Let $f,\,g:\R\to\R$ be strictly increasing. Prove or disprove: The function $h=f+g$ is strictly increasing. Note that the formula for $h$ is $h(x)=f(x)+g(x)$.
-	% 		\end{enumerate}	
-			
-	%   \item You may assume that $g:[2,\infty)\to\R:x\mapsto \sqrt{x^3-8}$ is an injective function. Find a function $f:\R\to\R$ which is \emph{not injective,} but for which the composition $f\circ g:[2,\infty)\to\R$ \emph{is injective.} Justify your answer.
-	
-	% \item Let $f : A \to B$ be a function. Let $X_1,X_2 \subseteq A$. Prove or disprove the following:
-	% \begin{enumerate}
-	%     \item $X_1 \subseteq X_2$ implies $f(X_1) \subseteq f(X_2)$.
-	%     \item $f(X_1 \cup X_2) = f(X_1) \cup f(X_2)$.
-	%     \item $f(X_1 \cap X_2) \subseteq f(X_1) \cap f(X_2)$. 
-	%     \item $f(X_1) \cap f(X_2) \subseteq f(X_1 \cap X_2)$.
-	%     %\item If $f$ is injective, then $f(X_1 \cap X_2) = f(X_1) \cap f(X_2)$.
-	%     %\item $f(X_1) \setminus f(X_2) \subseteq f(X_1 \setminus X_2)$.
-	% \end{enumerate}
-	
-% \item Let $f : A \to B$ be a function and $Y_1,Y_2 \subseteq B$.
-% \begin{enumerate}
-% \item Prove $f^{-1}(Y_1 \cup Y_2) = f^{-1}(Y_1) \cup f^{-1}(Y_2)$.
-% \item Prove $f^{-1}(Y_1 \cap Y_2) = f^{-1}(Y_1) \cap f^{-1}(Y_2)$.
-% \end{enumerate}
-
-
-
-% \item (Uses calculus) This exercise will give an example of how to use calculus to prove some properties of (certain) functions. Let $f : (-\pi/2,\pi/2) \to \R$ be defined by $f(x) = \tan x$. Recall that $f$ is differentiable, and hence continuous, on its domain.
-% \begin{enumerate}
-%     \item Compute $\lim_{x \to \frac{\pi}{2}^-} f(x)$ and $\lim_{x \to \frac{-\pi}{2}^+} f(x)$.
-%     \item Recall the Intermediate Value Theorem: if $g : [a,b] \to \R$ is a continuous function, then for any $y$ between $g(a)$ and $g(b)$, there is $x \in [a,b]$ such that $g(x) = y$. Use the Intermediate Value Theorem and the results of part 1 to prove $f$ is surjective.
-%     \item Why is a strictly increasing function (see Exercise 4.4.4) injective? 
-%     \item Compute $\frac{d}{dx}f(x)$ and use this to show $f$ is strictly increasing, and therefore injective by part 3.
-% \end{enumerate}
 	\end{enumerate}
 
 \end{exercises}

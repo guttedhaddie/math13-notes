@@ -55,7 +55,9 @@ An \emph{algorithm} is typically a computational process: if $m>0$ one could vie
 
 \begin{defn}{}{}
 	Let $a,b$ and $n$ be integers with $n$ positive. The proposition
-	\[a\equiv b\spmod n\qquad \text{``\emph{$a$ is congruent to $b$ modulo $n$}''}\]
+	\[
+		a\equiv b\spmod n\qquad \text{``\emph{$a$ is congruent to $b$ modulo $n$}''}
+	\]
 	means that $a$ and $b$ have the \emph{same remainder} on division by $n$. The integer $n$ is called the \emph{modulus.}
 \end{defn}
 
@@ -649,8 +651,6 @@ The Theorem tells us when we can solve the right hand side, and how. To solve th
 	    
 		\item Use Example \ref{ex:2-3div6}.1 to prove the following.
 		\begin{enumerate}
-% 		  \item Let $c\in\Z$. Prove: $2\mid c$ and $3\mid c\implies 6\mid c$.\par
-% 		  (\emph{Hint: write $c=2k=\cdots$ and apply Corollary \ref{cor:moddivision}})
 		  \item Let $n\ge 3$ be an odd number. Show that $n\equiv 1\spmod 3\implies  n\equiv 1\spmod 6$.
 		 	\item $\frac 16n(n+1)(2n+1)$ is an integer.
 		\end{enumerate}
@@ -718,17 +718,7 @@ The Theorem tells us when we can solve the right hand side, and how. To solve th
 		  \item Show that 2 has no inverse modulo 6.
 		  \item Prove that $a$ has an inverse modulo $n$ if and only if $\gcd(a,n)=1$. Conclude that the only sets $\Z_n$ for which all non-zero elements have inverses are those for which $n$ is prime.	  
 		\end{enumerate}
-		
-		
-	  %\item Use the Euclidean algorithm to show that for any $k\in\N$, we have $\gcd(ka,kb) = k\gcd(a,b)$.
-	  
-	
-	%     \item For nonzero integers $a$ and $b$, the \textbf{least common multiple} $\lcm(a,b)$ is defined to be the least positive integer $m$ which is a multiple of both $a$ and $b$.
-	%     \begin{enumerate}
-	%         \item If $m = \lcm(a,b)$, $a \mid c$, and $b \mid c$, show $m \mid c$.
-	%         \item If $a$ and  $b$ are both positive, show $\gcd(a,b) \lcm(a,b) = ab$.
-	%     \end{enumerate}
-	  
+			  
 	\end{enumerate}
 
 \end{exercises}
