@@ -426,8 +426,7 @@ Listing divisors is very inefficient given large integers. This is where Euclid 
 	The algorithm eventually terminates with a remainder of zero: some $r_{t+1}=0$. The greatest common divisor is the last non-zero remainder: $\gcd(a,b)=r_t$.
 \end{thm}
 
-Exercise \ref{exs:euclidalgproof} provides a proof. 
-If either of $a,b$ are negative just ignore the signs: for instance $\gcd(-4,34)=\gcd(34,4)=2$.
+Exercise \ref{exs:euclidalgproof} provides a proof. If either or both of $a,b$ are negative, simply ignore the signs: for instance $\gcd(-4,34)=\gcd(34,4)=2$.
 
 \begin{example}{}{euclidalg}
 	We compute $\gcd(1260,750)$ using the Euclidean algorithm. Note how each line is a single instance of the division algorithm $a=qb+r$ and how the remainders move diagonally $\swarrow$ at each step. For this first example, we also summarize the data in a table.\vspace{-10pt}
