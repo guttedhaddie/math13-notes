@@ -1,10 +1,8 @@
 \section{Logic and the Language of Proofs}\label{chap:logic}
 
-
 \subsection{Propositions}\label{sec:prop}
 
-
-In order to read and construct proofs, we need to start with the language in which they are written: \emph{logic.} This is to mathematics what grammar is to English.
+To read and construct proofs, we need to develop the language of \emph{logic.} This is to mathematics what grammar is to English.
 
 
 \begin{defn}{}{}
@@ -12,24 +10,23 @@ In order to read and construct proofs, we need to start with the language in whi
 \end{defn}
 
 \begin{examples}{}{}
-\exstart $17-24=7$. \hfill \makebox[250pt][l]{2. \ $39^2$ is an odd integer.\hfill}\vspace{-3pt}
-	\begin{enumerate}\setcounter{enumi}{2}\itemsep0pt
-		\item The moon is made of cheese. \hfill \makebox[250pt][l]{4. \ Every cloud has a silver lining.\hfill} 
-		\setcounter{enumi}{4} 
-		\item God exists.
+	\exstart $17-24=7$. \hfill \makebox[280pt][l]{2. \ $39^2$ is an odd integer.\hfill\hfill 3. \ God exists.\hfill\vspace{-4pt}}
+	\begin{enumerate}\setcounter{enumi}{3}\itemsep0pt
+		\item The moon is made of cheese. \hfill \makebox[280pt][l]{5. \ Every cloud has a silver lining.\hfill}
 	\end{enumerate}
 \end{examples}
 
-For a proposition to make sense, we must agree on the meaning of each concept it contains. When people argue over propositions, in practice they are often disagreeing about \emph{definitions.} There are many concepts of God; we cannot begin to consider whether or not They exist until we agree \emph{which} concept is being discussed! This also illustrates that the truth status of a proposition \emph{need not be known} at the moment you state it; this is particularly common in mathematics.\footnote{More surprisingly, there are even propositions whose truth state is impossible to determine!}
+For a proposition to make sense, we must agree on the meaning of each concept it references. Arguments over propositions are very often disagreements about \emph{definitions.} For instance, we cannot begin to consider whether God exists until we agree on which conception (Shiva, Yahweh, Allah, Zeus, etc.) is being discussed! This example also illustrates that the truth status of a proposition \emph{need not be known} when stated, a particularly common situation in mathematics.%\footnote{More surprisingly, it can be shown that there are propositions whose truth state is impossible to determine!}
+%\medbreak
 
 
 
-\boldsubsubsection{Truth Tables and Combining Propositions}
+\boldsubsubsection{Logical Expressions: Truth Tables and Combining Propositions}
 
-To develop basic rules and terminology, it is helpful to consider \emph{abstract} propositions: $P,Q,R,\ldots$. Given a small number of propositions, all possible combinations of truth states may be easily represented in tabular format: in a \emph{truth table.} These are useful for defining new propositions.
+To develop basic rules and terminology, we represent abstract propositions by letters ($P,Q,R,\ldots$), similarly to how $x,y,z$ represent unknowns in algebra. Combinations of such (logical expressions) are easily described in tabular form.
 
 \begin{defn}{}{andornot}
-	Let $P$ and $Q$ be propositions. The truth tables below define three new propositions modeled on the words \emph{and, or} and \emph{not.}\par
+	Let $P$ and $Q$ be propositions. The following \emph{truth tables} define three new propositions:\par
 	\begin{minipage}[t]{0.5\linewidth}\vspace{0pt}
 		\begin{itemize}
 		  \item The \emph{conjunction} $\textcolor{red}{P\wedge Q}$ is read ``$P$ and $Q$.''
@@ -38,7 +35,7 @@ To develop basic rules and terminology, it is helpful to consider \emph{abstract
 		\end{itemize} 
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.49\linewidth}\vspace{-2pt}
+	\begin{minipage}[t]{0.49\linewidth}\vspace{-6pt}
 		$\begin{array}{cc||c|c}
 			P & Q & \textcolor{red}{P\wedge Q} & \textcolor{Green}{P\vee Q}\\\hline
 			T & T & \textcolor{red}{T} & \textcolor{Green}{T}\\
@@ -52,72 +49,90 @@ To develop basic rules and terminology, it is helpful to consider \emph{abstract
 			T & \textcolor{blue}{F}\\
 			F & \textcolor{blue}{T}
 		\end{array}$
-	\end{minipage}
+	\end{minipage}\medbreak
+	A \emph{tautology} is a logical expression that is always true (truth table has a column of $T$'s), regardless of its component propositions. A \emph{contradiction} is a logical expression that is always false.
 \end{defn}
 
-The letters T/F stand for \emph{true/false.} E.g., the second line of the first table says that if $P$ is true and $Q$ is false, then the proposition ``$P$ and $Q$" is \textcolor{red}{false}, while ``$P$ or `$Q$'' is \textcolor{Green}{true.}
+The letters T/F stand for \emph{true/false.} For instance, the second line of the first table says that if $P$ is true and $Q$ is false, then the proposition ``$P$ and $Q$" is \textcolor{red}{false}; similarly ``$P$ or `$Q$'' is \textcolor{Green}{true.}
 
-\begin{example}{}{logiccolor}
-	Suppose $P$ and $Q$ are the following propositions:
-	\begin{quote}
+\begin{examples}{}{logiccolor}
+	\exstart By choosing explicit propositions, we may compare the logical and/or/not with their plain English meanings. Suppose $P$ and $Q$ are the propositions
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item[]\begin{quote}
 		$P$: ``I like purple.''\qquad\qquad $Q$: ``I like chartreuse.''
-	\end{quote}
-	We form the new propositions described in the definition:
-	\begin{quote}
-		$P\wedge Q$: ``I like purple and chartreuse.''\qquad \qquad
-		$P\vee Q$: ``I like purple or chartreuse.''\smallbreak
-		$\neg P$: ``I do not like purple.''
-	\end{quote}
-	It is typical to modify phrasing to aid readability: ``Not, I like purple'' just sounds weird! Note also that or is \emph{inclusive} in logic: if ``I like purple or chartreuse'' is true, then you might like \emph{both}!\medbreak
+		\end{quote}
+		The new propositions from Definition \ref{defn:andornot} might then be written
+		\begin{quote}
+			$P\wedge Q$: ``I like purple and chartreuse.''\qquad \qquad
+			$P\vee Q$: ``I like purple or chartreuse.''\medbreak
+			$\neg P$: ``I do not like purple.''
+		\end{quote}
+		Alternative phrasings might aid readability, though be careful: ``Not, I like purple,'' is terrible English! Note also that the logical or is \emph{inclusive} (first line of the truth table): with a logical or, ``I like purple or chartreuse,'' means you might like \emph{both.}
 	
-	Let's continue by adding a third proposition:
-	\begin{quote}
-		$R$: ``It's 9am.''
-	\end{quote}
-	What proposition is represented by the following English sentence?
-	\begin{quote}
-		``I like purple and I like chartreuse or it's 9am.''
-	\end{quote}
-	Is it $P\wedge(Q\vee R)$ or is it $(P\wedge Q)\vee R$? Without brackets, the sentence is unclear; the moral is that English is terrible at logic! Indeed, as the truth table shows, the two logical expressions \textcolor{red}{really do mean different things!}\vspace{-1pt}
-	 \[
-	 \begin{array}{ccc||cc||cc}
-			P & Q & R & Q\vee R & P\wedge (Q\vee R) & P\wedge Q & (P \wedge Q)\vee R\\\hline
-			T & T & T & T & T & T & T\\
-			T & T & F & T & T & T & T\\
-			T & F & T & T & T & F & T\\
-			T & F & F & F & F & F & F\\
-			F & T & T & T & \textcolor{red}{F} & F & \textcolor{red}{T}\\
-			F & T & F & T & F & F & F\\
-			F & F & T & T & \textcolor{red}{F} & F & \textcolor{red}{T}\\
-			F & F & F & F & F & F & F
-		\end{array}
-	 \]
-\end{example}
+		
+		\item We continue the previous example by adding a third proposition $R$: ``It is 9am.''
+		What logical expression might be represented by the following sentence?
+		\begin{quote}
+			``I like purple and I like chartreuse or it is 9am.''
+		\end{quote}
+		Is it $P\wedge(Q\vee R)$ or is it $(P\wedge Q)\vee R$? Without brackets the sentence is unclear. In fact, as the next truth table shows, these logical expressions \textcolor{red}{mean different things}.
+		\[
+			\begin{array}{ccc||cc||cc}
+				P & Q & R & Q\vee R & P\wedge (Q\vee R) & P\wedge Q & (P \wedge Q)\vee R\\\hline
+				T & T & T & T & T & T & T\\
+				T & T & F & T & T & T & T\\
+				T & F & T & T & T & F & T\\
+				T & F & F & F & F & F & F\\
+				F & T & T & T & \textcolor{red}{F} & F & \textcolor{red}{T}\\
+				F & T & F & T & F & F & F\\
+				F & F & T & T & \textcolor{red}{F} & F & \textcolor{red}{T}\\
+				F & F & F & F & F & F & F
+			\end{array}
+		\]
+		The moral here is that English is terrible for logic! Clear identification of propositions is essential if you want to avoid ambiguous sentences such as the above.
+		
+	
+		\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
+  		\item Let $S$ be an abstract proposition. Then $S\vee (\neg S)$ is a tautology. Otherwise said, no matter the meaning of $S$, either it \emph{or} its negation must be true.
+  	\end{minipage}
+  	\hfill
+  	\begin{minipage}[t]{0.33\linewidth}\vspace{0pt}
+			$\begin{array}{cc||c|c}
+				S & \neg S & S\vee (\neg S) & S\wedge(\neg S)\\\hline
+				T & F & T & F\\
+				F & T & T & F
+			\end{array}$
+  	\end{minipage}\par
+  	Similarly, $S\wedge(\neg S)$ is a contradiction: regardless of $S$, it \emph{and} its negation cannot simultaneously be true.
+  	
+	\end{enumerate}
+\end{examples}
 
 
 \boldsubsubsection{Conditional and Biconditional Connectives}
 
-Of critical importance is the ability to have one proposition lead to another.
+Having one proposition lead to another is of critical importance to mathematics.
 
 \begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.37\linewidth]{}{implies}
-	Given propositions $P,Q$, the \emph{conditional} ($\Longrightarrow$) and \emph{biconditional} ($\Longleftrightarrow$) \emph{connectives} define new propositions as described in the truth table.\smallbreak
+	Given propositions $P,Q$, the \emph{conditional} ($\Rightarrow$) and \emph{biconditional} ($\Leftrightarrow$) \emph{connectives} define new propositions as described in the truth table.\smallbreak
 	For the proposition $P\Longrightarrow Q$, we call $P$ the \emph{hypothesis} and $Q$ the \emph{conclusion.}
 	\tcblower
-	\flushright$\begin{array}{cc||c|c}
-	P & Q & P\implies Q & P\iff Q\\\hline
-	T & T & T & T\\
-	T & F & F & F\\
-	F & T & T & F\\
-	F & F & T & T
+	\flushright%
+	$\begin{array}{cc||c|c}
+		P & Q & P\Longrightarrow Q & P\Longleftrightarrow Q\\\hline
+		T & T & T & T\\
+		T & F & F & F\\
+		F & T & T & F\\
+		F & F & T & T
 	\end{array}$
 \end{defn}
 
 
-Connective propositions can be read and written in many different ways:
+Connective propositions can be read and written in many different ways: for instance,
 \begin{quote}
 	\def\arraystretch{1.05}
 	\begin{tabular}{@{}cc|c}
-		\multicolumn{2}{c|}{$P\implies Q$} & $P\iff Q$\\\hline
+		\multicolumn{2}{c|}{$P\Longrightarrow Q$} & $P\Longleftrightarrow Q$\\\hline
 		$P$ implies $Q$ & $P$ therefore $Q$ & $P$ if and only if $Q$\\
 		If $P$, then $Q$ & $Q$ follows from $P$ & $P$ iff $Q$\\
 		$P$ only if $Q$ & $Q$ if $P$ & $P$ and $Q$ are (logically) equivalent\\
@@ -126,31 +141,51 @@ Connective propositions can be read and written in many different ways:
 \end{quote}
 
 
-\begin{example}{}{}
-	The following sentences express, in English, the same conditional $P\implies Q$.\vspace{-1pt}
-	\begin{itemize}\itemsep1pt
-		\item If you are born in Rome, then you are Italian. 
-		\item You are Italian if you are born in Rome. 
-		\item You are born in Rome only if you are Italian. 
-		\item Being born in Rome is sufficient for being Italian. 
-		\item Being Italian is necessary for being born in Rome.\vspace{-1pt} 
-	\end{itemize}
-	Are you comfortable with what the propositions $P$ and $Q$ are here?
-\end{example}
+\goodbreak
+
+
+\begin{examples}{}{conditionalbasic}
+	\exstart Here are six English sentences expressing the same conditional $P\Longrightarrow Q$:\vspace{-1pt}
+	\begin{enumerate}\setcounter{enumi}{1}
+	\item[]\begin{itemize}\itemsep1pt
+			\item If you are born in Rome, then you are Italian. 
+			\item You are Italian if you are born in Rome. 
+			\item You are born in Rome only if you are Italian. 
+			\item Being born in Rome is sufficient for being Italian. 
+			\item Being Italian is necessary for being born in Rome. 
+		\end{itemize}
+		Are you comfortable with what the propositions $P$ and $Q$ are in this situation?
+	
+		\item\label{ex:taut2} $\bigl(P\wedge(P\implies Q)\bigr)\Longrightarrow Q$ is a tautology.
+		\[
+			\begin{array}{cc||c|c||c}
+				P & Q & P\implies Q & P\wedge(P\implies Q) & \bigl(P\wedge(P\implies Q)\bigr)\implies Q\\\hline
+				T & T & T & T& T\\
+				T & F & F & F& T\\
+				F & T & T & F& T\\
+				F & F & T & F& T
+			\end{array}
+		\]
+		%\item $(P\wedge \neg Q\implies F)\iff (P\implies Q)$ is a tautology. This tautology is the basis for \emph{proof by contradiction,} as we'll see in the next section. The expression $P\wedge \neg Q\implies F$ can be thought of as saying that $P\wedge\neg Q$ implies a contradiction.
+	\end{enumerate}
+\end{examples}
 
 
 
 Connectives are central to mathematics for many reasons. In particular:
 \begin{enumerate}
-  \item The vast majority of theorems we'll encounter may be written as a connective $P\Longrightarrow Q$. For instance, revisit Theorem \ref{thm:sumeven} and the discussion that follows:
-  \begin{quote}
-  	If $x$ and $y$ are even integers, then $x+y$ is even.
-  \end{quote}
+  \item The vast majority of simple theorems may be written in the form $P\Longrightarrow Q$. For instance, revisit Theorem \ref{thm:sumeven} and the discussion that follows:
+  \[
+  	\text{If \textcolor{red}{$x$ and $y$ are even integers}, then \textcolor{blue}{$x+y$ is even}.} \tag{If \textcolor{red}{$P$}, then \textcolor{blue}{$Q$}}
+  \]
   Identifying the hypothesis and conclusion is essential if you want to understand a theorem!
-  \item Simple proofs typically involve chaining a sequence of connectives:
-  \[P\implies P_2\implies \cdots \implies P_n\implies Q\]
+  \item The simplest (``direct'') proofs typically involve chaining a sequence of connectives:
+  \[
+  	\textcolor{red}{P}\implies P_2\implies \cdots \implies P_n\implies \textcolor{blue}{Q}
+  \]
 \end{enumerate}
-We'll revisit these ideas in Section \ref{sec:proof}, and repeatedly throughout the course.\bigbreak
+We'll revisit these ideas in Section \ref{sec:proof}, and repeatedly throughout the course.
+\bigbreak
 
 
 While the biconditional should be easy to remember, it is harder to make sense of the conditional connective. Short of simply memorizing the truth table, here are two examples that might help.
@@ -159,7 +194,6 @@ While the biconditional should be easy to remember, it is harder to make sense o
 	\exstart Suppose your professor says, ``If the class earns a B average on the midterm, then I'll bring doughnuts.'' The only situation in which the teacher will have lied is if the class earns a B average but she fails to provide doughnuts.
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item ($F\Longrightarrow T$ really can be true!) Let $P$ be the proposition ``$7=3$'' and $Q$ be ``$0=0$.'' Since multiplication of both sides of an equation by zero is algebraically valid, we see that
-	%   \[7=3\implies 0\cdot 7=0\cdot 3\implies 0=0\]
 	  \begin{align*}
 			7=3\implies\ &0\cdot 7=0\cdot 3\tag*{(If $7=3$, then 0 times 7 equals 0 times 3)}\\
 			\implies\ &0=0\tag*{(then 0 equals 0)}
@@ -169,42 +203,6 @@ While the biconditional should be easy to remember, it is harder to make sense o
 	\end{enumerate}
 \end{examples}
 
-
-\boldsubsubsection{Tautologies and Contradictions}
-
-\begin{defn}{}{tautology}
-	A \emph{tautology} is a logical expression that is always true, regardless of what the component statements might be.\smallbreak
-	A \emph{contradiction} is a logical expression that is always false.
-\end{defn}
-
-
-\begin{examples}{}{taut}
-\exstart $P\wedge(\neg P)$ is a contradiction.
-	
-\begin{enumerate}\setcounter{enumi}{1}
-  \begin{minipage}[t]{0.65\linewidth}\vspace{-8pt}
-  	\item[] Regardless of the proposition $P$, it cannot be true at the same time as its negation!
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{0.29\linewidth}\vspace{-27pt}
-	$\begin{array}{cc|c}
-	P & \neg P & P\wedge(\neg P)\\\hline
-	T & F & F\\
-	F & T & F
-	\end{array}$
-  \end{minipage}\par
-  
-	\item\label{ex:taut2} $\bigl(P\wedge(P\implies Q)\bigr)\Longrightarrow Q$ is a tautology.
-	\[\begin{array}{cc||c|c||c}
-	P & Q & P\implies Q & P\wedge(P\implies Q) & \bigl(P\wedge(P\implies Q)\bigr)\implies Q\\\hline
-	T & T & T & T& T\\
-	T & F & F & F& T\\
-	F & T & T & F& T\\
-	F & F & T & F& T
-	\end{array}\]
-	%\item $(P\wedge \neg Q\implies F)\iff (P\implies Q)$ is a tautology. This tautology is the basis for \emph{proof by contradiction,} as we'll see in the next section. The expression $P\wedge \neg Q\implies F$ can be thought of as saying that $P\wedge\neg Q$ implies a contradiction.
-	\end{enumerate}
-\end{examples}
 
 \goodbreak
 
@@ -216,49 +214,43 @@ While the biconditional should be easy to remember, it is harder to make sense o
 	The \emph{contrapositive} of $P\Longrightarrow Q$ is the implication $\neg Q\Longrightarrow\neg P$.
 \end{defn}
 
-It is vital to understand the distinction between these. In general, the truth status of the converse bears no relation to that of the original, though the contrapositive is much better behaved.
+It is vital to understand the distinction between these, particularly because of a crucial result. %The truth status of the converse bears no relation (in general) to that of the original, though the contrapositive is much better behaved:
 
 \begin{thm}{}{contrapos}
 	The contrapositive of an implication is logically equivalent to the original.
 \end{thm}
 
 \begin{proof}
-	Compute the truth table and observe that the third and sixth columns are identical:\footnotemark
+	Compute the truth table and observe that its \textcolor{red}{third} and \textcolor{blue}{sixth} columns are identical:
 	\begin{gather*}
 		\begin{array}{cc|c||cc|c}
-			P & Q & P\Longrightarrow Q & \neg Q & \neg P & \neg Q\Longrightarrow\neg P\\\hline
-			T & T & T & F & F & T\\
-			T & F & F & T & F & F\\
-			F & T & T & F & T & T\\
-			F & F & T & T & T & T
-		\end{array}\\[-15pt]
-		\phantom{bob}\tag*{\qedhere}
+			P & Q & \textcolor{red}{P\Longrightarrow Q} & \neg Q & \neg P & \textcolor{blue}{\neg Q\Longrightarrow\neg P}\\\hline
+			T & T & \textcolor{red}{T} & F & F & \textcolor{blue}{T}\\
+			T & F & \textcolor{red}{F} & T & F & \textcolor{blue}{F}\\
+			F & T & \textcolor{red}{T} & F & T & \textcolor{blue}{T}\\
+			F & F & \textcolor{red}{T} & T & T & \textcolor{blue}{T}
+		\end{array}
 	\end{gather*}
-	%Otherwise said, $(P\Longrightarrow Q)\Longleftrightarrow (\neg Q\Longrightarrow\neg P)$ is a tautology.
+	Otherwise said, $(\textcolor{red}{P\Longrightarrow Q})\Longleftrightarrow (\textcolor{blue}{\neg Q\Longrightarrow\neg P})$ is a tautology.
 \end{proof}
 
-\footnotetext{Otherwise said, $(P\Longrightarrow Q)\Longleftrightarrow (\neg Q\Longrightarrow\neg P)$ is a tautology.}
-
-\vspace{-5pt}
-
+By contrast, the converse is not logically equivalent to the original: the converse of a true implication could be either true or false (though see Exercise \ref{exs:ttconverse} for a special situation).
 
 \begin{example}{}{}
-	Let $P$ and $Q$ be the following statements:
+	Let $P$ and $Q$ be the statements
 	\begin{quote}
-	  $P$: \ ``Claudia is holding a peach.''\qquad\qquad
-	  $Q$: \ ``Claudia is holding a piece of fruit.''
+	  $P$: \ ``Claudia has a peach.''\qquad\qquad
+	  $Q$: \ ``Claudia has a fruit.''
 	\end{quote}
-	Since a peach is indeed a piece of fruit, the proposition $P\Longrightarrow Q$ is \emph{true}:
-	\begin{quote}
-		$P\Longrightarrow Q$: \ ``If Claudia is holding a peach, then she is holding a piece of fruit.''
-	\end{quote}
+	Since a peach is certainly a fruit, $P\Longrightarrow Q$ is \emph{true}: ``If Claudia has a peach, then she has a fruit.''
+	\par
 	The \emph{converse} of $P\Longrightarrow Q$ is the sentence
 	\begin{quote}
-	  $Q\Longrightarrow P$: \ ``If Claudia is holding a piece of fruit, then she is holding a peach.''
+	  $Q\Longrightarrow P$: \ ``If Claudia has a fruit, then she has a peach.''
 	\end{quote}
-	This is palpably false: Claudia could be holding an apple! However, in accordance with Theorem \ref{thm:contrapos}, the \emph{contrapositive} is \emph{true}:
+	This is palpably \emph{false}: Claudia might have an apple! However, in accordance with Theorem \ref{thm:contrapos}, the \emph{contrapositive} is \emph{true}:
 	\begin{quote}
-	  $\neg Q\Longrightarrow \neg P$: ``If Claudia is \emph{not} holding any fruit, then she is \emph{not} holding a peach.''
+	  $\neg Q\Longrightarrow \neg P$: ``If Claudia does \emph{not} have a fruit, then she does \emph{not} have a peach.''
 	\end{quote} 
 \end{example}
 
@@ -268,11 +260,12 @@ It is vital to understand the distinction between these. In general, the truth s
 Mathematics often requires us to negate propositions. What would you suspect to be the negation of a conditional $P\Longrightarrow Q$? Is it enough to say ``$P$ doesn't imply $Q$"? But what does this mean? 
 
 \begin{minipage}[t]{0.64\linewidth}\vspace{-2pt}
-We again rely on a truth table: to get the last column, recall that negation simply swaps $T$ and $F$. Can we write this column in another way? Since there is only a single $T$ in the final column, we see that we've proved the following.
+	We again rely on a truth table: to get the last column, recall that negation simply swaps $T$ and $F$. Can we write this column in another way? The single $T$ in the final column provides a proof of an important result:
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.35\linewidth}\vspace{-5pt}
-\flushright $\begin{array}{cc|c|c}
+	\flushright%
+	$\begin{array}{cc|c|c}
 		P & Q & P\Longrightarrow Q & \neg(P\Longrightarrow Q)\\\hline
 		T & T & T & F\\
 		T & F & F & T\\
@@ -281,80 +274,80 @@ We again rely on a truth table: to get the last column, recall that negation sim
 	\end{array}$
 \end{minipage}
 
-
-
 \begin{thm}{}{negconditional}
 	$\neg(P\Longrightarrow Q)$ is logically equivalent to $P\wedge\neg Q$ \ (``$P$ and not $Q$").
 \end{thm}
 
 \vspace{-5pt}
 
+
 \goodbreak
+
 
 \begin{example}{}{}
 	Consider the implication
 	\begin{quote}
-	  It's the morning therefore I'll have coffee.
+	  It's morning so I'll have coffee.
 	\end{quote}
 	Hopefully its negation is clear:
 	\begin{quote}
-	  It's the morning \emph{and} I \emph{won't} have coffee.
+	  It's morning \emph{and} I \emph{won't} have coffee.
 	\end{quote}
 	As in Example \ref{ex:condmeaning}, it might help to think about what it means for the original statement to be \emph{false}.
 \end{example}
 
 \begin{tcolorbox}
-{\bf \textcolor{red}{Warning!}} The negation of $P\Longrightarrow Q$ is \emph{not a conditional.} In particular it is \emph{neither} of the following:
-\begin{quote}
-  The converse $Q\Longrightarrow P$.\smallbreak
-  The contrapositive of the converse $\neg P\Longrightarrow\neg Q$. 
-\end{quote}
-If you are unsure about this, write down the truth tables and compare.
+	{\bf \textcolor{red}{Warning!}} \ The negation of $P\Longrightarrow Q$ is \emph{not a conditional.} In particular it is \emph{neither}:
+	\begin{itemize}\itemsep2pt
+	  \item The converse $Q\Longrightarrow P$
+	  \item The contrapositive of the converse $\neg P\Longrightarrow\neg Q$
+	\end{itemize}
+	If you are unsure about this, compare the truth tables!
 \end{tcolorbox}
 
 \bigbreak
 
 
-Our final results in basic logic also involve negations; they are named for Augustus de Morgan, a famous 19\th{} century logician.
+Our final results in basic logic also involve negations; they are named for Augustus de Morgan, a British logician of the 19\th{} century.
 
 \begin{thm}{de Morgan's laws}{demorgan}
 	Let $P$ and $Q$ be propositions.
-	\begin{enumerate}\itemsep0pt
+	\begin{enumerate}\itemsep2pt
 	  \item $\neg(P\wedge Q)$ is logically equivalent to $\neg P\vee\neg Q$
 	  \item $\neg(P\vee Q)$ is logically equivalent to $\neg P\wedge\neg Q$
 	\end{enumerate}
 \end{thm}
 
 \begin{proof}
-	For the first law, observe that the fourth and seventh columns of the truth table are identical.
+	For the first law, compute the truth table: the \textcolor{red}{fourth} and \textcolor{blue}{seventh} columns are identical.
 	\[
 		\begin{array}[t]{cc||cc||cc||c}
-			P & Q & P\wedge Q & \neg(P\wedge Q) & \neg P & \neg Q & \neg P\vee\neg Q\\\hline
-			T & T & T & F & F & F & F\\
-			T & F & F & T & F & T & T\\
-			F & T & F & T & T & F & T\\
-			F & F & F & T & T & T & T
+			P & Q & P\wedge Q & \textcolor{red}{\neg(P\wedge Q)} & \neg P & \neg Q & \textcolor{blue}{\neg P\vee\neg Q}\\\hline
+			T & T & T & \textcolor{red}{F} & F & F & \textcolor{blue}{F}\\
+			T & F & F & \textcolor{red}{T} & F & T & \textcolor{blue}{T}\\
+			F & T & F & \textcolor{red}{T} & T & F & \textcolor{blue}{T}\\
+			F & F & F & \textcolor{red}{T} & T & T & \textcolor{blue}{T}
 		\end{array}
 	\]
 	The second law is an exercise.
 \end{proof}
 
 \begin{example}{}{}
-	Consider the sentence:\par
-	\begin{minipage}[t]{0.6\linewidth}\vspace{-1pt}
-	\begin{quote}
-		I rode the subway \emph{and} I had coffee.
-	\end{quote}
-	To negate this using de Morgan's first law, we might write:
-	\begin{quote}
-		I \emph{didn't} ride the subway \emph{or} I \emph{didn't} have coffee.
-	\end{quote}
+	Consider the sentence\par
+	\begin{minipage}[t]{0.57\linewidth}\vspace{-1pt}
+		\begin{quote}
+			I rode the subway \emph{and} I had coffee.
+		\end{quote}
+		To negate this, we might write
+		\begin{quote}
+			I \emph{didn't} ride the subway \emph{or} I \emph{didn't} have coffee.
+		\end{quote}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.39\linewidth}\vspace{-20pt}
+	\begin{minipage}[t]{0.42\linewidth}\vspace{-20pt}
 		\flushright	
-		\begin{tabular}{c|c||c}
-			Subway&Coffee&Su and Co\\\hline\hline
+		\begin{tabular}{c|c||c@{}}
+			Subway&Coffee&Subway and Coffee\\\hline\hline
 			T & T & T\\
 			\textcolor{blue}{T} & \textcolor{blue}{F} & \textcolor{blue}{F}\\
 			\textcolor{blue}{F} & \textcolor{blue}{T} & \textcolor{blue}{F}\\
@@ -362,36 +355,35 @@ Our final results in basic logic also involve negations; they are named for Augu
 		\end{tabular}
 	\end{minipage}\bigbreak
 	
-	This feels awkward in English because the negation encompasses \textcolor{blue}{three distinct possibilities}. Note how the logical (inclusive) use of \emph{or} includes the last row of the truth table: the possibility that you neither rode the subway nor had coffee.
+	This reads awkwardly because the negation encompasses \textcolor{blue}{three distinct possibilities}. Note how the logical (inclusive) use of \emph{or} includes the last row of the truth table: the possibility that one neither rode the subway nor had coffee. As with Example \ref{ex:logiccolor}, this is another advert for the use of logic over English.
 \end{example}
 
-As with Example \ref{ex:logiccolor}, this is another advert for the use of logic: English simply isn't very helpful for precisely stating complex logical statements.
+
+\goodbreak
 
 
 \begin{aside}{}{}
-\boldinline{Aside: Algebraic Logic}\phantomsection\label{pg:asidelogicalgebra}
-
-%Similarly to de Morgan's laws, 
-We can use truth tables to establish other laws of basic logic, for instance:
-\[
-	\def\arraystretch{1.2}
-	\begin{array}{@{}lll@{}}
-	\text{Double negation} & \neg(\neg P)\iff P &\\
-	\text{Commutativity} & P\wedge Q\iff Q\wedge P & P\vee Q\iff Q\vee P\\
-	\text{Associativity} & (P\wedge Q)\wedge R\iff P\wedge(Q\wedge R) & (P\vee Q)\vee R\iff P\vee(Q\vee R)\\
-	\text{Distributivity}&(P\wedge Q)\vee R\iff (P\vee R)\wedge (Q\vee R) & (P\vee Q)\wedge R\iff (P\wedge R)\vee (Q\wedge R)
-	\end{array}
-\]
-To make things more algebraic, we've replaced ``is logically equivalent to" with a biconditional.\footnotemark{}\smallbreak
-
-Armed with such laws, one can often suitably manipulate logical expressions without laboriously creating truth tables. This is not the focus of this course, though you might find it fun!\smallbreak
-
-For this course, it is probably not worth memorizing these laws. Your intuitive understanding of \emph{and, or} and \emph{not} mean you'll likely apply the laws correctly whenever necessary.
+	\boldinline{Aside: Algebraic Logic}\phantomsection\label{pg:asidelogicalgebra}
+	
+	We can use truth tables to establish other laws of basic logic, e.g.:
+	\[
+		\def\arraystretch{1.2}
+		\begin{array}{@{}lll@{}}
+			\text{Double negation} & \neg(\neg P)\Longleftrightarrow P &\\
+			\text{Commutativity} & P\wedge Q\Longleftrightarrow Q\wedge P & P\vee Q\Longleftrightarrow Q\vee P\\
+			\text{Associativity} & (P\wedge Q)\wedge R\Longleftrightarrow P\wedge(Q\wedge R) & (P\vee Q)\vee R\Longleftrightarrow P\vee(Q\vee R)\\
+			\text{Distributivity}&(P\wedge Q)\vee R\Longleftrightarrow (P\vee R)\wedge (Q\vee R) & (P\vee Q)\wedge R\Longleftrightarrow (P\wedge R)\vee (Q\wedge R)
+		\end{array}
+	\]
+	To make things more algebraic, we've replaced ``is logically equivalent to" with a biconditional.\footnotemark{}\smallbreak
+	
+	Armed with these laws, one can often manipulate logical expressions without the laborious creation You are welcome to try memorizing these laws, though there is typically no need: De Morgan's laws, together with your intuitive understanding of \emph{and, or} and \emph{not} mean you'll likely perform correct manipulations regardless.
 \end{aside}
 
-\footnotetext{Stating the laws in this fashion is to assert that each expression is a tautology (Definition \ref{defn:tautology}). For instance, to claim that ``$\neg(\neg P)$ is logically equivalent to $P$'' is to assert that $\neg(\neg P)\iff P$ is a tautology.}
 
-\goodbreak
+\footnotetext{Stating the laws in this fashion is to assert that each expression is a tautology (Definition \ref{defn:andornot}). For instance, to claim that ``$\neg(\neg P)$ is logically equivalent to $P$'' is to assert that $\neg(\neg P)\Longleftrightarrow P$ is a tautology.}
+
+
 
 \begin{exercises}{}{}
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/2-1-props.html}{online}.
@@ -399,22 +391,28 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
 
 	\begin{enumerate}
 	  \item Express each statement in the form, ``If $\dots$, then $\dots$'' There are many possible correct answers.
-			\begin{enumerate}
-		  	\item You must eat your dinner if you want to grow.
-		  	\item Being a multiple of 12 is a sufficient condition for a number to be even.
-		  	\item It is necessary for you to pass your exams in order for you to obtain a degree. 
-		  	\item A triangle is equilateral only if all its sides have the same length.
-			\end{enumerate}
+		\begin{enumerate}
+		  \item You must eat your dinner if you want to grow.
+		  
+		  \item Being a multiple of 12 is a sufficient condition for a number to be even.
+		  
+		  \item It is necessary for you to pass your exams in order for you to obtain a degree. 
+		  
+		  \item A triangle is equilateral only if all its sides have the same length.
+		\end{enumerate}
 		
 	
 	  \item Suppose ``$x$ is an even integer'' and ``$y$ is an irrational number'' are true statements, and that ``$z\geq 3$'' is a false statement. Which of the following are true?\par
 	  (\emph{Hint: Label each statement and think about each using connectives})
-			\begin{enumerate}
-		  	\item If $x$ is an even integer, then $z\geq 3$.
-		  	\item If $z\geq 3$, then $y$ is an irrational number.
-		  	\item If $z\geq 3$ or $x$ is an even integer, then $y$ is an irrational number.
-		  	\item If $y$ is an irrational number and $x$ is an even integer, then $z\geq 3$.
-			\end{enumerate}
+		\begin{enumerate}
+		  \item If $x$ is an even integer, then $z\geq 3$.
+		  
+		  \item If $z\geq 3$, then $y$ is an irrational number.
+		  
+		  \item If $z\geq 3$ or $x$ is an even integer, then $y$ is an irrational number.
+		  
+		  \item If $y$ is an irrational number and $x$ is an even integer, then $z\geq 3$.
+		\end{enumerate}
 
 
 	  \item Orange County is considering two competing transport plans: widening the 405 freeway and constructing light rail down its median. A local politician is asked, ``Would you like to see the 405 widened or would you like to see light rail?'' The politician wants to sound positive, but to avoid being tied to one project. What is their response?\par
@@ -424,7 +422,9 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
 	  \item Consider the proposition: ``If the integer $m$ is greater than 3, then $2m$ is not prime.''
 	  \begin{enumerate}
 	    \item Rewrite the proposition using the word `necessary.'
+	    
 	 		\item Rewrite the proposition using the word  `sufficient.'
+	 		
 	 		\item Write the negation, converse and contrapositive of the proposition. 
 	  \end{enumerate}
 	  
@@ -443,34 +443,40 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
   
 		\item Use truth tables to establish the following laws of logic:
 		\begin{enumerate}
-		  \item Double negation: \lstsp $\neg(\neg P)\iff P$.
-		  \item Idempotent law: \lstsp $P\wedge P\iff P$.
-		  \item Absorption law: \lstsp $P\wedge(P\vee Q)\iff P$.
-		  \item Distributive law: \lstsp $(P\wedge Q)\vee R\iff (P\vee R)\wedge(Q\vee R)$.
+		  \item Double negation: \lstsp $\neg(\neg P)\Longleftrightarrow P$
+		  
+		  \item Idempotent law: \lstsp $P\wedge P\Longleftrightarrow P$
+		  
+		  \item Absorption law: \lstsp $P\wedge(P\vee Q)\Longleftrightarrow P$
+		  
+		  \item Distributive law: \lstsp $(P\wedge Q)\vee R\Longleftrightarrow (P\vee R)\wedge(Q\vee R)$
 		\end{enumerate}
   
   
 	  \item\begin{enumerate}
 	    \item Decide whether $(P\wedge \neg P) \Longrightarrow Q$ is a tautology, a contradiction, or neither.
+	    
 	    \item Explain why $\neg P \vee \neg Q$ is logically equivalent to $P \Longrightarrow (P \wedge\neg Q)$.
+	    
 	    \item\label{exs:contradictproof} Prove: $\bigl((P\wedge \neg Q)\Longrightarrow F\bigr)\Longleftrightarrow  (P\Longrightarrow Q)$ is a tautology. Here $F$ represents a \emph{contradiction.}
 	  \end{enumerate}
 	  
 	  
 	  \item\begin{enumerate}
 	    \item\label{exs:iff} Prove that the expressions $(P\Longrightarrow Q)\wedge (Q\Longrightarrow P)$ and $P\Longleftrightarrow Q$ are logically equivalent.
+	    
 	    \item\label{exs:iftransitive} Prove that $\bigl((P\Longrightarrow Q)\wedge (Q\Longrightarrow R)\bigr)\Longrightarrow \bigl(P\Longrightarrow R\bigr)$ is a tautology.
 	  \end{enumerate}
 	  Why do these make intuitive sense?
 
   
-  	\item Use logical algebra (e.g., page \pageref{pg:asidelogicalgebra}) to show that $\bigl((P\vee Q)\wedge \neg P\bigr)\wedge\neg Q$ is a contradiction.
+  	\item Use logical algebra (page \pageref{pg:asidelogicalgebra}) to show that $\bigl((P\vee Q)\wedge \neg P\bigr)\wedge\neg Q$ is a contradiction.
 
 	
-  	\item Do there exist propositions $P,Q$ for which both $P\Longrightarrow Q$ and its converse are \emph{false}? Explain.
+  	\item\label{exs:ttconverse} Compare the truth tables for $P\Longrightarrow Q$ and its converse. Do there exist propositions $P,Q$ for which both $P\Longrightarrow Q$ and its converse are \emph{false}? Explain.
   
     
-		\item Your friend insists that the negation of the sentence ``Mark and Mary have the same height'' is ``Mark or Mary do not have the same height.'' What is the correct negation? Where did your friend go wrong?
+		\item A friend insists that the negation of ``Mark and Mary have the same height,'' is ``Mark or Mary do not have the same height.'' What is the correct negation? Where did your friend go wrong?
 
 		
 		\item Suppose that the following statements are \emph{true}:
@@ -483,15 +489,17 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
 	  (\emph{Hint: try rewriting each of the statements as an implication})
   
 
-		\item The connective $\downarrow$ (the \emph{Quine dagger}, \emph{NOR}) is defined by the truth table:\par
+		\item The connective $\downarrow$ (the \emph{Quine dagger}, \emph{NOR}) is defined by a truth table.\par
 		\begin{enumerate}
 		\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
-	      \item Prove that $P\downarrow Q$ is logically equivalent to $\neg (P\vee Q)$. 
-	      \item Find a logical expression built using only $P$ and the connective $\downarrow$ which is logically equivalent to $\neg P$.
+	     \item Prove that $P\downarrow Q$ is logically equivalent to $\neg (P\vee Q)$. 
+	     
+	     \item Find a logical expression built using only $P$ and the connective $\downarrow$ which is logically equivalent to $\neg P$.
 		\end{minipage}
 		\hfill
 		\begin{minipage}[t]{0.24\linewidth}\vspace{-25pt}
-		\flushright$  \begin{array}{cc|c}
+		\flushright%
+		$\begin{array}{cc|c}
 			P & Q & P \downarrow Q\\\hline
 			T & T & F\\
 			T & F & F\\
@@ -510,6 +518,7 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
 		\end{quote}
 		\begin{enumerate}
 		  \item Given that de Morgan died in 1871, and that he wasn't the beneficiary of some miraculous anti-aging treatment, find the year in which he was born.
+		  
 		  \item Suppose you have an acquaintance who satisfies the same problem. When were they born and how old will they turn this year?
 		\end{enumerate}
 		Do your best to give a formal proof of your correctness.
@@ -522,53 +531,53 @@ For this course, it is probably not worth memorizing these laws. Your intuitive 
 
 
 
+
 \subsection{Propositional Functions \& Quantifiers}\label{sec:quant}
 
-The majority of mathematical propositions are more complicated that those seen in Section \ref{sec:prop}. In particular, they typically involve \emph{variables,} for instance
-\begin{quote}
-	``$x$ is an integer greater than 5.''
-\end{quote}
+Mathematical propositions are typically more complicated that those seen in Section \ref{sec:prop}. In particular, they often involve \emph{variables}: for instance, ``$x$ is an integer greater than 5.''
 
 \begin{defn}{}{}
-	A \emph{propositional function} is a family of propositions which depend on one or more variables. The collection of permitted variables is the \emph{domain.}
+	A \emph{propositional function} is a family of propositions depending on one or more variables. The collection of permitted variables is the \emph{domain.}
 \end{defn}
 
-If $P$ is a propositional function depending on a single variable $x$, then for each object $a$ in the domain, $P(a)$ is a proposition. Typically $P(x)$ is true for some $x$ and false for others.
+If $P$ is a propositional function depending on a single variable $x$, then for each object $a$ in the domain $P(a)$ is a proposition. Typically $P(x)$ is true for some $x$ and false for others.
 
 \begin{example}{}{easyquantprop}
-	Consider the propositional function $P(x)$: ``$x^2>4$" with domain the real numbers. Plainly $P(1)$ is false (``$1^2>4$'') and $P(6)$ is true (''$6^2>4$'').
+	Suppose $P(x)$ is the propositional function ``$x^2>4$" with domain the real numbers. Plainly $P(1)$ is false (``$1^2>4$'' is nonsense), while $P(6)$ is true (''$6^2>4$'').
 \end{example}
 
 
-In mathematics, propositional functions are often \emph{quantified.} English contains various quantifiers (\emph{all, some, many, few, several,} etc.), but in mathematics we are primarily concerned with just two.
+Propositional functions are often \emph{quantified.} English contains various quantifiers (\emph{all, some, many, few, several,} etc.), but in mathematics we are primarily concerned with just two.
 
 
 \begin{defn}{}{quant}
-	The \emph{universal quantifier} $\forall$ is read `for all'. The \emph{existential quantifier} $\exists$ is read `there exists.' Given a propositional function $P(x)$, we define two new \emph{quantified propositions}:
+	The \emph{universal quantifier} $\forall$ is read ``for all.'' The \emph{existential quantifier} $\exists$ is read ``there exists.'' Given a propositional function $P(x)$, we may define two new \emph{quantified propositions}:
 	\begin{itemize}
 	  \item ``$\forall x, P(x)$'' is true if and only if $P(x)$ is true for \emph{every} $x$ in its domain.
 	  \item ``$\exists x, P(x)$'' is true if and only if $P(x)$ is true for \emph{at least one} $x$ in its domain.
 	\end{itemize}
-	It is common to describe the domain when quantifying propositions by including a descriptor after the quantifier (\emph{bounding the quantifier}---see below).
+	When quantifying propositions it is common to describe the domain by including a descriptor after the quantifier (\emph{bounding the quantifier}---see the example below).
 \end{defn}
 
-As with connectives, there are many ways to express quantified propositions both mathematically and in English. The use of symbolic quantifiers involves a trade-off: compact statements can improve clarity, but they are harder to read for the uninitiated, so consider your audience! While it is your choice whether to employ symbolic quantifiers in your own \emph{writing,} it is essential that you know how to \emph{read/recognize} them and that you can \emph{translate} between various incarnations.
+As with connectives, there are multiple ways to express quantified propositions both mathematically and in English. Symbolic quantifiers involve a trade-off so consider your audience: compact statements can improve clarity but are harder to read for the uninitiated. %Whether to employ them is your choice, however being able to \emph{read/recognize} them is essential.
 
 \begin{example*}{\ref{ex:easyquantprop} cont.}{}
-	To gain some practice with bounded quantifiers, we introduce the notation $x\in\R$: this means that $x$ is a real number.%\footnotemark{} 
+	To gain some practice with bounded quantifiers, we introduce the notation $x\in\R$ which simply means that $x$ is a real number.\footnotemark{}
 	\begin{itemize}
 	  \item ``$\forall x\in\R,\ x^2>4$'' might be read, ``The square of every real number is greater than 4.''\par
-	  The quantified expression is \emph{false} since $1^2>4$ is false: we call $x=1$ a \emph{counter-example.}
+	  The quantified proposition is \emph{false} since $1^2>4$ is false: we call $x=1$ a \emph{counter-example.}
 	  \item ``$\exists x\in\R,\ x^2>4$'' might be read, ``There is a real number whose square is greater than 4.''\par
-	  The quantified expression is \emph{true} since $6^2>4$ (is true): we call $x=6$ an \emph{example.}
+	  The quantified proposition is \emph{true} since $6^2>4$ (is true): we call $x=6$ an \emph{example.}
 	\end{itemize}
 \end{example*}
+
+\footnotetext{This notation should be familiar. Don't worry if not, for it will be properly discussed in chapter \ref{chap:sets}.}
 
 Due to their importance, it is worth defining these last concepts formally.
 
 \begin{defn}{}{}
-	An \emph{example} of $\exists x, P(x)$ is an element $x_0$ in the domain of $P$ for which $P(x_0)$ is \emph{true.}\smallbreak
-	A \emph{counter-example} to $\forall x, P(x)$ is an element $x_0$ in the domain of $P$ for which $P(x_0)$ is \emph{false.}
+	An \emph{example} of ``$\exists x, P(x)$'' is an element $x_0$ in the domain of $P$ for which $P(x_0)$ is \emph{true.} To \emph{prove} an existential statement is to provide an \emph{example.}\smallbreak
+	A \emph{counter-example} to ``$\forall x, P(x)$'' is an element $x_0$ in the domain of $P$ for which $P(x_0)$ is \emph{false.} To \emph{disprove} a universal statement is to provide an \emph{counter-example.}
 \end{defn}
 
 
@@ -589,31 +598,31 @@ Due to their importance, it is worth defining these last concepts formally.
 
 
 
-\boldinline{Universal Quantifiers and Connectives: Hidden Quantifiers}\phantomsection\label{pg:univproof}
+\boldsubsubsection{Universal Quantifiers and Connectives: Hidden Quantifiers}\phantomsection\label{pg:univproof}
 
-Universally quantified statements are interchangeable with implications. Given a propositional function $Q(x)$, let $P(x)$ be the proposition ``$x$ lies in the domain of $Q$." Then
+Universally quantified propositions are interchangeable with implications. To see this, suppose a propositional function $Q(x)$ is given and let $P(x)$ be ``$x$ lies in the domain of $Q$." Then
 \[
 	\tcbhighmath{\text{$\textcolor{blue}{\forall x,Q(x)}$ is logically equivalent to $\textcolor{Magenta}{P(x)\Longrightarrow Q(x)}$}}
 \]
-\textcolor{Magenta}{Connectives containing variables} are therefore assumed to be \textcolor{blue}{universal}. When written as a connective, the universal quantifier is typically \emph{hidden.}\footnote{By contrast, the existential quantifier is never hidden: it is always explicitly written as a symbol ($\exists$), or as a phrase in English (\emph{there is, there exists, some, at least one,} etc.).}
+For this reason \textcolor{Magenta}{connectives containing variables} are assumed to be \textcolor{blue}{universal}. When written as a connective, the universal quantifier is often \emph{hidden.}\footnote{By contrast, the existential quantifier is never hidden: it is always explicit either symbolically ($\exists$) or as a phrase in English (\emph{there is, there exists, some, at least one,} etc.).}
 
 \begin{examples}{}{oddsquared}
-	\exstart The universal statement ``Every cat is neurotic,'' may also be written
+	\exstart The universal statement, ``Every cat is neurotic,'' may also be written,
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item[]\begin{quote}
 			If $x$ is a cat, then $x$ is neurotic.
 		\end{quote} 
 		
-		\item Revisiting Example \ref{ex:easyquantprop}, we could rewrite ``$\forall x\in\R, x^2>4$'' as a connective
+		\item\label{ex:easyquantprop2} Revisiting Example \ref{ex:easyquantprop}, we could rewrite ``$\forall x\in\R, x^2>4$'' as a connective,
 		\[
-			x\in\R\Longrightarrow x^2>4 \tag{If $x$ is a real number, then $x^2>4$}
+			x\in\R\implies x^2>4 \tag{If $x$ is a real number, then $x^2>4$}
 		\]
 		
 	  \item\label{ex:oddsquared2} The following three sentences have identical meaning:
 	  \begin{quote}
 	  	The square of an odd integer is odd.\qquad $\forall n$ odd, $n^2$ is odd.\qquad $n$ odd $\Longrightarrow n^2$ odd.
 	  \end{quote}
-	  In only one of the sentences is the universal quantifier explicit. For even more variety, the third sentence can also be viewed as a universal statement about all \emph{integers}; including the \textcolor{red}{hidden quantifier} in this case results in
+	  The universal quantifier is explicit in only one of the sentences! For even more variety, the third sentence could be viewed as a universal statement about all \emph{integers}; including the \textcolor{red}{hidden quantifier} in this case results in
 		\[
 			\textcolor{red}{\forall n\in\Z},\ n\text{ odd} \implies n^2 \text{ odd.}
 		\]
@@ -621,36 +630,37 @@ Universally quantified statements are interchangeable with implications. Given a
 	\end{enumerate}
 \end{examples}
 
-We've already seen that \emph{disproving} a universal statement requires only that we supply a \emph{counter-example.} While such might require some effort to find, often the resulting argument is very simple. By contrast, \emph{proving} a universal statement is the same as proving a connective, an activity that is typically much more involved. We therefore largely postpone this to the next section. Regardless, a simple proof of our \emph{oddness} claim should be easy to follow.
+We've already seen that \emph{disproving} a universal statement requires only that we supply a \emph{counter-example.} While such might require some effort to find, often the resulting argument is very simple. By contrast, \emph{proving} a universal statement is the same as proving a conditional connective, typically a more involved activity. We therefore largely postpone this to the next section. Regardless, a simple proof of the above \emph{oddness} claim should be easy to follow.
 
 \begin{proof}[Proof of Example \ref*{ex:oddsquared}.\ref{ex:oddsquared2}]
 	If an integer $n$ is odd, then it may be written in the form $n=2k+1$ for some integer $k$. But then
 	\[
 		n^2 =(2k+1)^2 =4k^2+4k+1 =2(2k^2+2k)+1
-		\]
+	\]
 	is plainly also odd.
 \end{proof}
 
-Similarly, \emph{proving} an existential statement (by providing an \emph{example}) is typically more straightforward than \emph{disproving} such. To understand this duality, we need to understand how to \emph{negate} quantified propositions.
+Similarly, \emph{proving} an existential statement (by providing an \emph{example}) is typically more straightforward than \emph{disproving} such. To help understand this duality, we need to see how to \emph{negate} quantified propositions.
+
 
 \goodbreak
 
 
 \boldsubsubsection{Negating Quantified Propositions}
 
-To negate a proposition, we consider what it means for it to be \emph{false.} We already understand what this means for a universal proposition:
+To negate a proposition is to consider what it means for the proposition to be \emph{false.} We already understand what this means for a universal proposition:
 \begin{quote}
 	``$\forall x,P(x)$'' is false if and only if \emph{there exists a counter-example.}
 \end{quote}
-The negation of a universal statement is \emph{existentially quantified}:
+Otherwise said, the negation of a universal statement is \emph{existentially quantified}:
 \begin{quote}
 	The negation of ``$P(x)$ is \emph{always} true'' is ``$P(x)$ is \emph{sometimes} false.''
 \end{quote}
-Repeating this with $\neg P(x)$ results in a related observation:
+Repeating  $P(x)$ with $\neg P(x)$ results in the related observation:
 \begin{quote}
 	The negation of ``$P(x)$ is \emph{always} false" is ``$P(x)$ is \emph{sometimes} true.''
 \end{quote}
-%In summary:
+In summary:
 
 \begin{thm}{}{negquant}
 	For any propositional function $P(x)$:
@@ -662,41 +672,47 @@ Repeating this with $\neg P(x)$ results in a related observation:
 
 
 \begin{examples}{}{}
-	\exstart  ``Everyone owns a bicycle," has negation, ``Someone does not own a bicycle.'' 
-		It is somewhat ugly, but we could write this symbolically:
+	\exstart  ``Everyone owns a bicycle," has negation ``Someone does not own a bicycle.'' 
+		It is somewhat ugly, but we could write this semi-symbolically:
 		\[
 			\neg\bigl(\forall\text{ people }x,\ x\text{ owns a bicycle}\bigr)\iff \exists\text{ a person $x$ such that $x$ does not own a bicycle}
 		\]
 		
 	\begin{enumerate}\setcounter{enumi}{1}
-		\item The quantified proposition\footnotemark{} ``$\exists x>0$ such that $\sin x=4$,''
-		has the form $\exists x,\,P(x)$. Its negation has the form $\forall x,\ \neg P(x)$. Explicitly:
-		\[\forall x>0,\ \sin x\neq 4\]
-		Since the sine function satisfies the inequalities $-1\le\sin x\le 1$, the original proposition is \emph{false} and its negation \emph{true.}
+		\item The quantified proposition\footnotemark{} ``$\exists x>0, \sin x=4$,''
+		has the form $\exists x,\,P(x)$. Its negation is therefore $\forall x,\ \neg P(x)$: explicitly,
 		\[
-			\tcbhighmath{\text{\textcolor{red}{Warning!}\lstsp \emph{Never} negate a quantifier's \textcolor{Magenta}{bounds}: $\forall x\,\textcolor{Magenta}{\le 0}$\ldots{} is completely wrong!}}
+			\forall x>0,\ \sin x\neq 4
+		\]
+		Since sine satisfies $-1\le\sin x\le 1$, the original proposition is \emph{false} and its negation \emph{true.}
+		\[
+			\tcbhighmath{\text{\textcolor{red}{Warning!}\lstsp \emph{Do not} change a quantifier's \textcolor{Magenta}{bounds}: $\forall x\,\textcolor{Magenta}{\le 0}, \sin x\neq 4$ is wrong!}}
 		\]
 		
-		\item Be especially careful when negating connectives: after negation, a \textcolor{red}{hidden quantifier $\forall x$} becomes \emph{explicit.}
+		\item Take special care negating connectives: a negated \textcolor{red}{hidden quantifier $\forall x$} becomes \emph{explicit.}
 		\[
-			\tcbhighmath{\neg\bigl(P(x)\Longrightarrow Q(x)\bigr)\ \text{ is logically equivalent to }\ \textcolor{red}{\exists x}, P(x) \wedge\neg Q(x)}
+			\tcbhighmath{\neg\bigl(\textcolor{blue}{P(x)}\Longrightarrow \textcolor{Green}{Q(x)}\bigr)\ \text{ is logically equivalent to }\ \textcolor{red}{\exists x}, \textcolor{blue}{P(x)} \wedge \textcolor{Green}{\neg Q(x)}}
+			\tag{Theorem \ref{thm:negconditional}}
 		\]
 		\begin{enumerate}
-		  \item (Example \ref*{ex:oddsquared}.\ref{ex:oddsquared2})\lstsp The negation of ``$n$ odd $\Longrightarrow n^2$ odd''is the (false) claim
+		  \item (Example \ref*{ex:oddsquared}.\ref{ex:oddsquared2})\lstsp The negation of ``\textcolor{blue}{$n$ odd} $\Longrightarrow \textcolor{Green}{n^2}$ \textcolor{Green}{odd},'' is the (false) claim
 			\[
-				\textcolor{red}{\exists n\in\Z}\text{ with $n$ odd \emph{and} $n^2$ even.}
+				\textcolor{red}{\exists n\in\Z}\text{ with \textcolor{blue}{$n$ odd} \emph{and} \textcolor{Green}{$n^2$ even}.}
 			\]
 			
-			\item (Example \ref{ex:easyquantprop})\lstsp The negation of the false claim ``$x\in\R\Longrightarrow x^2>4$'' is the true assertion
+			\item (Example \ref*{ex:oddsquared}.\ref{ex:easyquantprop2})\lstsp The negation of the false claim ``$\textcolor{red}{x\in\R}\Longrightarrow \textcolor{Green}{x^2>4}$'' is the true assertion
 			\[
-				\textcolor{red}{\exists n\in\R}\text{ for which }x^2\le 4
+				\textcolor{red}{\exists x\in\R}\text{ for which }\textcolor{Green}{x^2\le 4}
+				\tag{for example $x=1$}
 			\]
-			\vspace{-28pt}
 		\end{enumerate}
 	\end{enumerate}
 \end{examples}
 
+\vspace{-5pt}
+
 \footnotetext{``$\exists x>0$'' indicates that the domain of the proposition ``$\sin x=4$'' is the \emph{positive} real numbers.}
+
 
 \goodbreak
 
@@ -708,13 +724,13 @@ A propositional function can have several variables, each of which may be quanti
 \begin{examples}{}{multiplequant}
 	\exstart The quantified proposition
 	\[
-		\forall x>0,\exists y>0\text{ such that }xy=4
+		\forall x>0,\exists y>0\text{ such that }xy=4 \tag{$\ast$}
 	\]
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item[]might be read, ``Given any positive number, there is another such that their \emph{product} is four.''	Hopefully you believe that this is \emph{true}! Here is a simple argument which comes from viewing it as an implication, ``If $x>0$, then $\exists y>0$ such that $xy=4$.''
+	  \item[]might be read, ``Given any positive number, there is another such that their \emph{product} is four.''	Hopefully you believe that this is \emph{true}! Here is a simple argument which comes from viewing ($\ast$) as an implication, ``$x>0 \Longrightarrow\exists y>0$ such that $xy=4$.''
 	\begin{quote}
 		\begin{proof}
-			Suppose we are given $x>0$. Let $y=\frac 4x$, then $xy=4$, as required.
+			Suppose we are given $x>0$. Let $y=\frac 4x$. Then $xy=4$, as required.
 		\end{proof}
 	\end{quote}Being clear about \emph{domains} is critical. Suppose we modify the original proposition:
 		\[
@@ -733,53 +749,56 @@ A propositional function can have several variables, each of which may be quanti
 		Our \emph{disproof} of ($\dag$) is really a \emph{proof} of the negation: we provided the \emph{example} $x=0$, thus demonstrating the truth of a $\exists$-statement. Since the negation is true, the original $(\dag)$ is false.
 		
 		
-	  \item\label{ex:multiplequant2} \textcolor{red}{Order of quantifiers matters!}\lstsp The meaning of a sentence will likely change if we alter the order of quantification. This might also change the truth state of a proposition.
+	  \item\label{ex:multiplequant2} \textcolor{red}{Order of quantifiers matters!}\lstsp The meaning of a sentence---\emph{and its truth state}---can change if we alter the order of quantification.
 	  \begin{enumerate}
 	  	\item $\forall x\in\R,\exists y\in\R,x^2<y$
 		\end{enumerate}
 		\begin{quote}
 			\begin{proof}
-				Suppose a real number $x$ is given. Let $y=x^2+1$, then $x^2<y$, as required.
+				Suppose a real number $x$ is given. Let $y=x^2+1$. Then $x^2<y$, as required.
 			\end{proof}
 		\end{quote}
-	  \begin{enumerate}\setcounter{enumii}{1}
-	    \item[]We proved this by viewing it as an implication, ``If $x\in\R$, then $\exists y\in\R,x^2<y$.''
+	  \begin{enumerate}\setcounter{enumii}{1}\itemsep8pt
+	    \item[] As above, we prove this by viewing it as an implication, ``If $x\in\R$, then $\exists y\in\R,x^2<y$.''
 	  	\item $\exists y\in\R,\forall x\in\R$, $x^2<y$
 		\end{enumerate}
 		\begin{quote}
 			\begin{proof}[Disproof]
-				We demonstrate the truth of the negation, ``$\forall y,\exists x,x^2\ge y$.''\smallbreak
-				Suppose a real number $y$ is given. Let $x=\sqrt{\nm y}$, then $x^2=y\ge y$, as required.
+				We demonstrate the truth of the negation, ``$\forall y\in\R,\exists x\in\R,x^2\ge y$.''\smallbreak
+				Suppose a real number $y$ is given. Let $x=\sqrt{\nm y}$. Then $x^2=y\ge y$, as required.
 			\end{proof}
 		\end{quote} 
 	\end{enumerate}
 \end{examples}
 
-\footnotetext{Here is an abstract justification for this heuristic. Consider a propositional function $P(x)$: ``$\exists y,Q(x,y)$,'' then
-\begin{align*}
-	\neg\bigl(\forall x, \exists y,Q(x,y)\bigr) &\iff  \neg\bigl(\forall x,P(x)\bigr) \iff \exists x,\neg P(x)  \iff \exists x,\neg\bigl(\exists y,Q(x,y)\bigr)\\
-	&\iff \exists x, \forall y,\neg Q(x,y)
-\end{align*}}
+\footnotetext{%
+	For an abstract justification of this heuristic, consider a propositional function $P(x)$: ``$\exists y,Q(x,y)$,'' then
+	\[
+		\neg\bigl(\forall x, \exists y,Q(x,y)\bigr) \iff  \neg\bigl(\forall x,P(x)\bigr) \iff \exists x,\neg P(x)  \iff \exists x,\neg\bigl(\exists y,Q(x,y)\bigr) \iff \exists x, \forall y,\neg Q(x,y)
+	\]
+}
+
+Don't worry if these arguments seem difficult at the moment; much more practice is coming.
 
 
 \goodbreak
 
 
-\boldinline{Putting it all together}
+%\boldinline{Putting it all together}
 
-We finish with two examples you might have seen elsewhere. For this course, \emph{you do not have to know what these statements mean,} though you do have to be able to \emph{negate} them.  
+We finish with two harder examples you might have encountered elsewhere. For this course, \emph{you do not have to know what these statements mean,} though you do have to be able to \emph{negate} them.  
 
 \begin{examples}{}{}
-	\exstart Vectors $\vx,\vy,\vz$ in the vector space $\R^3$ are \emph{linearly independent} if
+	\exstart (Linear Algebra)\lstsp Vectors $\vx,\vy,\vz$ in $\R^3$ are said to be \emph{linearly independent} if
 	\[
 		\forall a,b,c\in\R,\ a\vx+b\vy+c\vz=\V0\implies a=b=c=0
 	\]
-	In a linear algebra course, the expression $\forall a,b,c\in\R$ would often be hidden. The negation of this statement, what it means for $\vx,\vy,\vz$ to be \emph{linearly dependent,} is
+	Since this is a conditional proposition, the expression $\forall a,b,c\in\R$ would likely be hidden. The negation of this statement, what it means for $\vx,\vy,\vz$ to be \emph{linearly dependent,} is
 	\[
-		\exists a,b,c\in\R,\text{ not all zero, such that }a\vx+b\vy+c\vz=\V0
+		\exists a,b,c\in\R,\text{ such that }a\vx+b\vy+c\vz=\V0\text{ and $a,b,c$ are not all zero}
 	\]
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item A function $f:\R\to\R$ is said to be \emph{continuous at $a\in\R$} if
+	  \item (Analysis/Calculus)\lstsp A function $f:\R\to\R$ is said to be \emph{continuous at $a\in\R$} if
 		\[
 			\forall\epsilon >0,\ \exists\delta>0\text{ such that }|x-a|<\delta\implies |f(x)-f(a)|<\epsilon
 		\]
@@ -791,8 +810,6 @@ We finish with two examples you might have seen elsewhere. For this course, \emp
 	\end{enumerate}
 \end{examples}
 
-
-\goodbreak
 
 
 \begin{exercises}{}{}
@@ -819,7 +836,9 @@ We finish with two examples you might have seen elsewhere. For this course, \emp
 	  
 	
 		\item Consider the quantified statement
-	    \[\forall x,y,z\in\R,\ (x-3)^2+(y-2)^2+(z-7)^2>0 \tag{$\ast$}\]
+	    \[
+	    	\forall x,y,z\in\R,\ (x-3)^2+(y-2)^2+(z-7)^2>0 \tag{$\ast$}
+	    \]
 			\begin{enumerate}
 		    \item Express ($\ast$) in words.
 		    \item Is ($\ast$) true or false? Explain.
@@ -885,13 +904,15 @@ We finish with two examples you might have seen elsewhere. For this course, \emp
 			
 		\item Consider the proposition:
 		\[
-			\forall m,n\in\R,\quad m>n\implies m^2>n^2
+			\forall m,n\in\R,\  m>n\implies m^2>n^2
 		\]
 		\begin{enumerate}
 	  	\item State the negation of the proposition.
 	  	\item Prove that the original proposition is \emph{false.}
 	  	\item Suppose you rewrite the proposition:
-	  	\[\forall m,n\in A, m>n\implies m^2>n^2\]
+	  	\[
+	  		\forall m,n\in A, \ m>n\implies m^2>n^2
+	  	\]
 	  	What is the largest collection (set) of real numbers $A$ for which the proposition is \emph{true}?
 		\end{enumerate}
 	
@@ -912,6 +933,7 @@ We finish with two examples you might have seen elsewhere. For this course, \emp
 
 \end{exercises}
 
+
 \clearpage
 
 
@@ -924,7 +946,7 @@ In mathematics, a Theorem is\footnote{It is sometimes awkward to fit a theorem i
 
 There are four standard methods of proof, though a longer argument might use several.
 \begin{description}
-	\item[Direct] Assume the hypothesis $P$ and deduce the conclusion $Q$.\footnote{From now on, to \emph{assume} a proposition is to suppose its \emph{truth.} To suppose $P$ is false, we ``assume/suppose $\neg P$.''} This structure should be intuitive, though it may help to revisit the truth table in Definition \ref{defn:implies} and the tautology of Example \ref*{ex:taut}.\ref{ex:taut2}.
+	\item[Direct] Assume the hypothesis $P$ and deduce the conclusion $Q$.\footnote{From now on, to \emph{assume} a proposition is to suppose its \emph{truth.} To suppose $P$ is false, we ``assume/suppose $\neg P$.''} This structure should be intuitive, though it may help to revisit the truth table in Definition \ref{defn:implies} and the tautology of Example \ref*{ex:conditionalbasic}.\ref{ex:taut2}.
 	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$: a direct proof of the contrapositive $\neg Q\Longrightarrow\neg P$. This approach works because the contrapositive is logically equivalent to $P\Longrightarrow Q$ (Theorem \ref{thm:contrapos}).
 	\item[Contradiction] Assume $P$ and $\neg Q$, and deduce a \emph{contradiction}. By Theorem \ref{thm:negconditional} and Exercise \ref*{sec:prop}.\ref{exs:contradictproof}, we see that $P\Longrightarrow Q$ is true.
 	\item[Induction] This has a completely different flavor: we will consider it in Chapter \ref{chap:induction}.
