@@ -575,7 +575,7 @@ As with connectives, there are multiple ways to express quantified propositions 
 
 Due to their importance, it is worth defining these last concepts formally.
 
-\begin{defn}{}{}
+\begin{defn}{}{example-cex}
 	An \emph{example} of ``$\exists x, P(x)$'' is an element $x_0$ in the domain of $P$ for which $P(x_0)$ is \emph{true.} To \emph{prove} an existential statement is to provide an \emph{example.}\smallbreak
 	A \emph{counter-example} to ``$\forall x, P(x)$'' is an element $x_0$ in the domain of $P$ for which $P(x_0)$ is \emph{false.} To \emph{disprove} a universal statement is to provide an \emph{counter-example.}
 \end{defn}
@@ -604,10 +604,10 @@ Universally quantified propositions are interchangeable with implications. To se
 \[
 	\tcbhighmath{\text{$\textcolor{blue}{\forall x,Q(x)}$ is logically equivalent to $\textcolor{Magenta}{P(x)\Longrightarrow Q(x)}$}}
 \]
-For this reason \textcolor{Magenta}{connectives containing variables} are assumed to be \textcolor{blue}{universal}. When written as a connective, the universal quantifier is often \emph{hidden.}\footnote{By contrast, the existential quantifier is never hidden: it is always explicit either symbolically ($\exists$) or as a phrase in English (\emph{there is, there exists, some, at least one,} etc.).}
+By convention, \textcolor{Magenta}{connectives containing variables} are assumed to be \textcolor{blue}{universal}. When written as a connective, the universal quantifier is often \emph{hidden.}\footnote{By contrast, the existential quantifier is never hidden: it is always explicit either symbolically ($\exists$) or as a phrase in English (\emph{there is, there exists, some, at least one,} etc.).}
 
 \begin{examples}{}{oddsquared}
-	\exstart The universal statement, ``Every cat is neurotic,'' may also be written,
+	\exstart The universal statement, ``Every cat is neurotic,'' may instead be written,
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item[]\begin{quote}
 			If $x$ is a cat, then $x$ is neurotic.
@@ -940,21 +940,21 @@ We finish with two harder examples you might have encountered elsewhere. For thi
 
 \subsection{Methods of Proof}\label{sec:proof}
 
-Everything thus far has been in service to what follows: to provide the language and logical fluency necessary to understand mathematical arguments and to begin to create your own. One can study foundational logic much more deeply, but that is not our purpose. The real work begins now.\medbreak
+The previous sections covered some of the basic language of logic. Like any other language, fluency will take time and practice. While one can study foundational logic much more deeply, we will focus on putting it to work in the service of mathematics. The real work begins now.\medbreak
 
-In mathematics, a Theorem is\footnote{It is sometimes awkward to fit a theorem into this format but it can always be done. Often all that is stated is the conclusion $Q$, in which case $P$ would be the assertion ``All mathematics we already know/assume to be true.''} a justified assertion of the truth of an implication $P\Longrightarrow Q$. A \emph{proof,} for there can be many different approaches, is any logical argument which justifies the theorem. The first step in analyzing or strategizing a proof is to identify the hypothesis $P$ and conclusion $Q$.\medbreak 
+A mathematical \emph{theorem} is\footnote{It might be awkward to fit a theorem into this format but it can always be done. Often all that is stated is the conclusion $Q$, in which case $P$ would be the assertion ``All mathematics we already know/assume to be true.''} a justified assertion of the truth of an implication $P\Longrightarrow Q$. A \emph{proof} is any logical argument justifying the theorem. The first step in analyzing or strategizing a proof is to identify the hypothesis $P$ and conclusion $Q$.\medbreak 
 
-There are four standard methods of proof, though a longer argument might use several.
+There are four standard methods of proof; in practice longer arguments combine several of these.
 \begin{description}
-	\item[Direct] Assume the hypothesis $P$ and deduce the conclusion $Q$.\footnote{From now on, to \emph{assume} a proposition is to suppose its \emph{truth.} To suppose $P$ is false, we ``assume/suppose $\neg P$.''} This structure should be intuitive, though it may help to revisit the truth table in Definition \ref{defn:implies} and the tautology of Example \ref*{ex:conditionalbasic}.\ref{ex:taut2}.
-	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$: a direct proof of the contrapositive $\neg Q\Longrightarrow\neg P$. This approach works because the contrapositive is logically equivalent to $P\Longrightarrow Q$ (Theorem \ref{thm:contrapos}).
-	\item[Contradiction] Assume $P$ and $\neg Q$, and deduce a \emph{contradiction}. By Theorem \ref{thm:negconditional} and Exercise \ref*{sec:prop}.\ref{exs:contradictproof}, we see that $P\Longrightarrow Q$ is true.
-	\item[Induction] This has a completely different flavor: we will consider it in Chapter \ref{chap:induction}.
+	\item[Direct] Assume the hypothesis $P$ and deduce the conclusion $Q$.\footnote{To \emph{assume} a proposition is to suppose its \emph{truth.} To suppose $P$ is false, we ``assume/suppose $\neg P$.''} This structure should be intuitive, though it may help to revisit the truth table in Definition \ref{defn:implies} and the tautology of Example \ref*{ex:conditionalbasic}.\ref{ex:taut2}.
+	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$: a direct proof of the contrapositive $\neg Q\Longrightarrow\neg P$. This works because the contrapositive is logically equivalent to $P\Longrightarrow Q$ (Theorem \ref{thm:contrapos}).
+	\item[Contradiction] Assume $P$ and $\neg Q$, and deduce a \emph{contradiction}. Theorem \ref{thm:negconditional} and Exercise \ref*{sec:prop}.\ref{exs:contradictproof} both tells us that $P\Longrightarrow Q$ is true.
+	\item[Induction] This has a completely different flavor; we will consider it in Chapter \ref{chap:induction}.
 \end{description}
 
-Each method has its advantages and disadvantages: the direct method typically has a simpler logical flow whereas the contrapositive/contradiction approaches are useful when the negations $\neg P$, $\neg Q$ are easier to work with than $P$, $Q$ themselves. All methods are equally valid, and, as we'll see shortly, one can often prove a simple theorem using all three approaches!\smallbreak
+Each method has advantages and disadvantages: direct proofs typically have the simplest logical flow; contrapositive/contradiction approaches are useful when the negations $\neg P$, $\neg Q$ are easier to work with than $P$, $Q$ themselves. All methods are equally valid, and, as we'll see shortly, one can often prove a simple theorem using all three approaches!\smallbreak
 
-As you work through this section, pay special attention to the logical structure---to encourage this, the mathematical level of this section is very low---and refer to the previous sections if the logical terminology feels unfamiliar. In particular, re-read \emph{Planning and Writing Proofs} (page \pageref{sec:proofplan}).
+As you work through this section, pay special attention to the logical structure---to encourage this, the mathematical level is very low. Refer to the previous sections if the logical terminology feels unfamiliar. Now is also a good time to re-read \emph{Planning and Writing Proofs} (page \pageref{sec:proofplan}).
 
 \boldsubsubsection{Direct Proofs}
 
@@ -964,16 +964,16 @@ We begin by generalizing Example \ref*{ex:oddsquared}.\ref{ex:oddsquared2}.
 	The product of any pair of odd integers is odd.
 \end{thm}
 
-To make sense of this, we first need to identify the logical structure by writing the theorem in terms of propositions and connectives. One way is to view the Theorem in the form $P(x,y)\Longrightarrow Q(x,y)$:
+To make sense of this, we first need to identify the logical structure by writing the theorem in terms of propositions and connectives. One way is to view the Theorem in the form $P\Longrightarrow Q$:
 \begin{itemize}
   \item $P(x,y)$ is ``$x$ and $y$ are both odd.'' This is our assumption, the hypothesis.
-  \item $Q(x,y)$ is ``The product of $x$ and $y$ is odd.'' This is what we wish to demonstrate, the conclusion.
+  \item $Q(x,y)$ is ``The product $xy$ is odd.'' This is what we wish to demonstrate, the conclusion.
   \item Both propositional functions are statements about \emph{integers.} The Theorem is \emph{universal} (``any pair"), and so contains a (hidden) quantifier $\forall x,y\in\Z$.
 \end{itemize}
-To perform a proof, we also need a clear understanding of the meaning of all necessary terms. To keep things simple, we'll take \emph{integer} and \emph{product} as understood and be explicit as to the meaning of \emph{oddness.}\goodbreak
+We also need a clear understanding of the meaning of all necessary terms. To keep things simple, we'll treat \emph{integer} and \emph{product} as understood and be explicit only as to the meaning of \emph{oddness.}\goodbreak
 
 
-A direct proof can be viewed as a \textcolor{blue}{proof sandwich,} whose bread slices are the \textcolor{blue}{hypothesis and conclusion} ($P$ and $Q$): write these down as a first step. Next \textcolor{Green}{define} any useful terms in the hypothesis. All that remains is to perform a simple calculation!
+A direct proof can be viewed as a \textcolor{blue}{proof sandwich} whose bread slices are the \textcolor{blue}{hypothesis and conclusion} ($P$ and $Q$): write these down as a first step. Next \textcolor{Green}{define} any useful terms in the hypothesis. All that remains is to perform a simple calculation!
 
 
 \begin{proof}
@@ -988,46 +988,49 @@ A direct proof can be viewed as a \textcolor{blue}{proof sandwich,} whose bread 
 	Since $2kl+k+l$ is an integer, we conclude that \textcolor{blue}{$xy$ is odd.} \qedhere \cmt{(state \textcolor{blue}{conclusion} $Q$)}
 \end{proof}
 
-To make the conclusion absolutely clear, we explicitly wrote $xy$ in the form 2(integer)$+1$.
+Observe how we wrote $xy$ in the form 2(integer)$+1$ so as to make the conclusion absolutely clear.
 
 
 \boldinline{Insufficient Generality}
 
-Before leaving this example, it is worth quickly highlighting the most common mistakes seen in such arguments.
+Before leaving this example, it is worth highlighting the most common mistake seen in such arguments.
 
 \begin{proof}[Fake Proof 1]
 	$x=3$ and $y=5$ are both odd, hence $xy=15$ is odd.\phantom{\qedhere}
 \end{proof}
 
-This is an \emph{example} of the theorem. Since the theorem is \emph{universal,} a single example is not a proof.
+This is an \emph{example} of the theorem. Since the theorem is \emph{universal,} a single example does not constitute a proof (recall, however, that an example proves an \emph{existential} statement: Definition \ref{defn:example-cex}). 
 
 \begin{proof}[Fake Proof 2]
 	Let $x=2k+1$ and $y=2k+1$ be odd. Then
-	\[xy=(2k+1)(2k+1)=2(2k^2+2k)+1\quad \text{is odd.}\tag*{\phantom\qedhere}\]
+	\[
+		xy=(2k+1)(2k+1)=2(2k^2+2k)+1\quad \text{is odd.}\tag*{\phantom\qedhere}
+	\]
 \end{proof}
 
-This is still insufficiently general in that it only verifies a special case ($x$ odd $\Longrightarrow x^2$ odd). There is nothing wrong with trying out examples or sketching incomplete thoughts---indeed both are encouraged!---but you need to be aware of when your argument isn't sufficiently general.\bigbreak
+This only verifies the special case where both odd integers are \emph{equal}: it proves $x$ odd $\Longrightarrow x^2$ odd. There is nothing wrong with trying out examples or sketching incomplete thoughts---indeed both are encouraged!---but you need to be aware of when your argument isn't sufficiently general.\bigbreak
 
 For another simple direct proof, consider the sum of two consecutive integers.
 
 \begin{thm}{}{}
-	The sum of any pair consecutive integers is odd.
+	The sum of any pair of consecutive integers is odd.
 \end{thm}
 
-	The theorem is again a universal claim of the form $P(x,y)\Longrightarrow Q(x,y)$ about two integers:
-	\begin{itemize}
-		\item $P(x,y)$ is ``$x,y$ are consecutive integers.''
-		\item $Q(x,y)$ is ``$x+y$ is odd.''
-	\end{itemize}
+The theorem is again a universal claim (``any") of the form $P\Longrightarrow Q$ about two integers $x,y$:
+\begin{itemize}
+	\item $P(x,y)$ is ``$x,y$ are consecutive integers.''
+	\item $Q(x,y)$ is ``$x+y$ is odd.''
+\end{itemize}
 
-	The trick is to observe that, being consecutive, we may write $y$ in terms of $x$. The \textcolor{blue}{proof sandwich} is still visible, though it would be hard to write down the last sentence without already having settled on the trick, which is essentially the \textcolor{Green}{definition} of ``consecutive integers.''
+The trick is to observe that, being consecutive, we may write one integer in terms of the other. The \textcolor{blue}{proof sandwich} is still visible, though it would be hard to write down the last sentence without already having settled on the trick, which is essentially the \textcolor{Green}{definition} of ``consecutive integers.''
 	
 \begin{proof}
-	\textcolor{blue}{Suppose we are given two consecutive integers.} Label the smaller of these $\textcolor{Green}{x}$, then the other $\textcolor{Green}{x+1}$. But then their sum
-	\[x+(x+1)=2x+1\]
-	\textcolor{blue}{is odd.}
+	\textcolor{blue}{Suppose we are given two consecutive integers.} Label the smaller of these $\textcolor{Green}{x}$ and the other $\textcolor{Green}{x+1}$. Their sum is then
+	\[
+		x+(x+1)=2x+1
+	\]
+	\textcolor{blue}{which is odd.}
 \end{proof}
-
 
 
 \goodbreak
@@ -1035,32 +1038,32 @@ For another simple direct proof, consider the sum of two consecutive integers.
 
 \boldsubsubsection{Proof by Contrapositive}
 
-Here is another simple result about odd and even integers.
+Here is another straightforward result about odd and even integers.
 
 \begin{thm}{}{oddsum}
 	If the sum of two integers is odd, then they have opposite parity.
 \end{thm}
 
-The theorem is yet another universal statement ($\forall x,y\in\Z$) of the form $P(x,y)\Longrightarrow Q(x,y)$:
+The theorem is yet another universal statement ($\forall x,y\in\Z$) of the form $P\Longrightarrow Q$:
 \begin{quote}
 	\makebox[220pt][l]{$P(x,y)$: ``$x+y$ is odd.''\hfill }$Q(x,y)$: ``$x,y$ have opposite parity.''
 \end{quote}
-\emph{Parity} means \emph{evenness or oddness}: the conclusion is that one of $x,y$ is even and the other odd.\smallbreak
+\emph{Parity} means \emph{evenness or oddness}: the conclusion is that one of the integers is even and the other odd.\smallbreak
 
-Attempting a direct proof results in an immediate difficulty:
+Naïvely attempting a direct proof produces an immediate difficulty:
 
 \begin{proof}[Direct Proof?]
 	Suppose $x+y$ is odd. Then $x+y=2k+1$ for some integer $k$\ldots\phantom{\qedhere}
 \end{proof}
 
-We want to conclude something about $x$ and $y$ \emph{individually,} but the direct approach lumps them together in the same algebraic expression.\smallbreak
+We want to conclude something about $x$ and $y$ \emph{separately,} but the direct approach lumps them together in the same algebraic expression.\smallbreak
 
-A contrapositive argument suggests itself because the new hypothesis $\neg Q$, in treating $x$ and $y$ separately, gives us twice as much to start with.\footnote{\textcolor{red}{Warning!} The contrapositive is still a \emph{universal} statement:  $\forall x,y\in\Z, \neg Q(x,y)\Longrightarrow \neg P(x,y)$. We are not negating the whole theorem so \textcolor{red}{do not convert $\forall$ to $\exists$!}}
+A contrapositive approach ($\neg Q\Longrightarrow\neg P$) suggests itself as a remedy, since the new hypothesis $\neg Q$, by treating $x$ and $y$ separately, gives us twice as much to start with.\footnote{\textcolor{red}{Warning!} The contrapositive is still a \emph{universal} statement:  $\forall x,y\in\Z, \neg Q(x,y)\Longrightarrow \neg P(x,y)$. We are not negating the theorem so \textcolor{red}{do not convert $\forall$ to $\exists$!}}
 \begin{quote}
 	\makebox[220pt][l]{$\neg Q(x,y)$: ``$x,y$ have the same parity.''\hfill }$\neg P(x,y)$: ``$x+y$ is even.''
 \end{quote}
 
-The minor remaining difficulty is that ``same parity'' encompasses \emph{two} possibilities: $x,y$ are either both even, or both odd. The proof therefore contains two cases.
+The remaining difficulty is that ``same parity'' encompasses \emph{two} possibilities: $x,y$ are either both even, or both odd. The proof therefore contains two cases.
 
 \begin{proof}
 	\settowidth\pflen{(state hypothesis $\neg Q$)}
@@ -1077,9 +1080,10 @@ The minor remaining difficulty is that ``same parity'' encompasses \emph{two} po
 	In both cases \textcolor{blue}{$x+y$ is even.} \hspace*{150pt}\qedhere \cmt{(state \textcolor{blue}{conclusion} $\neg P$)}
 \end{proof}
 
-Again observe the \textcolor{blue}{proof sandwich} and how the proof depending on little more than the \textcolor{Green}{definitions} of even and odd.\smallbreak
+Again observe the \textcolor{blue}{proof sandwich} and how the argument depends on little more than the \textcolor{Green}{definitions} of even and odd.\smallbreak
 
-When presenting a lengthier argument, consider orienting the reader by starting with the phrase, ``We prove the contrapositive." In simple cases like the above this is unnecessary, since the logical structure should be completely clear without such assistance. It is also unnecessary to define and spell out the propositions $P$ and $Q$ or include any of the bracketed commentary. However, you should feel free to continue this practice if you think it would aid your explanation, of if you are nervous about your proof skills.\footnote{\ldots and want to guarantee some partial credit!}
+When presenting a lengthier contrapositive argument, consider orienting the reader by starting with the phrase, ``We prove the contrapositive." For simple proofs (like the above) this is unnecessary, since the logical structure should be clear without such assistance. It is also unnecessary to define and spell out the propositions $P$ and $Q$ or include any of the bracketed commentary. However, feel free to continue this practice if you think it aids your explanation, of if you are nervous about your proof skills.\footnote{\ldots and want to guarantee some partial credit!}
+
 
 \goodbreak
 
@@ -1090,33 +1094,35 @@ For another example of a contrapositive argument, we extend the first result of 
 	The product of two integers is odd \emph{if and only if} both integers are odd.
 \end{thm}
 
-This has the form $P\Longleftrightarrow Q$, which comprises \emph{two theorems in one}: $P\Longrightarrow Q$ and $Q\Longrightarrow P$ (see Exercise \ref*{sec:prop}.\ref{exs:iff}). A contrapositive argument for the ($\Rightarrow$) direction is again suggested because the right hand side treats the two integers separately.
+This is a \emph{biconditional} $P\Longleftrightarrow Q$, which comprises \emph{two theorems in one}: $P\Longrightarrow Q$ and $Q\Longrightarrow P$ (Exercise \ref*{sec:prop}.\ref{exs:iff}). A contrapositive argument for $P\Longrightarrow Q$ is again suggested because $Q$ (\emph{both} integers are odd) treats the two integers individually.
 
 \begin{proof}
-\begin{description}
-	\item[\normalfont ($\Rightarrow$)] We prove the contrapositive. Let $x,y$ be integers, at least one of which is even. Suppose, \emph{without loss of generality,} that $x=2k$ is even. Then $xy=2ky$ is also even.
-	\item[\normalfont ($\Leftarrow$)] This is precisely Theorem \ref{thm:oddodd}, which we've already proved.\qedhere
-\end{description}
+	\begin{description}
+		\item[\normalfont ($\Rightarrow$)] We prove the contrapositive. Let $x,y$ be integers, at least one of which is even. Suppose, \emph{without loss of generality,} that $x=2k$ is even. Then $xy=2ky$ is also even.
+		\item[\normalfont ($\Leftarrow$)] This is precisely Theorem \ref{thm:oddodd}, which we've already proved.\qedhere
+	\end{description}
 \end{proof}
 
-\boldinline{Without loss of generality} Often abbreviated to WLOG, this phrase is common in mathematics. Here it saves us from performing the almost identical argument assuming  $y=2l$ is even. WLOG is stated when a mathematician makes a choice which does not materially affect the argument.
+Note de Morgan's law: $\neg(x$ odd \emph{and} $y$ odd) is equivalent to ``$x$ even \emph{or} $y$ even'' (``at least one'').\par
+
+The common phrase \emph{without loss of generality}, often abbreviated to WLOG, saves us from performing a second, almost identical, argument assuming $y=2l$ is even. WLOG is stated when a mathematician makes a choice which does not materially affect the argument.
 
 
 \boldsubsubsection{Proof by Contradiction}
 
-To introduce contradiction proofs consider another simple result.\footnote{While what follows is a theorem, we'll typically reserve the word for results that are worth remembering in their own right. Examples like this are good for practice (change the numbers!), but are not individually very interesting.}
+To introduce contradiction proofs, we consider a simple result in several ways.\footnote{While what follows is indeed a theorem, we'll typically reserve the word for results that are worth remembering in their own right. Examples like this are good for practice, but are not individually very interesting.}
 
 
 \begin{example}{}{x odd if 3x+5 is odd}
-	Let $x$ be an integer. If $3x+5$ is even, then $5x+2$ is odd.\medbreak
+	Let $x$ be an integer. We prove that if $3x+5$ is even, then $5x+2$ is odd.\medbreak
 
 	We could proceed directly according to the following sketch:
 	\[
 		3x+5\text{ even }\operatorname{\textcolor{blue}{\implies}} 3x\text{ odd }\operatorname{\textcolor{blue}{\implies}} x\text{ odd }\operatorname{\textcolor{blue}{\implies}} 5x\text{ odd }\implies 5x+2\text{ odd} \tag{$\ast$}
 	\]
-	This isn't wrong! You should believe each implication; indeed we've proved \textcolor{blue}{most of them}. However it would be nice not to rely on so many other results. A similar contrapositive approach (reverse arrows and negate propositions in $(\ast)$) would have the same weakness.\medbreak
+	This isn't wrong! You should believe each implication; indeed we've proved \textcolor{blue}{most of them}. It would be nice, however, if we didn't have to rely on so many other results. A similar contrapositive proof (reverse the arrows and negate the propositions) would have the same weakness.\medbreak
 	
-	The advantage of a contradiction approach is that we have twice as much to work with: the hypothesis ($3x+5$ even) \emph{and} the negation of the conclusion ($5x+2$ even).
+	The advantage of a contradiction approach is that we have twice as much to work with: the hypothesis ($3x+5$ even) \emph{and} the negation of the conclusion ($5x+2$ \emph{even}).
 	
 	\begin{quote}
 		\begin{proof}
@@ -1128,7 +1134,7 @@ To introduce contradiction proofs consider another simple result.\footnote{While
 		\end{proof}
 	\end{quote}
 	
-	Remember to mention the word \emph{contradiction} at the end, so the reader knows what you've done.\smallbreak
+	Remember to write \emph{contradiction} at the end so the reader knows what you've done!\smallbreak
 	
 	A nice side-effect of this approach is that it suggests an alternative \emph{direct proof.}
 	
@@ -1138,45 +1144,49 @@ To introduce contradiction proofs consider another simple result.\footnote{While
 		\end{proof}
 	\end{quote}
 	
-	The last argument in fact proves that $3x+5$ is even \emph{if and only if} $5x+2$ is odd: the converse of our claim comes for free! Look back at $(\ast)$: you should believe that all the arrows are reversible.
+	The last argument in fact proves that $3x+5$ is even \emph{if and only if} $5x+2$ is odd; the converse of the original claim comes for free! Revisiting $(\ast)$, you should believe that all the arrows are reversible.
 \end{example}
+
 
 \goodbreak
 
-Such variety is one of the things that makes proving theorems fun! While your choice of proof is largely a matter of personal taste, remember your audience. The final argument is very slick but might risk confusing a  reader rather than empowering them.\footnote{The Hungarian mathematician Paul Erdős referred to simple, elegant proofs as `from the Book,' as if the  Almighty kept a tome of perfect proofs. As with all matters spiritual, one person's Book might be very different to another's\ldots} 
+
+Such variety is one of the things that makes proving theorems fun! While the choice of proof method is largely a matter of personal taste, remember your audience. Our final direct argument is very slick but risks confusing an elementary reader rather than empowering them.\footnote{The Hungarian mathematician Paul Erdős referred to simple, elegant proofs as `from the Book,' as if the  Almighty kept a tome of perfect proofs. As with all matters spiritual, one person's Book is likely very different to another's\ldots} 
+
 
 
 \boldinline{Three Proofs of the Same Result}
 
 We finish this section with three proofs of the same result. All are based on the same factorization of a polynomial
 \[
-	x^3+2x^2-3x-10=(x-2)(x^2+4x+5)=(x-2)\Bigl[(x+2)^2+1\Bigr]
+	x^3+4x^2-2x-20=(x-2)(x^2+6x+10)=(x-2)\bigl[(x+3)^2+1\bigr]
 \]
-and the well-known fact that $ab=0\iff a=0$ or $b=0$ (see Exercise \ref{exs:zerofactor}). Since the mathematics is so simple, pay attention to and compare the \emph{logical structures.}
+and the well-known fact that $ab=0\iff a=0$ or $b=0$ (see Exercise \ref{exs:zerofactor}). Since the mathematics is so simple, pay attention to and compare the \emph{logical structures}---which do you prefer?
 
 \begin{example}{}{polyroot}
-	Let $x$ be a real number. Then $x^3+2x^2-3x-10=0\implies x=2$.
+	Let $x$ be a real number. We prove that $x^3+4x^2-2x-20=0\Longrightarrow x=2$.
 	\begin{quote}
 		\begin{proof}[Direct Proof]
-			Suppose $x^3+2x^2-3x-10=0$. By factorization, $(x-2)[(x+2)^2+1]=0$, so at least one of the factors must be zero. Since $(x+2)^2+1\ge 1>0$, we conclude that $x-2=0$, from which $x=2$.
+			Suppose $x^3+4x^2-2x-20=0$. By factorization, $(x-2)[(x+3)^2+1]=0$, so at least one of the factors must be zero. Since $(x+3)^2+1\ge 1>0$, we conclude that $x-2=0$, from which $x=2$.
 		\end{proof}
 	
 		\begin{proof}[Contrapositive Proof]
-		Suppose $x\neq 2$. Since $(x+2)^2+1\ge 1>0$, we see that
+		Suppose $x\neq 2$. Since $(x+3)^2+1\ge 1>0$, we see that
 			\[
-				x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]\neq 0 \tag*{\qedhere}
+				x^3+4x^2-2x-20=(x-2)[(x+3)^2+1]\neq 0 \tag*{\qedhere}
 			\]
 		\end{proof}
 	
 		\begin{proof}[Contradiction Proof]
-			Suppose $x^3+2x^2-3x-10=0$ and $x\neq 2$. Then
+			Suppose $x^3+4x^2-2x-20=0$ and $x\neq 2$. Then
 			\[
-				0=x^3+2x^2-3x-10=(x-2)[(x+2)^2+1]
+				0=x^3+4x^2-2x-20=(x-2)[(x+3)^2+1]
 			\]
-			Since $x\neq 2$, we have $x-2\neq 0$. It follows that $(x+2)^2+1=0$. However, $(x+2)^2+1\ge 1$ for all real numbers $x$, so we have a contradiction.
+			Since $x\neq 2$, we have $x-2\neq 0$. It follows that $(x+3)^2+1=0$. However, $(x+3)^2+1\ge 1$ for all real numbers $x$, so we have a contradiction.
 		\end{proof}
 	\end{quote}
 \end{example}
+
 
 
 \begin{exercises}{}{}
@@ -1277,33 +1287,36 @@ and the well-known fact that $ab=0\iff a=0$ or $b=0$ (see Exercise \ref{exs:zero
 	\end{enumerate}
 \end{exercises}
 
+
 \clearpage
+
 
 
 
 \subsection{Further Proofs \& Strategies}\label{sec:proof2}
 
 
-The arguments in this section are slightly trickier and more representative of typical mathematical proofs. Some of these results are famous and worth knowing in their own right. We will also introduce \emph{lemmas} and \emph{corollaries,} which are used to break up the presentation of complex results.
+The arguments in this section are slightly trickier and more representative of typical mathematics. Some of these results are indeed quite famous and worth knowing in their own right. We will also introduce \emph{lemmas} and \emph{corollaries} which are used to break up the presentation of complex results.
 
 
 \boldsubsubsection{Proving Universal Statements}
 
-Most of the results we've seen thus far have been universal statements. As discussed on page \pageref{pg:univproof}, any theorem $P(x)\Longrightarrow Q(x)$ is implicitly universal, albeit with the quantifier $\forall x$ being typically hidden. Revisit Examples \ref{ex:multiplequant} on multiple quantifiers so see how these fit into our proof framework; here is another example.
+Most of the results we've seen thus far have been universal. As discussed on page \pageref{pg:univproof}, any theorem $P(x)\Longrightarrow Q(x)$ is implicitly universal, albeit with the quantifier $\forall x$ typically hidden. Revisit Examples \ref{ex:multiplequant} to consider how multiple quantifiers fit into our proof framework; here is another example.
 
-\begin{example}{}{}
-	$\forall x\ge 0$, $\exists y<0$ such that $x^3<y^2$\medbreak
-	View the claim as an implication ``$x\ge 0\implies (\exists y<0$ such that $x^3<y^2)$'' and prove directly.
+\begin{example}{}{allexists}
+	We prove: $\forall x\ge 0$, $\exists y<0$ such that $x^3<y^2$\medbreak
+	View the claim as an implication ``$x\ge 0\Longrightarrow (\textcolor{blue}{\exists y<0}$ \textcolor{blue}{such that} $\textcolor{blue}{x^3<y^2)}$'' and prove directly.
 	\begin{quote}
 		\begin{proof}
-			Suppose $x\ge 0$ is given. \emph{Define} $y=-\sqrt{x^3}-1$, then $y\le -1<0$ and 
+			Suppose $x\ge 0$ is given. Define $y=-\sqrt{x^3}-1$. Then $y\le -1<0$ and 
 			\[
 				y^2=x^3+1+2\sqrt{x^3}\ge x^3+1>x^3 \tag*{\qedhere}
 			\]
 		\end{proof}
 	\end{quote}
-	Notice how $y$, in being existentially quantified \emph{after} $x$, is allowed to depend on $x$. We'll revisit this shortly to see what happens when we reverse the quantifiers. Remember that you might need some scratch work to find a suitable $y$: you shouldn't (yet!) expect to create such an argument in one shot.
+	The \textcolor{blue}{conclusion} is existentially quantified, so we deduce it by supplying an \emph{example} (``\emph{Define} $y$\ldots''). Since $y$ is existentially quantified \emph{after} $x$, note that it is allowed to depend on $x$!	An argument such as this likely needs some scratch work to find a suitable $y$: don't expect to create such in one shot!
 \end{example}
+
 
 For a more involved example of a universal result, here is a famous inequality relating the \textcolor{blue}{arithmetic} and \textcolor{Magenta}{geometric} means of two numbers.
 
@@ -1315,29 +1328,29 @@ For a more involved example of a universal result, here is a famous inequality r
 	with equality if and only if $x=y$.
 \end{thm}
 
-If your faith is wavering, first try an example: e.g., $\frac{3+5}2=4\ge \sqrt{15}$. It should also be clear that both sides are equal whenever $y=x$. The logical structure $\forall x,y\ge 0, Q(x,y)$ can be viewed as an implication $P(x,y)\Longrightarrow Q(x,y)$, where $P(x,y)$ is ``$x,y\ge 0$.'' The real challenge is making sense of $Q(x,y)$. There are really two separate results here:
+This requires some unpacking! First try an example to calm the nerves (e.g., $\frac{3+5}2=4\ge \sqrt{15}$). It should also be clear that both sides are equal whenever $x=y$. Now consider the logical structure: $x,y\ge 0\Longrightarrow Q(x,y)$; the challenge lies in making sense of $Q$. There are really two separate results:
 \begin{enumerate}
   \item If $x,y\ge 0$, then $\frac{x+y}{2}\ge\sqrt{xy}$
   \item If $x,y\ge 0$, then $\frac{x+y}{2}=\sqrt{xy}\iff x=y$
 \end{enumerate}
 
-Concentrate on the first since it is simpler. The hypothesis ($x,y\ge 0$) doesn't give us much to work with, so it seems sensible to play with the inequality and try to get rid of the ugly square-root:
+Concentrate on the first since it is simpler. The hypothesis ($x,y\ge 0$) doesn't give us much to work with, so it seems sensible to play with the inequality and try to eliminate the ugly square-root:
 \[
 	\frac{x+y}2\ge \sqrt{xy} \implies (x+y)^2\ge 4xy \implies x^2-2xy+y^2\ge 0\implies (x-y)^2\ge 0
 \]
-Now we have something we believe! The question is whether we can reverse the arrows. Only the first should give you any pause: it is here that we use the non-negativity of $x,y$.
+Now we have something believable! The question is whether we can reverse the arrows. Only the first should give you any pause; it is here that we use the \emph{non-negativity} of $x,y$.
 
 \begin{proof}
 	Suppose $x,y\ge 0$. Multiply out a trivial inequality:
 	\begin{align*}
 		(x-y)^2\ge 0&\iff x^2-2xy+y^2\ge 0 \iff x^2+2xy+y^2\ge 4xy\\
 		&\iff (x+y)^2\ge 4xy\\
-		&\iff \frac{x+y}{2}\ge \sqrt{xy}
+		&\iff \frac{x+y}{2}\mathrel{\textcolor{red}{\ge}} \sqrt{xy}
 	\end{align*}
-	The square-root is well-defined because $x,y\ge 0$, and the inequality is preserved since the square-root function is \emph{increasing.} For the second result, observe that the final inequality is an \emph{equality} precisely when \emph{all} the inequalities are equalities; this is if and only if $x=y$.
+	The square-root is well-defined because $x,y\ge 0$, and the inequality is preserved since the square-root function is \emph{increasing.} For the second result, observe that the \textcolor{red}{final inequality} is an \emph{equality} precisely when \emph{all} the inequalities are equalities; this is if and only if $x=y$.
 \end{proof}
 
-The scratch work really helped us figure out how and where to apply the hypothesis. Notice also how the second result came almost for free! Result 1 only need the ($\Rightarrow$)  in the proof, but the second result needs them all to be biconditional.
+The scratch work really helped us figure out how and where to apply the hypothesis. Notice also how the second result came almost for free! Result 1 only needed the $\Rightarrow$ direction in the proof, but the second result used the fact that all arrows are biconditionals.
 \medbreak
 
 For variety, here is a contradiction proof incorporating the same calculations in a different order.
@@ -1350,32 +1363,32 @@ For variety, here is a contradiction proof incorporating the same calculations i
 		&\iff (x-y)^2<0
 	\end{align*}
 	Contradiction (squares of real numbers are non-negative). We conclude that $\frac{x+y}{2}\ge \sqrt{xy}$.\par
-	Now suppose that $\frac{x+y}{2}=\sqrt{xy}$. Following the biconditionals in the above argument, we see that equality holds if and only if $(x-y)^2=0$, from which we recover $x=y$.
+	Now suppose that $\frac{x+y}{2}=\sqrt{xy}$. Following the biconditionals in the above calculation, we see that equality holds if and only if $(x-y)^2=0$, from which we recover $x=y$.
 \end{proof}
 
 The AM--GM inequality in fact holds for any finite collection of non-negative numbers $x_1,\ldots, x_n$:
 \[
 	\frac{x_1+x_2+\cdots+x_n}n\ge\sqrt[n]{x_1x_2\cdots x_n}
 \]
-with equality if and only if all the $x_i$ are equal. Proving this is a lot harder (see Exercise \ref{exs:amgm-full}).
+with equality if and only if all $x_i$ are equal. Proving this is a lot harder (see Exercise \ref{exs:amgm-full}).
 
 
 
 \boldsubsubsection{Disproving Existential Statements: Non-existence Proofs}
 
-Of the four possible combinations ``prove/disprove a universal/existential statement,'' we've now tackled three; what remains is to consider how to prove that something does not, or cannot, exist. Recall our basic rule of negation:
+Of the four combinations ``prove/disprove a universal/existential statement,'' we've now tackled three; it remains to consider how to prove that something does not, or cannot, exist. Recall our basic rule of negation (Theorem \ref{thm:negquant}):
 \[
 	\neg\bigl(\exists x,Q(x)\bigr)\iff \forall x,\neg Q(x)
 \]
-To show that $\exists x,Q(x)$ is \emph{false} is therefore to prove a \emph{universal} statement.\footnote{The notation $\nexists x,Q(x)$ is discouraged because it obscures this essential fact.} As before (page \pageref{pg:univproof}), let $P(x)$ be the proposition ``$x$ lies in the domain of $Q$.'' We conclude that
+To show that $\exists x,Q(x)$ is false is to prove a \emph{universal} statement.\footnote{The notation $\nexists x,Q(x)$ is discouraged because it obscures this essential fact.} As before (page \pageref{pg:univproof}), let $P(x)$ be the proposition ``$x$ lies in the domain of $Q$.'' We conclude that
 \[
 	\tcbhighmath{\text{$\textcolor{blue}{\neg\bigl(\exists x,Q(x)\bigr)}$ is logically equivalent to $\textcolor{Magenta}{P(x)\Longrightarrow \neg Q(x)}$}}
 \]
-Once viewed as an implication, any of our proof strategies might be applicable. Contradiction and contrapositive arguments are particularly common however, since the right hand side is already a \emph{negative} statement.
+Viewed in this way as an implication, any of our proof strategies might be applicable to a non-existence proof. Contradiction and contrapositive arguments are particularly common however, since the right hand side $(\neg Q)$ is already a \emph{negative} statement.
 
 
 \begin{example}{}{easypolynosolns}
-	The equation $x^{17}+12x^3+13x+3=0$ has no positive (real number) solutions.\medbreak
+	We prove that the equation $x^{17}+12x^3+13x+3=0$ has no positive solutions.\medbreak
 
 	Before seeing a proof, consider several ways in which this claim could be presented.
 	\begin{quote}
@@ -1389,50 +1402,51 @@ Once viewed as an implication, any of our proof strategies might be applicable. 
 		\end{tabular}
 	\end{quote}
 	
-	We present two very similar arguments based on the direct and contradiction structures.  
+	We present two similar arguments based on the direct and contradiction structures.  
 	
 	\begin{quote}
 		\begin{proof}[Direct proof]
-		Suppose that $x>0$. But then $x^{17}+12x^3+13x+3>0$ since all terms are positive. We conclude that $x^{17}+12x^3+13x+3\neq 0$.
+		Suppose that $x>0$. Then $x^{17}+12x^3+13x+3>0$ since all terms are positive. We conclude that $x^{17}+12x^3+13x+3\neq 0$.
 		\end{proof}
 		\begin{proof}[Contradiction proof]
 		Assume that $x>0$ satisfies $x^{17}+12x^3+13x+3=0$. Since all terms on the left hand side are positive, we have a contradiction.
 		\end{proof}
 	\end{quote}
 	
-	In practice, some version of one of these arguments would likely be given without any additional commentary. The reader is assumed to be familiar with the underlying logic without it being spelled out. Our discussion could be considered scratch work.
+	Both arguments were very easy, with all difficulty coming from understanding \emph{why} they work: precisely the above discussion! Learning/practicing how to recognize/translate a claim into an actionable format is the essential skill here, both for the presenter and the reader.
 \end{example}
+
 
 \boldsubsubsection{Subdividing Theorems: Lemmas \& Corollaries}
 
-Sometimes it is useful to break a proof into pieces, akin to viewing a computer program as a collection of subroutines that you combine for some greater purpose. Often the intention is to improve the readability of a difficult/complex argument, but you may also wish to (de-)emphasize the relative importance of certain results. Mathematics does this by using \emph{lemmas} and \emph{corollaries.}
+It is sometimes helpful to break a proof into pieces, akin to viewing a computer program as a collection of subroutines. Often the intention is to improve the readability of a difficult/complex argument, though you may also wish to (de-)emphasize the relative importance of certain parts of a discussion. One way to do this is to utilise \emph{lemmas} and \emph{corollaries.}
 
 \begin{quote}
 	\begin{description}
-	  \item[\normalfont\emph{Lemma:}] A theorem whose importance you want to downplay or which will be used when proving a more significant result. 
-	  \item[\normalfont\emph{Corollary:}] A theorem which follows quickly once you understand another result, perhaps as a special case or by modifying the proof in some small way.
+	  \item[\normalfont\emph{Lemma:}] A theorem whose importance you want to downplay or which will later be used to help prove a more significant result. 
+	  \item[\normalfont\emph{Corollary:}] A theorem which follows quickly from a previous result, either as a special case or by modifying the proof in a straightforward way.
 	\end{description}
 \end{quote}
 
-Presentation style varies hugely between authors and journals: some reserve \emph{theorem} only for the most important results, with everything else presented as a lemma or corollary, while others never use these terms (or just call everything a \emph{proposition}!). Regardless, lemmas and corollaries are useful to have in your toolkit if readability is your goal.\medbreak
+Presentation style varies: some authors and journals reserve \emph{theorem} for only the most important results, with everything else presented as a lemma or corollary; others never use these terms or just call everything a \emph{proposition}! Regardless, lemmas and corollaries are useful to have in your toolkit if readability is your goal.\medbreak
  
  
-In preparation for our next, much more important, result, here is a simple lemma.
+Here is a very simple result in preparation for a much more important upcoming theorem.
 
 \begin{lemm}{}{root2prep}
-	Suppose $n$ is an integer. Then $n^2$ is even $\iff n$ is even.
+	Suppose $n$ is an integer. Then $n^2$ is even $\Longleftrightarrow n$ is even.
 \end{lemm}
 
-At this stage, you should be able to prove this yourself. This is really just a special case of Theorem \ref{thm:oddodd2}: if you're completely unsure how to start, revisit that result, and the rest of Section \ref{sec:proof}.
+You should be able to prove this yourself, since the lemma is just a special case of Theorem \ref{thm:oddodd2}. If you are completely unsure how to start, revisit that result and the rest of Section \ref{sec:proof}.
  
 
 
 \boldsubsubsection{Irrational Numbers}
 
-Since their definition is inherently negative, irrational numbers provide good examples of non-existence/contradiction arguments. They are also interesting in their own right!
+Since their definition is inherently negative, irrational numbers provide good examples of non-existence/contradiction arguments. They are also interesting in their own right.
 
 \begin{defn}{}{}
-	A real number $x$ is \emph{rational} if it may be written in the form $x=\frac mn$ for some integers $m,n$. A real number is \emph{irrational} if no such integers exist.
+	A real number $x$ is said to be \emph{rational} if it may be written in the form $x=\frac mn$ for some integers $m,n$. A real number is \emph{irrational} if no such integers exist.
 \end{defn}
  
 You likely know of a few irrational numbers ($\sqrt 2,\pi,e$), but how do we \emph{prove} that a given number is irrational? Our next result is very famous, with versions dating back at least to Aristotle (c.\,340\BCE). 
@@ -1453,66 +1467,64 @@ As before, consider several restatements:\vspace{-5pt}
 	\end{tabular}
 \end{quote}
 
-Can you see the obvious drawbacks of a direct or contrapositive approach?
-We prove by contradiction, while outsourcing a repeated step to the ($\Rightarrow$) direction of Lemma \ref{lemm:root2prep} to improve readability.
+Are the drawbacks of a direct or contrapositive approach obvious? We prove by contradiction. To improve readability, we outsource a repeated step to the ($\Rightarrow$) direction of Lemma \ref{lemm:root2prep}.
 
 \begin{proof}
-	Suppose that $m,n\in\Z$ and that $\sqrt 2=\frac mn$. \emph{Without loss of generality}, assume that $m,n$ have \textcolor{blue}{no common factors}. Cross-multiply and square:
+	Suppose $m,n\in\Z$ and that \textcolor{blue}{$\sqrt 2=\frac mn$}. \emph{Without loss of generality}, assume $m,n$ have \textcolor{red}{no common factors}. Cross-multiply and square:
 	\[
-		m^2=2n^2\text{ is even }\implies m\text{ is \textcolor{blue}{even}} \tag{Lemma \ref{lemm:root2prep}}
+		m^2=2n^2\text{ is even} \implies m \text{ is \textcolor{red}{even}} \tag{Lemma \ref{lemm:root2prep}}
 	\]
 	whence $m=2k$ for some integer $k$. But then
 	\[
-		2n^2=m^2=4k^2\implies n^2=2k^2\text{ is even }\implies n\text{ is \textcolor{blue}{even}} \tag{Lemma \ref{lemm:root2prep}}
+		2n^2=m^2=4k^2\implies n^2=2k^2 \text{ is even} \implies n \text{ is \textcolor{red}{even}} \tag{Lemma \ref{lemm:root2prep}}
 	\]
-	We see that $m$ and $n$ have a \textcolor{blue}{common factor of 2}. Contradiction.
+	We see that $m$ and $n$ have a \textcolor{red}{common factor of 2}. Contradiction.
 \end{proof}
 
 
-The major difficulty lies in the assumption that $m,n$ have no common factors. In the same way that we can simplify $\frac 46=\frac 23$, our assumption is \emph{without loss of generality} because it costs us nothing \emph{once we assume $\sqrt 2=\frac mn$ is rational.} It is crucial to appreciate that we aren't contradicting the assumption that $m,n$ have no common factors, lest our calculation continue forever without resolution!
+Just as we can simplify $\frac 46=\frac 23$, the \textcolor{red}{no common factors assumption} is \emph{without loss of generality}: it costs nothing \emph{once we suppose \textcolor{blue}{$\sqrt 2=\frac mn$ is rational}.} This \textcolor{blue}{last} is what we contradicted! A (wrong) belief that the \textcolor{red}{no common factors assumption} was contradicted means the calculation continues forever!
 \[
 	m^2=2n^2\implies n^2=2k^2\implies k^2=2l^2\implies\cdots
 \]
 
-The irrationality of $\sqrt 3,\sqrt[3]{2}$, etc., can be proved similarly ($\pi$ and $e$ are \emph{much} harder!). Now we have the theorem, it is easily applied to demonstrate the irrationality of many other numbers.
-
-
+The irrationality of various surds ($\sqrt 3,\sqrt[3]{2}$, etc.), can be proved similarly ($\pi$ and $e$ are \emph{much} harder). We may also apply the theorem to demonstrate the irrationality of many other numbers.
 
 \begin{example}{}{}
-	Suppose that $\sqrt 2-5\sqrt 3=x$ were rational: $\exists m,n\in\Z$ such that $x=\smash{\frac mn}$. Then
+	Suppose $\sqrt 2-5\sqrt 3=x$ were rational: $\exists m,n\in\Z$ such that $x=\smash{\frac mn}$. Then
 	\[
 		75=(5\sqrt 3)^2=(\sqrt 2-x)^2=2+x^2-2\sqrt 2x \implies \sqrt 2=\frac{x^2-73}{2x} =\frac{m^2-73n^2}{2mn}
 	\]
 	Otherwise said, $\sqrt 2$ is \emph{rational}: contradiction.
 \end{example}
 
+
 \goodbreak
 
 
 \boldsubsubsection{Non-constructive Existence Proofs}
 
-Every existence proof we've seen so far has been \emph{constructive}: we exhibit/construct an \emph{explicit example} $x$ for which $Q(x)$ is true. Sometimes, however, this is expecting a bit too much. It is often far easier to show the existence of something \emph{without} explicitly stating what it is. We present two famous examples of this situation.
+Every existence proof we've thus far seen has been \emph{constructive}: we've exhibited/constructed an \emph{explicit example} $x$ for which $Q(x)$ is true. Sometimes this is asks too much. Indeed it is often far easier to show the existence of something \emph{without} explicitly stating what it is. We present two famous examples of this situation.
 
 \begin{thm}{}{}
-	There are irrational numbers $a,b$ for which $a^b$ is rational.
+	There exist irrational numbers $a,b$ for which $a^b$ is rational.
 \end{thm}
 
 \begin{proof}
 	Consider the number $x=(\sqrt 2)^{\sqrt 2}$. There are two possibilities:
 	\begin{enumerate}
-	  \item $x$ is rational. Let $a=b=\sqrt 2$.
-	  \item $x$ is irrational. Let $a=x$ and $b=\sqrt 2$ and apply the usual exponential laws to see that
+	  \item $x$ is rational. Let $a=b=\sqrt 2$ and we're done.
+	  \item $x$ is irrational. Let $a=x$ and $b=\sqrt 2$. Apply the usual exponential laws to see that
 	  \[
 	  	a^b=\bigl((\sqrt 2)^{\sqrt 2}\bigr)^{\sqrt 2}=(\sqrt 2)^{\sqrt 2\cdot\sqrt 2}= (\sqrt 2)^2=2
 	  \]
 	\end{enumerate}\vspace{-5pt}
-	In either case, $a,b$ are irrational and $a^b$ rational.
+	In either case, $a,b$ are irrational and $a^b$ is rational.
 \end{proof}
 
-The proof is very sneaky: it does not provide an explicit example and does not tell us whether $(\sqrt 2)^{\sqrt 2}$ is rational. In fact this number isn't rational, though demonstrating it is massively harder.\footnote{If you're interested, look up the Gelfond--Schneider Theorem (1934), Hilbert's Seventh Problem, and what they say about \emph{algebraic} and \emph{transcendental numbers.} Such ideas are far beyond the level of this text!}
+The proof is very sneaky: it does not provide an explicit example and does not answer the begged question of whether $(\sqrt 2)^{\sqrt 2}$ is rational or irrational! In fact this number is irrational, though demonstrating such is massively harder.\footnote{If you're interested, look up the Gelfond--Schneider Theorem (1934), Hilbert's Seventh Problem, and what they say about \emph{algebraic} and \emph{transcendental numbers.} Such ideas are far beyond the level of this text.}
 \bigbreak
 
-We finish with a particularly famous example of a non-constructive existence proof found in Euclid's \emph{Elements} (300\BCE), the most influential textbook of mathematical history. As ever, we need a solid definition before we try to prove anything.
+We finish with a particularly famous example of a non-constructive existence proof. This argument dates back to Euclid's \emph{Elements} (300\BCE), the most influential textbook in mathematical history. As ever, we need a solid definition before trying to prove anything.
 
 \begin{defn}{}{irreducible}
 	An integer $\ge 2$ is \emph{prime} if the only positive integers it is divisible by are itself and 1.
@@ -1526,12 +1538,14 @@ We finish with a particularly famous example of a non-constructive existence pro
 
 \begin{proof}
 	Assume there are exactly $n$ primes $\lst p n$ and define the integer
-	\[\Pi:=p_1\cdots p_n+1\]
+	\[
+		\Pi:=p_1\cdots p_n+1
+	\]
 	Certainly $\Pi$ is divisible by some prime $p_i$ (in our list by assumption!), as is the product $p_1\cdots p_n$. But then the difference
 	\[
 		1=\Pi-p_1\cdots p_n
 	\]
-	is divisible by $p_i$, contradicting the fact that $p_i\ge 2$.
+	must be divisible by $p_i$, contradicting the fact that $p_i\ge 2$.
 \end{proof}
 
 
@@ -1557,6 +1571,9 @@ We finish with a particularly famous example of a non-constructive existence pro
 		
 	
 		\item Let $p$ be an odd integer. Prove that the equation $x^2-x-p=0$ has no \emph{integer} solutions.
+		
+		
+		\item (Example \ref{ex:allexists}, cont.)\lstsp Prove or disprove: $\exists y<0$ such that $\forall x\ge 0,\ x^3<y^2$.
 		
 		
 		\item Prove or disprove: $\sqrt 2-\sqrt 7$ is rational.
