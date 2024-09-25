@@ -5,5 +5,3 @@ Run PDFLaTeX on the master file math13-notes.tex. Select chapters you want via \
 Graphics editing requires Asymptote (http://asymptote.sourceforge.io/)
 
 The .project & .texlipse files relate only to Eclipse/TeXlipse (http://projects.eclipse.org/projects/science.texlipse), used as a front-end.
-
-Permissions: do what you want
