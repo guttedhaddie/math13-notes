@@ -1,7 +1,7 @@
 \section{Divisibility and the Euclidean Algorithm}\label{chap:gcd}
 
 
-In this section we introduce \emph{congruence,} which generalizes the notion of an integer's parity (evenness/oddness). The study of congruence is of fundamental importance to the sub-discipline of number theory, and provides some of the most straightforward examples of groups and rings. We will cover the basics in this section, returning in Chapter \ref{chap:relations} for more formal observations.
+This chapter introduces \emph{congruence,} which generalizes the idea of integer parity (evenness/oddness). This is of fundamental importance to the sub-disciplines of number theory and abstract algebra, providing some of the most straightforward examples of groups and rings. We will cover the basics in this section, returning in Chapter \ref{chap:relations} for more formal observations.
 
 
 \subsection{Divisors, Remainders and Congruence}\label{sec:cong}
@@ -149,7 +149,7 @@ Since the result is abstract, it is good to recap the relationship between congr
 
 \boldsubsubsection{Modular Arithmetic}
 
-Remainders have a natural arithmetic that is very similar to that of the real numbers. We the same symbols; even the congruence symbol $\equiv$ looks a bit like an equals sign!\footnote{This is no accident. In Chapter \ref{chap:relations} we'll see that congruence is an important example of an \emph{equivalence relation:} a generalized notion of equality. Indeed, two integers are congruent if and only if something about them is equal: their \emph{remainders}!} Apart from being fun, \emph{modular arithmetic} has many applications, including cryptography and data security: cell-phones and computers perform millions of these calculations every day! Here are the basic rules, which generalize of most of the results we proved in Section \ref{sec:proof}.
+Remainders have a natural arithmetic similar to that of the real numbers. We use the same symbols, with even the congruence symbol $\equiv$ looking a bit like an equals sign!\footnote{This is no accident. In Chapter \ref{chap:relations} we'll see that congruence is an important example of an \emph{equivalence relation:} a generalized notion of equality. Indeed, two integers are congruent if and only if something about them is equal: their \emph{remainders}!} \emph{Modular arithmetic} has many applications, particularly to data security, with cell-phones and computers performing countless such calculations daily. Here are the basic rules, generalizing most of what we saw in Section \ref{sec:proof}.
 
 \begin{thm}{}{congbasic}
 	Suppose $a,b,c,d$ are integers and that $n$ is some modulus. Then,
@@ -169,7 +169,8 @@ Remainders have a natural arithmetic that is very similar to that of the real nu
 	\end{enumerate}
 \end{thm}
 
-The theorem says that the operations `take the remainder' and `add/subtract/multiply' can be performed in any order or combination, the result will be the same.
+The theorem says that the operations `take the remainder' and `add/subtract/multiply' can be performed in any order or combination, the result will be the same.\par
+\textcolor{red}{Warning!} Division does not work so nicely in modular arithmetic (see Example \ref{ex:congeqn1}).
 
 \begin{example}{}{}
 	Find the \textcolor{red}{remainder} when $29+14$ is divided by 6. We do this in two ways:
@@ -182,6 +183,7 @@ The theorem says that the operations `take the remainder' and `add/subtract/mult
 	\end{enumeratea}
 \end{example}
 
+\goodbreak
 
 \begin{proof}
 	\begin{enumerate}
@@ -194,7 +196,7 @@ The theorem says that the operations `take the remainder' and `add/subtract/mult
 	\end{enumerate}	  
 \end{proof}
 
-The ability to take remainders \emph{before} adding and multiplying is remarkably powerful, and allows us rapidly to perform some surprising calculations.
+The ability to take remainders \emph{before} adding and multiplying is very powerful, allowing us rapidly to perform some surprising calculations.
 
 \begin{examples}{}{}
 	\exstart Find the remainder when $37^{423}$ is divided by 10.\vspace{-5pt}
@@ -227,20 +229,22 @@ The ability to take remainders \emph{before} adding and multiplying is remarkabl
 	  \item Find the \textcolor{blue}{remainder} when $124^{12}\cdot 65^{49}$ is divided by 11.\par
 	  This needs several steps and simplifications. Since $124=11^2+3$ and $65=11\cdot 6-1$, we write
 	  \begin{align*}
-	  	124^{12}\cdot 65^{49}&\equiv 3^{12}\cdot(-1)^{49}\equiv (3^3)^4\cdot (-1)\\
-	  	&\equiv -(27^4)\equiv -(5^4)\\
+	  	124^{12}\cdot 65^{49}&\equiv 3^{12}\cdot(-1)^{49}\equiv (3^3)^4\cdot (-1) \equiv -(27^4)\equiv -(5^4)\\
 	  	&\equiv -(25^2)\equiv -(3^2)\equiv \textcolor{blue}{2}\pmod{11}
 	  \end{align*}
 	  %The remainder is therefore 2. There is no way to do this on a pocket calculator, since the original number $124^{12}\cdot 65^{49}\approx 9\times 10^{113}$ is far too large to work with!
+% 	  \item Warning! Division does not work nicely: e.g., modulo 4, $4\equiv 0$ but dividing both sides by 2 results in a falsehood: $2\not\equiv 0\pmod 4$
 	\end{enumerate}
 \end{examples}
 
-\footnotetext{Using logarithms, a pocket calculator will tell you that $37^{423}\approx 2.2\times 10^{663}$ has 663 digits! This is no help since what we want is the \emph{units} digit, not its largest few significant figures.}
+\footnotetext{%
+	Using logarithms, a pocket calculator will tell you that $37^{423}\approx 2.2\times 10^{663}$ has 663 digits! This is no help since what we want is the \emph{units} digit, not its largest few significant figures.
+}
 
 When performing these calculations:
 \begin{itemize}
   \item Replace each integer by something \emph{small} with the same remainder: $37\equiv -3\spmod{10}$ is more helpful than $37\equiv 7\spmod{10}$, since powers of $-3$ are much easier to work with.
-  \item The \textcolor{Green}{base} of an exponential expression can be reduced, but \emph{not} the \textcolor{red}{exponent}: $\textcolor{Green}{17}^{23}\equiv \textcolor{Green}{3}^{23}\spmod 7$ is correct, but $3^{\textcolor{red}{23}}\not\equiv 3^{\textcolor{red}{2}}\spmod 7$. Exponentiation is just shorthand for repeated multiplication.
+  \item The \textcolor{Green}{base} of an exponential can be reduced, but \emph{not} the \textcolor{red}{exponent}: $\textcolor{Green}{17}^{23}\equiv \textcolor{Green}{3}^{23}\spmod 7$ is correct, but $3^{\textcolor{red}{23}}\not\equiv 3^{\textcolor{red}{2}}\spmod 7$. Exponentiation is merely shorthand for repeated multiplication.
 \end{itemize}
 
 
@@ -265,11 +269,13 @@ Can you figure the weekday today's date in your year of birth? Thinking about th
 	The dates differ by 289 years, in which time there have been $\frac{288}4-2=70$ leap years (not 1800 and 1900). The calendar has therefore advanced $289+70\equiv 2$ weekdays: Revere was born on a Saturday.
 \end{example}
 
-\footnotetext{Leap years occur whenever the year is divisible by 4. Among centuries, \emph{only} years divisible by 400 are leap years: thus 1900 wasn't a leap year but 2000 was. This is only practical back to the invention of the Gregorian calendar in the 1600s.}
+\footnotetext{%
+	In the Gregorian calendar (the \emph{de facto} worldwide standard introduced in the 1600s), leap years occur in centuries divisible by 400 and every non-century divisible by 4: for instance, 2000 was a leap year but 1900 was not.
+}
 
 \boldsubsubsection{Division and Congruence Equations}
 
-Division in modular arithmetic behaves in unexpected ways. We'll consider this further in Exercise \ref*{sec:gcd}.\ref{exs:congdivision}, but for the present it is safest to convert congruences to statements about integers.
+Division in modular arithmetic behaves unexpectedly, so take care! The next section provides a general approach (see Exercise \ref*{sec:gcd}.\ref{exs:congdivision}). Here are two examples to whet the appetite.
 
 \begin{examples}{}{congeqn1}
 	\exstart Even when there is a common factor, dividing both sides is perilous. For instance
@@ -277,10 +283,11 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 		42\equiv 12\spmod{\textcolor{red}{10}}&\implies \exists k\in\Z,\ \ 42-12=10k \implies \exists k\in\Z,\ \ 21-6=5k\\
 		&\implies 21\equiv 6\spmod{\textcolor{red}{5}}
 	\end{align*}
-	Division by 2 also divided the \textcolor{red}{modulus}! If we hadn't divided the modulus, the result would be \emph{false}: $21\not\equiv 6\pmod{10}$.
+	We also divided the \textcolor{red}{modulus}! If we hadn't done so, the result would be \emph{false}: $21\not\equiv 6\pmod{10}$.
 			
 	\begin{enumerate}\setcounter{enumi}{1}
-		\item Congruence equations are much harder to solve than standard equations. For instance, we cannot solve $2x\equiv 7\pmod 9$ by division: $x\equiv \frac 72$ is meaningless since $\frac 72$ is not an integer!\par 		It won't always work, but in this case sneakily \emph{multiplying} by 5 solves the problem:
+		\item Congruence equations are harder to solve than standard equations. For instance, we cannot attack $2x\equiv 7\pmod 9$ by division: $x\equiv \frac 72$ is meaningless since $\frac 72$ is not an integer!\par
+		It won't always work, but in this case a sneaky \emph{multiplication} by 5 solves the problem:
 		\[
 			2x\equiv 7\implies 10x\equiv 35\implies x\equiv 8\spmod 9
 		\]
@@ -390,14 +397,14 @@ Division in modular arithmetic behaves in unexpected ways. We'll consider this f
 
 \subsection{Greatest Common Divisors and the Euclidean Algorithm}\label{sec:gcd}
 
-A basic goal for number theorists is to find \emph{integer} solutions to equations. For instance:
+A basic goal of number theorists is to find \emph{integer} solutions to equations. For instance:
 \begin{quote}
-	Are there any \emph{integer points} on the line with equation $9x-21y=6$? That is, does the equation $9x-21y=6$ have any solutions, where both $x,y$ are \emph{integers}?
+	Are there any \emph{integer points} on the line with equation $9x-21y=6$? That is, does the equation $9x-21y=6$ have any solutions, where $x,y$ are \emph{both integers}?
 \end{quote}
 
-You might start by sketching both lines (lined graph paper will help). What do you observe? If there are integer points, do they seem to follow any pattern?\smallbreak
+You might start by sketching the line (graph paper will help). What do you observe? If there are integer points, do they seem to follow any pattern?\smallbreak
 
-In this section we will see how to solve all such \emph{linear Diophantine equations.}\footnote{Equations with integer coefficients and solutions honor the number theorist Diophantus of Alexandria (3\rd{}C.\,\CE).} The method introduces a famous procedure dating at least to Euclid's \emph{Elements} (c.\,300\BCE).
+In this section we will see how to solve all such \emph{linear Diophantine equations.}\footnote{Equations with integer coefficients and solutions honor Diophantus of Alexandria (3\rd{}C.\,\CE).} The method introduces a famous procedure dating at least to Euclid's \emph{Elements} (c.\,300\BCE), and an important concept.
 
 \begin{defn}{}{}
 	Let $a$ and $b$ be integers, not both zero. Their \emph{greatest common divisor} $\gcd(a,b)$ is the largest (positive) divisor of both $a$ and $b$. We say that $a$ and $b$ are \emph{relatively prime} if $\gcd(a,b)=1$.
@@ -413,7 +420,7 @@ In this section we will see how to solve all such \emph{linear Diophantine equat
 	\]
 \end{example}
 
-Listing divisors is very inefficient given large integers. This is where Euclid rides to the rescue.
+For large integers, listing divisors is very inefficient. This is where Euclid rides to the rescue.
 
 \begin{thm}{Euclidean Algorithm}{euclidalg}
 	Let $a>b$ be positive integers. We construct a decreasing sequence of integers $b=r_0>r_1>r_2>\cdots$
@@ -426,10 +433,10 @@ Listing divisors is very inefficient given large integers. This is where Euclid 
 	The algorithm eventually terminates with a remainder of zero: some $r_{t+1}=0$. The greatest common divisor is the last non-zero remainder: $\gcd(a,b)=r_t$.
 \end{thm}
 
-Exercise \ref{exs:euclidalgproof} provides a proof. If either or both of $a,b$ are negative, simply ignore the signs: for instance $\gcd(-4,34)=\gcd(34,4)=2$.
+Exercise \ref{exs:euclidalgproof} provides a proof. If either/both of $a,b$ are negative, simply ignore the signs and compute normally: for instance $\gcd(-4,34)=\gcd(34,4)=2$.
 
 \begin{example}{}{euclidalg}
-	We compute $\gcd(1260,750)$ using the Euclidean algorithm. Note how each line is a single instance of the division algorithm $a=qb+r$ and how the remainders move diagonally $\swarrow$ at each step. For this first example, we also summarize the data in a table.\vspace{-10pt}
+	We compute $\gcd(1260,750)$ using the Euclidean algorithm. Note how each line is a single instance of the division algorithm $a=qb+r$ and how remainders move diagonally $\swarrow$ at each step. For this first example, we also summarize the data in a table.\vspace{-10pt}
 	\[
 		\renewcommand{\arraystretch}{1.1}
 		\begin{array}{r@{\,\,}l@{\hspace{150pt}}c|c|c|c}
@@ -440,19 +447,19 @@ Exercise \ref{exs:euclidalgproof} provides a proof. If either or both of $a,b$ a
 			\textcolor{red}{240} & =8\times\textcolor{Green}{30}+0 & \textcolor{red}{240} & 8 & \textcolor{Green}{30} & 0
 		\end{array}
 	\]
-	Theorem \ref{thm:euclidalg} says that $\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})=\textcolor{Green}{30}$, the last non-zero remainder.
+	The Euclidean algorithm says that $\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})=\textcolor{Green}{30}$, the final non-zero remainder.
 \end{example}
 
 \goodbreak
 
 
-\boldsubsubsection{Reversing the Algorithm}
+%\boldinline{Reversing the Algorithm}
 
-To apply the Euclidean algorithm to our motivational problem of integer points on lines, we run it backwards. Start with the penultimate line of the algorithm and move upwards, substituting remainders one at a time. The result is an expression $\gcd(a,b)=ax+by$ for some integers $x,y$.
+To apply the Euclidean algorithm to our motivational problem, we need to run it backwards. Start with the penultimate line of the algorithm and move upwards, substituting remainders one at a time. The result is an expression of the form $\gcd(a,b)=ax+by$ for some integers $x,y$.
 
 \begin{example*}{\ref{ex:euclidalg}, cont}{}
 	We find integers $x,y$ such that $\textcolor{orange}{1260}x+\textcolor{blue}{750}y=\textcolor{Green}{30} \bigm(=\gcd(\textcolor{orange}{1260},\textcolor{blue}{750})\bigr)$.\smallbreak
-	Start by expressing $\textcolor{Green}{30}$ using the third step of the algorithm and work upwards:
+	Start by expressing $\textcolor{Green}{30}$ using the third line of the algorithm and work upwards:
 	\begin{align*}
 		\textcolor{Green}{30} &=\textcolor{brown}{510}-2\times\textcolor{red}{240} & &\text{(3\rd/penultimate line)}\\
 		&=\textcolor{brown}{510}-2(\textcolor{blue}{750}-\textcolor{brown}{510}) =3\times \textcolor{brown}{510}-2\times \textcolor{blue}{750} &&\text{(2\nd{} line)}\\
@@ -462,8 +469,7 @@ To apply the Euclidean algorithm to our motivational problem of integer points o
 	Rearranging, we see that $x=3$ and $y=-5$ satisfy the equation $1260x+750y=30$. To simplify, divide everything by \textcolor{Green}{30} to see that $(3,-5)$ is an integer point on the line $42x+25y=1$.
 \end{example*}
 
-
-This process of reversing the algorithm works in general, yielding a very powerful result.
+To comfortably apply the algorithm like this will require significant \emph{practice}; we'll see another example momentarily. The reversed algorithm works in general, yielding a very powerful result.
 
 \begin{cor}{Bézout's Identity}{euclid}
 	Given integers $a,b$, not both zero, $\exists x,y\in\Z$ such that\vspace{-8pt}
@@ -472,85 +478,82 @@ This process of reversing the algorithm works in general, yielding a very powerf
 	\]
 \end{cor}
 
-If either $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards.
+If either of $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards.
+
+
+\begin{example}{}{bezout2}
+	We express $\textcolor{blue}{3}=\gcd(123,78) =123\textcolor{red}{x}+78\textcolor{red}{y}$: remainders are underlined for clarity.
+  \[
+  	\def\arraystretch{1.1}
+  	\def\ul#1{\underline{#1}}
+	  \left.
+	  \begin{array}{l}
+			%570=4\times 123+78\\
+			\ul{123}=1\times \ul{78}+\ul{45}\\
+			\ul{78}=1\times \ul{45}+\ul{33}\\
+			\ul{45}=1\times \ul{33}+\ul{12}\\
+			\ul{33}=2\times \ul{12}+\ul 9\\
+			\ul{12}=1\times \ul 9+\ul{\textcolor{blue}{3}}\\
+			\ul 9=3\times \ul{\textcolor{blue}{3}}+\ul 0
+	  \end{array}
+	  \right\}
+	  \implies
+	  \left\{
+	  \begin{array}{r@{\,\,}l}
+			\ul{\textcolor{blue}{3}}&=\ul{12}-\ul 9\\
+			&=\ul{12}-(\ul{33}-2\times \ul{12}) =3\times \ul{12}-\ul{33}\\
+			&=3(\ul{45}-\ul{33})-\ul{33} =3\times \ul{45}-4\times \ul{33}\\
+			&=3\times \ul{45}-4(\ul{78}-\ul{45}) =7\times \ul{45}-4\times \ul{78}\\
+			&=7(\ul{123}-\ul{78})-4\times \ul{78}\\
+		  &=\textcolor{red}{7}\times \ul{123}-\textcolor{red}{11}\times \ul{78} %=\ul{123}(\textcolor{red}{7})+\ul{123}(-\textcolor{red}{11})
+		  \qquad\qquad (\textcolor{red}{x},\textcolor{red}{y})=(\textcolor{red}{7},\textcolor{red}{-11})
+	  \end{array}
+	  \right.
+  \]
+\end{example}
+
+As an application of the power of Bézout, here is a simple and useful criterion.
 
 \begin{cor}{}{moddivision}
 	Suppose $a,b,c$ are integers for which $\gcd(a,b)=1$ and $a\mid bc$. Then $a\mid c$.
 \end{cor}
 
 \begin{proof}
-	By Bézout's identity, $\exists x,y\in\Z$ for which $ax+by=1$, whence $acx+bcy=c$. The left hand side is now a multiple of $a$.
+	We prove directly. By the corollary, $\exists x,y\in\Z$ with $ax+by=1$. Multiply by $c$ to obtain $ac x+bc y=c$, the left side of which is a multiple of $a$.
 \end{proof}
 
-\begin{examples}{}{2-3div6}
-	\exstart The claim ``\textcolor{blue}{$a\mid c$ and $b\mid c\Longrightarrow ab\mid c$}'' is, in general, \emph{false} (e.g.{} $a=b=c=2$). However: Suppose $c=2m=3n$ for some integers $m,n$. Since $\gcd(2,3)=1$ and $2\mid(3n)$, we see that $2\mid n$. Thus $n=2k$ for some $k\in\Z$ and $c=6k$. We conclude:
+\begin{example}{}{2-3div6}
+	The claim ``\textcolor{blue}{$a\mid c$ and $b\mid c\Longrightarrow ab\mid c$}'' is, in general, \emph{false} (e.g., $a=b=c=2$).\par
+	However: Suppose $c=2m=3n$ for some integers $m,n$. Since $\gcd(2,3)=1$ and $2\mid(3n)$, we see that $2\mid n$. Thus $n=2k$ for some $k\in\Z$ and $c=6k$. We conclude:
 	\[
 		2\mid c\ \text{ and }\ 3\mid c\implies 6\mid c
 	\]
-	Though we could have done this example without heavy machinery (use Theorem \ref{thm:oddodd2}), Bézout proves that the \textcolor{blue}{general claim} holds whenever $a,b$ are coprime.
-% 	 
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \item (Example \ref{ex:euclidalg}, mk.\,III)
-	We know that $(x_0,y_0)=(3,-5)$ solves the equation $1260x+750y=30$ (equivalently $42x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
-	\[
-		42(x-x_0)+25(y-y_0)=1-1=0 \implies 42(x-x_0)=-25(y-y_0)
-	\]
-	Since $\gcd(42,25)=1$, the corollary says $42\mid(y-y_0)$. Write $y-y_0=42t$ for some $t\in\Z$, then
-	\[
-		42(x-x_0)=-25\cdot 42t\implies x-x_0=-25t
-	\]
-	We've therefore found \emph{all} integer solutions to the original equation:
-	\[
-		x=3-25t,\ y=-5+42t\ \text{ where }t\in\Z
-	\]
-	\end{enumerate} 
-\end{examples}
-
+	While we could have done this example more simply (using Theorem \ref{thm:oddodd2}), Bézout proves that the \textcolor{blue}{general claim} holds whenever $\gcd(a,b)=1$: e.g., $19\mid c$ and $21\mid c\Longrightarrow 399\mid c$.
+\end{example}
 
 \goodbreak
 
-The method in the example works for all solvable linear Diophantine equations.
+\boldsubsubsection{Linear Diophantine Equations}
 
-\begin{thm}{}{diophantine}
-	Let $a,b,c$ be integers where $a,b$ are not both zero, and let $d=\gcd(a,b)$.
-	\begin{enumerate}\itemsep0pt
-	  \item The equation $ax+by=c$ has an integer solution $(x,y)$ if and only if $\,d\mid c$.
-	  \item If a solution exists, then there are infinitely many of them:%\footnotemark
-		\[
-			x=x_0-\frac bd t,\qquad y=y_0+\frac ad t\tag{$\ast$}
-		\]
-		where $t\in\Z$ and $(x_0,y_0)$ is some fixed solution (say as supplied by the Euclidean algorithm).
-	\end{enumerate} 
-\end{thm}
+We return, as promised to the motivating problem of finding integer points on straight lines.
 
-
-\textcolor{red}{Warning!}\lstsp If $c\neq d=\gcd(a,b)$, you will need to scale the integers obtained in Bézout's identity to find an initial solution $(x_0,y_0)$: see below.
-
-\begin{example}{}{}
-	We compute $\gcd(123,78) =\textcolor{blue}{3}$: remainders are underlined for clarity.
-  \[\def\arraystretch{1.1}
-  \def\ul#1{\underline{#1}}
-  \left.\begin{array}{l}
-	%570=4\times 123+78\\
-	\ul{123}=1\times \ul{78}+\ul{45}\\
-	\ul{78}=1\times \ul{45}+\ul{33}\\
-	\ul{45}=1\times \ul{33}+\ul{12}\\
-	\ul{33}=2\times \ul{12}+\ul 9\\
-	\ul{12}=1\times \ul 9+\ul{\textcolor{blue}{3}}\\
-	\ul 9=3\times \ul{\textcolor{blue}{3}}+\ul 0
-  \end{array}\right\}
-  \implies
-  \left\{\begin{array}{r@{\,\,}l}
-	\ul{\textcolor{blue}{3}}&=\ul{12}-\ul 9\\
-	&=\ul{12}-(\ul{33}-2\times \ul{12}) =3\times \ul{12}-\ul{33}\\
-	&=3(\ul{45}-\ul{33})-\ul{33} =3\times \ul{45}-4\times \ul{33}\\
-	&=3\times \ul{45}-4(\ul{78}-\ul{45}) =7\times \ul{45}-4\times \ul{78}\\
-	&=7(\ul{123}-\ul{78})-4\times \ul{78}\\
-  &=\textcolor{red}{7}\times \ul{123}-\textcolor{red}{11}\times \ul{78}
-  \end{array}\right.
-  \]
-  \begin{enumeratea}
-  	\item Since $\textcolor{blue}{3}\nmid 8$, the equation $78x+123y=8$ has no integer solutions.
+\begin{examples}{}{}
+	\exstart (\ref{ex:euclidalg}, mk.\,III)\lstsp We saw that $(x_0,y_0)=(3,-5)$ solves $1260x+750y=30$ (equivalently $42x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
+	\[
+		42(x-x_0)+25(y-y_0)=1-1=0 \implies 42(x-x_0)=-25(y-y_0)
+	\]
+	Since $\gcd(42,25)=1$, Corollary \ref{cor:moddivision} says $42\mid(y-y_0)$. Write $y-y_0=42t$ for some $t\in\Z$, then
+	\[
+		42(x-x_0)=-25\cdot 42t\implies x-x_0=-25t
+	\]
+	We have therefore found \emph{all} integer solutions to the original equation:
+	\[
+		x=3-25t,\ y=-5+42t\ \text{ where }t\in\Z
+	\]
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item (\ref{ex:bezout2}, cont)\lstsp We saw that $(x,y)=(7,-11)$ solves $123x+78y=3=\gcd(123,78)$
+	  \begin{enumeratea}
+  	\item Since $\textcolor{blue}{3}\nmid 8$, the equation $123x+78y=8$ has no integer solutions.
   	\item By Bézout's identity, the equation $123x-78y=-6$ has a particular solution
   	\[
   		(x_0,y_0)=(-14,22) \tag{\textcolor{red}{Warning}: Multiply $(\textcolor{red}{7},\textcolor{red}{-11})$ by $-2$}
@@ -560,7 +563,41 @@ The method in the example works for all solvable linear Diophantine equations.
   		(x,y)=(-14,22)+\left(\tfrac{78}3,\tfrac{123}3\right)t=\bigl(-14+26t,22+41t\bigr),\quad\text{where }t\in\Z
   	\]
 	\end{enumeratea}
-\end{example}
+	\end{enumerate}
+	
+\end{examples}
+
+
+This method works for all solvable linear Diophantine equations.
+
+\begin{thm}{}{diophantine}
+	Let $a,b,c$ be integers where $a,b$ are not both zero, and let $d=\gcd(a,b)$.
+	\begin{enumerate}\itemsep0pt
+	  \item The equation $ax+by=c$ has an integer solution $(x,y)$ if and only if $\,d\mid c$.
+	  \item If a solution exists, then there are infinitely many of them:%\footnotemark
+		\[
+			x=x_0-\frac bd t,\qquad y=y_0+\frac ad t\tag{$\ast$}
+		\]
+		where $t\in\Z$ and $(x_0,y_0)$ is some fixed solution (e.g., as supplied by Bézout's identity).
+	\end{enumerate} 
+\end{thm}
+
+
+\textcolor{red}{Warning!}\lstsp If $c\neq d=\gcd(a,b)$, you must scale the integers obtained in Bézout's identity to find an initial solution $(x_0,y_0)$.
+
+% \begin{example*}{}{}
+%   \begin{enumeratea}
+%   	\item Since $\textcolor{blue}{3}\nmid 8$, the equation $78x+123y=8$ has no integer solutions.
+%   	\item By Bézout's identity, the equation $123x-78y=-6$ has a particular solution
+%   	\[
+%   		(x_0,y_0)=(-14,22) \tag{\textcolor{red}{Warning}: Multiply $(\textcolor{red}{7},\textcolor{red}{-11})$ by $-2$}
+%   	\]
+%   	All integer solutions to the equation are then given by
+%   	\[
+%   		(x,y)=(-14,22)+\left(\tfrac{78}3,\tfrac{123}3\right)t=\bigl(-14+26t,22+41t\bigr),\quad\text{where }t\in\Z
+%   	\]
+% 	\end{enumeratea}
+% \end{example*}
 
 
 
