@@ -35,14 +35,14 @@ path P=buildcycle(q,p);
 draw(P);
 
 
-label("$f$",r/2+(0,-1));
+//label("$f$",r/2+(0,-1));
 
 real sh=0.08;
 
 draw(partpath(a1,b1),Arrow(Relative(0.5)));
 draw(partpath(a2,b2),Arrow(Relative(0.5)));
 draw(partpath(a3,b3),Arrow(Relative(0.5)));
-draw(partpath(a4,b3),Arrow(Relative(0.5)));
+draw("$f$",partpath(a4,b3),Arrow(Relative(0.5)));
 
 dot("$a_1$",a1,SW);
 dot("$b_1$",b1,S);

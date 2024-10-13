@@ -9,8 +9,8 @@ import graph;
 
 size(0,95);
 
-pen colour0=lightblue;
-pen colour1=red;
+pen colour0=0.6lightblue+0.4white;
+pen colour1=0.6red+0.4white;
 
 real X=1.5;
 real Y=1;
@@ -35,7 +35,7 @@ fill(c0,colour0);
 fill(c1,colour1);
 
 picture intersection01;
-fill(intersection01,c0,white);
+fill(intersection01,c0,magenta+white);
 clip(intersection01,c1);
 add(intersection01);
 

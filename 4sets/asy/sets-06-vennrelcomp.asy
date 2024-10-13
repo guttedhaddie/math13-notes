@@ -4,7 +4,6 @@ texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-%\input{../../preamble}
 ");
 import graph;
 
@@ -40,10 +39,10 @@ label("$B$",z2+(0,1.15r));
 
 pair z=(0,-2);
 real m=3;
-margin BigMargin=Margin(0,m*dot(unit(z1-z),unit(z0-z)));
+//margin BigMargin=Margin(0,m*dot(unit(z1-z),unit(z0-z)));
 
-label("$\mathcal{U}$",2.8z1+(0,1.25r));
-label("\phantom{$\mathcal{U}$}",2.8z2+(0,1.25r));
+//label("$\mathcal{U}$",2.8z1+(0,1.25r));
+//label("\phantom{$\mathcal{U}$}",2.8z2+(0,1.25r));
 
-shipout(bbox(0.25cm));
-currentpicture.uptodate=true;
+//shipout(bbox(0.25cm));
+//currentpicture.uptodate=true;

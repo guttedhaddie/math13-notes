@@ -7,7 +7,7 @@ texpreamble("\usepackage{amsmath}
 ");
 import graph;
 
-size(0,110);
+size(120,0);
 
 pen colour1=red;
 pen colour2=green;

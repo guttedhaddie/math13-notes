@@ -295,6 +295,8 @@ Division in modular arithmetic behaves unexpectedly, so take care! The next sect
 \end{examples}
 
 
+\vfil
+
 \begin{exercises}{}{}
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-1-cong.html}{online}.
 
@@ -533,12 +535,12 @@ As an application of the power of Bézout, here is a simple and useful criterion
 
 \goodbreak
 
-\boldsubsubsection{Linear Diophantine Equations}
+\boldsubsubsection{Linear Diophantine \& Congruence Equations}
 
 We return, as promised to the motivating problem of finding integer points on straight lines.
 
-\begin{examples}{}{}
-	\exstart (\ref{ex:euclidalg}, mk.\,III)\lstsp We saw that $(x_0,y_0)=(3,-5)$ solves $1260x+750y=30$ (equivalently $42x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
+\begin{example*}{\ref{ex:euclidalg}, mk.\,III}{}
+	We saw that $(x_0,y_0)=(3,-5)$ solves $1260x+750y=30$ (equivalently $42x+25y=1$). Suppose $(x,y)$ is any other integer solution and observe that
 	\[
 		42(x-x_0)+25(y-y_0)=1-1=0 \implies 42(x-x_0)=-25(y-y_0)
 	\]
@@ -550,40 +552,36 @@ We return, as promised to the motivating problem of finding integer points on st
 	\[
 		x=3-25t,\ y=-5+42t\ \text{ where }t\in\Z
 	\]
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \item (\ref{ex:bezout2}, cont)\lstsp We saw that $(x,y)=(7,-11)$ solves $123x+78y=3=\gcd(123,78)$
-	  \begin{enumeratea}
-  	\item Since $\textcolor{blue}{3}\nmid 8$, the equation $123x+78y=8$ has no integer solutions.
-  	\item By Bézout's identity, the equation $123x-78y=-6$ has a particular solution
-  	\[
-  		(x_0,y_0)=(-14,22) \tag{\textcolor{red}{Warning}: Multiply $(\textcolor{red}{7},\textcolor{red}{-11})$ by $-2$}
-  	\]
-  	All integer solutions to the equation are then given by
-  	\[
-  		(x,y)=(-14,22)+\left(\tfrac{78}3,\tfrac{123}3\right)t=\bigl(-14+26t,22+41t\bigr),\quad\text{where }t\in\Z
-  	\]
-	\end{enumeratea}
-	\end{enumerate}
-	
-\end{examples}
+\end{example*}
 
 
-This method works for all solvable linear Diophantine equations.
+This method works for all solvable linear Diophantine equations; here is the general result.
 
 \begin{thm}{}{diophantine}
 	Let $a,b,c$ be integers where $a,b$ are not both zero, and let $d=\gcd(a,b)$.
 	\begin{enumerate}\itemsep0pt
 	  \item The equation $ax+by=c$ has an integer solution $(x,y)$ if and only if $\,d\mid c$.
-	  \item If a solution exists, then there are infinitely many of them:%\footnotemark
+	  \item If a solution $(x_0,y_0)$ exists (e.g. as supplied by Bézout), then there are infinitely many such:%\footnotemark
 		\[
-			x=x_0-\frac bd t,\qquad y=y_0+\frac ad t\tag{$\ast$}
+			x=x_0-\frac bd t,\qquad y=y_0+\frac ad t,\qquad \text{where }t\in\Z
 		\]
-		where $t\in\Z$ and $(x_0,y_0)$ is some fixed solution (e.g., as supplied by Bézout's identity).
+		%where $t\in\Z$ and $(x_0,y_0)$ is some fixed solution (e.g., as supplied by Bézout's identity).
 	\end{enumerate} 
 \end{thm}
 
 
-\textcolor{red}{Warning!}\lstsp If $c\neq d=\gcd(a,b)$, you must scale the integers obtained in Bézout's identity to find an initial solution $(x_0,y_0)$.
+\begin{example*}{\ref{ex:bezout2}, cont}{}
+	We saw that $(7,-11)$ solves $123x+78y=\textcolor{blue}{3}=\gcd(123,78)$.
+	\begin{enumerate}
+	  \item Since $\textcolor{blue}{3}\nmid 8$, the equation $123x+78y=8$ has no integer solutions.
+	  \item The equation $123x-78y=6$ has integer solutions since $\textcolor{blue}{3}\mid 6$. Indeed $(x_0,y_0)=(14,22)$ is such (modify signs and scale $(7,-11)$ by 2). All integer solutions are then given by
+	  \[
+	  	x=14+\frac{78}3t=14+26t,\quad y=22+\frac{123}3t=22+41t,\quad\text{where }t\in\Z
+	  \]
+	\end{enumerate}
+\end{example*}
+
+% \textcolor{red}{Warning!}\lstsp If $c\neq d=\gcd(a,b)$, you must scale the integers obtained in Bézout's identity to find an initial solution $(x_0,y_0)$.
 
 % \begin{example*}{}{}
 %   \begin{enumeratea}
@@ -601,20 +599,22 @@ This method works for all solvable linear Diophantine equations.
 
 
 
-\boldsubsubsection{Linear Congruence Equations}
+%\boldsubsubsection{Linear Congruence Equations}
 
-We began to consider linear congruence equations in Example \ref{ex:congeqn1}. The ``points on lines" method also applies in this context. To see why, observe that
+We began to consider linear congruence equations in Example \ref{ex:congeqn1}. The linear Diophantine method also applies in this context. To see why, observe that
 \[
 	ax\equiv c\pmod n\iff \exists y\in\Z\text{ such that }ax=ny+c
 \]
-The Theorem tells us when we can solve the right hand side, and how. To solve the congruence equation, we just need to extract the $x$-part.
+The Theorem tells us when we can solve the right hand side, and supplies a method for doing so. To solve $ax\equiv c\pmod n$, simply take the $x$-part!
 
 \begin{examples}{}{}
-	\exstart To solve $123x\equiv -6\pmod{78}$ is to find a solution to the equation $123x=78y-6$. By the above, all solutions have the form $x=-14+26t$. Otherwise said
-	\[123x\equiv -6\pmod{78} \implies x\equiv -14\equiv 12\pmod{26}\]
+	\exstart To solve the congruence equation $123x\equiv 6\pmod{78}$ is to solve the Diophantine equation $123x=78y+6$. By the last example, $x=14+26t$. Otherwise said
+	\[
+		123x\equiv 6\pmod{78} \implies x\equiv 14\pmod{26}
+	\]
 	
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item The congruence equation $4x\equiv 6\pmod{20}$ has no solutions. If it did, then the linear equation $4x=20y+6$ would have integer solutions, but it doesn't: $\gcd(4,20)=4$ does not divide 6. 
+	  \item The congruence equation $4x\equiv 6\pmod{20}$ has no solutions. If it did, then $4x=20y+6$ would have integer solutions, but it does not since $\gcd(4,20)=4$ does not divide 6. 
 	  
 	  \item Here is a slightly different approach for $7x\equiv 11\pmod{23}$. By applying the algorithm,
 		\[
@@ -633,7 +633,7 @@ The Theorem tells us when we can solve the right hand side, and how. To solve th
 
 
 \begin{exercises}{}{}
-	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-2-euclidalg.html}{online}. Some of these questions are tricky, particularly the last few, and are included to give you a taste of upper-division number theory and abstract algebra.
+	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-2-euclidalg.html}{online}. Some of the later questions are particularly tricky, and are included to give you a taste of upper-division number theory and abstract algebra.
 
 	\begin{enumerate}
 	  \item\label{qn:gcdea} Use the Euclidean algorithm to compute the greatest common divisors.
@@ -692,11 +692,11 @@ The Theorem tells us when we can solve the right hand side, and how. To solve th
 		\end{enumerate}
 	  
 	  
-		\item\label{exs:primedef1} Let $a,b,p\in\Z$. Recall Definition \ref{defn:irreducible}: the only positive divisors of a prime are itself and 1.
+		\item\label{exs:primedef1} Let $a,b,p\in\Z$ and $p\ge 2$. Recall that only the positive divisors of a prime are itself and 1.
 	  \begin{enumerate}
 	    \item Suppose $p$ is prime and that $p\mid ab$. Prove that $p\mid a$ or $p\mid b$.\par
 	    (\emph{Hint: if $p\nmid a$, use Corollary \ref{cor:moddivision}})
-	    \item Suppose $p\ge 2$ is an integer with the property that $\forall a,b\in\Z$, $p\mid ab\Longrightarrow p\mid a$ or $p\mid b$. Prove that $p$ is prime.\par
+	    \item Suppose $p$ satisfies the property $\forall a,b\in\Z$, $p\mid ab\Longrightarrow p\mid a$ or $p\mid b$. Prove that $p$ is prime.\par
 	    (\emph{Hint: prove the contrapositive})
 	  \end{enumerate}
 	    
@@ -711,7 +711,7 @@ The Theorem tells us when we can solve the right hand side, and how. To solve th
 			\]
 			\begin{enumerate}
 			  \item Use the rule to find all solutions to the congruence equation $22x\equiv 66\pmod{77}$.
-			  \item We prove the rule. Let $d=\gcd(c,n)$.
+			  \item We prove the rule. Let $d=\gcd(c,n)$:
 			  \begin{enumerate}
 			    \item Explain why $\gcd(\frac cd,\frac nd)=1$
 			  	\item If $ac\equiv bc\spmod n$, prove that $\frac nd\mid(a-b)$.

@@ -2,22 +2,22 @@
 \section{Sets and Functions}\label{chap:sets}
 
 
-Sets are the fundamental building blocks of mathematics, providing the language necessary for describing mathematical objects and for grouping objects together according to shared characteristics. Understanding how to read and effectively employ set notation is our primary focus. The mathematical discipline of \emph{set theory} is, however, far more ambitious than this. Set theorists define all basic mathematical objects---\emph{numbers, addition, functions,} etc.---purely in terms of sets, an impractical approach for most working mathematicians, most of the time.\footnote{Within \emph{axiomatic set theory} it can take over 100 pages to justify writing $1+1=2$. The difficulty is that rigorous definitions---using sets---are first required of the notions \emph{one, two, equals} and \emph{add}\ldots} We will only scratch the surface of this. Indeed long before one can accept that such an approach has its place in mathematics, a significant level of familiarity with sets and their basic operations is necessary.
+Sets are the fundamental building blocks of mathematics, supplying the language used to describe mathematical objects and to group objects according to shared characteristics. While our primary focus is learning to understand and employ set notation, the mathematical discipline of \emph{set theory} is far more ambitious: set theorists define all basic mathematical objects---\emph{numbers, addition, functions,} etc.---purely in terms of sets!\footnote{This is an impractical approach for most working mathematicians, most of the time. Within \emph{axiomatic set theory} it can take many, many pages of development to justify writing $1+1=2$: the issue is that rigorous definitions---using sets---are first required of the notions \emph{one, two, equals} and \emph{add}\ldots} We will only scratch the surface of set theory; indeed long before one can accept the benefit of such an approach, it is necessary to develop a significant level of familiarity with sets and their basic operations.
 
 
 \subsection{Set Notation and Subsets}\label{sec:subset}
 
-Without any attempt to define the meaning of \emph{object,} we start with a naïve definition.
+Without any attempt to define the meaning of \emph{object,} we offer a naïve definition.
 
 \begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{}{}
-	A \emph{set} is a collection of objects, its \emph{elements} or \emph{members.}\smallbreak
-	The notation $x\in A$ is read ``$x$ is an \emph{element}/\emph{member} of the set $A$,'' or more often simply ``$x$ is in $A$.'' Otherwise said, $x$ is an object in the collection labelled $A$.\smallbreak
-	If $y$ is a member of some other set, but not of $A$, we write $y\notin A$ (``$y$ is not in $A$'').\smallbreak
+	A \emph{set} is a collection of objects, namely its \emph{elements} or \emph{members.}\smallbreak
+	The proposition ``$x$ is an \emph{element}/\emph{member} of the set $A$,'' is written $x\in A$, usually read simply ``$x$ is in $A$.''\smallbreak
+	If $y$ is a member of some other set, but not of $A$, we instead write $y\notin A$ (``$y$ is not in $A$''). In essence, this is the negation $\neg(y\in A)$.
 	\tcblower
 	\flushright\includegraphics{sets-01-venn}
 \end{defn}
 
-As in the definition, it is typical to use upper-case letters ($A,B,C,\ldots$) for abstract sets and lower-case letters for their elements.\smallbreak
+As in the definition, it is typical to use upper-case letters ($A,B,C,\ldots$) for abstract sets and lower-case letters for elements/members.\smallbreak
 
 \emph{Venn diagrams} are useful for visualizing abstract sets. A set is represented by a region in the plane, with elements depicted by dots. The diagram in the definition represents a set $A$ comprising at least four elements $a_1,a_2,a_3$ and $x$. The element $y$ does not lie in $A$. 
 
@@ -28,10 +28,10 @@ As in the definition, it is typical to use upper-case letters ($A,B,C,\ldots$) f
 \begin{defn}{}{subset}
 	Let $A$ and $B$ be sets.
 	\begin{enumerate}
-	  \item Sets are \emph{equal,} written $A=B$, if they have precisely the same elements.\par
+	  \item Sets are \emph{equal,} written $A=B$, when they have precisely the same elements.\par
 	  \begin{minipage}[t]{0.74\linewidth}\vspace{-4pt}
-	  	\item $A$ is a \emph{subset} of $B$, written $A\subseteq B$, if every element of $A$ is also an element of $B$.
-	  	\item $A$ is a \emph{proper subset} of $B$ if $A\subseteq B$ and $A\neq B$. To stress this, we'd write $A\subsetneq B$. The Venn diagram on the right represents a proper subset. 
+	  	\item $A$ is a \emph{subset} of $B$, written $A\subseteq B$, when every element of $A$ is also an element of $B$.
+	  	\item $A$ is a \emph{proper subset} of $B$ when both $A\subseteq B$ and $A\neq B$. To stress this, we could write $A\subsetneq B$. The Venn diagram represents a proper subset. 
 	  \end{minipage}
 	  \hfill
 	  \begin{minipage}[t]{0.25\linewidth}\vspace{-15pt}
@@ -40,44 +40,45 @@ As in the definition, it is typical to use upper-case letters ($A,B,C,\ldots$) f
 	\end{enumerate}
 \end{defn}
 
-The following observations are simply translations of the definition:
-\begin{enumerate}
-  \item Equality: $A=B \iff A\subseteq B$ and $B\subseteq A$.
-  \item Subset: $A\subseteq B \iff \bigl(x\in A\Longrightarrow x\in B\bigr) \iff \bigl(\forall x\in A, x\in B\bigr)$
-  \item Not a subset: $A\nsubseteq B \iff \exists x\in A$ for which $x\notin B$.
-\end{enumerate}
+\phantomsection\label{pg:setequalitysubset}
+The following observations are merely translations of the definition---do they make sense to you?
+\begin{gather*}
+  \text{Equality:}\lstsp A=B \iff A\subseteq B\text{ and }B\subseteq A. \tag{$\ast$}\\
+  \text{Subset:}\lstsp A\subseteq B \iff \bigl(x\in A\Longrightarrow x\in B\bigr) \iff \bigl(\forall x\in A, x\in B\bigr).\\
+  \text{Not a subset:}\lstsp A\nsubseteq B \iff \exists x\in A\text{ for which } x\notin B.
+\end{gather*}
 
 
 \boldsubsubsection{Roster \& Set-Builder Notation}
 
-\emph{Roster notation} is the most basic way to describe the elements of a set: simply \emph{list} the elements in any order between curly brackets $\{\,,\,\}$.
+\emph{Roster notation} is ideal for describing small sets: simply \emph{list} the elements \textbf{in any order} between curly brackets $\{\,,\,\}$.
 
 \begin{example}{}{easysetnotation}
-	Let $A$ be the set of (real number) solutions to the equation $2x^2-7x+3=0$ and let $B$ be the set of \emph{integer} solutions to the same equation. Since the polynomial factorizes as $(2x-1)(x-3)$, we see that $A=\{3,\frac 12\}$ and $B=\{3\}$. We could also write $A=\{\frac 12,3\}$ since \emph{order doesn't matter in roster notation.}	Moreover:
+	$A=\{3,\frac 12\}$ is the set containing the numbers 3 and $\frac 12$. For instance $3\in A$, but $7\notin A$. Since \emph{order doesn't matter}, we could also write $A=\{\frac 12,3\}$. Now let Let $B=\{3\}$. Plainly,	
 	\begin{itemize}
-	  \item $A\nsubseteq B$ since $\frac 12\in A$ and $\frac 12\notin B$.
-	  \item $B\subseteq A$ since 3 (the only element of $B$) lies in $A$. Indeed $B\subsetneq A$ is a  proper subset since $A\neq B$.
+		\item $A\nsubseteq B$ since $\frac 12\in A$ and $\frac 12\notin B$\quad ($\exists x\in A$ for which $x\notin B$).
+		\item $B\subseteq A$ since 3 (the only element of $B$) lies in $A$ ($\forall x\in A, x\in B$). Indeed $B\subsetneq A$ is a proper subset since $A\neq B$.
 	\end{itemize}
 \end{example}
 
-Roster notation is ideal for small sets, but is of limited utility when trying to describe large sets. This is where our second notation rides to the rescue.\bigbreak
+Roster notation is rarely used in practice, due to its limited utility for larger sets. As an alternative\ldots\bigbreak
 
-\emph{Set-builder notation} describes the elements of a set using some common property. Suppose $\cU$ is some (already understood) set and $P(x)$ is a propositional function with domain $\cU$, then
+\emph{Set-builder notation} describes the elements of a set in terms of some common property. Suppose $\cU$ is some (already understood) set and $P(x)$ a propositional function with domain $\cU$, then
 \[
 	A:=\bigl\{x\in\cU:P(x)\bigr\} \tag{``$A$ is the set of $x$ in $\cU$ such that $P(x)$''}
 \]
-defines a set $A$ as \emph{the subset} of $\cU$ all of whose elements $x$ satisfy the property $P(x)$. A vertical separator $\mid$ is often used instead of a colon: we'll use both, though it might be essential in a given context to use one rather than the other for clarity.
+defines a set $A$ as \emph{the subset} of $\cU$ whose elements $x$ satisfy the property $P(x)$. A vertical separator $\mid$ can be used instead of a colon: in some contexts the choice is essential for clarity.
 
 \begin{examples}{}{}
-	\exstart Continuing Example \ref{ex:easysetnotation}, recall that $\R$ represents the set of real numbers and $\Z$ the set of integers. In set-builder notation, our solution sets may be written
+	\exstart We continue Example \ref{ex:easysetnotation}. Note that $2x^2-7x+3=(2x-1)(x-3)$ and recall that $\R$ represents the set of real numbers and $\Z$ the set of integers. In set-builder notation, our sets may be written
 	\[
 		A=\bigl\{x\in\R:2x^2-7x+3=0\bigr\},\qquad B=\bigl\{x\in\Z:2x^2-7x+3=0\bigr\}
 	\]
-	In this case the qualifying proposition $P(x)$ is ``$2x^2-7x+3=0$.''
+	In this case the qualifying proposition $P(x)$ is ``$2x^2-7x+3=0$.''\vspace{-5pt}
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item[]We can also express the fact that $B$ is a subset of $A$ in this notation (this time with a vertical separator),
+	  \item[]We can also express the fact that $B\subseteq A$ in this notation (this time with a vertical separator),
 	\[
-		B=\bigl\{x\in A\bigm| x\in\Z\} \tag{``the set of elements $x$ in $A$ such that $x$ is an integer"}
+		B=\bigl\{x\in A\bigm| x\in\Z\} \tag{``$B$ is the set of elements $x$ in $A$ such that $x$ is an integer"}
 	\]
 	
 	\item Let $X=\{2,4,6\}$ and $Y=\{1,2,5,6\}$. There are many options for how to write these in set-builder notation. For instance:
@@ -96,7 +97,9 @@ defines a set $A$ as \emph{the subset} of $\cU$ all of whose elements $x$ satisf
 		\\
 		&S_5=\bigl\{y\in Y\bigm| y\text{ is odd and $y-1\in X$}\}=\{5\}
 	\end{align*}
-	Can you find alternative descriptions in set-builder notation for the sets $S_1,\ldots,S_5$ above? Take your time getting used to this notation: the ability to translate between various descriptions of a set is \emph{crucial} to reading mathematics!
+	Can you find alternative descriptions in set-builder notation for the sets $S_1,\ldots,S_5$ above? Take your time getting used to this notation, since translating between various descriptions of a set is essential to reading mathematics.
+	
+	\goodbreak
 	
 	\item We use the set $C=\{0,1,2,3,\ldots,24\}$ to describe $D=\{n\in\Z:n^2-3\in C\}$ in roster notation. Start by expanding the criterion for membership in $D$:
   \[
@@ -104,15 +107,15 @@ defines a set $A$ as \emph{the subset} of $\cU$ all of whose elements $x$ satisf
   \]
   Since $n$ must be an integer, it follows that $D=\{\pm 2,\pm 3,\pm 4,\pm 5\}$.
   
-  \item To express $E=\{0,2,6,12,\ldots\}$ in set-builder notation we might spot a pattern and decide that
+  \item To express $E=\{0,2,6,12,\ldots\}$ in set-builder notation, we might spot a pattern and decide that
   \[
   	E=\bigl\{n\in\Z: n=m(m+1) \text{ for some integer }m\ge 0\bigr\}
   \]
-  The problem is that we cannot guarantee our correctness! Perhaps the correct formula is
+  Unfortunately, we cannot guarantee our correctness! Perhaps the correct formula is
   \[
-  	n=m(m+1)+m(m-2)(m-6)(m-12)
+  	n=m(m+1)+m(m-2)(m-6)(m-12)\quad \text{(!!)}
   \]
-	In the first case the next term in the sequence is $4\cdot 5=20$, whereas in the second case it is $20+128=148$. For larger sets, the clarity afforded by set-builder notation is essential!
+	In the first case the next term in the sequence is $4\cdot 5=20$, whereas in the second it is $20+128=148$. For larger sets, the clarity afforded by set-builder notation is essential!
 
 	\end{enumerate}
 \end{examples}
@@ -121,7 +124,7 @@ defines a set $A$ as \emph{the subset} of $\cU$ all of whose elements $x$ satisf
 
 \boldsubsubsection{Common Sets of Numbers}
 
-We've used some of this notation already, and much of the rest should be familiar.\vspace{-5pt}
+We've used some of this notation already and much of the rest should be familiar.\vspace{-5pt}
 
 \begin{quote}\def\arraystretch{1.15}
 	\begin{tabular}{@{}ll}
@@ -129,29 +132,31 @@ We've used some of this notation already, and much of the rest should be familia
 		\emph{Integers}&$\Z=\bigl\{\ldots,-3,-2,-1,0,1,2,3,\ldots\bigr\}$.\\
 		\emph{Rational numbers}&$\Q=\bigl\{\frac mn:m\in\Z\text{ and }n\in\N\bigr\} =\bigl\{\frac ab\bigm| a,b\in\Z\text{ and }b\neq 0\bigr\}$.\\
 		\emph{Real numbers}&$\R$. Even a rudimentary definition is too involved for this text.\footnotemark\\
-		\emph{Complex numbers}&$\C=\bigl\{x+iy:x,y\in\R\bigr\}$ where $i^2=-1$. We won't use these.
+		\emph{Complex numbers}&$\C=\bigl\{x+iy:x,y\in\R\bigr\}$ where $i^2=-1$. We won't make use of these.
 	\end{tabular}
 \end{quote}
 
 \vspace{-10pt}
 	
-\footnotetext{We simply assume the reader is comfortable with the idea of the real line where number corresponds to \emph{length.} A rigorous development of $\R$ is a matter for an upper-division \emph{analysis} course.}
+\footnotetext{%
+	We assume the reader is comfortable with the real line where number corresponds to \emph{length.} A rigorous development of $\R$ is a matter for an upper-division analysis course.
+}
 
 \begin{examples}{}{}
 	\exstart For instance: \ $7\in\N$, \ $\pi\in\R$, \ $-\frac 79\notin\Z$, \ $\sqrt 2\notin\Q$ \ and \ $3+\sqrt 5i\in\C$.
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item The basic symbols can be decorated to make natural modifications. For example:
+	  \item The basic symbols can be modified is natural ways. For example:
 \vspace{-3pt}
 		\begin{itemize}
-		  \item $\N_0=\bigl\{0,1,2,3,4,\ldots\bigr\}=\Z^+_0=\bigl\{x\in\Z:x\ge 0\bigr\}$. Also called the \emph{whole numbers} ($\mathbb W$).
+		  \item $\N_0=\bigl\{0,1,2,3,4,\ldots\bigr\}=\Z^+_0=\bigl\{x\in\Z:x\ge 0\bigr\}$. By some called the \emph{whole numbers} ($\mathbb W$).
 			\item $\Z_{\ge 5}=\bigl\{5,6,7,8,\ldots\bigr\} =\bigl\{x\in\Z:x\ge 5\bigr\}$ denotes the integers greater than or equal to 5.
 		  \item $\R^+=\bigl\{x\in\R:x>0\bigr\}$ is the set of positive real numbers.
 			\item $4\Z=\bigl\{\ldots,-8,-4,0,4,8,12,\ldots\bigr\} =\bigl\{x\in\Z: 4\mid x\bigr\}$ is the set\footnotemark{} of integer multiples of 4.\par
-			This notation can be used for non-integer multiples, e.g. $\pi\Z=\bigl\{\ldots,-\pi,0,\pi,2\pi,\ldots\bigr\}$. 
+			This can also be used for non-integer multiples, e.g. $\pi\Z=\bigl\{\ldots,-\pi,0,\pi,2\pi,\ldots\bigr\}$. 
 			\item $2\Z+1=\bigl\{x\in\Z:x\equiv 1\pmod 2\bigr\}$ is the set of odd integers.
 		\end{itemize}
 		
-		\item \emph{Intervals} are the most commonly encountered subsets of the real numbers. For instance:
+		\item \emph{Intervals} are commonly encountered subsets of the real numbers. For instance:
 % \vspace{-3pt}
 		\begin{itemize}
 		  \item $[1,\pi]=\bigl\{x\in\R\bigm|1\le x\le \pi\bigr\}$ is a \emph{closed} interval 
@@ -163,7 +168,7 @@ We've used some of this notation already, and much of the rest should be familia
 
 \vspace{-5pt}
 
-\footnotetext{Be careful!---the colon is the ``such that" separator while $\mid$ denotes the property ``4 divides $x$.''}
+\footnotetext{Be careful with the second version---the colon is the \emph{such that} separator while $\mid$ denotes the \emph{property} ``4 divides $x$.''}
 
 \goodbreak
 
@@ -181,7 +186,7 @@ In view of the natural subset relationships $\N\subsetneq\Z\subsetneq\Q\subsetne
 	We conclude that $A\subseteq C$.
 \end{proof}
 
-Compare this to Exercise \ref*{sec:prop}.\ref{exs:iftransitive}: if we translate each subset relation into an implication, the proof structure is $(x\in A\Rightarrow x\in B)\wedge (x\in B\Rightarrow x\in C)\Longrightarrow (x\in A\Rightarrow x\in C)$. This is typical of basic results about sets: after translation, the theorem reduces to one of the standard rules of logic.
+Compare this to Exercise \ref*{sec:prop}.\ref{exs:iftransitive}: if we rewrite each subset relation as an implication, the proof structure becomes $(x\in A\Rightarrow x\in B)\wedge (x\in B\Rightarrow x\in C)\Longrightarrow (x\in A\Rightarrow x\in C)$. This is typical of basic set results: a translation often reduces the problem to one of the standard rules of logic.
 
 
 
@@ -190,14 +195,13 @@ Compare this to Exercise \ref*{sec:prop}.\ref{exs:iftransitive}: if we translate
 It is helpful to introduce some terminology to describe the \emph{size} of a set.
 
 \begin{defn}{}{card1}
-	A \emph{finite set} contains only a finite number of elements: this number is its \emph{cardinality,} written $\nm A$. A set with infinitely many elements is said to be an \emph{infinite set.}\par
-	The symbol $\emptyset$ denotes the \emph{empty set}: a set containing no elements (cardinality zero: $\nm\emptyset=0$).
+	A \emph{finite set} contains a finite number of elements: this number is its \emph{cardinality} $\nm A$.\par
+	A set with infinitely many elements is said to be an \emph{infinite set.}\smallbreak
+	The symbol $\emptyset$ denotes the \emph{empty set}: a set containing no elements (cardinality zero, $\nm\emptyset=0$).
 \end{defn}
 
-
-
 \begin{examples}{}{}
-	\exstart Let $A=\bigl\{1,3,\pi,\sqrt 2,103\bigr\}$, then $\nm A=5$.
+	\exstart If $A=\bigl\{1,3,\pi,\sqrt 2,103\bigr\}$, then $\nm A=5$.
 	\begin{enumerate}\setcounter{enumi}{1}
 		\item Let $B=\bigl\{4,\{1,2\},\{3\}\bigr\}$. The elements of $B$ are $4$, $\{1,2\}$ and $\{3\}$, therefore $\nm B=3$. It doesn't matter that the \emph{element} $\{1,2\}\in B$ is also a set!\par
 		\begin{minipage}[t]{0.59\linewidth}\vspace{-5pt}
@@ -212,7 +216,7 @@ It is helpful to introduce some terminology to describe the \emph{size} of a set
 			\flushright\includegraphics{sets-03-cos}
 		\end{minipage}
 		
-		\item There are many representations of the empty set: for example
+		\item There are many, many representations of the empty set in set-builder notation: for example
 		\[
 			\emptyset =\bigl\{x\in\R:x^2=-1\bigr\} = \bigl\{x\in\N:x^2+3x+2=0\bigr\}=\bigl\{n\in\N:n<0\bigr\}
 		\]
@@ -220,40 +224,42 @@ It is helpful to introduce some terminology to describe the \emph{size} of a set
 	\end{enumerate}
 \end{examples}
 
-\footnotetext{In some formalizations of set theory, the existence of the empty set is an axiom: an assumption made without proof. Provided one accepts that set-builder notation always defines a set---this is itself an axiom!---and that at least one set $X$ exists, the empty set may be \emph{defined} as in the example: a suitable property $P(x)$ might be something like ``$x\notin\{x\}$.''}
+\footnotetext{%
+	The existence of the empty set is sometimes considered an \emph{axiom}: an assumption made without proof. Provided one accepts that set-builder notation always defines a set (itself an axiom!) and that at least one set $X$ exists, the empty set may be \emph{defined} as in the example; a suitable property $P(x)$ might be something like ``$x\notin\{x\}$.''%
+}
 
 
-Cardinality is a very simple concept for finite sets; if $B$ is finite, so is any subset, and we have
+Cardinality is very simple for subsets of finite sets: if $B$ is finite, so is any subset, and we have
 \[
 	A\subseteq B\implies \nm A\le \nm B
 \]
-For infinite sets, cardinality is more subtle. We'll return to this issue and uncover some of the bizarre and fun consequences of infinite cardinalities in Chapter \ref{chap:cantor}.
+(Is it obvious why the converse is false?!) For infinite sets, cardinality is more subtle; we'll return to this matter and uncover some of its bizarre and fun consequences in Chapter \ref{chap:cantor}.
 \bigbreak
+\goodbreak
 
 We finish with a couple of simple results regarding the empty set.
 
 \begin{lemm}{}{emptysetunique}
 	Let $A$ be a set.
 	\begin{enumerate}
-	  \item If $\nm A=0$, then $A=\emptyset$. The empty set is \emph{the unique set} with zero cardinality.
+	  \item If $\nm A=0$, then $A=\emptyset$. The empty set is the \textbf{unique set} with cardinality zero.
 	  \item $\emptyset\subseteq A$ and $A\subseteq A$
 	\end{enumerate}
 \end{lemm}
 
 \begin{proof}
-	Think about the claim $\emptyset\subseteq A$: by the observations following Definition \ref{defn:subset}, this means
+	Consider the claim $\emptyset\subseteq A$. By the observations following Definition \ref{defn:subset}, this means
 	\[
 		x\in\emptyset\implies x\in A
 	\]
-	This is true (for any set $A$!) since there are no elements $x$ satisfying the hypothesis.\footnotemark{}
+	This is true (for any set $A$!) since there are \emph{no elements} $x$ satisfying the hypothesis.\footnotemark{}
 	\begin{enumerate}
- 	 \item Suppose $A$ has cardinality zero. Repeating and combining with the above observation, we see that $\emptyset\subseteq A$ and $A\subseteq\emptyset$. We conclude that $A=\emptyset$.
- 	 \item We already know that $\emptyset\subseteq A$. For the second part, simply observe that
- 	 $x\in A\implies x\in A$.\qedhere
-\end{enumerate}
+	 	\item Suppose $A$ has cardinality zero. Repeating and combining with the above observation, we see that $\emptyset\subseteq A$ and $A\subseteq\emptyset$. We conclude that $A=\emptyset$.
+	 	\item We already know that $\emptyset\subseteq A$. For the second part, simply observe that $x\in A\Longrightarrow x\in A$.\qedhere
+	\end{enumerate}
 \end{proof}
 
-\footnotetext{If $P(x)$ is always false, then $(\forall x)\ P(x)\Longrightarrow Q(x)$ is true. This is called a \emph{vacuous} (empty) theorem.}
+\footnotetext{If $P(x)$ is always false, then $(\forall x)\ P(x)\Longrightarrow Q(x)$ is true (Definition \ref{defn:implies}). This is called a \emph{vacuous} (empty) theorem.}
 
 % 
 % 
@@ -427,26 +433,27 @@ We finish with a couple of simple results regarding the empty set.
 
 \subsection{Unions, Intersections and Complements}\label{sec:union}
 
-In this section we construct new sets from old, modeled on the logical concepts of \emph{and, or,} and \emph{not.}
+In this section we construct new sets from old, modeled on the logical \emph{and, or,} and \emph{not} (Definition \ref{defn:andornot}).
 
+\iffalse
 
 \begin{defn}{}{unionint}
-	Suppose $A$ and $B$ are sets.
-	\begin{enumerate}\itemsep0pt
-		\item The \emph{union} of $A$ and $B$ is the set of elements in $A$ or $B$:
+	Let $A,B$ be sets. 
+	\begin{enumerate}\itemsep0pt\setcounter{enumi}{0}
+	  \item The \emph{union} of $A,B$ is the set of elements in $A$ or in $B$:
 		\[
 			\makebox[210pt][l]{$A\cup B:=\bigl\{x:x\in A\text{ or }x\in B\bigr\}$\hfill} (x\in A\cup B\iff x\in A\text{ or }x\in B)
 		\]
-		\item The \emph{intersection} of $A$ and $B$ is the set of elements in both $A$ and $B$:
+		\item The \emph{intersection} of $A,B$ is the set of elements lying in both $A$ and $B$:
 		\[
 			\makebox[210pt][l]{$A\cap B:=\bigl\{x:x\in A\text{ and }x\in B\bigr\}$\hfill} (x\in A\cap B\iff x\in A\text{ and }x\in B)
 		\]
-		We say that $A$ and $B$ are \emph{disjoint} if $A\cap B=\emptyset$.
-	  \item The \emph{complement} of $A$ is the set of all elements not in $A$ (with respect to some \emph{universal set}\footnotemark{} $\cU$):
+		We say that $A,B$ are \emph{disjoint} if $A\cap B=\emptyset$.
+	  \item The \emph{complement} of $A$ is the set of elements not in $A$ (with respect to some \emph{universal set\footnotemark} $\cU$):
 		\[
 			\makebox[210pt][l]{$\comp A:=\bigl\{x\in\cU:x\notin A\bigr\}$ \hfill} (x\in\comp A\iff x\notin A \ (\text{and }x\in\cU))
 		\]
-		\item The \emph{complement of $A$ relative $B$} is the set of elements in $B$ which are not in $A$:
+		\item The \emph{complement of $A$ relative to $B$} is the set of elements in $B$ which are not in $A$:
 		\[
 			\makebox[210pt][l]{$B\setminus A=\bigl\{x\in B:x\notin A\bigr\} =B\cap\comp A$\hfill} (x\in B\setminus A\iff x\in B\text{ and } x\notin A)
 		\]
@@ -454,54 +461,109 @@ In this section we construct new sets from old, modeled on the logical concepts 
 	\end{enumerate}
 	
 	\begin{center}
-		\includegraphics{sets-05-venncomp}
+		\includegraphics[scale=0.95]{sets-05-venncomp}
 		\qquad\qquad
-		\includegraphics{sets-04-vennunion}
+		\includegraphics[scale=0.95]{sets-04-vennunion}
 	\end{center}
 \end{defn}
 
-\footnotetext{This is needed for complements since $x$ has to live somewhere: should, say, $\comp{\{1\}}$ be the set of all \emph{integers} except 1, \emph{real numbers} except 1, etc.?! In many contexts the universal set is naturally assumed: $\cU=\R$ makes sense if you are doing calculus, $\cU=\Z$ if doing modular arithmetic. The universal set is not needed for the rest of the definition (that the union is a set is typically an axiom, while intersections and relative complements are automatically subsets of pre-existing sets).}
+\fi
 
-In the first Venn diagram, the outer box depicts the universal set $\cU$. Though it doesn't constitute a proof, the second diagram certainly suggests that
+\begin{defn}{}{unionint}
+	Let $A,B$ be sets. 
+	\begin{enumerate}
+	  \item The \emph{union} of $A,B$ is the set of elements lying in $A$ or in $B$ (or in both):
+		\[
+			\makebox[210pt][l]{$A\cup B=\bigl\{x:x\in A\text{ or }x\in B\bigr\}$\hfill} (x\in A\cup B\iff x\in A\text{ or }x\in B)
+		\]
+		\item The \emph{intersection} of $A,B$ is the set of elements lying in both $A$ and $B$:
+		\[
+			\makebox[210pt][l]{$A\cap B=\bigl\{x:x\in A\text{ and }x\in B\bigr\}$\hfill} (x\in A\cap B\iff x\in A\text{ and }x\in B)
+		\]
+		We say that $A,B$ are \emph{disjoint} if $A\cap B=\emptyset$.\par
+		\begin{minipage}[t]{0.72\linewidth}\vspace{-5pt}
+	  	\item The \emph{complement} of $A$ is the set of elements not in $A$ (with respect to some \emph{universal set\footnotemark} $\cU$):
+	  	\begin{align*}
+				&\comp A=\bigl\{x\in\cU:x\notin A\bigr\} \tag*{($x\in\comp A\iff x\in\cU \ \text{and }x\notin A$)\quad}
+			\end{align*}
+			In the Venn diagram, the outer box represents the universal set $\cU$.
+			\item The \emph{complement of $A$ relative to $B$} is the set of elements in $B$ which do not lie in $A$:
+			\begin{align*}
+				B\setminus A&=B\cap \comp{A} \tag*{($x\in B\setminus A\iff  x\in B\text{ and } x\notin A$)\quad}\\
+				&=\bigl\{x\in B:x\notin A\bigr\}
+			\end{align*}
+			This can be read ``$B$ minus $A$'' (some authors indeed write $B-A$). 
+			Note also that $\comp A=\cU\setminus A$; the distinction is that the relative complement $B\setminus A$ does not require that $A$ be a subset of $B$.
+	  \end{minipage}
+	  \hfill
+		\begin{minipage}[t]{0.25\linewidth}\vspace{-12pt}
+			\flushright
+			\includegraphics[scale=0.95]{sets-05-venncomp}
+			\bigbreak
+			\includegraphics[scale=0.95]{sets-04-vennunion}
+		\end{minipage}
+	\end{enumerate}
+\end{defn}
+
+\footnotetext{%
+	The elements $x$ must live somewhere! Without a universal set, should, say, $\comp{\{7\}}$ be the set of \emph{integers} except 7, \emph{real numbers} except 7, etc.? Often $\cU$ is naturally assumed: e.g., $\R$ in calculus. The universal set is not needed for parts 1, 2 \& 4: that the union is a set is typically an axiom, while intersections and relative complements are subsets of pre-existing sets.%
+}
+
+Observe the notational similarities with logic: $\cup$ looks a bit like $\vee$ (OR); $\cap$ like $\wedge$ (AND). The second Venn diagram suggests the identities
 \[
-	A=(A\setminus B)\cup (A\cap B) \quad\text{and}\quad B=(B\setminus A)\cup(A\cap B)
+	A=(A\setminus B)\cup (A\cap B)
+	\quad\text{and}\quad
+	B=(B\setminus A)\cup(A\cap B)
 \]
-Observe the notational similarity with logic: $\cup$ looks a bit like $\vee$ (OR); $\cap$ like $\wedge$ (AND).
+While these indeed hold, note that \textcolor{red}{a Venn diagram isn't a proof}: set identities must rigorously be proved in the style of the upcoming theorems.
 
-\begin{examples}{}{}
-	\exstart Let $\cU=\{1,2,3,4,5\}$, $A=\{1,2,3\}$, and $B=\{2,3,4\}$. Then
+\begin{examples}{}{basicunionint}
+	Reading set notation is one of the most basic requirements of abstract mathematics. Make sure you understand why the following examples are correct before moving on!
+	
+	\begin{enumerate}
+	  \item Let $\cU=\{1,2,3,4,5\}$, $A=\{1,2,3\}$, and $B=\{2,3,4\}$. Then
 	\begin{align*}
 		&\comp A=\{4,5\} &&\comp B=\{1,5\} &&B\setminus A=\{4\} &&A\setminus B=\{1\}\\
 		&A\cup B=\{1,2,3,4\} &&A\cap B=\{2,3\} &&A\cap\comp B=\{1\} &&\comp A\cup\comp B=\{1,4,5\}
 	\end{align*}
 	
+	
 	\goodbreak
-		
-	\begin{enumerate}\setcounter{enumi}{1}
-		\item Using interval notation, let $\cU=[-4,5]$, \ $A=[-3,2]$, \ and \ $B=[-4,1)$. Then\par
-		\begin{minipage}[t]{0.3\linewidth}\vspace{-13pt}
+	  
+		\item\label{ex:basicunionint2} Using interval notation, let $\cU=[-4,5]$, \ $A=[-3,2]$, \ and \ $B=[-4,1)$. Then\par
+		\begin{minipage}[t]{0.3\linewidth}\vspace{-20pt}
 			\begin{gather*}
-			\comp A=[-4,-3)\cup (2,5]\\
-			\comp B=[1,5]\\
-			A\setminus B=[1,2]\\
-			B\setminus A=[-4,-3)\\
-			A\cup B=[-4,2]\\
-			A\cap B=[-3,1) 
+				\comp A=[-4,-3)\cup (2,5]\\
+				\comp B=[1,5]\\
+				A\setminus B=[1,2]\\
+				B\setminus A=[-4,-3)\\
+				A\cup B=[-4,2]\\
+				A\cap B=[-3,1) 
 			\end{gather*}
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{0.69\linewidth}\vspace{0pt}
-			\flushright\includegraphics[scale=0.8]{sets-13-intervalex}
+		\begin{minipage}[t]{0.69\linewidth}\vspace{-6pt}
+			\flushright\includegraphics[scale=0.78]{sets-13-intervalex}
 		\end{minipage}
 		\smallbreak
-		While you should be comfortable with these just from the picture, for practice it is worth trying algebraic arguments. In particular, note how $\comp A$ relies on de Morgan's law (Theorem \ref{thm:demorgan}):
+		While you should believe these from the picture, they also make for good logic practice. E.g.,
 		\begin{align*}
 			x\in \comp A&\iff x\notin A\iff \neg\bigl(x\in A\bigr) \iff\neg\bigl(-3\le x \text{ and }x\le 2\bigr)\\
-			&\iff x<-3\text{ or }x>2 \tag{de Morgan}\\
-			&\iff x\in[-4,-3)\cup (2,5] \tag{remember that $x\in\cU$ always!}
+			&\iff x<-3\text{ or }x>2 \tag{de Morgan's law, Theorem \ref{thm:demorgan}}\\
+			&\iff x\in[-4,-3)\cup (2,5] \tag{remember that $-4\le x\le 5$ ($x\in\cU$)}
 		\end{align*}
+		The argument illustrates the basic strategy for set computations \& proofs: convert claims to propositions (Definition \ref{defn:unionint} parentheses) and apply basic logic (Theorem \ref{thm:demorgan}, page \pageref{pg:asidelogicalgebra}, etc.). Alternatively, you can prove each direction separately: this would be to show that each of the sets $\comp A$, $[-4,-3)\cup(2,5]$ is a subset of the other (page \pageref{pg:setequalitysubset}, ($\ast$)).
 		
-		\item Let $A=(-\infty,3)$ and $B=[-2,\infty)$ in interval notation. Then $A\cup B=\R$ and $A\cap B=[-2,3)$.
+ 	\item\label{ex:basicunionint3} Let $A=(-\infty,3)$ and $B=[-2,\infty)$ in interval notation. Then $A\cup B=\R$ and $A\cap B=[-2,3)$. We show the first: for variety, this time we observe that each side is a subset of the other.
+	\begin{description}
+		\item[\normalfont($\subseteq$):] $A\cup B\subseteq\R$ is trivial, since everything in $A,B$ is a real number ($\R$ is the universal set).
+		\item[\normalfont($\supseteq$):] Let $x\in\R$. If $x<3$, then $x\in A$. Otherwise, $x\ge 3\Longrightarrow x\ge -2\Longrightarrow x\in B$. Either way, $x\in A\cup B$.
+	\end{description}
+
+% 		\begin{gather*}
+% 			x\in A\cap B\implies x<3\text{ and }x\ge -2\implies -2\le x<3\implies x\in [-2,3)\\
+% 			x\in [-2,3)\implies 
+% 		\end{gather*}
 	\end{enumerate}
 \end{examples}
 
@@ -510,29 +572,30 @@ For the remainder of this section, we summarize the basic rules of set algebra.
 
 \begin{thm}{Union/intersection rules}{setbasic}
 	Let $A,B,C$ be sets. Then:
-	\begin{enumerate}\itemsep2pt
-		\item $\emptyset\cup A=A$ \ and \ $\emptyset\cap A=\emptyset$
-		\item $A\cap B\subseteq A\subseteq A\cup B$
-		\item $A\cup B=B\cup A$ \ and \ $A\cap B=B\cap A$
+	\begin{enumerate}\itemsep1pt
+		\item \makebox[220pt]{$\emptyset\cup A=A$ \ and \ $\emptyset\cap A=\emptyset$ \hfill 2.} \ $A\cap B\subseteq A\subseteq A\cup B$
+		\setcounter{enumi}{2}
+		\item \makebox[220pt]{$A\cup B=B\cup A$ \ and \ $A\cap B=B\cap A$ \hfill 4.} \ $A\cup A=A\cap A=A$
+		\setcounter{enumi}{4}
 		\item $A\cup (B\cup C)=(A\cup B)\cup C$ \ and \ $A\cap (B\cap C)=(A\cap B)\cap C$
-		\item $A\cup A=A\cap A=A$
+		%\item $A\cup A=A\cap A=A$
 		\item $A\subseteq B\Longrightarrow A\cup C\subseteq B\cup C$ \ and \ $A\cap C\subseteq B\cap C$
 	\end{enumerate}
 \end{thm}
 
-If you don't believe a result, try \emph{visualizing} it using a Venn diagram. The basic proof strategy is the same for all parts: convert each statement into propositions (Definition \ref{defn:unionint} parentheses) and use what you know from basic logic (e.g., Theorem \ref{thm:demorgan} and page \pageref{pg:asidelogicalgebra}). We prove part 2 and half of part 6, leaving some of the rest to the Exercises.
+If you don't believe a result, \emph{visualize} it with a Venn diagram. We prove part 2 and half of 6.
 
 \begin{proof}
 \begin{enumerate}
-  \item[2.] There are two results here: $A\cap B\subseteq A$ and $A\subseteq A\cup B$. We prove separately, with some commentary on the side.
-	\begin{enumeratea}
-		\item Suppose $x\in A\cap B$.\hfill(Goal: want to prove $x\in A\cap B\Rightarrow x\in A$)\par
-		Then $x\in A$ and $x\in B$.\hfill(Definition of intersection)\par
-		Plainly $x\in A$. We conclude that $A\cap B\subseteq A$\hfill(Definition of subset)
-		\item Suppose $y\in A$.\hfill(Goal: prove $y\in A\Rightarrow y\in A\cup B$)\par
-		Then ``$y\in A$ or $y\in B$'' is true, whence $y\in A\cup B$.\hfill(Definition of union/or)\par
+  \item[2.] We offer direct proofs of the two results: $A\cap B\subseteq A$ and $A\subseteq A\cup B$.
+	\begin{itemize}
+		\item Suppose $x\in A\cap B$.\hfill(goal: want to prove $x\in A\cap B\Rightarrow x\in A$)\par
+		Then $x\in A$ and $x\in B$.\hfill(definition of intersection)\par
+		Plainly $x\in A$. We conclude that $A\cap B\subseteq A$\hfill(definition of subset)
+		\item Suppose $y\in A$.\hfill(goal: prove $y\in A\Rightarrow y\in A\cup B$)\par
+		Then ``$y\in A$ or $y\in B$'' (is true), whence $y\in A\cup B$.\hfill(definition of union/or)\par
 	  We conclude that $A\subseteq A\cup B$.
-	\end{enumeratea}
+	\end{itemize}
 	
 	\goodbreak
 	
@@ -547,21 +610,20 @@ If you don't believe a result, try \emph{visualizing} it using a Venn diagram. T
 
 
 
-The next batch of rules describe how complements interact with other set operations: parts 1 and 2 are \emph{de Morgan's laws for sets}; unsurprisingly, their proofs depend on the corresponding laws of logic.
+Our next batch of rules describe how complements interact with other set operations: parts 1 and 2 are \emph{de Morgan's laws for sets}; unsurprisingly, their proofs depend on the corresponding laws of logic.
 
 
 \begin{thm}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{Complement rules}{setcomp}
 	Let $A,B$ be sets. Then:
-	\begin{enumerate}\itemsep2pt
-		\item $\comp{(A\cap B)}=\textcolor{blue}{\comp A}\cup \textcolor{red}{\comp B}$ (see picture)
+	\begin{enumerate}\itemsep1pt
+		\item $\comp{(\textcolor{Magenta}{A\cap B})}=\textcolor{blue}{\comp A}\cup \textcolor{red}{\comp B}$ (pictured)
 		\item $\comp{(A\cup B)}=\comp A\cap \comp B$
 		\item $\smash[t]{\comp{(\comp A)}}=A$
-		%\item $A\setminus B=A\cap\comp B$
 		\item $A\subseteq B\iff \comp B\subseteq \comp A$
 	\end{enumerate}
 	\tcblower
 	\flushright
-	\includegraphics[scale=1]{sets-08-venndemorgan2}
+	\includegraphics[scale=0.95]{sets-08-venndemorgan2}
 \end{thm}
 
 \begin{proof}
@@ -574,7 +636,7 @@ The next batch of rules describe how complements interact with other set operati
 	\end{align*}
 \end{proof}
 
-Our final pair of results describe the interaction of unions and intersections.\par
+Our final results describe the interaction of unions and intersections.\par
 
 \begin{thm}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{Distributive laws}{setdist}
 	For any sets $A,B,C$:
@@ -584,7 +646,7 @@ Our final pair of results describe the interaction of unions and intersections.\
 	\end{enumerate}
 	The Venn diagram illustrates the second result: think about adding the colored regions.
 	\tcblower
-	\flushright\includegraphics{sets-07-venndist}
+	\flushright\includegraphics[scale=0.95]{sets-07-venndist}
 \end{thm}
 
 
@@ -598,6 +660,8 @@ Our final pair of results describe the interaction of unions and intersections.\
 		&\iff x\in (A\cap B)\cup(A\cap C)\tag*{\qedhere}
 	\end{align*}
 \end{proof}
+
+Remember, if you prefer, you can prove these equalities in two stages: $S=T\Longleftrightarrow S\subseteq T$ and $S\supseteq T$.\vspace{-10pt}
 
 \goodbreak
 
@@ -615,15 +679,15 @@ Our final pair of results describe the interaction of unions and intersections.\
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/4-2-union.html}{online}.
 	
 	\begin{enumerate}
-	  \item Describe each set simply as you can: e.g., 
+	  \item Describe each set straightforwardly as you can: e.g., 
 	  \[
 	  	\bigl\{x\in\R:x^2<9\text{ and } x^3<8\bigr\}= (-3,3)\cap(-\infty,2) =(-3,2)
 	  \]
 	  \begin{enumerate}
-		 	\item $\bigl\{x\in\R:x^2\neq x\bigr\}$
-			\item $\bigl\{x\in\R:x^3-2x^2-3x\le 0\text{ or }x^2=4\bigl\}$
-			\item $\bigl\{y\in\R:\exists x\in\R \text{ with }y=x^2 \text{ and }x\neq 1\bigl\}$
-			\item $\bigl\{z\in\Z:z^2\text{ is even and $z^3$ is odd}\bigl\}$
+		 	\item \makebox[235pt][l]{$\bigl\{x\in\R:x^2\neq x\bigr\}$\hfill (b)} \ \ $\bigl\{x\in\R:x^3-2x^2-3x\le 0\text{ or }x^2=4\bigl\}$
+		 	\setcounter{enumii}{2}
+			\item \makebox[235pt][l]{$\bigl\{y\in\R:\exists x\in\R \text{ with }y=x^2 \text{ and }x\neq 1\bigl\}$ \hfill (d)} \ $\bigl\{z\in\Z:z^2\text{ is even and $z^3$ is odd}\bigl\}$
+		 	\setcounter{enumii}{4}
 			\item $\bigl\{y\in 3\Z+2:y^2\equiv 1\spmod 3\bigl\}$
 		\end{enumerate}
 	  
@@ -633,6 +697,9 @@ Our final pair of results describe the interaction of unions and intersections.\
 		  	\setcounter{enumii}{4}
 		  	\item \makebox[100pt][l]{$\comp{(A\setminus B)}$ \hfill (f)} \ \makebox[100pt][l]{$\comp A\cap \comp B$\hfill (g)} \ $(A\cup B)\setminus (A\cap B)$
 			\end{enumerate}
+			
+		
+		\item In Example \ref*{ex:basicunionint}.\ref{ex:basicunionint2}, use logic to formally justify the assertions $\comp B=[1,5]$, $A\cap B=[-3,1)$, and $A\cup B=[-4,2]$. If you prefer, use the `subset of each side' approach of Example \ref*{ex:basicunionint}.\ref{ex:basicunionint3}.
 	
   	
 % 	\item Consider Theorems \ref{thm:setbasic} and \ref{thm:setdist}. In all seven results, replace the symbols in the first row of the following table with those in the second. Which of the results seem familar? Which are false?
@@ -665,14 +732,14 @@ Our final pair of results describe the interaction of unions and intersections.\
 	
 	\item Prove the identities for any sets $A,B,C$:
 	\begin{enumerate}
-	  \item $\comp{(A\cap B\cap C)}=\comp A\cup\comp B\cup\comp C$
-	  \item $(A\cup B)\setminus (A\cap B)=(A\setminus B)\cup (B\setminus A)$
+	  \item \makebox[200pt][l]{$\comp{(A\cap B\cap C)}=\comp A\cup\comp B\cup\comp C$ \hfill(b)} \ 
+	  $(A\cup B)\setminus (A\cap B)=(A\setminus B)\cup (B\setminus A)$
 	\end{enumerate}
 	
 		
 	\item Prove or disprove the following conjectures (\emph{Hint: revisit Section \ref{sec:proof2}}).
 	 \begin{enumerate}
-	    \item $\exists x\in\R\setminus\Q$ such that $x^2\in\Q$. \qquad\qquad (b) \ $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$.
+	    \item \makebox[200pt][l]{$\exists x\in\R\setminus\Q$ such that $x^2\in\Q$\hfill (b)} \ $\forall x\in\R\setminus\Q$ we have $x^2\in\Q$
 		\end{enumerate}
 	
 	
@@ -705,34 +772,34 @@ Our final pair of results describe the interaction of unions and intersections.\
 
 \subsection{Introduction to Functions}\label{sec:func1}
 
-Sets become a lot more useful and interesting once you start transforming their elements! This is accomplished using \emph{functions.} In this section we introduce some basic concepts and notation, much of which should be familiar. A formal definition will be given in Chapter \ref{chap:relations}, but for the present the following will suffice.
+Sets become a lot more useful and interesting once you start transforming their elements! This is accomplished using \emph{functions.} In this section we introduce some basic concepts and notation, much of which should be familiar. A formal definition will be given in Chapter \ref{chap:relations}, but for the present a naïve notion will suffice.
 
 \begin{defn}{}{function1}
-	Let $A,B$ be sets. A \emph{function} $f:A\to B$ is a rule assigning to each input $a\in A$ a single output $b\in B$, typically denoted $f(a)$.	Various sets are associated to $f$:\par
+	Let $A,B$ be sets. A \emph{function} $f:A\to B$ is a rule assigning to each input $a\in A$ a single output $f(a)\in B$.	Various sets are associated to $f$:\par
 	\begin{minipage}[t]{0.61\linewidth}\vspace{-5pt}
-	\emph{Domain}: $\dom(f)=A$ is the set of inputs to the function.\smallbreak
-	\emph{Codomain}: $\operatorname{codom}(f)=B$ is the set of potential outputs.\smallbreak
-	\emph{Image} of a subset $U\subseteq A$: the set of outputs given inputs in $U$
-	\[
-		f(U):=\bigl\{f(u)\in B:u\in U\bigr\}
-	\]
-	\emph{Range}: $\range(f)=f(A)=\{f(a)\in B:a\in A\}$ is the set of realized outputs.
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.38\linewidth}\vspace{-3pt}
-			\flushright
-   		\includegraphics[scale=1]{sets-16-funcdef2}
-		\end{minipage}\medbreak
+		\emph{Domain}: $\dom(f)=A$ is the set of inputs to the function.\smallbreak
+		\emph{Codomain}: $\operatorname{codom}(f)=B$ is the set of potential outputs.\smallbreak
+		\emph{Image} of a subset $U\subseteq A$: the set of outputs given inputs in $U$
+		\[
+			f(U):=\bigl\{f(u)\in B:u\in U\bigr\}
+		\]
+		\emph{Range}: $\range(f)=f(A)=\{f(a)\in B:a\in A\}$ is the set of realized outputs, the image of the domain $A$.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.38\linewidth}\vspace{-5pt}
+		\flushright
+   	\includegraphics[scale=0.95]{sets-16-funcdef2}
+	\end{minipage}\medbreak
 	\emph{Inverse image} (or \emph{pre-image}) of a subset $V\subseteq B$: the set of inputs which are mapped into $V$
 	\[
 		f^{-1}(V):=\bigl\{a\in A:f(a)\in V\bigr\}
 	\]
 \end{defn}
 
-The rule defining a function can be described using arrow notation $f:a\mapsto b$.
+The rule defining a function can also be described using arrow notation $f:a\mapsto b$.
 
 \begin{examples}{}{functions}
-	\exstart Functions whose codomain is (a subset of) the real numbers $\R$ are often \textcolor{blue}{graphed}: the \textcolor{Purple}{domain} and \textcolor{Green}{range} are found by projecting the graph onto the two axes.\par
+	\exstart It is common to \textcolor{blue}{graph} functions whose codomain is a subset of the real numbers: the \textcolor{Purple}{domain} and \textcolor{Green}{range} are found by projecting the graph onto the two axes.\par
 	\begin{enumerate}\setcounter{enumi}{1}
 		\begin{minipage}[t]{0.6\linewidth}\vspace{-8pt}
 			\item[]For instance if $f:[-3,2)\to\R$ is the square function
@@ -751,11 +818,10 @@ The rule defining a function can be described using arrow notation $f:a\mapsto b
 		\hfill
 		\begin{minipage}[t]{0.39\linewidth}\vspace{-8pt}
 			\flushright
-  		\includegraphics{sets-10-rangedom}
+  		\includegraphics[scale=0.95]{sets-10-rangedom}
 		\end{minipage}
 		
  	  \bigbreak
-		
 
 	\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
 		\item Define $f:\Z\to\{0,1,2\}$ by $f:n\mapsto n^2\pmod 3$. The table shows a few examples (remember $\dom(f)=\Z$ is infinite!).
@@ -768,11 +834,13 @@ The rule defining a function can be described using arrow notation $f:a\mapsto b
   		f(n)&0&1&1&0&1&1&0&1
   	\end{array}$
 	\end{minipage}\par
-		Exercise \ref*{sec:cong}.\ref{exs:nsquaredrem} confirms what the examples suggest, that $\range(f)=\{0,1\}$. We also compute a single inverse image (revisit the previous two sections if you're unsure about the notation):
+		Exercise \ref*{sec:cong}.\ref{exs:nsquaredrem} confirms what the table suggests, that $\range(f)=\{0,1\}$. Here also is a single inverse image (revisit the previous sections if you're unsure of the notation):
 		\begin{align*}
 			f^{-1}\bigl(\{1\}\bigr) &=\bigl\{x\in\Z:x^2\equiv 1\spmod 3\bigr\} =\bigl\{x\in\Z:x\equiv 1\text{ or }2\spmod 3\bigr\}\\
 			&=(3\Z+1)\cup(3\Z+2)
 		\end{align*}
+		
+		\goodbreak
 
   \begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
     \item\label{ex:functmod} Let $A=\{0,1,2,\ldots,7\}$ be the set of remainders modulo 8 and define two functions $f,g:A\to A$:
@@ -790,11 +858,12 @@ The rule defining a function can be described using arrow notation $f:a\mapsto b
   	\end{array}$	
   \end{minipage}
   \smallbreak
-  Since the domain has only 8 elements, the table describes everything. Observe that
+  This time the table completely describes the functions. Observe that
   \begin{align*}
   	&\range(f)=A &&f\bigl(\{1,5\}\bigr) =\{3,7\} &&f^{-1}\bigl(\{1,2,3,4\}\bigr) =\{1,3,4,6\}\\
   	&\range(g)=\{0,2,4,6\} &&g\bigl(\{1,5\}\bigr) =\{6\} &&g^{-1}\bigl(\{1,2,3,4\}\bigr) =\{2,3,6,7\}
   \end{align*}
+  If you're unsure, compute these as we did in the last two examples.
   	
   \item Let $A=\{0,1,2,3,4\}$ and let $B=\{$two-element subsets of $A\}$. Define
   \[
@@ -817,15 +886,16 @@ We turn our attention to perhaps the most important properties a function can po
 \begin{defn}{}{11}
 	Let $f:A\to B$ be a function. We say that $f$ is:
 	\begin{enumerate}
-	  \item \emph{Injective} (\emph{1--1}, an \emph{injection}) if it never outputs the same value twice. Equivalently,\footnotemark{}
+	  \item \emph{Injective} (\emph{1--1}, an \emph{injection}) if distinct inputs produce distinct outputs. Otherwise said (we state the contrapositive),
 		\[
 			f(a_1)=f(a_2)\implies a_1=a_2 \tag{``$\forall a_1,a_2\in A$'' is typically hidden}
 		\]
-		\item \emph{Surjective} (\emph{onto}, a \emph{surjection}) if every possible output is realized: $B=\range(f)$. Equivalently,${}^{\thefootnote}$
+		\item \emph{Surjective} (\emph{onto}, a \emph{surjection}) if every potential output is realized: $B=\range(f)$. Equivalently,
 		\[
 			\forall b\in B,\ \exists a\in A\text{ such that }f(a)=b
 		\]
-		\item \emph{Bijective} (\emph{invertible}, a \emph{bijection}) if it is both injective and surjective. Equivalently
+		This merely expresses $B\subseteq\range(f)$; the reverse inclusion $\range(f)\subseteq B$ holds for any function.
+		\item \emph{Bijective} (\emph{invertible}, a \emph{bijection}) if it is both injective and surjective. Equivalently,
 		\[
 			\forall b\in B,\ \exists \text{ a \emph{unique} }a\in A\text{ such that }f(a)=b
 		\]
@@ -833,11 +903,8 @@ We turn our attention to perhaps the most important properties a function can po
 	\end{enumerate}
 \end{defn}
 
-\footnotetext{For injectivity this is the contrapositive: if $f$ never takes the same value twice, then $a_1\neq a_2\implies f(a_1)\neq f(a_2)$.\par
-For surjectivity, the quantified statement expresses $B\subseteq\range(f)$. The inclusion $\range(f)\subseteq B$ is true for \emph{any} function.}
 
-
-Since the definitions of injectivity and surjectivity are both universal statements, it suffices to provide \emph{counter-examples} to show that a function is \emph{not injective} or \emph{not surjective.} Indeed:
+These are \emph{universal} statements, so \emph{counter-examples} are enough to demonstrate the negations:
 \[
 	\tcbhighmath{
 		\begin{array}{@{}ll}
@@ -999,9 +1066,9 @@ In practice, some restriction of domains might be required in order to define a 
 \begin{proof}
 	Suppose $f$ and $g$ are injective and let $a_1,a_2\in A$. Then
   \begin{align*}
-  (g\circ f)(a_1)=(g\circ f)(a_2)&\implies g\big(f(a_1)\big)=g\big(f(a_2)\big)\\
-  &\implies f(a_1)=f(a_2)\tag*{(since $g$ is injective)}\\
-  &\implies a_1=a_2\tag*{(since $f$ is injective)}\\[-25pt]
+	  (g\circ f)(a_1)=(g\circ f)(a_2)&\implies g\big(f(a_1)\big)=g\big(f(a_2)\big)\\
+	  &\implies f(a_1)=f(a_2)\tag*{(since $g$ is injective)}\\
+	  &\implies a_1=a_2\tag*{(since $f$ is injective)}\\[-25pt]
   \end{align*}
 %   \item Now suppose that $f$ and $g$ are surjective. Let $c\in C$. We are required to show that $\exists a\in A$ such that $(g\circ f)(a)=c$.\\
 %   Since $g$ is surjective, $\exists b\in B$ such that $g(b)=c$.\\
@@ -1014,12 +1081,12 @@ In practice, some restriction of domains might be required in order to define a 
 Somewhat surprisingly, the converse of this theorem is \emph{false.} If a composition is injective or surjective, \emph{only one} of the original functions is required also to be.
 
 \begin{thm}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{}{}
-Suppose $f:A\to B$ and $g:B\to C$.
-\begin{enumerate}
-  \item If $g\circ f$ is injective, then $f$ is injective.
-  \item If $g\circ f$ is surjective, then $g$ is surjective.
-\end{enumerate}
-The picture illustrates what can happen: $f$ is \emph{only injective}, $g$ is \emph{only surjective,} but $g\circ f$ is \emph{bijective.}
+	Suppose $f:A\to B$ and $g:B\to C$.
+	\begin{enumerate}
+	  \item If $g\circ f$ is injective, then $f$ is injective.
+	  \item If $g\circ f$ is surjective, then $g$ is surjective.
+	\end{enumerate}
+	The picture illustrates what can happen: $f$ is \emph{only injective}, $g$ is \emph{only surjective,} but $g\circ f$ is \emph{bijective.}
 	\tcblower
 	\flushright
 	\includegraphics[scale=1]{sets-17-injcomp}
@@ -1042,9 +1109,9 @@ The picture illustrates what can happen: $f$ is \emph{only injective}, $g$ is \e
 % \begin{enumerate}\setcounter{enumi}{1}
 %   \item Suppose that $f(a_1)=f(a_2)$. Then $(g\circ f)(a_1)=(g\circ f)(a_2)$. Since $g\circ f$ is injective we conclude that $a_1=a_2$, whence $f$ is injective.\qedhere
 	This time we leave part 1 for the Exercises. Let $c\in C$ and assume $g\circ f$ is surjective. But then
-	\begin{align*}
-		&\exists a\in A\text{ such that } c=(g\circ f)(a)=g\bigl(f(a)\bigr)
-	\end{align*}
+	\[
+		\exists a\in A\text{ such that } c=(g\circ f)(a)=g\bigl(f(a)\bigr)
+	\]
 	Otherwise said, $\exists b(=f(a))\in B$ for which $c=g(b)$: that is, $g$ is surjective.%\qedhere
 % \end{enumerate}
 \end{proof}
@@ -1074,42 +1141,44 @@ Injectivity and surjectivity are intimately tied to the notion of cardinality. I
 
 
 \begin{proof}
-Suppose $\nm A=m$, $\nm B=n$ and label the elements in roster notation:\par
-\begin{minipage}[t]{0.63\linewidth}\vspace{-14pt}
-\[
-	A=\{a_1,a_2,\ldots,a_m\}\qquad B=\{b_1,b_2,\ldots,b_n\}
-\]
-\begin{description}
-	\item[\normalfont \circint 1 $\Rightarrow$ \circint 2]
-	If $m\le n$, \emph{define} $f:A\to B$ by $f(a_k)=b_k$ as in the picture. This is injective since the $b_1,\ldots,b_m$ are distinct.
-\end{description}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.3\linewidth}\vspace{-20pt}
-	\flushright
-	$\xymatrix @C0pt @R10pt @M1.4pt @H15pt{
-		\{a_1, \ar@{|->}[d]_f &a_2,&\ldots,&a_m\} \ar@<-1ex>@{|->}[d]_f\\
-		\{b_1, \ar@<-1ex>@{|->}[u]_g &b_2,&\ldots,&b_m, \ar@<0ex>@{|->}[u]_g&\overbrace{b_{m+1},\ldots,b_n}\} \ar@(u,ur)@{|->}@/_3pc/[ullll]_g
-	}$
-\end{minipage}
-\vspace{-2pt}
-\begin{description}%\itemsep0pt
-	\item[\normalfont \circint 2 $\Rightarrow$ \circint 3] Suppose $f:A\to B$ is injective. Without loss of generality, label the elements of $B$ such that $b_k=f(a_k)$ for $1\le k\le m$. \emph{Define} the surjective function $g:B\to A$ as in the picture:\footnotemark{}%\vspace{-2pt}
-  \[
-  	g(b_k):=
-  	\begin{cases}
-  		a_k&\text{ if }k\le m\\
-  		a_1&\text{ if }k>m
-  	\end{cases}
-  \]
-  \item[\normalfont \circint 3 $\Rightarrow$ \circint 1] Suppose $g:B\to A$ is surjective. Without loss of generality, label the elements of $B$ such that $a_k=g(b_k)$ for $1\le k\le m$. Since the $b_k$ must be distinct, we see that $n\ge m$.
-\end{description}
-When $m=n$, the constructed functions are plainly \emph{bijections} with $f^{-1}=g$.
+	Suppose $\nm A=m$, $\nm B=n$ and label the elements in roster notation:\par
+	\begin{minipage}[t]{0.63\linewidth}\vspace{-14pt}
+	\[
+		A=\{a_1,a_2,\ldots,a_m\}\qquad B=\{b_1,b_2,\ldots,b_n\}
+	\]
+	\begin{description}
+		\item[\normalfont \circint 1 $\Rightarrow$ \circint 2]
+		If $m\le n$, \emph{define} $f:A\to B$ by $f(a_k)=b_k$ as in the picture. This is injective since the $b_1,\ldots,b_m$ are distinct.
+	\end{description}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\linewidth}\vspace{-20pt}
+		\flushright
+		$\xymatrix @C0pt @R10pt @M1.4pt @H15pt{
+			\{a_1, \ar@{|->}[d]_f &a_2,&\ldots,&a_m\} \ar@<-1ex>@{|->}[d]_f\\
+			\{b_1, \ar@<-1ex>@{|->}[u]_g &b_2,&\ldots,&b_m, \ar@<0ex>@{|->}[u]_g&\overbrace{b_{m+1},\ldots,b_n}\} \ar@(u,ur)@{|->}@/_3pc/[ullll]_g
+		}$
+	\end{minipage}
+	\vspace{-2pt}
+	\begin{description}%\itemsep0pt
+		\item[\normalfont \circint 2 $\Rightarrow$ \circint 3] Suppose $f:A\to B$ is injective. Without loss of generality, label the elements of $B$ such that $b_k=f(a_k)$ for $1\le k\le m$. \emph{Define} the surjective function $g:B\to A$ as in the picture:\footnotemark{}%\vspace{-2pt}
+	  \[
+	  	g(b_k):=
+	  	\begin{cases}
+	  		a_k&\text{ if }k\le m\\
+	  		a_1&\text{ if }k>m
+	  	\end{cases}
+	  \]
+	  \item[\normalfont \circint 3 $\Rightarrow$ \circint 1] Suppose $g:B\to A$ is surjective. Without loss of generality, label the elements of $B$ such that $a_k=g(b_k)$ for $1\le k\le m$. Since the $b_k$ must be distinct, we see that $n\ge m$.
+	\end{description}
+	When $m=n$, the constructed functions are plainly \emph{bijections} with $f^{-1}=g$.
 \end{proof}
 
 \vspace{-5pt}
 
-\footnotetext{The elements $b_{m+1},\ldots,b_n$ could be mapped \emph{anywhere,} we choose $a_1$ for simplicity.}
+\footnotetext{%
+	The elements $b_{m+1},\ldots,b_n$ could be mapped \emph{anywhere;} we choose $a_1$ for simplicity.
+}
 
 \goodbreak
 
@@ -1222,6 +1291,7 @@ When $m=n$, the constructed functions are plainly \emph{bijections} with $f^{-1}
 	    \item $f$ is injective if and only if $\forall b\in B,\ f^{-1}\bigl(\{b\}\bigr)$ has \emph{at most} one element.
 	    \item $f$ is surjective if and only if $\forall b\in B,\ f^{-1}\bigl(\{b\}\bigr)$ has \emph{at least} one element.
 	  \end{enumerate}
+	  (\emph{Taken together: $f$ is bijective $\iff$ $f^{-1}$ is a function ($f$ is invertible).})
 	  
 	  
 		\item Prove that functional composition is associative. That is, if $f:A\to B$, $g:B\to C$, and $h:C\to D$ are functions, then for all $a\in A$ we have
