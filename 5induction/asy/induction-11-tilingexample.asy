@@ -43,9 +43,9 @@ fill(points[3][2]--points[4][2]--points[4][3]--points[3][3]--cycle, yellow);
 fill(points[3][3]--points[4][3]--points[4][4]--points[3][4]--cycle, yellow);
 fill(points[2][3]--points[3][3]--points[3][4]--points[2][4]--cycle, yellow);
             
-fill(points[2][1]--points[3][1]--points[3][2]--points[2][2]--cycle, yellow);
-fill(points[2][2]--points[3][2]--points[3][3]--points[2][3]--cycle, yellow);
-fill(points[1][2]--points[2][2]--points[2][3]--points[1][3]--cycle, yellow);
+fill(points[2][1]--points[3][1]--points[3][2]--points[2][2]--cycle, orange);
+fill(points[2][2]--points[3][2]--points[3][3]--points[2][3]--cycle, orange);
+fill(points[1][2]--points[2][2]--points[2][3]--points[1][3]--cycle, orange);
             
 fill(points[0][2]--points[1][2]--points[1][3]--points[0][3]--cycle, red);
 fill(points[1][3]--points[2][3]--points[2][4]--points[1][4]--cycle, red);

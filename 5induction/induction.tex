@@ -1,45 +1,45 @@
 \graphicspath{{5induction/asy/}}
 \section{Mathematical Induction and Well-ordering}\label{chap:induction}
 
-In Section \ref{sec:proof} we discussed three methods of proof: direct, contrapositive, and contradiction. The fourth standard method, \emph{induction,} has a very different flavor. Before giving a formal definition, we consider how the need for induction arguments often arises.
+In Section \ref{sec:proof} we discussed three methods of proof: direct, contrapositive, and contradiction. The fourth standard method, \emph{induction,} has a very different flavor. Before discussing this formally, we consider some contexts in which induction arguments often arise.
 
 \subsection{Iterative Processes \& Proof by Induction}\label{sec:induction}
 
-Recursive processes are very common in mathematics and its applications: an unknown $x_n$ satisfies a simple recurrence relation $x_{n+1}=f(x_n)$ where an initial value $x_1$ is given. The typical approach to such problems is to \emph{hypothesize} a general formula $x_n=g(n)$ (spot a pattern!), and then \emph{prove} the validity of the formula. Induction is the proof method often employed in such situations. To get us started, we investigate a famous game.
+Recursive processes are very common in mathematics and its applications: an initial value $x_1$ determines a sequence of values $(x_n)$ via a \emph{recurrence relation} $x_{n+1}=f(x_n)$. A typical approach to such problems is to \emph{hypothesize} a general formula $x_n=g(n)$---spot a pattern!---before \emph{proving} the validity of the formula. Induction is the proof method often employed in such situations. To get us started, we investigate a famous game.
 
 
 \boldsubsubsection{The Tower of Hanoi}
 
-Circular disks of decreasing radius are stacked on three pegs. Disks are moved one at a time from the top of a stack onto an empty peg or on top of a larger disk. If we start with 10 disks on the first peg, how many moves are required to transfer all disks to another peg?\smallbreak
+Circular disks of decreasing radius are stacked on three pegs. A single move consists of removing one disks from the top of a stack then placing it on an empty peg or on top of a larger disk. If we start with 10 disks on the first peg, how many moves are required to transfer all disks to another peg?\smallbreak
 
-To get a feel for the problem, try playing the game with smaller numbers of disks. Suppose $n$ disks require $r_n$ moves. Then:
+To get a feel for the problem, try playing the game with small numbers of disks. Suppose $n$ disks require $r_n$ moves. Then:
 \begin{itemize}\itemsep0pt
   \item $r_1=1$ since there is only one disk to move!
-  \item $r_2=3$ as shown in the picture.
+  \item $r_2=3$ is demonstrated in the picture.
 \end{itemize} 
 
 \begin{center}
 	\includegraphics[width=0.9\textwidth]{induction-03-hanoi2}
 \end{center}
 
-More experimentation will hopefully convince you that $r_3=7$, at which point you might be ready to hypothesize a general formula---if not, experiment more!
+Further experimentation will hopefully convince you that $r_3=7$, at which point you might be ready to hypothesize a general formula---if not, experiment more!
 
 \begin{conj}{}{hanoi}
 	The Tower of Hanoi with $n$ disks requires $r_n=2^n-1$ moves.
 \end{conj}
 
-To make progress, consider a stack of $n+1$ disks. To move the largest disk, \emph{all other disks must be stacked on a single peg.} Moving $n+1$ disks is therefore a three-step process:
+To make progress we need to think \emph{abstractly}. If we have a stack of $n+1$ disks, then to move the largest disk \emph{all others must be stacked on a single peg.} Moving $n+1$ disks to another peg is therefore a three-step process:
 \begin{enumerate}\itemsep0pt
-  \item Move the smallest $n$ disks to another peg.
-  \item Move the largest disk.
-  \item Move the remaining disks on top of the largest.
+  \item Move the smallest $n$ disks to another peg ($r_n$ moves);
+  \item Move the largest disk (one move);
+  \item Move the remaining disks on top of the largest ($r_n$ moves).
 \end{enumerate}
 \begin{center}
-\href{http://www.math.uci.edu/~ndonalds/math13/induction-01-hanoi.html}{
-	\includegraphics{induction-04-hanoirn3}\quad
-	\includegraphics{induction-04-hanoirn4}\quad
-	\includegraphics{induction-04-hanoirn5}
-}
+	\href{http://www.math.uci.edu/~ndonalds/math13/induction-01-hanoi.html}{
+		\includegraphics{induction-04-hanoirn3}\quad
+		\includegraphics{induction-04-hanoirn4}\quad
+		\includegraphics{induction-04-hanoirn5}
+	}
 \end{center}
 
 
@@ -50,43 +50,42 @@ The upshot is that $r_n$ satisfies a \emph{recurrence relation}: $r_{n+1}=r_n+1+
 We are now in a position to prove our conjecture.
 
 \begin{proof}
-	Certainly the formula $r_n=2^n-1$ holds when $n=1$ disk (1 disk requires $r_1=1$ move).\smallbreak
+	Certainly the formula $r_n=2^n-1$ holds when $n=1$ disk (one disk requires $r_1=1$ move).\smallbreak
 	Now suppose that $n$ disks require $r_n=2^n-1$ moves, where $n\in\N$ is some fixed number. Then $n+1$ disks require
 	\[
-		r_{n+1}=2r_n+1=2(2^n-1)+1 =2^{n+1}-1
+		r_{n+1}=2r_n+1=2(2^n-1)+1 =2^{n+1}-1 \tag{$\ast$}
 	\]
-	moves ($\ast$). Since $n$ was arbitrary, we have in fact proved an \emph{infinite collection of implications}: 
+	moves. Since $n$ was arbitrary, we see that we've proved an \emph{infinite family of implications}: 
 	\[
-		r_1=2^1-1\implies r_2=2^2-1\implies r_3=2^3-1 \implies \cdots \implies r_n=2^n-1\implies \cdots
+		(r_1=2^1-1)\implies (r_2=2^2-1)\implies (r_3=2^3-1) \implies \cdots \implies (r_n=2^n-1)\implies \cdots
 	\]
-	Since the first of these propositions ($r_1=2^1-1$) is true, we conclude that $r_n=2^n-1$ for all $n\in\N$.
+	Since the first proposition ($r_1=2^1-1$) holds, we conclude that all do: $r_n=2^n-1$ for all $n\in\N$.
 \end{proof}
 
-To answer the original question, 10 disk require $r_{10}=2^{10}-1=1023$ moves; at one move per second this would take 17 minutes, 3 seconds.
+To answer the original question, 10 disks require $r_{10}=2^{10}-1=1023$ moves; at one move per second this would take 17 minutes, 3 seconds.
 
 
 
 \boldsubsubsection{Proof by Induction}
 
-The Tower of Hanoi argument is an example of \emph{proof by induction.} This method is invoked when we want to prove a sequence of propositions $P(1)$, $P(2)$, $P(3)$, \ldots, one for each natural number. The abstract structure of an induction proof consists of two separate arguments:
-\begin{description}%\itemsep0pt
-  \item[\normalfont(\emph{Base case})] Prove that $P(1)$ is true.
-  \item[\normalfont(\emph{Induction step})] Prove, for each $n\in\N$, that $P(n)\Longrightarrow P(n+1)$. During this phase, $P(n)$ is termed the \emph{induction hypothesis.}
-\end{description}
+The above argument is an example of a \emph{proof by induction.} We invoke this method when we want to prove a sequence of propositions $P(1)$, $P(2)$, $P(3)$, \ldots, one for each natural number. The abstract structure of an induction proof consists of two separate arguments:
+\begin{enumerate}
+  \item \emph{Base case}:\lstsp Prove $P(1)$.
+  \item \emph{Induction step}:\lstsp Prove $P(n)\Longrightarrow P(n+1)$ (for each $n\in\N$). During this phase, $P(n)$ is termed the \emph{induction hypothesis.}
+\end{enumerate}
 The result is an infinite chain of implications:
 \[
 	P(1)\implies P(2)\implies P(3)\implies P(4)\implies P(5)\implies \cdots
 \]
-Since $P(1)$ is true (base case), \emph{all} the remaining propositions $P(2)$, $P(3)$, $P(4)$, \ldots{} are also true.\smallbreak
+Since $P(1)$ is true (base case), \emph{all} remaining propositions $P(2)$, $P(3)$, $P(4)$, \ldots{} are also true.\smallbreak
 
-Re-read the Tower of Hanoi proof; can you separate the base case and induction step? Our presentation was informal since we were only introducing the concept. For a formal argument, a few modifications should be made.
+Re-read the Tower of Hanoi proof; can you separate the base case and the induction step? Since this is an introduction, our presentation was informal. A few modifications should be made to produce a formal argument.
 
 \begin{itemize}
-  \item \emph{Set-up} the proof: orient the reader by stating, ``We prove by induction.'' It might also be helpful to spell out the propositions $P(n)$ and to tell the reader what variable ($n$) controls the induction.
-  \item Label the \emph{base case} and \emph{induction step} so the reader knows what you are doing!
+  \item \emph{Set-up} the proof by stating, ``We prove by induction.'' It might also be helpful to spell out the propositions $P(n)$ and to tell the reader what variable ($n$) controls the induction.
+  \item Label the \emph{base case} and \emph{induction step} to aid the reader.
   \item After the induction step is complete, state your \emph{conclusion.} In the above we would replace everything after ($\ast$) with, ``By mathematical induction, $r^n=2^n-1$ for all $n\in\N$.''
 \end{itemize}
-
 
 Here is a straightforward and famous result, where we write the proof in our new language.
 
@@ -94,7 +93,7 @@ Here is a straightforward and famous result, where we write the proof in our new
 	The sum of the first $n$ positive integers is $\sum\limits_{k=1}^nk=\frac 12n(n+1)$
 \end{thm}
 
-You should be familiar with summation notation $\sum\limits_{k=1}^nk=1+2+3+\cdots+n$: if not \emph{ask}!
+You should be familiar with summation notation $\sum\limits_{k=1}^nk=1+2+3+\cdots+n$ from calculus: if not, \emph{ask}.
 
 \goodbreak
 
@@ -104,15 +103,16 @@ You should be familiar with summation notation $\sum\limits_{k=1}^nk=1+2+3+\cdot
 	We prove by induction. For each $n\in\N$, let $P(n)$ be the proposition $\smash{\sum\limits_{k=1}^nk=\frac 12n(n+1)}$.
 	\begin{description}
 		\item[\normalfont\emph{Base case} ($n=1$):] \smash{$\sum\limits_{k=1}^1k=1=\frac 121(1+1)$,} says that $P(1)$ is true.
-		\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$, and assume that $P(n)$ is true \emph{for this $n$.} We compute the sum of the first $n+1$ positive integers and use our induction hypothesis $P(n)$ to simplify:
+		\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume $P(n)$ is true \textbf{for this $\pmb n$.} We compute the sum of the first $n+1$ positive integers and use the induction hypothesis $P(n)$ to simplify:
 	  \begin{align*}
-			\sum_{k=1}^{n+1}k&=\textcolor{blue}{\sum_{k=1}^nk}+(n+1)=\textcolor{blue}{\frac 12n(n+1)}+(n+1) \tag{\textcolor{blue}{induction hypothesis}}\\
+			\sum_{k=1}^{n+1}k
+			&=\textcolor{blue}{\sum_{k=1}^nk}+(n+1)=\textcolor{blue}{\frac 12n(n+1)}+(n+1) \tag{\textcolor{blue}{induction hypothesis}}\\
 			&=\left(1+\frac 12n\right)(n+1)=\frac 12(n+2)(n+1)\\
 			&=\frac 12(n+1)\bigl[(n+1)+1\bigr]
 	  \end{align*}
 	Therefore $P(n+1)$ is true.
 	\end{description}
-	By mathematical induction, we conclude that $P(n)$ is true for all $n\in\N$. That is
+	By mathematical induction, we conclude that $P(n)$ is true for all $n\in\N$. Otherwise said,
 	\[
 		\forall n\in\N,\quad \sum\limits_{k=1}^nk=\frac 12n(n+1)\tag*{\qedhere}
 	\]
@@ -120,17 +120,17 @@ You should be familiar with summation notation $\sum\limits_{k=1}^nk=1+2+3+\cdot
 
 Note how we grouped $\frac 12(n+1)\bigl[(n+1)+1\bigr]$ so that it is obviously the right hand side of $P(n+1)$.\smallbreak
 
-We present several more examples in a similar vein, but done a little faster. As is typical, we don't explicitly introduce the symbol $P(n)$, though you should feel free to continue doing this if you find it helpful. Aim for a layout like these in your formal writing. 
+We present several more examples in a similar vein, though done a little faster. As is typical, we don't explicitly introduce the notation $P(n)$, though you should feel free to continue doing so if you find it helpful. Aim to lay out your formal arguments in a similar style. 
 
 
 \begin{example}{}{ind3}
 	We prove by induction that, for all $n\in\N$,
 	\[
-		2+5+8+\cdots+(3n-1)=\frac 12n(3n+1) \tag{$\ast$}
+		2+5+8+\cdots+(3n-1)=\frac 12n(3n+1) \tag{$\dag$}
 	\]
 	\begin{description}\itemsep0pt
-		\item[\normalfont\emph{Base case} ($n=1$):] The proposition ($\ast$) is trivially true: $2=\frac 12\cdot 1\cdot(3\cdot 1+1)$.
-		\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume ($\ast$) holds for this value of $n$. Then
+		\item[\normalfont\emph{Base case} ($n=1$):] The proposition ($\dag$) is trivially true: $2=\frac 12\cdot 1\cdot(3\cdot 1+1)$.
+		\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume ($\dag$) holds for this value of $n$. Then
 		\begin{align*}
 			\textcolor{blue}{2+5+\cdots+(3n-1)}+[3(n+1)-1]&=\textcolor{blue}{\frac 12n(3n+1)}+3n+2\\
 			&=\frac 12(3n^2+7n+4) =\frac 12(n+1)(3n+4)\\
@@ -138,23 +138,27 @@ We present several more examples in a similar vein, but done a little faster. As
 		\end{align*}
 		which is the required proposition for $n+1$.
 	\end{description}
-	By mathematical induction ($\ast$) holds for all $n\in\N$.
+	By mathematical induction, ($\dag$) holds for all $n\in\N$.
 \end{example}
 
-For brevity we labelled the desired proposition (what we'd have called $P(n)$) by $(\ast)$ so it could be referenced. The structure is similar to Theorem \ref{thm:ind1}: since the goal is to evaluate a sum, the induction step is little more than adding the same thing ($3n+2$) to both sides of the \textcolor{blue}{induction hypothesis}. In fact, the example could have been proved directly by invoking Theorem \ref{thm:ind1}---can you see how?
+For brevity we labelled the desired proposition (what we'd might call $P(n)$) by $(\dag)$ so it could be referenced. The structure is similar to Theorem \ref{thm:ind1}: since the goal is to evaluate a sum, the induction step is little more than adding the same thing ($3n+2$) to both sides of the \textcolor{blue}{induction hypothesis}. In fact, the example could have been proved directly as a corollary of Theorem \ref{thm:ind1}---can you see how?
 \medbreak\goodbreak
 
-Our next two examples are a little harder, requiring more creativity to invoke the induction hypothesis. Both could alternatively be proved directly using modular arithmetic (Chapter \ref{chap:gcd}).
+Our next two examples are a little harder, requiring more creativity to invoke the induction hypothesis. Both can alternatively be proved directly using modular arithmetic (Chapter \ref{chap:gcd}).
 
 \begin{examples}{}{ind2}
-	\exstart We prove by induction that $\forall n\in\N$, the integer $17^n-4^n$ is divisible by 13.
+	\exstart We prove by induction: $\forall n\in\N$, the integer $17^n-4^n$ is divisible by 13.
 	\begin{enumerate}\setcounter{enumi}{1}
 		\item[]\begin{description}
 			\item[\normalfont\emph{Base case} ($n=1$):] Plainly $17^1-4^1$ is divisible by 13.
 			\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume that $17^n-4^n=13k$ for some $k\in\Z$. Then
 			\begin{align*}
-				17^{n+1}-4^{n+1}&=17\bigl(\textcolor{blue}{17^n}\bigr)-4^{n+1}=17\bigl(\textcolor{blue}{13k+4^n}\bigr)-4^{n+1} \tag{\textcolor{blue}{induction hypothesis}}\\
-				&=17\cdot 13k+(17-4)4^n =13\bigl(17k+4^n\bigr)
+				17^{n+1}-4^{n+1}
+				&=17\bigl(\textcolor{blue}{17^n}\bigr)-4^{n+1}
+					=17\bigl(\textcolor{blue}{13k+4^n}\bigr)-4^{n+1}
+					\tag{\textcolor{blue}{induction hypothesis}}\\
+				&=17\cdot 13k+(17-4)4^n 
+					=13\bigl(17k+4^n\bigr)
 			\end{align*}
 			is divisible by 13.
 		\end{description}
@@ -166,7 +170,8 @@ Our next two examples are a little harder, requiring more creativity to invoke t
 			\item[\normalfont\emph{Induction Step}:] Fix $n\in\N$ and assume that $\textcolor{blue}{n(n+1)(2n+1)=6k}$ for some $k\in\Z$. Then
 			\begin{align*}
 					(n+1)(n+2)\bigl[2(n+1)+1\bigr]-\textcolor{blue}{6k}&=\textcolor{blue}{(n+1)}\bigl[(n+2)(2n+3)-\textcolor{blue}{n(2n+1)}\bigr]\\
-					&=(n+1)\bigl(2n^2+7n+6-(2n^2+n)\bigr) =6(n+1)^2
+					&=(n+1)\bigl(2n^2+7n+6-(2n^2+n)\bigr)\\
+					&=6(n+1)^2
 				\end{align*}
 			from which
 			\[
@@ -181,35 +186,38 @@ Our next two examples are a little harder, requiring more creativity to invoke t
 
 \boldinline{Scratch work is your friend!}
 
-Unless things are very simple, you should build an induction argument by starting with some scratch work for the hard part: the \emph{induction step.} If you're stuck, explicitly stating the propositions $P(n)$ and $P(n+1)$ might help you see how to manipulate one into the other. Here are the propositions for Example \ref{ex:ind2}.1:
+Unless things are very simple, start with some scratch work for the hard part: the \emph{induction step.} Explicitly state the propositions $P(n)$ and $P(n+1)$ and try to manipulate one into the other. Here are the relevant propositions for Example \ref{ex:ind2}.1:
 \begin{quote}
 	\begin{tabular}{ll}
-	$P(n)$: &$17^n-4^n=13k$ for some integer $k$\\[5pt]
-	$P(n+1)$: &$17^{n+1}-4^{n+1}=13l$ for some integer $l$
+		$P(n)$: &$\exists k\in\Z$ such that $17^n-4^n=13k$\\[5pt]
+		$P(n+1)$: &$\exists l\in\Z$ such that $17^{n+1}-4^{n+1}=13l$
 	\end{tabular}
 \end{quote}
-Since $17^n$ is common to both, you could try multiplying both sides of $P(n)$ by 17; if you re-read the example, you'll see that this is essentially the induction step! For Example \ref*{ex:ind2}.2, you might try multiplying out the cubic expressions
+Since $17^n$ is common to both, it is natural to try multiplying both sides of the equation in $P(n)$ by 17; if you re-read the example, you'll see that this is essentially the induction step! For Example \ref*{ex:ind2}.2, you might try multiplying out the cubic expressions
 \[
 	n(n+1)(2n+1)\ \text{ and }\ (n+1)(n+2)(2n+3)
 \]
 and comparing coefficients. Since the leading term in both is $n^3$, the \emph{difference} is quadratic and therefore much easier to think about\ldots\smallbreak
 
-Remember that scratch work isn't a proof; while your scratch work may make perfect sense to you, if a reader cannot follow it without assistance, then it isn't a proof! It is essential, once you think you understand the induction step, to lay out the entire proof cleanly: \emph{set-up, base case, induction step, conclusion.} As an example of what happens when you don't, here is a typical attempt at Example \ref{ex:ind3} by a student who is new to induction:
+Remember that scratch work isn't a proof; while it might make perfect sense to you, it isn't a proof unless a reader can follow it without assistance. Once you think you understand the induction step, lay out the entire proof cleanly: \emph{set-up, base case, induction step, conclusion.} As an example of what happens when you don't, here is a typical attempt at Example \ref{ex:ind3} by someone new to induction:
 
 \begin{tcolorbox}[exstyle]\vspace{-10pt}
 	\begin{align*}
-		P(n+1)=\hspace{4pt}&2+5+\cdots+(3n-1)+[3(n+1)-1] =\smash{\frac 12}(n+1)\bigl[3(n+1)+1\bigr]\\
+		P(n+1)=\hspace{4pt}
+		&2+5+\cdots+(3n-1)+[3(n+1)-1] =\smash{\frac 12}(n+1)\bigl[3(n+1)+1\bigr]\\
 		&\frac 12n(3n+1)+(3n+2) =\frac 12(n+1)(3n+4)\\
 		&3n^2+n+6n+4 =3n^2+7n+4
 	\end{align*}
 \end{tcolorbox}
 
-Is this convincing to you? While there are many issues,\footnote{\textbullet\lstsp $P(n)$ There is no \emph{set-up, base case} or \emph{conclusion} and the word \emph{induction} is missing. The argument needs some English!
-\begin{itemize}\itemsep0pt
-  \item $P(n)$ has not been \emph{defined}. If you don't define it, don't write it!
-  \item $P(n+1)$ is a \emph{proposition}: it cannot \emph{equal} a number! Replacing ``$P(n+1)=$'' with ``$P(n+1)\Longleftrightarrow$'' would correct this.
-  \item There are no conditional connectives to indicate the logical flow. Moreover, read top to bottom, the argument is essentially $P(n)\wedge P(n+1)\implies T$, rather than the correct induction step $P(n)\implies P(n+1)$.
-\end{itemize}} the student's work isn't without merit, since the required calculation is present (left side of 1\st{} line $=$ left side of 2\nd). While helpful as scratch work, a substantial re-write is needed to make this convincing.
+Is this a good argument? While there are many issues,\footnote{%
+	\textbullet\lstsp There is no \emph{set-up, base case} or \emph{conclusion}, and the word \emph{induction} is missing. The argument also needs some English.
+	\begin{itemize}\itemsep0pt
+	  \item $P(n)$ has not been \emph{defined}. If you don't define it, don't write it.
+	  \item $P(n+1)$ is a \emph{proposition}: it cannot \emph{equal} a number! Replacing ``$P(n+1)=$'' with ``$P(n+1)\Longleftrightarrow$'' would correct this.
+	  \item There are no conditional connectives to indicate the logical flow. Moreover, read top to bottom, the argument is essentially $P(n)\wedge P(n+1)\Longrightarrow T$, rather than the correct induction step $P(n)\Longrightarrow P(n+1)$.
+	\end{itemize}
+} the work isn't without merit: the required calculation is present (left side of 1\st{} line $=$ left side of 2\nd). While helpful as scratch work, a substantial re-write is needed to make this convincing to a reader.
 \medbreak
 
 We finish this section with a trickier example of this thinking at work.
@@ -221,9 +229,9 @@ We finish this section with a trickier example of this thinking at work.
 			If \textcolor{Magenta}{any} single square is removed from a $2^n\times 2^n$ square gird, then the remaining grid may be tiled by L-shaped trominos.
 		\end{quote}
 		\vspace{-6pt}
-		The claim has the form $\forall n\in\N,P(n)$, but note that $P(n)$ is itself \textcolor{Magenta}{universal}. The picture shows one of the \emph{sixteen} possible examples when $n=2$. To get an idea of how to structure the induction step, think how you might use $2\times 2$ grids to analyse a $4\times 4$ grid. The picture shows how!
+		The claim has the form $\forall n\in\N,P(n)$, but note that $P(n)$ is itself \textcolor{Magenta}{universal}. The picture shows one of the \emph{sixteen} possible examples when $n=2$. To get an idea of how to structure the induction step, think how you might use $2\times 2$ grids to analyse a $4\times 4$ grid: the picture shows how!
 		\begin{itemize}
-		  \item Whatever square we remove, one quarter of the $2^2\times 2^2$ grid is a $2^1\times 2^1$ grid with one square removed: this is \textcolor{blue}{tilable}.
+		  \item Whatever square we remove, one quarter of the $2^2\times 2^2$ grid is a $2^1\times 2^1$ grid with one square removed: this is tilable (the \textcolor{blue}{blue tromino}).
 		\end{itemize}
 	\end{minipage}
 	\hfill
@@ -232,19 +240,19 @@ We finish this section with a trickier example of this thinking at work.
 	\end{minipage}
 	\par
 
-\vspace{-2pt}
+	\vspace{-2pt}
 		
 	\begin{itemize}
-	 	\item Place a single tromino (yellow in the picture) so that one of its squares lies in each remaining quadrant. What's left of each quadrant is a $2^1\times 2^1$ grid with one missing square: again tilable.
+	 	\item Place a single tromino (\textcolor{orange}{orange} in the picture) so that one of its squares lies in each remaining quadrant. What's left of each quadrant is a $2^1\times 2^1$ grid with one missing square: again tilable.
 	\end{itemize}
 	
 	This scratch work is really an argument $P(1)\Longrightarrow P(2)$! It remains only to formalize this intuition into a general proof. We proceed by induction on $n$.
 	\begin{description}
 		\item[\normalfont\emph{Base case} ($n=1$):] If a single square is removed from a $2\times 2$ grid, the three remaining squares form single L-shaped tromino.
-		\item[\normalfont\emph{Induction step}:] Fix $n\in\N$ and assume that after removing \emph{any} square from any $2^n\times 2^n$ grid, the remainder is tilable. Now take any $2^{n+1}\times 2^{n+1}$ grid and remove a square.
+		\item[\normalfont\emph{Induction step}:] Fix $n\in\N$ and assume that after removing \emph{any} square from \emph{any} $2^n\times 2^n$ grid, the remainder is tilable. Now take any $2^{n+1}\times 2^{n+1}$ grid and remove a square.
 	\begin{itemize}
-	  \item By the induction hypothesis, the $2^n\times 2^n$ quadrant with the removed square is tilable.
-	  \item Place a single tromino in the center so that one of its squares lies in each remaining quadrant. What's left of each quadrant is a $2^n\times 2^n$ grid with one missing square: again tilable by the induction hypothesis.
+	  \item By the induction hypothesis, the $2^n\times 2^n$ quadrant containing the removed square is tilable.
+	  \item Place a single tromino in the center so that one of its squares lies in each remaining quadrant. What's left of each quadrant is a $2^n\times 2^n$ grid with one missing square, each of which is tilable by the induction hypothesis.
 	\end{itemize}  
 	\end{description}
 	By induction, we conclude that every $2^n\times 2^n$ grid is tilable by trominos after any square is removed.
@@ -257,7 +265,7 @@ We finish this section with a trickier example of this thinking at work.
 	A reading quiz and several questions with linked video solutions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/5-1-induction.html}{online}.
 
 	\begin{enumerate}
-	  \item Suppose you can move one disk on the Tower of Hanoi per second.
+	  \item Suppose you move one disk on the Tower of Hanoi per second.
 	  \begin{enumerate}
 	    \item One of the oldest versions of the problem has monks transferring a tower of 64 disks. Roughly how many years would this take?
 	    \item In a realistic human lifetime, how large a tower could be moved?
@@ -282,11 +290,12 @@ We finish this section with a trickier example of this thinking at work.
 	    \item In Example \ref*{ex:ind2}.\ref{ex:ind22}, what is the proposition $P(n+1)$?
 	    \item In the induction step of Example \ref*{ex:ind2}.\ref{ex:ind22}, explain why it would be incorrect to write
 	    \begin{align*}
-				P(n+1)-P(n)&=(n+1)\bigl[(n+2)(2n+3)-n(2n+1)\bigr]\\
+				P(n+1)-P(n)
+				&=(n+1)\bigl[(n+2)(2n+3)-n(2n+1)\bigr]\\
 				&=(n+1)(2n^2+7n+6-2n^2-n)\\
 				&=6(n+1)^2
 			\end{align*}
-			\item Extend the Example by proving, by induction, that $\sum\limits_{k=1}^nk^2=\frac 16n(n+1)(2n+1)$.
+			\item Extend the Example: prove by induction that $\sum\limits_{k=1}^nk^2=\frac 16n(n+1)(2n+1)$.
 	  \end{enumerate}
   
   
@@ -357,7 +366,8 @@ We finish this section with a trickier example of this thinking at work.
 
 		\item Consider the following scratch work. Determine what result is being proved, then convert the scratch work into a formal proof of that result.
 	  \begin{align*}
-	    (1+x)^{n+1}&=(1+x)^n(1+x)\ge (1+nx)(1+x)\\
+	    (1+x)^{n+1}
+	    &=(1+x)^n(1+x)\ge (1+nx)(1+x)\\
 	    &=1+x+nx+nx^2=1+(n+1)x+nx^2\\
 	    &\ge 1+(n+1)x
 	  \end{align*}
@@ -373,16 +383,16 @@ We finish this section with a trickier example of this thinking at work.
 \subsection{Well-ordering and the Principle of Mathematical Induction}\label{sec:wellorder}
 
 
-In this section we think more carefully about the logic behind induction, by tying it to a fundamental property of the natural numbers.
+In this section we think more carefully about the logic behind induction, and tie it to a fundamental property of the natural numbers.
 
 \begin{defn}{}{wellorder}
 	A non-empty set of real numbers $A$ is \emph{well-ordered} if every non-empty subset of $A$ contains a minimum element.
 \end{defn}
 
-To test if a set $A$ is well-ordered, we need to check \emph{all} of its non-empty subsets. The definition could be written as equivalently as follows, where in the second line we expand what is meant by a \emph{minimum}:
+To test if a set $A$ is well-ordered, we need to check \emph{all} of its non-empty subsets. The definition could be written as equivalently as follows (in the second line we expand what is meant by a \emph{minimum}):
 \begin{itemize}
-  \item $\forall B\subseteq A$ such that $B\neq\emptyset$, $\min B$ exists.
-  \item $\forall B\subseteq A$, $B\neq\emptyset\implies \exists b\in B$ such that $\forall x\in B$, $b\le x$.
+  \item If $B\subseteq A$ and $B\neq\emptyset$, then $\min B$ exists.
+  \item $\bigl((B\subseteq A)\wedge (B\neq\emptyset)\bigr)\implies \bigl(\exists b\in B,\ \forall x\in B, \ b\le x\bigr)$
 \end{itemize}
 To show that $A$ is \emph{not} well-ordered, we need only exhibit a non-empty subset $B$ with \emph{no minimum.}
 
@@ -391,26 +401,28 @@ To show that $A$ is \emph{not} well-ordered, we need only exhibit a non-empty su
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item[] Can you justify this fact \emph{without} listing the subsets? It might be easier to think about why any \emph{finite} set $A=\{a_1,\ldots,a_n\}\subseteq\R$ is well-ordered\ldots 
 	  
-	  \item The interval $A=[3,10)$ is not well-ordered. Indeed $B=(3,4)$ is a non-empty subset which has no minimum element. While you should believe this, let's prove it anyway!\par
+	  \item The interval $A=[3,10)$ is not well-ordered. Indeed $B=(3,4)$ is a non-empty subset with no minimal element. While you should believe this, let's prove it anyway!\par
 	  We need to prove that $\forall b\in B, \exists x\in B$ with $x<b$. Given any $b\in(3,4)$, observe that $x:=\frac{b+3}2$ satisfies
 	  \[
 	  	3<x<b<4 \quad\text{from which}\quad x\in B\text{ and }x<b
 	  \]
-	  You could also argue by contradiction (if $b\in B$ is $\min B$, then\ldots).
+	  You could also argue by contradiction (if $b\in B$ is minimal, then\ldots).
 	  
-	  \item The integers $\Z$ are not well-ordered. For instance, $\Z$ is a non-empty subset of itself and there is no minimum integer.
+	  \item The integers $\Z$ are not well-ordered. For instance, $\Z$ is a non-empty subset of itself and there is no minimal integer.
 	\end{enumerate}
 \end{examples}
 
-You might suspect (wrongly!) that every well-ordered set is finite. That the natural numbers form a well-ordered \emph{infinite} set is, for us, an axiom:
-\footnote{There are many ways to define the natural numbers. Typically well-ordering is either an axiom (essentially part of the definition) or a theorem. Compare with Exercise \ref{exs:peano} for an alternative approach.} a foundational claim that forms part of our basic conception of the natural numbers.
+You might suspect (wrongly!) that every well-ordered set is finite. That the natural numbers form a well-ordered \emph{infinite} set is, for us, an axiom,\footnote{%
+	There are many ways to define the natural numbers. Typically well-ordering is either an axiom (essentially part of the definition) or a theorem. Compare with Exercise \ref{exs:peano} for an alternative approach.
+}
+a foundational claim forming part of our basic conception of the natural numbers.
 
 \begin{axiom}{Well-ordering Principle}{}
 	$\N$ is well-ordered.
 \end{axiom}
 
 
-Also known as the \emph{least natural number principle}, the well-ordering principle is used repeatedly in mathematics. In fact we've already done so in this text! Consider the set of positive remainders generated by the Euclidean algorithm (Theorem \ref{thm:euclidalg}) applied to $a>b\in\N$:
+Also known as the \emph{least natural number principle}, well-ordering is applied widely throughout mathematics. In fact we've already done so in this text! Consider the set of positive remainders generated by the Euclidean algorithm (Theorem \ref{thm:euclidalg}) when applied to natural numbers $a>b$:
 \[
 	\{\ldots,r_2,r_1,b,a\}\subseteq\N
 \]
@@ -422,14 +434,14 @@ Well-ordering guarantees that this set has a minimal element $r_t$ (which turns 
 % \[
 % 	A=\left\{0,\frac 12,\frac 23,\frac 34,\frac 45,\ldots\right\}=\left\{\frac n{n+1}:n\in\N\right\}
 % \]
-Armed with this axiom, we can justify the method of proof by induction. 
+Armed with the well-ordering principle, we can justify the method of proof by induction. 
 
 \begin{thm}{Principle of Mathematical Induction}{ind}
-	For each $n\in\N$, let $P(n)$ be a proposition. Additionally make the two standard assumptions for induction:
+	For each $n\in\N$, let $P(n)$ be a proposition. Additionally make the two standard assumptions:
 	\begin{quote}
 		\begin{tabular}{@{}ll}
-			\emph{Base case}: &$P(1)$ is true\\[5pt]
-			\emph{Induction step}: &$\forall n\in\N,\ P(n)\Longrightarrow P(n+1)$
+			Base case: &$P(1)$ is true\\[5pt]
+			Induction step: &$\forall n\in\N,\ P(n)\Longrightarrow P(n+1)$
 		\end{tabular}
 	\end{quote}
 	Then $P(n)$ is true for all $n\in\N$.
@@ -437,7 +449,7 @@ Armed with this axiom, we can justify the method of proof by induction.
 
 Before attempting a proof, consider how the theorem could be written as a pure implication:
 \[
-	\textcolor{blue}{P(1)\wedge\bigl(\forall n\in\N,P(n)\Longrightarrow P(n+1)\bigr)}\Longrightarrow \textcolor{Green}{\bigl(\forall n\in\N, P(n)\bigr)}
+	\textcolor{blue}{P(1)\wedge\bigl(\forall n\in\N,P(n)\Longrightarrow P(n+1)\bigr)}\implies \textcolor{Green}{\bigl(\forall n\in\N, P(n)\bigr)}
 \]
 This helps us select a proof strategy: a direct approach seems hard since the \textcolor{Green}{conclusion} is universal; a contrapositive approach requires an ugly negation of the \textcolor{blue}{hypothesis}; a proof by contradiction seems most sensible since negation of the \textcolor{Green}{conclusion} is straightforward.
 
@@ -446,11 +458,11 @@ This helps us select a proof strategy: a direct approach seems hard since the \t
 	\[
 		S:=\bigr\{k\in\N:P(k)\text{ is false}\bigr\}
 	\]
-	is non-empty (since $n\in S$). Well-ordering guarantees that $s:=\min S$ exists. Observe:
+	is therefore non-empty ($n\in S$). Well-ordering guarantees that $s:=\min S$ exists. Observe:
 	\begin{itemize}\itemsep0pt\parskip2pt
 	  \item $s\in S\Longrightarrow$ \textcolor{red}{$P(s)$ is \emph{false}}.
-	  \item The \emph{base case} tells us that $s\neq 1$, whence $s-1\in\N$.
-	  \item $s-1<\min S\implies P(s-1)$ is \emph{true.}
+	  \item The \emph{base case} tells us that $s\neq 1$. Thus $s\ge 2$ and $s-1\in\N$.
+	  \item $s-1<\min S\Longrightarrow P(s-1)$ is \emph{true.}
 	  \item The \emph{induction step} ($P(s-1)\Longrightarrow P(s)$) tells us that \textcolor{red}{$P(s)$ is \emph{true}}.
 	\end{itemize}
 	\textcolor{red}{Contradiction}: $P(s)$ cannot be both true and false!
@@ -467,8 +479,8 @@ is also well-ordered. By changing the base case to $P(m)$ and replacing $\N$ wit
 	Fix an integer $m$. For each integer $n\ge m$, let $P(n)$ be a proposition. Suppose:
 	\begin{quote}
 		\begin{tabular}{@{}ll}
-			\emph{Base case}: &$P(m)$ is true\\[5pt]
-			\emph{Induction step}: &$\forall n\in\Z_{\ge m},\ P(n)\Longrightarrow P(n+1)$
+			Base case: &$P(m)$ is true\\[5pt]
+			Induction step: &$\forall n\in\Z_{\ge m},\ P(n)\Longrightarrow P(n+1)$
 		\end{tabular}
 	\end{quote}
 	Then $P(n)$ is true for all $n\in\Z_{\ge m}$.
@@ -480,12 +492,10 @@ The intuitive concept is exactly as before, just with a different base case!
 \]
 \goodbreak
 
-% As long as you explicitly prove the first claim in the sequence, and you show the induction step, then all the propositions are true.\par
-
 
 
 \begin{examples}{}{}
-	\exstart For all integers $n\ge 2$, we have\footnotemark
+	\exstart For all integers $n\ge 2$, we prove that\footnotemark
 	\[
 		\sum\limits_{k=2}^n\frac 1{k(k-1)} =1-\frac 1n\tag{$\ast$}
 	\]	
@@ -494,23 +504,27 @@ The intuitive concept is exactly as before, just with a different base case!
 			\item[\normalfont\emph{Base case} ($n=2$):] When $n=2$, ($\ast$) reads $\smash{\sum\limits_{i=2}^2}\frac 1{i(i-1)}=\frac 12=1-\frac 12$.
 			\item[\normalfont\emph{Induction step}:] Assume that ($\ast$) is true for some fixed $n\ge 2$. Then
 			\begin{align*}
-				\sum_{i=2}^{n+1}\frac 1{k(k-1)} &=\sum_{i=2}^{n}\frac 1{k(k-1)}+\frac 1{(n+1)n} =1-\frac 1n+\frac 1{n(n+1)}\tag{induction hypothesis}\\
-				&=1-\frac{(n+1)-1}{n(n+1)} =1-\frac 1{n+1}
+				\sum_{i=2}^{n+1}\frac 1{k(k-1)}
+				&=\sum_{i=2}^{n}\frac 1{k(k-1)}+\frac 1{(n+1)n} 
+					=1-\frac 1n+\frac 1{n(n+1)}
+					\tag{induction hypothesis}\\
+				&=1-\frac{(n+1)-1}{n(n+1)}
+					=1-\frac 1{n+1}
 			\end{align*}
-			which is exactly ($\ast$) when $n$ is replaced by $n+1$.
+			which is precisely ($\ast$) when $n$ is replaced by $n+1$.
 		\end{description}
-		By induction ($\ast$) holds for all integers $n\ge 2$.
+		By induction, ($\ast$) holds for all integers $n\ge 2$.
 	
 	  \item For all integers $n\ge 4$, we claim that $3^n>n^3$.\par
-	  We really need a different base case: when $n=3$, the claim $3^3>3^3$ is false! As is often the case, it helps to do some scratch work first. The \textcolor{blue}{induction hypothesis} allows us to see that 
+	  We really do need the given base case: when $n=3$, the claim $3^3>3^3$ is false! As is often the case, it helps to do some scratch work. The \textcolor{blue}{induction hypothesis} allows us to see that 
 	  \[
 	  	3^{n+1}=3\cdot \textcolor{blue}{3^n} >3 \textcolor{blue}{n^3}
 	  \] 
-	  The proof of the induction step therefore hinges on being able to show that $3n^3\ge (n+1)^3$. There are many ways to convince yourself of this: for instance
+	  The proof of the induction step thus hinges on being able to show that $3n^3\ge (n+1)^3$. There are many ways to convince yourself of this, for instance
 	  \[
 	  	3n^3\ge(n+1)^3\iff 3\ge\left(\frac{n+1}n\right)^3 =\left(1+\frac 1n\right)^3 \tag{$\dag$}
 	  \]
-	  The right side \emph{decreases} as $n$ increases; since $n\ge 4$, the right side is at most $\left(\frac 54\right)^3=\frac{125}{64}<2$, whence ($\ast$) holds for all $n\ge 4$.\smallbreak
+	  The right side \emph{decreases} as $n$ increases; since $n\ge 4$, the right side is at most $\left(\frac 54\right)^3=\frac{125}{64}<2$, whence ($\dag$) holds for all $n\ge 4$.\smallbreak
 	  
 	  We now prove the original claim by induction.	  
 	  \begin{description}
@@ -525,17 +539,20 @@ The intuitive concept is exactly as before, just with a different base case!
 \end{examples}
 
 
-\footnotetext{You might have encountered this example as a \emph{telescoping series} in calculus:
-\[
-	\sum\limits_{k=2}^n\frac 1{k(k-1)}=\frac 1{2\cdot 1}+\frac 1{3\cdot 2}+\cdots +\frac 1{n(n-1)} =\left(1-\frac 12\right) +\left(\frac 12-\frac 13\right) +\cdots +\left(\frac 1{n-1}-\frac 1n\right) =1-\frac 1n
-\]
-In calculus, you'd take the limit as $n\to\infty$ to obtain the infinite series $\sum\limits_{k=2}^\infty\frac 1{k(k-1)}=1$}
+\footnotetext{%
+	You might have encountered this example in calculus as a \emph{telescoping series}:
+	\[
+		\sum\limits_{k=2}^n\frac 1{k(k-1)}=\frac 1{2\cdot 1}+\frac 1{3\cdot 2}+\cdots +\frac 1{n(n-1)} =\left(1-\frac 12\right) +\left(\frac 12-\frac 13\right) +\cdots +\left(\frac 1{n-1}-\frac 1n\right) =1-\frac 1n
+	\]
+	Taking the limit as $n\to\infty$ results in $\smash{\sum\limits_{k=2}^\infty\frac 1{k(k-1)}=1}$. Induction does this without the ambiguous ellipses ($\cdots$).
+}
 
 
-As a final example, we prove an extended version of de Morgan's law for sets (Theorem \ref{thm:setcomp}(a)).
+\goodbreak
+
 
 \begin{example}{}{}
-	For any collection of sets $A_1,\ldots,A_n$ where $n\ge 2$, we have
+	We prove an extended version of de Morgan's law for sets (Theorem \ref{thm:setcomp}(a)): for any collection of sets $A_1,\ldots,A_n$ where $n\ge 2$, we have
 	\[
 	 	\comp{(A_1\cap \cdots\cap A_n)}=\comp{A_1}\cup\cdots\cup\comp{A_n} \tag{$\ddag$}
 	\]
@@ -543,19 +560,21 @@ As a final example, we prove an extended version of de Morgan's law for sets (Th
 		\item[\normalfont\emph{Base case} ($n=2$):] $\comp{A_1\cap A_2}=\comp{A_1}\cup\comp{A_2}$ is precisely the standard de Morgan identity.
 		\item[\normalfont\emph{Induction step}:] Fix $n\in\N_{\ge 2}$ and suppose ($\ddag$) holds for \emph{all} collections of $n$ sets. Given a collection of $n+1$ sets, we see that
 		\begin{align*}
-			\comp{(A_1\cap \cdots\cap A_n\cap A_{n+1})} &=\comp{\bigl((A_1\cap \cdots\cap A_n)\cap A_{n+1}\bigr)}\\
+			\comp{(A_1\cap \cdots\cap A_n\cap A_{n+1})}
+			&=\comp{\bigl((A_1\cap \cdots\cap A_n)\cap A_{n+1}\bigr)}\\
 			&=\comp{(A_1\cap \cdots\cap A_n)}\cup \comp{A_{n+1}} \tag{de Morgan again!}\\
 			&=\comp{A_1}\cup\cdots\cup\comp{A_n}\cup\comp{A_{n+1}} \tag{induction hypothesis}
 		\end{align*}
 	\end{description}
-	By induction the claim ($\ddag$) holds for any collection of $n$ sets.
+	By induction, the claim ($\ddag$) holds for any collection of $n$ sets.
 \end{example}
 
-We could have approached the argument as a standard induction with base case $n=1$. Instead we deliberately chose the base case $n=2$, both to avoid confusion (the trivial $\comp{A_1}=\comp{A_1}$ isn't helpful or interesting) and to highlight the importance of de Morgan's law for two sets to the entire argument.
+We could have approached the argument as a standard induction with base case $n=1$. Instead we deliberately chose $n=2$, both to avoid confusion (the $n=1$ case $\comp{A_1}=\comp{A_1}$ isn't helpful or interesting) and to highlight the importance of de Morgan's law for two sets to the entire argument.
+
 
 \boldsubsubsection{Proof by Minimal Counter-example}
 
-Sometimes authors present induction arguments as contradiction proofs in line with Theorem \ref{thm:ind}: the element $s=\min S$ is known as the \emph{minimal counter-example.} Here are two variations on this idea; the first is a straight translation of an induction where the base case and induction step are clear.
+Sometimes authors present induction arguments as contradiction proofs in the style of Theorem \ref{thm:ind}, with $s=\min S$ being known as the \emph{minimal counter-example.} Here are two variations on this idea; the first is a straight translation of an induction where the base case and induction step are clear.
 
 \begin{examples}{}{}
 	\exstart We prove: for all $n\in\N_0$, $\sum\limits_{k=0}^n 2^k=2^{n+1}-1$.\vspace{-10pt}
@@ -563,12 +582,12 @@ Sometimes authors present induction arguments as contradiction proofs in line wi
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item[]Suppose to the contrary and let $s\ge 0$ be the minimal counter-example.
 	  \begin{itemize}
-	    \item Since $\smash{\sum\limits_{k=0}^0} 2^k=2^0=1=2^{0+1}-1$, we see that $s\neq 0$.\hfill (\emph{base case})
-	    \item But then
+	    \item Since $\smash[t]{\sum\limits_{k=0}^0} 2^k=2^0=1=2^{0+1}-1$, we see that $s\neq 0$.\hfill (\emph{base case})
+	    \item Since the claim holds for $s-1$, we see that
 	    \[
 	    	\sum\limits_{k=0}^s2^k=2^s+\sum\limits_{k=0}^{s-1} 2^k =2^s+2^s-1=2^{s+1}-1 \tag{\emph{induction step}}
 	    \]
-	    contradicts the fact that $s$ is a counter-example!
+	    This contradicts the fact that $s$ is a counter-example!
 	  \end{itemize} 
 	  
 	  
@@ -576,11 +595,11 @@ Sometimes authors present induction arguments as contradiction proofs in line wi
 	  \[
 	  	S=\bigl\{x\in\N:\exists y\in \N\text{ with }x^2=2y^2\bigr\}
 	  \]
-	  Let $s=\min S$ and $t\in\N$ be such that $s^2=2t^2$: plainly $\textcolor{red}{t<s}$. Since $s^2$ even $\Longrightarrow s$ even, we can write $s=2k$, from which
+	  If $S$ is non-empty, let $s=\min S$, and let $t\in\N$ be such that $s^2=2t^2$. Plainly $\textcolor{red}{t<s}$. Since $s^2$ is even, $s$ is also even, and we can write $s=2k$. But then
 	  \[
-	  	4k^2=2t^2\implies n^2=2k^2\implies \textcolor{red}{t\in S}
+	  	4k^2=2t^2\implies t^2=2k^2\implies \textcolor{red}{t\in S}
 	  \]
-	  This contradicts the minimality of $m$.\par
+	  But this contradicts the minimality of $s$.\par
 	  This approach is often used in number theory in the guise of Fermat's \emph{method of infinite descent.}
 	\end{enumerate}
 \end{examples}
@@ -837,20 +856,20 @@ Sometimes authors present induction arguments as contradiction proofs in line wi
 
 \subsection{Strong Induction}\label{sec:strongind}
 
-The principle of mathematical induction (Theorem \ref{thm:ind}) is often known as \emph{weak} induction. The primary difference with \emph{strong} induction is that the induction step assumes more than one proposition.
+The principle of mathematical induction (Theorem \ref{thm:ind}) is often known as \emph{weak} induction. \emph{Strong} induction differs primarily in that the induction step can assume more than one previous proposition.
 
 \begin{thm}{Principle of Strong Induction}{indstrong}
 	Let $l\ge m$ be fixed integers and suppose $P(n)$ is a proposition, one for each $n\in\Z_{\ge m}$. Suppose:
 	\begin{quote}
 		\begin{tabular}{@{}ll}
-			\emph{Base case(s)}: &$P(m),P(m+1),\ldots,P(l)$ are true\\[5pt]
-			\emph{Induction step}: &$\forall n\ge l,\ \bigl(P(m)\wedge P(m+1)\wedge\cdots\wedge P(n)\bigr)\Longrightarrow P(n+1)$
+			Base case(s): &$P(m),\ P(m+1),\ \ldots,\ P(l)$ are true\\[5pt]
+			Induction step: &$\forall n\ge l,\ \bigl(P(m)\wedge P(m+1)\wedge\cdots\wedge P(n)\bigr)\Longrightarrow P(n+1)$
 		\end{tabular}
 	\end{quote}
 	Then $P(n)$ is true for all $n\ge m$.
 \end{thm}
 
-Exercise \ref{exs:strongindproof} provides a proof by showing that strong and weak induction are equivalent. We instead concentrate on a few examples. The main additional challenge of strong induction lies in determining how many base cases are required and in identifying precisely how to phrase the induction hypothesis: in practice one rarely needs to use all the propositions $P(m),\ldots,P(n)$ explicitly.
+Exercise \ref{exs:strongindproof} provides a proof by showing that strong and weak induction are equivalent. We instead concentrate on a few examples. The additional difficulty of strong induction comes from determining how many base cases are required and in phrasing the induction hypothesis: in practice one rarely needs to employ all the propositions $P(m),\ldots,P(n)$.
 
 
 \begin{example}{Fibonacci numbers}{fibonacci}
@@ -865,7 +884,7 @@ Exercise \ref{exs:strongindproof} provides a proof by showing that strong and we
 	\[
 		\tcbhighmath{\forall n\in\N,\ f_n<2^n}
 	\]
-	We prove this using strong induction. \emph{Two base cases} are suggested since the sequence is defined by two initial conditions ($f_1=f_2=1$): in the language of the Theorem, $m=1$ and $l=2$. Moreover, the fact that each term from $f_3$ onwards is the sum of its \emph{two predecessors} suggests that the induction step requires the explicit use of two propositions.
+	We prove this using strong induction. \emph{Two base cases} are suggested since the sequence is defined by two initial conditions ($f_1=f_2=1$): in the language of the Theorem, $m=1$ and $l=2$. Moreover, the fact that each term from $f_3$ onwards is the sum of its \emph{two predecessors} suggests that the induction step requires only the explicit use of two propositions.
 	\begin{quote}
 		\begin{proof}
 			\begin{description}
@@ -878,16 +897,18 @@ Exercise \ref{exs:strongindproof} provides a proof by showing that strong and we
 			By induction, $f_n<2^n$ for all $n\in\N$.
 		\end{proof}
 	\end{quote}
-	The Fibonacci numbers satisfy many identities which can often be established by induction (e.g., Exercises \ref{exs:fib} \& \ref{exs:fib2}).
+	The Fibonacci numbers satisfy many identities which can often be established by induction (see, for instance, Exercises \ref{exs:fib} \& \ref{exs:fib2}).
 \end{example}
 
 \vspace{-5pt}
 
-\footnotetext{To follow Theorem \ref{thm:indstrong} precisely, we would assume that $f_k<2^k$ for \emph{all} $k\le n$. Feel free to write this if you like, though our phrasing is more typical. Since we only make explicit use of two cases in the induction step, it is clearer to state these concretely rather than introducing a new variable $k$.}
+\footnotetext{%
+	To follow Theorem \ref{thm:indstrong} precisely, we should assume that $f_k<2^k$ for \emph{all} $k\le n$. Do so if you like, though our phrasing is more typical. Since we only make explicit use of two cases in the induction step, it is clearer to state these concretely rather than introducing the new variable $k$.%
+}
 
 \goodbreak
 
-Before seeing further examples, it is instructive to consider why we really needed strong induction to prove our Fibonacci example. Here are two broken attempts to prove the claim by weak induction.
+It is instructive to consider why we really needed strong induction to prove our Fibonacci example. Here are two broken attempts to prove the claim by weak induction.
 
 \begin{proof}[Broken Proof A]
 	\begin{description}
@@ -899,9 +920,12 @@ Before seeing further examples, it is instructive to consider why we really need
 	\end{description} 
 \end{proof}
 
-\footnotetext{The induction step requires $n\ge 2$ so as to invoke the recurrence relation: $f_{n+1}=f_n+f_{n-1}$ is meaningless when $n=1$ ($f_{n-1}=f_0$ doesn't exist).}
-	
-What is the problem? The induction hypothesis assumes $f_n<2^n$, but not anything about $f_{n-1}$: we are stuck! Let's correct this flaw by making the induction hypothesis as in the correct proof.
+\footnotetext{%
+	The induction step requires $n\ge 2$: since $f_{n-1}=f_0$ doesn't exist, $f_{n+1}=f_n+f_{n-1}$ is meaningless when $n=1$.%
+}
+
+
+What is the problem? The induction hypothesis assumes $f_n<2^n$, but nothing about $f_{n-1}$: we are stuck! Let's correct this flaw by making the induction hypothesis as in the correct proof.
 
 \begin{proof}[Broken Proof B]
 	\begin{description}
@@ -922,7 +946,7 @@ We haven't proved enough base cases to get us started: the single base case esta
 \[
 	P(1)\wedge P(2)\Longrightarrow P(3),\quad P(3)\wedge P(4)\Longrightarrow P(5),\quad P(4)\wedge P(5)\Longrightarrow P(6),\ \ldots
 \]
-but we can only get the process started if we prove \emph{both} base cases $P(1)$ \emph{and} $\textcolor{red}{P(2)}$.\smallbreak
+but the process only gets started if we prove \emph{both} base cases $P(1)$ \emph{and} $\textcolor{red}{P(2)}$.\bigbreak
 
 The moral here is to try the induction step as scratch work. Your attempt should tell you \emph{if} you need strong induction and \emph{how many} base cases are required.
 
@@ -941,10 +965,13 @@ The moral here is to try the induction step as scratch work. Your attempt should
 		\begin{proof}
 			\begin{description}
 				\item[\normalfont\emph{Base cases} ($n=0,1$):] $a_0=0=3^0-2^0$ and $a_1=1=3^1-2^1$.
-				\item[\normalfont\emph{Induction step}:] Fix $n\ge 1$ and suppose that$a_k=3^k-2^k$ for all $k\le n$. Then
+				\item[\normalfont\emph{Induction step}:] Fix $n\ge 1$ and suppose that $a_k=3^k-2^k$ for all $k\le n$. Then
 				\begin{align*}
-					a_{n+1}&=5a_n-6a_{n-1}=5(3^n-2^n)-6(3^{n-1}-2^{n-1})\\
-					&=(15-6)3^{n-1}+(10-6)2^{n-1}=3^{n+1}-2^{n+1}
+					a_{n+1}
+					&=5a_n-6a_{n-1}
+						=5(3^n-2^n)-6(3^{n-1}-2^{n-1})\\
+					&=(15-6)3^{n-1}+(10-6)2^{n-1}
+						=3^{n+1}-2^{n+1}
 				\end{align*}
 			\end{description} 
 			By induction, $a_n=3^n-2^n$ for all $n\in\N_0$.
@@ -955,9 +982,9 @@ The moral here is to try the induction step as scratch work. Your attempt should
 \goodbreak
 
 
-For another sequential induction example in the same vein, see Exercise \ref{ex:ind3} where \emph{three} base cases are required, and the induction step explicitly uses \emph{three} propositions.\medbreak
+For another sequential induction example in the same vein, see Exercise \ref{ex:ind3} where \emph{three} base cases are required and the induction step explicitly uses \emph{three} propositions.\bigbreak
 
-To see strong induction in all its glory, where the induction step requires \emph{all} previous propositions, we prove the existence part of the Fundamental Theorem of Arithmetic, which states that all integers $\ge 2$ can be (uniquely) expressed as a product of primes: e.g.,\ $3564=2^2\times 3^4\times 11$. 
+To see strong induction in all its glory, with the induction step making use of \emph{all} previous propositions, we prove the existence part of the Fundamental Theorem of Arithmetic, which states that all integers $\ge 2$ can be (uniquely) expressed as a product of primes: e.g.,\ $3564=2^2\times 3^4\times 11$. 
 
 
 \begin{thm}{}{fundarith}
@@ -973,8 +1000,8 @@ This provides the missing piece in our discussion of Euclid's Theorem (\ref{thm:
 		\item[\normalfont\emph{Base case} ($n=2$):] The only positive divisors of 2 are itself and 1, hence 2 is prime.
 		\item[\normalfont\emph{Induction step}:] Fix $n\ge 2$ and suppose that \emph{every} natural number $k$ satisfying $2\le k\le n$ is either prime or a product of primes. There are two possibilities:
 		\begin{itemize}
-		  \item $n+1$ is prime. Certainly $n+1$ is divisible by a prime!
-		  \item $n+1$ is composite. Then $n+1=ab$ for some natural numbers $a,b\ge 2$. Clearly $a,b\le n$; by the induction hypothesis, \emph{both} are prime or the product of primes. Therefore $n+1$ is also the product of primes.
+		  \item $n+1$ is prime. Certainly $n+1$ is divisible by a prime: itself!
+		  \item $n+1$ is composite. Then $n+1=ab$ for some natural numbers $a,b\ge 2$. Plainly $a,b\le n$. By the induction hypothesis, \emph{both} $a,b$ are prime or products of primes. Therefore $n+1$ is also the product of primes.
 		\end{itemize}
 	\end{description}
 	By induction we see that all natural numbers $n\ge 2$ are either prime, or a product of primes.
@@ -1066,5 +1093,7 @@ Think carefully about why \emph{only one} base case is required!
 	\end{enumerate}
 \end{exercises}
 
-\footnotetext{This is the strict definition of \emph{prime,} while Definition \ref{defn:irreducible} is the  definition of \emph{irreducible.} For the integers, Exercise \ref*{sec:gcd}.\ref{exs:primedef1} says that these concepts are synonymous.}
+\footnotetext{%
+	Strictly, this is definition of \emph{prime,} whereas Definition \ref{defn:irreducible} defines a subtly different concept: \emph{irreducibility.} Within the integers, Exercise \ref*{sec:gcd}.\ref{exs:primedef1} says that these concepts are synonymous.
+}
 
