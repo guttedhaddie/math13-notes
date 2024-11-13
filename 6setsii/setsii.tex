@@ -47,13 +47,16 @@ You have been working with Cartesian products for years, referring to a point in
 		
 		\item The menu in a restaurant might be summarized set-theoretically:
 		\begin{gather*}
-			\text{Mains}=\{\text{fish, steak, eggplant, pasta}\}, \qquad \text{Sides}=\{\text{asparagus, salad, potatoes}\}
+			\text{Mains}=\{\text{fish, steak, eggplant, pasta}\}, \qquad 
+			\text{Sides}=\{\text{asparagus, salad, potatoes}\}
 		\end{gather*}
 		The Cartesian product Mains\,$\times$\,Sides is the set of all possible meals consisting of one main and one side. It should be obvious that there are $4\times 3=12$ possible meal choices.
 	\end{enumerate}
 \end{examples}
 
-\footnotetext{Strictly this should be defined inductively, e.g., $\R^3:=\R^2\times\R=\Bigl\{\bigl((x,y),z\bigr):x,y,z\in\R\Bigr\}$, but this is very tedious!}
+\footnotetext{%
+	Strictly this should be defined inductively, e.g., $\R^3:=\R^2\times\R=\Bigl\{\bigl((x,y),z\bigr):x,y,z\in\R\Bigr\}$, but this is very tedious!%
+}
 
 The last two examples illustrate one of the simplest properties of Cartesian products, in a result which indeed justifies the very use of the word \emph{product}!
 
@@ -82,7 +85,8 @@ These may be established as we've done previously (Section \ref{chap:sets}): con
 \begin{examples}{}{cartex}
 	 	\exstart Consider the complement of a Cartesian product $A\times B$. If you had to guess an expression for $\comp{(A\times B)}$, you might mistakenly think it is $\comp A\times\comp B$. Let us think more carefully:
 		\begin{align*}
-			(x,y)\in\comp{(A\times B)}&\iff \neg((x,y)\in A\times B) \tag{definition of complement}\\
+			(x,y)\in\comp{(A\times B)}
+			&\iff \neg((x,y)\in A\times B) \tag{definition of complement}\\
 			&\iff \neg(x\in A\text{ and }y\in B) \tag{definition of $A\times B$}\\
 			&\iff x\not\in A\text{ or }y\not\in B \tag{de Morgan (logic)}
 		\end{align*}
@@ -231,7 +235,6 @@ These may be established as we've done previously (Section \ref{chap:sets}): con
 		\end{enumerate}
 		
 	\end{enumerate}
-
 \end{exercises}
 
 
@@ -251,7 +254,7 @@ Thus far we have used the operations of subset, complement, union, intersection 
 \end{defn}
 
 %\footnotetext{That the \emph{collection} of subsets forms a \emph{set} is one of the axioms of set theory.
-%Set-builder and Union are axiom: really the version seen in the enxt section. Intersection needs only set-builder notation and Cartesian product is as defined in Exercise \ref{exs:ordpairdef}.
+%Set-builder and Union are axioms: really the version seen in the next section. Intersection needs only set-builder notation and Cartesian product is as defined in Exercise \ref{exs:ordpairdef}.
 %}
 
 \begin{examples}{}{}
@@ -268,7 +271,7 @@ Thus far we have used the operations of subset, complement, union, intersection 
 		\end{quote}
 		Gathering these together yields the power set:
 		\[
-			\cP(A)=\bigl\{\emptyset,\{1\},\{3\},\{7\},\{1,3\},\{1,7\},\{3,7\},\{1,3,7\}\bigr\}
+			\cP(A)=\bigl\{\emptyset, \{1\},\{3\},\{7\}, \{1,3\},\{1,7\},\{3,7\}, \{1,3,7\}\bigr\}
 		\]
 		The power set therefore has \emph{eight} elements. Be absolutely certain you understand the difference between $\in$ and $\subseteq$. Here are eight propositions; which are true and which false?\footnotemark
 		\begin{enumerate}
@@ -319,7 +322,6 @@ As a further exercise in making careful use of notation, we prove a simple theor
 
 The converse to this is also true: $\cP(A)\subseteq\cP(B)\Longrightarrow A\subseteq B$. Try proving it yourself.
 
-%It is very easy to get confused by the proof of this theorem. Exercises \ref{ex:powersub1} and \ref{ex:powersub2} discuss things further.
 
 
 \boldsubsubsection{Cardinality and Power Sets}
@@ -335,8 +337,7 @@ Let's investigate the relationship between the cardinality of a set and its powe
 		\{a,b,c\}&\emptyset&\{a\},\{b\},\{c\}&\{a,b\},\{a,c\},\{b,c\}&\{a,b,c\}&1+3+3+1=8\\\hline
 	\end{array}
 \]
-You've seen this pattern before: we are looking at the first few lines of Pascal's Triangle!%\footnote{If you know about \emph{combinations}, a set with $n$ elements has precisely ${}^nC_r=\binom nr=\frac{n!}{r!(n-r)!}$ distinct $r$-element subsets.}
-It should be no surprise that if $\nm A=4$, then $\nm{\cP(A)}=1+4+6+4+1=16$. The progression $1,2,4,8,16,\ldots$ in the final column immediately suggests a general result.
+You've seen this pattern before: we are looking at the first few lines of Pascal's Triangle! It should be no surprise that if $\nm A=4$, then $\nm{\cP(A)}=1+4+6+4+1=16$. The progression $1,2,4,8,16,\ldots$ in the final column suggests a general result.
 
 \begin{thm}{}{powercard}
 	Let $A$ be a finite set. Then $\nm{\cP(A)}=2^{\nm A}$.
@@ -393,10 +394,9 @@ This method of pairing is exactly mirrored in the induction step of our formal p
 	By induction, $(\ast)$ holds for all $n\in\N_0$.
 \end{proof}
 
-% Once you understand the proof, you should compare it to the proof of Theorem \ref{thm:polygon} on the interior angles of a polygon: the idea is very similar. 
-Exercise \ref{ex:binom} gives an alternative proof.
 
-%As a final example, we consider the interaction of power sets and Cartesian products.
+Exercise \ref{ex:binom} offers an alternative proof.
+
 
 \begin{example}{}{}
 	You might erroneously expect the sets $\cP(A\times B)$ and $\cP(A)\times\cP(B)$ to be the same. Here is a simple counter-example to convince you otherwise!\smallbreak
@@ -411,8 +411,8 @@ Exercise \ref{ex:binom} gives an alternative proof.
 	\]
 	The elements of $\cP(A\times B)$ are \emph{sets of ordered pairs.} By contrast, the elements of $\cP(A)\times\cP(B)$ are \emph{ordered pairs of sets}:
 	\begin{multline*}
-			\cP(A)\times\cP(B) =\big\{\emptyset,\{a\}\big\}\times \big\{\emptyset,\{b\},\{c\},\{b,c\}\big\}\\*
-			=\Bigl\{\bigl(\emptyset,\emptyset\bigr), \bigl(\emptyset,\{b\}\bigr), \bigl(\emptyset,\{c\}\bigr), \bigl(\emptyset,\{b,c\}\bigr), \bigl(\{a\},\emptyset\bigr), \bigl(\{a\},\{b\}\bigr), \bigl(\{a\},\{c\}\bigr), \bigl(\{a\},\{b,c\}\bigr)\Bigr\}
+		\cP(A)\times\cP(B) =\big\{\emptyset,\{a\}\big\}\times \big\{\emptyset,\{b\},\{c\},\{b,c\}\big\}\\*
+		=\Bigl\{\bigl(\emptyset,\emptyset\bigr), \bigl(\emptyset,\{b\}\bigr), \bigl(\emptyset,\{c\}\bigr), \bigl(\emptyset,\{b,c\}\bigr), \bigl(\{a\},\emptyset\bigr), \bigl(\{a\},\{b\}\bigr), \bigl(\{a\},\{c\}\bigr), \bigl(\{a\},\{b,c\}\bigr)\Bigr\}
 	\end{multline*}
 	The elements of the two sets have completely different types, so there is no way that one could be a subset of the other!
 \end{example}
@@ -620,7 +620,9 @@ Computing the \emph{intersection} in such a situation typically requires much mo
 \end{example}
 
 
-\footnotetext{The existence of $N\ge\frac 1x$ should be intuitive; it is in fact guaranteed by the Archimedean property (Exercise \ref*{sec:proof2}.\ref{exs:archimedes}).}
+\footnotetext{%
+	The existence of $N\ge\frac 1x$ should be intuitive; it is in fact guaranteed by the Archimedean property (Exercise \ref*{sec:proof2}.\ref{exs:archimedes}).%
+}
 
 
 The moral is that you cannot naïvely apply limits to sequences of sets. If thinking about limits helps your intuition, great, but you can't trust it blindly!\bigbreak
@@ -629,7 +631,6 @@ An indexed collection can also be nested the other way round, in which case the 
 \[
 	A_1\subseteq A_2\subseteq A_3\subseteq\cdots \implies {\bigcap_{n=1}^\infty} A_n=A_1
 \]
-%though the union requires more work.
 
  
 \begin{examples}{}{}
@@ -655,7 +656,8 @@ An indexed collection can also be nested the other way round, in which case the 
 	\begin{minipage}[t]{0.61\linewidth}\vspace{0pt}
 		The sets are nested: $A_1\supseteq A_2\supseteq A_3\supseteq A_4\supseteq\cdots$, where
 		\begin{gather*}
-			A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right) \\
+			A_n=\left(-\sqrt{1+\tfrac 1n},-\sqrt{1-\tfrac 1n}\right)
+			\cup\left(\sqrt{1-\tfrac 1n},\sqrt{1+\tfrac 1n}\right) \\
 			\implies \bigcup_{n=1}^\infty A_n=A_1=(-\sqrt{2},0)\cup(0,\sqrt{2})
 		\end{gather*}
 		For the intersection,
@@ -671,7 +673,9 @@ An indexed collection can also be nested the other way round, in which case the 
 		
 		\item Let $A_0=\{0,1\}$, $A_n=\{1\}$ is $n\ge 1$ is odd, and $A_n=\{2\}$ if $n\ge 2$ is even. Then,
 		\[
-			\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k = \left(\bigcup_{k=1}^\infty A_k\right)\cap\left(\bigcup_{k=2}^\infty A_k\right)\cap \cdots = \{0,1,2\}\cap\{0,1\}\cap\{0,1\}\cap\cdots =\{0,1\}
+			\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k 
+			=\left(\bigcup_{k=1}^\infty A_k\right)\cap\left(\bigcup_{k=2}^\infty A_k\right)\cap \cdots 
+			=\{0,1,2\}\cap\{0,1\}\cap\{0,1\}\cap\cdots =\{0,1\}
 		\]
 		Think about why $x\in \bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k \Longleftrightarrow x$ lies in infinitely many of the sets $A_n$.
 	\end{enumerate}
@@ -708,7 +712,9 @@ It is important to understand the difference! Sometimes the indexed collection i
 	and is interesting in its own right. Each \emph{element} of projective space is a \emph{line}, making $\pr(\R^2)$ a very different set to $\R^2$. This example also shows that indexing sets don't have to be simple sets of integers! %It is also possible to index the same set using $I=[0,\pi)$. If we define $B_\theta$ to be the line through the origin making an angle $\theta$ with the positive $x$-axis, then $B_\theta=A_{\tan\theta}$.
 \end{tcolorbox}
 
-\footnotetext{The symbol $\infty$ is used to indicate the vertical line $A_\infty$ with `infinite gradient.'}
+\footnotetext{%
+	The symbol $\infty$ is used to indicate the vertical line $A_\infty$ with `infinite gradient.'%
+}
 
 % 		\item For each $n\in\{1,2,3\}$, consider the \emph{plane} $A_n=\bigl\{(x,y,z):x+ny+n^2z=1\bigr\}\subseteq\R^3$.\par
 % 		The indexed collection $\{A_1,A_2,A_3\}$ has \emph{three} elements: the planes $A_1,A_2,A_3$.\par
@@ -749,30 +755,29 @@ In the next example we use an infinite union to define an interesting set.
 	\]
 	For example $0.134\in A_3$. Since $0.134=0.1340$, we also have $0.134\in A_4$. This is a nested collection
 	\[
-		A_1\subseteq A_2\subseteq A_3\subseteq A_4\subseteq\cdots \implies \smash[b]{\bigcap_{n\in\N}}A_n=A_1=\bigl\{0,0.1,\ldots,0.9\bigr\}
+		A_1\subseteq A_2\subseteq A_3\subseteq A_4\subseteq\cdots 
+		\implies \smash[b]{\bigcap_{n\in\N}}A_n=A_1=\bigl\{0,0.1,\ldots,0.9\bigr\}
 	\]
 	Now consider unions. If $m\in\N$, then
 	\[
-		\smash{\bigcup_{n=1}^m}A_n=A_m=\bigl\{x\in [0,1):x\text{ has a decimal representation of length $\le m$}\bigr\}
+		\smash{\bigcup_{n=1}^m}A_n=A_m
+		=\bigl\{x\in [0,1):x\text{ has a decimal representation of length $\le m$}\bigr\}
 	\]
 	You might guess that the infinite union would be the entire\footnotemark{} interval $[0,1]$, but this is incorrect:
 	\begin{align*}
-		x\in\bigcup_{n\in\N}A_n &\iff\exists n\in\N\text{ such that }x\in A_n\\
+		x\in\bigcup_{n\in\N}A_n 
+		&\iff\exists n\in\N\text{ such that }x\in A_n\\
 		&\iff x\text{ is a decimal with some \emph{finite} length $n$}
 	\end{align*}
-	The infinite union $\bigcup A_n$ is precisely the set of $x\in[0,1)$ which have a \emph{finite} decimal representation! This is far from the entire interval: many rational numbers are excluded (e.g., $\frac 13=0.3333\cdots \notin\bigcup A_n$), and the union contains \emph{no irrational numbers}. %in $\bigcup\limits_{n\in\N}A_n$:
-% 	\[
-% 		x\in A_n\implies y=10^nx\in\N \implies x=\frac y{10^n}\in\Q
-% 	\]
-%Many rational numbers are also excluded. For example .
+	The infinite union $\bigcup A_n$ is precisely the set of $x\in[0,1)$ which have a \emph{finite} decimal representation! This is far from the entire interval: many rational numbers are excluded (e.g., $\frac 13=0.3333\cdots \notin\bigcup A_n$), and the union contains \emph{no irrational numbers}.
 \end{example}
 
-\footnotetext{We would include $1=0.9999\cdots$}
+\footnotetext{%
+	We would include $1=0.9999\cdots$%
+}
 
 \goodbreak
 
-
-%\boldsubsubsection{Cantor's Middle-third Set}%\label{ex:cantor}
 
 \boldinline{Optional!} We finish this section with a bit of fun, using an infinite intersection to create a \emph{fractal} set.
 
@@ -783,7 +788,8 @@ In the next example we use an infinite union to define an interesting set.
 		\begin{align*}
 			C_0&=[0,1]\\
 			C_1&=[0,\tfrac 13]\cup [\tfrac 23,1]\\
-			C_2&=[0,\tfrac 19]\cup [\tfrac 29,\tfrac 13]\cup [\tfrac 23,\tfrac 79]\cup [\tfrac 89,1]\\
+			C_2&=[0,\tfrac 19]\cup [\tfrac 29,\tfrac 13]
+			\cup [\tfrac 23,\tfrac 79]\cup [\tfrac 89,1]\\
 			&\mathrel{\,\,\vdots}
 		\end{align*}
 	\end{minipage}
@@ -801,7 +807,11 @@ In the next example we use an infinite union to define an interesting set.
 	\begin{description}\itemsep2pt
 		\item[Zero Measure (length)] It should seem reasonable to write
 		\[
-			\operatorname{len}(C_0)=1,\quad \operatorname{len}(C_1)=\tfrac 23,\quad\operatorname{len}(C_2)=\left(\tfrac 23\right)^2,\quad \ldots\quad ,\quad \operatorname{len}(C_n)=\left(\tfrac 23\right)^n,\quad\ldots
+			\operatorname{len}(C_0)=1,\quad 
+			\operatorname{len}(C_1)=\tfrac 23,\quad
+			\operatorname{len}(C_2)=\left(\tfrac 23\right)^2,\quad 
+			\ldots\quad ,\quad 
+			\operatorname{len}(C_n)=\left(\tfrac 23\right)^n,\quad\ldots
 		\]
 		where $\operatorname{len}(C_n)$ is the sum of the lengths of all intervals in $C_n$. Since $\mathcal C\subseteq C_n$ for all $n$, we conclude that $\operatorname{len}(\mathcal C)=0$: Cantor's set contains \emph{no intervals} of positive length.
 	
@@ -810,7 +820,8 @@ In the next example we use an infinite union to define an interesting set.
 		\begin{minipage}[t]{0.6\linewidth}\vspace{-2pt}
 		\item[Self-similarity] Let $f,g:\R\to\R$ be functions $f(x)=\frac 13 x$ and $g(x)=\frac 13x+\frac 23$. Since $C_{n+1}=f(C_n)\cup g(C_n)$, we conclude
 		\[
-			\mathcal C=\textcolor{red}{f(\mathcal C)}\cup \textcolor{blue}{g(\mathcal C)}
+			\mathcal C=\textcolor{red}{f(\mathcal C)}
+			\cup \textcolor{blue}{g(\mathcal C)}
 		\]
 		\end{minipage}
 		\hfill
@@ -824,7 +835,9 @@ In the next example we use an infinite union to define an interesting set.
 
 \end{example}
 
-\footnotetext{In fact it is more than merely infinite, it is \emph{uncountably} so, as we'll discuss in Chapter \ref{chap:cantor}. The bizarre contrast between this and the zero measure property was part of the reason Cantor introduced his set.}
+\footnotetext{%
+	In fact it is more than merely infinite, it is \emph{uncountably} so, as we'll discuss in Chapter \ref{chap:cantor}. The bizarre contrast between this and the zero measure property was part of the reason Cantor introduced his set.%
+}
 
 We'll analyze Cantor's set a little and consider a related construction in Exercises \ref{exs:cantorset} \& \ref{exs:modsnowflake}. Other fractal sets with a similar construction include the \emph{Sierpiński carpet} and the \emph{von Koch snowflake}.
 
@@ -908,14 +921,18 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 		\item Let $\{A_n:n\in I\}$ and $\{B_n:n\in I\}$ be indexed families of sets. Give explicit examples for which the following hold:
 		\begin{enumerate}
 	    \item $\left(\bigcup_{n\in I} A_n\right) \cap \left(\bigcup_{n\in I}B_n\right) \neq \bigcup_{n\in I} (A_n \cap B_n)$
-	    \item $\left(\bigcap_{n\in I} A_n\right) \cup \left(\bigcap_{n\in I}B_n\right) \neq \bigcap_{n\in I} (A_n \cup B_n)$
+	    \item $\left(\bigcap_{n\in I} A_n\right) 
+	    \cup \left(\bigcap_{n\in I}B_n\right) 
+	    \neq \bigcap_{n\in I} (A_n \cup B_n)$
 		\end{enumerate}
 	
 		
 		\item (De Morgan's laws)\lstsp Let $\{A_n:n\in I\}$ be an indexed family of sets and $B$ a set. Prove
 		\begin{enumerate}
-	    \item $B\setminus \left(\bigcup_{n\in I} A_n\right) = \bigcap_{n\in I} (B\setminus A_n)$
-	    \item $B\setminus \left(\bigcap_{n\in I} A_n\right) = \bigcup_{n\in I}(B\setminus A_n)$
+	    \item $B\setminus \left(\bigcup_{n\in I} A_n\right)
+	    = \bigcap_{n\in I} (B\setminus A_n)$
+	    \item $B\setminus \left(\bigcap_{n\in I} A_n\right)
+	    = \bigcup_{n\in I}(B\setminus A_n)$
 		\end{enumerate}
 		
 		
@@ -937,7 +954,9 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 			
 		\item\label{exs:cantorset} (Hard)\lstsp A \emph{ternary representation}\footnotemark{} of a number $x\in[0,1]$ is an expression
 		\[
-			x=\sum\limits_{n=1}^\infty \frac{a_n}{3^n}=\frac{a_1}{3}+\frac{a_2}{3^2}+\frac{a_3}{3^3}+\cdots \text{ where each }a_n\in\{0,1,2\}
+			x=\sum\limits_{n=1}^\infty \frac{a_n}{3^n}
+			=\frac{a_1}{3}+\frac{a_2}{3^2}+\frac{a_3}{3^3}+\cdots 
+			\text{ where each }a_n\in\{0,1,2\}
 		\]
 		We write $x=[0.a_1a_2a_3\cdots]_3$. For example $[0.12]_3=\frac 13+\frac 2{3^2}=\frac 59$.
 		\begin{enumerate}
@@ -955,7 +974,8 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 		\item\label{exs:modsnowflake} (Hard)\lstsp We construct a modified Cantor set and fractal curve. Starting with $F_0=[0,1]$, repeatedly delete the \emph{third quarter} segment of each interval to obtain a sequence of sets $F_0,F_1,F_2,\ldots$:
 	  \begin{gather*}  
 	  	F_1=[0,\tfrac 12]\cup[\tfrac 34,1],\quad
-	  	F_2=[0,\tfrac 14]\cup[\tfrac 38,\tfrac 12]\cup[\tfrac 34,\tfrac 78]\cup[\tfrac{15}{16},1],\quad \ldots
+	  	F_2=[0,\tfrac 14]\cup[\tfrac 38,\tfrac 12]
+	  	\cup[\tfrac 34,\tfrac 78]\cup[\tfrac{15}{16},1],\quad \ldots
 	  \end{gather*}
 	  \begin{enumerate}
 	    \item Prove that the sum of the lengths of all of all line segments in $F_n$ is $\left(\frac 34\right)^n$.
@@ -989,5 +1009,7 @@ We'll analyze Cantor's set a little and consider a related construction in Exerc
 	
 \vspace{-20pt}
 	
-\footnotetext{Analogous to a decimal representation $x=\sum_{n=1}^\infty \frac{a_n}{10^n}=\frac{a_1}{10}+\frac{a_2}{10^2}+\frac{a_3}{10^3}+\cdots$ where $a_n\in\{0,1,2,\ldots,9\}$.}
+\footnotetext{%
+	Analogous to a decimal representation $x=\sum_{n=1}^\infty \frac{a_n}{10^n}=\frac{a_1}{10}+\frac{a_2}{10^2}+\frac{a_3}{10^3}+\cdots$ where $a_n\in\{0,1,2,\ldots,9\}$.%
+}
 

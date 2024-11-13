@@ -102,17 +102,21 @@ With abstract relations, there are only a small number of things we can do.
 	\begin{enumerate}\itemsep0pt
 		\item[4.] Suppose $\cR\subseteq\cS$. Then,
 		\begin{align*}
-			(b,a)\in\cR^{-1}&\implies (a,b)\in\cR \tag{definition of inverse}\\
+			(b,a)\in\cR^{-1}
+			&\implies (a,b)\in\cR \tag{definition of inverse}\\
 			&\implies (a,b)\in\cS \tag{since $\cR\subseteq\cS$}\\
 			&\implies (b,a)\in\cS^{-1} \tag{definition of inverse}
 		\end{align*}
 		Therefore $\cR^{-1}\subseteq\cS^{-1}$. Replacing $\cR,\cS$ with $\cR^{-1},\cS^{-1}$ and applying part 1, we also see that
 		\[
-			\cR^{-1}\subseteq\cS^{-1}\implies (\cR^{-1})^{-1}\subseteq (\cS^{-1})^{-1} \implies \cR\subseteq \cS
+			\cR^{-1}\subseteq\cS^{-1}
+			\implies (\cR^{-1})^{-1}\subseteq (\cS^{-1})^{-1} 
+			\implies \cR\subseteq \cS
 		\]
 		\item[7.] We prove the first half. By part 3,
 		\[
-			(\cR\cup \cR^{-1})^{-1}=\cR^{-1}\cup (\cR^{-1})^{-1}=\cR^{-1}\cup \cR=\cR\cup \cR^{-1} \tag*{\qedhere}
+			(\cR\cup \cR^{-1})^{-1}=\cR^{-1}\cup (\cR^{-1})^{-1}
+			=\cR^{-1}\cup \cR=\cR\cup \cR^{-1} \tag*{\qedhere}
 		\]
 	\end{enumerate}
 \end{proof}
@@ -127,8 +131,10 @@ With abstract relations, there are only a small number of things we can do.
 		\]
 		as should be plain: e.g., $(1,3)\in\cR$ but $(3,1)\notin\cR$. However,
 		\begin{gather*}
-			\textcolor{Green}{\cR\cap \cR^{-1}}=\bigl\{(2,2), (2,3), (3,2)\bigr\}\quad\text{and}\quad \\
-			\textcolor{blue}{\cR\cup \cR^{-1}}=\bigl\{(1,3),(3,1),(2,2),(2,3),(3,2),(4,1),(1,4),(5,2),(2,5)\bigr\}
+			\textcolor{Green}{\cR\cap \cR^{-1}}=\bigl\{(2,2), (2,3), (3,2)\bigr\}
+			\quad\text{and}\quad\\
+			\textcolor{blue}{\cR\cup \cR^{-1}}
+			=\bigl\{(1,3),(3,1),(2,2),(2,3),(3,2),(4,1),(1,4),(5,2),(2,5)\bigr\}
 		\end{gather*}
 	\end{minipage}
 	\hfill
@@ -150,75 +156,76 @@ With abstract relations, there are only a small number of things we can do.
 \begin{exercises}{}{}
 	A reading quiz and practice question can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-1-relations.html}{online}.
 	
-\begin{enumerate}
-  \item Let $\cR$ be the relation on $\{0,1,2\}$ defined by
-  \[
-  	0\relR 0\qquad 0\relR 1\qquad 2\relR 1\]
-  \begin{enumerate}
-    \item Write $\cR$ as a set of ordered pairs. What are its domain and range?
-    \item What is the inverse of $\cR$?
-	\end{enumerate}
-	
-	\item\begin{enumerate}
-	  \item Let $\cR$ be the relation on $\R$ defined by $a\relR b\iff\nm{a-b}=1$. Is this relation symmetric? 
- 		\item Let $\cS$ be the relation on $\R$ defined by 
+	\begin{enumerate}
+	  \item Let $\cR$ be the relation on $\{0,1,2\}$ defined by
+	  \[
+	  	0\relR 0\qquad 0\relR 1\qquad 2\relR 1\]
+	  \begin{enumerate}
+	    \item Write $\cR$ as a set of ordered pairs. What are its domain and range?
+	    \item What is the inverse of $\cR$?
+		\end{enumerate}
+		
+		\item\begin{enumerate}
+		  \item Let $\cR$ be the relation on $\R$ defined by $a\relR b\iff\nm{a-b}=1$. Is this relation symmetric? 
+	 		\item Let $\cS$ be the relation on $\R$ defined by 
+			\[
+				a \mathrel{\cS} b \iff \exists x \in \Q\setminus\{0\} \text{ such that } a=x^2b
+			\]
+			Is this relation symmetric? 
+		\end{enumerate}
+		
+	  
+		\item Draw pictures of the following relations on the set of real numbers $\R$.
+		\begin{enumerate}
+			\item $\cR=\bigl\{(x,y):y\le 2\text{ and }y\ge x\text{ and }y\ge 2-x\bigr\}$
+			\item $\cS=\bigl\{(x,y):(x-4)^2+(y-1)^2\le 9\bigr\}$
+		\end{enumerate}
+		State the domain and range and draw the inverse of each relation.
+		
+		
+		\item A relation is defined on $\N$ by $a\relR b \Leftrightarrow \frac ab\in\N$. Let $c,d\in\N$. Under what conditions can we write $c\mathrel{\cR^{-1}} d$?
+		
+		
+		\item Let $\cR\subseteq\{1,2,3,4\}\times\{1,2,3,4\}$ be the relation
 		\[
-			a \mathrel{\cS} b \iff \exists x \in \Q\setminus\{0\} \text{ such that } a=x^2b
+			\cR=\bigl\{(1,3),(1,4),(2,2),(2,4),(3,1),(3,2),(4,4)\bigr\}
 		\]
-		Is this relation symmetric? 
+		\begin{enumerate}
+		  \item Find $\dom(\cR)$, $\range(\cR)$ and $\cR^{-1}$.
+		  \item Compute the relations $\cR\cup\cR^{-1}$ and $\cR\cap\cR^{-1}$, and check that they are symmetric.
+		\end{enumerate}
+		
+	  
+	  \item For the relation $\cR=\bigl\{(x,y):x\le y\bigr\}$ on $\N$, what is $\cR^{-1}$, and what is the intersection $\cR\cap\cR^{-1}$?
+		
+		
+		\item Let $\cR \subseteq \Z\times\Z$ be the relation $m\relR n$ iff $m\mid n$. Compute $\cR\cap\cR^{-1}$.
+	  
+	
+	  \item Let $A$ be a set with $\nm A=4$. What is the maximum number of elements that a relation $\cR$ on $A$ can contain such that $\cR\cap \cR^{-1}=\emptyset$?
+	   
+	  
+	  \item Give formal proofs of the remaining parts of Theorem \ref{thm:relbasic}.
+	  
+	    
+	  \item Let $\cR$ and $\cS$ be two symmetric relations on a set $A$. 
+		\begin{enumerate}
+	    \item Show $\cR \cap \cS$ is symmetric.
+	    \item Does $\cR \cup \cS$ have to be symmetric? Give a proof or counterexample.
+		\end{enumerate}
+	  
+	  
+	  \item Let $\cR$ be a relation on a set $A$ and define $\cS=\cR\cup\cR^{-1}$. Prove that $\cS$ is the \emph{smallest symmetric relation on $A$ containing $\cR$} in the following sense: if
+	  \[
+	  	\mathrm T=\Bigl\{\mathcal T\subseteq A\times A:
+	  	\mathcal T\text{ symmetric and }\cR\subseteq\mathcal T\bigr\}
+	  \]
+	  then
+	  \[
+	  	\cS=\bigcap\limits_{\mathcal T\in \mathrm T} \mathcal T
+	  \]
+	  (\emph{$\cS$ is known as the \emph{symmetric closure} of $\cR$})
 	\end{enumerate}
-	
-  
-	\item Draw pictures of the following relations on the set of real numbers $\R$.
-	\begin{enumerate}
-		\item $\cR=\bigl\{(x,y):y\le 2\text{ and }y\ge x\text{ and }y\ge 2-x\bigr\}$
-		\item $\cS=\bigl\{(x,y):(x-4)^2+(y-1)^2\le 9\bigr\}$
-	\end{enumerate}
-	State the domain and range and draw the inverse of each relation.
-	
-	
-	\item A relation is defined on $\N$ by $a\relR b \Leftrightarrow \frac ab\in\N$. Let $c,d\in\N$. Under what conditions can we write $c\mathrel{\cR^{-1}} d$?
-	
-	
-	\item Let $\cR\subseteq\{1,2,3,4\}\times\{1,2,3,4\}$ be the relation
-	\[
-		\cR=\bigl\{(1,3),(1,4),(2,2),(2,4),(3,1),(3,2),(4,4)\bigr\}
-	\]
-	\begin{enumerate}
-	  \item Find $\dom(\cR)$, $\range(\cR)$ and $\cR^{-1}$.
-	  \item Compute the relations $\cR\cup\cR^{-1}$ and $\cR\cap\cR^{-1}$, and check that they are symmetric.
-	\end{enumerate}
-	
-  
-  \item For the relation $\cR=\bigl\{(x,y):x\le y\bigr\}$ on $\N$, what is $\cR^{-1}$, and what is the intersection $\cR\cap\cR^{-1}$?
-	
-	
-	\item Let $\cR \subseteq \Z\times\Z$ be the relation $m\relR n$ iff $m\mid n$. Compute $\cR\cap\cR^{-1}$.
-  
-
-  \item Let $A$ be a set with $\nm A=4$. What is the maximum number of elements that a relation $\cR$ on $A$ can contain such that $\cR\cap \cR^{-1}=\emptyset$?
-   
-  
-  \item Give formal proofs of the remaining parts of Theorem \ref{thm:relbasic}.
-  
-    
-  \item Let $\cR$ and $\cS$ be two symmetric relations on a set $A$. 
-	\begin{enumerate}
-    \item Show $\cR \cap \cS$ is symmetric.
-    \item Does $\cR \cup \cS$ have to be symmetric? Give a proof or counterexample.
-	\end{enumerate}
-  
-  
-  \item Let $\cR$ be a relation on a set $A$ and define $\cS=\cR\cup\cR^{-1}$. Prove that $\cS$ is the \emph{smallest symmetric relation on $A$ containing $\cR$} in the following sense: if
-  \[
-  	\mathrm T=\Bigl\{\mathcal T\subseteq A\times A:\mathcal T\text{ symmetric and }\cR\subseteq\mathcal T\bigr\}
-  \]
-  then
-  \[
-  	\cS=\bigcap\limits_{\mathcal T\in \mathrm T} \mathcal T
-  \]
-  (\emph{$\cS$ is known as the \emph{symmetric closure} of $\cR$})
-\end{enumerate}
 
 \end{exercises}
 
@@ -233,7 +240,8 @@ In Section \ref{sec:func1}, we naïvely defined a function $f:A\to B$ as a \emph
 \begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{}{relfuncsqrt}
 	The function $f:[0,4]\to[0,2]:x\mapsto \sqrt x$ corresponds to the \textcolor{blue}{relation}
 	\[
-		\bigl\{\bigl(x,\sqrt x\bigr):x\in [0,4]\bigr\} \subseteq [0,4]\times [0,2]
+		\bigl\{\bigl(x,\sqrt x\bigr):x\in [0,4]\bigr\} 
+		\subseteq [0,4]\times [0,2]
 	\]
 	\tcblower
 	\hfill
@@ -290,7 +298,8 @@ A relation $f\subseteq A\times B$ is a function if and only if \emph{every} $a\i
 	\end{quote}
 	The inverse relation
 	\[
-		f^{-1}=\bigl\{(r,1),(p,2),(r,3)\bigr\}\subseteq B\times A
+		f^{-1}=\bigl\{(r,1),(p,2),(r,3)\bigr\}
+		\subseteq B\times A
 	\]
 	is \emph{not} a function due to failing \emph{both} conditions of Definition \ref{defn:func}.
 	\begin{enumerate}
@@ -443,68 +452,67 @@ The example highlights one advantage of the relational approach: the inverse of 
 \begin{exercises}{}{}
 	A reading quiz and practice questions can be found \href{http://www.math.uci.edu/~ndonalds/math13/selftest/7-2-functions.html}{online}.
 
-
-\begin{enumerate}
-  \item Suppose $f$ is the relation
-  \[
-  	f=\bigl\{(1,1),(2,3),(3,5),(4,7)\bigr\} \subseteq\{1,2,3,4\}\times\{1,2,3,4,5,6,7\}
-  \]
-  \begin{enumerate}
-    \item Show that we have a function $f:\{1,2,3,4\}\to\{1,2,3,4,5,6,7\}$. Can you find a concise formula $f(x)$ to describe this function?
-    \item Is $f$ injective? Justify your answer.
-    \item Suppose $g\subseteq\{1,2,3,4\}\times B$ is another relation so that the \emph{graphs} of $f$ and $g$ are identical: that is, \emph{as sets,}
-    \[
-    	\bigl\{(a,f(a)):a\in\{1,2,3,4\}\bigr\} = \bigl\{(a,g(a)):a\in\{1,2,3,4\}\bigr\}
-    \]
-    If $g$ is a bijective function, what is $B$?
-  \end{enumerate}
-  
-  \item Decide whether each of the following relations are functions. For those which are, decide whether the function is injective and/or surjective.
-  \begin{enumerate}
-    \item $\cR=\bigl\{(x,y)\in[-1,1]\times[-1,1]:x^2+y^2=1\bigr\}$
-    \item $\cS=\bigl\{(x,y)\in[-1,1]\times[0,1]:x^2+y^2=1\bigr\}$
-    \item $\mathcal T=\bigl\{(x,y)\in[0,1]\times[-1,1]:x^2+y^2=1\bigr\}$
-    \item $\mathcal U=\bigl\{(x,y)\in[0,1]\times[0,1]:x^2+y^2=1\bigr\}$
-  \end{enumerate}
-    
-  
-  \item\begin{enumerate}
-    \item Express the function $f:\R\to\R:x\mapsto x^4+3$ as a relation.
-    \item What is the inverse relation $f^{-1}$?
-    \item Use Definition \ref{defn:func} to prove that the relation $f^{-1}$ is \emph{not} a function.
-    \item Prove directly from Definition \ref{defn:11} that $f$ is not injective and not surjective. Compare your arguments with your answer to part (c).
-  \end{enumerate}
-  
-  
-  \item Repeat the previous question for $f:\R\to\R:x\mapsto \sqrt{x^2-4x+5}$.
-  
-  
-  \item\begin{enumerate}
-    \item Express the function $f:\R\to\R:x\mapsto x^3$ as a relation on $\R$.
-    \item What is the inverse relation $f^{-1}$? Is it a function? Justify your answer.
-  \end{enumerate} 
-  
-  
-  \item	Let $A$ be any set and define the relation $\id_A=\bigl\{(a,a):a\in A\bigr\}$ on $A$. Show that $\id_A$ is a bijective function (it is called the \emph{identity function} on $A$). What is its inverse?
-
-  
-  \item Consider the relation $f=\bigl\{(x,x):x\in\Q\bigr\}\cup\bigl\{(x,0):x\not\in\Q\bigr\} \subseteq \R^2$
-  \begin{enumerate}
-    \item Prove that $f$ is a function $\R\to\R$.
-    \item Is $f$ injective? Surjective? Explain.
-  \end{enumerate}
-  
-    
-  \item Suppose $f\subseteq A\times B$ is a function.
-  \begin{enumerate}
-    \item If $U\subseteq A$, explain why it would be reasonable to write the \emph{image of $U$}  as
-    \[
-    	f(U)=\bigl\{ b\in B:\exists u\in U\text{ with }(u,b)\in f\bigr\}
-    \]
-    (\emph{Recall Definition \ref{defn:function1} if you're unsure what this means})
-    \item If $V\subseteq B$, how would you write the inverse image $f^{-1}(V)$ in this language?
-  \end{enumerate}
-\end{enumerate}
+	\begin{enumerate}
+	  \item Suppose $f$ is the relation
+	  \[
+	  	f=\bigl\{(1,1),(2,3),(3,5),(4,7)\bigr\} \subseteq\{1,2,3,4\}\times\{1,2,3,4,5,6,7\}
+	  \]
+	  \begin{enumerate}
+	    \item Show that we have a function $f:\{1,2,3,4\}\to\{1,2,3,4,5,6,7\}$. Can you find a concise formula $f(x)$ to describe this function?
+	    \item Is $f$ injective? Justify your answer.
+	    \item Suppose $g\subseteq\{1,2,3,4\}\times B$ is another relation so that the \emph{graphs} of $f$ and $g$ are identical: that is, \emph{as sets,}
+	    \[
+	    	\bigl\{(a,f(a)):a\in\{1,2,3,4\}\bigr\} = \bigl\{(a,g(a)):a\in\{1,2,3,4\}\bigr\}
+	    \]
+	    If $g$ is a bijective function, what is $B$?
+	  \end{enumerate}
+	  
+	  \item Decide whether each of the following relations are functions. For those which are, decide whether the function is injective and/or surjective.
+	  \begin{enumerate}
+	    \item $\cR=\bigl\{(x,y)\in[-1,1]\times[-1,1]:x^2+y^2=1\bigr\}$
+	    \item $\cS=\bigl\{(x,y)\in[-1,1]\times[0,1]:x^2+y^2=1\bigr\}$
+	    \item $\mathcal T=\bigl\{(x,y)\in[0,1]\times[-1,1]:x^2+y^2=1\bigr\}$
+	    \item $\mathcal U=\bigl\{(x,y)\in[0,1]\times[0,1]:x^2+y^2=1\bigr\}$
+	  \end{enumerate}
+	    
+	  
+	  \item\begin{enumerate}
+	    \item Express the function $f:\R\to\R:x\mapsto x^4+3$ as a relation.
+	    \item What is the inverse relation $f^{-1}$?
+	    \item Use Definition \ref{defn:func} to prove that the relation $f^{-1}$ is \emph{not} a function.
+	    \item Prove directly from Definition \ref{defn:11} that $f$ is not injective and not surjective. Compare your arguments with your answer to part (c).
+	  \end{enumerate}
+	  
+	  
+	  \item Repeat the previous question for $f:\R\to\R:x\mapsto \sqrt{x^2-4x+5}$.
+	  
+	  
+	  \item\begin{enumerate}
+	    \item Express the function $f:\R\to\R:x\mapsto x^3$ as a relation on $\R$.
+	    \item What is the inverse relation $f^{-1}$? Is it a function? Justify your answer.
+	  \end{enumerate} 
+	  
+	  
+	  \item	Let $A$ be any set and define the relation $\id_A=\bigl\{(a,a):a\in A\bigr\}$ on $A$. Show that $\id_A$ is a bijective function (it is called the \emph{identity function} on $A$). What is its inverse?
+	
+	  
+	  \item Consider the relation $f=\bigl\{(x,x):x\in\Q\bigr\}\cup\bigl\{(x,0):x\not\in\Q\bigr\} \subseteq \R^2$
+	  \begin{enumerate}
+	    \item Prove that $f$ is a function $\R\to\R$.
+	    \item Is $f$ injective? Surjective? Explain.
+	  \end{enumerate}
+	  
+	    
+	  \item Suppose $f\subseteq A\times B$ is a function.
+	  \begin{enumerate}
+	    \item If $U\subseteq A$, explain why it would be reasonable to write the \emph{image of $U$}  as
+	    \[
+	    	f(U)=\bigl\{ b\in B:\exists u\in U\text{ with }(u,b)\in f\bigr\}
+	    \]
+	    (\emph{Recall Definition \ref{defn:function1} if you're unsure what this means})
+	    \item If $V\subseteq B$, how would you write the inverse image $f^{-1}(V)$ in this language?
+	  \end{enumerate}
+	\end{enumerate}
 
 \end{exercises}
 
@@ -540,7 +548,9 @@ We turn this simple example on its head to create an abstract, generalized notio
 	An \emph{equivalence relation} on $X$ is a relation $\sim$ satisfying all three properties.
 \end{defn}
 
-\footnotetext{\emph{Symmetry} is precisely as in Definition \ref{defn:relnsym}. As we've done, the universal quantifiers for symmetry and transitivity are typically hidden. The symbol $\sim$ (`tilde,' or `twiddles') is commonly used for an abstract equivalence relation. It is the same symbol used to denote \emph{similar triangles}: congruence and similarity are both equivalence relations on the set of triangles!}
+\footnotetext{%
+	\emph{Symmetry} is precisely as in Definition \ref{defn:relnsym}. As we've done, the universal quantifiers for symmetry and transitivity are typically hidden. The symbol $\sim$ (`tilde,' or `twiddles') is commonly used for an abstract equivalence relation. It is the same symbol used to denote \emph{similar triangles}: congruence and similarity are both equivalence relations on the set of triangles!%
+}
 
 \smallbreak
 
@@ -558,7 +568,8 @@ Example \ref{ex:equals} says that `equals' is indeed an equivalence relation on 
 		\item[]\eqsymm Given $x,y\in\Z$, \ $x\sim y\implies x-y$ even $\implies y-x$ even $\implies y\sim x$.
 		\item[]\eqtrans Given $x,y,z\in\Z$,
 		\begin{align*}
-			x\sim y \text{ and } y\sim z&\implies x-y\text{ even \ and }y-z\text{ even }\\
+			x\sim y \text{ and } y\sim z
+			&\implies x-y\text{ even \ and }y-z\text{ even }\\
 			&\implies x-z=(x-y)+(y-z)\text{ is even } \tag{Theorem \ref{thm:sumeven}!}\\
 			&\implies x\sim z
 		\end{align*}
@@ -627,8 +638,10 @@ The usefulness of equivalence relations comes when we group together all related
 	  \]
 	  \item (Example \ref{ex:eqrelmod2})\lstsp For the relation $x\sim y\Longleftrightarrow x-y$ is even, there are two equivalence classes:
 	  \begin{gather*}
-	  	[0]=\{\ldots,-4,-2,0,2,4,\ldots\}=2\Z=\{\text{even integers}\}\\
-	  	[1]=\{\ldots,-3,-1,1,3,5,\ldots\}=1+2\Z=\{\text{odd integers}\}
+	  	[0]=\{\ldots,-4,-2,0,2,4,\ldots\}
+	  	=2\Z=\{\text{even integers}\}\\
+	  	[1]=\{\ldots,-3,-1,1,3,5,\ldots\}
+	  	=1+2\Z=\{\text{odd integers}\}
 	  \end{gather*}
 	  and the quotient has two elements: $\quotient{\Z}\sim=\bigl\{[0],[1]\bigr\}$.
 	\end{enumerate}
@@ -656,7 +669,6 @@ Observe how the proof uses all three \textcolor{red}{defining properties} of an 
 			\[
 				z\sim x\ \text{ and }\ x\sim y\implies z\sim y\implies z\in[y]
 			\]
-			%We conclude that $[x]\subseteq[y]$.
 			\item[$(\supseteq)$] By \textcolor{red}{symmetry}, we also have $y\sim x$. Repeating the previous argument yields $[y]\subseteq [x]$.\qedhere
 		\end{description}
 	\end{description}
@@ -669,13 +681,16 @@ Observe how the proof uses all three \textcolor{red}{defining properties} of an 
 		x\sim y\iff x \text{ achieves the same letter-grade as $y$}
 	\]
 	It should be clear that this is an equivalence relation (try saying out loud what reflexivity, symmetry \& transitivity mean here!).	There is one equivalence class for each letter-grade awarded, each class being the set of all students who obtain a given grade. If we label the equivalence classes $\mathrm{A^+,A,A^-,B^+,\ldots,F}$, where, say, $\mathrm B=\{$students obtaining a B-grade$\}$, then the quotient
-		\[
-			\smash{\quotient{X}{\sim}}=\bigl\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\bigr\}
-		\]
-		is essentially the set of possible letter-grades!	Suppose Laura \& Jorge both achieve a $\mathrm{B^+}$; both are representatives of this equivalence class and the following propositions are all true:
-		\[
-			\text{Laura}\in \mathrm{B^+},\qquad \text{Jorge}\in\mathrm{B^+},\qquad \text{Laura}\sim\text{Jorge},\qquad [\text{Laura}]=[\text{Jorge}] =\mathrm{B^+}
-		\] 
+	\[
+		\smash{\quotient{X}{\sim}}=\bigl\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\bigr\}
+	\]
+	is essentially the set of possible letter-grades!	Suppose Laura \& Jorge both achieve a $\mathrm{B^+}$; both are representatives of this equivalence class and the following propositions are all true:
+	\[
+		\text{Laura}\in \mathrm{B^+},\qquad 
+		\text{Jorge}\in\mathrm{B^+},\qquad 
+		\text{Laura}\sim\text{Jorge},\qquad 
+		[\text{Laura}]=[\text{Jorge}] =\mathrm{B^+}
+	\] 
 \end{example}
 
 
@@ -691,7 +706,9 @@ The example is a special case of a general construction.
 
 The proof is an exercise. A suitable function in the previous example would be
 \[
-	f:X\to \bigl\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\bigr\}\quad \text{where} \quad f(x) =\text{``$x$'s letter grade''}
+	f:X\to \bigl\{\mathrm{A^+,A,A^-,B^+,\ldots,F}\bigr\}
+	\quad \text{where} \quad 
+	f(x) =\text{``$x$'s letter grade''}
 \]
 This converse to the theorem always holds: if $\sim$ is an equivalence relation then the so-called \emph{canonical map} $f:X\to \quotient X\sim:x\mapsto [x]$ satisfies $x\sim y\Longleftrightarrow f(x)=f(y)$!
 
@@ -731,7 +748,9 @@ This converse to the theorem always holds: if $\sim$ is an equivalence relation 
 	
 \end{examples}
 
-\footnotetext{Be careful: $\sim$ is a subset of $\R^2\times\R^2$, whereas each \emph{equivalence class} is a subset of $\R^2$!}
+\footnotetext{%
+	Be careful: $\sim$ is a subset of $\R^2\times\R^2$, whereas each \emph{equivalence class} is a subset of $\R^2$!%
+}
 
 \vspace{-8pt}
 
@@ -747,7 +766,9 @@ When you cut a cake, each crumb ends up in exactly one slice. To \emph{partition
 	\end{enumerate}
 \end{defn}
 
-\footnotetext{\emph{Distinct} sets $A_n$ are \emph{pairwise disjoint} (Definition \ref{defn:unionint}). It is sometimes useful in examples to permit $A_m=A_n$.}
+\footnotetext{%
+	\emph{Distinct} sets $A_n$ are \emph{pairwise disjoint} (Definition \ref{defn:unionint}). It is sometimes useful in examples to permit $A_m=A_n$.%
+}
 
 
 Partitions are intimately related to equivalence relations, as the next example illustrates.
@@ -767,7 +788,9 @@ Partitions are intimately related to equivalence relations, as the next example 
 	\]
 \end{example} 
 
-\footnotetext{Otherwise said, $\sim$ is the set $\bigl\{(1,1),(1,3),(3,1),(3,3),(2,2),(2,4),(4,2),(4,4),(5,5)\bigr\}\subseteq X\times X$.}
+\footnotetext{%
+	Otherwise said, $\sim$ is the set $\bigl\{(1,1),(1,3),(3,1),(3,3),(2,2),(2,4),(4,2),(4,4),(5,5)\bigr\}\subseteq X\times X$.%
+}
 
 
 \vspace*{-10pt}
@@ -781,7 +804,6 @@ This tight relationship between partitions and equivalence relations is complete
 	%Let $X$ be a set.
 	\exstart If $\sim$ is an equivalence relation on $X$, then its equivalence classes partition $X$.
 	\begin{enumerate}\setcounter{enumi}{1}
-		%\item If $\sim$ is an equivalence relation on $X$, then its equivalence classes partition $X$.
 		\item A partition $\{A_n\}$ of $X$ defines an equivalence relation $\sim$ on $X$ by
 		\[
 			x\sim y\iff \exists A_n\text{ such that }x,y\in A_n
@@ -806,7 +828,9 @@ This tight relationship between partitions and equivalence relations is complete
 
 Before reading the proof, look back at \emph{every} example of an equivalence relation in this section and convince yourself that the equivalence classes really do partition the `big set.' In both parts of the proof look for where the \textcolor{red}{assumptions} are used---reflexive, symmetric, transitive in part 1; the two partition conditions in part 2---and think about why they are needed.
 
-\footnotetext{Even more is true. If you think carefully, conditions 1 \& 2 in the definition of partition (\ref{defn:partition}) now form a disguised version of the vertical line test for the canonical map (Theorem \ref{thm:funceqreln})!}
+\footnotetext{%
+	Even more is true. If you think carefully, conditions 1 \& 2 in the definition of partition (\ref{defn:partition}) now form a disguised version of the vertical line test for the canonical map (Theorem \ref{thm:funceqreln})!%
+}
 
 
 \begin{proof}
@@ -821,7 +845,8 @@ Before reading the proof, look back at \emph{every} example of an equivalence re
 	  	
 	  	\item Distinct equivalence classes are pairwise disjoint: $[x]\neq[y]\Longrightarrow [x]\cap[y]=\emptyset$. We establish the contrapositive. If $[x]\cap [y]\neq\emptyset$, then $\exists z\in [x]\cap [y]$. But then
 			\begin{align*}
-				z\sim x\ \text{ and }\ z\sim y&\implies x\sim z\ \text{ and }\ z\sim y \tag{\textcolor{red}{symmetry}}\\
+				z\sim x\ \text{ and }\ z\sim y
+				&\implies x\sim z\ \text{ and }\ z\sim y \tag{\textcolor{red}{symmetry}}\\
 				&\implies x\sim y \tag{\textcolor{red}{transitivity}}\\
 				&\implies [x]=[y] \tag{\textcolor{red}{Lemma \ref{lemm:preequiv}}}
 			\end{align*}
@@ -833,7 +858,8 @@ Before reading the proof, look back at \emph{every} example of an equivalence re
 			\item[]\eqsymm $x\sim y \implies \exists A_n$ such that $x,y\in A_n \implies y,x\in A_n\implies y\sim x$.
 			\item[]\eqtrans If $x\sim y$ and $y\sim z$, then $\exists A_m,A_n$ such that $x,y\in A_m$ and $y,z\in A_n$. Then
 			\begin{align*}
-				y\in A_m\cap A_n &\implies \textcolor{red}{A_m\cap A_n\neq\emptyset\implies A_m=A_n}\\
+				y\in A_m\cap A_n 
+				&\implies \textcolor{red}{A_m\cap A_n\neq\emptyset\implies A_m=A_n}\\
 				&\implies x,z\in A_n\\
 				&\implies x\sim z \tag*{\qedhere}
 			\end{align*}
@@ -889,7 +915,6 @@ Before reading the proof, look back at \emph{every} example of an equivalence re
 	
 	
 	  \item A relation is defined on the set $X=\{a+b\sqrt 2:a,b\in\Q,\,a+b\sqrt 2\neq 0\}$ by $x\sim y\iff \frac xy\in\Q$. Show that $\sim$ is an equivalence relation and determine the distinct equivalence classes.
-	  
 	  
 	
 		\item For the purposes of this question, a real number is $x$ \emph{small} if $\nm x\le 1$. Let $\cR$ be the relation on the set of real numbers defined by $x \relR y \iff x-y$ is small.\par
@@ -1032,7 +1057,10 @@ We use this set to define an extremely important object.
 \begin{defn}{}{}
 	Define operations $\textcolor{red}{+_n}$ and $\textcolor{red}{\cdot_n}$ on the quotient set $\quotient\Z{\sim_n}$ as follows:
 	\[
-		[x]\mathbin{\textcolor{red}{+_n}}[y]:=[x\mathbin{\textcolor{cyan}{+}}y],\qquad [x]\mathbin{\textcolor{red}{\cdot_n}}[y]:=[x\mathbin{\textcolor{cyan}{\cdot}} y]
+		[x]\mathbin{\textcolor{red}{+_n}}[y]
+		:=[x\mathbin{\textcolor{cyan}{+}}y],\qquad 
+		[x]\mathbin{\textcolor{red}{\cdot_n}}[y]
+		:=[x\mathbin{\textcolor{cyan}{\cdot}} y]
 	\]
 	The \emph{ring} $\Z_n$ is the set $\quotient\Z{\sim_n}$ together with the operations $\textcolor{red}{+_n}$ and $\textcolor{red}{\cdot_n}$.
 \end{defn}
@@ -1067,14 +1095,8 @@ Consider things more abstractly. Given equivalence classes $X$ and $Y$, here is 
 The concern is that there are \emph{infinitely many possible choices} for elements $x\in X$ and $y\in Y$ in step 1. If $+_n$ is to make sense, we must obtain the \emph{same} equivalence class $[x+y]$ {\bf regardless of our choices of $x$ and $y$.} This indeed happens, as we indicate with a special piece of terminology.
 
 
-% 
-% \begin{defn}{}{well}
-% 	A concept is \emph{well-defined} if it is \emph{independent of all choices used in the definition.}
-% \end{defn}
-
-
 \begin{thm}{}{congwd}
-	The operations $+_n$ and $\cdot_n$ are well-defined.
+	The operations $+_n$ and $\cdot_n$ are \textbf{well-defined}.
 \end{thm}
 
 This is nothing more than a rehash of Theorem \ref{thm:congbasic}: compare it with what follows until you are comfortable we are doing the same thing! Observe that
@@ -1089,13 +1111,13 @@ Otherwise said, all representatives (all possible choices in step 1) of the equi
 \begin{proof}
 	We prove that $+_n$ is well-defined.
 	\begin{align*}
-		[x+kn]+_n[y+ln]&=[(x+kn)+(y+ln)] \tag{definition of $+_n$}\\
+		[x+kn]+_n[y+ln]
+		&=[(x+kn)+(y+ln)] \tag{definition of $+_n$}\\
 		&=[x+y+(k+l)n] =[x+y] \tag{Lemma \ref{lemm:congequiv2}}\\
 		&=[x]+_n[y] \tag{definition of $+_n$}
 	\end{align*}
 	The argument for $\cdot_n$ is similar.
 \end{proof}
-
 
 
 Compare our equivalence class notation with that from Section \ref{sec:cong}. For instance
@@ -1105,13 +1127,13 @@ Compare our equivalence class notation with that from Section \ref{sec:cong}. Fo
 
 
 \begin{aside}{}{}
-\boldinline{Aside: Advanced Notation}
-	Given the applicability of $\Z_n$, it is customary in higher-level mathematics to drop the square brackets and all subscripts, simply writing
+\boldinline{Aside: Notation}
+	Given the wide usage of $\Z_n$, it is customary in higher-level mathematics to drop the square brackets and all subscripts, simply writing
 	\[
 		\Z_n=\bigl\{0,1,2,\ldots,n-1\bigr\}
 	\]
-	In this language, ($\ast$) would simply be written $-3+12=1$ in $\Z_8$. It is critical to appreciate here that $-3,12$ and 1 denote \emph{sets} (equivalence classes), not \emph{integers.} Until you are 100\% certain of this, you should stick to either of the notations in $(\ast)$.\smallbreak
-	It is something of a mathematical joke to write $1+1=0$ (in $\Z_2$). Even in this context, $1+1$ still equals 2; the issue is that $2=0$ in $\Z_2$, hence the seemingly paradoxical statement. This is really a very simple claim about \emph{sets}: that the sum of any two odd numbers is even!
+	In this language, ($\ast$) would be written $-3+12=1$ in $\Z_8$. It is critical to appreciate that $-3,12$ and 1 denote \emph{sets} (equivalence classes) and not \emph{integers.} Until you are 100\% certain of this, you should stick to either of the notations in $(\ast)$.\smallbreak
+	It is something of a mathematical joke to write $1+1=0$ (in $\Z_2$). Even in this context, $1+1=2$; the seeming paradox is that $2=0$ in $\Z_2$. This is really a very simple claim about \emph{sets}: that the sum of any two odd numbers is even! Indeed general modular arithmetic (in $\Z_n$) is little more than an abstraction/generalization of this simple fact. 
 \end{aside}
 
 
@@ -1144,7 +1166,8 @@ Our construction of $\Z_n$ is a special case of a more general situation.%
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item The rule $f([x])=[2x+1]$ does produce a well-defined function $f:\Z_3\to\Z_3$ however:
 	  \begin{align*}
-	  	[x]=[y]&\implies y=x+3k\ \ \text{for some integer $k$}\\
+	  	[x]=[y]
+	  	&\implies y=x+3k\ \ \text{for some integer $k$}\\
 	  	&\implies f([y])=f([x+3k]) =[2x+6k+1] =[2x+1] =f([x])
 	  \end{align*}
 	  \begin{minipage}[t]{0.72\linewidth}\vspace{-8pt}
@@ -1162,7 +1185,9 @@ Our construction of $\Z_n$ is a special case of a more general situation.%
 	
 		\item This last example is something of an advert for the advanced notation in the previous aside. We ask for which integers $k$ the rule $f_k(x)=kx$ produces a well-defined function $f_k:\Z_4\to\Z_6$. If this is confusing, re-rewrite using either of the notations
 		\[
-			f_k(x)=kx\spmod 6 \quad\text{or}\quad f_k([x]_4)=[kx]_6
+			f_k(x)=kx\spmod 6 
+			\quad\text{or}\quad 
+			f_k([x]_4)=[kx]_6
 		\]		
 		\begin{minipage}[t]{0.59\linewidth}\vspace{-10pt}
 		 	Start with a special case to get a feel for things. A table of values for $f_1(x)$ shows an immediate problem! 
@@ -1177,7 +1202,8 @@ Our construction of $\Z_n$ is a special case of a more general situation.%
 		In $\Z_4$, we have $\textcolor{blue}{0}=\textcolor{blue}{4}$, however $f_1(\textcolor{blue}{0})=\textcolor{red}{0}$ and $f_1(\textcolor{blue}{4})=\textcolor{red}{4}$ \emph{which are not equal in $\Z_6$}! It follows that $f_1$ is \emph{not well-defined}: it isn't a function (and never was!).\par
 		Now proceed systematically.
 		\[
-			x\equiv y\spmod 4\implies x-y=4n \implies kx-ky=4kn \tag{for some $n\in\Z$}
+			x\equiv y\spmod 4\implies x-y=4n 
+			\implies kx-ky=4kn \tag{for some $n\in\Z$}
 		\]
 		It follows that $f_k$ is well-defined ($f_k(x)=f_k(y)\in\Z_6$) if and only if $6\mid 4kn$\, \emph{for all} $n\in\Z$. This is the case if and only if $6\mid 4k$. Otherwise said,
 		\[
@@ -1226,7 +1252,8 @@ We consider how equivalence relations permit the easy construction of certain ge
 		\begin{align*}
 	  	[(x,y)]=[(v,w)]
 	  	&\implies y=w\ \text{ and }\ x=v+n,\text{ for some $n\in\Z$}\\
-	  	&\implies f\bigl([(x,y)]\bigr) =y\sin(2\pi x) =w\sin(2\pi v) =f\bigl([(v,w)]\bigr)
+	  	&\implies f\bigl([(x,y)]\bigr) =y\sin(2\pi x) 
+	  	=w\sin(2\pi v) =f\bigl([(v,w)]\bigr)
 	  \end{align*}
 	  Otherwise said, $f:\smash{\quotient{\R^2}\sim}\to\R$ is a well-defined function whose \emph{domain is the cylinder.} More generally, and $F:\R^2\to\R$ for which $(x,y)\sim(v,w)\Longrightarrow F(x,y)=F(v,w)$ may be viewed as a function on the cylinder.
 	   
@@ -1251,7 +1278,9 @@ We consider how equivalence relations permit the easy construction of certain ge
 	\end{enumerate}
 \end{examples}
 
-\footnotetext{Alternatively, imagine piercing a roll of toilet paper and unrolling it: the \textcolor{cyan}{single puncture} becomes a \textcolor{cyan}{row} of (almost!) equally spaced holes. Unfortunately for the analogy, toilet paper has purposeful thickness!}
+\footnotetext{%
+	Alternatively, imagine piercing a roll of toilet paper and unrolling it: the \textcolor{cyan}{single puncture} becomes a \textcolor{cyan}{row} of (almost!) equally spaced holes. Unfortunately for the analogy, toilet paper has purposeful thickness!%
+}
 
 
 \goodbreak
@@ -1495,9 +1524,6 @@ Equivalence relations and partitions are regularly used in this manner to descri
 			(\emph{This is essentially a formal definition of the ring of rational numbers!})
 	  \end{enumerate}
 	  
-	  
-	  
-	
 	
 	\item Define $\sim$ on $\R$ by $x\sim y$ if and only if $x-y\in \Z$. 
 	\begin{enumerate}

@@ -2,9 +2,9 @@
 
 \section{Cardinality and Infinite Sets}\label{chap:cantor}
 
-During the late 1800's, Georg Cantor assaulted the foundations of mathematics by introducing certain infinite sets, in particular his middle-third set (Example \ref{ex:cantorthird}). Cantor ideas about infinity met significant resistance: some mathematicians and philosophers felt his approach to be unnatural; he even inflamed religious scholars who considered his investigations an affront to the divine!\smallbreak
+During the late 1800's, Georg Cantor assaulted the foundations of mathematics with his investigations of certain infinite sets, in particular his middle-third set (Example \ref{ex:cantorthird}). Cantor's ideas about infinity met significant resistance: some mathematicians and philosophers considered his approach unnatural; he even inflamed religious scholars who thought his ideas an affront to the divine!\smallbreak
 
-Despite initial antipathy, Cantor's notion of cardinality is now universally accepted. By unearthing several contradictions inherent in contemporary (naïve) set theory, mathematicians became convinced that a rigorous \emph{axiomatic} approach was necessary. Developing an axiomatic foundation to mathematics became a core goal of early 20\th{} century mathematics.
+Despite initial skepticism, Cantor's notion of cardinality is now universally accepted. By unearthing several contradictions inherent in contemporary (naïve) set theory, mathematicians became convinced that a rigorous \emph{axiomatic} approach was necessary. Developing an axiomatic foundation to mathematics became a core goal of early 20\th{} century mathematics.
 
 
 \subsection{Cantor's Notion of Cardinality}\label{sec:cantor}
@@ -12,34 +12,34 @@ Despite initial antipathy, Cantor's notion of cardinality is now universally acc
 Recall that the \emph{cardinality} $\nm A$ of a finite set $A$ is simply the number of elements of $A$ (Definition \ref{defn:card1}). While ``number of elements" is meaningless for infinite sets, cardinality also gives rise to a \emph{relation} $\le$ which can be used to \emph{compare} sets; this interpretation does extend to infinite sets\ldots
 
 \begin{example}{}{}
-	Consider sets
+	Consider two sets
 	\[
 		A=\{\text{fish},\text{dog}\}\qquad B=\{\alpha,\beta,\gamma\}
 	\]
-	While the elements of $A$ and $B$ are completely different, the sets themselves may be compared using cardinality: we write $\nm A\le \nm B$ to indicate that $A$ has no more elements than $B$. In Theorem \ref{thm:finitecard}, we saw that this mandates the existence of an \emph{injective function} $f:A\to B$. It should be clear that
+	While the elements of $A$ and $B$ are completely different, the sets themselves may be compared using cardinality: we write $\nm A\le \nm B$ to indicate that $B$ has at least as many elements as $A$. In Theorem \ref{thm:finitecard}, we saw that this mandates the existence of an \emph{injective function} $f:A\to B$: plainly
 	\[
 		f(\text{fish})=\alpha,\qquad f(\text{dog})=\beta
 	\]
 	defines a suitable function.
 \end{example}
 
-Theorem \ref{thm:finitecard} tells us how to compare cardinalities of finite sets \emph{using functions} and  \emph{without counting elements.} Cantor's seemingly innocuous idea was to turn this \emph{theorem} for finite sets into a general \emph{definition} of cardinality.
+Theorem \ref{thm:finitecard} tells us how functions may be used to \emph{compare cardinalities} of finite sets \emph{without counting elements.} Cantor's seemingly innocuous idea was to turn this \emph{theorem} for finite sets into a general \emph{definition} of cardinality.
 
 
 \begin{defn}{}{infcard}
 	The \emph{cardinality} of a set $A$ is denoted $\nm A$. We compare cardinalities as follows:
 	\begin{itemize}
-  	\item $\nm A\le\nm B\iff\exists f:A\to B$ injective
-  	\item $\nm A=\nm B\iff\exists g:A\to B$ bijective
+  	\item $\nm A\le\nm B\iff\exists f:A\to B$ injective.
+  	\item $\nm A=\nm B\iff\exists g:A\to B$ bijective.
 	\end{itemize}
 	$\nm A<\nm B$ means $\nm A\le \nm B$ and $\nm A\neq \nm B$, that is $\exists f:A\to B$ injective but $\nexists g:A\to B$ bijective.
 \end{defn}
 
 \begin{lemm}{}{cardequiv}
-	On any collection of sets, $A\sim B\Longleftrightarrow \nm A=\nm B$ defines an equivalence relation.
+	Equality of cardinality $\nm A=\nm B$ is an equivalence relation on any collection of sets.
 \end{lemm}
 
-Cardinality is an abstract property whereby sets can be \emph{compared} rather than a \emph{value} attaching to a given set.\footnote{We \emph{could} use the Lemma to define $\nm A:=[A]$ as the equivalence class of $A$, though this likely feels confusing!} Regardless, it should be clear that cardinality partitions any collection of sets: every set has a cardinality, and no set has more than one cardinality. It is moreover natural to identify the cardinalities of finite sets with the \emph{cardinal numbers} $0,1,2,3,4,\ldots$
+``Cardinality'' is an abstract property whereby sets can be \emph{compared}, rather than a \emph{value} attaching to a given set.\footnote{We \emph{could} use the Lemma to define $\nm A:=[A]$ as the equivalence class of $A$, though this likely feels confusing!} Regardless, the Lemma proves that cardinality partitions any collection of sets: every set has a cardinality, and no set has more than one cardinality. It is moreover natural to identify the cardinalities of finite sets with the \emph{cardinal numbers} $0,1,2,3,4,\ldots$
 
 \goodbreak
 
@@ -51,35 +51,41 @@ Cardinality is an abstract property whereby sets can be \emph{compared} rather t
 To make progress, it is helpful to introduce a symbol for the cardinality of the simplest infinite set.
 
 \begin{defn}{}{}
-	We say that $A$ is a \emph{countably infinite\footnotemark} set and write $\nm A=\aleph_0$ (read \emph{aleph-nought} or \emph{aleph-null}), if its cardinality equals that of the set of \emph{natural numbers} $\N$:
+	We say that $A$ is a \emph{countably infinite\footnotemark} set and write $\nm A=\aleph_0$ (\emph{aleph-nought} or \emph{aleph-null}), if its cardinality equals that of the set of \emph{natural numbers} $\N$:
 	\[
 		\nm A=\aleph_0 \iff \exists g:\N\to A\text{ bijective}
 	\]
 \end{defn}
 
-\footnotetext{Some authors say \emph{denumerable} and use \emph{countable} for sets with $\nm A\le\aleph_0$. \emph{Aleph} is the first letter of the Hebrew alphabet.}
+\footnotetext{%
+	Some authors say \emph{denumerable} and use \emph{countable} for sets with $\nm A\le\aleph_0$. \emph{Aleph} is the first letter of the Hebrew alphabet.%
+}
 
-In the next section we'll see why a new symbol is needed; why $\infty$ doesn't suffice.
+In the next section we'll see why a new symbol is necessary; why $\infty$ doesn't suffice.
 
 \begin{examples}{}{easycantor}
 	\exstart The function $g:\N\to\N_{\ge 2}$ defined by $g(n)=n+1$ is a bijection, whence $\N_{\ge 2}=\{2,3,4,5,\ldots\}$ is countably infinite.\footnotemark
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item Let $2\N=\{2,4,6,8,10,\ldots\}$ be the set of positive even integers. The function
 		\[
-		h:\N\to 2\N:n\mapsto 2n
+			h:\N\to 2\N:n\mapsto 2n
 		\]
 		is a bijection. It follows that $\nm{2\N}=\nm\N=\aleph_0$ and that $2\N$ is countably infinite.
 	\end{enumerate}
 \end{examples}
 
-\footnotetext{This is a version of \emph{Hilbert's Grand Hotel Problem.} Imagine a hotel with an infinite number of rooms: Room 1, Room 2, Room 3, Room 4, etc. Even if the hotel is full, by moving everyone one room down the hall, space can always be found for an additional guest. The second example is another version, where infinitely many new guests must be accommodated.}
+\footnotetext{%
+	This is a version of \emph{Hilbert's Grand Hotel Problem.} Imagine a hotel with an infinite number of rooms: Room 1, Room 2, Room 3, Room 4, etc. Even if the hotel is full, by moving everyone one room down the hall, space can always be found for an additional guest. The second example is another version, where infinitely many new guests may be accommodated!%
+}
 
 Theses examples demonstrate a perplexing property of infinite sets. For instance, $2\N$ is a \emph{proper subset} in bijective correspondence with $\N$! It feels like we want to say two contradictory things:
 \begin{itemize}
   \item $\N$ has the `same number of elements' as $2\N$\quad (bijectivity of $h$).
   \item $\N$ has `twice the number of elements' as $2\N$ \quad (`half' of $\N$ is even, and `half' odd).
 \end{itemize}
-The source of our discomfort is that \emph{number of elements} is meaningless for infinite sets. However, if we replace this phrase with \emph{cardinality}, then both statements are true!\footnote{We won't pursue cardinal arithmetic in any detail, but it is completely legitimate to write $2\aleph_0=\aleph_0$ for the second example. The first example would be $1+\aleph_0=\aleph_0$.} The existence of a proper subset with the same cardinality can indeed be used as a \emph{definition} of infinite set (Exercise \ref{exs:cardinf2}).\bigbreak
+The source of our discomfort is that \emph{number of elements} is meaningless for infinite sets. However, if we replace this phrase with \emph{cardinality}, then both statements are true!\footnote{%
+	We won't pursue cardinal arithmetic in any detail, but it is completely legitimate to write $2\aleph_0=\aleph_0$ for the second example. The first example would be $1+\aleph_0=\aleph_0$.%
+} The existence of a proper subset with the same cardinality can indeed be used as a \emph{definition} of infinite set (Exercise \ref{exs:cardinf2}).\bigbreak
 
 
 Rather than hunting for an explicit bijection, the simplest approach to these problems is often to list the elements of a set $A$ so that it `looks like' the natural numbers, with an initial element $a_1$ followed by all others in sequence:
@@ -94,21 +100,18 @@ For instance, we could have approached our examples by listing elements in tabul
  		\N_{\ge 2}&g(n)&2&3&4&5&6&7&8&9&10&11&\cdots\\\hline
  		2\N&h(n)&2&4&6&8&10&12&14&16&18&20&\cdots
  	\end{array}
-% 	\begin{array}{@{}r@{}r@{,\ }r@{,\ }r@{,\ }r@{,\ }r@{,\ }r@{,\ }r@{,\ }r@{,\ }r@{,\ }r@{,\,\ldots\}}}
-% 		\N=\{&1&2&3&4&5&6&7&8&9&10\\
-% 		\N_{\ge 2}=\{&2&3&4&5&6&7&8&9&10&11\\
-% 		2\N=\{&2&4&6&8&10&12&14&16&18&20
-% 	\end{array}
 \]
 The required bijections are immediately visible with little need to state them explicitly. We apply this technique to two important examples of countably infinite sets.
 
+
 \goodbreak
+
 
 List the set of \emph{integers} in a non-standard order, alternating positive and negative terms:
 \[
 	\Z=\{z_1,z_2,z_3,z_4,\ldots\}=\{0,1,-1,2,-2,3,-3,4,-4,\ldots\}
 \]
-The function $g:\N\to\Z:n\mapsto z_n$ is bijective, so we conclude:
+The function $g:\N\to\Z:n\mapsto z_n$ is bijective, and we conclude:
 
 \begin{thm}{}{zcount}
 	The integers $\Z$ are a countably infinite set.
@@ -196,9 +199,9 @@ Any sensible person should feel that there are far, far more rational numbers th
 \goodbreak
 
 
-Other countably infinite sets appear to be even larger than $\Q$! For example:
+Other countably infinite sets \emph{appear} to be even larger than $\Q$! For example:
 \begin{itemize}
-  \item Cartesian products such as $\N\times\N$.
+  \item Cartesian products such as $\Q\times\Q$.
   \item The \emph{algebraic numbers} $\mathbb{A}=\bigl\{x\in\C:p(x)=0\text{ for some polynomial $p$ with integer coefficients}\bigr\}$.\par
   Every rational number is algebraic ($\frac ab$ is a root of $p(x)=bx-a$), but so are many irrationals ($\sqrt 2$ is a root of $p(x)=x^2-2$). Non-algebraic numbers (e.g., $\pi$ and $e$) are termed \emph{transcendental.}
 \end{itemize}
@@ -232,7 +235,9 @@ Otherwise said, every infinite set has cardinality \emph{at least as large} as t
 	\end{description} 
 \end{proof}
 
-\footnotetext{The $n=0$ case ($A=\emptyset$) works, though it feels strange: $f=\emptyset$ is a suitable injective (!) function $f:\emptyset\to\N$, and there are no functions $g\subseteq\N\to\emptyset$. It will help to think about the formal definition of \emph{function} (Section \ref{sec:func2})!}
+\footnotetext{%
+	The $n=0$ case ($A=\emptyset$) works, though it feels strange: $f=\emptyset$ is a suitable injective (!) function $f:\emptyset\to\N$, and there are no functions $g\subseteq\N\to\emptyset$. It will help to think about the formal definition of \emph{function} (Section \ref{sec:func2})!%
+}
 
 We'll address the existence of infinite sets with cardinality \emph{larger} than $\aleph_0$ in the next section.
 
@@ -354,7 +359,7 @@ We'll address the existence of infinite sets with cardinality \emph{larger} than
 
 \subsection{Uncountable Sets}\label{sec:uncountable}
 
-Since $\Q$ seems so large, you might think that there couldn't be sets with strictly larger cardinality. But we haven't yet thought about the real numbers\ldots
+Since $\Q$ seems so large, you might imagine that no sets could have strictly larger cardinality. But we haven't yet thought about the real numbers\ldots
 
 \begin{defn}{}{}
 	A set $A$ is \emph{uncountable} if $\aleph_0<\nm A$. Otherwise said, there exists an injection $f:\N\to A$ but no bijection $g:\N\to A$.
@@ -397,12 +402,17 @@ We denote the cardinality of the interval $(0,1)$ by $\fc$ for \emph{continuum.}
 	\end{description}
 \end{proof}
 
-\footnotetext{\label{fn:decimalcantor}A number $x\in(0,1)$ has two decimal representations if and only if one of them terminates and the other ultimately becomes an infinite sequence of 9's: e.g., $0.135=0.1349999\cdots$. For the purposes of this proof, choose the terminating decimal when it exists. We restrict to $x_n=1,2$ later in the proof to keep away from these double representations.}
+\footnotetext{%
+	\label{fn:decimalcantor}A number $x\in(0,1)$ has two decimal representations if and only if one of them terminates and the other ultimately becomes an infinite sequence of 9's: e.g., $0.135=0.1349999\ldots$. For this proof, we choose the terminating decimal whenever it exists. We restrict to $x_n=1,2$ later in the proof to keep away from these double representations.%
+}
 
 The second part of the proof is known as \emph{Cantor's diagonal argument,} since we compare the constructed decimal $x$ with the \textcolor{blue}{diagonal} of an infinite square of integers. Since the interval $(0,1)$ is uncountable, and $(0,1)\subseteq\R$, it is immediate that the real numbers are also uncountable. Using only the ideas developed so far (a combination of Exercises \ref*{sec:cantor}.\ref{exs:easyintervalcard} and \ref{exs:openclosedcard}), we could prove directly that every interval of finite length has cardinality $\fc$. It is easier, however, to delay this momentarily\ldots\smallbreak
 
 
-More amazingly, Cantor's middle-third set (Example \ref{ex:cantorthird}) also has cardinality $\fc$, despite seeming vanishingly small! The details, and more, are in Exercise \ref{exs:middlethirdcard}.
+Even more amazingly, Cantor's middle-third set (Example \ref{ex:cantorthird}) also has cardinality $\fc$, despite seeming vanishingly small! The details, and more, are in Exercise \ref{exs:middlethirdcard}.
+
+
+\goodbreak
 
 
 \boldsubsubsection{Non-explict Comparison of Cardinalities}
@@ -417,25 +427,27 @@ The following result is very useful for comparing cardinalities. %It allows us t
 
 This seems like it should be obvious, but pause for a moment: it is \emph{not} a result about \emph{numbers!} The theorem should be understood in the context of Definition \ref{defn:infcard}, in which language it becomes:
 \[
-\tcbhighmath{
-\text{If there exist \emph{injections} $f:A\to B$ and $g:B\to A$, then there exists a \emph{bijection} $h:A\to B$}
-}
+	\tcbhighmath{
+		\text{%
+			If there exist \emph{injections} $f:A\to B$ and $g:B\to A$, then there exists a \emph{bijection} $h:A\to B$
+		}
+	}
 \]
 
-The proof is beautiful, though a little long to reproduce here; check out any elementary text on set theory if you're interested. Its usefulness is that it allows us to equate cardinalities without the explicit construction of \emph{bijective} functions; \emph{injective} functions are typically much easier to conjure!
+The proof is beautiful, though a little long to reproduce here; if you're interested, check out any elementary text on set theory. Its usefulness is that it allows us to equate cardinalities without explicitly constructing \emph{bijective} functions; \emph{injective} functions are typically easier to conjure!
 
 
 \begin{example}{}{}
-	Observe that the following functions are both injective (only---not bijective!):
+	The following functions are both injective (\emph{only}---they are not bijective!):
 	\begin{gather*}
 		f:(0,1)\to[0,1]:x\mapsto x \tag{$\range(f)=(0,1)\subsetneq[0,1]$}\\
 		g:[0,1]\to (0,1):x\mapsto \frac 12x+\frac 14 \tag{$\range(g)=[\tfrac 14,\tfrac 34]\subsetneq(0,1)$}
 	\end{gather*}
-	By Cantor--Schröder--Bernstein, the sets $(0,1)$ and $[0,1]$ have the same cardinality ($\fc$). Note how fast this was; we didn't have to construct an explicit bijection $h:(0,1)\to[0,1]$, a much harder business (see Exercise \ref*{sec:cantor}.\ref{exs:openclosedcard})
+	By Cantor--Schröder--Bernstein, the sets $(0,1)$ and $[0,1]$ have the same cardinality ($\fc$). Note how fast this was; we didn't have to construct an explicit bijection $h:(0,1)\to[0,1]$, a much nastier business (see Exercise \ref*{sec:cantor}.\ref{exs:openclosedcard})
 \end{example}
 
 
-As advertised a few moments ago, the Example generalizes to cover all intervals.
+As recently advertised, this example generalizes to cover all intervals.
 
 \begin{cor}{}{intervalcard}
 	All intervals (of positive length) have cardinality $\fc$.
@@ -456,15 +468,17 @@ As advertised a few moments ago, the Example generalizes to cover all intervals.
 		\begin{tabular}{@{}c@{}}
 			\includegraphics{cardinality-03-tan}
 			\\
-			\textcolor{blue}{$y=g(x)$ bijective}
+			\textcolor{blue}{$g(x)=\frac 12+\frac 1\pi\tan^{-1}x$}
 		\end{tabular}
 	\end{minipage}
 	\bigbreak
 	Putting everything together:
 	\[
-		\smash[t]{\nm{(0,1)}\overset{f}{\le}\nm A\overset{\iota}{\le}\nm\R \overset{g}{=}\nm{(0,1)}}
+		\smash[t]{\nm{(0,1)}\overset{f}{\le}
+		\nm A\overset{\iota}{\le}
+		\nm\R \overset{g}{=}\nm{(0,1)}}
 	\]
-	By Cantor--Schröder--Bernstein, all these sets have the same cardinality $\fc$.
+	By Cantor--Schröder--Bernstein, all these sets have the same cardinality, namely $\fc$.
 \end{proof}
 
 Further examples can be found in the exercises.
@@ -480,8 +494,7 @@ For a final punchline, we generalize Theorem \ref{thm:powercard} which, for fini
 	If $A$ is any set, then $\nm A\lneq\nm{\cP(A)}$.
 \end{thm}
 
-The main implication is that \emph{there is no largest cardinality!} We can always construct a larger cardinality set by taking the power set. For example, $\nm{\cP(\R)}>\nm\R=\fc$. Want a set with even larger cardinality? Try $\cP\bigl(\cP(\R)\bigr)$, or $\cP\bigl(\cP(\cP(\R))\bigr)$! We can continue this process indefinitely.
-
+The main implication is that \emph{there is no largest cardinality!} We can always construct a set with strictly larger cardinality just by taking the power set. For example, $\nm{\cP(\R)}>\nm\R=\fc$. Want an even larger cardinality? Try $\cP\bigl(\cP(\R)\bigr)$, or $\cP\bigl(\cP(\cP(\R))\bigr)$! This process may be continued indefinitely.
 
 \begin{proof}
 	If $A=\emptyset$, the result is trivial. Otherwise, first observe that $f:a\mapsto\{a\}$ defines an injective function $f:A\to\cP(A)$, whence $\nm A\le\nm{\cP(A)}$.\smallbreak
@@ -491,46 +504,49 @@ The main implication is that \emph{there is no largest cardinality!} We can alwa
 	  \]
 \end{proof}
 
-Tack stock for a moment, since $X$ is hard to think about. Since $g(a)$ is a \emph{subset} of $A$, the condition $a\not\in g(a)$ is legitimate, whence $X$ is a genuine \emph{subset} of $A$. A simple example will hopefully help.
+Take stock for a moment and \emph{think} about $X$. Since $g(a)$ is a \emph{subset} of $A$, the condition $a\not\in g(a)$ is legitimate, whence $X$ is a genuine subset of $A$ ($X\in\cP(A)$). A simple example will hopefully help.
   
 \begin{example}{}{cantorproof}
 	Let $A=\{1,2,3\}$ and define a function $g:A\to\cP(A)$ by
   \[
   	g(1)=\{1,2\},\qquad g(2)=\{1,3\},\qquad g(3)=\emptyset
   \]
-  Since $1\in g(1)$, \ $2\notin g(2)$, and $3\notin g(3)$, we see that $X=\{2,3\}$. Since our goal is to prove that no \emph{bijection} $A\to\cP(A)$ can exist, it is important to note that this function $g$ is \emph{not bijective}; indeed $X\notin\range(g)=\bigl\{\{1,2\},\{1,3\},\emptyset\bigr\}$ shows that this $g$ is not surjective.
+  Since $1\in g(1)$, \ $2\notin g(2)$, and $3\notin g(3)$, we see that $X=\{2,3\}$. Since our goal is to prove that no \emph{bijection} $A\to\cP(A)$ can exist, it is important to note that this $g$ is \emph{not bijective}; indeed $g$ isn't surjective, since $X\notin\range(g)=\bigl\{\{1,2\},\{1,3\},\emptyset\bigr\}$. This last observation is what finishes the proof\ldots
 \end{example}
 
 \begin{proof}[Proof Continued]  
-	By assumption, $g$ is surjective. Since $\range(g)=\cP(A)$, the set \emph{$X$ lies in $\range(g)$.} Otherwise said, $X=g(a)$ for some $a\in A$. We ask whether $a$ is an element of $X$:
+	By assumption, $g$ is \emph{surjective}. Thus $X\in\range(g)$. Otherwise said, $X=g(a)$ for some $a\in A$. We ask whether this \emph{element} $a$ lies in the \emph{set} $X$:
 	\begin{align*}
 		a\in X&\iff a\notin g(a)\tag{definition of $X$}\\
 		&\iff a\notin X\tag{since $X=g(a)$}
 	\end{align*}
-	Look at what we have concluded: $a\in X\iff a\notin X$ is plainly a contradiction! We conclude that no bijection $g:A\to\cP(A)$ exists, and so $\nm A\lneq\nm{\cP(A)}$.
+	The conclusion $a\in X\Longleftrightarrow a\notin X$ is plainly a contradiction! No bijection $g:A\to\cP(A)$ can exist, and so $\nm A\lneq\nm{\cP(A)}$.
 \end{proof}
 
-Cantor's theorem played a role in pushing set theory towards axiomatization, in part because of the following paradox. If a `set' is merely a collection of objects, we may consider the `set of all sets' $S$. Its power set $\cP(S)$ is a set of sets, so must be a subset of $S$, whence $\nm{\cP(S)}\le\nm S$. However, by Cantor's theorem, $\nm S\lneq\nm{\cP(S))}$, resulting in the manifest absurdity $\nm{S}\lneq\nm{S}$!\smallbreak
+Cantor's theorem played a key role in pushing set theory towards axiomatization, in part because of a simple paradox. If a `set' is merely a collection of objects, we may consider the `set of all sets' $S$. Its power set $\cP(S)$ is a set of sets, which must be a subset of $S$. Plainly $\nm{\cP(S)}\le\nm S$; but this contradicts Cantor's theorem!\smallbreak
 
-The remedy is a rigorous definition of `set.' \emph{Axiomatic set theory} describes a small number of legitimate ways to build sets, of which we've seen several in these notes: e.g., union, power set, set-builder notation. In particular, the `set of all sets' \emph{cannot} be legitimately constructed.\footnote{The critical condition for preventing Cantor's paradox is that set-builder notation $\{x\in A:P(x)\}$ can only produce a \emph{subset} of an already existing set $A$. The `set of all sets' would have the form $\{x:P(x)\}$ where $x$ is \emph{unrestricted}.}  
+The remedy is a rigorous definition of `set.' \emph{Axiomatic set theory} describes a small number of legitimate ways to build sets, of which we've seen several in these notes: e.g., union, power set, set-builder notation. In particular, the `set of all sets' \emph{cannot} be legitimately constructed.\footnote{%
+	The critical condition for preventing Cantor's paradox is that set-builder notation $\{x\in A:P(x)\}$ can only produce a subset of an \emph{already existing} set $A$. The `set of all sets' would have the form $\{x:P(x)\}$ where $x$ is \emph{unrestricted}.%
+}  
 
 
 
 \boldsubsubsection{Some Final Thoughts on the Limits of Proof}
 
-Throughout this course we've learned about some of the basic methods and concepts used by mathematicians. In particular, we've learned how to use proofs to demonstrate the truth of statements about mathematical objects. As we finish, it makes sense to reflect on the limits of our methods.\smallbreak
+During this course we've learned some of the basic methods and concepts used by mathematicians. In particular, we've learned how to use proofs to demonstrate the truth of statements about mathematical objects. As we finish, it makes sense to reflect on the limits of our methods.\smallbreak
 
-By the early 20\th{} century, the discovery of various paradoxes and contradictions (like Cantor's) led to a foundational crisis in mathematics. If a concept as basic as \emph{set} is contradictory, how can we have faith in any mathematical conclusion?! The result of this crisis was an effort to place all of mathematics on a rigorous axiomatic basis by formulating a list of reasonable axioms from which all of mathematics could be derived using basic logical reasoning. Such an axiomatic foundation ideally would satisfy two conditions:
-\begin{itemize}
-  \item \emph{Consistency}:\lstsp No contradiction could be derived from the axioms.
+By the early 20\th{} century, the discovery of various paradoxes and contradictions (such as  Cantor's) caused a foundational crisis in mathematics. If a concept as basic as \emph{set} is self-contradictory, how are we to have faith in any mathematical conclusion?! The response to this crisis was an effort to formulate a list of reasonable axioms from which all mathematics could be derived using basic logical reasoning. Such an axiomatic foundation would ideally satisfy two conditions:
+\begin{itemize}\itemsep0pt
+  \item \emph{Consistency}:\lstsp No contradiction can be derived from the axioms.
   \item \emph{Completeness}:\lstsp All true mathematical statements could be derived from the axioms.
 \end{itemize}
-All hope for such a foundation was crushed in 1931, when Kurt Gödel published his famous \emph{Incompleteness Theorems} which showed that no such axiomatic system could exist. Essentially, Gödel showed that any consistent axiomatic system strong enough to produce some basic arithmetic, there are \emph{undecideable} statements; neither derivable nor refutable from the axioms. Perhaps even worse, no such system can prove its own consistency.\smallbreak
+Any hope for such a foundation was crushed in 1931, when Kurt Gödel published his famous \emph{Incompleteness Theorems}, showing that no such axiomatic system could exist. Very roughly, Gödel showed that in any consistent axiomatic system strong enough to produce some basic arithmetic, there are \emph{undecideable} statements; neither deducible nor refutable from the axioms. Perhaps even worse, no such system can prove its own consistency.\smallbreak
 
-While the strongest aims of early 20\th{} axiomatics cannot be accomplished, contemporary research was able to provide a foundation that most modern mathematicians deem adequate for current work. Perhaps the most popular approach is to base all of mathematics on \emph{set theory}---as your studies progress, you'll see that many of the objects you study can be formalized as sets together with functions and relations between sets. We've started this work already: Chapter \ref{chap:relations} says that functions and relations are themselves sets! Numbers like 0, 1, 2, $\frac{12}{19}$ or even $\pi=3.14\ldots$ can be thought of as sets if one desires. In turn, set theory is often axiomatized using the \textrm{ZFC} axioms (short for Zermelo--Fraenkel set theory with the Axiom of Choice).\smallbreak
+While the strongest aims of early 20\th{} axiomatics cannot be accomplished, contemporary research was able to provide a foundation that most modern mathematicians deem adequate. The most popular approach is to base all of mathematics on \emph{set theory}---as your studies progress, you'll see that many of the objects you study can be formalized as sets together with functions and relations between them. We've started this work already: Chapter \ref{chap:relations} says that functions and relations are themselves sets! Numbers like 0, 1, 2, $\frac{12}{19}$ or even $\pi=3.14\ldots$ can be thought of as sets if one so desires. In turn, set theory is often axiomatized using the ZFC axioms (short for Zermelo--Fraenkel set theory with the Axiom of Choice).\smallbreak
 
-While \textrm{ZFC} is subject to the limitations imposed by Gödel's theorems,\footnote{Perhaps the most famous undecidable statement in ZFC is relevant to our recent discussion: the \emph{continuum hypothesis} is the claim that no set has cardinality strictly between $\aleph_0$ and $\fc$; that intervals are the simplest (`smallest') uncountable sets.} they have proven able to formalize most of the mathematics actually used by current mathematicians, and have not (thus far!) produced any inconsistencies. While there is plenty of fun to be had exploring set theory,% its history and its quirks, 
-most modern mathematicians feel little need to dwell on the foundational issues of last century!
+While the ZFC system remains subject to Gödel's limitations,\footnote{%
+	Perhaps the most famous undecidable statement in ZFC is relevant to our recent discussion: the \emph{continuum hypothesis} is the claim that no set has cardinality strictly between $\aleph_0$ and $\fc$; that intervals are the simplest (`smallest') uncountable sets.%
+} it has proven able to formalize most of the mathematics actually used by current mathematicians, and has not (thus far!) produced any inconsistencies. While there is plenty of fun to be had exploring set theory, its history and its quirks, most modern mathematicians feel little need to dwell on the foundational issues of last century!
 
 
 % \begin{proof}
@@ -576,13 +592,16 @@ most modern mathematicians feel little need to dwell on the foundational issues 
 	\begin{enumerate}
 	  \item Decide the cardinality of each set. No working is necessary.
 	  \begin{enumerate}
-	    \item $\N_{\le 12}$\hfill (b) \ $\Z_{\le 12}$\hfill (c) \ $(0,5]$\hfill (d) \ $[2,\pi]\cap\Q$\hfill (e) \ $\cP\bigl(\{\R\}\bigr)$ \hfill (f) \ $\bigcap\limits_{x\in\R^+}[3-\frac 1x,3+\frac 1x)$
+	    \item $\N_{\le 12}$\hfill (b) \ $\Z_{\le 12}$\hfill (c) \ $(0,5]$\hfill 
+	    (d) \ $[2,\pi]\cap\Q$\hfill (e) \ $\cP\bigl(\{\R\}\bigr)$ \hfill 
+	    (f) \ $\bigcap\limits_{x\in\R^+}[3-\frac 1x,3+\frac 1x)$
 	  \end{enumerate}
 	  
 	  
 	  \item Find \emph{explicit} bijections (thus showing that the given intervals have the same cardinality):
 	  \begin{enumerate}
-	    \item $f:[2,3)\to [1,5)$ \qquad (b) \ $g:[2,3)\to (1,5]$\qquad (c) \ $h:(-3,2)\to\R$ \qquad (d) \ $j:\R\to(1,\infty)$
+	    \item $f:[2,3)\to [1,5)$ \qquad (b) \ $g:[2,3)\to (1,5]$\qquad 
+	    (c) \ $h:(-3,2)\to\R$ \qquad (d) \ $j:\R\to(1,\infty)$
 	  \end{enumerate}
 	  (\emph{Hint: The proof of Corollary \ref{cor:intervalcard} should provide some inspiration---be creative}) 
   
@@ -653,7 +672,7 @@ most modern mathematicians feel little need to dwell on the foundational issues 
   	\goodbreak
   	
   	
-  	\item[]The final questions are more of a challenge.
+  	\item[]The remaining questions are more of a challenge: if these seem interesting, consider taking a set theory course!
   	
   	
   	\item Express a real number $x\in(0,1)$ as a decimal $x=0.x_1x_2x_3x_4\ldots$	where we choose the terminating decimal whenever there is a choice (footnote \ref{fn:decimalcantor}). Prove that
@@ -706,4 +725,6 @@ most modern mathematicians feel little need to dwell on the foundational issues 
 
 \end{exercises}
 
-\footnotetext{Binary expansions are unique unless $x$ has a terminating expansion, in which case the there is a second involving an infinite sequence of 1's: e.g., $[0.011111\cdots]_2=[0.1]_2$. This example is beloved of computer scientists who, following Exercise \ref{exs:charfunc}, might view $\cP(\N)\sim\{0,1\}^\N$ as the set of \emph{binary sequences/strings} $(x_1,x_2,x_3,\ldots)$, where each $x_j\in\{0,1\}$.}
+\footnotetext{%
+	Binary expansions are unique unless $x$ has a terminating expansion, in which case the there is a second representation with an infinite string of 1's: e.g., $[0.011111\cdots]_2=[0.1]_2$. This discussion is beloved of computer scientists who, following Exercise \ref{exs:charfunc}, might view $\cP(\N)\sim\{0,1\}^\N$ as the set of \emph{binary sequences/strings} $(x_1,x_2,x_3,\ldots)$, where each $x_j\in\{0,1\}$.%
+}
