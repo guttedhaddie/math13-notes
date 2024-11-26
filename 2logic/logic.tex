@@ -875,7 +875,7 @@ We finish with two harder examples you might have encountered elsewhere. For thi
 		\end{enumerate}
 		
 		
-		\item Prove or disprove the following statements.
+		\item Prove or disprove:
 		\begin{enumerate}
 		  \item For every two points $A$ and $B$ in the plane, there exists a circle on which both $A$ and $B$ lie.
 		  \item There exists a circle in the plane on which lie any two points $A$ and $B$.
@@ -892,27 +892,22 @@ We finish with two harder examples you might have encountered elsewhere. For thi
 		\end{enumerate}
 			
 			
-		\item\label{ex:decreasing} A function $f:\R\to\R$ is said to be \emph{decreasing} if:
-		\[
-			x\le y\implies f(x)\ge f(y)
-		\]
+		\item\label{ex:decreasing} ``A function $f:\R\to\R$ is \emph{decreasing}'' means: $x\le y\Longrightarrow f(x)\ge f(y)$.
 		\begin{enumerate}
 		  \item State what it means for $f$ not to be decreasing (\emph{where is the hidden quantifier?})
 		  \item Give an example to show that \emph{not decreasing} and \emph{increasing} do not mean the same thing.
 		\end{enumerate}
 		
+		
+		\item\label{exs:contradictproof2} Prove that $P(x)\Longrightarrow Q(x)$ is logically equivalent to $\bigl(\exists x, P(x)\wedge\neg Q(x)\bigr)\Longrightarrow F$.\par
+		(\emph{This extends Exercise \ref*{sec:prop}.\ref{exs:contradictproof}---be careful of the quantifiers!})
+		
 			
-		\item Consider the proposition:
-		\[
-			\forall m,n\in\R,\  m>n\implies m^2>n^2
-		\]
+		\item Consider the proposition: $\forall m,n\in\R,\ m>n\Longrightarrow m^2>n^2$.
 		\begin{enumerate}
 	  	\item State the negation of the proposition.
 	  	\item Prove that the original proposition is \emph{false.}
-	  	\item Suppose you rewrite the proposition:
-	  	\[
-	  		\forall m,n\in A, \ m>n\implies m^2>n^2
-	  	\]
+	  	\item Suppose you rewrite the proposition: $\forall m,n\in A, \ m>n\Longrightarrow m^2>n^2$.\par
 	  	What is the largest collection (set) of real numbers $A$ for which the proposition is \emph{true}?
 		\end{enumerate}
 	
@@ -940,15 +935,15 @@ We finish with two harder examples you might have encountered elsewhere. For thi
 
 \subsection{Methods of Proof}\label{sec:proof}
 
-The previous sections covered some of the basic language of logic. Like any other language, fluency will take time and practice. While one can study foundational logic much more deeply, we will focus on putting it to work in the service of mathematics. The real work begins now.\medbreak
+The previous sections covered some of the language of foundational logic. While one can study this more deeply, we focus on putting it to work in the service of mathematics. The real work begins now.\medbreak
 
 A mathematical \emph{theorem} is\footnote{It might be awkward to fit a theorem into this format but it can always be done. Often all that is stated is the conclusion $Q$, in which case $P$ would be the assertion ``All mathematics we already know/assume to be true.''} a justified assertion of the truth of an implication $P\Longrightarrow Q$. A \emph{proof} is any logical argument justifying the theorem. The first step in analyzing or strategizing a proof is to identify the hypothesis $P$ and conclusion $Q$.\medbreak 
 
 There are four standard methods of proof; in practice longer arguments combine several of these.
 \begin{description}
 	\item[Direct] Assume the hypothesis $P$ and deduce the conclusion $Q$.\footnote{To \emph{assume} a proposition is to suppose its \emph{truth.} To suppose $P$ is false, we ``assume/suppose $\neg P$.''} This structure should be intuitive, though it may help to revisit the truth table in Definition \ref{defn:implies} and the tautology of Example \ref*{ex:conditionalbasic}.\ref{ex:taut2}.
-	\item[Contrapositive] Assume $\neg Q$ and deduce $\neg P$: a direct proof of the contrapositive $\neg Q\Longrightarrow\neg P$. This works because the contrapositive is logically equivalent to $P\Longrightarrow Q$ (Theorem \ref{thm:contrapos}).
-	\item[Contradiction] Assume $P$ and $\neg Q$, and deduce a \emph{contradiction}. Theorem \ref{thm:negconditional} and Exercise \ref*{sec:prop}.\ref{exs:contradictproof} both tells us that $P\Longrightarrow Q$ is true.
+	\item[Contrapositive] Directly prove the contrapositive $\neg Q\Longrightarrow\neg P$ (logically equivalent to $P\Longrightarrow Q$ by Theorem \ref{thm:contrapos}).
+	\item[Contradiction] Assume $P\wedge\neg Q$ and deduce a \emph{contradiction} (directly prove $(P\wedge\neg Q)\Rightarrow F$). Theorem \ref{thm:negconditional} and Exercise \ref*{sec:prop}.\ref{exs:contradictproof} show that $P\Longrightarrow Q$ is true.	If $P(x)\Longrightarrow Q(x)$ has a hidden universal quantifier, the negation means we start by assuming $\textcolor{red}{\exists x}, P(x)\wedge\neg Q(x)$ (Exercise \ref*{sec:quant}.\ref{exs:contradictproof2}).
 	\item[Induction] This has a completely different flavor; we will consider it in Chapter \ref{chap:induction}.
 \end{description}
 
@@ -1094,7 +1089,7 @@ For another example of a contrapositive argument, we extend the first result of 
 	The product of two integers is odd \emph{if and only if} both integers are odd.
 \end{thm}
 
-This is a \emph{biconditional} $P\Longleftrightarrow Q$, which comprises \emph{two theorems in one}: $P\Longrightarrow Q$ and $Q\Longrightarrow P$ (Exercise \ref*{sec:prop}.\ref{exs:iff}). A contrapositive argument for $P\Longrightarrow Q$ is again suggested because $Q$ (\emph{both} integers are odd) treats the two integers individually.
+This is a \emph{biconditional} $P\Longleftrightarrow Q$, comprising \emph{two theorems in one}: $P\Longrightarrow Q$ and $Q\Longrightarrow P$ (Exercise \ref*{sec:prop}.\ref{exs:iff}). A contrapositive argument for $P\Longrightarrow Q$ is again suggested because $Q$ (\emph{both} integers are odd) treats the two integers individually.
 
 \begin{proof}
 	\begin{description}
@@ -1105,12 +1100,14 @@ This is a \emph{biconditional} $P\Longleftrightarrow Q$, which comprises \emph{t
 
 Note de Morgan's law: $\neg(x$ odd \emph{and} $y$ odd) is equivalent to ``$x$ even \emph{or} $y$ even'' (``at least one'').\par
 
-The common phrase \emph{without loss of generality}, often abbreviated to WLOG, saves us from performing a second, almost identical, argument assuming $y=2l$ is even. WLOG is stated when a mathematician makes a choice which does not materially affect the argument.
+The common phrase \emph{without loss of generality}, often abbreviated WLOG, saves us from performing a second, almost identical, argument assuming $y=2l$ is even. WLOG is stated when one makes a choice which does not materially affect the argument.
 
 
 \boldsubsubsection{Proof by Contradiction}
 
-To introduce contradiction proofs, we consider a simple result in several ways.\footnote{While what follows is indeed a theorem, we'll typically reserve the word for results that are worth remembering in their own right. Examples like this are good for practice, but are not individually very interesting.}
+Here is a simple result considered in several ways.\footnote{%
+	From now on we'll reserve `Theorem' for results that are worth remembering in their own right.
+}
 
 
 \begin{example}{}{x odd if 3x+5 is odd}
@@ -1126,7 +1123,7 @@ To introduce contradiction proofs, we consider a simple result in several ways.\
 	
 	\begin{quote}
 		\begin{proof}
-			Suppose both $3x+5$ and $5x+2$ are even. Then their sum is also even. However,
+			Suppose $x$ is an integer for which both $3x+5$ and $5x+2$ are even. Then their sum is also even. However,
 		  \[
 		  	(3x+5)+(5x+2)=8x+7=2(4x+3)+1 \tag{$\dag$}
 		  \]

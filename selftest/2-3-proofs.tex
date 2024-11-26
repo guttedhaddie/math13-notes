@@ -5,22 +5,33 @@
 \begin{enumerate}
 	\item In a \emph{proof by contrapositive} of $P\Longrightarrow Q$, we assume that (1) \underline{\phantom{$Q$ is false}\qquad\qquad} and deduce that (2) \underline{\phantom{$P$ is false}\qquad\qquad}.
   \begin{enumerate}
-      \item (1) $\neg Q$ is true, \quad (2) $P$ is true
-      \item (1) $Q$ is false, \quad (2) $P$ is true
-      \item (1) $\neg P$ is true, \quad (2) $\neg Q$ is true 
-      \item (1) $\neg Q$ is true, \quad (2) $\neg P$ is true
+      \item \makebox[200pt][l]{(1) $\neg Q$ is true, \quad (2) $P$ is true \hfill (b) }
+      (1) $Q$ is false, \quad (2) $P$ is true
+      \setcounter{enumii}{2}
+      \item \makebox[200pt][l]{(1) $\neg P$ is true, \quad (2) $\neg Q$ is true \hfill (d) }
+      (1) $\neg Q$ is true, \quad (2) $\neg P$ is true
   \end{enumerate}
   
   
   \item A \emph{proof by contradiction} of $P\Longrightarrow Q$ begins by assuming that \underline{\phantom{$P$ is true and $Q$ is false}\qquad\qquad}.
   \begin{enumerate}
-      \item $\neg P \vee Q$ is true
-      \item $P \wedge \neg Q$ is true
-      \item $P\Longrightarrow Q$ is true
-      \item $Q\Longrightarrow P$ is false
+      \item \makebox[150pt][l]{$\neg P \vee Q$ is true \hfill (b) } $P \wedge \neg Q$ is true
+      \setcounter{enumii}{2}
+      \item \makebox[150pt][l]{$P\Longrightarrow Q$ is true \hfill (d) } $Q\Longrightarrow P$ is false
+  \end{enumerate}
+  
+  
+  \item You wish to prove that $x^2>4\Longrightarrow x>-2$. How might a contradiction argument begin?
+  \begin{enumerate}
+    \item Suppose all real numbers $x$ satisfy $x^2>4$ and $x>-2$.
+    \item Suppose all real numbers $x$ satisfy $x^2>4$ and $x\le -2$.
+    \item Suppose all real numbers $x$ satisfy $x^2\le 4$ and $x>-2$.
+    \item Suppose $x$ is a real number satisfying $x^2>4$ and $x>-2$.
+    \item Suppose $x$ is a real number satisfying $x^2>4$ and $x\le -2$.
+    \item Suppose $x$ is a real number satisfying $x^2\le 4$ and $x>-2$.
   \end{enumerate}
 
-
+	
   \item In which of the following situations would it be correct to invoke \emph{without loss of generality}? Select all that apply.
   \begin{enumerate}
 		\item Suppose we are attempting to prove that for two integers $m$ and $n$, if either one is even, then so is the product. Without loss of generality we can assume that $n$ is even.
