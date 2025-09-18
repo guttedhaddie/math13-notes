@@ -33,9 +33,9 @@ Michael Hehmann, Christopher Davis, Liam Hardiman, and Ari Rosenfield}
 \label{sec:preface}
 \addcontentsline{toc}{section}{\nameref{sec:preface}}
 
-Math 13 was created by the late Howard Tucker as a traditional discrete mathematics course (the number was a deliberate joke). It eventually evolved to become the transition class in UCI's undergraduate program, introducing students to abstraction and proof, and serving as the key pre-requisite for upper-division courses such as abstract algebra, analysis, linear algebra \& number theory.\smallbreak
+Math 13 was created by the late Howard Tucker as a traditional discrete mathematics course (the number 13 being a deliberate joke). It has evolved to become the key transition class between Lower and Upper-division in UCI's undergraduate program, introducing students to abstraction and proof, and serving as a pre-requisite for courses such as abstract algebra, analysis, linear algebra \& number theory.\smallbreak
 
-The typical student is simultaneously working through lower-division calculus and linear algebra. Knowledge of such material is unnecessary and students are encouraged to take Math 13 early both to ease the transition from algorithmic to abstract mathematics, and so that a proof-mentality may be brought to other lower-division classes.\smallbreak
+The typical student is simultaneously working through lower-division calculus and linear algebra. Knowledge of such material is unnecessary and students are encouraged to take Math 13 early both to ease the transition from algorithmic to abstract mathematics, and so that other lower-division classes can benefit from a proof-focused mentality.\smallbreak
 
 This text evolved from course notes dating back to 2008. Math 13 is something of a hydra due to the niche it occupies in UCI's program: part proof-writing, part discrete mathematics, and part introduction to specific upper-division topics. Logic is covered only at a basic level while set theory is spread throughout the text, the intent being for dry `grammar' topics to be absorbed through engagement with more accessible and fun ideas. By the end of the course, interested students should be prepared for a formal study of logic and set theory at the upper-division level.
 
@@ -46,7 +46,7 @@ This text evolved from course notes dating back to 2008. Math 13 is something of
 	\item Developing the skills necessary to read and practice abstract mathematics.
 	\item Understanding the concept of proof and becoming acquainted with multiple proof techniques.
 	\item Learning what sort of questions mathematicians ask and what excites them.
-	\item Introducing upper-division mathematics by providing a taste of what is covered in several courses. For instance:
+	\item Introducing upper-division mathematics by providing a taste of several courses. For instance:
 	\begin{description}
 		\item[\normalfont\emph{Number Theory \& Abstract Algebra}] How can we perform arithmetic with remainders? Can you figure out what on which day of the week you were born? 
 		\item[\normalfont\emph{Geometry and Topology}] How can we visualize objects such as the Möbius strip? How can we use sequences of sets to produce objects (fractals) that appear similar at all scales?
@@ -57,7 +57,7 @@ This text evolved from course notes dating back to 2008. Math 13 is something of
 
 \boldinline{Useful Texts}
 
-The following texts are recommended if you want more exercises and material. The first two are available free online; the rest were previous textbooks for Math 13.
+The following texts are recommended for more exercises and material. The first two are available free online; the rest were previous textbooks for Math 13.
 
 \begin{itemize}%\itemsep0pt
 	\item \href{https://richardhammack.github.io/BookOfProof/}{\emph{Book of Proof}}, Richard Hammack%, %3rd ed 
@@ -129,11 +129,13 @@ Consider how the proof depends crucially on the definition.
 
 \begin{itemize}\itemsep0pt
 	\item The theorem did not mention any \emph{variables,} though these were essential to the proof. The variables $k$ and $l$ come for free \emph{once you write the definition of evenness!} This is very common; simple proofs are often little more than rearranged definitions.
-	\item According to the definition, $2k$ and $2l$ together represent \emph{all possible pairs} of even integers. It is essential that $k$ and $l$ be \emph{different symbols}: Is is clear why? What would you be proving if $k=l$? %otherwise all you would be proving is that twice an even number is even!
+	\item According to the definition, $2k$ and $2l$ together represent \emph{all possible pairs} of even integers. It is essential that $k$ and $l$ be \emph{different symbols}: Is is clear why? What would you be proving if $k=l$?
 	\item The calculation ($\ast$) is the easy bit; without the surrounding sentences and the direct reference to the definition of evenness, the calculation means nothing.
 \end{itemize}
 
-Notice the sleight of hand: a mathematical proof establishes truth \emph{only} by reference to one or more \emph{definitions}.\footnote{Strictly speaking, the definition and theorem also depend on the meanings of \emph{integer} and \emph{sum,} though to rigorously define either would take us too far afield. In any context, some concepts will be considered too basic to merit definition.}
+Notice the sleight of hand: a mathematical proof establishes truth only by reference to one or more \emph{definitions}.\footnote{%
+	Strictly speaking, the definition and theorem also depend on the meanings of \emph{integer} and \emph{sum,} though to rigorously define either would take us too far afield. In any context, some concepts will be considered too basic to merit definition.%
+}
 
 
 \goodbreak
