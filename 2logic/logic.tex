@@ -103,8 +103,7 @@ The letters T/F stand for \emph{true/false.} For instance, the second line of th
 				F & T & T & F
 			\end{array}$
   	\end{minipage}\par
-  	Similarly, $S\wedge(\neg S)$ is a contradiction: regardless of $S$, it \emph{and} its negation cannot simultaneously be true.
-  	
+  	Similarly, $S\wedge(\neg S)$ is a contradiction: regardless of $S$, it \emph{and} its negation cannot both be true.
 	\end{enumerate}
 \end{examples}
 
@@ -139,6 +138,7 @@ Connective propositions can be read and written in many different ways: for inst
 		$P$ is sufficient for $Q$ & $Q$ is necessary for $P$ & $P$ is necessary and sufficient for $Q$
 	\end{tabular}
 \end{quote}
+\emph{Logical equivalence} is often used to describe logical expressions whose \emph{truth tables are identical.}
 
 
 \goodbreak
@@ -210,14 +210,32 @@ While the biconditional should be easy to remember, it is harder to make sense o
 \boldsubsubsection{The Converse and Contrapositive}
 
 \begin{defn}{}{contra}
-	The \emph{converse} of $P\Longrightarrow Q$ is the reversed implication $Q\Longrightarrow P$.\smallbreak
-	The \emph{contrapositive} of $P\Longrightarrow Q$ is the implication $\neg Q\Longrightarrow\neg P$.
+	The \emph{converse} of $P\Longrightarrow Q$ is the reversed conditional $Q\Longrightarrow P$.\smallbreak
+	The \emph{contrapositive} of $P\Longrightarrow Q$ is the conditional $\neg Q\Longrightarrow\neg P$.
 \end{defn}
 
-It is vital to understand the distinction between these, particularly because of a crucial result. %The truth status of the converse bears no relation (in general) to that of the original, though the contrapositive is much better behaved:
+\begin{example}{}{}
+	Let $P$ and $Q$ be the statements
+	\begin{quote}
+	  $P$: \ ``Claudia has a peach.''\qquad\qquad
+	  $Q$: \ ``Claudia has a fruit.''
+	\end{quote}
+	Plainly, every peach is a fruit, so $P\Longrightarrow Q$ is \emph{true}: ``If Claudia has a peach, then she has a fruit.''
+	\par
+	The \emph{converse} of $P\Longrightarrow Q$ is the sentence
+	\begin{quote}
+	  $Q\Longrightarrow P$: \ ``If Claudia has a fruit, then she has a peach.''
+	\end{quote}
+	This is palpably \emph{false}: Claudia might have an apple! The \emph{contrapositive}, however, is \emph{true}:
+	\begin{quote}
+	  $\neg Q\Longrightarrow \neg P$: ``If Claudia does \emph{not} have a fruit, then she does \emph{not} have a peach.''
+	\end{quote} 
+\end{example}
+
+Understanding the distinction between the converse and contrapositive is vital. In general, the truth status of the converse bears no relation to that of the original: the converse of a true proposition could be either true or false. By re-reading the example, however, you should feel that the \emph{contrapositive} (in English) is just another way to state the original proposition; our next result makes this formal.
 
 \begin{thm}{}{contrapos}
-	The contrapositive of an implication is logically equivalent to the original.
+	The contrapositive of an conditional is logically equivalent to the original.
 \end{thm}
 
 \begin{proof}
@@ -234,30 +252,11 @@ It is vital to understand the distinction between these, particularly because of
 	Otherwise said, $(\textcolor{red}{P\Longrightarrow Q})\Longleftrightarrow (\textcolor{blue}{\neg Q\Longrightarrow\neg P})$ is a tautology.
 \end{proof}
 
-By contrast, the converse is not logically equivalent to the original: the converse of a true implication could be either true or false (though see Exercise \ref{exs:ttconverse} for a special situation).
-
-\begin{example}{}{}
-	Let $P$ and $Q$ be the statements
-	\begin{quote}
-	  $P$: \ ``Claudia has a peach.''\qquad\qquad
-	  $Q$: \ ``Claudia has a fruit.''
-	\end{quote}
-	Since a peach is certainly a fruit, $P\Longrightarrow Q$ is \emph{true}: ``If Claudia has a peach, then she has a fruit.''
-	\par
-	The \emph{converse} of $P\Longrightarrow Q$ is the sentence
-	\begin{quote}
-	  $Q\Longrightarrow P$: \ ``If Claudia has a fruit, then she has a peach.''
-	\end{quote}
-	This is palpably \emph{false}: Claudia might have an apple! However, in accordance with Theorem \ref{thm:contrapos}, the \emph{contrapositive} is \emph{true}:
-	\begin{quote}
-	  $\neg Q\Longrightarrow \neg P$: ``If Claudia does \emph{not} have a fruit, then she does \emph{not} have a peach.''
-	\end{quote} 
-\end{example}
 
  
 \boldsubsubsection{Negating Logical Expressions}
 
-Mathematics often requires us to negate propositions. What would you suspect to be the negation of a conditional $P\Longrightarrow Q$? Is it enough to say ``$P$ doesn't imply $Q$"? But what does this mean? 
+Mathematics often requires us to negate propositions. What would you suspect to be the negation of a conditional $P\Longrightarrow Q$? Can we simply say ``$P$ doesn't imply $Q$"? But what does this mean? 
 
 \begin{minipage}[t]{0.64\linewidth}\vspace{-2pt}
 	We again rely on a truth table: to get the last column, recall that negation simply swaps $T$ and $F$. Can we write this column in another way? The single $T$ in the final column provides a proof of an important result:
@@ -650,17 +649,17 @@ Similarly, \emph{proving} an existential statement (by providing an \emph{exampl
 
 To negate a proposition is to consider what it means for the proposition to be \emph{false.} We already understand what this means for a universal proposition:
 \begin{quote}
-	``$\forall x,P(x)$'' is false if and only if \emph{there exists a counter-example.}
+	``$\forall x,P(x)$ false'' means that \emph{there exists a counter-example.}
 \end{quote}
 Otherwise said, the negation of a universal statement is \emph{existentially quantified}:
 \begin{quote}
 	The negation of ``$P(x)$ is \emph{always} true'' is ``$P(x)$ is \emph{sometimes} false.''
 \end{quote}
-Repeating  $P(x)$ with $\neg P(x)$ results in the related observation:
+Replacing $P(x)$ with $\neg P(x)$ provides a related observation:
 \begin{quote}
 	The negation of ``$P(x)$ is \emph{always} false" is ``$P(x)$ is \emph{sometimes} true.''
 \end{quote}
-In summary:
+To summarize:
 
 \begin{thm}{}{negquant}
 	For any propositional function $P(x)$:
@@ -672,8 +671,8 @@ In summary:
 
 
 \begin{examples}{}{}
-	\exstart  ``Everyone owns a bicycle," has negation ``Someone does not own a bicycle.'' 
-		It is somewhat ugly, but we could write this semi-symbolically:
+	\exstart ``Everyone owns a bicycle," has negation ``Someone does not own a bicycle.'' 
+		It is ugly, but we could write this semi-symbolically:
 		\[
 			\neg\bigl(\forall\text{ people }x,\ x\text{ owns a bicycle}\bigr)\iff \exists\text{ a person $x$ such that $x$ does not own a bicycle}
 		\]
@@ -686,10 +685,10 @@ In summary:
 		\]
 		Since sine satisfies $-1\le\sin x\le 1$, the original proposition is \emph{false} and its negation \emph{true.}
 		\[
-			\tcbhighmath{\text{\textcolor{red}{Warning!}\lstsp \emph{Do not} change a quantifier's \textcolor{Magenta}{bounds}: $\forall x\,\textcolor{Magenta}{\le 0}, \sin x\neq 4$ is wrong!}}
+			\tcbhighmath{\text{\textcolor{red}{Warning!}\lstsp \emph{Don't} change the \textcolor{Magenta}{domain} when negating: $\forall x\,\textcolor{Magenta}{\le 0}, \sin x\neq 4$ is wrong!}}
 		\]
 		
-		\item Take special care negating connectives: a negated \textcolor{red}{hidden quantifier $\forall x$} becomes \emph{explicit.}
+		\item Take special care negating connectives: a negated hidden quantifier becomes \textcolor{red}{explicit}.
 		\[
 			\tcbhighmath{\neg\bigl(\textcolor{blue}{P(x)}\Longrightarrow \textcolor{Green}{Q(x)}\bigr)\ \text{ is logically equivalent to }\ \textcolor{red}{\exists x}, \textcolor{blue}{P(x)} \wedge \textcolor{Green}{\neg Q(x)}}
 			\tag{Theorem \ref{thm:negconditional}}
@@ -703,7 +702,7 @@ In summary:
 			\item (Example \ref*{ex:oddsquared}.\ref{ex:easyquantprop2})\lstsp The negation of the false claim ``$\textcolor{red}{x\in\R}\Longrightarrow \textcolor{Green}{x^2>4}$'' is the true assertion
 			\[
 				\textcolor{red}{\exists x\in\R}\text{ for which }\textcolor{Green}{x^2\le 4}
-				\tag{for example $x=1$}
+				\tag{Proof: for \emph{example} $x=1$}
 			\]
 		\end{enumerate}
 	\end{enumerate}
@@ -711,7 +710,9 @@ In summary:
 
 \vspace{-5pt}
 
-\footnotetext{``$\exists x>0$'' indicates that the domain of the proposition ``$\sin x=4$'' is the \emph{positive} real numbers.}
+\footnotetext{%
+	``$\exists x>0$'' indicates that the \emph{domain} of the proposition ``$\sin x=4$'' is the \emph{positive} real numbers.%
+}
 
 
 \goodbreak
