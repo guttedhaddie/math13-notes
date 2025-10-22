@@ -471,17 +471,14 @@ To apply the Euclidean algorithm to our motivational problem, we need to run it 
 	Rearranging, we see that $x=3$ and $y=-5$ satisfy the equation $1260x+750y=30$. To simplify, divide everything by \textcolor{Green}{30} to see that $(3,-5)$ is an integer point on the line $42x+25y=1$.
 \end{example*}
 
-To comfortably apply the algorithm like this will require significant \emph{practice}; we'll see another example momentarily. The reversed algorithm works in general, yielding a very powerful result.
+The reversed algorithm works in general, yielding a very powerful result. If either of $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards.
 
 \begin{cor}{Bézout's Identity}{euclid}
-	Given integers $a,b$, not both zero, $\exists x,y\in\Z$ such that\vspace{-8pt}
+	Given integers $a,b$, not both zero, $\exists x,y\in\Z$ such that
 	\[
 		\gcd(a,b)=ax+by
 	\]
 \end{cor}
-
-If either of $a,b$ are negative, apply the algorithm to $\nm{a},\nm{b}$ and correct the signs afterwards.
-
 
 \begin{example}{}{bezout2}
 	We express $\textcolor{blue}{3}=\gcd(123,78) =123\textcolor{red}{x}+78\textcolor{red}{y}$: remainders are underlined for clarity.
@@ -530,7 +527,7 @@ As an application of the power of Bézout, here is a simple and useful criterion
 	\[
 		2\mid c\ \text{ and }\ 3\mid c\implies 6\mid c
 	\]
-	While we could have done this using Theorem \ref{thm:oddodd2}, Bézout proves the \textcolor{blue}{general claim whenever $\gcd(a,b)=1$}: e.g., $19\mid c$ and $21\mid c\Longrightarrow 399\mid c$ (see the \href{http://www.math.uci.edu/~ndonalds/math13/selftest/3-2-euclidalg.html}{video problems} if you're unsure why).
+	While we could have done this example using Theorem \ref{thm:oddodd2}, Bézout proves the \textcolor{blue}{general claim whenever $\gcd(a,b)=1$}: for instance $19\mid c$ and $21\mid c$ together imply $399\mid c$.
 \end{example}
 
 \goodbreak
@@ -559,13 +556,12 @@ This method works for all solvable linear Diophantine equations; here is the gen
 
 \begin{thm}{}{diophantine}
 	Let $a,b,c$ be integers where $a,b$ are not both zero, and let $d=\gcd(a,b)$.
-	\begin{enumerate}\itemsep0pt
-	  \item The equation $ax+by=c$ has an integer solution $(x,y)$ if and only if $\,d\mid c$.
-	  \item If a solution $(x_0,y_0)$ exists (e.g. as supplied by Bézout), then there are infinitely many such:%\footnotemark
+	\begin{enumerate}%\itemsep0pt
+	  \item The equation $ax+by=c$ has an integer solution $(x,y)$ if and only if $\,d\mid c$. In particular, the values $ax+by$ are precisely the \textbf{integer multiples} of $\gcd(a,b)$.
+	  \item If a solution $(x_0,y_0)$ exists (e.g. as supplied by Bézout), then there are infinitely many such:
 		\[
 			x=x_0-\frac bd t,\qquad y=y_0+\frac ad t,\qquad \text{where }t\in\Z
 		\]
-		%where $t\in\Z$ and $(x_0,y_0)$ is some fixed solution (e.g., as supplied by Bézout's identity).
 	\end{enumerate} 
 \end{thm}
 
@@ -598,9 +594,6 @@ This method works for all solvable linear Diophantine equations; here is the gen
 % \end{example*}
 
 
-
-%\boldsubsubsection{Linear Congruence Equations}
-
 We began to consider linear congruence equations in Example \ref{ex:congeqn1}. The linear Diophantine method also applies in this context. To see why, observe that
 \[
 	ax\equiv c\pmod n\iff \exists y\in\Z\text{ such that }ax=ny+c
@@ -613,9 +606,11 @@ The Theorem tells us when we can solve the right hand side, and supplies a metho
 		123x\equiv 6\pmod{78} \implies x\equiv 14\pmod{26}
 	\]
 	
+	\goodbreak
+	
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item The congruence equation $4x\equiv 6\pmod{20}$ has no solutions. If it did, then $4x=20y+6$ would have integer solutions, but it does not since $\gcd(4,20)=4$ does not divide 6. 
-	  
+	  	  
 	  \item Here is a slightly different approach for $7x\equiv 11\pmod{23}$. By applying the algorithm,
 		\[
 			\gcd(23,7)=1=7\cdot 10-23\cdot 3 \implies 7\cdot 10\equiv 1\pmod{23}
@@ -629,7 +624,9 @@ The Theorem tells us when we can solve the right hand side, and supplies a metho
 \end{examples}
 
 
-\footnotetext{In future studies, you'll refer to 10 as the \emph{multiplicative inverse of 7 in the ring $\Z_{23}$,} and write $7^{-1}=10$ (see Exercise \ref{exs:ringintro}).}
+\footnotetext{%
+	In future studies, you'll refer to 10 as the \emph{multiplicative inverse of 7 in the ring $\Z_{23}$,} and write $7^{-1}=10$ (see Exercise \ref{exs:ringintro}).%
+}
 
 
 \begin{exercises}{}{}
