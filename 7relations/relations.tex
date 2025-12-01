@@ -89,9 +89,9 @@ With abstract relations, there are only a small number of things we can do.
 	\begin{enumerate}\itemsep2pt
 	  \item \makebox[200pt][l]{$\dom(\cR^{-1})=\range(\cR)$ \hfill 2.} \ $\range(\cR^{-1})=\dom(\cR)$
 		\setcounter{enumi}{2}
-		\item \makebox[200pt][l]{$(\cR^{-1})^{-1}=\cR$ \hfill 2.} \ $\cR\subseteq \cS\iff \cR^{-1}\subseteq \cS^{-1}$
+		\item \makebox[200pt][l]{$(\cR^{-1})^{-1}=\cR$ \hfill 4.} \ $\cR\subseteq \cS\iff \cR^{-1}\subseteq \cS^{-1}$
 		\setcounter{enumi}{4}
-		\item \makebox[200pt][l]{$(\cR\cup \cS)^{-1}=\cR^{-1}\cup \cS^{-1}$ \hfill 4.} \ $(\cR\cap \cS)^{-1}=\cR^{-1}\cap \cS^{-1}$
+		\item \makebox[200pt][l]{$(\cR\cup \cS)^{-1}=\cR^{-1}\cup \cS^{-1}$ \hfill 6.} \ $(\cR\cap \cS)^{-1}=\cR^{-1}\cap \cS^{-1}$
 		\setcounter{enumi}{6}
 		\item If $A=B$, then $\cR\cup \cR^{-1}$ and $\cR\cap \cR^{-1}$ are both symmetric
 	\end{enumerate}
@@ -107,13 +107,13 @@ With abstract relations, there are only a small number of things we can do.
 			&\implies (a,b)\in\cS \tag{since $\cR\subseteq\cS$}\\
 			&\implies (b,a)\in\cS^{-1} \tag{definition of inverse}
 		\end{align*}
-		Therefore $\cR^{-1}\subseteq\cS^{-1}$. Replacing $\cR,\cS$ with $\cR^{-1},\cS^{-1}$ and applying part 1, we also see that
+		Therefore $\cR^{-1}\subseteq\cS^{-1}$. Replacing $\cR,\cS$ with $\cR^{-1},\cS^{-1}$ and applying part 3, we also see that
 		\[
 			\cR^{-1}\subseteq\cS^{-1}
 			\implies (\cR^{-1})^{-1}\subseteq (\cS^{-1})^{-1} 
 			\implies \cR\subseteq \cS
 		\]
-		\item[7.] We prove the first half. By part 3,
+		\item[7.] We prove the first half. By parts 3 and 5,
 		\[
 			(\cR\cup \cR^{-1})^{-1}=\cR^{-1}\cup (\cR^{-1})^{-1}
 			=\cR^{-1}\cup \cR=\cR\cup \cR^{-1} \tag*{\qedhere}
